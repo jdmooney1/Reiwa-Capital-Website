@@ -1,0 +1,1191 @@
+/* ==========================================================================
+   Reiwa Capital — Foundation (soft-gradient direction)
+   Brand inspo: warm cream → soft blue gradient, DM Sans sans-serif,
+   minimal rounded cards, Sumire purple ink, generous whitespace.
+   ========================================================================== */
+
+:root {
+  --paper:        #FFFFFF;            /* base */
+  --paper-warm:   var(--cream);      /* warm white cream (→ canonical) */
+  --paper-soft:   #F7F2E8;            /* very faint cream */
+  --ink:          var(--plum);        /* Sumire purple — primary text (→ canonical) */
+  --ink-2:        #4F4458;
+  --ink-3:        #6E637A;            /* lifted to ≥4.5:1 on cream (was #807388) */
+  --ink-4:        #928799;            /* lifted for separators/placeholders (was #B0A8B7) */
+  --rule:         var(--hairline);                 /* base divider (→ canonical) */
+  --rule-soft:    rgba(39, 20, 48, 0.06);          /* retained: fainter-than-hairline variant */
+  --rule-strong:  rgba(39, 20, 48, 0.22);          /* retained: emphasis rule / link underlines */
+  --rule-inverse: var(--hairline-light);           /* on-plum divider (→ canonical) */
+
+  /* ── Spacing — ONE 8-based scale. Nothing lives outside it. ───────── */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
+
+  /* ── Vertical rhythm — ONE section token, used by every page band. ─ */
+  --section:       clamp(96px, 7vw, 128px);
+  --section-tight: clamp(64px, 6vw, 104px);
+  /* Legacy aliases kept so existing references resolve to the one scale. */
+  --sp-section:    var(--section);
+  --sp-closing:    var(--section);
+  --sp-home:       var(--section);
+  --sp-section-sm: var(--section-tight);
+
+  /* ── Typographic vertical rhythm — the gaps BETWEEN type, each mapped onto
+     the 8-scale so no relationship carries an arbitrary margin. One system:
+     label→heading · heading→body · body→body · body→closing meta. ────── */
+  --flow-label:   var(--space-2);   /*  8px — eyebrow / label to its heading   */
+  --flow-heading: var(--space-4);   /* 24px — heading to first paragraph        */
+  --flow-para:    var(--space-4);   /* 24px — paragraph to paragraph            */
+  --flow-caption: var(--space-2);   /*  8px — caption to the divider it follows */
+  --flow-meta:    var(--space-6);   /* 48px — body block to the closing meta    */
+
+  /* ── Page head — ONE entrance spec (type may vary per page, space never). */
+  --head-top:    clamp(76px, 7vw, 104px);
+  --head-bottom: clamp(52px, 4.5vw, 68px);
+
+  /* ── Editorial spine — one rail + gutter for the label/body device.
+     Formalised onto the twelve-column grid below: rail = 3 cols, body =
+     9 cols, --rail-gap is the shared column gutter. ─────────────────── */
+  --rail:     200px;
+  --rail-gap: 64px;
+  --grid-cols: 12;
+
+  /* ── Container — ONE frame for the whole product (site + portal). Page
+     margin scales in three bands — desktop 72–96 · tablet 32–40 ·
+     mobile 20–24 — via the media queries just below this block. ─────── */
+  --container: 1280px;
+  --gutter:    clamp(72px, 5.8vw + 13px, 96px);
+
+  /* ── Image ratios — the only crops imagery may take. ───────────── */
+  --ratio-portrait:  4 / 5;
+  --ratio-landscape: 3 / 2;
+  --ratio-band:      16 / 9;
+
+  /* Breakpoints (CSS vars can't be used in @media; for reference only):
+     desktop→tablet 1024 · tablet→mobile 760 · small 420 */
+}
+@media (max-width: 1024px) { :root { --gutter: clamp(32px, 3vw + 9px, 40px); } }
+@media (max-width: 760px)  { :root { --gutter: clamp(20px, 1vw + 16px, 24px); --section: clamp(64px, 10vw, 96px); } }
+
+html { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
+body { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
+/* No-JS fallback — shell.js builds the real header/footer from script, so if
+   JavaScript is blocked or fails, those hosts stay empty. This bar is the
+   only thing that ever shows it (invisible whenever JS runs normally) and
+   is not the approved footer, so the "no navigation list in the footer"
+   rule is untouched — it just guarantees every page keeps working without
+   JS: identity, all five pages + Privacy, email, LinkedIn. */
+.noscript-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 16px var(--gutter); background: var(--paper-warm); border-bottom: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); }
+.noscript-bar strong { font-weight: 500; }
+.noscript-bar nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.noscript-bar a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.noscript-bar a:hover { color: var(--ink-2); }
+body {
+  font-family: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  font-size: var(--type-body);
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+
+/* Ground — a single flat warm-cream field sitewide. No per-page ambient
+   colour wash: the identity carries through photography, ink and the
+   restrained brand devices below, not a decorative gradient behind
+   content (Anti-template audit — removed the "blurred colour field"
+   pattern entirely, rather than retune it). */
+body {
+  position: relative;
+  background-color: var(--paper-warm);
+}
+@media print { body::before, .reiwa-geo { display: none; } }
+
+/* Fine static grain — painted as body's own texture, never animated.
+   Absolutely positioned against body's own box (not fixed), so it scrolls
+   with the page and always spans the full document height rather than
+   one viewport. Sits under every opaque section (hero, page-head,
+   next-chapter, footer, photography), which simply paint over it. */
+body::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+
+
+/* =====================================================================
+   REIWA GEOMETRY — one oversized, cropped fragment of the brand mark's
+   own line-work per page, in a single open area. A fine stroke only
+   (never the filled logo), mostly bled outside the content column, never
+   sat behind a heading, paragraph, image or control (negative z-index,
+   scoped to its own section's stacking context). */
+.reiwa-geo { position: absolute; z-index: -1; pointer-events: none; color: var(--ink-3, #9A9486); opacity: 0.03; }
+.reiwa-geo svg { display: block; width: 100%; height: 100%; }
+@media (max-width: 760px) { .reiwa-geo { opacity: 0.022; } }
+@media print { .reiwa-geo { display: none; } }
+.positioning, .identity, .responsibilities, .assessment, .contact-body { position: relative; z-index: 0; overflow: hidden; }
+/* Local ambient blockers — the dense process rail and assessment grid,
+   plus photography (opaque by nature), sit on a fully opaque ground so
+   the fixed colour fields never show through a rail of numbers or a
+   grid, and never compete with an image. Same token as the page ground,
+   so there is no visible seam. */
+.process-list, .assess-grid { position: relative; background: var(--paper-warm); }
+
+
+/* Typographic discipline — sitewide, all breakpoints: headings never wrap
+   into an unbalanced rag or leave a widow; running paragraphs never leave a
+   single-word orphan on the last line. */
+main h1, main h2, main h3 { text-wrap: balance; hyphens: none; }
+p { text-wrap: pretty; }
+.df-mail, .cd-v a { white-space: nowrap; }
+
+/* =====================================================================
+   NAV (overrides shell.js base)
+   ===================================================================== */
+/* The shell injects the nav into this wrapper. Without display:contents the
+   wrapper box is only as tall as the nav, so position:sticky unsticks as soon
+   as it scrolls past — promote the nav to a direct child of <body>. */
+[data-shell="nav"] { display: contents; }
+
+.nav-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248, 246, 238, 0.68);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+          backdrop-filter: saturate(140%) blur(18px);
+  border-bottom: 0;
+}
+.nav-right { display: inline-flex; align-items: center; gap: clamp(14px, 1.6vw, 22px); }
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  position: relative;
+}
+/* Header separator — content-aligned hairline on the same grid. */
+.nav-inner::after {
+  content: "";
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 0;
+  height: 1px;
+  background: var(--rule);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms var(--ease-out);
+}
+.nav-bar.header-past-threshold .nav-inner::after { opacity: 1; }
+html.nav-drawer-open .nav-inner::after { opacity: 0; }
+.nav-logo { display: inline-flex; align-items: center; }
+.nav-logo img { height: 30px; display: block; }
+.nav-left { display: inline-flex; align-items: center; gap: 16px; }
+/* Drawer open: dissolve the bar chrome. The wordmark + language toggle
+   hide; the X (the morphed toggle) stays put on the right where the
+   parallel bars were; the emblem lives centred inside the panel. */
+html.nav-drawer-open .nav-bar {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+html.nav-drawer-open .nav-logo { visibility: hidden; }
+html.nav-drawer-open .logo-light { display: none !important; }
+html.nav-drawer-open .lang-toggle { display: none; }
+html.nav-drawer-open .nav-bar .nav-toggle { color: var(--ink); }
+/* While the drawer (a true-right-edge panel) is open, let the toggle
+   escape the centred, max-width nav row and sit flush with the same true
+   right edge — so the X lines up with the drawer's own content below it
+   instead of stopping at the container's inset gutter. */
+html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px; }
+@media (max-width: 720px) { html.nav-drawer-open .nav-bar .nav-inner { padding-right: var(--gutter); } }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+}
+.lang-toggle button {
+  font: inherit;
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 500;
+  letter-spacing: var(--type-label-ls);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  background: transparent;
+  color: var(--ink-3);
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.lang-toggle button.is-active { background: var(--ink); color: #fff; }
+
+/* =====================================================================
+   FOOTER — the final moment. A deep sumire banner carries the mark in
+   cream; one quiet baseline row beneath it. No link list, no legal wall.
+   Content is visible by default — never gated on an animation.
+   ===================================================================== */
+.footer {
+  background: var(--ink);              /* deep sumire ground */
+  color: var(--paper-warm);
+  margin-top: 0;
+  border-top: 0;
+  position: relative;
+}
+/* =====================================================================
+   DIVIDER SYSTEM — every section separator rides the global content
+   grid. One weight (1px), one colour (--rule, ~10% charcoal), one inset.
+   Section borders are declared per-page in inline <style>; we neutralise
+   them here (!important) and draw a centred hairline pseudo-element that
+   begins and ends on the --container grid. Internal row dividers already
+   sit inside the container and are left alone.
+   ===================================================================== */
+.page-head,
+.ed-section,
+.about-block,
+.positioning,
+.home-lifecycle {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  position: relative;
+}
+.page-head::after,
+.ed-section::after,
+.about-block::after,
+.positioning::after,
+.home-lifecycle::after {
+  content: "";
+  position: absolute; left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: min(100% - 2 * var(--gutter), var(--container));
+  height: 1px;
+  background: var(--rule);
+  pointer-events: none;
+}
+/* =====================================================================
+   ONWARD NAVIGATION — a standalone block on cream between the page and the
+   footer. Its own section, not footer furniture: one label, one destination,
+   the whole band clickable. A single hairline and one quiet arrow — no
+   card, no button, no enclosure. Hover/focus adds only a faint tone shift.
+   ===================================================================== */
+.nextnav { position: relative; background: var(--paper-warm); }
+.nextnav::before {
+  content: "";
+  position: absolute; left: 50%; top: 0;
+  transform: translateX(-50%);
+  width: min(100% - 2 * var(--gutter), var(--container));
+  height: 1px;
+  background: var(--rule);
+  pointer-events: none;
+}
+.nn-link { display: block; height: 180px; text-decoration: none; background: var(--paper-warm); transition: background 220ms var(--ease-out); }
+.nn-link:hover, .nn-link:focus-visible { background: var(--paper-soft); }
+.nn-inner {
+  max-width: var(--container);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  column-gap: 32px;
+  align-items: baseline;
+  align-content: center;
+  justify-content: end;
+  text-align: right;
+}
+.nn-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink-3);
+}
+html[lang="ja"] .nn-label { font-size: 13px; letter-spacing: 0.04em; text-transform: none; }
+.nn-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(40px, 2.2vw + 18px, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  font-weight: 500;
+  color: var(--ink);
+  transition: transform 280ms var(--ease-out);
+}
+html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-height: 1.32; letter-spacing: 0.01em; }
+.nn-title-row { grid-column: 2; justify-self: end; display: flex; align-items: baseline; gap: 8px; }
+.nn-arrow { display: inline-block; flex: none; transition: transform 220ms var(--ease-out); }
+.nn-link:hover .nn-title, .nn-link:focus-visible .nn-title,
+.nn-link:hover .nn-arrow, .nn-link:focus-visible .nn-arrow { transform: translateX(6px); }
+.nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
+@media (prefers-reduced-motion: reduce) { .nn-title, .nn-arrow, .nn-link { transition: none; } }
+
+/* =====================================================================
+   FOOTER — legal identity only. One quiet 80px sumire band: mark and
+   copyright as one group, two links opposite. Nothing else belongs here.
+   ===================================================================== */
+.footer-inner {
+  max-width: var(--container);
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.ff-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; min-width: 0; }
+.ff-brand img { height: 23px; width: auto; display: block; opacity: 0.92; flex: none; }
+.ff-copy, .ff-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 250ms ease;
+}
+.ff-links a { display: inline-flex; align-items: center; min-height: 44px; margin: -13px 0; }
+.ff-copy { font-weight: 400; color: rgba(252, 250, 241, 0.88); font-variant-numeric: tabular-nums; }
+.ff-brand:hover .ff-copy { color: var(--paper-warm); }
+.ff-links { display: flex; align-items: center; gap: 28px; flex: none; }
+.ff-links a { font-weight: 400; color: rgba(214, 202, 227, 0.86); }
+.ff-links a:hover { color: var(--paper-warm); }
+.ff-links a[aria-current="page"] { color: var(--paper-warm); }
+
+@media (max-width: 768px) {
+  .nn-link { height: auto; }
+  .nn-inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 10px;
+    padding: 32px var(--gutter);
+  }
+  .nn-title {
+    font-size: clamp(32px, 3.6vw + 20px, 40px);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  html[lang="ja"] .nn-title { font-size: clamp(27px, 3vw + 16px, 34px); line-height: 1.4; }
+  .nn-title-row { grid-column: 1; }
+  .nn-link:focus-visible { outline-offset: -4px; }
+  .footer-inner { height: 76px; }
+}
+@media (max-width: 560px) {
+  .footer-inner {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+    padding: 20px var(--gutter) calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+  .ff-links { gap: 22px; }
+}
+@media (max-width: 340px) {
+  .ff-links { gap: 16px; }
+  .ff-brand { gap: 8px; }
+}
+
+/* =====================================================================
+   SHARED LAYOUT
+   ===================================================================== */
+/* Sticky footer — short pages (Contact, Privacy) still fill the viewport;
+   the dark footer always sits at the bottom edge. */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1 0 auto; }
+.shell, .ed-shell {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Eyebrow */
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  line-height: var(--type-eyebrow-lh);
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: var(--eyebrow-ink);
+}
+
+/* Big sans-serif page heading */
+.h-display {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-display);
+  line-height: var(--type-display-lh);
+  letter-spacing: var(--type-display-ls);
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Smaller section heading */
+.h-section {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-h2);
+  line-height: var(--type-h2-lh);
+  letter-spacing: var(--type-h2-ls);
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Body lede */
+.lede {
+  font-size: var(--type-body-l);
+  line-height: var(--type-body-l-lh);
+  letter-spacing: var(--type-body-l-ls);
+  color: var(--ink-2);
+  max-width: var(--measure-lead);
+  margin: 0;
+}
+
+/* =====================================================================
+   LINK — ONE tertiary link treatment. A quiet 2px underline in
+   rule-strong that wipes to ink on hover. (.link-q kept as an alias.)
+   ===================================================================== */
+.link, .link-q {
+  font-size: var(--type-caption);
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+.link:hover, .link-q:hover { border-color: var(--ink); }
+
+/* =====================================================================
+   PAGE HEAD (inner pages — restrained, paper, hairline only)
+   ===================================================================== */
+.page-head {
+  position: relative;
+  background: var(--paper);
+  padding: 0;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.page-head::after { content: none; }
+body[data-page="about"] .page-head,
+body[data-page="approach"] .page-head,
+body[data-page="focus"] .page-head { border-bottom: 1px solid var(--rule-strong); }
+.page-head .inner {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--head-top) var(--gutter) var(--head-bottom);
+}
+.page-head .marker {
+  display: flex; align-items: center; gap: 12px;
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--type-eyebrow-ls);
+  line-height: var(--type-eyebrow-lh);
+  text-transform: uppercase;
+  color: var(--eyebrow-ink);
+  margin-bottom: 96px;
+}
+.page-head .marker .dot { width: 5px; height: 5px; border-radius: var(--radius-sm); background: var(--ink); }
+.page-head h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-page-title);
+  line-height: var(--type-page-title-lh);
+  letter-spacing: var(--type-page-title-ls);
+  color: var(--ink);
+  margin: 0;
+  text-indent: var(--optical-cap);   /* optical: cap glyph onto the true left grid line */
+  max-width: 16ch;
+}
+.page-head h1 em { font-style: normal; color: var(--ink-3); }
+
+/* Art-directed hero washes — pale architectural imagery behind the page
+   title. A left-weighted cream scrim keeps the dark headline crisp; a
+   bottom fade settles the image into the foot band. Scoped per page. */
+body[data-page="contact"] .page-head {
+  min-height: 32vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+}
+/* About / Approach / Investment Focus — one full-bleed hero, tucked under
+   the transparent nav to the true top of the viewport (same technique as
+   the home hero). Condensed to ~460–540px total on desktop, including the
+   header zone, and scaled down at tablet/mobile. */
+body[data-page="about"] .page-head,
+body[data-page="approach"] .page-head,
+body[data-page="focus"] .page-head {
+  --head-h: clamp(310px, 27vw, 360px);
+  margin-top: calc(var(--nav-h, 67px) * -1);
+  min-height: calc(var(--head-h) + var(--nav-h, 67px));
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 0;
+}
+@media (max-width: 1024px) {
+  body[data-page="about"] .page-head,
+  body[data-page="approach"] .page-head,
+  body[data-page="focus"] .page-head { --head-h: clamp(279px, 31vw, 313px); }
+}
+@media (max-width: 760px) {
+  body[data-page="about"] .page-head,
+  body[data-page="approach"] .page-head,
+  body[data-page="focus"] .page-head { --head-h: clamp(245px, 42vw, 277px); }
+}
+@media (max-width: 420px) {
+  body[data-page="about"] .page-head,
+  body[data-page="approach"] .page-head,
+  body[data-page="focus"] .page-head { --head-h: clamp(212px, 49vw, 245px); }
+}
+body[data-page="about"] .page-head .inner,
+body[data-page="approach"] .page-head .inner,
+body[data-page="focus"] .page-head .inner {
+  padding: 0 var(--gutter) clamp(44px, 5vw, 64px);
+}
+/* Inner-page heads carry a sharp architectural photograph beneath a warm
+   cream scrim — dark title on the cream-heavy left, the image reading
+   through to the right. One scrim spec across all three (About · Approach ·
+   Investment Focus); Contact stays on clean paper. Sharp source images —
+   the soft blurred washes were retired. */
+body[data-page="about"] .page-head,
+body[data-page="approach"] .page-head,
+body[data-page="focus"] .page-head {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+body[data-page="about"] .page-head {
+  --head-tint: 193,30%,70%;
+  background-image:
+    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    url("assets/imagery/about-hero-1600.webp");
+}
+body[data-page="approach"] .page-head {
+  --head-tint: 206,28%,74%;
+  background-image:
+    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    url("assets/imagery/approach-hero-1600.webp");
+}
+body[data-page="focus"] .page-head {
+  --head-tint: 122,16%,70%;
+  background-image:
+    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    url("assets/imagery/focus-hero-1600.webp");
+}
+.page-head .ja {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: 'DM Sans', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+}
+.page-head-foot {
+  border-top: 0;
+  background: var(--paper);
+}
+.page-head-foot .inner {
+  border-top: 1px solid var(--rule);
+}
+.page-head-foot .inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--type-caption);
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+.page-head-foot a.touch {
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+.page-head-foot a.touch:hover { border-color: var(--ink); }
+
+/* Load fade for the CSS hero washes — the one image type initImageFades
+   can't reach (Motion audit D1). A paper cover sits over the wash and fades
+   out once craft.js has decoded the image (html.bg-loaded). Gated on
+   html.bg-fade (JS-set), so no-JS and reduced-motion render instantly; the
+   headline sits at z-index 2 and is never covered. */
+html.bg-fade body[data-page="about"] .page-head::before,
+html.bg-fade body[data-page="approach"] .page-head::before,
+html.bg-fade body[data-page="focus"] .page-head::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: var(--paper);
+  opacity: 1;
+  transition: opacity var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+  pointer-events: none;
+}
+html.bg-fade.bg-loaded body[data-page="about"] .page-head::before,
+html.bg-fade.bg-loaded body[data-page="approach"] .page-head::before,
+html.bg-fade.bg-loaded body[data-page="focus"] .page-head::before { opacity: 0; }
+
+/* =====================================================================
+   EDITORIAL SECTION HELPERS
+   ===================================================================== */
+.section, .section-tight { padding: 0; }
+
+.ed-section {
+  padding: var(--sp-section) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ed-section:last-of-type { border-bottom: 0; }
+.ed-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--rail-gap);
+  align-items: baseline;
+}
+.ed-row > :first-child { grid-column: span 3; }
+.ed-row > :last-child { grid-column: span 9; }
+.ed-row + .ed-row { margin-top: 80px; }
+.ed-row .eyebrow { padding-top: 6px; display: block; }
+.ed-row h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-h2);
+  line-height: var(--type-h2-lh);
+  letter-spacing: var(--type-h2-ls);
+  color: var(--ink);
+  margin: 0;
+  max-width: 22ch;
+}
+.ed-row h2 em { font-style: normal; color: var(--ink-3); }
+/* Neutralise the design-system generic `.body` background/typography collision */
+.ed-row .body { background: transparent; color: inherit; font-size: inherit; line-height: inherit; }
+.ed-row .body p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-statement);
+  line-height: var(--type-statement-lh);
+  letter-spacing: var(--type-statement-ls);
+  color: var(--ink);
+  margin: 0 0 var(--flow-para);
+  max-width: var(--measure-lead);
+}
+.ed-row h2 em { font-style: normal; color: var(--ink-3); }
+.ed-row .body p.tail {
+  margin-top: var(--flow-para);
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+  color: var(--ink-2);
+  letter-spacing: 0;
+  max-width: var(--measure);
+}
+.ed-row .body p em { font-style: normal; color: var(--ink-3); }
+
+/* Numbered row — used for practice / approach steps (no card chrome) */
+.row-list {
+  border-top: 1px solid var(--rule);
+  margin-top: 40px;
+}
+.list-row {
+  display: grid;
+  grid-template-columns: 80px 260px 1fr;
+  gap: 48px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.list-row .n {
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--type-eyebrow-ls);
+  line-height: var(--type-eyebrow-lh);
+  color: var(--eyebrow-ink);
+  text-transform: uppercase;
+}
+.list-row h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-h3);
+  line-height: var(--type-h3-lh);
+  letter-spacing: var(--type-h3-ls);
+  color: var(--ink);
+  margin: 0;
+  max-width: 16ch;
+}
+.list-row h3 em { font-style: normal; color: var(--ink-3); }
+.list-row p {
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+  color: var(--ink-2);
+  margin: 0;
+  max-width: var(--measure);
+}
+@media (max-width: 1024px) {
+  .ed-section { padding: var(--sp-section-sm) 0; }
+  .ed-row { grid-template-columns: 1fr; gap: 16px; }
+  .ed-row + .ed-row { margin-top: 56px; }
+  .list-row { grid-template-columns: 60px 1fr; gap: 16px; padding: 28px 0; }
+  .list-row p { grid-column: 2; }
+}
+
+/* Closing band */
+.ed-closing {
+  padding: var(--sp-closing) 0;
+}
+.ed-closing .ed-row { align-items: baseline; }
+.ed-closing p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: var(--type-statement);
+  line-height: var(--type-statement-lh);
+  letter-spacing: var(--type-statement-ls);
+  color: var(--ink);
+  margin: 0;
+  max-width: var(--measure-lead);
+}
+.ed-closing p em { font-style: normal; color: var(--ink-3); }
+.ed-closing .meta {
+  margin-top: var(--flow-meta);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--type-caption);
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+.ed-closing .meta a.touch {
+  color: var(--ink);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+.ed-closing .meta a.touch:hover { border-color: var(--ink); }
+.ed-closing .meta .ja { font-family: 'DM Sans', 'Hiragino Sans', 'Yu Gothic', sans-serif; letter-spacing: 0.18em; }
+
+/* Reveal class retained for markup compatibility; content always visible */
+.reveal { opacity: 1; }
+
+/* =====================================================================
+   FOCUS-VISIBLE — one brand keyboard-focus ring for every interactive
+   element, replacing the browser default. Pointer focus stays quiet.
+   ===================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible,
+.nc-link:focus-visible {
+  outline: 2px solid var(--sumire-purple);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* =====================================================================
+   SCROLL REVEALS — whisper-quiet fade + rise as sections enter.
+   Only active when JS adds `.reveal-on` AND motion is welcome, so
+   no-JS, print, and reduced-motion all render fully visible content.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-on [data-reveal] {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 14px));
+    transition: opacity var(--dur-4, 640ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1)),
+                transform var(--dur-4, 640ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+  }
+  html.reveal-on [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Mobile: shorter throw, calmer feel — same fade, less travel. */
+@media (max-width: 760px) {
+  :root { --reveal-y: 8px; }
+}
+
+/* =====================================================================
+   PAGE TRANSITIONS — one simple, native crossfade between pages. No JS
+   and no duplicate fallback: unsupported browsers just navigate instantly.
+   ===================================================================== */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+::view-transition-old(root) {
+  animation-duration: var(--dur-3, 320ms);
+  animation-timing-function: var(--ease-in, cubic-bezier(0.4,0,1,1));
+}
+::view-transition-new(root) {
+  animation-duration: var(--dur-3, 320ms);
+  animation-timing-function: var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+}
+.nav-bar { view-transition-name: site-nav; }
+
+/* Menu toggle — labelled button, shown on every breakpoint */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 4px;
+  margin-left: 6px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-family: inherit;
+  color: var(--ink);
+}
+.nav-toggle-label {
+  font-size: var(--type-label);
+  font-weight: 500;
+  letter-spacing: var(--type-label-ls);
+  text-transform: uppercase;
+  color: inherit;
+}
+.nav-toggle-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 26px;
+}
+.nav-toggle-icon .bar {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  transition: transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1)),
+              opacity var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+}
+/* Toggle morphs to an X while the drawer is open */
+.nav-drawer-open .nav-toggle-icon .bar:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.nav-drawer-open .nav-toggle-icon .bar:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+/* ---------------------------------------------------------------------
+   RIGHT SLIDE-OUT DRAWER (desktop + mobile)
+   --------------------------------------------------------------------- */
+.nav-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(17, 10, 26, 0.36);
+  opacity: 0;
+  transition: opacity var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+}
+.nav-drawer-in .nav-scrim { opacity: 1; }
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 95;
+  width: min(440px, 92vw);
+  height: 100%;
+  background: var(--warm-beige, #FCFAF1);
+  border-left: 1px solid var(--rule, rgba(39,20,48,0.12));
+  transform: translateX(100%);
+  /* Closed: off-screen AND out of the tab order + AT tree. `nav-drawer-open`
+     persists through the whole slide-out (JS removes it only after the
+     transform finishes), so visibility can flip with no transition and never
+     leaves focusable links stranded off-canvas. */
+  visibility: hidden;
+  transition: transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+html.nav-drawer-open .nav-drawer { visibility: visible; }
+.nav-drawer-in .nav-drawer { transform: translateX(0); }
+
+.drawer-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 92px 40px 40px;
+  box-sizing: border-box;
+}
+.drawer-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.drawer-emblem {
+  height: 27px;
+  width: auto;
+  display: block;
+}
+.drawer-kicker {
+  font-size: var(--type-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--type-eyebrow-ls);
+  line-height: var(--type-eyebrow-lh);
+  text-transform: uppercase;
+  color: var(--eyebrow-ink);
+}
+.drawer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.drawer-nav li { border-top: 1px solid var(--sumire-purple); }
+.drawer-nav li:last-child { border-bottom: 1px solid var(--sumire-purple); }
+.drawer-nav a {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 28px 0;
+  text-decoration: none;
+  color: var(--ink);
+}
+.drawer-nav a::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  width: 2px;
+  height: 22px;
+  margin-top: -11px;
+  background: var(--ink);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.drawer-nav a[aria-current="page"]::before { opacity: 1; }
+.drawer-nav .dn-num {
+  font-size: var(--type-label);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--warm-500, #9A9486);
+  min-width: 22px;
+}
+.drawer-nav .dn-label {
+  font-size: var(--type-h3);
+  letter-spacing: var(--type-h3-ls);
+  line-height: 1;
+  color: var(--warm-600, #6E6A5F);
+  font-weight: 400;
+  transition: color var(--dur-2) var(--ease-out);
+}
+.drawer-nav a:hover .dn-label { color: var(--warm-700, #4A463E); }
+.drawer-nav a[aria-current="page"] .dn-label { color: var(--ink); font-weight: 500; }
+.drawer-nav a[aria-current="page"] .dn-num { color: var(--accent-sumire-light, #B79AD6); }
+
+/* Staggered reveal of the index as the drawer opens */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-drawer .drawer-head,
+  .nav-drawer .drawer-nav li,
+  .nav-drawer .drawer-foot {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 14px));
+    transition: opacity var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1)),
+                transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
+  }
+  .nav-drawer-in .nav-drawer .drawer-head,
+  .nav-drawer-in .nav-drawer .drawer-nav li,
+  .nav-drawer-in .nav-drawer .drawer-foot {
+    opacity: 1;
+    transform: none;
+  }
+  .nav-drawer-in .nav-drawer .drawer-head    { transition-delay: 60ms; }
+  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(1) { transition-delay: 100ms; }
+  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(2) { transition-delay: 140ms; }
+  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(3) { transition-delay: 180ms; }
+  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(4) { transition-delay: 220ms; }
+  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(5) { transition-delay: 260ms; }
+  .nav-drawer-in .nav-drawer .drawer-foot    { transition-delay: 300ms; }
+}
+
+.drawer-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+.df-mail {
+  font-size: var(--type-caption);
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+.df-mail:hover { border-bottom-color: var(--ink); }
+.df-social { display: flex; align-items: center; gap: 16px; }
+.df-social a {
+  display: inline-flex;
+  color: var(--ink);
+  /* fade, don't lift — boxes never move on hover (Motion audit System 3) */
+  opacity: 0.72;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.df-social a:hover { opacity: 1; }
+.df-social svg { display: block; }
+
+/* Lock the page while the drawer is open */
+html.nav-drawer-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-scrim,
+  .nav-drawer { transition: none; }
+}
+
+/* Responsive nav — drawer goes full-width on small screens */
+@media (max-width: 720px) {
+  .nav-inner { position: relative; padding: 14px var(--gutter); gap: 14px; }
+  .nav-right { gap: 12px; }
+  .nav-toggle-label { display: none; }
+  .nav-toggle { margin-left: 2px; }
+  .nav-drawer { width: 100vw; border-left: 0; }
+  .drawer-inner { padding: 84px 28px 32px; }
+}
+
+/* =====================================================================
+   MOBILE REFINEMENT — a single confident gutter, tightened page heads,
+   and calmer vertical rhythm on phones. Brand language unchanged; this
+   only corrects spacing that was tuned for the desktop measure.
+   ===================================================================== */
+@media (max-width: 760px) {
+  /* Shared page head — about + sectors had no mobile override and kept the
+     full desktop padding. Bring the headline up and let it breathe less. */
+  .page-head .inner { padding: 72px var(--gutter) 44px; }
+  .page-head .marker { margin-bottom: 44px; }
+  .page-head h1 { max-width: 16ch; }
+  .page-head .ja { margin-top: 22px; }
+  .page-head-foot .inner { padding: 18px var(--gutter); }
+
+  /* Closing band sits a step calmer on phones */
+  /* .ed-closing inherits the --sp-closing (=--section) rhythm on mobile (was 120px) */
+  .ed-closing .meta { margin-top: 40px; }
+
+  /* Headings break by balance at narrow widths so a lone orphan word never
+     drops to its own line; long-form body keeps text-wrap: pretty. This is
+     what makes mobile headings read art-directed rather than reflowed. */
+  main h1, main h2, main h3 { text-wrap: balance; }
+}
+
+@media (max-width: 420px) {
+  .page-head .inner { padding: 64px var(--gutter) 40px; }
+  .page-head-foot .inner { padding: 16px var(--gutter); }
+}
+
+/* =====================================================================
+   ACCESSIBILITY — additive only. Keyboard focus on dark grounds, a skip
+   link, comfortable icon hit-areas and anchor offsets. Nothing here
+   changes the visual language; it only makes the site easier to operate
+   with a keyboard, screen reader or touch.
+   ===================================================================== */
+
+/* Skip-to-content — first tab stop on every page (injected by shell.js). */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--paper-warm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--type-caption);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transform: translateY(-160%);
+  transition: transform var(--dur-2) var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--paper-warm);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
+
+/* The main landmark is the skip target; focusing it stays quiet. */
+main:focus, [id="main"]:focus { outline: none; }
+
+/* Keyboard-focus ring turns cream on dark grounds so it never vanishes. */
+.footer :focus-visible,
+.on-dark :focus-visible,
+.nav-bar.nav-over-hero :focus-visible,
+.home-hero :focus-visible,
+.nc-link:focus-visible,
+.stance-block :focus-visible {
+  outline-color: var(--paper-warm);
+}
+
+/* Icon-only actions get a full 44px hit-area without changing their look. */
+.df-social { gap: 14px; }
+.df-social a {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -11px;
+  margin-bottom: -11px;
+}
+.df-social a.df-linkedin { width: auto; height: auto; margin: 0; opacity: 1; font-size: var(--type-caption); font-weight: 500; color: var(--ink); border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color var(--dur-2) var(--ease-out); }
+.df-social a.df-linkedin:hover { border-bottom-color: var(--ink); }
+
+/* Standalone text CTAs clear the 44px comfortable-target height. */
+.df-linkedin { min-height: 44px; }
+
+/* Fixed nav no longer hides in-page anchor targets when jumped to. */
+:target { scroll-margin-top: var(--nav-h, 96px); }
+
+/* Section-label eyebrows promoted to real headings keep zero margin. */
+h2.eyebrow, h3.eyebrow { margin: 0; }
+
+/* --- Language cloak -----------------------------------------------------
+   Hide translatable text until the resolved language is applied, so JA
+   visitors never see a flash of the default English. EN is the DOM default
+   and is never cloaked; the resolver adds .i18n-cloak for JA only and
+   i18n.js removes it the instant the swap completes (a load-event failsafe
+   removes it even if the swap script fails to run). visibility (not display)
+   keeps layout stable — no reflow. */
+html.i18n-cloak [data-en]{visibility:hidden}
+
+/* --- Narrative page transition --------------------------------------
+   Plays ONLY on arrival via the bottom next-page/return-home link — the
+   flag is set by that link's click handler (shell.js) and consumed,
+   pre-paint, by a small inline script in each page's <head>. Ordinary
+   menu/drawer navigation never sets the flag, so it loads exactly as
+   before: instantly, no class ever added. The header/nav is never part
+   of this — only #main moves, so nothing above it shifts. */
+html.pt-enter #main { opacity: 0; transform: translateY(8px); transition: none; }
+html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { html.pt-enter #main, html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: none; } }

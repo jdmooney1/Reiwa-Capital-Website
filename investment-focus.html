@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investment Focus — Reiwa Capital</title>
+<meta name="description" content="Reiwa Capital's areas of focus: income, repositioning and hospitality in London and Amsterdam, each opportunity assessed across acquisition, financing, operation and exit.">
+<link rel="canonical" href="https://reiwa-capital.com/investment-focus.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:site_name" content="Reiwa Capital">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Investment Focus — Reiwa Capital">
+<meta property="og:description" content="Areas of focus across London and Amsterdam: income, repositioning and hospitality, each assessed across acquisition, financing, operation and exit.">
+<meta property="og:url" content="https://reiwa-capital.com/investment-focus.html">
+<meta property="og:image" content="https://reiwa-capital.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Investment Focus — Reiwa Capital">
+<meta name="twitter:description" content="Areas of focus across London and Amsterdam: income, repositioning and hospitality, each assessed across acquisition, financing, operation and exit.">
+<meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
+<link rel="stylesheet" href="assets/colors_and_type.css?v=17">
+<link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="editorial.css?v=56">
+<link rel="stylesheet" href="brand.css?v=7">
+<link rel="stylesheet" href="craft.css?v=20">
+<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
+<link rel="preload" as="image" href="assets/imagery/focus-hero-1600.webp" fetchpriority="high">
+<style>
+  /* Hero supporting line */
+  .page-head .focus-open { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: var(--type-statement-lh); letter-spacing: var(--type-statement-ls); color: var(--ink); margin: 30px 0 0; max-width: var(--measure-lead); text-wrap: balance; }
+  .page-head h1 { max-width: 20ch; }
+
+  /* ---- Assessment — one opening statement, then five considerations on a
+     shared grid: five columns wide, three-plus-two below 1150px, stacked on
+     mobile. Fine rules, no cards. -------------------------------------- */
+  .assessment { padding: var(--section) 0; }
+  .assess-intro { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: var(--type-statement-lh); letter-spacing: var(--type-statement-ls); color: var(--ink); margin: 0; max-width: var(--measure-lead); text-wrap: pretty; }
+  .assess-intro + .assess-intro { margin-top: 8px; }
+  .assess-lead { margin: clamp(31px, 3.5vw, 48px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-label); letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); }
+  .assess-grid { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: clamp(20px, 2vw, 36px); row-gap: clamp(30px, 3.4vw, 44px); margin-top: clamp(22px, 2.4vw, 30px); }
+  .assess-item { border-top: 1px solid var(--rule-strong); padding-top: 18px; min-width: 0; }
+  .assess-icon { display: block; flex: none; width: 32px; height: 32px; color: var(--eyebrow-ink); }
+  .assess-icon svg { display: block; width: 100%; height: 100%; }
+  .assess-head { display: flex; align-items: center; gap: 12px; }
+  .assess-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 16.5px + 0.3vw, 20px); line-height: 1.25; letter-spacing: var(--type-h3-ls); color: var(--ink); margin: 0; }
+  .assess-d { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 13.5px + 0.15vw, 15px); line-height: 1.55; letter-spacing: 0; color: var(--ink-2); }
+  html[lang="ja"] .assess-d { line-height: 1.75; }
+  @media (max-width: 1024px) { .assess-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) { .assess-grid { grid-template-columns: 1fr; row-gap: 0; } .assess-item { padding: 22px 0; } .assess-head { flex-wrap: wrap; } .assess-icon { width: 27px; height: 27px; } }
+
+  /* ---- Areas of focus — three alternating editorial chapters. One
+     anatomy: quiet number, sentence-case title, one-sentence thesis, then
+     asset types + investment considerations behind a single disclosure.
+     Only image/text order alternates on desktop. ---------------------- */
+  .areas { padding: 0 0 var(--section); }
+  .areas-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-label); letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 clamp(30px, 3.4vw, 48px); }
+  .chapter { display: grid; grid-template-columns: 55fr 45fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+  .chapter > * { min-width: 0; }
+  .chapter.reverse { grid-template-columns: 45fr 55fr; }
+  .chapter.reverse .ch-media { order: 2; }
+  .chapter.reverse .ch-text { order: 1; }
+  .chapter + .chapter { margin-top: clamp(64px, 7vw, 104px); padding-top: clamp(64px, 7vw, 104px); border-top: 1px solid var(--rule); }
+  .ch-media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink); }
+  #income .ch-media { aspect-ratio: 3 / 4; }
+  #income .ch-media img { object-position: 50% 30%; }
+  .ch-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); transition: transform 400ms var(--ease-out); }
+  @media (hover: hover) { .chapter:hover .ch-media img { transform: scale(1.01); } }
+  .ch-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+  .ch-num { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 18.5px + 0.3vw, 22px); line-height: 1; letter-spacing: -0.01em; color: var(--eyebrow-ink); font-variant-numeric: tabular-nums; flex: none; }
+  .ch-title { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(25px, 23px + 0.5vw, 28px); line-height: 1.15; letter-spacing: var(--type-h2-ls); color: var(--ink); margin: 0; flex: 1; }
+  .ch-collapse { appearance: none; background: none; border: 0; margin: 0 0 0 auto; padding: 10px 2px; min-height: 44px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-3); flex: none; text-decoration: none; white-space: nowrap; transition: color 300ms var(--ease-out); }
+  @media (hover: hover) { .ch-collapse:hover { color: var(--ink); } }
+  .ch-collapse:focus-visible { outline: 2px solid var(--ink-3); outline-offset: 2px; }
+  .cc-sym { position: relative; width: 10px; height: 10px; flex: none; }
+  .cc-sym::before, .cc-sym::after { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: currentColor; transform: translateY(-50%); }
+  .cc-sym::after { transform: translateY(-50%) rotate(90deg); transition: transform 300ms var(--ease-out); }
+  .ch-collapse[aria-expanded="true"] .cc-sym::after { transform: translateY(-50%) rotate(0deg); }
+  .cc-hide { display: none; }
+  .ch-collapse[aria-expanded="true"] .cc-view { display: none; }
+  .ch-collapse[aria-expanded="true"] .cc-hide { display: inline; }
+  .ch-collapse[aria-expanded="true"] { color: var(--ink); }
+  .ch-active-rule { display: block; width: 32px; height: 2px; background: var(--ink); margin-top: 0; max-height: 0; overflow: hidden; opacity: 0; transition: margin-top 350ms var(--ease-out), max-height 350ms var(--ease-out), opacity 300ms var(--ease-out); }
+  .chapter.is-open .ch-active-rule { margin-top: 14px; max-height: 2px; opacity: 1; }
+  .ch-thesis { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.5px + 0.15vw, 17px); line-height: 1.5; letter-spacing: 0; color: var(--ink); max-width: var(--measure-lead); text-wrap: pretty; }
+  html[lang="ja"] .ch-thesis { line-height: 1.7; }
+  .ch-detail { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule-soft); }
+  .ch-fields { max-height: 0; overflow: hidden; transition: max-height 350ms var(--ease-out); }
+  .ch-fields-inner { display: flex; flex-direction: column; gap: 16px; }
+  .ch-field-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(10px, 9.5px + 0.1vw, 11px); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eyebrow-ink); }
+  html[lang="ja"] .ch-field-label { letter-spacing: 0.05em; }
+  .ch-field-value { margin: 6px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.5px + 0.15vw, 15px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
+  html[lang="ja"] .ch-field-value { line-height: 1.75; }
+
+  /* One-time reveal on entry — text follows image by ~80ms. Visible by
+     default; JS adds the reveal and always resolves to the final state. */
+  .chapter.reveal .ch-media, .chapter.reveal .ch-text { opacity: 0.01; transform: translateY(8px); transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out); }
+  .chapter.reveal.in .ch-media { opacity: 1; transform: none; }
+  .chapter.reveal.in .ch-text { opacity: 1; transform: none; transition-delay: 80ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ch-media img, .ch-fields, .ch-active-rule, .cc-sym::after { transition: none; }
+    .chapter.reveal .ch-media, .chapter.reveal .ch-text { opacity: 1; transform: none; transition: none; }
+  }
+  @media (max-width: 880px) {
+    .chapter, .chapter.reverse { grid-template-columns: 1fr; gap: 22px; }
+    .chapter .ch-media, .chapter.reverse .ch-media { order: 0; }
+    .chapter .ch-text, .chapter.reverse .ch-text { order: 0; }
+    .chapter + .chapter { margin-top: 56px; padding-top: 56px; }
+  }
+
+  /* Print — expose every disclosure regardless of open state. */
+  @media print {
+    .ch-fields { max-height: none !important; overflow: visible !important; }
+    .ch-collapse { display: none; }
+  }
+</style>
+</head>
+<body data-page="focus">
+
+<noscript><div class="noscript-bar"><strong>Reiwa Capital</strong><nav aria-label="Primary"><a href="index.html">Home</a><a href="about.html">About</a><a href="approach.html">Approach</a><a href="investment-focus.html">Investment Focus</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a></span></div></noscript>
+<div data-shell="nav"></div>
+
+<main id="main" tabindex="-1">
+
+<!-- ============================================================ PAGE HEAD -->
+<section class="page-head" data-screen-label="01 Investment Focus — head">
+  <div class="inner">
+    <h1 class="focus-h1" data-en="Investment Focus" data-ja="重点領域">Investment Focus</h1>
+    <span class="focus-open" data-en="Where we see enduring value" data-ja="ロンドンとアムステルダムにおける、厳選された対象分野">Where we see enduring value</span>
+  </div>
+</section>
+
+<!-- ============================================================ ASSESSMENT -->
+<section class="assessment" data-screen-label="02 Investment Focus — assessment">
+  <span class="reiwa-geo" aria-hidden="true" style="top:-7%;left:-10%;width:34vw;height:34vw;max-width:440px;max-height:440px;transform:rotate(22deg) scaleX(-1)"><svg viewBox="500 210 260 380" focusable="false"><path d="M720.654 411.452C736.97 439.726 745.739 471.932 746.004 504.616C746.217 530.604 741.062 556.327 730.858 580.242L552.98 477.512C552.98 477.512 552.873 477.459 552.82 477.406C524.919 461.25 508.231 432.285 508.231 400.026C508.231 367.766 524.813 339.015 552.555 322.805C552.714 322.699 552.82 322.646 552.98 322.54L730.858 219.809C741.062 243.725 746.217 269.447 746.004 295.435C745.685 328.067 736.916 360.326 720.654 388.6L714.064 400.026L720.654 411.452Z" fill="none" stroke="currentColor" stroke-width="1"></path></svg></span>
+  <div class="shell">
+    <p class="assess-intro" data-en="Each opportunity is assessed across the full investment lifecycle: acquisition, financing, ownership and exit." data-ja="取得、資金調達、保有、売却まで、投資の全期間を通じて各案件を検証します。">Each opportunity is assessed across the full investment lifecycle: acquisition, financing, ownership and exit.</p>
+    <p class="assess-lead" data-en="Five considerations shape every assessment" data-ja="すべての案件を5つの観点から評価します。">Five considerations shape every assessment</p>
+    <div class="assess-grid">
+      <div class="assess-item">
+        <div class="assess-head"><span class="assess-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M49.5,15v17.9c-.5,0-1,0-1.6,0s-1,0-1.4,0V15h3Z"></path><path d="M47.9,60c.5,0,1.1,0,1.6,0v18.1h-3v-18.1c.5,0,.9,0,1.4,0Z"></path><path d="M34.3,46.4c0,.5,0,1.1,0,1.6h-17.9v-3h17.9c0,.5,0,.9,0,1.4Z"></path><path d="M79.5,45v3h-18.1c0-.5,0-1,0-1.6s0-1,0-1.4h18.1Z"></path><path d="M29.5,25.8l10,10c-.8.6-1.6,1.4-2.2,2.2l-10-10,2.2-2.2Z"></path><path d="M68.7,65l-2.2,2.2-10.2-10.2c.8-.7,1.6-1.4,2.2-2.2l10.2,10.2Z"></path><path d="M39.6,57.1l-10.1,10.1-2.2-2.2,10.1-10.1c.6.8,1.4,1.5,2.2,2.2Z"></path><path d="M68.7,28l-10.1,10.1c-.6-.8-1.4-1.6-2.2-2.2l10.1-10.1,2.2,2.2Z"></path></svg></span><h2 class="assess-h" data-en="Location" data-ja="立地">Location</h2></div>
+        <p class="assess-d" data-en="Established submarkets with durable demand from occupiers, residents or visitors." data-ja="テナント、居住者、来訪者から継続的な需要が見込まれる、実績あるエリア。">Established submarkets with durable demand from occupiers, residents or visitors.</p>
+      </div>
+      <div class="assess-item">
+        <div class="assess-head"><span class="assess-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M37.0605 50.5605L16.0605 71.5605L13.9395 69.4395L34.9395 48.4395L37.0605 50.5605Z"></path><path d="M41.261 25.0605L20.261 46.0605L18.1399 43.9395L39.1399 22.9395L41.261 25.0605Z"></path><path d="M58.6604 50.5605L37.6604 71.5605L35.5393 69.4395L56.5393 48.4395L58.6604 50.5605Z"></path><path d="M62.8608 25.0605L41.8608 46.0605L39.7397 43.9395L60.7397 22.9395L62.8608 25.0605Z"></path><path d="M79.0605 50.5605L58.0605 71.5605L55.9395 69.4395L76.9395 48.4395L79.0605 50.5605Z"></path><path d="M83.8608 25.0605L62.8608 46.0605L60.7397 43.9395L81.7397 22.9395L83.8608 25.0605Z"></path></svg></span><h2 class="assess-h" data-en="Income" data-ja="収益">Income</h2></div>
+        <p class="assess-d" data-en="Current and achievable income tested against realistic leasing and operating assumptions." data-ja="現状および将来の収益力を、賃貸市場と運営に関する現実的な前提に基づいて検証します。">Current and achievable income tested against realistic leasing and operating assumptions.</p>
+      </div>
+      <div class="assess-item">
+        <div class="assess-head"><span class="assess-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="22.7 22.7 42.7 22.7 42.7 25.3 25.3 25.3 25.3 42.7 22.7 42.7 22.7 22.7"></polygon><polygon points="25.3 70.7 42.7 70.7 42.7 73.3 22.7 73.3 22.7 53.3 25.3 53.3 25.3 70.7"></polygon><polygon points="73.3 22.7 73.3 42.7 70.7 42.7 70.7 25.3 53.3 25.3 53.3 22.7 73.3 22.7"></polygon><polygon points="70.7 53.3 73.3 53.3 73.3 73.3 53.3 73.3 53.3 70.7 70.7 70.7 70.7 53.3"></polygon></svg></span><h2 class="assess-h" data-en="Asset Quality" data-ja="資産性">Asset Quality</h2></div>
+        <p class="assess-d" data-en="Buildings capable of remaining relevant, resilient and attractive to occupiers and future owners." data-ja="利用者と将来の買主にとって、長期にわたり有用性と魅力を維持できる建物。">Buildings capable of remaining relevant, resilient and attractive to occupiers and future owners.</p>
+      </div>
+      <div class="assess-item">
+        <div class="assess-head"><span class="assess-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><polygon points="21 42.1 51.3 42.1 51.3 72.4 48.6 72.4 48.6 44.8 21 44.8 21 42.1"></polygon><polygon points="70.8 22.6 70.8 72.4 68.1 72.4 68.1 25.4 21 25.4 21 22.6 70.8 22.6"></polygon></svg></span><h2 class="assess-h" data-en="Execution" data-ja="実行計画">Execution</h2></div>
+        <p class="assess-d" data-en="A clear route to value creation through leasing, refurbishment or operating improvement." data-ja="リーシング、改修、運営改善を通じて価値向上を実現できる、明確な計画。">A clear route to value creation through leasing, refurbishment or operating improvement.</p>
+      </div>
+      <div class="assess-item">
+        <div class="assess-head"><span class="assess-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M78.1,31.1v3.1c-.2,0-.5,0-.8,0-1.7,0-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-2.5,2.5-6.6,2.5-9.1,0l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-2.5,2.5-6.6,2.5-9.1,0l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.2,1.2-2.6,1.8-4.2,1.8v-3c.7,0,1.5-.4,2-1l2.9-2.9c2.5-2.5,6.6-2.5,9.1,0l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c2.5-2.5,6.6-2.5,9.1,0l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c1.2-1.2,2.8-1.9,4.5-1.9s3.3.7,4.5,1.9l2.9,2.9c.8.8,2.1,1.1,3.2.9Z"></path><path d="M78.1,48.5v3.1c-.2,0-.5,0-.8,0-1.7,0-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.2,1.2-2.8,1.9-4.5,1.9s-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-2.5,2.5-6.6,2.5-9.1,0l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.2,1.1-2.6,1.8-4.2,1.8v-3c.8,0,1.5-.4,2-1l2.9-2.9c2.5-2.5,6.6-2.5,9.1,0l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c2.5-2.5,6.6-2.5,9.1,0l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c1.2-1.2,2.8-1.9,4.5-1.9s3.3.7,4.5,1.9l2.9,2.9c.8.8,2.1,1.1,3.2.9Z"></path><path d="M78.1,65.9v3.1c-.2,0-.5,0-.8,0-1.7,0-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.2,1.2-2.8,1.9-4.5,1.9s-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.2,1.2-2.8,1.9-4.5,1.9s-3.3-.7-4.5-1.9l-2.9-2.9c-1.3-1.3-3.5-1.3-4.8,0l-2.9,2.9c-1.1,1.1-2.6,1.8-4.2,1.9v-3c.8,0,1.5-.4,2-1l2.9-2.9c1.2-1.2,2.8-1.9,4.5-1.9s3.3.7,4.5,1.9l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c1.2-1.2,2.8-1.9,4.5-1.9s3.3.7,4.5,1.9l2.9,2.9c1.3,1.3,3.5,1.3,4.8,0l2.9-2.9c1.2-1.2,2.8-1.9,4.5-1.9s3.3.7,4.5,1.9l2.9,2.9c.8.8,2.1,1.1,3.2.9Z"></path></svg></span><h2 class="assess-h" data-en="Exit" data-ja="売却可能性">Exit</h2></div>
+        <p class="assess-d" data-en="Multiple credible exit routes supported by future buyer demand." data-ja="将来の買主需要に裏付けられた、複数の現実的な売却選択肢。">Multiple credible exit routes supported by future buyer demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ AREAS OF FOCUS -->
+<section class="areas" data-screen-label="03 Investment Focus — areas of focus">
+  <div class="shell">
+    <span class="areas-eyebrow" data-en="Areas of focus" data-ja="対象分野">Areas of focus</span>
+
+    <article class="chapter" id="income" data-screen-label="Income">
+      <div class="ch-media"><img src="assets/imagery/bg-income-980.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 880px) 92vw, 58vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <div class="ch-head">
+          <h2 class="ch-title" data-en="Income" data-ja="インカム">Income</h2>
+          <button class="ch-collapse" type="button" aria-expanded="false" aria-controls="fields-income">
+            <span class="cc-view" data-en="View" data-ja="表示">View</span>
+            <span class="cc-hide" data-en="Collapse" data-ja="折りたたむ">Collapse</span>
+            <span class="cc-sym" aria-hidden="true"></span>
+          </button>
+        </div>
+        <span class="ch-active-rule" aria-hidden="true"></span>
+        <p class="ch-thesis" data-en="Assets supported by durable demand and a visible income profile." data-ja="底堅い需要と、明確な収益構造に支えられた資産。">Assets supported by durable demand and a visible income profile.</p>
+        <div class="ch-detail">
+          <div class="ch-fields" id="fields-income">
+            <div class="ch-fields-inner">
+              <div><span class="ch-field-label" data-en="Asset types" data-ja="対象資産">Asset types</span><p class="ch-field-value" data-en="Offices, prime retail and residential assets supported by established occupier demand." data-ja="確立されたテナント需要に支えられた、オフィス、プライム商業施設、住宅資産。">Offices, prime retail and residential assets supported by established occupier demand.</p></div>
+              <div><span class="ch-field-label" data-en="Investment considerations" data-ja="投資上の留意点">Investment considerations</span><p class="ch-field-value" data-en="Occupier covenant strength, lease profile, rental sustainability, operational requirements and future reletting prospects." data-ja="テナントの信用力、賃貸借の内容、賃料の持続性、運営上の要件、そして将来の再賃貸の見通し。">Occupier covenant strength, lease profile, rental sustainability, operational requirements and future reletting prospects.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="chapter reverse" id="repositioning" data-screen-label="Repositioning">
+      <div class="ch-media"><img src="assets/imagery/bg-repositioning-1535.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 880px) 92vw, 42vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <div class="ch-head">
+          <h2 class="ch-title" data-en="Repositioning" data-ja="再生・価値向上">Repositioning</h2>
+          <button class="ch-collapse" type="button" aria-expanded="false" aria-controls="fields-repositioning">
+            <span class="cc-view" data-en="View" data-ja="表示">View</span>
+            <span class="cc-hide" data-en="Collapse" data-ja="折りたたむ">Collapse</span>
+            <span class="cc-sym" aria-hidden="true"></span>
+          </button>
+        </div>
+        <span class="ch-active-rule" aria-hidden="true"></span>
+        <p class="ch-thesis" data-en="Assets with identifiable potential to improve occupancy, income and long-term value." data-ja="稼働率、収益性および長期的な資産価値の向上余地が明確な不動産を対象とします。">Assets with identifiable potential to improve occupancy, income and long-term value.</p>
+        <div class="ch-detail">
+          <div class="ch-fields" id="fields-repositioning">
+            <div class="ch-fields-inner">
+              <div><span class="ch-field-label" data-en="Asset types" data-ja="対象資産">Asset types</span><p class="ch-field-value" data-en="Office and mixed-use buildings with vacancy, underused space or a leasing proposition no longer aligned with occupier demand." data-ja="空室、未利用スペース、またはテナント需要に合わなくなった賃貸条件・仕様を有するオフィスおよび複合用途不動産。">Office and mixed-use buildings with vacancy, underused space or a leasing proposition no longer aligned with occupier demand.</p></div>
+              <div><span class="ch-field-label" data-en="Investment considerations" data-ja="投資上の留意点">Investment considerations</span><p class="ch-field-value" data-en="Refurbishment scope and cost, planning position, delivery programme, leasing demand, achievable rent and stabilisation period." data-ja="改修範囲・費用、許認可・計画上の条件、事業期間、賃貸需要、実現可能賃料および安定稼働までの期間。">Refurbishment scope and cost, planning position, delivery programme, leasing demand, achievable rent and stabilisation period.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="chapter" id="hospitality" data-screen-label="Hospitality">
+      <div class="ch-media"><img style="object-position:50% 15%" src="assets/imagery/bg-hospitality-952.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 880px) 92vw, 58vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <div class="ch-head">
+          <h2 class="ch-title" data-en="Hospitality" data-ja="ホスピタリティ">Hospitality</h2>
+          <button class="ch-collapse" type="button" aria-expanded="false" aria-controls="fields-hospitality">
+            <span class="cc-view" data-en="View" data-ja="表示">View</span>
+            <span class="cc-hide" data-en="Collapse" data-ja="折りたたむ">Collapse</span>
+            <span class="cc-sym" aria-hidden="true"></span>
+          </button>
+        </div>
+        <span class="ch-active-rule" aria-hidden="true"></span>
+        <p class="ch-thesis" data-en="Hotels and serviced accommodation where location, operating performance and asset quality support durable value." data-ja="立地、運営実績および資産品質が、中長期的な価値を支えるホテル・サービスアパートメント等を対象とします。">Hotels and serviced accommodation where location, operating performance and asset quality support durable value.</p>
+        <div class="ch-detail">
+          <div class="ch-fields" id="fields-hospitality">
+            <div class="ch-fields-inner">
+              <div><span class="ch-field-label" data-en="Asset types" data-ja="対象資産">Asset types</span><p class="ch-field-value" data-en="Branded and independent hotels, aparthotels, serviced apartments and extended-stay accommodation." data-ja="ブランドホテル、独立系ホテル、アパートホテル、サービスアパートメントおよび長期滞在型宿泊施設。">Branded and independent hotels, aparthotels, serviced apartments and extended-stay accommodation.</p></div>
+              <div><span class="ch-field-label" data-en="Investment considerations" data-ja="投資上の留意点">Investment considerations</span><p class="ch-field-value" data-en="Trading performance, operator and brand strength, operating or lease structure, capital requirements, demand drivers and exit liquidity." data-ja="運営実績、オペレーターおよびブランドの競争力、運営・賃貸借形態、必要投資額、需要構造ならびに売却可能性。">Trading performance, operator and brand strength, operating or lease structure, capital requirements, demand drivers and exit liquidity.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="shell.js?v=59"></script>
+<script src="i18n.js?v=2"></script>
+<script src="craft.js?v=16"></script>
+<script>
+(function () {
+  function reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  /* Animated disclosure on native details/summary. Without JS (or under
+     reduced motion) the native instant toggle runs unchanged — nothing is
+     ever hidden from a no-JS or print reader. Height animates to the real
+     content height, never a fixed value, so Japanese copy can't clip. */
+  document.querySelectorAll('.ch-collapse').forEach(function (btn) {
+    var chapter = btn.closest('.chapter');
+    var wrap = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        chapter.classList.add('is-open');
+        if (reduced()) { wrap.style.maxHeight = 'none'; return; }
+        var target = wrap.scrollHeight;
+        wrap.style.maxHeight = '0px';
+        setTimeout(function () { wrap.style.maxHeight = target + 'px'; }, 20);
+        wrap.addEventListener('transitionend', function h() {
+          wrap.style.maxHeight = 'none';
+          wrap.removeEventListener('transitionend', h);
+        });
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+        chapter.classList.remove('is-open');
+        if (reduced()) { wrap.style.maxHeight = '0px'; return; }
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+        setTimeout(function () { wrap.style.maxHeight = '0px'; }, 20);
+        wrap.addEventListener('transitionend', function h() {
+          wrap.removeEventListener('transitionend', h);
+        });
+      }
+    });
+  });
+
+  /* Print exposure — open every disclosure before printing, restore after. */
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.ch-fields').forEach(function (w) { w.style.maxHeight = 'none'; });
+  });
+  window.addEventListener('afterprint', function () {
+    document.querySelectorAll('.ch-fields').forEach(function (w) {
+      var btn = document.querySelector('[aria-controls="' + w.id + '"]');
+      if (btn && btn.getAttribute('aria-expanded') !== 'true') { w.style.maxHeight = '0px'; }
+    });
+  });
+
+  /* One-time reveal per chapter on scroll entry, image then text ~80ms
+     later. Safety timeout guarantees content is never left invisible. */
+  if (!reduced()) {
+    document.querySelectorAll('.chapter').forEach(function (ch) {
+      ch.classList.add('reveal');
+      var els = [ch.querySelector('.ch-media'), ch.querySelector('.ch-text')];
+      var done = false;
+      function commit() {
+        if (done) return; done = true;
+        els.forEach(function (el) {
+          if (el) { el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'none'; }
+        });
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (e) {
+          if (e[0].isIntersecting) { ch.classList.add('in'); io.disconnect(); setTimeout(commit, 700); }
+        }, { threshold: 0.2 });
+        io.observe(ch);
+      }
+      /* Absolute guarantee: whether or not the observer ever delivers, and
+         whether or not the CSS transition advances, force the visible end
+         state. transition:none inline kills any pending/throttled fade. */
+      setTimeout(commit, 1600);
+    });
+  }
+})();
+</script>
+</body>
+</html>

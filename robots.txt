@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /audit/
+Disallow: /screenshots/
+Disallow: /shots/
+Disallow: /uploads/
+
+Sitemap: https://reiwa-capital.com/sitemap.xml

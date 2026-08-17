@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Reiwa Capital — Craft & Interaction layer
+   Sits ON TOP of editorial.css. One house easing curve, precise + sparse
+   motion. Opacity + transform only. Everything degrades: no-JS /
+   reduced-motion shows all content immediately.
+   ========================================================================== */
+
+/* ======================================================================
+   MOTION TOKENS live in colors_and_type.css — one easing set, one duration
+   ladder, shared by site + portal. craft.css draws the canonical names
+   (--ease-out / --ease-in-out / --dur-1–4 / --dur-hero / --stagger) and
+   never redefines them.
+   ====================================================================== */
+
+/* =====================================================================
+   NAV — transparent over the home hero, condensing to a solid warm
+   bar with a hairline once the hero has scrolled past. Eased, not snapped.
+   ===================================================================== */
+/* Only opacity/colour transition — the blur is set without animating it,
+   since backdrop-filter is paint-bound. */
+.nav-bar {
+  transition: background var(--dur-3) var(--ease-out),
+              border-color var(--dur-3) var(--ease-out);
+}
+/* Only the home page floats the nav over a dark hero. */
+.nav-bar.nav-over-hero {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+}
+.nav-bar.nav-over-hero .lang-toggle { border-color: rgba(255,255,255,0.30); }
+.nav-bar.nav-over-hero .lang-toggle button { color: rgba(255,255,255,0.66); }
+.nav-bar.nav-over-hero .lang-toggle button.is-active { background: #fff; color: var(--ink); }
+.nav-bar.nav-over-hero .nav-toggle { color: #fff; }
+.nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
+
+/* Inner pages with a full-bleed pale hero (About · Approach · Investment
+   Focus): float transparent over the hero, then condense on scroll. The
+   ground is light, so the dark logo + controls stay put — only the cream
+   fill, blur and hairline dissolve. */
+.nav-bar.nav-over-head {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+}
+/* Same protection as the home hero's white mark, inverted: a soft cream
+   halo keeps the dark logo legible over the varied tones of the pale
+   hero photo — still just a shadow, no background box. */
+
+/* Two logos stacked; JS toggles which is visible by class on the bar. */
+.nav-logo { position: relative; }
+.nav-logo .logo-light {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity var(--dur-3) var(--ease-out);
+  pointer-events: none;
+}
+.nav-bar.nav-over-hero .nav-logo .logo-dark  { opacity: 0; }
+.nav-bar.nav-over-hero .nav-logo .logo-light { opacity: 1; }
+.nav-logo .logo-dark { transition: opacity var(--dur-3) var(--ease-out); }
+
+/* Conditional logo protection — while craft.js measures the hero heading
+   geometrically overlapping the mark (.logo-needs-contrast), the WHOLE logo
+   fades out, and returns once the heading has passed. No blur, no wash, no
+   divider, no movement — a quick, understated opacity dip. Pointer events
+   pause while it is invisible. */
+.nav-logo { transition: opacity 140ms var(--ease-out); }
+.nav-bar.logo-needs-contrast .nav-logo { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo { transition: none; }
+  .nav-inner::after { transition: none; }
+}
+
+/* Condensed state (after hero, and the default on inner pages). */
+.nav-bar.is-scrolled {
+  background: rgba(248, 246, 238, 0.82);
+  border-bottom-color: var(--hairline);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+          backdrop-filter: saturate(140%) blur(18px);
+}
+
+/* Mobile: backdrop-filter blur on a sticky, scroll-repainted bar is the
+   single most expensive header effect on phones. Drop it ≤760px and lean on
+   a near-opaque cream instead — same calm look, no per-frame blur cost. */
+@media (max-width: 760px) {
+  .nav-bar, .nav-bar.is-scrolled {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+  }
+  .nav-bar { background: rgba(248, 246, 238, 0.92); }
+  .nav-bar.is-scrolled { background: rgba(248, 246, 238, 0.95); }
+}
+
+/* =====================================================================
+   QUIET LINKS — underline wipes in from the left on hover.
+   ===================================================================== */
+a.wipe {
+  position: relative;
+}
+a.wipe::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+/* =====================================================================
+   HERO — one restrained fade-up for the media + headline group. No
+   parallax, no per-line clip masks: a single quiet entrance, once.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html.hero-arm .home-hero .hero-media {
+    opacity: 0;
+    transition: opacity var(--dur-hero) var(--ease-out);
+  }
+  html.hero-arm .home-hero.is-loaded .hero-media { opacity: 1; }
+
+  html.hero-arm .home-hero h1,
+  html.hero-arm .home-hero .inner > .sub,
+  html.hero-arm .home-hero .inner > .loc {
+    opacity: 0; transform: translateY(var(--reveal-y));
+    transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+  }
+  html.hero-arm .home-hero.is-loaded h1 { opacity: 1; transform: none; }
+  html.hero-arm .home-hero.is-loaded .inner > .sub { opacity: 1; transform: none; transition-delay: 80ms; }
+  html.hero-arm .home-hero.is-loaded .inner > .loc { opacity: 1; transform: none; transition-delay: 140ms; }
+}
+
+/* =====================================================================
+   FOCUS CARDS — very subtle image scale; arrow nudges diagonally.
+   No blur, no tilt, no shadow lift.
+   ===================================================================== */
+.area .area-media { transition: transform var(--dur-3) var(--ease-out); }
+.area.is-open .area-media, .area:focus-visible .area-media { transform: scale(1.015); }
+@media (hover: hover) {
+  .area:hover .area-media { transform: scale(1.015); }
+}
+.area .cap .arr { transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out); }
+.area:hover .cap .arr { transform: translate(3px, -3px); }
+
+/* =====================================================================
+   LANGUAGE SWAP — the signature interaction. A 0.4s crossfade: the page's
+   text breathes out (200ms), the language swaps while fully transparent,
+   the new text breathes in (200ms). shell.js sequences the classes and
+   holds the body height during the swap so nothing shifts. The footer
+   swaps instantly — no motion there.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html.lang-x [data-en] { transition: opacity var(--dur-2) var(--ease) !important; }
+  html.lang-out [data-en] { opacity: 0; }
+  html.lang-x [data-shell="footer"] [data-en] { transition: none !important; opacity: 1 !important; }
+  /* The toggle itself animates its active pill. */
+  .lang-toggle button { transition: background var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out); }
+}
+
+/* House easing applied to the generic section reveal. */
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-on [data-reveal] {
+    transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+  }
+}
+.pager-title, .pager-arrow { transition-timing-function: var(--ease-out) !important; }
