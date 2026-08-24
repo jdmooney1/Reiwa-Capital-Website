@@ -1,0 +1,219 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Final Institutional Audit — Reiwa Capital</title>
+<style>
+:root{--ink:#271430;--ink2:#4a3a55;--ink3:#7a6c85;--rule:rgba(39,20,48,.14);--rule-strong:rgba(39,20,48,.28);--cream:#FCFAF1;--crit:#a3222f;--imp:#a3641f;--min:#5c6b3f;--keep:#3f5c7a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 'DM Sans','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:72px 28px 140px}
+h1{font-size:clamp(30px,4vw,42px);font-weight:400;margin:0 0 6px;letter-spacing:-.01em}
+.meta{color:var(--ink3);font-size:14px;margin:0 0 20px;max-width:74ch}
+.verdict{display:inline-block;font-size:13.5px;font-weight:500;padding:7px 14px;border:1px solid var(--rule-strong);border-radius:2px;margin-bottom:44px;max-width:74ch}
+h2{font-size:24px;font-weight:400;margin:60px 0 8px;padding-top:26px;border-top:1px solid var(--rule-strong);display:flex;align-items:baseline;gap:12px}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:0}
+h2 .cnt{font-size:13px;color:var(--ink3);font-weight:400}
+.stagenote{font-size:13.5px;color:var(--ink3);margin:0 0 28px;max-width:74ch}
+p{margin:0 0 12px;max-width:74ch}
+.d{border-top:1px solid var(--rule);padding:22px 0 6px}
+.d:first-of-type{border-top:0}
+.d h3{margin:0 0 10px;display:flex;gap:10px;align-items:baseline;font-size:16px;font-weight:500;flex-wrap:wrap}
+.tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:2px;color:#fff;white-space:nowrap;vertical-align:1px}
+.t-crit{background:var(--crit)}.t-imp{background:var(--imp)}.t-min{background:var(--min)}.t-keep{background:var(--keep)}
+.chip{display:inline-block;font-size:10.5px;font-weight:500;letter-spacing:.02em;padding:2px 7px;border-radius:2px;border:1px solid var(--rule-strong);color:var(--ink2);white-space:nowrap}
+dl{margin:8px 0 0;display:grid;grid-template-columns:120px 1fr;gap:5px 16px;font-size:14.5px}
+dt{color:var(--ink3)}
+dd{margin:0;max-width:62ch}
+.evidence{background:rgba(39,20,48,.045);border-radius:2px;padding:9px 11px;font-size:13px;font-family:ui-monospace,Menlo,monospace;color:var(--ink2);margin:2px 0 0;overflow-x:auto;white-space:pre-wrap;max-width:64ch}
+.fix{background:rgba(63,92,63,.07);border-radius:2px;padding:9px 11px;font-size:14px;color:var(--ink);margin:2px 0 0;max-width:64ch}
+.jp{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',Meiryo,'Noto Sans JP',sans-serif}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:rgba(39,20,48,.06);padding:1px 5px;border-radius:2px}
+.top10{list-style:none;margin:0;padding:0;counter-reset:t}
+.top10 li{counter-increment:t;position:relative;padding:14px 0 14px 38px;border-top:1px solid var(--rule)}
+.top10 li::before{content:counter(t);position:absolute;left:0;top:14px;font-size:13px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.top10 strong{display:block;margin-bottom:3px;font-weight:500}
+.dnt{margin:0;padding-left:20px}
+.dnt li{margin-bottom:8px}
+.note{font-size:13.5px;color:var(--ink3);border-left:2px solid var(--rule-strong);padding-left:14px;margin:16px 0;max-width:72ch}
+a{color:var(--ink)}a:hover{color:var(--ink2)}
+</style></head><body>
+<div class="wrap">
+
+<h1>Final Institutional Audit</h1>
+<p class="meta">Full-journey review of the live site (all six pages, shell.js, i18n.js, editorial.css, brand.css, craft.css, colors_and_type.css) against the Design &amp; Content Freeze, the prior Pre-Launch Audit, CLAUDE.md and the ten review stages requested. Cross-checked against ~25 prior working documents in <code>audit/</code> so settled items aren't re-litigated. No changes have been made — this is the report only.</p>
+<p class="verdict">Progress since the last full pass is real: the Japanese character errors, the Japanese/Overseas contradiction, the fixed-pixel market-panel bug, the disclosure-label ambiguity, Home's duplicate role links and the no-JS shell fallback are all confirmed fixed. Seven items below are serious enough to resolve before this goes in front of an investor or bank, and three of those need a decision from you, not a build fix.</p>
+
+<h2>Critical <span class="cnt">— 7</span></h2>
+<p class="stagenote">Materially damages positioning, credibility, usability or accuracy.</p>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Business model contradiction is still open<span class="chip">Positioning · decision needed</span></h3>
+<dl>
+<dt>Page</dt><dd>Governs all — CLAUDE.md vs. the live site</dd>
+<dt>Issue</dt><dd>CLAUDE.md still describes Reiwa Capital as placing capital into buildings <b>held in direct ownership</b> — a principal. Every live page (Operating Model, the five-stage process, About) implements an <b>investor-side adviser</b> that holds no discretionary authority and coordinates specialists. This was flagged in the Design &amp; Content Freeze and has not been resolved.</dd>
+<dt>Why it matters</dt><dd>It's the answer to "who is Reiwa Capital and what does it do." Every copy judgment below — "management" vs. "oversight," whether a claim sounds like a fund manager — depends on which model is real.</dd>
+<dt>Action</dt><dd>Confirm the investor-side model is the real one and let CLAUDE.md be corrected to match, or say the site is wrong. Nothing else should be finalised until this is answered.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Three of four hero images are illegible abstract blur<span class="chip">Design · asset</span></h3>
+<dl>
+<dt>Page</dt><dd>About, Approach, Investment Focus (page-head hero)</dd>
+<dt>Issue</dt><dd>Confirmed by direct pixel inspection of the actual files: <code>about-hero-1600.webp</code>, <code>approach-hero-1600.webp</code> and <code>focus-hero-1600.webp</code> are soft, low-contrast colour fields with no recoverable architecture — not a rendering issue, the source files themselves. Home's hero (<code>home-hero-blur.webp</code>, despite its name) is fine: a sharp, legible building photograph. This is specific to the three inner-page heroes.</dd>
+<dt>Why it matters</dt><dd>This is the opening image on three of five pages, for an audience told to reference-check everything. An unrecognisable colour blob behind a headline reads as unfinished, not restrained.</dd>
+<dt>Action</dt><dd>Source real architectural photography for these three heroes, matching the standard already set by Home's hero and the market/focus chapter images. Not a code fix.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Contact page's closing navigation is missing<span class="chip">UX · confirmed code bug</span></h3>
+<dl>
+<dt>Page</dt><dd>Contact (<code>shell.js</code>, <code>FLOW</code> object)</dd>
+<dt>Issue</dt><dd>The documented, approved onward journey is Home → About → Approach → Investment Focus → Contact → Home, closing the loop. The live <code>FLOW</code> object has no <code>contact</code> entry, so <code>renderFooter()</code> renders no next-page block at all on Contact — confirmed by direct code read, not a rendering guess.</dd>
+<dt>Evidence</dt><dd><div class="evidence">const FLOW = {
+  home: {...}, about: {...}, approach: {...}, focus: {...}
+  /* no "contact" key — Contact silently gets no next-nav */
+};</div></dd>
+<dt>Action</dt><dd>Add the missing entry so Contact loops back to Home as documented:<div class="fix">contact: { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }</div></dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Internal working files sit at the deployed project root<span class="chip">Technical · credibility</span></h3>
+<dl>
+<dt>Page</dt><dd>Site root — <code>/audit/</code> (~30 files), <code>CLAUDE.md</code>, <code>/screenshots/</code>, <code>/shots/</code>, <code>/uploads/</code></dd>
+<dt>Issue</dt><dd><code>robots.txt</code> allows crawling of everything (<code>Allow: /</code>) with no <code>Disallow</code> for these folders, and nothing else gates access to them. <code>/audit/</code> alone contains a "NOT READY TO LAUNCH" verdict, redesign directions and draft copy under retired positioning. <code>CLAUDE.md</code> is a plain-text internal brief sitting at the same root as the live pages.</dd>
+<dt>Why it matters</dt><dd>The stated audience — family offices, banks, lawyers, institutional real estate professionals — is exactly the kind of visitor who might poke at a URL or run a crawler during diligence. Internal drafts and a "not ready" audit are a worse discovery than almost anything a design review would otherwise catch.</dd>
+<dt>Action</dt><dd>Confirm the deploy step publishes only the production pages and <code>/assets/</code> — not <code>/audit/</code>, <code>/screenshots/</code>, <code>/shots/</code>, <code>/uploads/</code> or <code>CLAUDE.md</code>. Add an explicit <code>Disallow</code> as a defence-in-depth measure regardless.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Home still claims property management<span class="chip">Copy · positioning</span></h3>
+<dl>
+<dt>Page</dt><dd>Home — positioning statement</dd>
+<dt>Issue</dt><dd>English reads "...the acquisition, ownership and <b>management</b> of European real estate." Reiwa Capital's own Operating Model lists property managers among third-party European Specialists, and the approved positioning explicitly rules out reading as a property manager. The Japanese line on the same section already avoids this (<span class="jp">現地実行を調整します</span> — coordinates local execution); English is the outlier.</dd>
+<dt>Action</dt><dd>One-word fix, aligned with the "Ownership Oversight" language used everywhere else on the site:<div class="fix">EN: "Reiwa&nbsp;Capital supports overseas investors through the acquisition, ownership and <b>oversight</b> of European real estate, with a focus on London and Amsterdam."</div></dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Privacy Policy: source-visible legal comment, sign-off still outstanding<span class="chip">Legal · technical</span></h3>
+<dl>
+<dt>Page</dt><dd>Privacy</dd>
+<dt>Issue</dt><dd>The visible copy is now well-drafted and correctly avoids presenting "Reiwa Capital K.K." as existing ("operated under the Reiwa Capital name by its founder"). But a page-source HTML comment still states plainly: incorporation has not happened, the interim-operator wording is temporary, and "LEGAL REVIEW REQUIRED before publication" — visible to anyone who views source, which diligence teams do. Separately, the actual legal review this comment calls for has still not happened.</dd>
+<dt>Action</dt><dd>Before this goes live: strip the comment from the shipped page (the reasoning is already preserved in the Design &amp; Content Freeze doc, so nothing is lost) and get real sign-off from a qualified privacy/legal adviser on hosting/IP-log retention, cookies, cross-border processing and which framework governs.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-crit">Critical</span>Photograph licensing unconfirmed, sitewide<span class="chip">Legal · asset · user input required</span></h3>
+<dl>
+<dt>Page</dt><dd>All fourteen images in <code>assets/imagery</code></dd>
+<dt>Issue</dt><dd>No purchase record, licence or property release exists anywhere in the project for any image in use, independent of the content-quality problem above. Carried over unresolved from the Design &amp; Content Freeze.</dd>
+<dt>Action</dt><dd>Confirm licensing/provenance for every image before launch. Not resolvable from inside the design.</dd>
+</dl></div>
+
+<h2>Important <span class="cnt">— 6</span></h2>
+<p class="stagenote">Meaningful improvements worth making before launch.</p>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>Heading case is still inconsistent<span class="chip">Consistency · copy</span></h3>
+<dl>
+<dt>Page</dt><dd>About, Approach, Investment Focus</dd>
+<dt>Issue</dt><dd>Sentence case is the documented rule ("Who we are," "Market focus," "Market characteristics"). Still in Title Case, in-page: "Who We Support," "Investment Mandate," "Sourcing and Assessment," "Ownership and Financing," "Ownership Oversight," "Asset Quality," "Investor Authority," "European Specialists." Most visible side-by-side: About's "Who we are" sits directly above "Who We Support" — same opening word, two different cases, one page.</dd>
+<dt>Action</dt><dd>Apply the rule already proposed in the Freeze doc and never implemented: page names and nav labels stay Title Case (they're destinations); every heading inside a page goes sentence case. Lower-case the eight headings above.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>Home's hero sub-line breaks the pattern it just set on three other pages<span class="chip">Consistency · copy</span></h3>
+<dl>
+<dt>Page</dt><dd>Home — hero sub-line</dd>
+<dt>Issue</dt><dd>This session's new About/Approach/Investment Focus hero lines are sentence case ("Built around the investor," "Conviction before execution," "Where we see enduring value"). Home's equivalent line, "Cross-Border Real Estate Investment," is still Title Case — now the one holdout.</dd>
+<dt>Action</dt><dd><div class="fix">"Cross-Border Real Estate Investment" → "Cross-border real estate investment"</div></dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>Decorative brand watermark, flagged unresolved four times running<span class="chip">Design · consistency</span></h3>
+<dl>
+<dt>Page</dt><dd>Home, About, Investment Focus, Contact — <code>.reiwa-geo</code></dd>
+<dt>Issue</dt><dd>A large outline fragment of the brand mark sits behind four sections at 3% opacity, conveying no information. Independently flagged as unresolved in the Freeze doc, the Consolidated Issue Register, the Inventory Audit and the Anti-Template Visual Audit — four passes, no decision, and it's exactly the kind of abstract line-art flourish the project's own anti-template guidance warns against.</dd>
+<dt>Action</dt><dd>Recommend removing it — at 3% opacity it does negligible brand work, and four unresolved flags is itself a signal. If there's a real brand reason to keep it, ratify it explicitly in writing rather than leaving it ambiguous through a fifth audit.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>London and Amsterdam role copy ends on an identical sentence<span class="chip">Copy</span></h3>
+<dl>
+<dt>Page</dt><dd>About — Market focus, "Reiwa Capital's role"</dd>
+<dt>Issue</dt><dd>The London and Amsterdam panels are switched via a toggle built specifically to invite comparison — and both panels' role paragraph ends with the exact same clause, "...and support ownership decisions through to exit."</dd>
+<dt>Evidence</dt><dd><div class="evidence">London:    "...coordinate acquisition and financing, and support ownership decisions through to exit."
+Amsterdam: "...coordinate local diligence and acquisition, and support ownership decisions through to exit."</div></dd>
+<dt>Action</dt><dd>Vary Amsterdam's close only:<div class="fix">"We access relationship-led opportunities, coordinate local diligence and acquisition, and stay closely engaged through ownership to exit."</div></dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>Home hero location line floats uncentred from everything above it<span class="chip">Design</span></h3>
+<dl>
+<dt>Page</dt><dd>Home — hero</dd>
+<dt>Issue</dt><dd>"Tokyo · London · Amsterdam" carries <code>text-align: center</code> while the H1 and sub-line directly above it are left-aligned on the same column, so it visually centres on the viewport with nothing else on the page to align to. Logged previously (Consolidated Register RC-014); still live.</dd>
+<dt>Action</dt><dd>Left-align it to match the H1/sub, unless there's a specific art-direction reason for the centring that isn't recorded anywhere.</dd>
+</dl></div>
+
+<div class="d"><h3><span class="tag t-imp">Important</span>Lavender wash — close the decision, don't remove it<span class="chip">Consistency · decision</span></h3>
+<dl>
+<dt>Page</dt><dd>About — "Who We Support"</dd>
+<dt>Issue</dt><dd>Flagged as an open decision three times (Freeze D6, Register RC-016, Inventory P2-4) because it's a third ground colour against an approved cream/sumire palette. Reading <code>brand.css</code> directly: it isn't a one-off — it's "Device 3" of a named, documented three-device brand system (frame corners, the index/node atom, and sumire-derived colour washes), used exactly once, sparingly, as that system describes.</dd>
+<dt>Action</dt><dd>Ratify it as intentional and close this rather than flagging it a fourth time — it already matches its own documented rationale. No code change needed.</dd>
+</dl></div>
+
+<h2>Minor <span class="cnt">— 6</span></h2>
+<p class="stagenote">Genuine refinements, not necessary for launch.</p>
+
+<div class="d"><h3><span class="tag t-min">Minor</span>Alt-text policy still undeclared<span class="chip">Consistency</span></h3>
+<p>Market photographs carry descriptive alt text; every hero, home area tile and focus chapter image carries <code>alt=""</code>. Pick one treatment (content vs. atmosphere) and apply it uniformly. Carried over from the Freeze doc (C5), unchanged.</p></div>
+
+<div class="d"><h3><span class="tag t-min">Minor</span>Lead-paragraph measures use one-off pixel values<span class="chip">Consistency</span></h3>
+<p>About's <code>.id-statement</code>, <code>.id-support</code>, <code>.mkt-intro</code> hard-code <code>max-width:720px</code>; Home's lead paragraphs use <code>900px</code>/<code>780px</code> — all four could be the shared <code>--measure-lead</code> (38ch) token instead. Cosmetically invisible; worth folding in on the next typography pass.</p></div>
+
+<div class="d"><h3><span class="tag t-min">Minor</span>Unused "hero-index" brand device<span class="chip">Housekeeping</span></h3>
+<p><code>brand.css</code> fully styles a <code>.home-hero .hero-index</code> marker that is never placed in any page's markup (Register RC-046). Instantiate it or delete the dead CSS.</p></div>
+
+<div class="d"><h3><span class="tag t-min">Minor</span>Unused, off-palette design tokens still shipping<span class="chip">Housekeeping</span></h3>
+<p><code>assets/colors_and_type.css</code> still defines sakura pink, matcha, indigo, gold, slate, a six-series chart palette, a 999px pill radius and five shadow levels — none used on any live page, all outside the approved cream/sumire/hairline system. Carried over from the Freeze doc (D10). Mark out of scope or delete before a future edit mistakes them for sanctioned options.</p></div>
+
+<div class="d"><h3><span class="tag t-min">Minor</span>"Coordinate" carries a lot of the site's verb load<span class="chip">Copy</span></h3>
+<p>Some form of "coordinate" appears roughly eight times across About and Approach. Defensible — it's the literal job description of an investor-side adviser — but two or three of the most adjacent instances (Approach stages 3 and 4 in particular) could vary without losing precision. Optional; not worth a rewrite pass on its own.</p></div>
+
+<div class="d"><h3><span class="tag t-min">Minor</span><code>/audit</code> prototype history<span class="chip">Housekeeping</span></h3>
+<p>Roughly thirty superseded drafts and notes. Recommend keeping as institutional record (they're a good record of decisions made) — conditional on the Critical deploy-exposure fix above actually keeping them out of what ships.</p></div>
+
+<h2>Leave unchanged</h2>
+<p class="stagenote">Already strong, or already fixed since the last pass. Listed so they aren't re-opened.</p>
+<div class="d"><h3><span class="tag t-keep">Confirmed fixed</span>Six items from the Pre-Launch Audit</h3>
+<dl>
+<dt>Japanese errors</dt><dd>候換え→借換え, 介入会社→仲介会社, 長期滋在→長期滋在 all corrected.</dd>
+<dt>Positioning</dt><dd>"Japanese" vs. "Overseas" contradiction — all live copy and metadata now consistently say "overseas."</dd>
+<dt>Market panel</dt><dd>Fixed-pixel inline widths on About's London/Amsterdam grid are gone; layout is fluid.</dd>
+<dt>Disclosure labels</dt><dd>Investment Focus "View"/"Collapse" now read as distinct states.</dd>
+<dt>Home role links</dt><dd>Acquire / Structure / Manage now route to three distinct Approach anchors.</dd>
+<dt>No-JS fallback</dt><dd>A working <code>&lt;noscript&gt;</code> bar (identity, all pages, email, LinkedIn) now exists on every page.</dd>
+</dl></div>
+<div class="d"><h3><span class="tag t-keep">Working well</span>Structure and systems</h3>
+<dl>
+<dt>Operating Model</dt><dd>The investor-authority / Reiwa Capital / specialists diagram matches the intended model precisely — investor retains authority, Reiwa translates mandate into execution, specialists deliver local expertise.</dd>
+<dt>Approach process</dt><dd>Five-stage sticky tracker with scroll-driven spine; nothing to change.</dd>
+<dt>Hero sub-line placement</dt><dd>About/Approach/Focus now show the page name as H1 with the new character-line beneath it — a deliberate, twice-confirmed layout this session. Don't reopen it.</dd>
+<dt>Type, colour, motion foundations</dt><dd>One clamp-based scale, one colour system, one easing/duration ladder, every reveal with a hard-timeout fallback and a <code>prefers-reduced-motion</code> guard — applied with no exceptions found.</dd>
+<dt>Mobile adaptations</dt><dd>Process tracker, market selector, Operating Model and the chapter grid are each purpose-built for narrow widths, not just squeezed — reviewed against the actual CSS at 1024/768/430/390/375/320.</dd>
+<dt>Footer</dt><dd>Legal identity only, consistent everywhere, correctly separate from the next-page navigation above it.</dd>
+</dl></div>
+
+<h2>Top 10 final changes</h2>
+<ol class="top10">
+<li><strong>Resolve the business-model contradiction (CLAUDE.md vs. site).</strong> Everything else depends on the answer.</li>
+<li><strong>Replace the three abstract-blur hero images</strong> on About, Approach and Investment Focus.</li>
+<li><strong>Add the missing <code>contact</code> entry to <code>shell.js</code>'s <code>FLOW</code></strong> so the site's closing loop actually renders.</li>
+<li><strong>Keep <code>/audit</code>, <code>CLAUDE.md</code>, <code>/screenshots</code>, <code>/shots</code>, <code>/uploads</code> out of the deployed site</strong> and add a robots.txt Disallow as backup.</li>
+<li><strong>Change "management" to "oversight"</strong> in Home's positioning line.</li>
+<li><strong>Strip the incorporation-status comment from Privacy's page source</strong> and get real legal sign-off.</li>
+<li><strong>Confirm photo licensing</strong> for all fourteen images.</li>
+<li><strong>Lower-case the eight Title Case in-page headings</strong> (Who We Support, Investment Mandate, Asset Quality, etc.).</li>
+<li><strong>Sentence-case Home's hero sub-line</strong> to match About/Approach/Focus.</li>
+<li><strong>Left-align the Home hero location line.</strong></li>
+</ol>
+
+<h2>Do not touch</h2>
+<ul class="dnt">
+<li>The five-page architecture and each page's section order.</li>
+<li>The Operating Model diagram and its three-cluster structure.</li>
+<li>The Approach five-stage process, sticky tracker and scroll spine.</li>
+<li>The three new hero sub-statements and their position beneath each page-name H1 — already revised once this session at your direction; don't re-open.</li>
+<li>Footer design and its legal-identity-only content rule.</li>
+<li>Type scale, colour tokens (cream/sumire) and the motion/easing system.</li>
+<li>Investment Focus's assessment grid and three-chapter structure.</li>
+</ul>
+
+<p class="note">Nothing in this report has been implemented. Says so at the top; saying it twice on purpose.</p>
+
+</div>
+</body></html>

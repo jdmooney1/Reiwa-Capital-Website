@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<title>Investment Focus — Hi-Fi Prototype (Rev. 2) — Reiwa Capital</title>
+<link rel="stylesheet" href="assets/colors_and_type.css?v=14">
+<link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="editorial.css?v=41">
+<link rel="stylesheet" href="brand.css?v=6">
+<link rel="stylesheet" href="craft.css?v=19">
+<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<style>
+  .proto-banner{position:sticky;top:0;z-index:80;background:var(--ink);color:var(--paper-warm);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 12px}
+  .page-head .focus-open{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);margin:30px 0 0;max-width:var(--measure-lead);text-wrap:balance}
+
+  /* ---- Three alternating editorial chapters — one anatomy, L·R·L ------ */
+  .chapters{padding:var(--section) 0}
+  .chapter{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,64px);align-items:center}
+  .chapter.reverse{grid-template-columns:5fr 7fr}
+  .chapter.reverse .ch-media{order:2}
+  .chapter.reverse .ch-text{order:1}
+  .chapter+.chapter{margin-top:clamp(64px,7vw,104px);padding-top:clamp(64px,7vw,104px);border-top:1px solid var(--rule)}
+  .ch-media{aspect-ratio:4/3;overflow:hidden;background:var(--ink)}
+  .ch-media img{width:100%;height:100%;object-fit:cover;display:block;filter:var(--img-grade)}
+  .ch-kicker{display:block;font-family:'DM Sans',sans-serif;font-size:var(--type-label);font-weight:500;letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink);margin-bottom:14px}
+  .ch-title{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-h2);line-height:var(--type-h2-lh);letter-spacing:var(--type-h2-ls);color:var(--ink);margin:0 0 16px}
+  .ch-thesis{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);margin:0;max-width:36ch;text-wrap:pretty}
+  .ch-expand{margin-top:26px;padding-top:20px;border-top:1px solid var(--rule-soft)}
+  .ch-expand summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;font-size:var(--type-caption);font-weight:500;letter-spacing:var(--type-caption-ls);color:var(--ink);border-bottom:1px solid var(--rule-strong);padding-bottom:3px;-webkit-user-select:none;user-select:none}
+  .ch-expand summary::-webkit-details-marker{display:none}
+  .ch-expand summary::marker{content:""}
+  .ch-expand .exp-icon{display:inline-block;width:11px;font-size:15px;line-height:1;text-align:center;transition:transform var(--dur-2) var(--ease-out)}
+  .ch-expand[open] summary .exp-icon{transform:rotate(45deg)}
+  .ch-fields{margin-top:22px;display:flex;flex-direction:column;gap:16px}
+  .ch-field-label{display:block;font-family:'DM Sans',sans-serif;font-size:var(--type-label);font-weight:500;letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink)}
+  .ch-field-value{margin:6px 0 0;font-family:'DM Sans',sans-serif;font-size:var(--type-body);line-height:var(--type-body-lh);color:var(--ink-2);max-width:var(--measure)}
+  @media (prefers-reduced-motion:reduce){.ch-expand .exp-icon{transition:none}}
+  @media (max-width:880px){
+    .chapter,.chapter.reverse{grid-template-columns:1fr;gap:24px}
+    .chapter .ch-media,.chapter.reverse .ch-media{order:0}
+    .chapter .ch-text,.chapter.reverse .ch-text{order:0}
+    .chapter+.chapter{margin-top:56px;padding-top:56px}
+  }
+</style>
+</head>
+<body data-page="focus">
+
+<div class="proto-banner">Hi-fi prototype · Investment Focus · Rev. 2 — for review, not linked from the live site</div>
+<div data-shell="nav"></div>
+
+<main id="main" tabindex="-1">
+
+<section class="page-head" data-screen-label="01 Investment Focus (prototype) — head">
+  <div class="inner">
+    <h1 class="focus-h1" data-en="Investment Focus" data-ja="重点領域">Investment Focus</h1>
+    <span class="focus-open" data-en="Three strategies across London and Amsterdam." data-ja="ロンドンとアムステルダムにおける、三つの戦略。">Three strategies across London and Amsterdam.</span>
+  </div>
+</section>
+
+<!-- Three editorial chapters, one anatomy: kicker + title + existing approved thesis (unchanged, no new claims) + expander holding the existing Asset Types / Underwriting fields. Only image/text order alternates. -->
+<section class="chapters" data-screen-label="02 Investment Focus (prototype) — chapters">
+  <div class="shell">
+
+    <article class="chapter" id="income" data-screen-label="Income">
+      <div class="ch-media"><img src="assets/imagery/bg-income-980.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 880px) 92vw, 58vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <span class="ch-kicker" data-en="01 · Income" data-ja="01・インカム">01 · Income</span>
+        <h2 class="ch-title" data-en="Income" data-ja="インカム">Income</h2>
+        <p class="ch-thesis" data-en="Long-leased assets, selected for predictable income." data-ja="長期賃貸の資産。予測可能な収益を基準に。">Long-leased assets, selected for predictable income.</p>
+        <details class="ch-expand">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="What we look for" data-ja="重視する点">What we look for</span></summary>
+          <div class="ch-fields">
+            <div><span class="ch-field-label" data-en="Asset Types" data-ja="対象資産">Asset Types</span><p class="ch-field-value" data-en="Multi-let offices, prime retail and long-income residential." data-ja="マルチテナントオフィス、プライム商業施設、長期インカム型住宅。">Multi-let offices, prime retail and long-income residential.</p></div>
+            <div><span class="ch-field-label" data-en="Underwriting" data-ja="審査基準">Underwriting</span><p class="ch-field-value" data-en="Covenant strength, unexpired lease term and reversionary potential." data-ja="テナントの信用力、残存賃貸期間、リバージョナリーの余地。">Covenant strength, unexpired lease term and reversionary potential.</p></div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <article class="chapter reverse" id="repositioning" data-screen-label="Repositioning">
+      <div class="ch-media"><img src="assets/imagery/bg-repositioning-1535.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 880px) 92vw, 42vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <span class="ch-kicker" data-en="02 · Repositioning" data-ja="02・リポジショニング">02 · Repositioning</span>
+        <h2 class="ch-title" data-en="Repositioning" data-ja="リポジショニング">Repositioning</h2>
+        <p class="ch-thesis" data-en="Under-managed buildings with scope for improvement." data-ja="管理が行き届いていない建物。改善余地を基準に。">Under-managed buildings with scope for improvement.</p>
+        <details class="ch-expand">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="What we look for" data-ja="重視する点">What we look for</span></summary>
+          <div class="ch-fields">
+            <div><span class="ch-field-label" data-en="Asset Types" data-ja="対象資産">Asset Types</span><p class="ch-field-value" data-en="Secondary offices, mixed-use buildings and under-let assets." data-ja="セカンダリーオフィス、複合用途ビル、稼働率の低い資産。">Secondary offices, mixed-use buildings and under-let assets.</p></div>
+            <div><span class="ch-field-label" data-en="Underwriting" data-ja="審査基準">Underwriting</span><p class="ch-field-value" data-en="Refurbishment cost, planning risk and achievable rental uplift." data-ja="改修コスト、プランニングリスク、達成可能な賃料の上昇余地。">Refurbishment cost, planning risk and achievable rental uplift.</p></div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+    <article class="chapter" id="hospitality" data-screen-label="Hospitality">
+      <div class="ch-media"><img src="assets/imagery/bg-hospitality-952.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 880px) 92vw, 58vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></div>
+      <div class="ch-text">
+        <span class="ch-kicker" data-en="03 · Hospitality" data-ja="03・ホスピタリティ">03 · Hospitality</span>
+        <h2 class="ch-title" data-en="Hospitality" data-ja="ホスピタリティ">Hospitality</h2>
+        <p class="ch-thesis" data-en="Location, quality and discipline drive performance." data-ja="立地、質、規律が、成果を左右します。">Location, quality and discipline drive performance.</p>
+        <details class="ch-expand">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="What we look for" data-ja="重視する点">What we look for</span></summary>
+          <div class="ch-fields">
+            <div><span class="ch-field-label" data-en="Asset Types" data-ja="対象資産">Asset Types</span><p class="ch-field-value" data-en="Branded hotels, serviced apartments and operator-let assets." data-ja="ブランドホテル、サービスアパートメント、オペレーター賃貸の資産。">Branded hotels, serviced apartments and operator-let assets.</p></div>
+            <div><span class="ch-field-label" data-en="Underwriting" data-ja="審査基準">Underwriting</span><p class="ch-field-value" data-en="Operator covenant, trading performance and lease structure." data-ja="オペレーターの信用力、営業実績、賃貸借の構造。">Operator covenant, trading performance and lease structure.</p></div>
+          </div>
+        </details>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="shell.js?v=52"></script>
+<script src="i18n.js?v=2"></script>
+<script src="craft.js?v=13"></script>
+</body>
+</html>

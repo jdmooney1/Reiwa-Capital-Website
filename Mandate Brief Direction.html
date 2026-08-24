@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Reiwa Capital — The Mandate Brief (Direction B)</title>
+<style>
+:root{--ink:#271430;--ink2:#5a4766;--ink3:#8a7a94;--paper:#FCFAF1;--rule:rgba(39,20,48,.18);--soft:rgba(39,20,48,.07);--note:#8a6a2c;--hatch:repeating-linear-gradient(45deg,rgba(39,20,48,.10) 0 1px,transparent 1px 9px)}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink)}
+.fr{position:absolute;background:var(--paper);border:1px solid var(--rule);box-shadow:0 1px 0 rgba(39,20,48,.08)}
+.tag{position:absolute;top:-30px;left:0;font:600 13px/1 "Helvetica Neue",sans-serif;letter-spacing:.08em;color:var(--ink2);text-transform:uppercase;white-space:nowrap}
+a{color:var(--ink)}a:hover{color:var(--ink2)}
+.pad{padding:22px}
+.img{background:var(--hatch);border:1px solid var(--rule);position:relative;display:flex;align-items:flex-end;padding:8px 10px;box-sizing:border-box}
+.img i{font-style:normal;font:500 10px/1.3 "Helvetica Neue",sans-serif;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.img.dark{background:repeating-linear-gradient(45deg,rgba(39,20,48,.30) 0 1px,rgba(39,20,48,.14) 1px 9px)}
+.bars{display:grid;gap:5px}.bars b{display:block;height:6px;background:var(--soft)}
+.bars b:last-child{width:62%}
+.k{font:600 9.5px/1 sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:0 0 8px}
+.h1{font:400 26px/1.15 "Helvetica Neue",sans-serif;letter-spacing:-.01em;margin:0}
+.h2{font:400 18px/1.25 sans-serif;margin:0}
+.h3{font:500 13px/1.3 sans-serif;margin:0}
+.lbl{font:500 10.5px/1.5 sans-serif;letter-spacing:.04em;color:var(--ink2)}
+.cap{font:400 10px/1.5 sans-serif;color:var(--ink3)}
+.hr{border:0;border-top:1px solid var(--rule);margin:0}
+.note{font-family:"Segoe Print","Bradley Hand",cursive;font-size:11px;line-height:1.45;color:var(--note)}
+.note.sm{font-size:10px}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-bottom:1px dashed var(--rule);font:500 10px/1 sans-serif;letter-spacing:.08em;color:var(--ink2)}
+.navbar .lg{font-weight:700;letter-spacing:.05em;color:var(--ink)}
+.nextrail{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px;border-top:1px solid var(--rule)}
+.nextrail .k{margin:0}
+.foot{background:var(--ink);color:var(--paper);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;font:500 9px/1 sans-serif;letter-spacing:.06em}
+.crit{display:grid;gap:6px;margin-top:10px}
+.crit span{font:500 11px/1.4 sans-serif;padding-left:12px;position:relative}
+.crit span::before{content:"";position:absolute;left:0;top:6px;width:5px;height:1.5px;background:var(--ink2)}
+.exp{margin-top:10px;font:500 10px/1 sans-serif;letter-spacing:.06em;color:var(--ink2);border-bottom:1px solid var(--rule);display:inline-block;padding-bottom:3px}
+/* Mandate Brief atoms */
+.rail{display:grid;gap:10px;align-content:start;padding-top:4px}
+.rail span{font:500 9.5px/1.4 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.rail span.on{color:var(--ink);border-left:2px solid var(--ink);padding-left:8px;margin-left:-10px}
+.sel{display:flex;gap:22px;align-items:baseline}
+.sel span{font:500 11px/1 sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.sel span.on{color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:4px}
+.lane{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+.lane>div{padding:12px 18px 14px 0}
+.lane>div+div{border-left:1px solid var(--rule);padding-left:18px;padding-right:0}
+.lanerow{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--soft)}
+.lanerow span{font:400 11px/1.5 sans-serif;color:var(--ink2);padding:7px 18px 7px 12px;position:relative}
+.lanerow span::before{content:"";position:absolute;left:0;top:14px;width:5px;height:1px;background:var(--ink3)}
+.lanerow span+span{border-left:1px solid var(--rule);padding-left:18px}
+.track{display:flex;align-items:baseline;gap:0;border-bottom:1px solid var(--rule);position:relative}
+.track span{flex:1;font:500 10px/1 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:0 0 10px;text-align:left}
+.track span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+/* proposal doc */
+.doc{padding:40px 44px;font-size:13.5px;line-height:1.6}
+.doc h1{font:400 26px/1.2 sans-serif;margin:0 0 4px}
+.doc .sub{font-size:12px;color:var(--ink3);margin:0 0 26px}
+.doc h2{font:600 15px/1.3 sans-serif;margin:30px 0 8px;padding-top:14px;border-top:1px solid var(--rule)}
+.doc h3{font:600 12.5px/1.3 sans-serif;margin:14px 0 4px}
+.doc p{margin:6px 0;max-width:64ch}
+.doc ul,.doc ol{margin:6px 0;padding-left:20px;max-width:64ch}
+.doc li{margin:4px 0}
+.doc td,.doc th{font-size:12px;text-align:left;padding:5px 10px 5px 0;border-bottom:1px solid var(--soft);vertical-align:top}
+.doc th{border-bottom:1.5px solid var(--rule)}
+.doc table{border-collapse:collapse;width:100%}
+.doc code{font:11.5px ui-monospace,Menlo,monospace;background:var(--soft);padding:1px 4px}
+.pill{display:inline-block;font:600 9px/1 sans-serif;letter-spacing:.08em;padding:3px 7px;border:1px solid var(--rule);color:var(--ink2);text-transform:uppercase;margin-right:6px}
+.ja{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+</style>
+</head>
+<body>
+
+<!-- ============ PROPOSAL DOCUMENT ============ -->
+<section class="fr doc" style="left:40px;top:60px;width:790px;height:auto" data-screen-label="Proposal — The Mandate Brief">
+<span class="tag">Direction B — read first</span>
+<h1>The Mandate Brief</h1>
+<p class="sub">Second design direction for reiwa-capital.com · wireframes to the right (desktop row, mobile row, state row) · no production code — for approval</p>
+
+<h2>1 · The direction in one paragraph</h2>
+<p>Each page is a concise institutional briefing: the reader is shown a compact overview, selects the subject — a market, a process stage, a strategy — and the page replaces content in place instead of scrolling through it. Orientation is persistent (a quiet section rail on desktop), density is controlled, and detail sits behind disclosure. Heroes, header, palette, DM Sans, drawer, EN/JA toggle, next-page rail and the purple footer are untouched — the direction applies only below each hero.</p>
+<p>It should feel like a well-prepared investment briefing — calm, precise, immediately understandable. It must never feel like software, a dashboard, a portal, a consultancy deck, a sales brochure, an agency site or a luxury brand.</p>
+
+<h2>2 · Information system</h2>
+<ul>
+<li><strong>Principle:</strong> a visitor understands each page without opening any disclosure. Selected states carry the primary facts; disclosure carries technical depth.</li>
+<li><strong>Components (the full set):</strong> positioning statement · selected-state visual panel · responsibility matrix · process lane · criteria matrix · expandable technical detail · image caption · compact client/market index. Spacing, alignment and thin rules only — no bordered cards, no icons, no pills.</li>
+<li><strong>Desktop orientation rail:</strong> ~2 of 12 columns, text + thin line, highlights the section in view, sticky only where useful. It is orientation, not navigation. Mobile replaces it with a compact horizontal section index under the hero — never a fixed secondary bar.</li>
+<li><strong>Selected states:</strong> stronger text colour + short underline; unselected labels drop opacity slightly; image and content replace in place (image crossfade 180–240ms, content 140–180ms). No filled tabs, no sliding indicators, no zooms. Understandable with motion off.</li>
+</ul>
+
+<h2>3 · Proposed visible word counts</h2>
+<table>
+<tr><th>Page</th><th>Current visible (EN)</th><th>Mandate Brief visible</th><th>Limit</th></tr>
+<tr><td>Home</td><td>~120</td><td>~75 (hero line + 3-term sequence + 3 routes)</td><td>≤130</td></tr>
+<tr><td>About</td><td>~90 at load · ~190 with a market open</td><td>~140 in a complete selected state</td><td>≤220–280</td></tr>
+<tr><td>Approach</td><td>~218 (all five stages exposed)</td><td>~70 (matrix + statement + track + ONE stage)</td><td>1 stage at a time</td></tr>
+<tr><td>Investment Focus</td><td>~199 (all three strategies exposed)</td><td>~35 (selector + ONE strategy + assessment index)</td><td>1 strategy at a time</td></tr>
+<tr><td>Contact</td><td>~14</td><td>~10</td><td>≤25</td></tr>
+</table>
+
+<h2>4 · Estimated page heights (desktop 1440 / mobile 390)</h2>
+<table>
+<tr><th>Page</th><th>Current</th><th>Mandate Brief (est.)</th></tr>
+<tr><td>Home</td><td>~4400 / ~4900</td><td>~2300 / ~2600 — hero + sequence + routes only</td></tr>
+<tr><td>About</td><td>~3200 / ~3800 (market open)</td><td>~1900 / ~2400 — selected market replaces, never appends</td></tr>
+<tr><td>Approach</td><td>~2950 / ~3400</td><td>~1800 / ~2200 — one stage visible</td></tr>
+<tr><td>Investment Focus</td><td>~2500 / ~3600</td><td>~1600 / ~2100 — one strategy visible</td></tr>
+<tr><td>Contact</td><td>~900</td><td>~900 (unchanged in substance)</td></tr>
+</table>
+
+<h2>5 · Visible by default vs behind interaction</h2>
+<h3>Visible by default</h3>
+<ul>
+<li>Home: hero, ACQUIRE / STRUCTURE / OVERSEE sequence with one line each, three strategy routes.</li>
+<li>About: positioning statement; investor-objective / Reiwa-role pair; the SELECTED market's photograph + three labelled groups; client index + support line.</li>
+<li>Approach: full responsibility matrix (both lanes, all ten items), the retained-with-investor statement, the five-stage track, the selected stage's objective + considerations.</li>
+<li>Focus: strategy selector, selected strategy's image + thesis + three criteria, the five-line assessment index.</li>
+</ul>
+<h3>Behind one interaction (selection)</h3>
+<ul>
+<li>The other market's briefing; the other four stages' objectives; the other two strategies' theses and criteria.</li>
+</ul>
+<h3>Behind disclosure (expand)</h3>
+<ul>
+<li>About: "Market detail" — the four supporting market notes per city (existing approved copy).</li>
+<li>Approach: per-stage "Detail" — the existing approved stage paragraphs, verbatim.</li>
+<li>Focus: "What we look for" — the existing approved Asset Types / Underwriting fields, verbatim.</li>
+</ul>
+<p><strong>Nothing is removed from the site.</strong> Content removed from view is exactly the duplication already flagged in the audit: the Home lifecycle repetition (Approach carries it) and the Focus intro that repeated its own subhead.</p>
+
+<h2>6 · Accessibility behaviour</h2>
+<ul>
+<li>Selectors are real <code>&lt;button&gt;</code>s with <code>aria-selected</code> (tab semantics only on Focus, where the pattern genuinely behaves as tabs); stage/market panels are named regions; disclosure uses native <code>details/summary</code>.</li>
+<li>Keyboard: all states reachable by Tab/Enter/Space; focus moves only on mobile market switch (as production already does); no hover-dependent information.</li>
+<li>Selected state survives EN/JA switching (state lives outside the i18n sweep, as production market selection already does).</li>
+<li>Print and no-JS: ALL states render expanded in sequence — a printed page exposes every market, stage and strategy. No core information depends on interaction.</li>
+<li><code>prefers-reduced-motion</code>: crossfades and underline movement disabled; replacement is instant.</li>
+</ul>
+
+<h2>7 · Risks to institutional credibility</h2>
+<ol>
+<li><strong>Software drift.</strong> Selectors + rails can read as an app. Control: text-only controls, thin rules, no fills, no motion flourishes, generous whitespace.</li>
+<li><strong>Comparison cost.</strong> Selected states prevent seeing all three strategies side by side — a diligence reader comparing strategies must click three times. Mitigation: print view exposes all; criteria vocabulary is identical across strategies.</li>
+<li><strong>Perceived thinness.</strong> ~35 visible words on Focus can read as light for a £100m+ mandate audience if the disclosure affordances are too quiet. Mitigation: the assessment index keeps analytical depth visible.</li>
+<li><strong>Briefing tone → consultancy tone.</strong> Matrices and tracks flirt with deck language. Control: no icons, no numbers-as-decoration, institutional captions.</li>
+<li><strong>Photography demoted.</strong> One image per page at a time weakens the two-city visual argument About currently makes with both cards visible.</li>
+</ol>
+
+<h2>8 · Comparison with The Quiet Dossier</h2>
+<table>
+<tr><th></th><th>Quiet Dossier (Direction A)</th><th>Mandate Brief (Direction B)</th></tr>
+<tr><td>Reading model</td><td>Editorial scrolling; information unfolds down the page</td><td>Compact selected states; information replaced in place</td></tr>
+<tr><td>Composition</td><td>Asymmetric image chapters, varied section forms</td><td>Persistent rail, aligned panels, one form per component</td></tr>
+<tr><td>Page length</td><td>Moderate; every subject visible in sequence</td><td>Short; one subject visible at a time</td></tr>
+<tr><td>Photography</td><td>Leads chapters; both markets/all strategies visible</td><td>One selected image per page section</td></tr>
+<tr><td>Interaction</td><td>Optional (disclosure only)</td><td>Structural (selection required for full coverage)</td></tr>
+<tr><td>Print / no-JS</td><td>Native — page already linear</td><td>Requires expand-all fallback (specified above)</td></tr>
+<tr><td>Feel</td><td>Private office, editorial calm</td><td>Investment briefing, operational precision</td></tr>
+</table>
+
+<h2>9 · Recommendation</h2>
+<p><strong>The Quiet Dossier remains the better primary direction for Reiwa Capital</strong> — with two Mandate Brief components adopted into it: the responsibility matrix and the criteria/assessment vocabulary.</p>
+<p>Reasoning: the audience is introduction-led and diligence-minded. They read carefully, compare, print, and forward pages to advisers. A linear editorial page serves that behaviour natively; selected states serve time-poor repeat visitors, which this audience is not. Selection also makes the site's strongest asset — restrained photography of two cities — take turns instead of building a cumulative impression. The Mandate Brief's genuine advances (the responsibility matrix's clarity about custody and decision-making, the criteria matrices, the disciplined word budgets) transfer cleanly into the Dossier's linear flow, and have already been proven in the Rev. 3 prototypes. Direction B standalone is the right choice only if analytics later show substantial repeat/desk-research traffic that wants reference speed over narrative.</p>
+
+<h2>10 · Approved copy used</h2>
+<p>All wireframe copy is existing approved copy or copy supplied in the brief (ACQUIRE/STRUCTURE/OVERSEE lines, identity pair, client index). No performance figures, AUM, volumes, track-record years, strategy claims, permissions or client references are invented anywhere in this direction.</p>
+</section>
+
+<!-- ============ DESKTOP WIREFRAMES ============ -->
+
+<!-- HOME desktop -->
+<section class="fr" style="left:900px;top:60px;width:640px" data-screen-label="MB Home — desktop">
+<span class="tag">Home · desktop 1440</span>
+<div class="img dark" style="height:300px;margin:0;border:0;border-bottom:1px solid var(--rule)">
+  <div style="position:absolute;top:0;left:0;right:0" class="navbar"><span class="lg">REIWA CAPITAL</span><span>EN / JA · MENU</span></div>
+  <div style="position:absolute;left:22px;bottom:30px;color:var(--paper)">
+    <p class="k" style="color:rgba(252,250,241,.7)">Cross-Border Real Estate Investment</p>
+    <p class="h1" style="font-size:26px;max-width:15ch;color:#FCFAF1">European Real Estate. Structured for Japanese Capital.</p>
+  </div>
+  <i style="position:absolute;right:10px;bottom:8px;color:rgba(252,250,241,.6)">EXISTING HERO — UNCHANGED</i>
+</div>
+<div class="pad" style="padding:30px 22px 26px">
+  <p class="k">What Reiwa Capital Does</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;border-top:1px solid var(--rule);padding-top:18px;margin-top:12px">
+    <div><p class="h3" style="letter-spacing:.08em">ACQUIRE</p><p class="cap" style="margin-top:7px;max-width:20ch">Source and assess opportunities in London and Amsterdam.</p></div>
+    <div><p class="h3" style="letter-spacing:.08em">STRUCTURE</p><p class="cap" style="margin-top:7px;max-width:20ch">Coordinate ownership, financing and professional advice.</p></div>
+    <div><p class="h3" style="letter-spacing:.08em">OVERSEE</p><p class="cap" style="margin-top:7px;max-width:20ch">Support reporting, business planning, refinancing and exit.</p></div>
+  </div>
+  <p class="note sm" style="margin-top:8px">one shared baseline, one thin rule — no boxes, no icons, no numbers</p>
+</div>
+<div style="padding:0 22px 6px"><p class="k">Investment Focus — three routes</p></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 22px">
+  <div class="img" style="height:120px"><i>INCOME</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3">Income</p></div></div>
+  <div class="img" style="height:120px"><i>REPOSITIONING</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3">Repositioning</p></div></div>
+  <div class="img" style="height:120px"><i>HOSPITALITY</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3">Hospitality</p></div></div>
+</div>
+<p class="note sm" style="padding:8px 22px 14px">whole image is the link; one optional short line each; no further Home copy</p>
+<div class="nextrail"><p class="k">Next</p><p class="h2">About →</p></div>
+<div class="foot"><span>✳</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- ABOUT desktop -->
+<section class="fr" style="left:1600px;top:60px;width:640px" data-screen-label="MB About — desktop">
+<span class="tag">About · desktop 1440 — rail + selected market</span>
+<div class="navbar"><span class="lg">REIWA CAPITAL</span><span>EN / JA · MENU</span></div>
+<div class="pad" style="padding-bottom:12px"><p class="k">About</p><p class="h2" style="max-width:30ch">Existing hero — unchanged (title + approved sub-line)</p></div>
+<div style="display:grid;grid-template-columns:90px 1fr;gap:24px;padding:8px 22px 18px">
+  <div class="rail"><span class="on">01 Identity</span><span>02 Markets</span><span>03 Clients</span></div>
+  <div>
+    <p class="h2" style="max-width:24ch">Cross-border real estate advisory for Japanese and Asia-based investors in Europe.</p>
+    <div class="lane" style="margin-top:18px">
+      <div><p class="k">Investor objective</p><p class="lbl">Direct ownership of European real estate.</p></div>
+      <div><p class="k">Reiwa Capital role</p><p class="lbl">Local acquisition, structuring and ownership coordination.</p></div>
+    </div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:90px 1fr;gap:24px;padding:10px 22px 16px;border-top:1px solid var(--soft)">
+  <div class="rail"><span>01 Identity</span><span class="on">02 Markets</span><span>03 Clients</span></div>
+  <div>
+    <div class="sel"><span class="on">London</span><span>Amsterdam</span></div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:12px">
+      <div class="img" style="height:150px"><i>LONDON — SELECTED (~58%)</i></div>
+      <div>
+        <p class="k">Market characteristics</p><p class="cap" style="max-width:26ch">London combines legal transparency with a deep international capital base…</p>
+        <p class="k" style="margin-top:10px">Investment focus</p><p class="cap" style="max-width:26ch">Commercial, hospitality, mixed-use and residential assets.</p>
+        <p class="k" style="margin-top:10px">Reiwa Capital approach</p><p class="cap" style="max-width:26ch">Patient capital and active asset management.</p>
+        <span class="exp">+ Market detail</span>
+      </div>
+    </div>
+    <p class="note sm" style="margin-top:6px">selecting Amsterdam replaces photo + briefing in place (crossfade ≤240ms) — never both markets at once</p>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:90px 1fr;gap:24px;padding:10px 22px 18px;border-top:1px solid var(--soft)">
+  <div class="rail"><span>01 Identity</span><span>02 Markets</span><span class="on">03 Clients</span></div>
+  <div>
+    <p class="lbl" style="font-size:12px">Family offices · Private investors · Listed companies · Institutional investors</p>
+    <p class="cap" style="margin-top:6px">Based principally in Japan and across Asia.</p>
+  </div>
+</div>
+<div class="nextrail"><p class="k">Next</p><p class="h2">Approach →</p></div>
+<div class="foot"><span>✳</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- APPROACH desktop -->
+<section class="fr" style="left:2300px;top:60px;width:640px" data-screen-label="MB Approach — desktop">
+<span class="tag">Approach · desktop 1440 — lanes + stage track</span>
+<div class="navbar"><span class="lg">REIWA CAPITAL</span><span>EN / JA · MENU</span></div>
+<div class="pad" style="padding-bottom:12px"><p class="k">Approach</p><p class="h2" style="max-width:26ch">Existing hero — unchanged</p></div>
+<div style="display:grid;grid-template-columns:90px 1fr;gap:24px;padding:8px 22px 16px">
+  <div class="rail"><span class="on">01 Responsibilities</span><span>02 Process</span></div>
+  <div>
+    <div class="lane">
+      <div><p class="k" style="margin-bottom:4px">Investor retains</p></div>
+      <div><p class="k" style="margin-bottom:4px">Reiwa Capital coordinates</p></div>
+    </div>
+    <div class="lanerow"><span>Investment objectives</span><span>Market sourcing</span></div>
+    <div class="lanerow"><span>Capital commitment</span><span>Opportunity assessment</span></div>
+    <div class="lanerow"><span>Ownership</span><span>Structuring and financing</span></div>
+    <div class="lanerow"><span>Investment decisions</span><span>Due diligence and acquisition</span></div>
+    <div class="lanerow"><span>Final approvals</span><span>Reporting and asset oversight</span></div>
+    <p class="lbl" style="margin-top:12px;font-size:11.5px">Investment decisions and ownership remain with the investor.</p>
+    <p class="note sm" style="margin-top:4px">shared row alignment shows the relationship — NO arrows, nothing implies capital custody</p>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:90px 1fr;gap:24px;padding:12px 22px 18px;border-top:1px solid var(--soft)">
+  <div class="rail"><span>01 Responsibilities</span><span class="on">02 Process</span></div>
+  <div>
+    <div class="track"><span class="on">01 Mandate</span><span>02 Source</span><span>03 Structure</span><span>04 Execute</span><span>05 Oversee</span></div>
+    <div style="padding-top:14px">
+      <p class="h3">01 · Mandate Definition</p>
+      <p class="cap" style="margin-top:6px;max-width:44ch">Establish the investor's objectives and parameters before opportunities are pursued.</p>
+      <p class="lbl" style="margin-top:8px;font-size:10px;letter-spacing:.08em">HOLD PERIOD · RETURN OBJECTIVES · RISK · FINANCING · REPORTING</p>
+      <span class="exp">+ Detail</span>
+    </div>
+    <p class="note sm" style="margin-top:8px">selecting a stage replaces the panel below the track — one stage visible at a time; approved stage copy behind + Detail</p>
+  </div>
+</div>
+<div class="nextrail"><p class="k">Next</p><p class="h2">Investment Focus →</p></div>
+<div class="foot"><span>✳</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- FOCUS desktop -->
+<section class="fr" style="left:3000px;top:60px;width:640px" data-screen-label="MB Focus — desktop">
+<span class="tag">Investment Focus · desktop 1440 — one selected strategy</span>
+<div class="navbar"><span class="lg">REIWA CAPITAL</span><span>EN / JA · MENU</span></div>
+<div class="pad" style="padding-bottom:12px"><p class="k">Investment Focus</p><p class="h2" style="max-width:26ch">Existing hero — unchanged</p></div>
+<div class="pad" style="padding-top:4px">
+  <div class="sel"><span class="on">Income</span><span>Repositioning</span><span>Hospitality</span></div>
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:14px">
+    <div class="img" style="height:210px"><i>INCOME PHOTOGRAPH — REPLACED PER SELECTION</i></div>
+    <div>
+      <p class="k">01 · Income</p>
+      <p class="h3" style="font-size:14px;max-width:22ch">Long-leased assets, selected for predictable income.</p>
+      <div class="crit"><span>Covenant strength</span><span>Unexpired lease term</span><span>Reversionary potential</span></div>
+      <span class="exp">+ What we look for</span>
+    </div>
+  </div>
+  <p class="note sm" style="margin-top:8px">selector swaps image, thesis, criteria and detail in place — component ≈ one viewport; criteria are the approved underwriting terms</p>
+</div>
+<div class="pad" style="padding-top:8px;border-top:1px solid var(--soft)">
+  <p class="k">Assessment Discipline</p>
+  <div class="lanerow" style="grid-template-columns:1fr"><span>Market</span></div>
+  <div class="lanerow" style="grid-template-columns:1fr"><span>Asset</span></div>
+  <div class="lanerow" style="grid-template-columns:1fr"><span>Income or operating case</span></div>
+  <div class="lanerow" style="grid-template-columns:1fr"><span>Execution requirements</span></div>
+  <div class="lanerow" style="grid-template-columns:1fr"><span>Ownership horizon</span></div>
+  <p class="note sm" style="margin-top:6px">how opportunities are judged — five lines, no default explanations</p>
+</div>
+<div class="nextrail"><p class="k">Next</p><p class="h2">Contact →</p></div>
+<div class="foot"><span>✳</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- CONTACT desktop -->
+<section class="fr" style="left:3700px;top:60px;width:440px" data-screen-label="MB Contact — desktop">
+<span class="tag">Contact · desktop</span>
+<div class="navbar"><span class="lg">REIWA CAPITAL</span><span>EN / JA · MENU</span></div>
+<div class="pad" style="padding:40px 22px 12px"><p class="k">Contact</p><p class="h2">Existing hero — unchanged</p></div>
+<div class="pad" style="padding:16px 22px 56px">
+  <p class="lbl" style="max-width:28ch">For acquisition, structuring and asset oversight enquiries.</p>
+  <p class="h2" style="margin-top:22px;border-bottom:1.5px solid var(--ink);display:inline-block;padding-bottom:4px">info@reiwa-capital.com</p>
+  <p class="lbl" style="margin-top:14px">LinkedIn ↗</p>
+  <p class="note sm" style="margin-top:22px">email is the principal action — no form, no cards, no diagram, ~10 words</p>
+</div>
+<div class="foot"><span>✳</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- ============ MOBILE WIREFRAMES ============ -->
+
+<section class="fr" style="left:900px;top:1210px;width:250px" data-screen-label="MB Home — mobile">
+<span class="tag">Home · mobile 390</span>
+<div class="img dark" style="height:220px;border:0;border-bottom:1px solid var(--rule)">
+  <div class="navbar" style="position:absolute;top:0;left:0;right:0;border:0;color:#FCFAF1"><span class="lg" style="color:#FCFAF1">REIWA</span><span>JA ☰</span></div>
+  <div style="position:absolute;left:14px;bottom:16px;color:#FCFAF1"><p class="h2" style="font-size:16px;max-width:13ch;color:#FCFAF1">Existing hero — unchanged</p></div>
+</div>
+<div class="pad" style="padding:18px 14px 10px">
+  <p class="k">What Reiwa Capital Does</p>
+  <div style="border-left:1px solid var(--rule);padding-left:14px;display:grid;gap:14px;margin-top:10px">
+    <div><p class="h3" style="font-size:12px;letter-spacing:.08em">ACQUIRE</p><p class="cap">Source and assess opportunities in London and Amsterdam.</p></div>
+    <div><p class="h3" style="font-size:12px;letter-spacing:.08em">STRUCTURE</p><p class="cap">Coordinate ownership, financing and professional advice.</p></div>
+    <div><p class="h3" style="font-size:12px;letter-spacing:.08em">OVERSEE</p><p class="cap">Support reporting, business planning, refinancing and exit.</p></div>
+  </div>
+  <p class="note sm" style="margin-top:6px">one continuous line connects the stages; whole sequence ≈ one viewport</p>
+</div>
+<div style="display:grid;gap:8px;padding:0 14px">
+  <div class="img" style="height:110px;border:0"><i>INCOME</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3" style="font-size:13px">Income</p></div></div>
+  <div class="img" style="height:110px;border:0"><i>REPOSITIONING</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3" style="font-size:13px">Repositioning</p></div></div>
+  <div class="img" style="height:110px;border:0"><i>HOSPITALITY</i><div style="position:absolute;left:10px;bottom:10px"><p class="h3" style="font-size:13px">Hospitality</p></div></div>
+</div>
+<div class="nextrail" style="padding:14px"><p class="k">Next</p><p class="h3">About →</p></div>
+<div class="foot" style="padding:16px 14px;flex-direction:column;gap:3px;text-align:center"><span>✳</span><span>info@reiwa-capital.com</span><span>LinkedIn · Privacy</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<section class="fr" style="left:1210px;top:1210px;width:250px" data-screen-label="MB About — mobile">
+<span class="tag">About · mobile 390</span>
+<div class="navbar" style="padding:10px 14px"><span class="lg">REIWA</span><span>JA ☰</span></div>
+<div class="pad" style="padding:16px 14px 8px"><p class="k">About</p><p class="h3" style="font-size:13px">Existing hero — unchanged</p></div>
+<div style="display:flex;gap:16px;padding:6px 14px 10px;border-bottom:1px solid var(--soft)">
+  <span class="k" style="margin:0;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:3px">01 Identity</span><span class="k" style="margin:0">02 Markets</span><span class="k" style="margin:0">03 Clients</span>
+</div>
+<p class="note sm" style="padding:6px 14px 0">compact horizontal section index — NOT a fixed bar; scrolls with page</p>
+<div class="pad" style="padding:12px 14px">
+  <p class="h3" style="font-size:13.5px;max-width:24ch">Cross-border real estate advisory for Japanese and Asia-based investors in Europe.</p>
+  <div style="display:grid;gap:10px;margin-top:12px;border-top:1px solid var(--rule);padding-top:12px">
+    <div><p class="k">Investor objective</p><p class="cap">Direct ownership of European real estate.</p></div>
+    <div><p class="k">Reiwa Capital role</p><p class="cap">Local acquisition, structuring and ownership coordination.</p></div>
+  </div>
+</div>
+<div class="pad" style="padding:8px 14px 14px;border-top:1px solid var(--soft)">
+  <div class="sel"><span class="on" style="font-size:10px">London</span><span style="font-size:10px">Amsterdam</span></div>
+  <div class="img" style="height:110px;margin-top:10px"><i>LONDON — SELECTED</i></div>
+  <p class="k" style="margin-top:10px">Market characteristics</p><div class="bars"><b></b><b></b></div>
+  <p class="k" style="margin-top:8px">Investment focus</p><div class="bars"><b></b></div>
+  <p class="k" style="margin-top:8px">Reiwa Capital approach</p><div class="bars"><b></b></div>
+  <span class="exp">+ Market detail</span>
+  <p class="note sm" style="margin-top:6px">selector above image; switch replaces in place; selection survives EN/JA toggle</p>
+</div>
+<div class="pad" style="padding:10px 14px 16px;border-top:1px solid var(--soft)">
+  <p class="k">Clients</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 12px">
+    <p class="cap">Family offices</p><p class="cap">Private investors</p><p class="cap">Listed companies</p><p class="cap">Institutional investors</p>
+  </div>
+  <p class="cap" style="margin-top:8px">Based principally in Japan and across Asia.</p>
+</div>
+<div class="nextrail" style="padding:14px"><p class="k">Next</p><p class="h3">Approach →</p></div>
+<div class="foot" style="padding:16px 14px;flex-direction:column;gap:3px;text-align:center"><span>✳</span><span>info@reiwa-capital.com</span><span>LinkedIn · Privacy</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<section class="fr" style="left:1520px;top:1210px;width:250px" data-screen-label="MB Approach — mobile">
+<span class="tag">Approach · mobile 390</span>
+<div class="navbar" style="padding:10px 14px"><span class="lg">REIWA</span><span>JA ☰</span></div>
+<div class="pad" style="padding:16px 14px 8px"><p class="k">Approach</p><p class="h3" style="font-size:13px">Existing hero — unchanged</p></div>
+<div class="pad" style="padding:10px 14px">
+  <p class="k">Investor retains</p>
+  <div class="crit" style="margin-top:6px"><span>Investment objectives</span><span>Capital commitment</span><span>Ownership</span><span>Investment decisions</span><span>Final approvals</span></div>
+  <p class="k" style="margin-top:14px">Reiwa Capital coordinates</p>
+  <div class="crit" style="margin-top:6px"><span>Market sourcing</span><span>Opportunity assessment</span><span>Structuring and financing</span><span>Due diligence and acquisition</span><span>Reporting and asset oversight</span></div>
+  <p class="lbl" style="margin-top:12px;font-size:11px">Investment decisions and ownership remain with the investor.</p>
+</div>
+<div class="pad" style="padding:10px 14px;border-top:1px solid var(--soft)">
+  <p class="k">The Process — vertical index, one open</p>
+  <div style="border-left:1px solid var(--rule);padding-left:12px;display:grid;gap:8px;margin-top:8px">
+    <div>
+      <p class="h3" style="font-size:12px;color:var(--ink)">01 Mandate Definition</p>
+      <p class="cap" style="margin-top:4px">Establish the investor's objectives and parameters before opportunities are pursued.</p>
+      <p class="cap" style="margin-top:4px;letter-spacing:.06em;font-size:9px">HOLD PERIOD · RETURN OBJECTIVES · RISK · FINANCING · REPORTING</p>
+      <span class="exp" style="font-size:9px">+ Detail</span>
+    </div>
+    <p class="h3" style="font-size:12px;color:var(--ink3)">02 Sourcing and Underwriting</p>
+    <p class="h3" style="font-size:12px;color:var(--ink3)">03 Structuring</p>
+    <p class="h3" style="font-size:12px;color:var(--ink3)">04 Acquisition Execution</p>
+    <p class="h3" style="font-size:12px;color:var(--ink3)">05 Asset Oversight</p>
+  </div>
+  <p class="note sm" style="margin-top:8px">tapping a stage opens it beneath its name and closes the previous — never five expanded blocks</p>
+</div>
+<div class="nextrail" style="padding:14px"><p class="k">Next</p><p class="h3">Investment Focus →</p></div>
+<div class="foot" style="padding:16px 14px;flex-direction:column;gap:3px;text-align:center"><span>✳</span><span>info@reiwa-capital.com</span><span>LinkedIn · Privacy</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<section class="fr" style="left:1830px;top:1210px;width:250px" data-screen-label="MB Focus — mobile">
+<span class="tag">Investment Focus · mobile 390</span>
+<div class="navbar" style="padding:10px 14px"><span class="lg">REIWA</span><span>JA ☰</span></div>
+<div class="pad" style="padding:16px 14px 8px"><p class="k">Investment Focus</p><p class="h3" style="font-size:13px">Existing hero — unchanged</p></div>
+<div class="pad" style="padding:8px 14px 14px">
+  <div class="sel" style="gap:14px"><span class="on" style="font-size:10px">Income</span><span style="font-size:10px">Repositioning</span><span style="font-size:10px">Hospitality</span></div>
+  <p class="note sm" style="margin-top:4px">three equal text tabs — no pills; switching keeps scroll position</p>
+  <div class="img" style="height:120px;margin-top:8px"><i>INCOME</i></div>
+  <p class="k" style="margin-top:10px">01 · Income</p>
+  <p class="h3" style="font-size:12.5px;max-width:24ch">Long-leased assets, selected for predictable income.</p>
+  <div class="crit"><span>Covenant strength</span><span>Unexpired lease term</span><span>Reversionary potential</span></div>
+  <span class="exp">+ What we look for</span>
+</div>
+<div class="pad" style="padding:10px 14px 16px;border-top:1px solid var(--soft)">
+  <p class="k">Assessment Discipline</p>
+  <div class="crit" style="margin-top:6px"><span>Market</span><span>Asset</span><span>Income or operating case</span><span>Execution requirements</span><span>Ownership horizon</span></div>
+</div>
+<div class="nextrail" style="padding:14px"><p class="k">Next</p><p class="h3">Contact →</p></div>
+<div class="foot" style="padding:16px 14px;flex-direction:column;gap:3px;text-align:center"><span>✳</span><span>info@reiwa-capital.com</span><span>LinkedIn · Privacy</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<section class="fr" style="left:2140px;top:1210px;width:250px" data-screen-label="MB Contact — mobile">
+<span class="tag">Contact · mobile 390</span>
+<div class="navbar" style="padding:10px 14px"><span class="lg">REIWA</span><span>JA ☰</span></div>
+<div class="pad" style="padding:16px 14px 8px"><p class="k">Contact</p><p class="h3" style="font-size:13px">Existing hero — unchanged</p></div>
+<div class="pad" style="padding:20px 14px 44px">
+  <p class="cap" style="max-width:24ch">For acquisition, structuring and asset oversight enquiries.</p>
+  <p class="h3" style="margin-top:16px;font-size:14px;border-bottom:1.5px solid var(--ink);display:inline-block;padding-bottom:3px">info@reiwa-capital.com</p>
+  <p class="cap" style="margin-top:10px">LinkedIn ↗</p>
+</div>
+<div class="foot" style="padding:16px 14px;flex-direction:column;gap:3px;text-align:center"><span>✳</span><span>info@reiwa-capital.com</span><span>LinkedIn · Privacy</span><span>© 2026 Reiwa Capital</span></div>
+</section>
+
+<!-- ============ STATE VARIANTS + JA EXAMPLE ============ -->
+
+<section class="fr" style="left:2450px;top:1210px;width:300px" data-screen-label="MB State — Amsterdam selected">
+<span class="tag">State · Markets — Amsterdam selected</span>
+<div class="pad" style="padding:16px">
+  <div class="sel"><span>London</span><span class="on">Amsterdam</span></div>
+  <div class="img" style="height:110px;margin-top:10px"><i>AMSTERDAM — REPLACES LONDON IN PLACE</i></div>
+  <p class="k" style="margin-top:10px">Market characteristics</p><p class="cap" style="max-width:30ch">Amsterdam is a tightly held market; the protected canal belt constrains new supply…</p>
+  <p class="k" style="margin-top:8px">Investment focus</p><p class="cap" style="max-width:30ch">Residential, hospitality and commercial uses in the established centre.</p>
+  <p class="k" style="margin-top:8px">Reiwa Capital approach</p><p class="cap" style="max-width:30ch">The market rewards patience over rapid turnover.</p>
+  <span class="exp">+ Market detail</span>
+  <p class="note sm" style="margin-top:8px">unselected label sits at reduced ink; underline marks selection — no fills, no animation of the indicator</p>
+</div>
+</section>
+
+<section class="fr" style="left:2790px;top:1210px;width:300px" data-screen-label="MB State — stage 03 selected">
+<span class="tag">State · Process — stage 03 selected</span>
+<div class="pad" style="padding:16px">
+  <div class="track"><span>01 Mandate</span><span>02 Source</span><span class="on">03 Structure</span><span>04 Execute</span><span>05 Oversee</span></div>
+  <div style="padding-top:12px">
+    <p class="h3" style="font-size:12.5px">03 · Structuring</p>
+    <p class="cap" style="margin-top:5px;max-width:34ch">Each holding is structured around the investor's requirements.</p>
+    <p class="lbl" style="margin-top:6px;font-size:9px;letter-spacing:.08em">OWNERSHIP · FINANCING · REPORTING · EXIT</p>
+    <span class="exp" style="font-size:9px">+ Detail</span>
+  </div>
+  <p class="note sm" style="margin-top:8px">track stays put; only the panel below changes (opacity swap ≤180ms, instant under reduced-motion)</p>
+</div>
+</section>
+
+<section class="fr" style="left:3130px;top:1210px;width:300px" data-screen-label="MB State — Repositioning selected">
+<span class="tag">State · Strategy — Repositioning selected</span>
+<div class="pad" style="padding:16px">
+  <div class="sel" style="gap:14px"><span style="font-size:10px">Income</span><span class="on" style="font-size:10px">Repositioning</span><span style="font-size:10px">Hospitality</span></div>
+  <div class="img" style="height:110px;margin-top:10px"><i>REPOSITIONING — REPLACES INCOME IN PLACE</i></div>
+  <p class="k" style="margin-top:10px">02 · Repositioning</p>
+  <p class="h3" style="font-size:12.5px;max-width:26ch">Under-managed buildings with scope for improvement.</p>
+  <div class="crit"><span>Refurbishment cost</span><span>Planning risk</span><span>Achievable rental uplift</span></div>
+  <span class="exp">+ What we look for</span>
+</div>
+</section>
+
+<section class="fr" style="left:3470px;top:1210px;width:400px" data-screen-label="MB Focus — Japanese state">
+<span class="tag">Investment Focus · Japanese state (desktop crop)</span>
+<div class="navbar"><span class="lg">REIWA CAPITAL</span><span class="ja">EN / <b>JA</b> · メニュー</span></div>
+<div class="pad" style="padding:16px 18px">
+  <div class="sel ja" style="gap:16px"><span class="on">インカム</span><span>リポジショニング</span><span>ホスピタリティ</span></div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-top:12px">
+    <div class="img" style="height:140px"><i>INCOME PHOTOGRAPH</i></div>
+    <div class="ja">
+      <p class="k">01・インカム</p>
+      <p class="h3" style="font-size:12.5px;max-width:16ch">長期賃貸の資産。予測可能な収益を基準に。</p>
+      <div class="crit"><span>テナントの信用力</span><span>残存賃貸期間</span><span>リバージョナリーの余地</span></div>
+      <span class="exp">+ 重視する点</span>
+    </div>
+  </div>
+  <p class="note sm" style="margin-top:8px">JA is a full separate state via the existing toggle — never shown beside EN; hierarchy identical, line lengths accommodated by the same grid</p>
+</div>
+</section>
+
+</body>
+</html>

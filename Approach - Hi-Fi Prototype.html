@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<title>Approach — Hi-Fi Prototype (Rev. 3) — Reiwa Capital</title>
+<link rel="stylesheet" href="assets/colors_and_type.css?v=14">
+<link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="editorial.css?v=41">
+<link rel="stylesheet" href="brand.css?v=6">
+<link rel="stylesheet" href="craft.css?v=19">
+<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<link rel="preload" as="image" href="assets/imagery/approach-hero-1600.webp" fetchpriority="high">
+<style>
+  /* ---------- Approved hero — production spec, unchanged --------------- */
+  .approach-h1{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-page-title);line-height:var(--type-page-title-lh);letter-spacing:var(--type-page-title-ls);color:var(--ink);margin:0;max-width:16ch;text-wrap:balance}
+  .approach-open{margin:38px 0 0;font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);max-width:var(--measure-lead);text-wrap:balance}
+
+  /* ---------- Responsibility matrix — typography and rules only -------- */
+  .resp{padding:clamp(52px,5.5vw,88px) 0 clamp(44px,5vw,72px)}
+  .resp-kicker{display:block;font-family:'DM Sans',sans-serif;font-size:var(--type-label);font-weight:500;letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink);margin-bottom:clamp(24px,3vw,36px)}
+  .rm{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule-strong)}
+  .rm-col{padding:clamp(28px,3vw,38px) 48px clamp(30px,3.2vw,42px) 0}
+  .rm-col+.rm-col{border-left:1px solid var(--rule);padding-left:48px;padding-right:0}
+  .rm-h{font-family:'DM Sans',sans-serif;font-weight:500;font-size:var(--type-h3);line-height:var(--type-h3-lh);letter-spacing:var(--type-h3-ls);color:var(--ink);margin:0 0 20px}
+  .rm-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .rm-list li{position:relative;padding-left:18px;font-family:'DM Sans',sans-serif;font-size:var(--type-body-l);line-height:1.45;letter-spacing:var(--type-body-l-ls);color:var(--ink-2)}
+  .rm-list li::before{content:"";position:absolute;left:0;top:0.72em;width:7px;height:1px;background:var(--ink-3)}
+  .rm-note{margin:clamp(26px,3vw,38px) 0 0;padding-top:clamp(22px,2.5vw,30px);border-top:1px solid var(--rule);font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);max-width:46ch}
+  @media (max-width:720px){
+    .rm{grid-template-columns:1fr}
+    .rm-col{padding:24px 0 28px}
+    .rm-col+.rm-col{border-left:0;border-top:1px solid var(--rule);padding-left:0}
+  }
+
+  /* ---------- The process — one continuous spine ----------------------- */
+  .spine-section{padding:var(--section) 0;border-top:1px solid var(--rule-strong)}
+  .spine-kicker{display:block;font-family:'DM Sans',sans-serif;font-size:var(--type-label);font-weight:500;letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink);margin-bottom:clamp(28px,3.5vw,40px)}
+  .spine{position:relative;padding-left:64px}
+  .spine::before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:1px;background:var(--rule-strong)}
+  .spine-stage{position:relative;padding-bottom:clamp(40px,4.5vw,60px)}
+  .spine-stage:last-child{padding-bottom:0}
+  .spine-num{position:absolute;left:-64px;top:-3px;width:46px;text-align:right;font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(24px,2vw,30px);line-height:1;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .spine-dot{position:absolute;left:16.5px;top:11px;width:8px;height:8px;background:var(--paper);border:1.5px solid var(--ink-2);transform:rotate(45deg)}
+  .spine-title{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-h3);line-height:var(--type-h3-lh);letter-spacing:var(--type-h3-ls);color:var(--ink);margin:0 0 10px}
+  .spine-obj{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-body-l);line-height:var(--type-body-l-lh);letter-spacing:var(--type-body-l-ls);color:var(--ink-2);margin:0 0 10px;max-width:var(--measure)}
+  .spine-tags{font-family:'DM Sans',sans-serif;font-weight:500;font-size:var(--type-label);letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink);margin:0;line-height:1.7}
+  .sp-more{margin-top:16px}
+  .sp-more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;font-size:var(--type-caption);font-weight:500;letter-spacing:var(--type-caption-ls);color:var(--ink);border-bottom:1px solid var(--rule-strong);padding-bottom:3px;-webkit-user-select:none;user-select:none}
+  .sp-more summary::-webkit-details-marker{display:none}
+  .sp-more summary::marker{content:""}
+  .sp-more .exp-icon{display:inline-block;width:11px;font-size:15px;line-height:1;text-align:center;transition:transform var(--dur-2) var(--ease-out)}
+  .sp-more[open] summary .exp-icon{transform:rotate(45deg)}
+  .sp-more p{margin:14px 0 0;font-family:'DM Sans',sans-serif;font-size:var(--type-body);line-height:var(--type-body-lh);letter-spacing:var(--type-body-ls);color:var(--ink-2);max-width:var(--measure)}
+  @media (prefers-reduced-motion:reduce){.sp-more .exp-icon{transition:none}}
+  @media (max-width:720px){
+    .spine{padding-left:44px}
+    .spine::before{left:15px}
+    .spine-num{left:-44px;width:34px;font-size:20px}
+    .spine-dot{left:11px;top:9px}
+  }
+
+  .approach-close{padding:var(--section) 0;border-top:1px solid var(--rule-soft)}
+  .approach-close .close-line{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);margin:0;max-width:66ch;text-wrap:pretty}
+</style>
+</head>
+<body data-page="approach">
+
+<div data-shell="nav"></div>
+
+<main id="main" tabindex="-1">
+
+<!-- Approved hero — unchanged from production -->
+<section class="page-head approach-head" data-screen-label="01 Approach (prototype) — hero">
+  <div class="inner">
+    <h1 class="approach-h1" data-en="Approach" data-ja="アプローチ">Approach</h1>
+    <p class="approach-open" data-en="Disciplined execution across the ownership cycle." data-ja="方針の明確化から長期の保有まで、規律ある支援を。">Disciplined execution across the ownership cycle.</p>
+  </div>
+</section>
+
+<!-- Responsibility matrix — no arrows, no capital-flow implication -->
+<section class="resp" data-screen-label="02 Approach (prototype) — responsibilities">
+  <div class="shell">
+    <span class="resp-kicker" data-en="Responsibilities" data-ja="役割分担">Responsibilities</span>
+    <div class="rm">
+      <div class="rm-col">
+        <h2 class="rm-h" data-en="Investor retains" data-ja="投資家が保持">Investor retains</h2>
+        <ul class="rm-list">
+          <li data-en="Investment objectives" data-ja="投資方針">Investment objectives</li>
+          <li data-en="Capital commitment" data-ja="資本のコミットメント">Capital commitment</li>
+          <li data-en="Ownership" data-ja="資産の保有">Ownership</li>
+          <li data-en="Investment decisions" data-ja="投資判断">Investment decisions</li>
+          <li data-en="Final approvals" data-ja="最終承認">Final approvals</li>
+        </ul>
+      </div>
+      <div class="rm-col">
+        <h2 class="rm-h" data-en="Reiwa Capital coordinates" data-ja="Reiwa Capitalが取りまとめ">Reiwa Capital coordinates</h2>
+        <ul class="rm-list">
+          <li data-en="Market sourcing" data-ja="市場でのソーシング">Market sourcing</li>
+          <li data-en="Opportunity assessment" data-ja="案件の評価">Opportunity assessment</li>
+          <li data-en="Structuring and financing" data-ja="ストラクチャリングと資金調達">Structuring and financing</li>
+          <li data-en="Due diligence and acquisition" data-ja="デューデリジェンスと取得">Due diligence and acquisition</li>
+          <li data-en="Reporting and asset oversight" data-ja="レポーティングと資産の監督">Reporting and asset oversight</li>
+        </ul>
+      </div>
+    </div>
+    <p class="rm-note" data-en="Investment decisions and ownership remain with the investor." data-ja="投資判断と資産の保有は、投資家に帰属します。">Investment decisions and ownership remain with the investor.</p>
+  </div>
+</section>
+
+<!-- The process — continuous spine: objective sentence + consideration labels + optional detail -->
+<section class="spine-section" data-screen-label="03 Approach (prototype) — process">
+  <div class="shell">
+    <span class="spine-kicker" data-en="The Process" data-ja="プロセス">The Process</span>
+    <div class="spine">
+
+      <div class="spine-stage">
+        <span class="spine-num">01</span><span class="spine-dot"></span>
+        <h2 class="spine-title" data-en="Mandate Definition" data-ja="方針の明確化">Mandate Definition</h2>
+        <p class="spine-obj" data-en="Establish the investor&rsquo;s objectives and parameters before opportunities are pursued." data-ja="案件の検討に先立ち、投資家の方針と条件を確定します。">Establish the investor&rsquo;s objectives and parameters before opportunities are pursued.</p>
+        <p class="spine-tags" data-en="Hold period · Return objectives · Risk · Financing · Reporting" data-ja="保有期間・収益目標・リスク・資金調達・報告">Hold period · Return objectives · Risk · Financing · Reporting</p>
+        <details class="sp-more">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="Detail" data-ja="詳細">Detail</span></summary>
+          <p data-en="Each mandate begins with the investor&rsquo;s objectives: hold period, return objectives, risk tolerance, financing parameters, tax, foreign exchange and reporting requirements. This defines what to pursue, what to avoid and how each opportunity is assessed." data-ja="各マンデートは、投資家の保有期間、収益目標、リスク許容度、資金調達の条件、税務、為替、レポーティング要件の確認から始まります。これにより、追求するもの、避けるもの、各案件の評価基準が定まります。">Each mandate begins with the investor&rsquo;s objectives: hold period, return objectives, risk tolerance, financing parameters, tax, foreign exchange and reporting requirements. This defines what to pursue, what to avoid and how each opportunity is assessed.</p>
+        </details>
+      </div>
+
+      <div class="spine-stage">
+        <span class="spine-num">02</span><span class="spine-dot"></span>
+        <h2 class="spine-title" data-en="Sourcing and Underwriting" data-ja="ソーシングと審査">Sourcing and Underwriting</h2>
+        <p class="spine-obj" data-en="Opportunities are sourced through local relationships, direct owner contact and adviser networks." data-ja="機会は、現地の関係、オーナーとの直接の接触、アドバイザーのネットワークを通じて発掘します。">Opportunities are sourced through local relationships, direct owner contact and adviser networks.</p>
+        <p class="spine-tags" data-en="Location · Income quality · Condition · Long-term fit" data-ja="立地・収益の質・状態・長期適合性">Location · Income quality · Condition · Long-term fit</p>
+        <details class="sp-more">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="Detail" data-ja="詳細">Detail</span></summary>
+          <p data-en="Each opportunity is reviewed for location, income quality, condition, ownership structure and long&#8209;term fit." data-ja="各案件は、立地、収益の質、状態、保有ストラクチャー、長期的な適合性に照らして精査します。">Each opportunity is reviewed for location, income quality, condition, ownership structure and long&#8209;term fit.</p>
+        </details>
+      </div>
+
+      <div class="spine-stage">
+        <span class="spine-num">03</span><span class="spine-dot"></span>
+        <h2 class="spine-title" data-en="Structuring" data-ja="ストラクチャリング">Structuring</h2>
+        <p class="spine-obj" data-en="Each holding is structured around the investor&rsquo;s requirements." data-ja="各保有は、投資家の要件に沿って組成します。">Each holding is structured around the investor&rsquo;s requirements.</p>
+        <p class="spine-tags" data-en="Ownership · Financing · Reporting · Exit" data-ja="保有・ファイナンス・報告・出口">Ownership · Financing · Reporting · Exit</p>
+        <details class="sp-more">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="Detail" data-ja="詳細">Detail</span></summary>
+          <p data-en="Legal, tax and accounting advisers are engaged so ownership, financing, reporting and exit considerations are addressed before acquisition." data-ja="法務・税務・会計のアドバイザーと連携し、保有、ファイナンス、報告、出口に関する論点を取得前に整理します。">Legal, tax and accounting advisers are engaged so ownership, financing, reporting and exit considerations are addressed before acquisition.</p>
+        </details>
+      </div>
+
+      <div class="spine-stage">
+        <span class="spine-num">04</span><span class="spine-dot"></span>
+        <h2 class="spine-title" data-en="Acquisition Execution" data-ja="取得の実行">Acquisition Execution</h2>
+        <p class="spine-obj" data-en="Reiwa&nbsp;Capital coordinates sellers, advisers, lenders, consultants and operating partners through completion." data-ja="Reiwa Capitalが、売主、アドバイザー、貸し手、コンサルタント、運営パートナーを取引完了まで取りまとめます。">Reiwa&nbsp;Capital coordinates sellers, advisers, lenders, consultants and operating partners through completion.</p>
+        <p class="spine-tags" data-en="Counterparties · Sequence · Completion" data-ja="関係者・順序・完了">Counterparties · Sequence · Completion</p>
+        <details class="sp-more">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="Detail" data-ja="詳細">Detail</span></summary>
+          <p data-en="Cross-border transactions require disciplined coordination. Decisions stay clear and in sequence." data-ja="クロスボーダーの取引には、規律ある調整が求められます。意思決定は明快に、順序立てて。">Cross-border transactions require disciplined coordination. Decisions stay clear and in sequence.</p>
+        </details>
+      </div>
+
+      <div class="spine-stage">
+        <span class="spine-num">05</span><span class="spine-dot"></span>
+        <h2 class="spine-title" data-en="Asset Oversight" data-ja="資産の監督">Asset Oversight</h2>
+        <p class="spine-obj" data-en="Oversight continues through reporting, business planning, leasing, capital projects, refinancing and exit." data-ja="監督は、報告、事業計画、リーシング、資本的プロジェクト、リファイナンス、出口まで続きます。">Oversight continues through reporting, business planning, leasing, capital projects, refinancing and exit.</p>
+        <p class="spine-tags" data-en="Reporting · Leasing · Capital projects · Exit" data-ja="報告・リーシング・資本的プロジェクト・出口">Reporting · Leasing · Capital projects · Exit</p>
+        <details class="sp-more">
+          <summary><span class="exp-icon" aria-hidden="true">+</span><span data-en="Detail" data-ja="詳細">Detail</span></summary>
+          <p data-en="Ownership begins at completion." data-ja="保有は、取引の完了とともに始まります。">Ownership begins at completion.</p>
+        </details>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="approach-close" data-screen-label="04 Approach (prototype) — closing">
+  <div class="shell">
+    <p class="close-line" data-en="Reiwa&nbsp;Capital supports investors who want direct ownership in Europe without running every local workstream themselves." data-ja="現地の実務を自ら担うことなく、欧州不動産を直接保有したい投資家を支援します。">Reiwa&nbsp;Capital supports investors who want direct ownership in Europe without running every local workstream themselves.</p>
+  </div>
+</section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="shell.js?v=52"></script>
+<script src="i18n.js?v=2"></script>
+<script src="craft.js?v=13"></script>
+</body>
+</html>

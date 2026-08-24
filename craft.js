@@ -76,7 +76,15 @@
       // Home's Acquire/Structure/Oversee links) always clear the fixed bar.
       // Recomputed on every trigger below, incl. font load + orientation.
       var navH = Math.ceil(bar.getBoundingClientRect().height);
-      if (navH) document.documentElement.style.setProperty('--nav-h', (navH + 16) + 'px');
+      // --nav-h is the header's TRUE height: consumers that must sit flush
+      // beneath it (the hero's negative offset, the Approach sticky process
+      // tracker's `top`) cannot carry a fudge factor or a strip of scrolling
+      // content shows through the gap. Anchor jumps want deliberate breathing
+      // room, so they get their own token instead.
+      if (navH) {
+        document.documentElement.style.setProperty('--nav-h', navH + 'px');
+        document.documentElement.style.setProperty('--anchor-h', (navH + 16) + 'px');
+      }
       var past;
       if (floatEl) {
         // Trigger the instant the hero's own bottom edge (live geometry —

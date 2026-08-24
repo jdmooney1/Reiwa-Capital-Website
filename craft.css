@@ -88,8 +88,8 @@
     -webkit-backdrop-filter: none;
             backdrop-filter: none;
   }
-  .nav-bar { background: rgba(248, 246, 238, 0.92); }
-  .nav-bar.is-scrolled { background: rgba(248, 246, 238, 0.95); }
+  .nav-bar { background: var(--paper-warm); }
+  .nav-bar.is-scrolled { background: var(--paper-warm); }
 }
 
 /* =====================================================================

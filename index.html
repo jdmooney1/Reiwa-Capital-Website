@@ -6,6 +6,9 @@
 <title>Reiwa Capital — European Real Estate, Structured for Overseas Capital</title>
 <meta name="description" content="Reiwa Capital advises overseas investors on European real estate in London and Amsterdam, from acquisition through ownership.">
 <link rel="canonical" href="https://reiwa-capital.com/">
+<link rel="alternate" hreflang="en" href="https://reiwa-capital.com/">
+<link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -25,71 +28,25 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=17">
 <link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=56">
+<link rel="stylesheet" href="editorial.css?v=60">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=20">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
 <link rel="preload" as="image" href="assets/imagery/home-hero-blur.webp" fetchpriority="high">
 <style>
   /* --- Hero ----------------------------------------------------------- */
-  .home-hero { position: relative; margin-top: calc(var(--nav-h, 67px) * -1); min-height: calc(100vh + var(--nav-h, 67px)); display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
+  .home-hero { position: relative; margin-top: calc(var(--nav-h, 74px) * -1); min-height: min(calc(88vh + var(--nav-h, 74px)), 1000px); display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
   .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #100b14; }
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transform: scale(1.06); }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(16,11,20,0.30) 0%, rgba(16,11,20,0.05) 26%, rgba(16,11,20,0) 46%), linear-gradient(0deg, rgba(16,11,20,0.84) 0%, rgba(16,11,20,0.36) 46%, rgba(16,11,20,0) 76%); }
-  .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) 116px; }
-  .home-hero h1 { position: relative; z-index: 1; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-display); line-height: var(--type-display-lh); letter-spacing: var(--type-display-ls); color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 16ch; }
+  .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(88px, 8vw, 112px); }
+  .home-hero h1 { position: relative; z-index: 1; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(40px, 30px + 2.8vw, 74px); line-height: 1.02; letter-spacing: -0.024em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 16ch; }
   .home-hero .sub { margin-top: 22px; font-size: var(--type-body-l); line-height: var(--type-body-l-lh); color: rgba(255,255,255,0.82); max-width: 52ch; font-weight: 400; letter-spacing: var(--type-body-l-ls); }
-  .home-hero .loc { display: block; position: relative; margin-top: 30px; font-size: var(--type-label); font-weight: 500; letter-spacing: var(--type-label-ls); line-height: var(--type-label-lh); text-transform: uppercase; text-align: center; color: rgba(255,255,255,0.62); }
-
-  /* --- Positioning + role routes ------------------------------------- */
-  .positioning { padding: var(--sp-home) 0 clamp(52px, 5.5vw, 76px); }
-  .home-open { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 14px + 1.6vw, 34px); line-height: 1.26; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 20px; max-width: 900px; text-wrap: pretty; }
-  html[lang="ja"] .home-open { line-height: 1.7; letter-spacing: 0.02em; }
-  .home-sub-para { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.5px + 0.15vw, 17px); line-height: 1.5; letter-spacing: 0; color: var(--ink-2); margin: 0; max-width: 780px; text-wrap: pretty; }
-  html[lang="ja"] .home-sub-para { line-height: 1.85; }
-  .role-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 4.5vw, 72px); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); padding: clamp(26px, 3vw, 34px) 0; margin-top: clamp(40px, 5vw, 64px); }
-  .role-item { min-width: 0; display: block; text-decoration: none; color: inherit; }
-  .role-num { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-label); line-height: 1; letter-spacing: 0.12em; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-bottom: 10px; }
-  .role-term { position: relative; display: inline-block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 16px + 0.4vw, 22px); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); padding-bottom: 3px; }
-  .role-term::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 200ms var(--ease-out); }
-  @media (hover: hover) { .role-item:hover .role-term::after { transform: scaleX(1); } }
-  .role-item:focus-visible .role-term::after { transform: scaleX(1); }
-  .role-desc { display: block; margin-top: 10px; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13px + 0.3vw, 16px); line-height: 1.5; letter-spacing: var(--type-body-ls); color: var(--ink-2); max-width: none; }
-  html[lang="ja"] .role-desc { line-height: 1.8; }
-  @media (prefers-reduced-motion: reduce) { .role-term::after { transition: none; } }
-  @media (max-width: 760px) {
-    .role-row { grid-template-columns: 1fr; gap: 0; border-top: 0; border-bottom: 0; padding: 0; }
-    .role-item { display: grid; grid-template-columns: 30px 1fr; column-gap: 14px; padding: 18px 0; border-top: 1px solid var(--rule); }
-    .role-item:first-child { border-top: 1px solid var(--rule-strong); }
-    .role-item:last-child { border-bottom: 1px solid var(--rule-strong); }
-    .role-num { grid-row: 1 / span 2; margin-bottom: 0; padding-top: 3px; }
-    .role-term { grid-column: 2; }
-    .role-desc { grid-column: 2; max-width: none; }
-  }
-
-  /* --- Areas of focus — large imagery, little text ------------------- */
-  .home-areas { padding: clamp(52px, 5.5vw, 76px) 0 var(--sp-home); }
-  .home-areas .areas-head { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(36px, 4vw, 56px); }
-  .home-areas .areas-head h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); margin: 0; }
-  .areas-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
-  .area { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-warm); display: block; cursor: pointer; }
-  .area + .area { border-left: 1px solid var(--rule); }
-  .area .area-media { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; filter: var(--img-grade); }
-  .area::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--img-overlay); transition: background var(--img-dur) var(--img-ease); }
-  .area:hover::after, .area:focus-visible::after { background: var(--img-overlay-hover); }
-  .area .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 30px 32px 32px; display: flex; flex-direction: column; pointer-events: none; }
-  .area .cap::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: -104px; z-index: -1; background: linear-gradient(0deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.52) 42%, rgba(0,0,0,0) 100%); pointer-events: none; }
-  .area .cap .name { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 17px + 0.2vw, 20px); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: #fff; }
-  .area .cap .desc { display: block; margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.5px + 0.15vw, 15px); line-height: 1.5; font-weight: 400; color: rgba(255,255,255,0.88); max-width: none; }
-  html[lang="ja"] .area .cap .desc { line-height: 1.8; }
-  @media (prefers-reduced-motion: reduce) { .area .area-media, .area::after { transition: none; } }
-  @media (max-width: 900px) {
-    .areas-band { grid-template-columns: 1fr; }
-    .area + .area { border-left: 0; border-top: 1px solid var(--rule); }
-    .area { aspect-ratio: 16 / 10; }
-  }
+  .home-hero .loc { display: block; position: relative; margin-top: 30px; font-size: clamp(14px, 0.4vw + 12px, 16px); font-weight: 500; letter-spacing: var(--type-label-ls); line-height: var(--type-label-lh); text-transform: uppercase; text-align: center; color: rgba(255,255,255,0.62); }
   @media (max-width: 760px) {
     .home-hero .inner { padding: 0 var(--gutter) 84px; }
     .home-hero h1 { max-width: 14ch; }
@@ -99,11 +56,172 @@
   @media (max-width: 420px) {
     .home-hero .inner { padding: 0 var(--gutter) 72px; }
   }
+
+  /* --- Shared section eyebrow (matches about/approach/focus pages) ---- */
+  .sec-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-label); font-weight: 500; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin: 0; }
+
+  /* --- What We Do — the four capabilities, editorial rows, no cards --- */
+  .wwd { padding: var(--sp-home) 0 clamp(52px, 5.5vw, 76px); position: relative; z-index: 0; overflow: hidden; }
+  .wwd-head { max-width: var(--measure-statement); }
+  .wwd-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 1.5vw + 16px, 36px); line-height: 1.24; letter-spacing: var(--type-h2-ls); color: var(--ink); margin: 16px 0 0; text-wrap: pretty; }
+  html[lang="ja"] .wwd-h { line-height: 1.5; letter-spacing: 0.01em; }
+  .wwd-rows { border-top: 1px solid var(--rule-strong); margin-top: clamp(40px, 4.5vw, 64px); }
+  .wwd-row { position: relative; display: grid; grid-template-columns: 9% 40% minmax(0,1fr); column-gap: clamp(20px, 2.4vw, 34px); align-items: baseline; padding: clamp(30px, 2.8vw, 38px) 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; transition: background-color var(--dur-fast) var(--ease-out); }
+  @media (hover: hover) { .wwd-row:hover { background: color-mix(in srgb, var(--sakura-pink) 45%, var(--paper-warm)); } }
+  .wwd-row:focus-visible { background: color-mix(in srgb, var(--sakura-pink) 45%, var(--paper-warm)); outline: 2px solid var(--ink); outline-offset: -2px; }
+  @media (prefers-reduced-motion: reduce) { .wwd-row { transition: none; } }
+  .wwd-num { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(13px, 12.6px + 0.14vw, 15px); letter-spacing: 0.06em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .wwd-name { position: relative; display: inline-block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 1.1vw + 19px, 31px); line-height: 1.14; letter-spacing: var(--type-h2-ls); color: var(--ink-2); padding-bottom: 4px; transition: color var(--dur-fast) var(--ease-out); }
+  @media (hover: hover) { .wwd-row:hover .wwd-name { color: var(--ink); } }
+  .wwd-desc { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.5px + 0.15vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 46ch; }
+  html[lang="ja"] .wwd-desc { line-height: 1.8; }
+  @media (max-width: 760px) {
+    .wwd-row { grid-template-columns: 30px 1fr; column-gap: 14px; padding: 22px 0; }
+    .wwd-num { grid-row: 1 / span 2; padding-top: 5px; }
+    .wwd-name { grid-column: 2; font-size: clamp(22px, 5.6vw, 27px); }
+    .wwd-desc { grid-column: 2; margin-top: 8px; max-width: none; }
+    /* Touch has no hover to leave, so the pink never persists as a stuck
+       state — the row is a plain link here. */
+    .wwd-name { color: var(--ink); }
+  }
+
+  /* --- Markets — one branded map graphic, no small cards -------------- */
+  .home-markets { padding: clamp(52px, 5.5vw, 76px) 0 clamp(30px, 3vw, 44px); }
+  @media (max-width: 760px) { .home-markets { padding: clamp(40px, 8vw, 52px) 0 clamp(20px, 4vw, 28px); } }
+  .home-markets-head { max-width: 640px; }
+  .hm-lead { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 16px + 1vw, 26px); line-height: 1.3; color: var(--ink); margin: 14px 0 0; text-wrap: pretty; }
+  html[lang="ja"] .hm-lead { line-height: 1.6; }
+  .hm-map-wrap { position: relative; width: 100%; max-width: none; aspect-ratio: 2.15 / 1; margin: clamp(28px, 3.2vw, 44px) auto 0; background: var(--paper-warm); overflow: hidden; }
+  .hm-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .hm-map-country { fill: none; stroke: var(--rule); stroke-width: 0.5; vector-effect: non-scaling-stroke; }
+  .hm-map-context { opacity: 0.42; }
+  .hm-map-hi { fill: var(--reiwa-lavender); fill-opacity: 0.32; stroke: var(--ink-3); stroke-width: 0.85; vector-effect: non-scaling-stroke; opacity: 1; }
+  .hm-leader { fill: none; stroke: var(--accent-sumire-light); stroke-width: 0.6; opacity: 0.85; vector-effect: non-scaling-stroke; }
+  .hm-marker-ring { fill: var(--paper-warm); stroke: var(--ink-2); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .hm-marker-dot { fill: var(--ink-2); }
+  .hm-map-labels { position: absolute; inset: 0; pointer-events: none; }
+  .hm-city { position: absolute; display: block; text-decoration: none; padding: 8px; margin: -8px; pointer-events: auto; transform: translate(-50%, -50%); }
+  .hm-city-label { font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 0.8vw + 10px, 15.5px); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); white-space: nowrap; transition: color 220ms var(--ease-out); }
+  html[lang="ja"] .hm-city-label { letter-spacing: 0.03em; }
+  @media (hover: hover) { .hm-city:hover .hm-city-label { color: var(--eyebrow-ink); } }
+  .hm-map-noscript { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  @media (max-width: 700px) { .hm-map-wrap { aspect-ratio: 1 / 1; margin-top: clamp(24px, 5vw, 32px); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .hm-map-context { opacity: 0; transition: opacity var(--dur-reveal-scroll,520ms) var(--ease-out) 0ms; }
+    .hm-map-in .hm-map-context { opacity: 0.6; }
+    .hm-map-hi { opacity: 0; transition: opacity var(--dur-reveal-scroll,520ms) var(--ease-out) 80ms; }
+    .hm-map-in .hm-map-hi { opacity: 1; }
+    .hm-map-nl { transition-delay: 120ms; }
+    .hm-country-label { opacity: 0; transition: opacity var(--dur-hover) var(--ease-out) 140ms; }
+    .hm-country-label.hm-cl-uk { transition-delay: 140ms; }
+    .hm-country-label.hm-cl-nl { transition-delay: 180ms; }
+    .hm-map-in .hm-country-label { opacity: 1; }
+    .hm-mark { opacity: 0; transition: opacity var(--dur-hover) var(--ease-out); }
+    .hm-mark-london { transition-delay: 180ms; }
+    .hm-mark-amsterdam { transition-delay: 220ms; }
+    .hm-map-in .hm-mark { opacity: 1; }
+    .hm-city { opacity: 0; transform: translate(-50%, calc(-50% + 5px)); transition: opacity var(--dur-hover) var(--ease-out), transform var(--dur-hover) var(--ease-out); }
+    .hm-city-london { transition-delay: 240ms; }
+    .hm-city-amsterdam { transition-delay: 290ms; }
+    .hm-map-in .hm-city { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  /* --- Areas of focus — large imagery, little text --------------------- */
+  .home-areas { padding: clamp(44px, 4.4vw, 64px) 0 clamp(52px, 5.5vw, 76px); }
+  .home-areas .areas-head { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(36px, 4vw, 56px); }
+  .home-areas .areas-head h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); margin: 0; }
+  .areas-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+  .area { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-warm); display: block; }
+  .area + .area { border-left: 1px solid var(--rule); }
+  .area .area-media { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; filter: var(--img-grade); transition: transform 450ms var(--ease-out); }
+  /* Clickable image — the one image-link behaviour: contained scale, matched
+     to .mkt-media / .ch-media so every photograph responds identically. */
+  @media (hover: hover) { .area:hover .area-media, .area:focus-visible .area-media { transform: scale(1.02); } }
+  .area::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--img-overlay); transition: background 450ms var(--ease-out); }
+  .area:hover::after, .area:focus-visible::after { background: var(--img-overlay-hover); }
+  .area .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 30px 32px 32px; display: flex; flex-direction: column; pointer-events: none; }
+  .area .cap::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: -104px; z-index: -1; background: linear-gradient(0deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.52) 42%, rgba(0,0,0,0) 100%); pointer-events: none; }
+  .area .cap .name { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 18.4px + 0.45vw, 25px); line-height: 1.18; letter-spacing: var(--type-h3-ls); color: #fff; }
+  .area .cap .desc { display: block; margin: 11px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.4px + 0.28vw, 15.5px); line-height: 1.52; font-weight: 400; color: rgba(255,255,255,0.9); max-width: none; }
+  html[lang="ja"] .area .cap .desc { line-height: 1.8; }
+  @media (prefers-reduced-motion: reduce) { .area .area-media, .area::after { transition: none; } }
+  @media (max-width: 900px) {
+    .areas-band { grid-template-columns: 1fr; }
+    .area + .area { border-left: 0; border-top: 1px solid var(--rule); }
+    .area { aspect-ratio: 16 / 10; }
+  }
+  @media (max-width: 480px) {
+    /* Portrait-leaning crop on phones — keeps building form readable
+       instead of a letterbox strip of facade. */
+    .area { aspect-ratio: 4 / 3; }
+    .area .cap { padding: 22px 20px 24px; }
+  }
+
+/* --- Operating Model — ivory intro (narrow editorial column) leading into
+     a contained deep-ink panel below; the panel never touches the section's
+     top/bottom edge, so it reads as an inset exhibit, not a footer block.
+     One numbered vertical spine — investor, Reiwa, specialists — carries the
+     hierarchy; Reiwa is distinguished by weight/colour alone, never scale. */
+  .hww { padding: clamp(56px, 6vw, 92px) 0; }
+  .hww-head { max-width: 640px; }
+  .hww-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(28px, 2vw + 20px, 40px); line-height: 1.15; letter-spacing: var(--type-h2-ls); color: var(--ink); margin: 14px 0 0; text-wrap: pretty; }
+  html[lang="ja"] .hww-h { line-height: 1.5; }
+  .hww-intro { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 1vw + 13px, 18px); line-height: 1.55; color: var(--ink-2); margin: 16px 0 0; max-width: 58ch; text-wrap: pretty; }
+  html[lang="ja"] .hww-intro { line-height: 1.8; }
+  .hww-panel { background: var(--ink); margin-top: clamp(44px, 5vw, 68px); padding: clamp(48px, 5.5vw, 72px) clamp(28px, 4vw, 56px); }
+  .hww-flow { position: relative; max-width: 880px; margin: 0 auto; padding-left: clamp(40px, 4vw, 56px); }
+  .hww-flow::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: rgba(252,250,241,0.20); }
+  .hww-node { position: relative; display: grid; grid-template-columns: 200px 1fr; column-gap: clamp(24px, 3vw, 40px); padding: clamp(22px, 2.6vw, 30px) 0; }
+  .hww-node:first-child { padding-top: 0; }
+  .hww-node:last-child { padding-bottom: 0; }
+  .hww-node + .hww-node { border-top: 1px solid rgba(252,250,241,0.12); }
+  .hww-num { position: absolute; left: 0; top: clamp(22px, 2.6vw, 30px); transform: translateX(-50%); display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; color: rgba(252,250,241,0.45); background: var(--ink); padding: 4px 0; line-height: 1; }
+  .hww-node:first-child .hww-num { top: 0; }
+  .hww-node h3 { grid-column: 1; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(252,250,241,0.78); margin: 0; }
+  html[lang="ja"] .hww-node h3 { letter-spacing: 0.03em; text-transform: none; }
+  .hww-node p { grid-column: 2; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; color: rgba(252,250,241,0.7); margin: 0; max-width: 44ch; }
+  html[lang="ja"] .hww-node p { line-height: 1.85; }
+  .hww-node--center .hww-num { color: rgba(252,250,241,0.75); }
+  .hww-node--center h3 { color: var(--paper-warm); font-weight: 600; }
+  .hww-node--center p { color: rgba(252,250,241,0.88); }
+  .hww-foot { margin-top: clamp(32px, 3.5vw, 48px); }
+  .hww-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink); text-decoration: none; }
+  .hww-link svg { transition: transform 220ms var(--ease-out); }
+  @media (hover: hover) { .hww-link:hover svg { transform: translateX(4px); } }
+  @media (prefers-reduced-motion: reduce) { .hww-link svg { transition: none; } }
+  @media (max-width: 700px) {
+    .hww-panel { margin-top: 32px; padding: 36px 24px 40px; }
+    .hww-flow { padding-left: 24px; max-width: none; }
+    .hww-node { grid-template-columns: 1fr; row-gap: 8px; padding: 20px 0; }
+    .hww-node h3 { grid-column: 1; }
+    .hww-node p { grid-column: 1; }
+  }
+
+  /* --- Platform — short company statement, entity-neutral -------------- */
+  .platform { padding: clamp(52px, 5.5vw, 76px) 0; }
+  .platform-head { max-width: 640px; }
+  .plat-copy { max-width: 640px; }
+  .plat-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 16px + 1vw, 26px); line-height: 1.3; color: var(--ink); margin: 14px 0 20px; text-wrap: pretty; }
+  html[lang="ja"] .plat-statement { line-height: 1.7; }
+  .plat-support { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.5px + 0.15vw, 16px); line-height: 1.55; color: var(--ink-2); margin: 0 0 22px; }
+  html[lang="ja"] .plat-support { line-height: 1.8; }
+  .plat-link { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px; text-decoration: none; transition: border-color 220ms var(--ease-out); }
+  .plat-link:hover { border-color: var(--ink); }
+
+  /* --- Contact — restrained closing CTA --------------------------------- */
+  .contact-cta { padding: clamp(52px, 5.5vw, 84px) 0 clamp(72px, 7vw, 104px); }
+  .contact-cta-head { max-width: 640px; }
+  .cta-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 2vw, 40px); line-height: 1.2; color: var(--ink); margin: 14px 0 24px; max-width: 16ch; text-wrap: pretty; }
+  html[lang="ja"] .cta-statement { line-height: 1.6; }
+  .cta-link { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; color: var(--ink); text-decoration: none; }
+  .cta-link svg { transition: transform 220ms var(--ease-out); }
+  @media (hover: hover) { .cta-link:hover svg { transform: translateX(5px); } }
+  @media (prefers-reduced-motion: reduce) { .cta-link svg { transition: none; } }
 </style>
 </head>
-<body data-page="home">
+<body data-page="home" data-ja-url="/ja/">
 
-<noscript><div class="noscript-bar"><strong>Reiwa Capital</strong><nav aria-label="Primary"><a href="index.html">Home</a><a href="about.html">About</a><a href="approach.html">Approach</a><a href="investment-focus.html">Investment Focus</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a></span></div></noscript>
+<noscript><div class="noscript-bar"><strong>Reiwa Capital</strong><nav aria-label="Primary"><a href="/">Home</a><a href="about.html">About</a><a href="approach.html">Approach</a><a href="investment-focus.html">Investment Focus</a><a href="company.html">Company</a><a href="privacy.html">Privacy</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a></span></div></noscript>
 <div data-shell="nav"></div>
 
 <main id="main" tabindex="-1">
@@ -115,40 +233,57 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1 data-en="European<br>Real Estate.<br>Structured for<br>Overseas Capital." data-ja="日本の投資家のための<br>欧州不動産投資。">European<br>Real Estate.<br>Structured for<br>Overseas Capital.</h1>
-    <p class="sub" data-en="Cross-Border Real Estate Investment" data-ja="クロスボーダー不動産投資">Cross-Border Real Estate Investment</p>
+    <h1 data-en="European<br>Real Estate.<br>Structured for<br>Overseas Capital." data-ja="欧州の不動産。<br>日本の投資家の<br>ために。">European Real Estate.<br>Structured for Overseas Capital.</h1>
     <span class="loc" data-en="Tokyo&nbsp;·&nbsp;London&nbsp;·&nbsp;Amsterdam" data-ja="東京&nbsp;·&nbsp;ロンドン&nbsp;·&nbsp;アムステルダム">Tokyo&nbsp;·&nbsp;London&nbsp;·&nbsp;Amsterdam</span>
   </div>
 </section>
 
-<!-- ================================================================ 2 · POSITIONING + ROUTES -->
-<section class="positioning" data-screen-label="02 Home — positioning">
-  <span class="reiwa-geo" aria-hidden="true" style="top:-10%;right:-8%;width:34vw;height:34vw;max-width:440px;max-height:440px;transform:rotate(6deg)"><svg viewBox="500 210 260 380" focusable="false"><path d="M720.654 411.452C736.97 439.726 745.739 471.932 746.004 504.616C746.217 530.604 741.062 556.327 730.858 580.242L552.98 477.512C552.98 477.512 552.873 477.459 552.82 477.406C524.919 461.25 508.231 432.285 508.231 400.026C508.231 367.766 524.813 339.015 552.555 322.805C552.714 322.699 552.82 322.646 552.98 322.54L730.858 219.809C741.062 243.725 746.217 269.447 746.004 295.435C745.685 328.067 736.916 360.326 720.654 388.6L714.064 400.026L720.654 411.452Z" fill="none" stroke="currentColor" stroke-width="1"></path></svg></span>
+<!-- ================================================================ 2 · WHAT WE DO -->
+<section class="wwd" data-screen-label="02 Home — what we do">
   <div class="shell">
-    <p class="home-open" data-en="Reiwa&nbsp;Capital supports overseas investors through the acquisition, ownership and management of European real estate, with a focus on London and Amsterdam." data-ja="Reiwa Capitalは、日本の投資家の立場に立ち、欧州不動産投資における現地実行を調整します。">Reiwa&nbsp;Capital supports overseas investors through the acquisition, ownership and management of European real estate, with a focus on London and Amsterdam.</p>
-    <p class="home-sub-para" data-en="We combine investor-side advice with local coordination across acquisition, financing, ownership and eventual exit." data-ja="取得、組成、資金調達、保有から出口まで、ロンドンとアムステルダムを中心に一貫して対応します。">We combine investor-side advice with local coordination across acquisition, financing, ownership and eventual exit.</p>
-    <div class="role-row">
-      <a class="role-item" href="approach.html#acquisition">
-        <span class="role-num" aria-hidden="true">01</span>
-        <span class="role-term" data-en="Acquire" data-ja="取得">Acquire</span>
-        <span class="role-desc" data-en="Source opportunities, assess the investment case and coordinate the transaction." data-ja="案件の発掘から投資判断、取引実行までを一貫して担います。">Source opportunities, assess the investment case and coordinate the transaction.</span>
+    <div class="wwd-head">
+      <p class="wwd-h" data-en="A cross-border real estate investment platform connecting overseas capital with European real estate opportunities, from acquisition through active ownership." data-ja="国境を越えた不動産投資プラットフォームとして、海外資本を欧州の投資機会につなぎ、取得から保有後の運用までを支える。">A cross-border real estate investment platform connecting overseas capital with European opportunities, from acquisition through active ownership.</p>
+    </div>
+    <div class="wwd-rows">
+      <a class="wwd-row" href="approach.html#assess">
+        <span class="wwd-num" aria-hidden="true">01</span>
+        <span class="wwd-name" data-en="Source" data-ja="発掘">Source</span>
+        <span class="wwd-desc" data-en="Identify, assess and underwrite European real estate opportunities." data-ja="欧州における不動産投資機会を発掘し、査定します。">Identify, assess and underwrite European real estate opportunities.</span>
       </a>
-      <a class="role-item" href="approach.html#structure">
-        <span class="role-num" aria-hidden="true">02</span>
-        <span class="role-term" data-en="Structure" data-ja="組成">Structure</span>
-        <span class="role-desc" data-en="Coordinate ownership, financing, specialist tax advice and investor reporting." data-ja="保有形態や資金調達の設計、専門的な税務助言、投資家向け報告の体制を整えます。">Coordinate ownership, financing, specialist tax advice and investor reporting.</span>
+      <a class="wwd-row" href="approach.html#structure">
+        <span class="wwd-num" aria-hidden="true">02</span>
+        <span class="wwd-name" data-en="Structure" data-ja="組成">Structure</span>
+        <span class="wwd-desc" data-en="Coordinate acquisition, financing and ownership structures." data-ja="取得、資金調達、保有形態を調整します。">Coordinate acquisition, financing and ownership structures.</span>
       </a>
-      <a class="role-item" href="approach.html#oversight">
-        <span class="role-num" aria-hidden="true">03</span>
-        <span class="role-term" data-en="Manage" data-ja="管理">Manage</span>
-        <span class="role-desc" data-en="Monitor performance and support key decisions through to exit." data-ja="運用状況を注視し、報告を調整しながら、出口に至る重要な意思決定を支援します。">Monitor performance, coordinate reporting and support key ownership decisions through to exit.</span>
+      <a class="wwd-row" href="approach.html#acquisition">
+        <span class="wwd-num" aria-hidden="true">03</span>
+        <span class="wwd-name" data-en="Execute" data-ja="実行">Execute</span>
+        <span class="wwd-desc" data-en="Lead transactions alongside specialist local advisers." data-ja="現地の専門家とともに、取引を主導します。">Lead transactions alongside specialist local advisers.</span>
+      </a>
+      <a class="wwd-row" href="approach.html#oversight">
+        <span class="wwd-num" aria-hidden="true">04</span>
+        <span class="wwd-name" data-en="Manage" data-ja="管理">Manage</span>
+        <span class="wwd-desc" data-en="Oversee asset strategy, reporting and local execution throughout ownership." data-ja="保有期間を通じて、資産戦略・報告・現地での実行を監督します。">Oversee asset strategy, reporting and local execution throughout ownership.</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================================================================ 3 · AREAS OF FOCUS -->
-<section class="home-areas" data-screen-label="03 Home — areas of focus">
+<!-- ================================================================ 3 · MARKETS -->
+<section class="home-markets" data-screen-label="03 Home — markets">
+  <div class="shell">
+    <div class="home-markets-head">
+      <h2 class="sec-eyebrow" data-en="Markets" data-ja="市場">Markets</h2>
+      <p class="hm-lead" data-en="Depth in two markets, not breadth across many." data-ja="多くの市場に広げるのではなく、二つの市場に深く根差す。">Depth in two markets, not breadth across many.</p>
+    </div>
+    <div class="hm-map-wrap" data-screen-label="map">
+      <noscript><span class="hm-map-noscript">London &middot; Amsterdam</span></noscript>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 4 · INVESTMENT FOCUS -->
+<section class="home-areas" data-screen-label="04 Home — investment focus">
   <div class="areas-head">
     <h2 data-en="Investment Focus" data-ja="重点領域">Investment Focus</h2>
   </div>
@@ -157,7 +292,7 @@
       <img class="area-media" src="assets/imagery/bg-income-800.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 33vw" width="980" height="1225" alt="" loading="lazy" decoding="async">
       <span class="cap">
         <span class="name" data-en="Income" data-ja="インカム">Income</span>
-        <span class="desc" data-en="Stabilised offices, residential and prime retail assets with durable occupier demand and resilient income." data-ja="オフィス、住宅、プライム商業施設など、テナント需要が底堅く、安定した収益が見込める資産。">Stabilised offices, residential and prime retail assets with durable occupier demand and resilient income.</span>
+        <span class="desc" data-en="Stabilised offices, residential and prime retail with durable occupier demand and visible income." data-ja="オフィス、住宅、プライム商業施設など、テナント需要が底堅く、収益の見通しが明確な資産。">Stabilised offices, residential and prime retail with durable occupier demand and visible income.</span>
       </span>
     </a>
     <a class="area" href="investment-focus.html#repositioning">
@@ -180,7 +315,8 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="shell.js?v=59"></script>
+<script src="map.js?v=10"></script>
+<script src="shell.js?v=62"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=16"></script>
 </body>

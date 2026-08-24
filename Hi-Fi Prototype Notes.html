@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hi-Fi Prototype Notes — Reiwa Capital</title>
+<style>
+:root{--ink:#271430;--ink2:#4a3a55;--paper:#FCFAF1;--rule:rgba(39,20,48,.14);--green:#2f5e40}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 "Helvetica Neue",Helvetica,Arial,sans-serif}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+a:hover{color:var(--ink2)}
+.wrap{max-width:820px;margin:0 auto;padding:56px 28px 96px}
+header{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:8px}
+h1{font-size:27px;font-weight:500;margin:0 0 6px;letter-spacing:-.01em}
+.meta{font-size:13px;color:var(--ink2)}
+h2{font-size:18px;font-weight:600;margin:44px 0 12px;padding-top:18px;border-top:1px solid var(--rule)}
+h3{font-size:14px;font-weight:600;margin:20px 0 6px}
+p{margin:8px 0;max-width:70ch}
+ul,ol{margin:8px 0;padding-left:22px;max-width:70ch}
+li{margin:5px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th{text-align:left;border-bottom:1.5px solid var(--ink);padding:6px 10px 6px 0;font-weight:600}
+td{border-bottom:1px solid var(--rule);padding:7px 10px 7px 0;vertical-align:top}
+.metrics{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.m{flex:1 1 150px;border:1px solid var(--rule);padding:12px 14px}
+.m b{display:block;font-size:22px;font-weight:500}
+.m span{font-size:12px;color:var(--ink2)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:2px;color:#fff;background:var(--green);vertical-align:1px}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:rgba(39,20,48,.07);padding:1px 5px;border-radius:2px}
+.links{display:flex;gap:24px;margin:18px 0;flex-wrap:wrap}
+.links a{font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Hi-Fi Prototype Notes — Approach &amp; Investment Focus</h1>
+<p class="meta">Rev. 2 · scoped to the two pages commissioned for prototyping. Home, About, Contact and Privacy are untouched pending separate approval.</p>
+</header>
+
+<div class="links">
+<a href="Approach — Hi-Fi Prototype.html">→ Open Approach prototype</a>
+<a href="Investment Focus — Hi-Fi Prototype.html">→ Open Investment Focus prototype</a>
+<a href="Redesign Direction.html">→ Open corrected wireframes (Rev. 2)</a>
+</div>
+
+<h2>Page height</h2>
+<p>Measured as rendered document height, same browser width before/after where noted.</p>
+<div class="metrics">
+<div class="m"><b>2956 → 2126px</b><span>Approach — before (1440w) → after (923w). Widths differ between captures; treat as directional. Structurally: 7 bordered blocks (op-model + 5 stage rows) become 3 continuous zones (diagram, spine, closing).</span></div>
+<div class="m"><b>2487 → 2108px</b><span>Investment Focus — before → after, both at 923w (matched). &minus;15% collapsed; each chapter's detail adds back roughly two lines only when opened.</span></div>
+</div>
+
+<h2>Visible word count</h2>
+<div class="metrics">
+<div class="m"><b>~218 → ~153</b><span>Approach — visible words, EN. &minus;30%. Every stage's objective sentence is the existing approved sentence, verbatim, shortened only by dropping each stage's second sentence into the considerations line (a label, not new prose).</span></div>
+<div class="m"><b>~199 → ~50</b><span>Investment Focus — visible words, EN, collapsed state. &minus;75% of forced reading. A further ~60 words sit one tap away behind &ldquo;What we look for&rdquo;, for ~110 words total if every chapter is opened &mdash; still &minus;45% of the original page.</span></div>
+</div>
+
+<h2>Content removed</h2>
+<ul>
+<li><strong>Approach:</strong> the separate kicker+H1 &ldquo;Approach&rdquo; pairing and its own opening statement are merged into one dominant headline (kicker demoted to a small label). The old two-sentence paragraph per stage is cut to its first, already-approved sentence; the second sentence's substance is compressed into a three-word considerations line.</li>
+<li><strong>Investment Focus:</strong> the entire &ldquo;Investment Strategy&rdquo; intro block is removed &mdash; it duplicated the page's own subhead (&ldquo;Three strategies across London and Amsterdam.&rdquo; appeared twice) and the five-filter grid (Location Quality / Income Profile / Asset Relevance / Execution Requirement / Exit Liquidity) is removed as generic, not tied to any image or chapter. No claim from either is lost: filters like income quality and exit liquidity are implicit in each chapter's own thesis and underwriting field.</li>
+</ul>
+
+<h3>No new investment claims</h3>
+<p>Per correction #6, nothing was added to the strategy copy. Each chapter's thesis is the live site's <code>fg-say</code> sentence, unchanged, character for character. The wireframe's earlier second sentences (&ldquo;Covenant strength and lease term matter more than yield alone,&rdquo; &ldquo;Refurbishment and planning risk are priced in, not assumed away,&rdquo; &ldquo;Operator covenant matters as much as the real estate&rdquo;) do not appear in the prototype and were struck from the wireframe too. The illustrative three-word criteria tags in the wireframe remain marked as placeholders pending copy approval &mdash; the prototype itself does not use them at all, to stay strictly inside approved copy.</p>
+
+<h2>Content placed behind disclosure</h2>
+<ul>
+<li><strong>Investment Focus</strong> &mdash; each chapter's <code>Asset Types</code> and <code>Underwriting</code> fields (existing approved copy, unchanged) move behind a native <code>&lt;details&gt;/&lt;summary&gt;</code> labelled &ldquo;What we look for&rdquo;. Open by default in print and with JavaScript disabled &mdash; nothing factual is ever hidden from a diligence reader working from a PDF or a text browser.</li>
+<li><strong>Approach</strong> &mdash; no content is hidden; the spine shows every stage's objective sentence and considerations line at all times. The only disclosure-like behaviour is the diagram's one-time entrance fade, which resolves to the fully visible end-state within 500ms (and instantly under <code>prefers-reduced-motion</code>).</li>
+</ul>
+
+<h2>Interaction notes</h2>
+<ul>
+<li><strong>Operating-model diagram (Approach)</strong> &mdash; static, no click targets. Language is carried entirely by the real EN/JA header toggle, exactly like the rest of the site; the diagram never shows both languages at once. Entrance is a quiet three-step opacity fade (≤500ms), reusing the same IntersectionObserver pattern already shipped in production, retargeted to the new markup.</li>
+<li><strong>Expanders (Investment Focus)</strong> &mdash; native <code>&lt;details&gt;</code>, so click/tap, Enter and Space all work with no custom script; state is per-chapter and independent. The &ldquo;+&rdquo; glyph rotates 45&deg; to read as &ldquo;&times;&rdquo; when open (≤280ms, the site's standard hover/toggle duration).</li>
+<li><strong>Navigation, footer, language toggle, drawer</strong> &mdash; unchanged: both prototypes load the real <code>shell.js</code>/<code>i18n.js</code>/<code>craft.js</code> and the production stylesheets, so header state, the drawer, next-chapter routing and the approved footer are the live behaviour, not a mockup.</li>
+</ul>
+
+<h2>Accessibility behaviour</h2>
+<ul>
+<li>Both pages keep one <code>&lt;h1&gt;</code> and a logical heading order (stage and chapter titles are <code>&lt;h2&gt;</code>).</li>
+<li><code>&lt;details&gt;/&lt;summary&gt;</code> is natively keyboard- and screen-reader-operable (exposes expanded/collapsed state without ARIA wiring); the marker is decorative and duplicated by the visible label text, not the only cue.</li>
+<li>The op-model connector labels (&ldquo;Advisory mandate&rdquo;, &ldquo;Local coordination&rdquo;) are real text, not baked into the arrow SVGs (which carry <code>aria-hidden</code>), so they read correctly in sequence for assistive tech.</li>
+<li>Reduced-motion: the diagram's entrance fade and the expander icon rotation both respect <code>prefers-reduced-motion</code> (instant, no transition).</li>
+<li>Colour and type are untouched from the approved system &mdash; no new contrast risk introduced.</li>
+</ul>
+
+<h2>What was not touched</h2>
+<p>Home, About, Contact, Privacy and all production files (<code>index.html</code>, <code>about.html</code>, <code>contact.html</code>, <code>privacy.html</code>, <code>editorial.css</code>, <code>shell.js</code>, etc.) are unchanged. The two files above are net-new, self-contained prototypes for review; nothing links to them from the live site.</p>
+
+</div>
+</body>
+</html>

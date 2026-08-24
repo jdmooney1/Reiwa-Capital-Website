@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<title>Home — Final Draft Prototype — Reiwa Capital</title>
+<link rel="stylesheet" href="assets/colors_and_type.css?v=14">
+<link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="editorial.css?v=41">
+<link rel="stylesheet" href="brand.css?v=6">
+<link rel="stylesheet" href="craft.css?v=19">
+<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<link rel="preload" as="image" href="assets/imagery/home-hero-blur.webp" fetchpriority="high">
+<style>
+  .proto-banner{position:sticky;top:0;z-index:80;background:var(--ink);color:var(--paper-warm);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:7px 12px}
+
+  /* Hero — approved, unchanged from production */
+  .home-hero { position: relative; margin-top: -67px; min-height: calc(100vh + 67px); display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
+  .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #100b14; }
+  .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transform: scale(1.06); }
+  .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(16,11,20,0.34) 0%, rgba(16,11,20,0.06) 26%, rgba(16,11,20,0) 46%), linear-gradient(0deg, rgba(16,11,20,0.86) 0%, rgba(16,11,20,0.38) 46%, rgba(16,11,20,0) 76%); }
+  .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) 116px; }
+  .home-hero h1 { position: relative; z-index: 1; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-display); line-height: var(--type-display-lh); letter-spacing: var(--type-display-ls); color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 15ch; }
+  .home-hero .sub { margin-top: 22px; font-size: var(--type-body-l); line-height: var(--type-body-l-lh); color: rgba(255,255,255,0.82); max-width: 52ch; font-weight: 400; letter-spacing: var(--type-body-l-ls); }
+  .home-hero .loc { display: block; position: relative; margin-top: 30px; font-size: var(--type-label); font-weight: 500; letter-spacing: var(--type-label-ls); line-height: var(--type-label-lh); text-transform: uppercase; text-align: center; color: rgba(255,255,255,0.62); }
+
+  /* Positioning — one statement, then Acquire / Structure / Oversee on a shared baseline */
+  .positioning { padding: var(--section) 0; border-bottom: 1px solid var(--rule); }
+  .home-open { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: var(--type-statement-lh); letter-spacing: var(--type-statement-ls); color: var(--ink); margin: 0; max-width: 72ch; text-wrap: balance; }
+  .acquire-row { display: flex; gap: clamp(32px, 4.5vw, 72px); flex-wrap: wrap; border-top: 1px solid var(--rule-strong); padding-top: clamp(26px, 3vw, 34px); margin-top: clamp(44px, 5vw, 68px); }
+  .ar-item { flex: 1 1 200px; min-width: 200px; }
+  .ar-term { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); margin-bottom: 10px; }
+  .ar-desc { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: var(--type-body-lh); letter-spacing: var(--type-body-ls); color: var(--ink-2); max-width: 28ch; }
+  @media (max-width: 760px) {
+    .acquire-row { flex-direction: column; gap: 0; border-top: 0; padding-top: 0; position: relative; padding-left: 22px; }
+    .acquire-row::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--rule-strong); }
+    .ar-item { padding: 0 0 30px; }
+    .ar-item:last-child { padding-bottom: 0; }
+  }
+
+  /* Investment Focus — three equal entrances, subtly varied caption placement */
+  .home-areas { padding: var(--section) 0; }
+  .home-areas .areas-head { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(36px, 4vw, 56px); }
+  .home-areas .areas-bridge { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: var(--type-statement-lh); letter-spacing: var(--type-statement-ls); color: var(--ink-2); margin: 18px 0 0; max-width: 56ch; text-wrap: balance; }
+  .home-areas .areas-head h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: var(--type-h2-lh); letter-spacing: var(--type-h2-ls); color: var(--ink); margin: 0; }
+  .areas-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+  .area { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-warm); display: block; }
+  .area + .area { border-left: 1px solid var(--rule); }
+  .area .area-media { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; filter: var(--img-grade); transition: transform 400ms var(--ease-out); }
+  @media (hover: hover) { .area:hover .area-media { transform: scale(1.01); } }
+  .area::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 46%, rgba(0,0,0,0) 82%); }
+  .area .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 30px 32px 32px; display: flex; flex-direction: column; }
+  .area.align-right .cap { align-items: flex-end; text-align: right; }
+  .area .cap .name { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: #fff; }
+  .area .cap .desc { display: block; margin-top: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: var(--type-caption-lh); font-weight: 400; color: rgba(255,255,255,0.82); max-width: 30ch; }
+  @media (prefers-reduced-motion: reduce) { .area .area-media { transition: none; } }
+  @media (max-width: 900px) {
+    .areas-band { grid-template-columns: 1fr; }
+    .area + .area { border-left: 0; border-top: 1px solid var(--rule); }
+    .area { aspect-ratio: 16 / 10; }
+    .area.align-right .cap { align-items: flex-start; text-align: left; }
+  }
+  @media (max-width: 760px) {
+    .home-hero .inner { padding: 0 var(--gutter) 84px; }
+    .home-hero h1 { max-width: 13ch; }
+  }
+</style>
+</head>
+<body data-page="home">
+
+<div class="proto-banner">Final-draft prototype · Home · combined direction — for review, not linked from the live site</div>
+<div data-shell="nav"></div>
+
+<main id="main" tabindex="-1">
+
+<!-- Approved hero — unchanged -->
+<section class="home-hero" data-screen-label="01 Home (final draft) — hero">
+  <div class="hero-media r-frame r-frame-lg on-dark">
+    <img class="hero-img" src="assets/imagery/home-hero-blur.webp" width="1300" height="1950" alt="" fetchpriority="high" decoding="async">
+  </div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <h1 data-en="European Real Estate.<br>Structured for Overseas Capital." data-ja="欧州の不動産。<br>日本の投資家の<br>ために。">European Real Estate.<br>Structured for Overseas Capital.</h1>
+    <p class="sub" data-en="Cross-Border Real Estate Investment" data-ja="クロスボーダー不動産投資">Cross-Border Real Estate Investment</p>
+    <span class="loc" data-en="Tokyo&nbsp;&nbsp;|&nbsp;&nbsp;London&nbsp;&nbsp;|&nbsp;&nbsp;Amsterdam" data-ja="東京&nbsp;&nbsp;|&nbsp;&nbsp;ロンドン&nbsp;&nbsp;|&nbsp;&nbsp;アムステルダム">Tokyo&nbsp;&nbsp;|&nbsp;&nbsp;London&nbsp;&nbsp;|&nbsp;&nbsp;Amsterdam</span>
+  </div>
+</section>
+
+<!-- One positioning statement, then Acquire / Structure / Oversee — replaces the old lifecycle grid -->
+<section class="positioning" data-screen-label="02 Home (final draft) — positioning">
+  <div class="shell">
+    <p class="home-open" data-en="Reiwa&nbsp;Capital advises overseas investors on the acquisition, structuring and ownership of European real estate, with a focus on London and Amsterdam." data-ja="Reiwa Capitalは、日本の投資家による欧州不動産の取得、ストラクチャリング、保有を支援します。対象市場はロンドンとアムステルダムです。">Reiwa&nbsp;Capital advises overseas investors on the acquisition, structuring and ownership of European real estate, with a focus on London and Amsterdam.</p>
+    <div class="acquire-row">
+      <div class="ar-item">
+        <span class="ar-term" data-en="Acquire" data-ja="取得">Acquire</span>
+        <span class="ar-desc" data-en="Source and assess opportunities in London and Amsterdam." data-ja="ロンドンとアムステルダムにおける機会をソーシングし、評価します。">Source and assess opportunities in London and Amsterdam.</span>
+      </div>
+      <div class="ar-item">
+        <span class="ar-term" data-en="Structure" data-ja="組成">Structure</span>
+        <span class="ar-desc" data-en="Coordinate ownership, financing and professional advice." data-ja="保有形態、資金調達、専門家の助言を取りまとめます。">Coordinate ownership, financing and professional advice.</span>
+      </div>
+      <div class="ar-item">
+        <span class="ar-term" data-en="Oversee" data-ja="監督">Oversee</span>
+        <span class="ar-desc" data-en="Support reporting, business planning, refinancing and exit." data-ja="報告、事業計画、リファイナンス、出口を支援します。">Support reporting, business planning, refinancing and exit.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment Focus — three equal entrances -->
+<section class="home-areas" data-screen-label="03 Home (final draft) — investment focus">
+  <div class="areas-head">
+    <h2 class="eyebrow" data-en="Investment Focus" data-ja="重点領域">Investment Focus</h2>
+    <p class="areas-bridge" data-en="Target assets combine durable income, improvement potential or operational quality with long‑term ownership." data-ja="対象とするのは、持続的なインカム、改善の余地、あるいは運営の質が長期の保有を支える資産です。">Target assets combine durable income, improvement potential or operational quality with long‑term ownership.</p>
+  </div>
+  <div class="areas-band">
+    <a class="area" href="investment-focus.html#income">
+      <img class="area-media" src="assets/imagery/bg-income-800.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 33vw" width="980" height="1225" alt="" loading="lazy" decoding="async">
+      <span class="cap">
+        <span class="name" data-en="Income" data-ja="インカム">Income</span>
+        <span class="desc" data-en="Long-leased assets, selected for predictable income." data-ja="長期賃貸の資産。予測可能な収益を基準に。">Long-leased assets, selected for predictable income.</span>
+      </span>
+    </a>
+    <a class="area align-right" href="investment-focus.html#repositioning">
+      <img class="area-media" src="assets/imagery/bg-repositioning-800.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 33vw" width="1535" height="1024" alt="" loading="lazy" decoding="async">
+      <span class="cap">
+        <span class="name" data-en="Repositioning" data-ja="リポジショニング">Repositioning</span>
+        <span class="desc" data-en="Under-managed buildings with scope for improvement." data-ja="管理が行き届いていない建物。改善余地を基準に。">Under-managed buildings with scope for improvement.</span>
+      </span>
+    </a>
+    <a class="area" href="investment-focus.html#hospitality">
+      <img class="area-media" src="assets/imagery/bg-hospitality-800.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 33vw" width="952" height="1269" alt="" loading="lazy" decoding="async">
+      <span class="cap">
+        <span class="name" data-en="Hospitality" data-ja="ホスピタリティ">Hospitality</span>
+        <span class="desc" data-en="Location, quality and discipline drive performance." data-ja="立地、質、規律が、成果を左右します。">Location, quality and discipline drive performance.</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="shell.js?v=52"></script>
+<script src="i18n.js?v=2"></script>
+<script src="craft.js?v=13"></script>
+</body>
+</html>

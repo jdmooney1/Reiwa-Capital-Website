@@ -9,11 +9,23 @@
 
 (function () {
   const NAV = [
-    { href: 'index.html',    en: 'Home',     ja: 'ホーム',    key: 'home' },
+    { href: '/',            en: 'Home',     ja: 'ホーム',    key: 'home' },
     { href: 'about.html',    en: 'About',    ja: '会社概要',  key: 'about' },
     { href: 'approach.html', en: 'Approach', ja: 'アプローチ', key: 'approach' },
     { href: 'investment-focus.html',  en: 'Investment Focus', ja: '重点領域',  key: 'focus' },
-    { href: 'contact.html',  en: 'Contact',  ja: 'お問い合わせ', key: 'contact' },
+    { href: 'company.html',  en: 'Company',  ja: '会社情報', key: 'contact' },
+  ];
+
+  /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
+     per the JA SEO brief (adds Insights; About/Contact reworded). Only used
+     when <body data-locale="ja">; the English NAV/FLOW above are untouched. */
+  const NAV_JA = [
+    { href: '/ja/',                          label: 'ホーム',       key: 'home' },
+    { href: '/ja/about.html',                label: 'Reiwa Capital', key: 'about' },
+    { href: '/ja/approach.html',             label: '投資アプローチ', key: 'approach' },
+    { href: '/ja/investment-focus.html',     label: '投資戦略',     key: 'focus' },
+    { href: '/ja/insights/',                 label: 'Insights',    key: 'insights' },
+    { href: '/ja/contact.html',              label: 'お問い合わせ', key: 'contact' },
   ];
 
   /* Guided onward journey — one continuous editorial read across the five
@@ -24,8 +36,17 @@
     home:     { to: 'about',            tEn: 'About',            tJa: '会社概要',     ariaEn: 'Next: About',            ariaJa: '次へ：会社概要' },
     about:    { to: 'approach',         tEn: 'Approach',         tJa: 'アプローチ',   ariaEn: 'Next: Approach',         ariaJa: '次へ：アプローチ' },
     approach: { to: 'investment-focus', tEn: 'Investment Focus', tJa: '重点領域',     ariaEn: 'Next: Investment Focus', ariaJa: '次へ：重点領域' },
-    focus:    { to: 'contact',          tEn: 'Contact',          tJa: 'お問い合わせ', ariaEn: 'Next: Contact',          ariaJa: '次へ：お問い合わせ' },
+    focus:    { to: 'contact',          tEn: 'Company',          tJa: '会社情報',     ariaEn: 'Next: Company',          ariaJa: '次へ：会社情報' },
     contact:  { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }
+  };
+
+  const FLOW_JA = {
+    home:     { href: '/ja/about.html',              t: '会社概要', ariaLabel: '次へ：会社概要' },
+    about:    { href: '/ja/approach.html',            t: 'アプローチ', ariaLabel: '次へ：アプローチ' },
+    approach: { href: '/ja/investment-focus.html',    t: '投資戦略', ariaLabel: '次へ：投資戦略' },
+    focus:    { href: '/ja/insights/',                t: 'Insights', ariaLabel: '次へ：Insights' },
+    insights: { href: '/ja/contact.html',             t: 'お問い合わせ', ariaLabel: '次へ：お問い合わせ' },
+    contact:  { href: '/ja/', t: 'ホーム', label: 'トップへ', ariaLabel: 'トップへ戻る' }
   };
 
   function currentKey() {
@@ -43,24 +64,29 @@
   function renderNav() {
     const host = document.querySelector('[data-shell="nav"]');
     if (!host) return;
+    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
     const onDark = host.hasAttribute('data-dark');
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const logoSrc = onDark ? (R.logoWhite || 'assets/logos/lockup-white.svg')
                            : (R.logoBlack || 'assets/logos/lockup-purple.svg');
     const emblemSrc = (R.symbolPurple || 'assets/logos/symbol-purple.svg');
     const cur = currentKey();
-    const drawerLinks = NAV.map((n) => {
+    const drawerLinks = locale === 'ja' ? NAV_JA.map((n) => {
+      const active = n.key === cur ? 'aria-current="page"' : '';
+      return `<li><a href="${n.href}" ${active}><span class="dn-label">${n.label}</span></a></li>`;
+    }).join('') : NAV.map((n) => {
       const active = n.key === cur ? 'aria-current="page"' : '';
       return `<li><a href="${n.href}" ${active}>
             <span class="dn-label" data-en="${n.en}" data-ja="${n.ja}">${n.en}</span>
           </a></li>`;
     }).join('');
+    const homeHref = locale === 'ja' ? '/ja/' : '/';
 
     host.innerHTML = `
       <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
         <div class="nav-inner">
-          <a class="nav-logo" href="index.html" aria-label="Reiwa Capital">
-            <img class="nl-lockup" src="${logoSrc}" alt="Reiwa Capital">
+          <a class="nav-logo" href="${homeHref}" aria-label="Reiwa Capital">
+            <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
           <div class="nav-right">
             <div class="lang-toggle" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
@@ -77,7 +103,7 @@
       <aside class="nav-drawer" id="nav-drawer" aria-hidden="true" aria-label="Menu" data-aria-en="Menu" data-aria-ja="メニュー">
         <div class="drawer-inner">
           <div class="drawer-head">
-            <img class="drawer-emblem" src="${emblemSrc}" alt="Reiwa Capital">
+            <img class="drawer-emblem" src="${emblemSrc}" alt="" aria-hidden="true">
           </div>
           <nav class="drawer-nav" aria-label="Pages" data-aria-en="Pages" data-aria-ja="ページ">
             <ul>${drawerLinks}</ul>
@@ -86,9 +112,6 @@
             <a class="df-mail" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a>
             <div class="df-social">
               <a class="df-linkedin" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="mailto:info@reiwa-capital.com" aria-label="Email" data-aria-en="Email" data-aria-ja="メール">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.75" width="19" height="14.5" rx="1.5"/><path d="M3.2 6.2l8.8 5.9 8.8-5.9"/></svg>
-              </a>
             </div>
           </div>
         </div>
@@ -187,6 +210,8 @@
   function swapLanguage(next) {
     const cur = langSwapPending || lang();
     if (next === cur) return;
+    const crossUrl = document.body.dataset[next + 'Url'];
+    if (crossUrl) { window.location.href = crossUrl; return; }
     const commit = () => {
       document.documentElement.setAttribute('lang', next);
       try { localStorage.setItem('reiwa.lang', next); } catch {}
@@ -221,19 +246,31 @@
   function renderFooter() {
     const host = document.querySelector('[data-shell="footer"]');
     if (!host) return;
-    const symbolCream = ((typeof window !== 'undefined' && window.__resources && window.__resources.symbolCream) || 'assets/logos/symbol-cream.svg');
+    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
+    const R = (typeof window !== 'undefined' && window.__resources) || {};
+    const symbol = R.symbolCream || 'assets/logos/symbol-cream.svg';
     const onPrivacy = document.body.dataset.page === 'privacy';
-    const f = FLOW[currentKey()];
-    const labelEn = f ? (f.labelEn || 'Next page') : '';
-    const labelJa = f ? ('labelJa' in f ? f.labelJa : '次のページ') : '';
-    /* Standalone onward-navigation block on cream — page content, then this,
-       then the footer. It is deliberately NOT footer content: the footer
-       carries legal identity only. */
-    const nextNav = f ? `
+
+    let nextNav = '';
+    if (locale === 'ja') {
+      const fj = FLOW_JA[currentKey()];
+      nextNav = fj ? `
+      <nav class="nextnav" aria-label="ページナビゲーション">
+        <a class="nn-link" href="${fj.href}" aria-label="${fj.ariaLabel}">
+          <span class="nn-inner">
+            <span class="nn-title-row">
+              <span class="nn-title">${fj.t}</span>
+              <svg class="nn-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg>
+            </span>
+          </span>
+        </a>
+      </nav>` : '';
+    } else {
+      const f = FLOW[currentKey()];
+      nextNav = f ? `
       <nav class="nextnav" aria-label="Page navigation" data-aria-en="Page navigation" data-aria-ja="ページナビゲーション">
         <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}" data-aria-en="${f.ariaEn}" data-aria-ja="${f.ariaJa}">
           <span class="nn-inner">
-            <span class="nn-label" data-en="${labelEn}" data-ja="${labelJa}">${labelEn}</span>
             <span class="nn-title-row">
               <span class="nn-title" data-en="${f.tEn}" data-ja="${f.tJa}">${f.tEn}</span>
               <svg class="nn-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg>
@@ -241,18 +278,30 @@
           </span>
         </a>
       </nav>` : '';
+    }
+
+    const homeHref = locale === 'ja' ? '/ja/' : '/';
+    const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
+    const jaLinks = locale === 'ja' ? `
+        <nav class="ff-jalinks" aria-label="サイトリンク">
+          <a href="/ja/uk-real-estate.html">英国不動産投資</a>
+          <a href="/ja/netherlands-real-estate.html">オランダ不動産投資</a>
+          <a href="/ja/approach.html">投資アプローチ</a>
+          <a href="/ja/investment-focus.html">投資戦略</a>
+          <a href="/ja/insights/">Insights</a>
+          <a href="/ja/contact.html">お問い合わせ</a>
+          <a href="/ja/privacy.html">プライバシーポリシー</a>
+        </nav>` : '';
+    const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
     host.innerHTML = `${nextNav}
-      <footer class="footer">
+      <footer class="footer">${jaLinks}
+        <a class="ff-brand" href="${homeHref}" aria-label="Reiwa Capital">
+          <img class="ff-symbol" src="${symbol}" alt="">
+        </a>
         <div class="footer-inner">
-          <a class="ff-brand" href="index.html" aria-label="Reiwa Capital">
-            <img src="${symbolCream}" alt="" width="24" height="26">
-            <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
-          </a>
-          <div class="ff-links">
-            <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="privacy.html"${onPrivacy ? ' aria-current="page"' : ''} data-en="Privacy" data-ja="プライバシーポリシー">Privacy</a>
-          </div>
+          <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
+          <a class="ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
         </div>
       </footer>
     `;
@@ -271,9 +320,13 @@
   // fade each one up as it enters. Staggered per sibling group for a soft cascade.
   const REVEAL_SELECTORS = [
     '.home-areas .areas-head',
+    '.wwd-head', '.home-markets-head', '.activity-head', '.hww-head', '.hww-panel', '.platform-head', '.contact-cta-head',
     '.stage-rail',
-    '.om-head', '.om-arch', '.om-investor', '.om-reiwa', '.om-specialists',
-    '.contact-direct'
+    '.om-investor', '.om-reiwa', '.om-specialists',
+    '.contact-direct',
+    '.identity .ed-row', '.rationale .ed-row', '.markets .ed-row', '.clients .shell',
+    '.assessment .assess-grid', '.areas .chapter',
+    '.profile', '.contact-body .shell'
   ];
 
   function setupReveals() {
@@ -345,8 +398,10 @@
   // -------------------- Init --------------------
   function boot() {
     try {
-      const savedLang = localStorage.getItem('reiwa.lang');
-      if (savedLang) document.documentElement.setAttribute('lang', savedLang);
+      if (document.body.dataset.locale !== 'ja') {
+        const savedLang = localStorage.getItem('reiwa.lang');
+        if (savedLang) document.documentElement.setAttribute('lang', savedLang);
+      }
     } catch {}
     insertSkipLink();
     document.querySelectorAll('noscript').forEach(function (n) { n.remove(); });

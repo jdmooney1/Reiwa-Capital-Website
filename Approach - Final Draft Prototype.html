@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="../">
+<title>Approach — Reiwa Capital</title>
+<link rel="stylesheet" href="assets/colors_and_type.css?v=14">
+<link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="editorial.css?v=41">
+<link rel="stylesheet" href="brand.css?v=6">
+<link rel="stylesheet" href="craft.css?v=19">
+<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<link rel="preload" as="image" href="assets/imagery/approach-hero-1600.webp" fetchpriority="high">
+<style>
+  /* Approved hero — production spec, unchanged */
+  .approach-h1{font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-page-title);line-height:var(--type-page-title-lh);letter-spacing:var(--type-page-title-ls);color:var(--ink);margin:0;max-width:16ch;text-wrap:balance}
+  .approach-open{margin:38px 0 0;font-family:'DM Sans',sans-serif;font-weight:400;font-size:var(--type-statement);line-height:var(--type-statement-lh);letter-spacing:var(--type-statement-ls);color:var(--ink);max-width:var(--measure-lead);text-wrap:balance}
+
+  /* ---- Process — continuous editorial sequence, everything visible --- */
+  .process { padding: clamp(56px,6vw,96px) 0 var(--section); }
+  .sec-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-label); font-weight: 500; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin-bottom: clamp(8px,1vw,12px); }
+  .process-list { position: relative; border-top: 1px solid var(--rule-strong); margin-top: clamp(24px,2.8vw,32px); }
+  .process-list::before { content: ""; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: var(--rule-soft); }
+  .stage-row { position: relative; display: grid; grid-template-columns: minmax(200px,280px) 1fr; gap: clamp(32px,4vw,64px); padding: clamp(38px,4.4vw,60px) 0; border-bottom: 1px solid var(--rule); }
+  .stage-row:last-child { border-bottom: 0; }
+  .stage-num { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(30px,2.5vw,42px); line-height: 1; letter-spacing: -0.01em; color: var(--ink-3); font-variant-numeric: tabular-nums; margin: 0 0 14px; }
+  .stage-title { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); margin: 0; max-width: 18ch; }
+  .stage-obj { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: var(--type-body-l-lh); letter-spacing: var(--type-body-l-ls); color: var(--ink-2); margin: 0 0 14px; max-width: var(--measure); }
+  .stage-sup { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body); line-height: var(--type-body-lh); letter-spacing: var(--type-body-ls); color: var(--ink-3); margin: 0; max-width: var(--measure); }
+  .stage-sup:only-child, .stage-obj:last-child { margin-bottom: 0; }
+
+  /* One-time reveal per stage — number, heading, copy stagger 50ms apart.
+     Safety timeout keeps content from ever staying hidden for long. */
+  .stage-row.reveal .stage-num, .stage-row.reveal .stage-title, .stage-row.reveal .stage-copy { opacity: 0.01; transform: translateY(6px); transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out); }
+  .stage-row.reveal.in .stage-num { opacity: 1; transform: none; }
+  .stage-row.reveal.in .stage-title { opacity: 1; transform: none; transition-delay: 50ms; }
+  .stage-row.reveal.in .stage-copy { opacity: 1; transform: none; transition-delay: 100ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .stage-row.reveal .stage-num, .stage-row.reveal .stage-title, .stage-row.reveal .stage-copy { opacity: 1; transform: none; transition: none; }
+  }
+  @media (max-width: 760px) {
+    .stage-row { grid-template-columns: 1fr; gap: 14px; padding: 30px 0; }
+    .process-list::before { display: none; }
+    .stage-num { display: inline; font-size: 20px; margin: 0 10px 0 0; }
+    .stage-title { display: inline; }
+  }
+
+  /* ---- Responsibilities — two balanced columns, no closing line ------- */
+  .responsibilities { padding: var(--section) 0; border-top: 1px solid var(--rule-strong); margin-top: clamp(12px,1.5vw,20px); }
+  .resp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px,5vw,80px); margin-top: clamp(28px,3.2vw,40px); }
+  .resp-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); margin: 0 0 20px; max-width: 22ch; }
+  .resp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+  .resp-list li { position: relative; padding-left: 18px; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .resp-list li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 7px; height: 1px; background: var(--ink-3); }
+  @media (max-width: 760px) {
+    .resp-cols { grid-template-columns: 1fr; gap: 36px; }
+  }
+</style>
+</head>
+<body data-page="approach">
+
+<div data-shell="nav"></div>
+
+<main id="main" tabindex="-1">
+
+<!-- Approved hero — unchanged -->
+<section class="page-head approach-head" data-screen-label="01 Approach — hero">
+  <div class="inner">
+    <h1 class="approach-h1" data-en="Approach" data-ja="アプローチ">Approach</h1>
+    <p class="approach-open" data-en="From investment mandate through acquisition and ownership." data-ja="投資マンデートの確定から、取得、そして保有へ。">From investment mandate through acquisition and ownership.</p>
+  </div>
+</section>
+
+<!-- Process — five stages, all visible, continuous sequence -->
+<section class="process" data-screen-label="02 Approach — process">
+  <div class="shell">
+    <span class="sec-eyebrow" data-en="Process" data-ja="プロセス">Process</span>
+    <div class="process-list">
+
+      <div class="stage-row">
+        <div>
+          <span class="stage-num">01</span>
+          <h2 class="stage-title" data-en="Mandate definition" data-ja="方針の明確化">Mandate definition</h2>
+        </div>
+        <div class="stage-copy">
+          <p class="stage-obj" data-en="Before opportunities are considered, the investor&rsquo;s objectives are established: hold period, return requirements, risk parameters, financing, tax, foreign exchange and reporting." data-ja="案件の検討に先立ち、投資家の方針を確定します。保有期間、収益要件、リスクの許容度、資金調達、税務、為替、そして報告のあり方です。">Before opportunities are considered, the investor&rsquo;s objectives are established: hold period, return requirements, risk parameters, financing, tax, foreign exchange and reporting.</p>
+          <p class="stage-sup" data-en="These parameters determine what is pursued and how each opportunity is assessed." data-ja="この条件が、追求する対象と、各案件の評価基準を定めます。">These parameters determine what is pursued and how each opportunity is assessed.</p>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div>
+          <span class="stage-num">02</span>
+          <h2 class="stage-title" data-en="Sourcing and assessment" data-ja="ソーシングと評価">Sourcing and assessment</h2>
+        </div>
+        <div class="stage-copy">
+          <p class="stage-obj" data-en="Opportunities are sourced through local relationships, direct owner contact and adviser networks. Each asset is assessed on its location, income, condition, price and long-term suitability." data-ja="機会は、現地の関係、オーナーとの直接の接触、アドバイザーのネットワークを通じて発掘します。各資産は、立地、収益、状態、価格、そして長期的な適合性で評価します。">Opportunities are sourced through local relationships, direct owner contact and adviser networks. Each asset is assessed on its location, income, condition, price and long-term suitability.</p>
+          <p class="stage-sup" data-en="The investment case is built at asset level." data-ja="投資判断は、資産ごとに積み上げます。">The investment case is built at asset level.</p>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div>
+          <span class="stage-num">03</span>
+          <h2 class="stage-title" data-en="Ownership and financing" data-ja="保有と資金調達">Ownership and financing</h2>
+        </div>
+        <div class="stage-copy">
+          <p class="stage-obj" data-en="Ownership, financing, tax, foreign exchange and reporting are considered together before an acquisition proceeds." data-ja="保有形態、資金調達、税務、為替、報告を、取得に先立って一体で検討します。">Ownership, financing, tax, foreign exchange and reporting are considered together before an acquisition proceeds.</p>
+          <p class="stage-sup" data-en="The structure reflects the investor, the asset and the intended hold period." data-ja="ストラクチャーは、投資家、資産、そして想定する保有期間を反映したものとします。">The structure reflects the investor, the asset and the intended hold period.</p>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div>
+          <span class="stage-num">04</span>
+          <h2 class="stage-title" data-en="Acquisition" data-ja="取得">Acquisition</h2>
+        </div>
+        <div class="stage-copy">
+          <p class="stage-obj" data-en="Reiwa&nbsp;Capital coordinates due diligence, negotiation, financing and completion across sellers, lenders and professional advisers." data-ja="Reiwa Capitalが、売主、貸し手、専門アドバイザーにわたるデューデリジェンス、交渉、資金調達、そして完了を取りまとめます。">Reiwa&nbsp;Capital coordinates due diligence, negotiation, financing and completion across sellers, lenders and professional advisers.</p>
+          <p class="stage-sup" data-en="The investor retains approval at each material decision point." data-ja="重要な意思決定の局面では、承認権限は投資家に残ります。">The investor retains approval at each material decision point.</p>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div>
+          <span class="stage-num">05</span>
+          <h2 class="stage-title" data-en="Ownership support" data-ja="保有支援">Ownership support</h2>
+        </div>
+        <div class="stage-copy">
+          <p class="stage-obj" data-en="Following completion, Reiwa&nbsp;Capital coordinates reporting, business planning, leasing, capital works, refinancing and eventual exit against the agreed ownership plan." data-ja="取引完了後、Reiwa Capitalは、合意した保有計画に沿って、報告、事業計画、リーシング、資本的工事、リファイナンス、そして将来の出口を調整します。">Following completion, Reiwa&nbsp;Capital coordinates reporting, business planning, leasing, capital works, refinancing and eventual exit against the agreed ownership plan.</p>
+          <p class="stage-sup" data-en="This work continues throughout the investment period." data-ja="この実務は、保有期間を通じて続きます。">This work continues throughout the investment period.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Responsibilities — two balanced columns -->
+<section class="responsibilities" data-screen-label="03 Approach — responsibilities">
+  <div class="shell">
+    <span class="sec-eyebrow" data-en="Responsibilities" data-ja="役割分担">Responsibilities</span>
+    <div class="resp-cols">
+      <div>
+        <h2 class="resp-h" data-en="Decisions retained by the investor" data-ja="投資家が保持する意思決定">Decisions retained by the investor</h2>
+        <ul class="resp-list">
+          <li data-en="Investment mandate" data-ja="投資マンデート">Investment mandate</li>
+          <li data-en="Capital commitment" data-ja="資本のコミットメント">Capital commitment</li>
+          <li data-en="Asset approval" data-ja="資産の承認">Asset approval</li>
+          <li data-en="Hold, refinance and exit decisions" data-ja="保有・リファイナンス・出口の判断">Hold, refinance and exit decisions</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="resp-h" data-en="Work coordinated by Reiwa Capital" data-ja="Reiwa Capitalが調整する実務">Work coordinated by Reiwa Capital</h2>
+        <ul class="resp-list">
+          <li data-en="Sourcing and assessment" data-ja="ソーシングと評価">Sourcing and assessment</li>
+          <li data-en="Ownership and financing" data-ja="保有と資金調達">Ownership and financing</li>
+          <li data-en="Acquisition execution" data-ja="取得の実行">Acquisition execution</li>
+          <li data-en="Reporting and local asset workstreams" data-ja="報告と現地の資産実務">Reporting and local asset workstreams</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div data-shell="footer"></div>
+<script src="shell.js?v=52"></script>
+<script src="i18n.js?v=2"></script>
+<script src="craft.js?v=13"></script>
+<script>
+(function () {
+  function reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  if (reduced()) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.stage-row'));
+  rows.forEach(function (row) {
+    row.classList.add('reveal');
+    var shown = false;
+    function show() {
+      if (shown) return; shown = true;
+      row.classList.add('in');
+      /* Hard guarantee: force final state shortly after, regardless of
+         whether the CSS transition actually ticks in this environment. */
+      setTimeout(function () {
+        [row.querySelector('.stage-num'), row.querySelector('.stage-title'), row.querySelector('.stage-copy')].forEach(function (el) {
+          if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
+        });
+      }, 400);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { show(); io.disconnect(); }
+      }, { threshold: 0.15 });
+      io.observe(row);
+    } else { show(); }
+    setTimeout(show, 350); /* never leaves content invisible for long */
+  });
+})();
+</script>
+</body>
+</html>

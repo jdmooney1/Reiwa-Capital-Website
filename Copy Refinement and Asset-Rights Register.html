@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Copy Refinement &amp; Asset-Rights Register</title>
+<style>
+:root{--ink:#271430;--ink2:#4a3a55;--ink3:#7a6c85;--rule:rgba(39,20,48,.14);--rule-strong:rgba(39,20,48,.28);--cream:#FCFAF1;--ok:#3f5c3f;--warn:#a3641f;--bad:#a3222f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:72px 28px 140px}
+h1{font-size:clamp(30px,4vw,40px);font-weight:400;margin:0 0 6px;letter-spacing:-.01em}
+.meta{color:var(--ink3);font-size:14px;margin:0 0 48px}
+h2{font-size:24px;font-weight:400;margin:60px 0 18px;padding-top:26px;border-top:1px solid var(--rule-strong)}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:0}
+p{margin:0 0 14px;max-width:70ch}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0 30px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{color:var(--ink3);font-weight:500;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em}
+.old{color:var(--bad)} .new{color:var(--ok)}
+.status{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;padding:2px 7px;border-radius:2px;color:#fff;white-space:nowrap}
+.st-verified{background:var(--ok)} .st-unverified{background:var(--warn)} .st-replace{background:var(--bad)} .st-na{background:var(--ink3)}
+.note{font-size:13.5px;color:var(--ink3);border-left:2px solid var(--rule-strong);padding-left:14px;margin:18px 0}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:rgba(39,20,48,.06);padding:1px 5px;border-radius:2px}
+</style></head><body>
+<div class="wrap">
+
+<h1>Copy Refinement &amp; Asset-Rights Register</h1>
+<p class="meta">Controlled pass — live production files only (the six root pages + shared shell.js/craft.js/editorial.css). No stylistic rewriting; changes limited to genuine repetition, ambiguity, unsupported claims and one verb-consistency tweak.</p>
+
+<h2 style="border-top:0;margin-top:0">Method &amp; finding</h2>
+<p>Checked all six live pages against the banned/watch-listed term list ("cross-border", "institutional", "disciplined", "patient capital", "long-term ownership", "local expertise", "value creation"), the inflated-language list ("unparalleled", "best-in-class", "unique access", "market-leading"), and every claim of Reiwa Capital's role against the approved verb set (advises / identifies / assesses / coordinates / supports / reviews).</p>
+<p>Result: the site is already close to clean — a prior rewrite pass already removed "disciplined", "patient capital", "institutional" and "value creation" from every live page (they survive only in old prototype/export snapshots under <code>audit/</code>, <code>dist/</code> and <code>export/</code>, which are not served). Three genuine, narrow issues remained, corrected below. No inflated-language, guaranteed-return, discretionary-authority or unregistered-manager claims were found anywhere live.</p>
+
+<h2>Change log</h2>
+<table>
+<tr><th style="width:15%">Page</th><th style="width:32%">Original</th><th style="width:32%">Revised</th><th>Reason</th></tr>
+<tr><td>Home — hero kicker</td><td class="old">"Cross&#8209;Border Real Estate Investment"</td><td class="new">"Real Estate Investment"</td><td>"Cross-border" was repeated verbatim on About's own hero statement. Home's H1 already establishes the Japan↔Europe frame, so the short kicker no longer needs to restate it; About keeps the fuller sentence, which is the more appropriate place for that specific claim.</td></tr>
+<tr><td>Home — "Structure" route</td><td class="old">"Align ownership, financing, tax and reporting."</td><td class="new">"Coordinate ownership, financing, tax and reporting."</td><td>"Align" isn't in the approved verb set and can read as Reiwa Capital acting on its own authority rather than coordinating on the investor's behalf. "Coordinate" matches the verb used for the identical activity on Approach's Responsibilities ledger.</td></tr>
+<tr><td>About — Amsterdam market panel</td><td class="old">"...coordinating the local expertise required for acquisition and ownership."</td><td class="new">"...coordinating the acquisition and ownership process on the ground."</td><td>"Local expertise" is a soft, unverifiable capability claim (the exact class of language flagged for removal). Replaced with a concrete, factual description of the coordination role, matching London's parallel line ("supporting local ownership workstreams").</td></tr>
+</table>
+<p class="note">Japanese for all three was rewritten as natural institutional Japanese, not a literal retranslation — 専門性 ("specialised expertise") was dropped from the Amsterdam line for the same reason as the English; 調整する ("coordinate") is used consistently with the rest of the site.</p>
+
+<h2>Positioning &amp; verb-accuracy audit</h2>
+<p>Approach's Responsibilities ledger and five-stage process already map cleanly onto the approved framework — "the investor retains authority", "Reiwa Capital coordinates execution", explicit investor approval at each material decision point — and needed no change. No page anywhere claims Reiwa Capital holds investor capital, exercises discretionary investment authority, guarantees a return, provides regulated tax/legal/financial advice directly, owns an asset, or acts as an authorised fund or asset manager. Privacy Policy's security language is correctly hedged ("no method... can be guaranteed to be completely secure") rather than overpromising.</p>
+
+<h2>Entity status</h2>
+<p>The site remains correctly entity-neutral: no registration number, registered address, regulatory permission, founding date or named personnel appear anywhere, live or in the schema.org markup (which carries only name, URL, logo and the LinkedIn/email contact points). Privacy Policy's <code>[LEGAL ENTITY NAME]</code>, <code>[REGISTERED ADDRESS OR JURISDICTION, IF REQUIRED]</code> and <code>[VERIFIED DATE]</code> remain exactly as bracketed, visibly-flagged placeholders — left untouched here, since inventing entity detail to make them "look finished" would be worse than the honest placeholder. These still require the operator to supply real information before launch.</p>
+
+<h2>Asset-rights register</h2>
+<table>
+<tr><th style="width:19%">Asset</th><th style="width:11%">Page(s)</th><th style="width:16%">Source</th><th style="width:20%">Licence / ownership basis</th><th style="width:9%">Web use</th><th style="width:9%">Attribution</th><th style="width:16%">Status</th></tr>
+<tr><td><code>lockup-black/white/purple.svg</code>, <code>symbol-purple/cream.svg</code></td><td>All (header/footer)</td><td>Project asset library</td><td>Not recorded in project files</td><td>Assumed yes</td><td>None known</td><td><span class="status st-unverified">Unverified</span> — confirm in-house design or work-for-hire assignment</td></tr>
+<tr><td>DM Sans (<code>DMSans-Regular.ttf</code>, <code>-Medium.ttf</code>)</td><td>All</td><td>Google Fonts</td><td>SIL Open Font License 1.1</td><td>Yes</td><td>Not required</td><td><span class="status st-verified">Verified</span> — OFL permits commercial web embedding</td></tr>
+<tr><td><code>home-hero-blur.webp</code></td><td>Home</td><td>Not recorded</td><td>Not recorded</td><td>Unknown</td><td>Unknown</td><td><span class="status st-replace">Replacement required</span> — see note below</td></tr>
+<tr><td><code>about-hero-1600.webp</code>, <code>approach-hero-1600.webp</code>, <code>focus-hero-1600.webp</code></td><td>About, Approach, Investment Focus</td><td>Not recorded</td><td>Not recorded</td><td>Unknown</td><td>Unknown</td><td><span class="status st-replace">Replacement required</span> — see note below</td></tr>
+<tr><td><code>market-london-800/1537.webp</code>, <code>market-amsterdam-800/1562.webp</code></td><td>About</td><td>Not recorded</td><td>Not recorded</td><td>Unknown</td><td>Unknown</td><td><span class="status st-unverified">Unverified</span> — sharp, usable images; provenance and licence still need confirming before commercial publication</td></tr>
+<tr><td><code>bg-income-800/980.webp</code>, <code>bg-repositioning-800/1535.webp</code>, <code>bg-hospitality-800/952.webp</code></td><td>Home, Investment Focus</td><td>Not recorded</td><td>Not recorded</td><td>Unknown</td><td>Unknown</td><td><span class="status st-unverified">Unverified</span> — same as above</td></tr>
+<tr><td>LinkedIn glyph, email glyph, menu bars, disclosure +/− marks</td><td>All (header/footer/disclosures)</td><td>Authored directly as inline SVG/CSS in this build</td><td>Original, simple geometric marks — not sourced from an icon library</td><td>Yes</td><td>Not required</td><td><span class="status st-verified">Verified</span></td></tr>
+<tr><td>Maps</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="status st-na">N/A</span> — no map component exists on the site</td></tr>
+<tr><td>Third-party text / quotations</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="status st-na">N/A</span> — no testimonials, citations or external copy anywhere</td></tr>
+<tr><td>AI-generated or modified imagery</td><td>—</td><td>Not disclosed in project records</td><td>—</td><td>—</td><td>—</td><td><span class="status st-unverified">Unverified</span> — the four hero files (row above) are abstract, low-detail colour fields; whether they are degraded photography, placeholder renders or AI-generated test images was not established. Confirm origin before deciding whether a rights record is even needed.</td></tr>
+</table>
+<p class="note">No licence file, purchase record or model/property release for any photograph exists anywhere in the project. Every "Unverified" or "Replacement required" row above reflects that gap, not an assumption of a problem — but none of this imagery should be treated as cleared for commercial use until a source is confirmed.</p>
+
+<h2>Legal content check</h2>
+<ul style="margin:0 0 14px;padding-left:20px">
+<li><strong>Copyright notice</strong> — "© 2026 Reiwa&nbsp;Capital", present on every page via the shared footer. Minimal format (no "All rights reserved" suffix) is legally sufficient and consistent with the site's restraint; the name used should match whatever legal entity is eventually confirmed for the Privacy Policy.</li>
+<li><strong>Privacy Policy completeness</strong> — unchanged in this pass; still carries the three bracketed placeholders and its own in-source review comment listing exactly what needs confirming (hosting/log retention, cookie/analytics use, cross-border processing, applicable framework). Not duplicated here — see the Pre-Launch Audit for the full list.</li>
+<li><strong>External links</strong> — the one external link (LinkedIn) correctly uses <code>target="_blank" rel="noopener"</code>.</li>
+<li><strong>Analytics, forms, cookies, embeds</strong> — none exist on the site beyond a single <code>localStorage</code> write for language preference, which is already disclosed in Privacy §01 and correctly described as not used for advertising or tracking. No additional disclosure is currently triggered, and no cookie banner is needed while this remains true.</li>
+<li><strong>Disclaimer tone</strong> — Privacy Policy already presents rights and obligations as conditional on applicable law ("depending on the applicable law...", "where applicable...") rather than asserting settled legal fact. No change needed.</li>
+</ul>
+
+<h2>Outstanding — needs legal or factual confirmation</h2>
+<ol style="margin:0 0 14px;padding-left:20px">
+<li>Privacy Policy's entity name, registered address/jurisdiction and true "last updated" date.</li>
+<li>Which data-protection framework(s) actually apply (UK GDPR / EU GDPR / Japan APPI) — currently left open in Privacy Policy by design.</li>
+<li>Whether the hosting provider logs IP/access data, and where email is processed, for the cross-border-transfer language in Privacy §03.</li>
+<li>Source, licence and usage rights for every photograph listed in the asset-rights register above — none currently has a recorded licence or provenance.</li>
+<li>Ownership/assignment basis for the logo and symbol marks.</li>
+<li>Whether the Japanese legal copy in Privacy Policy needs a bilingual-legal review pass before publication (recommended given it is a binding notice, not marketing copy).</li>
+</ol>
+
+</div></body></html>
