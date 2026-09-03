@@ -22,8 +22,8 @@
   --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
 
   /* ── Vertical rhythm — ONE section token, used by every page band. ─ */
-  --section:       clamp(96px, 7vw, 128px);
-  --section-tight: clamp(64px, 6vw, 104px);
+  --section:       clamp(80px, 6vw, 96px);
+  --section-tight: clamp(60px, 5vw, 88px);
   /* Legacy aliases kept so existing references resolve to the one scale. */
   --sp-section:    var(--section);
   --sp-closing:    var(--section);
@@ -53,7 +53,7 @@
   /* ── Container — ONE frame for the whole product (site + portal). Page
      margin scales in three bands — desktop 72–96 · tablet 32–40 ·
      mobile 20–24 — via the media queries just below this block. ─────── */
-  --container: 1280px;
+  --container: 1240px;
   --gutter:    clamp(72px, 5.8vw + 13px, 96px);
 
   /* ── Image ratios — the only crops imagery may take. ───────────── */
@@ -181,7 +181,6 @@ p { text-wrap: pretty; }
 html.nav-drawer-open .nav-inner::after { opacity: 0; }
 .nav-logo { display: inline-flex; align-items: center; }
 .nav-logo img { height: 30px; display: block; }
-.nav-left { display: inline-flex; align-items: center; gap: 16px; }
 /* Drawer open: dissolve the bar chrome. The wordmark + language toggle
    hide; the X (the morphed toggle) stays put on the right where the
    parallel bars were; the emblem lives centred inside the panel. */
@@ -248,19 +247,13 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
    sit inside the container and are left alone.
    ===================================================================== */
 .page-head,
-.ed-section,
-.about-block,
-.positioning,
-.home-lifecycle {
+.positioning {
   border-top: 0 !important;
   border-bottom: 0 !important;
   position: relative;
 }
 .page-head::after,
-.ed-section::after,
-.about-block::after,
-.positioning::after,
-.home-lifecycle::after {
+.positioning::after {
   content: "";
   position: absolute; left: 50%; bottom: 0;
   transform: translateX(-50%);
@@ -300,17 +293,6 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
   justify-content: end;
   text-align: right;
 }
-.nn-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--ink-3);
-}
-html[lang="ja"] .nn-label { font-size: 13px; letter-spacing: 0.04em; text-transform: none; }
 .nn-title {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(22px, 1vw + 12px, 28px);
@@ -410,28 +392,6 @@ main { flex: 1 0 auto; }
   color: var(--eyebrow-ink);
 }
 
-/* Big sans-serif page heading */
-.h-display {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  font-size: var(--type-display);
-  line-height: var(--type-display-lh);
-  letter-spacing: var(--type-display-ls);
-  color: var(--ink);
-  margin: 0;
-}
-
-/* Smaller section heading */
-.h-section {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  font-size: var(--type-h2);
-  line-height: var(--type-h2-lh);
-  letter-spacing: var(--type-h2-ls);
-  color: var(--ink);
-  margin: 0;
-}
-
 /* Body lede */
 .lede {
   font-size: var(--type-body-l);
@@ -444,9 +404,9 @@ main { flex: 1 0 auto; }
 
 /* =====================================================================
    LINK — ONE tertiary link treatment. A quiet 2px underline in
-   rule-strong that wipes to ink on hover. (.link-q kept as an alias.)
+   rule-strong that wipes to ink on hover.
    ===================================================================== */
-.link, .link-q {
+.link {
   font-size: var(--type-caption);
   font-weight: 500;
   color: var(--ink);
@@ -454,7 +414,7 @@ main { flex: 1 0 auto; }
   padding-bottom: 2px;
   transition: border-color var(--dur-2) var(--ease-out);
 }
-.link:hover, .link-q:hover { border-color: var(--ink); }
+.link:hover { border-color: var(--ink); }
 
 /* =====================================================================
    PAGE HEAD (inner pages — restrained, paper, hairline only)
@@ -519,7 +479,7 @@ body[data-page="contact"] .page-head {
 body[data-page="about"] .page-head,
 body[data-page="approach"] .page-head,
 body[data-page="focus"] .page-head {
-  --head-h: clamp(310px, 27vw, 360px);
+  --head-h: clamp(260px, 21vw, 300px);
   margin-top: calc(var(--nav-h, 74px) * -1);
   min-height: calc(var(--head-h) + var(--nav-h, 74px));
   display: flex;
@@ -529,22 +489,22 @@ body[data-page="focus"] .page-head {
 @media (max-width: 1024px) {
   body[data-page="about"] .page-head,
   body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(279px, 31vw, 313px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(250px, 24vw, 285px); }
 }
 @media (max-width: 760px) {
   body[data-page="about"] .page-head,
   body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(245px, 42vw, 277px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(220px, 32vw, 250px); }
 }
 @media (max-width: 420px) {
   body[data-page="about"] .page-head,
   body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(212px, 49vw, 245px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(200px, 44vw, 230px); }
 }
 body[data-page="about"] .page-head .inner,
 body[data-page="approach"] .page-head .inner,
 body[data-page="focus"] .page-head .inner {
-  padding: 0 var(--gutter) clamp(44px, 5vw, 64px);
+  padding: calc(var(--nav-h, 74px) + 56px) var(--gutter) clamp(40px, 4vw, 52px);
 }
 /* Inner-page heads: About and Investment Focus carry a sharp photograph
    beneath a warm cream scrim — dark title on the cream-heavy left, the
@@ -560,17 +520,17 @@ body[data-page="focus"] .page-head {
 body[data-page="about"] .page-head {
   background-image:
     linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
-    url("assets/imagery/about-hero-1600.webp");
+    url("assets/imagery/about-hero-blur.png");
 }
 body[data-page="approach"] .page-head {
   background-image:
     linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
-    url("assets/imagery/approach-hero-1600.webp");
+    url("assets/imagery/approach-hero-blur.png");
 }
 body[data-page="focus"] .page-head {
   background-image:
     linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
-    url("assets/imagery/focus-hero-1600.webp");
+    url("assets/imagery/focus-hero-blur.png");
 }
 .page-head .ja {
   display: inline-block;
@@ -581,34 +541,6 @@ body[data-page="focus"] .page-head {
   letter-spacing: 0.14em;
   color: var(--ink-3);
 }
-.page-head-foot {
-  border-top: 0;
-  background: var(--paper);
-}
-.page-head-foot .inner {
-  border-top: 1px solid var(--rule);
-}
-.page-head-foot .inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 20px var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--type-caption);
-  color: var(--ink-3);
-  letter-spacing: 0.02em;
-}
-.page-head-foot a.touch {
-  color: var(--ink);
-  font-weight: 500;
-  letter-spacing: -0.005em;
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 2px;
-  transition: border-color var(--dur-2) var(--ease-out);
-}
-.page-head-foot a.touch:hover { border-color: var(--ink); }
-
 /* Load fade for the CSS hero washes — the one image type initImageFades
    can't reach (Motion audit D1). A paper cover sits over the wash and fades
    out once craft.js has decoded the image (html.bg-loaded). Gated on
@@ -630,13 +562,6 @@ html.bg-fade.bg-loaded body[data-page="focus"] .page-head::before { opacity: 0; 
 /* =====================================================================
    EDITORIAL SECTION HELPERS
    ===================================================================== */
-.section, .section-tight { padding: 0; }
-
-.ed-section {
-  padding: var(--sp-section) 0;
-  border-bottom: 1px solid var(--rule);
-}
-.ed-section:last-of-type { border-bottom: 0; }
 .ed-row {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -681,89 +606,10 @@ html.bg-fade.bg-loaded body[data-page="focus"] .page-head::before { opacity: 0; 
 }
 .ed-row .body p em { font-style: normal; color: var(--ink-3); }
 
-/* Numbered row — used for practice / approach steps (no card chrome) */
-.row-list {
-  border-top: 1px solid var(--rule);
-  margin-top: 40px;
-}
-.list-row {
-  display: grid;
-  grid-template-columns: 80px 260px 1fr;
-  gap: 48px;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: baseline;
-}
-.list-row .n {
-  font-size: var(--type-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--type-eyebrow-ls);
-  line-height: var(--type-eyebrow-lh);
-  color: var(--eyebrow-ink);
-  text-transform: uppercase;
-}
-.list-row h3 {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  font-size: var(--type-h3);
-  line-height: var(--type-h3-lh);
-  letter-spacing: var(--type-h3-ls);
-  color: var(--ink);
-  margin: 0;
-  max-width: 16ch;
-}
-.list-row h3 em { font-style: normal; color: var(--ink-3); }
-.list-row p {
-  font-size: var(--type-body);
-  line-height: var(--type-body-lh);
-  color: var(--ink-2);
-  margin: 0;
-  max-width: var(--measure);
-}
 @media (max-width: 1024px) {
-  .ed-section { padding: var(--sp-section-sm) 0; }
   .ed-row { grid-template-columns: 1fr; gap: 16px; }
   .ed-row + .ed-row { margin-top: 56px; }
-  .list-row { grid-template-columns: 60px 1fr; gap: 16px; padding: 28px 0; }
-  .list-row p { grid-column: 2; }
 }
-
-/* Closing band */
-.ed-closing {
-  padding: var(--sp-closing) 0;
-}
-.ed-closing .ed-row { align-items: baseline; }
-.ed-closing p {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  font-size: var(--type-statement);
-  line-height: var(--type-statement-lh);
-  letter-spacing: var(--type-statement-ls);
-  color: var(--ink);
-  margin: 0;
-  max-width: var(--measure-lead);
-}
-.ed-closing p em { font-style: normal; color: var(--ink-3); }
-.ed-closing .meta {
-  margin-top: var(--flow-meta);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: var(--type-caption);
-  color: var(--ink-3);
-  letter-spacing: 0.02em;
-}
-.ed-closing .meta a.touch {
-  color: var(--ink);
-  font-weight: 500;
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 2px;
-  transition: border-color var(--dur-2) var(--ease-out);
-}
-.ed-closing .meta a.touch:hover { border-color: var(--ink); }
-.ed-closing .meta .ja { font-family: 'DM Sans', 'Hiragino Sans', 'Yu Gothic', sans-serif; letter-spacing: 0.18em; }
 
 /* Reveal class retained for markup compatibility; content always visible */
 .reveal { opacity: 1; }
@@ -777,8 +623,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
-[tabindex]:focus-visible,
-.nc-link:focus-visible {
+[tabindex]:focus-visible {
   outline: 2px solid var(--sumire-purple);
   outline-offset: 3px;
   border-radius: 1px;
@@ -840,13 +685,6 @@ select:focus-visible,
   touch-action: manipulation;
   font-family: inherit;
   color: var(--ink);
-}
-.nav-toggle-label {
-  font-size: var(--type-label);
-  font-weight: 500;
-  letter-spacing: var(--type-label-ls);
-  text-transform: uppercase;
-  color: inherit;
 }
 .nav-toggle-icon {
   display: inline-flex;
@@ -925,14 +763,6 @@ html.nav-drawer-open .nav-drawer { visibility: visible; }
   width: auto;
   display: block;
 }
-.drawer-kicker {
-  font-size: var(--type-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--type-eyebrow-ls);
-  line-height: var(--type-eyebrow-lh);
-  text-transform: uppercase;
-  color: var(--eyebrow-ink);
-}
 .drawer-nav ul {
   list-style: none;
   margin: 0;
@@ -967,14 +797,6 @@ html.nav-drawer-open .nav-drawer { visibility: visible; }
 .drawer-nav a[aria-current="page"]::before { opacity: 1; }
 @media (hover: hover) { .drawer-nav a:not([aria-current="page"]):hover { background: color-mix(in srgb, var(--ink) 3%, transparent); } }
 .drawer-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; background: color-mix(in srgb, var(--ink) 3%, transparent); }
-.drawer-nav .dn-num {
-  font-size: var(--type-label);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums lining-nums;
-  color: var(--warm-500, #9A9486);
-  min-width: 22px;
-}
 .drawer-nav .dn-label {
   font-size: var(--type-h3);
   letter-spacing: var(--type-h3-ls);
@@ -985,7 +807,6 @@ html.nav-drawer-open .nav-drawer { visibility: visible; }
 }
 .drawer-nav a:hover .dn-label { color: var(--warm-700, #4A463E); }
 .drawer-nav a[aria-current="page"] .dn-label { color: var(--ink); font-weight: 500; }
-.drawer-nav a[aria-current="page"] .dn-num { color: var(--accent-sumire-light, #B79AD6); }
 
 /* Staggered reveal of the index as the drawer opens */
 @media (prefers-reduced-motion: no-preference) {
@@ -1057,7 +878,6 @@ html.nav-drawer-open { overflow: hidden; }
 @media (max-width: 720px) {
   .nav-inner { position: relative; padding: 9px var(--gutter); gap: 14px; }
   .nav-right { gap: 12px; }
-  .nav-toggle-label { display: none; }
   .nav-toggle { margin-left: 2px; }
   .nav-drawer { width: 100vw; border-left: 0; }
   .drawer-inner { padding: 84px 28px 32px; }
@@ -1085,11 +905,6 @@ html.nav-drawer-open { overflow: hidden; }
   .page-head .marker { margin-bottom: 44px; }
   .page-head h1 { max-width: 16ch; }
   .page-head .ja { margin-top: 22px; }
-  .page-head-foot .inner { padding: 18px var(--gutter); }
-
-  /* Closing band sits a step calmer on phones */
-  /* .ed-closing inherits the --sp-closing (=--section) rhythm on mobile (was 120px) */
-  .ed-closing .meta { margin-top: 40px; }
 
   /* Headings break by balance at narrow widths so a lone orphan word never
      drops to its own line; long-form body keeps text-wrap: pretty. This is
@@ -1099,7 +914,6 @@ html.nav-drawer-open { overflow: hidden; }
 
 @media (max-width: 420px) {
   .page-head .inner { padding: 64px var(--gutter) 40px; }
-  .page-head-foot .inner { padding: 16px var(--gutter); }
 }
 
 /* =====================================================================
@@ -1141,9 +955,7 @@ main:focus, [id="main"]:focus { outline: none; }
 .footer :focus-visible,
 .on-dark :focus-visible,
 .nav-bar.nav-over-hero :focus-visible,
-.home-hero :focus-visible,
-.nc-link:focus-visible,
-.stance-block :focus-visible {
+.home-hero :focus-visible {
   outline-color: var(--paper-warm);
 }
 
@@ -1158,15 +970,6 @@ main:focus, [id="main"]:focus { outline: none; }
 
 /* Section-label eyebrows promoted to real headings keep zero margin. */
 h2.eyebrow, h3.eyebrow { margin: 0; }
-
-/* --- Language cloak -----------------------------------------------------
-   Hide translatable text until the resolved language is applied, so JA
-   visitors never see a flash of the default English. EN is the DOM default
-   and is never cloaked; the resolver adds .i18n-cloak for JA only and
-   i18n.js removes it the instant the swap completes (a load-event failsafe
-   removes it even if the swap script fails to run). visibility (not display)
-   keeps layout stable — no reflow. */
-html.i18n-cloak [data-en]{visibility:hidden}
 
 /* --- Narrative page transition --------------------------------------
    Plays ONLY on arrival via the bottom next-page/return-home link — the

@@ -26,10 +26,8 @@ html, body { background: var(--paper-warm); }
 /* Nav picks up the warm ground instead of cool white */
 .nav-bar { background: rgba(252, 250, 241, 0.80); }
 
-/* Inner-page heads, footer, pager all sit on warm beige */
-.page-head,
-.page-head-foot,
-.page-head-foot .inner { background: var(--paper-warm); }
+/* Inner-page heads sit on warm beige */
+.page-head { background: var(--paper-warm); }
 
 /* =====================================================================
    DEVICE 1 — THE FRAME
@@ -66,81 +64,6 @@ html, body { background: var(--paper-warm); }
 .r-frame-lg::before { top: -1px; left: -1px; }
 .r-frame-lg::after  { bottom: -1px; right: -1px; }
 
-/* Inset variant — brackets drawn INSIDE the image (for contiguous bands /
-   full-bleed photos where outside brackets would collide). */
-.r-frame-inset { position: relative; }
-.r-frame-inset::before,
-.r-frame-inset::after {
-  content: "";
-  position: absolute;
-  width: 24px; height: 24px;
-  z-index: 3;
-  pointer-events: none;
-  border-color: rgba(252, 250, 241, 0.7);
-  border-style: solid;
-}
-.r-frame-inset::before {
-  top: 20px; left: 20px;
-  border-width: 1.5px 0 0 1.5px;
-}
-.r-frame-inset::after {
-  bottom: 20px; right: 20px;
-  border-width: 0 1.5px 1.5px 0;
-}
-
-/* =====================================================================
-   DEVICE 2 — THE INDEX
-   A numbered hairline: 2-digit figure · filled square node · em-rule · label.
-   The square node is the recurring brand atom; it also marks lifecycle steps.
-   ===================================================================== */
-.r-index {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--type-label);
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.r-index .r-num {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-}
-.r-index .r-node {
-  width: 6px; height: 6px;
-  flex: none;
-  background: var(--reiwa-node);
-  transform: rotate(45deg);          /* a small diamond — the brand atom */
-}
-.r-index .r-line {
-  height: 1px; width: 40px;
-  background: var(--rule-strong);
-}
-.r-index.on-dark { color: rgba(252,250,241,0.62); }
-.r-index.on-dark .r-num { color: #fff; }
-.r-index.on-dark .r-node { background: var(--sakura-pink); }
-.r-index.on-dark .r-line { background: rgba(252,250,241,0.32); }
-
-/* =====================================================================
-   DEVICE 3 — COLOUR WASHES
-   Soft Sumire-derived grounds for select sections. Used to break the
-   vertical white river and create editorial rhythm — never loud.
-   ===================================================================== */
-.r-wash-lavender {
-  background:
-    radial-gradient(120% 80% at 85% 0%, var(--reiwa-lavender) 0%, rgba(236,230,242,0) 60%),
-    var(--paper-warm);
-}
-.r-wash-stone { background: var(--reiwa-stone); }
-.r-wash-deep {
-  background:
-    radial-gradient(110% 90% at 12% 0%, #2F1A3C 0%, var(--ink) 55%),
-    var(--ink);
-}
-
 /* =====================================================================
    APPLIED — homepage hero
    Asymmetric: a thin lavender column on the left edge + index marker,
@@ -152,33 +75,10 @@ html, body { background: var(--paper-warm); }
     linear-gradient(0deg, rgba(16,11,20,0.86) 0%, rgba(16,11,20,0.36) 46%, rgba(16,11,20,0) 76%),
     linear-gradient(90deg, rgba(39,20,48,0.28) 0%, rgba(39,20,48,0) 38%);
 }
-/* Hero index marker — top-left, inside the hero */
-.home-hero .hero-index {
-  position: absolute;
-  top: clamp(96px, 13vh, 150px); left: var(--gutter);
-  z-index: 2;
-}
-@media (min-width: 1344px) {
-  .home-hero .hero-index { left: calc((100vw - var(--container)) / 2 + var(--gutter)); }
-}
-
 /* =====================================================================
    APPLIED — Areas of focus / home area cards get the frame + node caption
    ===================================================================== */
 .areas-band .area .cap .name { display: inline-flex; align-items: center; gap: 12px; }
-
-/* =====================================================================
-   SECTION-OPENER NODE — small diamond before eyebrows, sitewide rhythm.
-   Applied via .r-ey (added to existing eyebrow spans where wanted).
-   ===================================================================== */
-.r-ey { display: inline-flex; align-items: center; gap: 10px; }
-.r-ey::before {
-  content: "";
-  width: 6px; height: 6px;
-  background: var(--reiwa-node);
-  transform: rotate(45deg);
-  flex: none;
-}
 
 /* =====================================================================
    FOOTER — owns its own deep-sumire treatment in editorial.css.
@@ -200,18 +100,6 @@ html, body { background: var(--paper-warm); }
   body[data-page="home"] .positioning .ed-row .body p { margin-left: -16%; }
   body[data-page="home"] .positioning .ed-row .body p.tail { margin-left: 0; }
 
-  /* Ownership lifecycle — push the lead into the grid (starts ~1/3 in),
-     leaving the eyebrow alone at the left margin. Classic offset header. */
-  body[data-page="home"] .home-lifecycle .lh-intro { position: relative; }
-  body[data-page="home"] .home-lifecycle .lh-lead {
-    margin-left: 34%;
-    max-width: 34ch;
-  }
-  body[data-page="home"] .home-lifecycle .lh-intro .eyebrow {
-    position: absolute;
-    top: 8px; left: 0;
-  }
-
   /* Areas band — the three cards align on one baseline (descending step
      removed: Repositioning + Hospitality now line up with Income). */
   body[data-page="home"] .areas-band { align-items: start; }
@@ -224,5 +112,4 @@ html, body { background: var(--paper-warm); }
 }
 @media print {
   html, body { background: #fff; }
-  .r-wash-lavender, .r-wash-stone { background: #fff; }
 }

@@ -13,7 +13,7 @@
     { href: 'about.html',    en: 'About',    ja: '会社概要',  key: 'about' },
     { href: 'approach.html', en: 'Approach', ja: 'アプローチ', key: 'approach' },
     { href: 'investment-focus.html',  en: 'Investment Focus', ja: '重点領域',  key: 'focus' },
-    { href: 'company.html',  en: 'Company',  ja: '会社情報', key: 'contact' },
+    { href: 'company.html',  en: 'Contact',  ja: 'お問い合わせ', key: 'contact' },
   ];
 
   /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
@@ -36,7 +36,7 @@
     home:     { to: 'about',            tEn: 'About',            tJa: '会社概要',     ariaEn: 'Next: About',            ariaJa: '次へ：会社概要' },
     about:    { to: 'approach',         tEn: 'Approach',         tJa: 'アプローチ',   ariaEn: 'Next: Approach',         ariaJa: '次へ：アプローチ' },
     approach: { to: 'investment-focus', tEn: 'Investment Focus', tJa: '重点領域',     ariaEn: 'Next: Investment Focus', ariaJa: '次へ：重点領域' },
-    focus:    { to: 'contact',          tEn: 'Company',          tJa: '会社情報',     ariaEn: 'Next: Company',          ariaJa: '次へ：会社情報' },
+    focus:    { to: 'contact',          tEn: 'Contact',          tJa: 'お問い合わせ',     ariaEn: 'Next: Contact',          ariaJa: '次へ：お問い合わせ' },
     contact:  { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }
   };
 
@@ -282,20 +282,10 @@
 
     const homeHref = locale === 'ja' ? '/ja/' : '/';
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
-    const jaLinks = locale === 'ja' ? `
-        <nav class="ff-jalinks" aria-label="サイトリンク">
-          <a href="/ja/uk-real-estate.html">英国不動産投資</a>
-          <a href="/ja/netherlands-real-estate.html">オランダ不動産投資</a>
-          <a href="/ja/approach.html">投資アプローチ</a>
-          <a href="/ja/investment-focus.html">投資戦略</a>
-          <a href="/ja/insights/">Insights</a>
-          <a href="/ja/contact.html">お問い合わせ</a>
-          <a href="/ja/privacy.html">プライバシーポリシー</a>
-        </nav>` : '';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
     host.innerHTML = `${nextNav}
-      <footer class="footer">${jaLinks}
+      <footer class="footer">
         <a class="ff-brand" href="${homeHref}" aria-label="Reiwa Capital">
           <img class="ff-symbol" src="${symbol}" alt="">
         </a>
