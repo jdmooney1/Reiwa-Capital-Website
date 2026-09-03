@@ -93,18 +93,6 @@
 }
 
 /* =====================================================================
-   QUIET LINKS — underline wipes in from the left on hover.
-   ===================================================================== */
-a.wipe {
-  position: relative;
-}
-a.wipe::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 1px; background: currentColor;
-  transform: scaleX(0); transform-origin: 0 50%;
-  transition: transform var(--dur-2) var(--ease-out);
-}
-/* =====================================================================
    HERO — one restrained fade-up for the media + headline group. No
    parallax, no per-line clip masks: a single quiet entrance, once.
    ===================================================================== */
@@ -159,4 +147,3 @@ a.wipe::after {
     transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
   }
 }
-.pager-title, .pager-arrow { transition-timing-function: var(--ease-out) !important; }

@@ -40,7 +40,6 @@
   }
   function run() {
     apply(getLang());
-    document.documentElement.classList.remove('i18n-cloak');
   }
   // This file loads at the end of <body>, so page content already exists —
   // apply now to swap before first paint. The shell injects nav/footer on

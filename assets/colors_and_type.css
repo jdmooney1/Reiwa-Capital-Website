@@ -151,9 +151,9 @@
   /* ONE global type scale — 7 responsive tiers (desktop / tablet / mobile).
      Every role maps to a tier; clamps land on the named values at ~1280 /
      ~1024 / ≤430. No page defines its own sizes. */
-  --type-display:     clamp(44px, 34px + 2.9vw, 76px);    /* Home display     76→64 on desktop, reduces below */
+  --type-display:     clamp(44px, 34px + 2.4vw, 66px);    /* Home display     76→64 on desktop, reduces below */
   --type-display-lh:  1.05;  --type-display-ls:  -0.02em;
-  --type-page-title:  clamp(36px, 28px + 2vw, 56px);      /* Internal page title  56→48 on desktop */
+  --type-page-title:  clamp(36px, 28px + 1.4vw, 48px);      /* Internal page title  56→48 on desktop */
   --type-page-title-lh: 1.1; --type-page-title-ls: -0.015em;
   --type-h2:          clamp(24px, 13px + 1.4vw, 34px);    /* Section heading  34→28 on desktop */
   --type-h2-lh:       1.12;  --type-h2-ls:       -0.01em;
@@ -187,8 +187,15 @@
      characters). Long-form body maps to --measure; lead / intro lines that
      run at larger type stay narrower on --measure-lead so their physical
      width matches. Headings and side-notes keep their own tight measures. */
-  --measure:      60ch;
+  --measure:      66ch;
   --measure-lead: 38ch;
+  /* ---- THREE deliberate content widths, one system. Everything that caps
+     its width picks one of these — never a bare px value at the instance.
+     body      standard explanatory copy      ~580–680px
+     statement wider positioning statements   ~760–850px
+     container primary page frame (editorial.css, 1280px) */
+  --measure-body:      620px;
+  --measure-statement: 820px;
 
   /* Line heights */
   /* Container — one frame for the whole site. Actual responsive value set
@@ -255,6 +262,10 @@
   --dur-hover:   280ms;   /* standard hover — colour / border / arrow nudge   */
   --dur-section: 260ms;   /* content crossfade — header solidify, logo swap, drawer */
   --dur-panel:   380ms;   /* one-time reveal — stage/chapter entries, [data-reveal] */
+  /* Scroll reveals sit in their own band (450–650ms) — longer than a panel
+     crossfade, shorter than the hero settle. One token, used by the
+     [data-reveal] rule in editorial.css and nothing else. */
+  --dur-reveal-scroll: 520ms;
 
   --dur-1: var(--dur-fast);
   --dur-2: var(--dur-hover);
@@ -471,6 +482,11 @@ hr, .rule {
 :lang(ja) {
   font-family: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', YuGothic, Meiryo, 'Noto Sans JP', sans-serif !important;
   line-break: strict;
+  /* Proportional kana/punctuation metrics — closes the gaps that otherwise
+     open around 、。「」（） and leaves isolated punctuation looking set
+     rather than dropped in. */
+  font-feature-settings: "palt" 1;
+  text-spacing-trim: trim-start;
 }
 html[lang="ja"] {
   --type-statement-lh: 1.55;
@@ -478,3 +494,34 @@ html[lang="ja"] {
   --type-body-lh:      1.7;
   --type-caption-lh:   1.5;
 }
+
+/* =====================================================================
+   JA READING MEASURE — `ch` is the width of the Latin "0" (~0.55em in DM
+   Sans), so a `Nch` cap holds only ~0.55N full-width Japanese characters.
+   Every measure authored in `ch` therefore renders roughly HALF its
+   intended character count in Japanese: lines break early, paragraphs
+   fragment, and the page runs much taller than the English original.
+   Japanese is monospaced at 1em per character, so the same measures are
+   restated here in `em` at a comfortable 35–45 character line.
+   Higher specificity than the page-level `.class { max-width: Nch }`
+   rules, so these win wherever they apply.
+   ===================================================================== */
+html[lang="ja"] {
+  --measure:      42em;   /* long-form body        (was 66ch ≈ 36 JA chars) */
+  --measure-lead: 24em;   /* lead / intro lines    (was 38ch ≈ 21 JA chars) */
+  --measure-body: 40em;   /* market-page body      (was 660px, fixed px)    */
+}
+html[lang="ja"] .wwd-desc,
+html[lang="ja"] .hww-node p     { max-width: 26em; }
+html[lang="ja"] .mkt-value      { max-width: 25em; }
+html[lang="ja"] .cl-desc        { max-width: 20em; }
+html[lang="ja"] .contact-lead   { max-width: 30em; }
+html[lang="ja"] .stage-obj,
+html[lang="ja"] .stage-sup      { max-width: 38em; }
+html[lang="ja"] .home-hero h1   { max-width: 15em; }
+html[lang="ja"] .cta-statement  { max-width: 11em; }
+html[lang="ja"] .page-head h1   { max-width: 15em; }
+html[lang="ja"] .home-hero .sub { max-width: 30em; }
+html[lang="ja"] .hww-intro      { max-width: 34em; }
+html[lang="ja"] .ed-row h2      { max-width: 14em; }
+html[lang="ja"] .list-row h3    { max-width: 11em; }
