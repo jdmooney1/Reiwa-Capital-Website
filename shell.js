@@ -9,11 +9,12 @@
 
 (function () {
   const NAV = [
-    { href: '/',            en: 'Home',     ja: 'ホーム',    key: 'home' },
-    { href: 'about.html',    en: 'About',    ja: '会社概要',  key: 'about' },
-    { href: 'approach.html', en: 'Approach', ja: 'アプローチ', key: 'approach' },
-    { href: 'investment-focus.html',  en: 'Investment Focus', ja: '重点領域',  key: 'focus' },
-    { href: 'company.html',  en: 'Contact',  ja: 'お問い合わせ', key: 'contact' },
+    { href: '/',                     en: 'Home',             ja: 'ホーム',       key: 'home' },
+    { href: 'about.html',            en: 'About',            ja: '会社概要',     key: 'about' },
+    { href: 'approach.html',         en: 'Approach',         ja: 'アプローチ',   key: 'approach' },
+    { href: 'investment-focus.html', en: 'Investment Focus', ja: '重点領域',     key: 'focus' },
+    { href: 'company.html',          en: 'Company',          ja: '会社情報',     key: 'company' },
+    { href: 'company.html#contact',  en: 'Contact',          ja: 'お問い合わせ', key: 'contact' },
   ];
 
   /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
@@ -29,15 +30,15 @@
   ];
 
   /* Guided onward journey — one continuous editorial read across the five
-     pages. Every page but Contact ends by turning to the next chapter;
-     Contact returns the reader to Home, closing the loop. No page numbers:
-     the site numbers sections within a page, never the pages themselves. */
+     pages: Home → About → Approach → Investment Focus → Company → Home.
+     Company closes the loop back to Home. No page numbers: the site numbers
+     sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            tJa: '会社概要',     ariaEn: 'Next: About',            ariaJa: '次へ：会社概要' },
-    about:    { to: 'approach',         tEn: 'Approach',         tJa: 'アプローチ',   ariaEn: 'Next: Approach',         ariaJa: '次へ：アプローチ' },
-    approach: { to: 'investment-focus', tEn: 'Investment Focus', tJa: '重点領域',     ariaEn: 'Next: Investment Focus', ariaJa: '次へ：重点領域' },
-    focus:    { to: 'contact',          tEn: 'Contact',          tJa: 'お問い合わせ',     ariaEn: 'Next: Contact',          ariaJa: '次へ：お問い合わせ' },
-    contact:  { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }
+    home:     { to: 'about',            tEn: 'About',            tJa: '会社概要',   ariaEn: 'Next: About',            ariaJa: '次へ：会社概要' },
+    about:    { to: 'approach',         tEn: 'Approach',         tJa: 'アプローチ', ariaEn: 'Next: Approach',         ariaJa: '次へ：アプローチ' },
+    approach: { to: 'investment-focus', tEn: 'Investment Focus', tJa: '重点領域',   ariaEn: 'Next: Investment Focus', ariaJa: '次へ：重点領域' },
+    focus:    { to: 'company',          tEn: 'Company',          tJa: '会社情報',   ariaEn: 'Next: Company',          ariaJa: '次へ：会社情報' },
+    company:  { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }
   };
 
   const FLOW_JA = {
@@ -62,6 +63,63 @@
   let langSwapPending = null;
 
   function renderNav() {
+    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
+    if (locale === 'ja') renderNavJa(); else renderNavEn();
+  }
+
+  /* ---------------------------------------------------------------------
+     ENGLISH NAV — all six destinations visible at every width. No
+     hamburger, no drawer, no hidden menu.
+
+       >=1101px  logo | link row | language toggle, on one line
+       <=1100px  logo + language toggle on line one, the link row wraps to
+                 its own full-width second line and scrolls horizontally
+
+     One <ul>, repositioned by CSS. Never a duplicated link list, so
+     aria-current and the language sweep each have exactly one target.
+     --------------------------------------------------------------------- */
+  function renderNavEn() {
+    const host = document.querySelector('[data-shell="nav"]');
+    if (!host) return;
+    const onDark = host.hasAttribute('data-dark');
+    const R = (typeof window !== 'undefined' && window.__resources) || {};
+    const logoSrc = onDark ? (R.logoWhite || 'assets/logos/lockup-white.svg')
+                           : (R.logoBlack || 'assets/logos/lockup-purple.svg');
+    const cur = currentKey();
+
+    const links = NAV.map((n) => {
+      const active = n.key === cur ? ' aria-current="page"' : '';
+      return `<li><a href="${n.href}"${active}><span data-en="${n.en}" data-ja="${n.ja}">${n.en}</span></a></li>`;
+    }).join('');
+
+    host.innerHTML = `
+      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
+        <div class="nav-inner">
+          <a class="nav-logo" href="/" aria-label="Reiwa Capital">
+            <img class="nl-lockup" src="${logoSrc}" alt="">
+          </a>
+          <ul class="nav-links">${links}</ul>
+          <div class="nav-right">
+            <div class="lang-toggle" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
+              <button data-lang="en" aria-label="English">EN</button>
+              <button data-lang="ja" aria-label="日本語">JA</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    `;
+    host.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
+    });
+    syncLangButtons();
+  }
+
+  /* ---------------------------------------------------------------------
+     JAPANESE NAV — the drawer composition /ja/ shipped with, unchanged.
+     The Japanese site is deliberately out of scope for the English
+     redesign phase and gets its own alignment pass afterwards.
+     --------------------------------------------------------------------- */
+  function renderNavJa() {
     const host = document.querySelector('[data-shell="nav"]');
     if (!host) return;
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
@@ -284,6 +342,9 @@
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
+    /* Deliberately minimal: copyright, LinkedIn, Privacy. The onward journey
+       lives in the sumire NEXT block above — the footer is legal identity
+       only and never carries a second navigation list. */
     host.innerHTML = `${nextNav}
       <footer class="footer">
         <a class="ff-brand" href="${homeHref}" aria-label="Reiwa Capital">
@@ -291,7 +352,10 @@
         </a>
         <div class="footer-inner">
           <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
-          <a class="ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
+          <div class="ff-right">
+            ${locale === 'ja' ? '' : '<a class="ff-link" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>'}
+            <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
+          </div>
         </div>
       </footer>
     `;

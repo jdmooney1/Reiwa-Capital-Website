@@ -29,6 +29,17 @@
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
+/* English nav only: six labels now sit in the band where the hero's own
+   scrim is weakest, over the palest part of the photograph. A soft
+   top-down wash, fully transparent by the bar's lower edge, gives them a
+   base without introducing a visible header block or a hard edge.
+   Scoped away from /ja/, which keeps its drawer nav untouched this phase. */
+body:not([data-locale="ja"]) .nav-bar.nav-over-hero {
+  background: linear-gradient(180deg,
+              rgba(16, 11, 20, 0.46) 0%,
+              rgba(16, 11, 20, 0.22) 58%,
+              rgba(16, 11, 20, 0) 100%);
+}
 .nav-bar.nav-over-hero .lang-toggle { border-color: rgba(255,255,255,0.30); }
 .nav-bar.nav-over-hero .lang-toggle button { color: rgba(255,255,255,0.66); }
 .nav-bar.nav-over-hero .lang-toggle button.is-active { background: #fff; color: var(--ink); }

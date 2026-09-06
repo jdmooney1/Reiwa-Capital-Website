@@ -227,6 +227,127 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 .lang-toggle button.is-active { background: var(--ink); color: #fff; }
 
 /* =====================================================================
+   PRIMARY NAV LINKS — six destinations, visible at every width.
+   No hamburger and no drawer on the English site: the reader can always
+   see where the site goes. One <ul>, repositioned by CSS.
+
+     >=1101px   logo | links | language toggle, on a single line
+     <=1100px   logo + toggle on line one; the links wrap to their own
+                full-width second line and scroll horizontally
+
+   The active page carries a solid 1px rule; hover draws the same rule in
+   from the left. No pills, no boxes, no background states.
+   ===================================================================== */
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(17px, 1.75vw, 30px);
+  order: 2;
+  flex: 0 1 auto;
+}
+.nav-links li { display: block; }
+.nav-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 5px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(13px, 0.3vw + 11.7px, 14.5px);
+  font-weight: 400;
+  letter-spacing: 0.004em;
+  line-height: 1.2;
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms var(--ease-out);
+}
+@media (hover: hover) {
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+}
+.nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.nav-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 1px; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a, .nav-links a::after { transition: none; }
+}
+
+/* Over the dark home hero the whole row inverts, matching the white
+   lockup swap craft.js performs on the same class. */
+.nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.78); }
+.nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
+@media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
+.nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
+
+/* The nav row is the flex line; the logo opens it and the language
+   toggle closes it. */
+.nav-logo { order: 1; }
+.nav-right { order: 3; }
+.nav-inner { flex-wrap: wrap; row-gap: 0; }
+
+/* ---- Two-line navigation below 1101px -------------------------------
+   The link row drops to its own full-width line, bleeds to the screen
+   edges so nothing clips at the gutter, and scrolls horizontally when the
+   six labels exceed the viewport. A short right-edge fade signals that
+   there is more to the right. Type size never drops below 13px. */
+@media (max-width: 1100px) {
+  .nav-inner {
+    column-gap: 16px;
+    row-gap: 0;
+    padding-top: 8px;
+    padding-bottom: 0;
+  }
+  /* The logo and the language toggle share line one; the links take line
+     two. Both must sit before the link row in flex order, or the toggle is
+     pushed onto a third line by the row's 100% basis. */
+  .nav-logo { order: 1; }
+  .nav-right { order: 2; margin-left: auto; }
+  .nav-links {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: flex-start;
+    gap: clamp(18px, 4.6vw, 28px);
+    margin: 8px calc(var(--gutter) * -1) 0;
+    padding: 9px var(--gutter) 10px;
+    border-top: 1px solid var(--rule);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 44px), rgba(0,0,0,0.15) calc(100% - 8px), transparent 100%);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 44px), rgba(0,0,0,0.15) calc(100% - 8px), transparent 100%);
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { min-height: 28px; padding: 3px 0; }
+  /* The links row now owns the bar's bottom edge, so the scroll hairline
+     would double up on it. */
+  .nav-bar.header-past-threshold .nav-inner::after { opacity: 0; }
+  /* Over the home hero the divider needs to read on dark. */
+  .nav-bar.nav-over-hero .nav-links { border-top-color: rgba(255, 255, 255, 0.22); }
+}
+
+/* Touch targets: comfortable without inflating the bar or shrinking type. */
+@media (hover: none) {
+  .nav-links a { min-height: 34px; }
+}
+
+/* =====================================================================
    FOOTER — the final moment. A deep sumire banner carries the mark in
    cream; one quiet baseline row beneath it. No link list, no legal wall.
    Content is visible by default — never gated on an animation.
@@ -327,13 +448,15 @@ html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-hei
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
-.ff-privacy {
-  justify-self: end; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
+/* Right-hand pair: LinkedIn, then Privacy. Two links, no list. */
+.ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
+.ff-link {
+  font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
   color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
   display: inline-flex; align-items: center; min-height: 44px; margin: -16px 0;
   transition: color 220ms var(--ease-out);
 }
-.ff-privacy:hover, .ff-privacy[aria-current="page"] { color: var(--paper-warm); }
+.ff-link:hover, .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .ff-jalinks { max-width: var(--container); margin: 0 auto; padding: 22px var(--gutter) 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
 .ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0.01em; color: rgba(252,250,241,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
 .ff-jalinks a:hover { color: var(--paper-warm); }
@@ -341,7 +464,7 @@ html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-hei
 /* Touch: give the small footer links a comfortable target without changing
    their type size or the footer's height. */
 @media (hover: none) {
-  .ff-jalinks a, .ff-privacy { display: inline-flex; align-items: center; min-height: 44px; }
+  .ff-jalinks a, .ff-link { display: inline-flex; align-items: center; min-height: 44px; }
   .ff-jalinks { gap: 0 20px; padding-top: 10px; }
 }
 
@@ -361,7 +484,7 @@ html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-hei
   .nn-title-row { grid-column: 1; }
   .nn-link:focus-visible { outline-offset: -4px; }
   .footer-inner { height: 72px; }
-  .ff-copy, .ff-privacy { font-size: 11.5px; }
+  .ff-copy, .ff-link { font-size: 11.5px; }
   .ff-symbol { height: 21px; }
 }
 @media (max-width: 340px) {
@@ -466,7 +589,8 @@ body[data-page="focus"] .page-head { border-bottom: 1px solid var(--rule-strong)
 /* Art-directed hero washes — pale architectural imagery behind the page
    title. A left-weighted cream scrim keeps the dark headline crisp; a
    bottom fade settles the image into the foot band. Scoped per page. */
-body[data-page="contact"] .page-head {
+body[data-page="contact"] .page-head,
+body[data-page="company"] .page-head {
   min-height: 32vh;
   display: flex;
   align-items: center;
@@ -874,9 +998,11 @@ html.nav-drawer-open { overflow: hidden; }
   .nav-drawer { transition: none; }
 }
 
-/* Responsive nav — drawer goes full-width on small screens */
+/* Responsive nav — drawer goes full-width on small screens.
+   Drawer-era geometry: the Japanese site still uses it. The English nav
+   is two-line and sets its own row height in the block above. */
 @media (max-width: 720px) {
-  .nav-inner { position: relative; padding: 9px var(--gutter); gap: 14px; }
+  body[data-locale="ja"] .nav-inner { position: relative; padding: 9px var(--gutter); gap: 14px; }
   .nav-right { gap: 12px; }
   .nav-toggle { margin-left: 2px; }
   .nav-drawer { width: 100vw; border-left: 0; }
