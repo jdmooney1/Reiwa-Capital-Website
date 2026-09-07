@@ -30,7 +30,7 @@
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="editorial.css?v=76">
 <link rel="stylesheet" href="brand.css?v=7">
-<link rel="stylesheet" href="craft.css?v=22">
+<link rel="stylesheet" href="craft.css?v=23">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/about.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -124,8 +124,8 @@
     /* A soft cream halo is standard cartographic practice — without it a name
        crossing a boundary or a park edge becomes unreadable. */
     text-shadow: 0 0 3px var(--paper-warm), 0 0 3px var(--paper-warm), 0 0 6px var(--paper-warm); }
-  .ab-lab--pri { color: var(--ink); font-weight: 500; }
-  .ab-lab--broader { color: var(--ink-2); font-weight: 500; }
+  .ab-lab--pri { color: var(--ink); font-weight: 500; letter-spacing: 0.004em; }
+  .ab-lab--sel { color: var(--ink-2); font-weight: 400; }
   .ab-lab--context { color: var(--ink-3); font-weight: 400; font-size: 11px; }
   /* Waterway names are map furniture, not focus areas. */
   .ab-lab--water { color: #5E7C92; font-weight: 500; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -262,10 +262,10 @@
           <span class="ab-lab ab-lab--pri" style="--x:30.39%;--y:35.52%;--xt:28.42%;--yt:35.17%" aria-hidden="true">Marylebone</span>
           <span class="ab-lab ab-lab--pri" style="--x:12.69%;--y:63.22%;--xt:12.69%;--yt:61.14%" aria-hidden="true">South Kensington</span>
           <span class="ab-lab ab-lab--pri" style="--x:21.34%;--y:72.71%;--xt:21.34%;--yt:69.13%" aria-hidden="true">Chelsea</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.78%;--y:39.29%;--xt:46.64%;--yt:39.22%" aria-hidden="true">Soho /<br>Fitzrovia</span>
-          <span class="ab-lab ab-lab--pri" style="--x:80.52%;--y:42.19%;--xt:80.52%;--yt:43.43%" aria-hidden="true">City Core</span>
-          <span class="ab-lab ab-lab--pri" style="--x:67.56%;--y:30.83%;--xt:66.02%;--yt:36.32%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
-          <span class="ab-lab ab-lab--pri" style="--x:86.28%;--y:28.23%;--xt:87.82%;--yt:29.73%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
+          <span class="ab-lab ab-lab--sel" style="--x:43.78%;--y:39.29%;--xt:46.64%;--yt:39.22%" aria-hidden="true">Soho /<br>Fitzrovia</span>
+          <span class="ab-lab ab-lab--sel" style="--x:80.52%;--y:42.19%;--xt:80.52%;--yt:43.43%" aria-hidden="true">City Core</span>
+          <span class="ab-lab ab-lab--sel" style="--x:67.56%;--y:30.83%;--xt:66.02%;--yt:36.32%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
+          <span class="ab-lab ab-lab--sel" style="--x:86.28%;--y:28.23%;--xt:87.82%;--yt:29.73%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
           <span class="ab-lab ab-lab--context" style="--x:17.37%;--y:49.6%;--xt:17.37%;--yt:49.67%" aria-hidden="true">Hyde Park</span>
           <span class="ab-lab ab-lab--context" style="--x:26.51%;--y:23.76%;--xt:26.51%;--yt:27.9%" aria-hidden="true">Regent’s Park</span>
           </div>
@@ -298,8 +298,8 @@
           <span class="ab-lab ab-lab--pri" style="--x:53.42%;--y:33.43%;--xt:54.05%;--yt:33.43%" aria-hidden="true">Canal Belt</span>
           <span class="ab-lab ab-lab--pri" style="--x:43.59%;--y:20.61%;--xt:42.37%;--yt:20.61%" aria-hidden="true">Jordaan</span>
           <span class="ab-lab ab-lab--pri" style="--x:44.73%;--y:57.1%;--xt:43.72%;--yt:57.1%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--pri" style="--x:61.07%;--y:29.24%;--xt:63.13%;--yt:29.24%" aria-hidden="true">Historic Centre</span>
-          <span class="ab-lab ab-lab--pri" style="--x:41.53%;--y:89.63%;--xt:39.93%;--yt:89.63%" aria-hidden="true">Zuidas</span>
+          <span class="ab-lab ab-lab--sel" style="--x:61.07%;--y:29.24%;--xt:63.13%;--yt:29.24%" aria-hidden="true">Historic Centre</span>
+          <span class="ab-lab ab-lab--sel" style="--x:41.53%;--y:89.63%;--xt:39.93%;--yt:89.63%" aria-hidden="true">Zuidas</span>
           <span class="ab-lab ab-lab--context" style="--x:27.4%;--y:52.75%;--xt:23.15%;--yt:52.75%" aria-hidden="true">Vondelpark</span>
           <span class="ab-lab ab-lab--context" style="--x:90.7%;--y:50.61%;--xt:98.31%;--yt:50.61%" aria-hidden="true">Oosterpark</span>
           <span class="ab-lab ab-lab--water" style="--x:77.89%;--y:5.0%;--xt:83.1%;--yt:5.0%" aria-hidden="true">IJ</span>

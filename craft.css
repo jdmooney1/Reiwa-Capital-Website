@@ -86,7 +86,7 @@ body:not([data-locale="ja"]) .nav-bar.nav-over-hero {
 
 /* Condensed state (after hero, and the default on inner pages). */
 .nav-bar.is-scrolled {
-  background: rgba(248, 246, 238, 0.82);
+  background: rgba(248, 246, 238, 0.93);
   border-bottom-color: var(--hairline);
   -webkit-backdrop-filter: saturate(140%) blur(18px);
           backdrop-filter: saturate(140%) blur(18px);
