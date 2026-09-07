@@ -149,7 +149,11 @@
   .om-col--reiwa .om-list li { font-size: clamp(16.5px, 14.6px + 0.6vw, 21px); color: var(--ink); padding: 7px 0; letter-spacing: 0.004em; }
   .om-col--specialists .om-list { columns: 2; column-gap: clamp(16px, 1.8vw, 28px); }
   .om-col--specialists .om-list li { font-size: clamp(14.5px, 14px + 0.2vw, 16px); break-inside: avoid; }
-  .om-list li.is-quiet { opacity: 0.72; }
+  /* De-emphasis floor: 0.72 measured 4.12:1 against the warm paper, short
+     of AA. 0.76 is the minimum that clears 4.5:1 (4.56:1 measured), so the
+     phase selector keeps as much of its emphasis contrast as accessibility
+     allows. Approved exception to the English visual freeze. */
+  .om-list li.is-quiet { opacity: 0.76; }
   .om-note { max-width: none; margin: clamp(34px, 3.6vw, 48px) 0 0; padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
   .om-note span { display: block; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); max-width: 50em; }
   @media (prefers-reduced-motion: reduce) { .om-ph, .om-ph::after, .om-list li { transition: none; } }
@@ -240,7 +244,7 @@
       <div><dt>保有</dt><dd>保有期間中のモニタリング・レポーティング</dd></div>
     </dl>
 
-    <p class="lc-gate"><b>投資家の承認事項：</b> <span>取得</span> <span class="sep" aria-hidden="true">·</span> <span>売却</span> <span class="sep" aria-hidden="true">·</span> <span>借換え</span> <span class="sep" aria-hidden="true">·</span> <span>重要な設備投資</span> <span class="sep" aria-hidden="true">·</span> <span>重要なリーシング判断</span> <span class="sep" aria-hidden="true">·</span> <span>事業計画の重要な変更</span></p>
+    <p class="lc-gate"><b>投資家の承認事項：</b> <span>取得</span> <span class="sep" aria-hidden="true">·</span> <span>売却</span> <span class="sep" aria-hidden="true">·</span> <span>借換え</span> <span class="sep" aria-hidden="true">·</span> <span>重要な資本的支出</span> <span class="sep" aria-hidden="true">·</span> <span>重要なリーシング判断</span> <span class="sep" aria-hidden="true">·</span> <span>事業計画の重要な変更</span></p>
   </div>
 </section>
 
@@ -249,7 +253,7 @@
   <div class="shell">
     <div class="ap-head">
       <span class="h-eyebrow">運営体制</span>
-      <h2 class="h-h2" id="om-title">一つの窓口で、現地を連携。</h2>
+      <h2 class="h-h2" id="om-title">一つの窓口で、現地と連携。</h2>
     </div>
 
     <div class="om-phase" role="radiogroup" aria-label="投資フェーズ">

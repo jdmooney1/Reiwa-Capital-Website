@@ -140,7 +140,11 @@
   .om-col--specialists .om-list { columns: 2; column-gap: clamp(16px, 1.8vw, 28px); }
   .om-col--specialists .om-list li { font-size: clamp(14.5px, 14px + 0.2vw, 16px); break-inside: avoid; }
   /* Emphasis only — the phase selector never adds or removes anything. */
-  .om-list li.is-quiet { opacity: 0.72; }
+  /* De-emphasis floor: 0.72 measured 4.12:1 against the warm paper, short
+     of AA. 0.76 is the minimum that clears 4.5:1 (4.56:1 measured), so the
+     phase selector keeps as much of its emphasis contrast as accessibility
+     allows. Approved exception to the English visual freeze. */
+  .om-list li.is-quiet { opacity: 0.76; }
   .om-note { max-width: none; margin: clamp(34px, 3.6vw, 48px) 0 0; padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
   .om-note span { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--ink-3); max-width: 68ch; }
   @media (prefers-reduced-motion: reduce) { .om-ph, .om-ph::after, .om-list li { transition: none; } }
