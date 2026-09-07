@@ -37,9 +37,10 @@
 <link rel="preload" as="image" href="assets/imagery/focus-hero-blur.webp" fetchpriority="high">
 <style>
   /* =====================================================================
-     INVESTMENT FOCUS — hero, the underwriting lens, and the three areas of
-     focus. Shared atoms (.h-eyebrow / .h-h2 / .h-body) come from
-     editorial.css; only this page's composition lives here.
+     INVESTMENT FOCUS — hero, then three signature visuals with the
+     strategy photography between them: the Investment Lens, the
+     Repositioning Journey and the discipline strip. Shared atoms
+     (.h-eyebrow / .h-h2 / .h-body) come from editorial.css.
      ===================================================================== */
 
   /* --- 1 · Hero -------------------------------------------------------- */
@@ -54,74 +55,138 @@
     .if-hero .sub { max-width: 34ch; }
   }
 
-  /* --- Section scaffold, shared with About and Approach ----------------- */
-  .if-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .if-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
+  /* --- Section scaffold ------------------------------------------------ */
+  .if-sec { padding: 0 0 clamp(56px, 5vw, 78px); }
+  .if-sec > .shell { padding-top: clamp(52px, 4.8vw, 70px); }
   .if-sec + .if-sec > .shell { border-top: 1px solid var(--rule); }
+  .if-sec--tight { padding-bottom: clamp(48px, 4.2vw, 64px); }
+  .if-sec--tight > .shell { padding-top: clamp(44px, 4vw, 58px); }
   .if-head { max-width: 1060px; }
-  .if-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
-  @media (max-width: 760px) { .if-sec { padding-bottom: 64px; } .if-sec > .shell { padding-top: 60px; } }
+  .if-head .h-h2 { margin-top: clamp(12px, 1.4vw, 18px); max-width: 22ch; }
+  .if-lede { margin-top: clamp(12px, 1.4vw, 18px); max-width: 56ch; }
+  @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
 
-  /* --- 2 · The lens: five tests around one investment case --------------
-     Desktop draws the geometry in SVG and sets the names in HTML on top,
-     so the type never scales with the viewBox. Below 900px the same five
-     become a plain stacked list — the diagram is not worth a fight at
-     phone widths. */
-  .lens { position: relative; width: 100%; max-width: 1000px; margin: clamp(20px, 2.4vw, 36px) auto 0; aspect-ratio: 1000 / 800; }
+  /* --- 2 · Investment Lens ---------------------------------------------
+     Five tests set close around one investment case. Geometry in SVG,
+     names in HTML, so the type never scales with the viewBox. Below 900px
+     the five become a plain stacked list. */
+  .lens { position: relative; width: 100%; max-width: 840px; margin: clamp(18px, 2vw, 30px) auto 0; aspect-ratio: 1000 / 620; }
   .lens svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .lens .ring { fill: none; stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .lens .spoke { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .lens .node { fill: var(--reiwa-node, #5E3D78); }
-  .lens-core { position: absolute; left: 50%; top: 48.75%; transform: translate(-50%, -50%); text-align: center; width: 15ch; }
+  /* The core sits on the cream ground and knocks out the spokes behind it,
+     so the eyebrow never reads as crossing a line. */
+  .lens-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 19ch; padding: 10px 8px; background: var(--paper-warm); }
   .lens-core span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
-  .lens-core strong { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 13px + 0.55vw, 22px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
-
-  .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 21ch); }
-  /* The side names have the least room between their node and the frame. */
+  .lens-core strong { display: block; margin-top: 10px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 14px + 0.62vw, 26px); line-height: 1.12; letter-spacing: -0.014em; color: var(--ink); }
+  .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 20ch); }
   .lens-item--r, .lens-item--l { --w: 18ch; }
-  .lens-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
-  .lens-item p { margin: 8px 0 0; max-width: none; font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 13px + 0.2vw, 15px); line-height: 1.45; color: var(--ink-2); }
-  .lens-item--t { transform: translate(-50%, -100%); text-align: center; }
-  .lens-item--r { transform: translate(0, -50%); text-align: left; }
-  .lens-item--l { transform: translate(-100%, -50%); text-align: right; }
-  .lens-item--br { transform: translate(0, 0); text-align: left; }
+  .lens-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 13px + 0.6vw, 22px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
+  .lens-item p { margin: 7px 0 0; max-width: none; font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.45; color: var(--ink-2); }
+  .lens-item--t  { transform: translate(-50%, -100%); text-align: center; }
+  .lens-item--r  { transform: translate(0, -50%); text-align: left; }
+  .lens-item--l  { transform: translate(-100%, -50%); text-align: right; }
+  .lens-item--br { text-align: left; }
   .lens-item--bl { transform: translate(-100%, 0); text-align: right; }
 
-  /* Stacked fallback — one square marker, name, line. */
-  .lens-list { display: none; margin: 36px 0 0; border-top: 1px solid var(--rule-strong); }
-  .lens-list > div { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+  .lens-list { display: none; margin: 30px 0 0; border-top: 1px solid var(--rule-strong); }
+  .lens-list > div { padding: 18px 0; border-bottom: 1px solid var(--rule); }
   .lens-list > div:last-child { border-bottom: 0; }
-  .lens-list h3 { position: relative; margin: 0; padding-left: 22px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 5.4vw, 24px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
+  .lens-list h3 { position: relative; margin: 0; padding-left: 22px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 5.2vw, 23px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
   .lens-list h3::before { content: ""; position: absolute; left: 0; top: 0.44em; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
-  .lens-list p { margin: 8px 0 0 22px; max-width: none; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+  .lens-list p { margin: 7px 0 0 22px; max-width: none; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+  @media (max-width: 900px) { .lens { display: none; } .lens-list { display: block; } }
+
+  /* --- 3 · Mandate at a glance: five fields on hairlines ---------------- */
+  .mg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); border-top: 1px solid var(--rule-strong); }
+  .mg > div { min-width: 0; padding: clamp(18px, 2vw, 26px) clamp(14px, 1.6vw, 24px) clamp(4px, 0.6vw, 8px) 0; }
+  .mg > div + div { border-left: 1px solid var(--rule); padding-left: clamp(14px, 1.6vw, 24px); }
+  .mg dt { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 10px; }
+  .mg dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 13.6px + 0.28vw, 16.5px); line-height: 1.4; color: var(--ink); }
+  .mg dd + dd { margin-top: 5px; }
   @media (max-width: 900px) {
-    .lens { display: none; }
-    .lens-list { display: block; }
+    .mg { grid-template-columns: 1fr; margin-top: 24px; }
+    .mg > div, .mg > div + div { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr); column-gap: 16px; border-left: 0; padding: 14px 0; border-top: 1px solid var(--rule); }
+    .mg > div:first-child { border-top: 0; padding-top: 0; }
+    .mg dt { grid-column: 1; grid-row: 1; margin: 0; }
+    .mg dd { grid-column: 2; }
+    .mg dd + dd { margin-top: 4px; }
   }
 
-  /* --- 3 · Areas of focus: three chapters, alternating ------------------
-     Everything is visible: no disclosure, no accordion. Image, thesis, and
-     two short labelled lines. */
-  .ar-list { margin-top: clamp(44px, 5vw, 72px); }
-  .chapter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr); gap: clamp(28px, 3.6vw, 60px); align-items: center; padding: clamp(36px, 4vw, 56px) 0; border-top: 1px solid var(--rule); }
+  /* --- 4 · Areas of focus: three chapters, images carry the weight ------ */
+  .ar-list { margin-top: clamp(30px, 3.4vw, 48px); }
+  .chapter { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: clamp(28px, 3.6vw, 60px); align-items: center; padding: clamp(22px, 2.4vw, 32px) 0; border-top: 1px solid var(--rule); }
   .chapter:first-child { border-top: 1px solid var(--rule-strong); }
   .chapter--rev .ch-media { order: 2; }
-  .ch-media { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink); }
+  .ch-media { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
   .ch-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .ch-text { min-width: 0; }
   .ch-num { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .ch-text h3 { margin: 14px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.3vw, 38px); line-height: 1.1; letter-spacing: -0.016em; color: var(--ink); }
-  .ch-thesis { margin: clamp(14px, 1.6vw, 20px) 0 0; max-width: 46ch; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); }
-  .ch-facts { margin: clamp(22px, 2.4vw, 32px) 0 0; }
-  .ch-facts > div { padding: 14px 0; border-top: 1px solid var(--rule); }
-  .ch-facts dt { font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 7px; }
-  .ch-facts dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); max-width: 48ch; }
+  .ch-text h3 { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.3vw, 38px); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
+  .ch-thesis { margin: clamp(12px, 1.4vw, 18px) 0 0; max-width: 40ch; font-size: clamp(15.5px, 15px + 0.25vw, 17px); }
+  .ch-assets { margin: clamp(18px, 2vw, 26px) 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .ch-assets dt { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 8px; }
+  .ch-assets dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink); }
+  .ch-assets .sep { color: var(--ink-4); padding: 0 0.3em; }
   @media (max-width: 900px) {
-    .ar-list { margin-top: 36px; }
-    .chapter { grid-template-columns: 1fr; gap: 22px; padding: 28px 0; }
+    .ar-list { margin-top: 28px; }
+    .chapter { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; }
     .chapter--rev .ch-media { order: 0; }
     .ch-media { aspect-ratio: 3 / 2; }
-    .ch-thesis, .ch-facts dd { max-width: none; }
+    .ch-thesis { max-width: none; }
+  }
+
+  /* --- 5 · Repositioning journey ---------------------------------------
+     Three states of the same abstract facade: bays empty, works in
+     progress, bays let. Line drawing only — no metrics, invented or
+     otherwise. */
+  .rj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; column-gap: var(--rj-gap, clamp(28px, 3.4vw, 60px)); margin-top: clamp(26px, 2.8vw, 38px); }
+  @supports (grid-template-rows: subgrid) { .rj-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; } }
+  .rj-stage { position: relative; min-width: 0; }
+  .rj-art { display: block; width: 100%; max-width: 228px; height: auto; }
+  .rj-art .fac { fill: none; stroke: var(--ink-3); stroke-opacity: 0.55; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+  .rj-art .bay { fill: none; stroke: var(--ink-3); stroke-opacity: 0.4; stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .rj-art .bay-on { fill: var(--reiwa-node, #5E3D78); fill-opacity: 0.82; stroke: none; }
+  .rj-art .works { stroke: var(--reiwa-node, #5E3D78); stroke-opacity: 0.55; stroke-width: 1; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+  .rj-art .grd { stroke: var(--ink-3); stroke-opacity: 0.5; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+  .rj-rule { position: relative; display: block; height: 9px; margin-top: clamp(20px, 2.2vw, 30px); }
+  .rj-rule i { position: absolute; left: 0; top: 0; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
+  .rj-rule::before { content: ""; position: absolute; left: 15px; right: calc(-1 * var(--rj-gap, 60px)); top: 4px; height: 1px; background: var(--rule-strong); }
+  .rj-rule::after { content: ""; position: absolute; right: calc(-1 * var(--rj-gap, 60px) + 6px); top: 1px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .rj-stage:last-child .rj-rule::before, .rj-stage:last-child .rj-rule::after { content: none; }
+  .rj-stage h3 { margin: 18px 0 0; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.8vw, 28px); line-height: 1.1; letter-spacing: -0.014em; color: var(--ink); }
+  .rj-list { list-style: none; margin: 12px 0 0; padding: 0; align-self: start; }
+  .rj-list li { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.45; color: var(--ink-2); padding: 3px 0; }
+  @media (max-width: 900px) {
+    /* The drawing sits beside its stage rather than above it — the journey
+       reads in three short rows instead of three full screens. */
+    .rj { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 26px; border-top: 1px solid var(--rule-strong); }
+    .rj-stage { display: grid; grid-row: auto; grid-template-rows: auto auto auto; grid-template-columns: 96px minmax(0, 1fr); column-gap: 18px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+    .rj-stage:last-child { border-bottom: 0; }
+    .rj-art { max-width: 96px; grid-column: 1; grid-row: 1 / span 3; margin-top: 2px; }
+    .rj-rule { grid-column: 2; grid-row: 1; height: 0; margin: 0; }
+    .rj-rule i { display: none; }
+    .rj-rule::before { content: none; }
+    .rj-stage + .rj-stage .rj-rule::after { content: ""; left: 0; right: auto; top: -26px; transform: rotate(135deg); background: var(--paper-warm); }
+    .rj-stage:first-child .rj-rule::after { content: none; }
+    .rj-stage h3 { grid-column: 2; grid-row: 2; margin: 0; font-size: clamp(20px, 5.4vw, 24px); }
+    .rj-list { grid-column: 2; grid-row: 3; margin: 8px 0 0; }
+    .rj-list li { padding: 2px 0; }
+  }
+
+  /* --- 6 · Investment discipline: five principles on one ruled strip ---- */
+  .dis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); border-top: 1px solid var(--rule-strong); }
+  .dis > div { min-width: 0; padding: clamp(20px, 2.2vw, 28px) clamp(14px, 1.6vw, 24px) 0 0; }
+  .dis > div + div { border-left: 1px solid var(--rule); padding-left: clamp(14px, 1.6vw, 24px); }
+  .dis span { display: block; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-bottom: 12px; }
+  .dis p { margin: 0; max-width: none; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 13.8px + 0.38vw, 18px); line-height: 1.28; letter-spacing: -0.008em; color: var(--ink); }
+  @media (max-width: 900px) {
+    .dis { grid-template-columns: 1fr; margin-top: 24px; }
+    .dis > div, .dis > div + div { border-left: 0; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .dis > div:last-child { border-bottom: 0; }
+    .dis span { display: inline; margin: 0 10px 0 0; }
+    .dis p { display: inline; }
   }
 </style>
 </head>
@@ -141,40 +206,34 @@
   </div>
 </section>
 
-<!-- Underwriting — the five tests -->
-<section class="if-sec lens-sec" data-screen-label="02 Investment Focus — underwriting" aria-labelledby="lens-title">
+<!-- Investment Lens -->
+<section class="if-sec lens-sec" data-screen-label="02 Investment Focus — investment lens" aria-labelledby="lens-title">
   <div class="shell">
     <div class="if-head">
       <span class="h-eyebrow">Underwriting</span>
       <h2 class="h-h2" id="lens-title">Five Tests. Every Asset.</h2>
-      <p class="h-body if-lede">Considered together, across acquisition, financing and ownership.</p>
     </div>
 
-    <div class="lens" role="img" aria-label="Five underwriting tests — location, income, asset quality, execution and exit — arranged around one investment case.">
-      <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <circle class="ring" cx="500" cy="390" r="235"/>
-        <line class="spoke" x1="500" y1="300" x2="500" y2="155"/>
-        <line class="spoke" x1="585.6" y1="362.2" x2="723.5" y2="317.4"/>
-        <line class="spoke" x1="552.9" y1="462.8" x2="638.1" y2="580.1"/>
-        <line class="spoke" x1="447.1" y1="462.8" x2="361.9" y2="580.1"/>
-        <line class="spoke" x1="414.4" y1="362.2" x2="276.5" y2="317.4"/>
-        <rect class="node" x="495.5" y="150.5" width="9" height="9"/>
-        <rect class="node" x="719" y="312.9" width="9" height="9"/>
-        <rect class="node" x="633.6" y="575.6" width="9" height="9"/>
-        <rect class="node" x="357.4" y="575.6" width="9" height="9"/>
-        <rect class="node" x="272" y="312.9" width="9" height="9"/>
+    <div class="lens" role="img" aria-label="Five underwriting tests — location, income, asset quality, execution and exit — assessed together as one investment case.">
+      <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="500" cy="310" r="175"/>
+        <line class="spoke" x1="500" y1="238" x2="500" y2="135"/>
+        <line class="spoke" x1="568.5" y1="287.8" x2="666.4" y2="255.9"/>
+        <line class="spoke" x1="542.3" y1="368.2" x2="602.9" y2="451.6"/>
+        <line class="spoke" x1="457.7" y1="368.2" x2="397.1" y2="451.6"/>
+        <line class="spoke" x1="431.5" y1="287.8" x2="333.6" y2="255.9"/>
+        <rect class="node" x="495.5" y="130.5" width="9" height="9"/>
+        <rect class="node" x="661.9" y="251.4" width="9" height="9"/>
+        <rect class="node" x="598.4" y="447.1" width="9" height="9"/>
+        <rect class="node" x="392.6" y="447.1" width="9" height="9"/>
+        <rect class="node" x="329.1" y="251.4" width="9" height="9"/>
       </svg>
-      <div class="lens-core" aria-hidden="true"><span>Assessed together</span><strong>One investment case</strong></div>
-      <div class="lens-item lens-item--t"  style="--x:50%;--y:14.63%">
-        <h3>Location</h3><p>Established submarkets with durable occupier demand.</p></div>
-      <div class="lens-item lens-item--r"  style="--x:76.35%;--y:38.05%">
-        <h3>Income</h3><p>Tested against realistic leasing assumptions.</p></div>
-      <div class="lens-item lens-item--br" style="--x:66.41%;--y:77.01%">
-        <h3>Asset quality</h3><p>Buildings that stay competitive for future owners.</p></div>
-      <div class="lens-item lens-item--bl" style="--x:33.59%;--y:77.01%">
-        <h3>Execution</h3><p>A plan that can be delivered, not only modelled.</p></div>
-      <div class="lens-item lens-item--l"  style="--x:23.65%;--y:38.05%">
-        <h3>Exit</h3><p>Identifiable buyers and demand at sale.</p></div>
+      <div class="lens-core" aria-hidden="true"><span>Assessed together</span><strong>One Investment Case</strong></div>
+      <div class="lens-item lens-item--t"  style="--x:50%;--y:16.61%"><h3>Location</h3><p>Established submarkets with durable occupier demand.</p></div>
+      <div class="lens-item lens-item--r"  style="--x:69.64%;--y:39.98%"><h3>Income</h3><p>Tested against realistic leasing assumptions.</p></div>
+      <div class="lens-item lens-item--br" style="--x:62.29%;--y:77.03%"><h3>Asset quality</h3><p>Buildings that stay competitive for future owners.</p></div>
+      <div class="lens-item lens-item--bl" style="--x:37.71%;--y:77.03%"><h3>Execution</h3><p>A plan that can be delivered, not only modelled.</p></div>
+      <div class="lens-item lens-item--l"  style="--x:30.36%;--y:39.98%"><h3>Exit</h3><p>Identifiable buyers and demand at sale.</p></div>
     </div>
 
     <div class="lens-list">
@@ -187,8 +246,25 @@
   </div>
 </section>
 
+<!-- Mandate at a glance -->
+<section class="if-sec if-sec--tight mg-sec" data-screen-label="03 Investment Focus — investment parameters" aria-labelledby="mg-title">
+  <div class="shell">
+    <div class="if-head">
+      <span class="h-eyebrow">Investment parameters</span>
+      <h2 class="h-h2" id="mg-title">Our Mandate at a Glance</h2>
+    </div>
+    <dl class="mg">
+      <div><dt>Geography</dt><dd>London</dd><dd>Amsterdam</dd></div>
+      <div><dt>Strategies</dt><dd>Income</dd><dd>Repositioning</dd><dd>Hospitality</dd></div>
+      <div><dt>Asset characteristics</dt><dd>Established locations</dd><dd>Understandable downside</dd><dd>Clear business plan</dd></div>
+      <div><dt>Ownership</dt><dd>Direct or investor-controlled</dd></div>
+      <div><dt>Hold period</dt><dd>Asset-specific</dd></div>
+    </dl>
+  </div>
+</section>
+
 <!-- Areas of focus -->
-<section class="if-sec ar" data-screen-label="03 Investment Focus — areas of focus" aria-labelledby="ar-title">
+<section class="if-sec ar" data-screen-label="04 Investment Focus — areas of focus" aria-labelledby="ar-title">
   <div class="shell">
     <div class="if-head">
       <span class="h-eyebrow">Areas of focus</span>
@@ -197,43 +273,105 @@
 
     <div class="ar-list">
       <article class="chapter" id="income">
-        <figure class="ch-media"><img src="assets/imagery/bg-income-980.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 46vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="ch-media"><img src="assets/imagery/bg-income-980.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 50vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
           <span class="ch-num">01</span>
           <h3>Income</h3>
-          <p class="h-body ch-thesis">Assets supported by established demand and a visible, defensible income profile.</p>
-          <dl class="ch-facts">
-            <div><dt>Asset types</dt><dd>Offices, prime retail and residential supported by established occupier demand.</dd></div>
-            <div><dt>Considerations</dt><dd>Covenant strength, lease profile, rental sustainability and reletting prospects.</dd></div>
-          </dl>
+          <p class="h-body ch-thesis">Durable cash flow from well-located assets with defensible occupier demand.</p>
+          <dl class="ch-assets"><dt>Typical assets</dt><dd>Offices<span class="sep" aria-hidden="true">·</span>Prime retail<span class="sep" aria-hidden="true">·</span>Residential</dd></dl>
         </div>
       </article>
 
       <article class="chapter chapter--rev" id="repositioning">
-        <figure class="ch-media"><img src="assets/imagery/bg-repositioning-1535.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 46vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="ch-media"><img src="assets/imagery/bg-repositioning-1535.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 50vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
           <span class="ch-num">02</span>
           <h3>Repositioning</h3>
           <p class="h-body ch-thesis">Assets with identifiable potential to improve occupancy, income and long-term value.</p>
-          <dl class="ch-facts">
-            <div><dt>Asset types</dt><dd>Office and mixed-use buildings with vacancy, underused space or a dated leasing proposition.</dd></div>
-            <div><dt>Considerations</dt><dd>Refurbishment scope and cost, planning position, programme, achievable rent and stabilisation.</dd></div>
-          </dl>
+          <dl class="ch-assets"><dt>Typical assets</dt><dd>Office<span class="sep" aria-hidden="true">·</span>Mixed-use<span class="sep" aria-hidden="true">·</span>Underutilised buildings</dd></dl>
         </div>
       </article>
 
       <article class="chapter" id="hospitality">
-        <figure class="ch-media"><img style="object-position:50% 15%" src="assets/imagery/bg-hospitality-952.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 46vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="ch-media"><img style="object-position:50% 15%" src="assets/imagery/bg-hospitality-952.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 50vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
           <span class="ch-num">03</span>
           <h3>Hospitality</h3>
-          <p class="h-body ch-thesis">Hotels and serviced accommodation where location, trading performance and asset quality support long-term value.</p>
-          <dl class="ch-facts">
-            <div><dt>Asset types</dt><dd>Branded and independent hotels, aparthotels, serviced apartments and extended-stay accommodation.</dd></div>
-            <div><dt>Considerations</dt><dd>Trading performance, operator and brand strength, lease or operating structure, capital requirements and exit liquidity.</dd></div>
-          </dl>
+          <p class="h-body ch-thesis">Operating real estate where location, trading performance and asset quality support long-term value.</p>
+          <dl class="ch-assets"><dt>Typical assets</dt><dd>Hotels<span class="sep" aria-hidden="true">·</span>Serviced apartments<span class="sep" aria-hidden="true">·</span>Extended-stay accommodation</dd></dl>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- Repositioning journey -->
+<section class="if-sec rj-sec" data-screen-label="05 Investment Focus — repositioning journey" aria-labelledby="rj-title">
+  <div class="shell">
+    <div class="if-head">
+      <span class="h-eyebrow">From potential to performance</span>
+      <h2 class="h-h2" id="rj-title">The Repositioning Journey</h2>
+    </div>
+
+    <div class="rj">
+      <div class="rj-stage">
+        <svg class="rj-art" viewBox="0 0 200 168" preserveAspectRatio="xMidYMid meet" role="img" aria-label="An abstract facade with most bays empty.">
+          <rect class="fac" x="20" y="24" width="160" height="124"/>
+          <line class="grd" x1="8" y1="148" x2="192" y2="148"/>
+          <rect class="bay-on" x="33" y="38" width="26" height="26"/><rect class="bay" x="69" y="38" width="26" height="26"/><rect class="bay-on" x="105" y="38" width="26" height="26"/><rect class="bay" x="141" y="38" width="26" height="26"/>
+          <rect class="bay" x="33" y="73" width="26" height="26"/><rect class="bay-on" x="69" y="73" width="26" height="26"/><rect class="bay" x="105" y="73" width="26" height="26"/><rect class="bay" x="141" y="73" width="26" height="26"/>
+          <rect class="bay-on" x="33" y="108" width="26" height="26"/><rect class="bay" x="69" y="108" width="26" height="26"/><rect class="bay" x="105" y="108" width="26" height="26"/><rect class="bay" x="141" y="108" width="26" height="26"/>
+        </svg>
+        <span class="rj-rule" aria-hidden="true"><i></i></span>
+        <h3>Today</h3>
+        <ul class="rj-list"><li>Vacancy</li><li>Underused space</li><li>Dated fit-out</li><li>Below-market income</li></ul>
+      </div>
+
+      <div class="rj-stage">
+        <svg class="rj-art" viewBox="0 0 200 168" preserveAspectRatio="xMidYMid meet" role="img" aria-label="The same facade under works, with scaffolding across it.">
+          <rect class="fac" x="20" y="24" width="160" height="124"/>
+          <line class="grd" x1="8" y1="148" x2="192" y2="148"/>
+          <rect class="bay" x="33" y="38" width="26" height="26"/><rect class="bay" x="69" y="38" width="26" height="26"/><rect class="bay" x="105" y="38" width="26" height="26"/><rect class="bay" x="141" y="38" width="26" height="26"/>
+          <rect class="bay" x="33" y="73" width="26" height="26"/><rect class="bay" x="69" y="73" width="26" height="26"/><rect class="bay" x="105" y="73" width="26" height="26"/><rect class="bay" x="141" y="73" width="26" height="26"/>
+          <rect class="bay" x="33" y="108" width="26" height="26"/><rect class="bay" x="69" y="108" width="26" height="26"/><rect class="bay" x="105" y="108" width="26" height="26"/><rect class="bay" x="141" y="108" width="26" height="26"/>
+          <line class="works" x1="14" y1="18" x2="14" y2="148"/><line class="works" x1="100" y1="18" x2="100" y2="148"/><line class="works" x1="186" y1="18" x2="186" y2="148"/>
+          <line class="works" x1="14" y1="18" x2="186" y2="18"/><line class="works" x1="14" y1="68" x2="186" y2="68"/><line class="works" x1="14" y1="106" x2="186" y2="106"/>
+        </svg>
+        <span class="rj-rule" aria-hidden="true"><i></i></span>
+        <h3>Intervention</h3>
+        <ul class="rj-list"><li>Targeted refurbishment</li><li>Leasing</li><li>Capital works</li><li>Operating improvement</li></ul>
+      </div>
+
+      <div class="rj-stage">
+        <svg class="rj-art" viewBox="0 0 200 168" preserveAspectRatio="xMidYMid meet" role="img" aria-label="The same facade with every bay let.">
+          <rect class="fac" x="20" y="24" width="160" height="124"/>
+          <line class="grd" x1="8" y1="148" x2="192" y2="148"/>
+          <rect class="bay-on" x="33" y="38" width="26" height="26"/><rect class="bay-on" x="69" y="38" width="26" height="26"/><rect class="bay-on" x="105" y="38" width="26" height="26"/><rect class="bay-on" x="141" y="38" width="26" height="26"/>
+          <rect class="bay-on" x="33" y="73" width="26" height="26"/><rect class="bay-on" x="69" y="73" width="26" height="26"/><rect class="bay-on" x="105" y="73" width="26" height="26"/><rect class="bay-on" x="141" y="73" width="26" height="26"/>
+          <rect class="bay-on" x="33" y="108" width="26" height="26"/><rect class="bay-on" x="69" y="108" width="26" height="26"/><rect class="bay-on" x="105" y="108" width="26" height="26"/><rect class="bay-on" x="141" y="108" width="26" height="26"/>
+        </svg>
+        <span class="rj-rule" aria-hidden="true"><i></i></span>
+        <h3>Stabilised</h3>
+        <ul class="rj-list"><li>Improved income</li><li>Stronger occupier proposition</li><li>Improved asset quality</li><li>Clearer exit</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment discipline -->
+<section class="if-sec if-sec--tight dis-sec" data-screen-label="06 Investment Focus — discipline" aria-labelledby="dis-title">
+  <div class="shell">
+    <div class="if-head">
+      <span class="h-eyebrow">Our discipline</span>
+      <h2 class="h-h2" id="dis-title">Investment Discipline</h2>
+      <p class="h-body if-lede">We focus on what can be assessed, controlled and executed.</p>
+    </div>
+    <div class="dis">
+      <div><span>01</span><p>Property fundamentals first</p></div>
+      <div><span>02</span><p>Realistic rental assumptions</p></div>
+      <div><span>03</span><p>Controlled execution risk</p></div>
+      <div><span>04</span><p>Multiple exit routes</p></div>
+      <div><span>05</span><p>Tax as an enhancement, not the thesis</p></div>
     </div>
   </div>
 </section>
