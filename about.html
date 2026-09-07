@@ -116,7 +116,7 @@
      taller one when the panel stacks. Each SVG's viewBox is padded to its
      frame's aspect, so the HTML labels — positioned as a percentage of the
      frame — stay on register with the geography. */
-  .am-map { position: relative; aspect-ratio: 1.18; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
+  .am-map { position: relative; aspect-ratio: 0.95; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
   .am-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .am-img--tall { display: none; }
 
@@ -147,7 +147,7 @@
   @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
   @media (max-width: 1024px) {
     .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
-    .am-map { aspect-ratio: 0.95; }
+    .am-map { aspect-ratio: 0.80; }
     .am-img--wide { display: none; }
     .am-img--tall { display: block; }
     .ab-lab { left: var(--xt); top: var(--yt); }
@@ -255,24 +255,24 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="assets/maps/london-wide.svg" alt="Map of central London. The River Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus micro-markets are Mayfair, St James’s, Marylebone, South Kensington and Chelsea; selective focus covers Soho and Fitzrovia, the City Core, Farringdon and Clerkenwell, and Shoreditch and the City Fringe." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/london-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:33.85%;--y:45.4%;--xt:33.85%;--yt:46.29%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.51%;--y:53.57%;--xt:43.51%;--yt:52.87%" aria-hidden="true">St James’s</span>
-          <span class="ab-lab ab-lab--pri" style="--x:26.87%;--y:33.02%;--xt:25.24%;--yt:33.44%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--pri" style="--x:12.26%;--y:69.14%;--xt:12.26%;--yt:65.41%" aria-hidden="true">South Kensington</span>
-          <span class="ab-lab ab-lab--pri" style="--x:19.02%;--y:79.26%;--xt:19.02%;--yt:73.56%" aria-hidden="true">Chelsea</span>
-          <span class="ab-lab ab-lab--pri" style="--x:41.08%;--y:32.98%;--xt:42.95%;--yt:38.08%" aria-hidden="true">Soho /<br>Fitzrovia</span>
-          <span class="ab-lab ab-lab--pri" style="--x:75.96%;--y:36.48%;--xt:75.96%;--yt:39.11%" aria-hidden="true">City Core</span>
-          <span class="ab-lab ab-lab--pri" style="--x:67.54%;--y:24.16%;--xt:66.37%;--yt:31.64%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
-          <span class="ab-lab ab-lab--pri" style="--x:86.15%;--y:20.19%;--xt:87.32%;--yt:24.0%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
-          <span class="ab-lab ab-lab--context" style="--x:16.34%;--y:50.79%;--xt:16.34%;--yt:50.64%" aria-hidden="true">Hyde Park</span>
-          <span class="ab-lab ab-lab--context" style="--x:25.39%;--y:19.09%;--xt:25.39%;--yt:25.12%" aria-hidden="true">Regent’s Park</span>
+          <span class="ab-lab ab-lab--pri" style="--x:33.77%;--y:46.27%;--xt:33.77%;--yt:46.86%" aria-hidden="true">Mayfair</span>
+          <span class="ab-lab ab-lab--pri" style="--x:43.48%;--y:52.93%;--xt:43.48%;--yt:52.46%" aria-hidden="true">St James’s</span>
+          <span class="ab-lab ab-lab--pri" style="--x:26.77%;--y:36.26%;--xt:25.24%;--yt:36.16%" aria-hidden="true">Marylebone</span>
+          <span class="ab-lab ab-lab--pri" style="--x:12.09%;--y:65.48%;--xt:12.09%;--yt:63.04%" aria-hidden="true">South Kensington</span>
+          <span class="ab-lab ab-lab--pri" style="--x:18.89%;--y:73.65%;--xt:18.89%;--yt:69.92%" aria-hidden="true">Chelsea</span>
+          <span class="ab-lab ab-lab--pri" style="--x:41.04%;--y:36.23%;--xt:42.78%;--yt:39.8%" aria-hidden="true">Soho /<br>Fitzrovia</span>
+          <span class="ab-lab ab-lab--pri" style="--x:76.07%;--y:39.06%;--xt:76.07%;--yt:40.78%" aria-hidden="true">City Core</span>
+          <span class="ab-lab ab-lab--pri" style="--x:67.62%;--y:29.09%;--xt:66.53%;--yt:34.31%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
+          <span class="ab-lab ab-lab--pri" style="--x:86.31%;--y:25.89%;--xt:87.4%;--yt:28.13%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
+          <span class="ab-lab ab-lab--context" style="--x:16.2%;--y:50.64%;--xt:16.2%;--yt:50.54%" aria-hidden="true">Hyde Park</span>
+          <span class="ab-lab ab-lab--context" style="--x:25.27%;--y:25.0%;--xt:25.27%;--yt:28.95%" aria-hidden="true">Regent’s Park</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
             <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
           </ul>
-          <p class="am-note">Indicative investment focus areas. Boundaries are approximate.</p>
+          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -281,7 +281,7 @@
           <dl class="am-facts">
             <div><dt>Market character</dt><dd class="h-body">Deep, globally connected and highly segmented.</dd></div>
             <div><dt>Where we focus</dt><dd class="h-body">Prime central and established commercial submarkets where location, income quality and execution can be assessed with depth.</dd></div>
-            <div><dt>Selected submarkets</dt><dd class="h-body am-subs">Mayfair · St James’s · Marylebone · South Kensington · Chelsea · Soho / Fitzrovia · City Core · Farringdon / Clerkenwell · Shoreditch / City Fringe</dd></div>
+            <div><dt>Focus submarkets</dt><dd class="h-body am-subs">Mayfair · St James’s · Marylebone · South Kensington · Chelsea · Soho / Fitzrovia · City Core · Farringdon / Clerkenwell · Shoreditch / City Fringe</dd></div>
             <div><dt>Why it fits</dt><dd class="h-body">Institutional depth, strong transaction liquidity and a broad long-term buyer base.</dd></div>
           </dl>
         </div>
@@ -291,21 +291,21 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam showing the canal ring around the historic centre, the IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus areas are the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with broader coverage in the historic centre and Zuidas." loading="lazy" decoding="async">
+            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:56.49%;--y:38.92%;--xt:58.07%;--yt:38.92%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--pri" style="--x:46.12%;--y:29.74%;--xt:45.19%;--yt:29.74%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--pri" style="--x:42.07%;--y:65.87%;--xt:40.16%;--yt:65.87%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.75%;--y:86.01%;--xt:42.24%;--yt:86.01%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--broader" style="--x:60.8%;--y:32.25%;--xt:63.42%;--yt:32.25%" aria-hidden="true">Historic centre</span>
-          <span class="ab-lab ab-lab--context" style="--x:30.46%;--y:57.84%;--xt:25.73%;--yt:57.84%" aria-hidden="true">Vondelpark</span>
+          <span class="ab-lab ab-lab--pri" style="--x:56.47%;--y:39.0%;--xt:57.68%;--yt:39.0%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-lab ab-lab--pri" style="--x:43.69%;--y:29.88%;--xt:42.49%;--yt:29.88%" aria-hidden="true">Jordaan</span>
+          <span class="ab-lab ab-lab--pri" style="--x:45.55%;--y:65.47%;--xt:44.7%;--yt:65.47%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
+          <span class="ab-lab ab-lab--pri" style="--x:40.75%;--y:85.76%;--xt:39.01%;--yt:85.76%" aria-hidden="true">Zuidas</span>
+          <span class="ab-lab ab-lab--pri" style="--x:61.79%;--y:32.37%;--xt:63.99%;--yt:32.37%" aria-hidden="true">Historic Centre</span>
+          <span class="ab-lab ab-lab--context" style="--x:24.36%;--y:57.78%;--xt:19.55%;--yt:57.78%" aria-hidden="true">Vondelpark</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
             <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
           </ul>
-          <p class="am-note">Indicative investment focus areas. Boundaries are approximate.</p>
+          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -314,7 +314,7 @@
           <dl class="am-facts">
             <div><dt>Market character</dt><dd class="h-body">Supply-constrained, historic and relationship-driven.</dd></div>
             <div><dt>Where we focus</dt><dd class="h-body">Central locations where scarcity, building character, durable occupier demand and identifiable value creation support the investment case.</dd></div>
-            <div><dt>Selected submarkets</dt><dd class="h-body am-subs">Canal Belt · Museum Quarter / Oud-Zuid · Jordaan · Zuidas · selected central districts</dd></div>
+            <div><dt>Focus submarkets</dt><dd class="h-body am-subs">Canal Belt · Jordaan · Museum Quarter / Oud-Zuid · Historic Centre · Zuidas</dd></div>
             <div><dt>Why it fits</dt><dd class="h-body">Scarcity, distinctive asset character and opportunities for selective repositioning.</dd></div>
           </dl>
         </div>
