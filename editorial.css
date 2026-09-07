@@ -227,6 +227,51 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 .lang-toggle button.is-active { background: var(--ink); color: #fff; }
 
 /* =====================================================================
+   LANGUAGE SWITCH — "EN | JA". Two text buttons either side of a short
+   hairline. The active language is ink at medium weight; the other is
+   quiet. No pill, no fill, no border: it should never compete with the
+   logo. Tap targets stay comfortable through padding, not visible bulk.
+   ===================================================================== */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.lang-switch button {
+  font: inherit;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 34px;
+  padding: 0 6px;
+  margin: 0;
+  background: transparent;
+  color: var(--ink-3);
+  border: 0;
+  border-radius: 1px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color 200ms var(--ease-out);
+}
+.lang-switch button.is-active { color: var(--ink); font-weight: 500; cursor: default; }
+@media (hover: hover) { .lang-switch button:not(.is-active):hover { color: var(--ink-2); } }
+.lang-switch button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lang-switch .ls-sep {
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: var(--rule-strong);
+  opacity: 0.9;
+}
+@media (prefers-reduced-motion: reduce) { .lang-switch button { transition: none; } }
+
+/* =====================================================================
    PRIMARY NAV LINKS — six destinations, visible at every width.
    No hamburger and no drawer on the English site: the reader can always
    see where the site goes. One <ul>, repositioned by CSS.
@@ -292,6 +337,11 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 .nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
 @media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
 .nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .lang-switch button { color: rgba(255, 255, 255, 0.62); }
+.nav-bar.nav-over-hero .lang-switch button.is-active { color: #fff; }
+@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch button:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
+.nav-bar.nav-over-hero .lang-switch button:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
 
 /* The nav row is the flex line; the logo opens it and the language
    toggle closes it. */
@@ -300,10 +350,11 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 .nav-inner { flex-wrap: wrap; row-gap: 0; }
 
 /* ---- Two-line navigation below 1101px -------------------------------
-   The link row drops to its own full-width line, bleeds to the screen
-   edges so nothing clips at the gutter, and scrolls horizontally when the
-   six labels exceed the viewport. A short right-edge fade signals that
-   there is more to the right. Type size never drops below 13px. */
+   The four links drop to their own full-width line beneath the logo and
+   language switch. Nothing scrolls, nothing clips: at every supported
+   width all four labels are visible. If a very narrow viewport cannot fit
+   them on one line at readable size, the row wraps to two lines rather
+   than shrinking the type or hiding a destination. */
 @media (max-width: 1100px) {
   .nav-inner {
     column-gap: 16px;
@@ -311,35 +362,37 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
     padding-top: 8px;
     padding-bottom: 0;
   }
-  /* The logo and the language toggle share line one; the links take line
-     two. Both must sit before the link row in flex order, or the toggle is
+  /* The logo and the language switch share line one; the links take line
+     two. Both must sit before the link row in flex order, or the switch is
      pushed onto a third line by the row's 100% basis. */
   .nav-logo { order: 1; }
   .nav-right { order: 2; margin-left: auto; }
   .nav-links {
     order: 3;
     flex: 1 0 100%;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    gap: clamp(18px, 4.6vw, 28px);
-    margin: 8px calc(var(--gutter) * -1) 0;
-    padding: 9px var(--gutter) 10px;
+    gap: 2px clamp(16px, 5.2vw, 30px);
+    margin: 8px 0 0;
+    padding: 8px 0 9px;
     border-top: 1px solid var(--rule);
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 44px), rgba(0,0,0,0.15) calc(100% - 8px), transparent 100%);
-          mask-image: linear-gradient(90deg, #000 calc(100% - 44px), rgba(0,0,0,0.15) calc(100% - 8px), transparent 100%);
   }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { min-height: 28px; padding: 3px 0; }
+  .nav-links a { min-height: 30px; padding: 3px 0; font-size: 13.5px; }
   /* The links row now owns the bar's bottom edge, so the scroll hairline
      would double up on it. */
   .nav-bar.header-past-threshold .nav-inner::after { opacity: 0; }
   /* Over the home hero the divider needs to read on dark. */
   .nav-bar.nav-over-hero .nav-links { border-top-color: rgba(255, 255, 255, 0.22); }
+}
+
+/* Mobile logo: the lockup is the Home control but should not dominate the
+   bar. Roughly a sixth smaller than desktop, and a touch smaller again on
+   the narrowest phones. */
+@media (max-width: 760px) {
+  body:not([data-locale="ja"]) .nav-logo img { height: 25px; }
+}
+@media (max-width: 380px) {
+  body:not([data-locale="ja"]) .nav-logo img { height: 22px; }
 }
 
 /* Touch targets: comfortable without inflating the bar or shrinking type. */
@@ -448,6 +501,22 @@ html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-hei
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
+/* English footer — cream, quiet, functional. A single hairline above,
+   copyright left, LinkedIn and Privacy right. No symbol, no wordmark, no
+   navigation, no location line. The Japanese footer keeps the sumire
+   treatment above until its own alignment phase. */
+.footer.footer-quiet {
+  background: var(--paper-warm);
+  color: var(--ink);
+  border-top: 1px solid var(--rule);
+}
+.footer-quiet .footer-inner { height: 76px; }
+.footer-quiet .ff-copy { color: var(--ink-3); }
+.footer-quiet .ff-link { color: var(--ink-3); }
+.footer-quiet .ff-link:hover,
+.footer-quiet .ff-link[aria-current="page"] { color: var(--ink); }
+.footer-quiet :focus-visible { outline-color: var(--ink); }
+@media (max-width: 768px) { .footer-quiet .footer-inner { height: 66px; } }
 /* Right-hand pair: LinkedIn, then Privacy. Two links, no list. */
 .ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
 .ff-link {

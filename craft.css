@@ -44,6 +44,7 @@ body:not([data-locale="ja"]) .nav-bar.nav-over-hero {
 .nav-bar.nav-over-hero .lang-toggle button { color: rgba(255,255,255,0.66); }
 .nav-bar.nav-over-hero .lang-toggle button.is-active { background: #fff; color: var(--ink); }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }
+/* .lang-switch (English) inverts in editorial.css alongside .nav-links. */
 .nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
 
 /* Inner pages with a full-bleed pale hero (About · Approach · Investment

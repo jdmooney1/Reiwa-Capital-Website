@@ -8,13 +8,13 @@
    ========================================================================= */
 
 (function () {
+  /* Four visible destinations. The logo is the Home link; Contact is a
+     section inside Company (/company.html#contact), not a nav item. */
   const NAV = [
-    { href: '/',                     en: 'Home',             ja: 'ホーム',       key: 'home' },
-    { href: 'about.html',            en: 'About',            ja: '会社概要',     key: 'about' },
-    { href: 'approach.html',         en: 'Approach',         ja: 'アプローチ',   key: 'approach' },
-    { href: 'investment-focus.html', en: 'Investment Focus', ja: '重点領域',     key: 'focus' },
-    { href: 'company.html',          en: 'Company',          ja: '会社情報',     key: 'company' },
-    { href: 'company.html#contact',  en: 'Contact',          ja: 'お問い合わせ', key: 'contact' },
+    { href: 'about.html',            en: 'About',            ja: '会社概要',   key: 'about' },
+    { href: 'approach.html',         en: 'Approach',         ja: 'アプローチ', key: 'approach' },
+    { href: 'investment-focus.html', en: 'Investment Focus', ja: '重点領域',   key: 'focus' },
+    { href: 'company.html',          en: 'Company',          ja: '会社情報',   key: 'company' },
   ];
 
   /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
@@ -95,14 +95,15 @@
     host.innerHTML = `
       <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
         <div class="nav-inner">
-          <a class="nav-logo" href="/" aria-label="Reiwa Capital">
+          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
           <ul class="nav-links">${links}</ul>
           <div class="nav-right">
-            <div class="lang-toggle" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
-              <button data-lang="en" aria-label="English">EN</button>
-              <button data-lang="ja" aria-label="日本語">JA</button>
+            <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
+              <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+              <span class="ls-sep" aria-hidden="true"></span>
+              <button type="button" data-lang="ja" lang="ja" aria-label="日本語">JA</button>
             </div>
           </div>
         </div>
@@ -250,7 +251,7 @@
      cheap and re-run on every languagechange. ---- */
   function syncLangButtons() {
     const l = lang();
-    document.querySelectorAll('.lang-toggle [data-lang]').forEach(btn => {
+    document.querySelectorAll('.lang-toggle [data-lang], .lang-switch [data-lang]').forEach(btn => {
       const active = btn.dataset.lang === l;
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-pressed', String(active));
@@ -342,10 +343,11 @@
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
-    /* Deliberately minimal: copyright, LinkedIn, Privacy. The onward journey
-       lives in the sumire NEXT block above — the footer is legal identity
-       only and never carries a second navigation list. */
-    host.innerHTML = `${nextNav}
+    /* English: a quiet cream footer — copyright left, LinkedIn and Privacy
+       right. No symbol, no navigation list, no location line. The onward
+       journey lives in the sumire NEXT block above it.
+       Japanese: the footer /ja/ shipped with, untouched this phase. */
+    const footer = locale === 'ja' ? `
       <footer class="footer">
         <a class="ff-brand" href="${homeHref}" aria-label="Reiwa Capital">
           <img class="ff-symbol" src="${symbol}" alt="">
@@ -353,12 +355,20 @@
         <div class="footer-inner">
           <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
           <div class="ff-right">
-            ${locale === 'ja' ? '' : '<a class="ff-link" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>'}
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
           </div>
         </div>
-      </footer>
-    `;
+      </footer>` : `
+      <footer class="footer footer-quiet">
+        <div class="footer-inner">
+          <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
+          <div class="ff-right">
+            <a class="ff-link" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
+          </div>
+        </div>
+      </footer>`;
+    host.innerHTML = `${nextNav}${footer}`;
     /* Narrative progression: the bottom next-page/return-home link (never
        ordinary menu nav) flags the coming load so it can play a brief
        entrance on arrival. See editorial.css .pt-enter / .pt-run and the
