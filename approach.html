@@ -28,150 +28,101 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=19">
 <link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=74">
+<link rel="stylesheet" href="editorial.css?v=77">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=23">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<link rel="preload" as="image" href="assets/imagery/approach-hero-blur.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/imagery/approach-hero-blur.webp" fetchpriority="high">
 <style>
-  /* Approved hero — production spec, compacted to the shared internal-page
-     hero system (About / Investment Focus): ~220–250px desktop, ~180–210px
-     mobile, 48–54px H1 desktop. */
-  .approach-h1{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(36px, 28px + 1.4vw, 48px);line-height:var(--type-page-title-lh);letter-spacing:var(--type-page-title-ls);color:var(--ink);margin:0;max-width:16ch;text-wrap:balance}
-  .approach-open{margin:14px 0 0;font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(15.5px,15px + 0.22vw,17px);line-height:1.5;letter-spacing:var(--type-statement-ls);color:var(--ink-2);max-width:var(--measure-lead);text-wrap:pretty}
-  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  /* =====================================================================
+     APPROACH — hero, the five-stage process, investor approval, and the
+     operating model. Shared atoms (.h-eyebrow / .h-h2 / .h-body / .h-num)
+     come from editorial.css; only Approach's own composition lives here.
+     ===================================================================== */
 
-  /* ---- Identity + Purpose — shared About-page structure: large standalone
-     proposition on cream, then eyebrow + heading + short paragraph. ---- */
-  .rationale { padding: clamp(56px, 5vw, 72px) 0 clamp(28px, 2.6vw, 40px); }
-  .rationale .ed-row { align-items: start; }
-  .rationale-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 17px + 0.9vw, 28px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); margin: 0 0 14px; max-width: 560px; text-wrap: pretty; }
-  html[lang="ja"] .rationale-h { line-height: 1.6; letter-spacing: 0.02em; }
-  .rationale-copy { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(15.5px, 15px + 0.15vw, 16.5px); line-height: 1.55; letter-spacing: 0; color: var(--ink-2); margin: 0; max-width: var(--measure-body); }
-  .rationale-copy + .rationale-copy { margin-top: 14px; }
-  html[lang="ja"] .rationale-copy { line-height: 1.8; }
-  .ed-row .sec-eyebrow { display: block; font-size: var(--type-label); font-weight: 500; line-height: 1.4; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin: 0; max-width: none; padding-top: 4px; }
-
-  /* ---- Process — continuous editorial sequence, everything visible --- */
-  .process { padding: 0 0 clamp(48px,5vw,72px); }
-  .sec-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-label); font-weight: 500; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin-bottom: clamp(8px,1vw,12px); }
-
-  .process-tracker { position: sticky; top: var(--nav-h,74px); z-index: 50; background: var(--paper-warm); border-bottom: 1px solid var(--rule); margin: 0 0 clamp(28px,3.2vw,40px); }
-  @media (max-width: 768px) { .process-tracker { position: static; top: auto; z-index: auto; } }
-  .pt-desktop { position: relative; display: grid; grid-template-columns: repeat(5,1fr); }
-  .pt-desktop::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-strong); z-index: 0; }
-  .pt-stage { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 8px; text-decoration: none; background: var(--paper-warm); }
-  .pt-node { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-4); transition: background var(--dur-fast) var(--ease-out); }
-  .pt-label { font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0.01em; color: var(--ink-3); white-space: nowrap; transition: color var(--dur-fast) var(--ease-out); position: relative; z-index: 1; background: var(--paper-warm); padding: 0 2px; }
-  .pt-stage.is-active .pt-node { background: var(--ink); }
-  .pt-stage.is-passed .pt-node { background: var(--ink-2); }
-  .pt-stage.is-active .pt-label { color: var(--ink); font-weight: 500; }
-  @media (hover: hover) { .pt-stage:not(.is-active):hover .pt-label { color: var(--ink); } }
-  .pt-stage:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
-  .pt-mobile { display: none; }
-  @media (max-width: 768px) {
-    .pt-desktop { display: none; }
-    .pt-mobile { display: flex; align-items: baseline; gap: 10px; padding: 13px 0; font-family: 'DM Sans', sans-serif; }
-    .pt-mobile-idx { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-    .pt-mobile-name { font-size: 15px; font-weight: 500; color: var(--ink); flex: 1; min-width: 0; }
+  /* --- 1 · Hero: the shared internal-page wash, with a lead line -------- */
+  /* Height matched to the About hero so the two pages sit in one system. */
+  body[data-page="approach"] .page-head.ap-hero { min-height: min(62vh, 620px); }
+  .ap-hero .inner { padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(44px, 5vw, 68px); }
+  .ap-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 24px + 1.9vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 15ch; }
+  .ap-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+  @media (max-width: 760px) {
+    body[data-page="approach"] .page-head.ap-hero { min-height: min(56vh, 460px); }
+    .ap-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
+    .ap-hero .sub { max-width: 34ch; }
   }
 
-  .process-list { border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
-  .stage-row { display: grid; grid-template-columns: 9fr 30fr 61fr; gap: clamp(24px,3vw,40px); padding: clamp(34px,3.4vw,46px) 0; border-bottom: 1px solid var(--rule); scroll-margin-top: calc(var(--nav-h,74px) + 12px); }
-  @media (min-width: 769px) { .stage-row { scroll-margin-top: calc(var(--nav-h,74px) + var(--pt-h,54px) + 12px); } }
-  .stage-row > * { min-width: 0; }
-  .stage-row:last-child { border-bottom: 0; }
+  /* --- Section scaffold, matching About's rhythm ------------------------ */
+  .ap-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
+  .ap-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
+  .ap-sec + .ap-sec > .shell { border-top: 1px solid var(--rule); }
+  .ap-head { max-width: 1060px; }
+  .ap-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
+  .ap-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 68ch; font-size: clamp(16px, 15.2px + 0.3vw, 18px); }
+  @media (max-width: 760px) { .ap-sec { padding-bottom: 64px; } .ap-sec > .shell { padding-top: 60px; } }
 
-  /* Rail — dot plus a connector segment running from THIS row's dot to the
-     next row's dot only. Bounded per row, never a page-spanning element:
-     nothing can leak above 01 or below 05. */
-  .stage-rail { position: relative; }
-  .stage-rail::after { content: ""; position: absolute; left: 3px; top: 9.5px; bottom: -9.5px; width: 1px; background: var(--rule-soft); }
-  .stage-row:last-child .stage-rail::after { content: none; }
-  .stage-node { position: absolute; left: 0; top: 9px; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--ink-4); transition: background var(--dur-fast) var(--ease-out); z-index: 1; }
-  .stage-num { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 18.6px + 0.28vw, 23px); line-height: 1; letter-spacing: -0.01em; color: var(--ink-3); font-variant-numeric: tabular-nums; padding-left: 20px; transition: color var(--dur-fast) var(--ease-out); }
-  .stage-row.is-passed .stage-node { background: var(--ink-2); }
-  .stage-row.is-active .stage-node { background: var(--ink); }
-  .stage-row.is-active .stage-num { color: var(--ink); }
+  /* --- 2 · Process: five stages, all visible, one continuous sequence ---
+     Number and title on the left, the work and its output on the right.
+     The sequence is drawn by rules and a hairline rail, not by boxes. */
+  .ps-list { margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); }
+  .ps-row { display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.5fr); gap: clamp(24px, 3.4vw, 56px); padding: clamp(30px, 3.2vw, 44px) 0; border-bottom: 1px solid var(--rule); }
+  .ps-row > * { min-width: 0; }
+  /* The numerals carry the sequence — the same dot-and-number atom Home and
+     About use — so no rail or connector is needed between rows. */
+  .ps-row h3 { margin: 14px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 19px + 0.9vw, 30px); line-height: 1.14; letter-spacing: -0.012em; color: var(--ink); }
+  .ps-role { margin: 10px 0 0; font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); color: var(--ink-2); max-width: 26ch; }
 
-  .stage-title { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 18.6px + 0.28vw, 23px); line-height: 1.28; letter-spacing: var(--type-h3-ls); color: var(--ink-3); margin: 0; transition: color var(--dur-fast) var(--ease-out); }
-  .stage-row.is-active .stage-title { color: var(--ink); }
+  .ps-body { max-width: 60ch; }
+  .ps-out { display: grid; grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr); gap: 0 clamp(14px, 1.6vw, 22px); margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); max-width: 60ch; }
+  .ps-out dt { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); line-height: 1.9; }
+  .ps-out dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.5; color: var(--ink); }
 
-  .stage-obj { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(15px, 14.5px + 0.15vw, 16px); line-height: 1.55; letter-spacing: 0; color: var(--ink-2); margin: 0 0 12px; max-width: 62ch; }
-  html[lang="ja"] .stage-obj { line-height: 1.8; }
-  .stage-sup { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 13.5px + 0.15vw, 15px); line-height: 1.55; letter-spacing: 0; color: var(--ink-3); margin: 0; max-width: 62ch; }
-  html[lang="ja"] .stage-sup { line-height: 1.8; }
-  .stage-sup:only-child, .stage-obj:last-child { margin-bottom: 0; }
+  /* --- Investor approval: one restrained strip beneath the lifecycle ---- */
+  .ps-gate { margin-top: clamp(28px, 3vw, 40px); display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.5fr); gap: clamp(24px, 3.4vw, 56px); align-items: baseline; }
+  .ps-gate .h-eyebrow { max-width: 26ch; }
+  .ps-gate-list { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.6; color: var(--ink); max-width: 60ch; }
+  .ps-gate-list .sep { color: var(--ink-4); padding: 0 0.5em; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .stage-node, .stage-num, .stage-title, .pt-node, .pt-label { transition: none; }
+  @media (max-width: 860px) {
+    .ps-list { margin-top: 36px; }
+    .ps-row, .ps-gate { grid-template-columns: 1fr; gap: 18px; }
+    .ps-row { padding: 26px 0; }
+    .ps-role { max-width: none; }
+    .ps-body, .ps-out { max-width: none; }
   }
-  @media (max-width: 768px) {
-    .stage-row { grid-template-columns: 38px 1fr; column-gap: 12px; padding: 14px 0 0; border-bottom: 0; }
-    .stage-rail { grid-row: 1 / span 2; }
-    .stage-num { padding-left: 18px; font-size: 14px; }
-    .stage-node { top: 8.5px; margin-top: -3.5px; }
-    .stage-rail::after { top: 8.5px; bottom: -8.5px; }
-    .stage-title { grid-column: 2; margin-bottom: 5px; font-size: clamp(18px, 4.6vw, 20px); }
-    .stage-copy { grid-column: 2; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
-    .stage-row:last-child .stage-copy { border-bottom: 0; padding-bottom: 0; }
-  }
-
-  /* ---- Operating model — one point of coordination. A single vertical
-     axis: investor above, Reiwa Capital at the centre, the specialist
-     network fanned beneath on architectural hairlines. No columns, no
-     cards, no colour block — one pale wash marks the coordinating layer. */
-  .responsibilities { background: var(--paper-warm); padding: clamp(64px,6.5vw,88px) 0 clamp(64px,6vw,88px); border-top: 1px solid var(--rule-strong); }
-  .om-head { max-width: 720px; margin: 0 auto; text-align: center; }
-  .om-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 21px + 0.95vw, 37px); line-height: 1.14; letter-spacing: var(--type-h2-ls); color: var(--ink); margin: 12px 0 0; }
-  .om-intro { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(15.5px, 15px + 0.08vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 620px; margin: 18px auto 0; }
-  html[lang="ja"] .om-intro { line-height: 1.8; }
-
-  .om-diagram { --axis: 1px solid var(--rule-strong); max-width: 820px; margin: clamp(38px,3.4vw,48px) auto 0; font-family: 'DM Sans', sans-serif; text-align: center; }
-  .om-tier-label { display: block; font-weight: 500; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
-  html[lang="ja"] .om-tier-label { letter-spacing: 0.06em; }
-  .om-inline { max-width: none; margin: 12px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
-  .om-inline .sep { color: var(--ink-4); padding: 0 0.55em; }
-  .om-drop { display: block; width: 1px; height: clamp(28px,2.6vw,36px); margin: 16px auto 0; background: var(--rule-strong); }
-
-  .om-core { display: inline-block; margin-top: 16px; padding: 22px clamp(30px,3.4vw,44px) 24px; background: var(--reiwa-lavender); border-top: 1px solid var(--ink); }
-  .om-core-logo { display: block; height: 26px; width: auto; margin: 0 auto; }
-  .om-core-role { display: block; margin-top: 10px; font-size: 13.5px; line-height: 1.4; color: var(--ink-3); }
-  .om-core-verbs { display: block; margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--rule-strong); font-size: 15.5px; line-height: 1.5; color: var(--ink); }
-  .om-core-verbs .sep { color: var(--ink-4); padding: 0 0.5em; }
-
-  .om-net { --net-gap: clamp(10px,1.4vw,18px); position: relative; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: var(--net-gap); margin: 0; padding-top: clamp(18px,1.8vw,22px); }
-  .om-net::before { content: ""; position: absolute; top: 0; left: calc((100% - 4 * var(--net-gap)) / 10); right: calc((100% - 4 * var(--net-gap)) / 10); height: 1px; background: var(--rule); }
-  .om-net li { list-style: none; position: relative; margin: 0 auto; padding: 0; max-width: 15ch; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
-  .om-net li::before { content: ""; position: absolute; top: calc(-1 * clamp(18px,1.8vw,22px)); left: 50%; width: 1px; height: clamp(18px,1.8vw,22px); background: var(--rule); }
-  .om-net { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
-  .om-net-label { display: block; margin-bottom: clamp(14px,1.5vw,18px); }
-
-
-  @media (max-width: 768px) {
-    .process { padding-bottom: clamp(52px, 9vw, 72px); }
-    .responsibilities { padding-top: clamp(52px, 9vw, 72px); padding-bottom: clamp(52px, 9vw, 72px); }
-    .om-h { font-size: clamp(26px, 5.4vw, 31px); }
-    /* Stacked: one left-hand spine, everything hangs off it. */
-    .om-head { text-align: left; }
-    .om-diagram { text-align: left; margin-top: 32px; padding-left: 22px; position: relative; }
-    .om-diagram::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--rule-strong); }
-    .om-inline { margin-top: 10px; }
-    .om-inline .sep { display: none; }
-    .om-inline span:not(.sep) { display: block; }
-    .om-drop { display: none; }
-    .om-core { display: block; margin-top: 28px; padding: 20px; }
-    .om-core-logo { margin: 0; height: 23px; }
-    .om-core-verbs { font-size: 14.5px; }
-    .om-net { display: block; margin-top: 28px; padding-top: 0; }
-    .om-net::before { display: none; }
-    .om-net li::before { display: none; }
-    .om-net li + li { margin-top: 10px; }
-    .om-net-label { margin-bottom: 12px; }
+  @media (max-width: 520px) {
+    .ps-out { grid-template-columns: 1fr; gap: 6px; }
+    .ps-out dt { line-height: 1.4; }
+    /* On the narrowest screens the list reads better as one item per line. */
+    .ps-gate-list .sep { display: none; }
+    .ps-gate-list span:not(.sep) { display: block; }
   }
 
+  /* --- 3 · Operating model: three tiers, rules and chevrons, no boxes --- */
+  .om-tiers { margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); }
+  .om-tier { display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.74fr); gap: clamp(20px, 3vw, 48px); padding: clamp(26px, 3vw, 40px) 0; border-bottom: 1px solid var(--rule); position: relative; }
+  .om-tier > * { min-width: 0; }
+  /* The chevron sits on the rule between tiers — the flow is drawn by the
+     grid itself, in the same language as About's three-stage progression. */
+  .om-tier + .om-tier::before { content: ""; position: absolute; left: 0; top: -6px; width: 11px; height: 11px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(135deg); background: var(--paper-warm); }
+  .om-tier:last-child { border-bottom: 0; }
+  .om-line { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 15px + 0.2vw, 17px); line-height: 1.6; color: var(--ink); }
+  .om-line .sep { color: var(--ink-4); padding: 0 0.55em; }
+  .om-logo { display: block; height: 24px; width: auto; margin: 0 0 12px; }
+  .om-role { margin: 0 0 12px; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.5; color: var(--ink-2); }
+  .om-net { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px clamp(20px, 3vw, 44px); }
+  .om-net li { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.5; color: var(--ink-2); }
+  .om-note { margin: clamp(24px, 2.6vw, 34px) 0 0; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.6; color: var(--ink-3); max-width: 62ch; }
+  @media (max-width: 860px) {
+    .om-tiers { margin-top: 36px; }
+    .om-tier, .om-tier + .om-tier { grid-template-columns: 1fr; gap: 14px; padding: 24px 0; }
+    .om-tier + .om-tier::before { left: 4px; }
+    .om-line .sep { display: none; }
+    .om-line span:not(.sep) { display: block; }
+    .om-net { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body data-page="approach" data-ja-url="/ja/approach.html">
@@ -181,118 +132,132 @@
 
 <main id="main" tabindex="-1">
 
-<!-- Hero — compact internal-page treatment, matching About / Investment Focus -->
-<section class="page-head approach-head" data-screen-label="01 Approach — hero">
+<!-- Hero — the shared internal-page wash, with a lead line -->
+<section class="page-head ap-hero" data-screen-label="01 Approach — hero">
   <div class="inner">
-    <h1 class="approach-h1" data-en="Approach" data-ja="アプローチ">Approach</h1>
+    <h1>From Mandate<br>to Ownership.</h1>
+    <p class="sub">A five-stage process applied to every mandate, with investor authority retained at each material decision.</p>
   </div>
 </section>
 
-<section class="rationale" data-screen-label="02 Approach — process intro">
+<!-- Process — five stages, all visible, each with its output -->
+<section class="ap-sec ps" data-screen-label="02 Approach — process" aria-labelledby="ps-title">
   <div class="shell">
-    <div class="ed-row">
-      <h2 class="sec-eyebrow" data-en="Process" data-ja="プロセス">Process</h2>
-      <div>
-        <p class="rationale-h" data-en="From Mandate To Active Ownership." data-ja="マンデートから、保有の実行まで。">From Mandate To Active Ownership.</p>
-        <p class="rationale-copy" data-en="Reiwa&nbsp;Capital coordinates each stage of the investment process while the investor retains every material decision." data-ja="Reiwa Capitalは投資プロセスの各段階を調整し、重要な意思決定の権限は常に投資家が保持します。">Reiwa&nbsp;Capital coordinates each stage of the investment process while the investor retains every material decision.</p>
+    <div class="ap-head">
+      <span class="h-eyebrow">Process</span>
+      <h2 class="h-h2" id="ps-title">Five Stages. One Standard.</h2>
+      <p class="h-body ap-lede">Every mandate runs through the same sequence. What changes is the asset, not the discipline. Reiwa Capital coordinates each stage from the investor's side; the investor retains every material decision.</p>
+    </div>
+
+    <div class="ps-list">
+      <div class="ps-row">
+        <div class="ps-lede">
+          <span class="h-num" aria-hidden="true">01</span>
+          <h3>Mandate</h3>
+          <p class="h-body ps-role">Objectives, parameters and decision rights.</p>
+        </div>
+        <div>
+          <p class="h-body ps-body">Before opportunities are considered, the investor's objectives are defined: target returns, hold period, risk tolerance, capital constraints, governance and reporting requirements. These parameters determine what is pursued and how each opportunity is assessed.</p>
+          <dl class="ps-out"><dt>Output</dt><dd>An agreed mandate and decision framework.</dd></dl>
+        </div>
+      </div>
+
+      <div class="ps-row">
+        <div class="ps-lede">
+          <span class="h-num" aria-hidden="true">02</span>
+          <h3>Assess</h3>
+          <p class="h-body ps-role">Sourcing, underwriting and recommendation.</p>
+        </div>
+        <div>
+          <p class="h-body ps-body">Opportunities are sourced through local relationships, direct owner contact and adviser networks. Each asset is underwritten on location, income, condition, price, execution requirements and long-term suitability, and the investment case is built at asset level rather than assumed from the market.</p>
+          <dl class="ps-out"><dt>Output</dt><dd>Asset-level underwriting and a recommendation to proceed or decline.</dd></dl>
+        </div>
+      </div>
+
+      <div class="ps-row">
+        <div class="ps-lede">
+          <span class="h-num" aria-hidden="true">03</span>
+          <h3>Structure</h3>
+          <p class="h-body ps-role">Ownership, financing and cash flow.</p>
+        </div>
+        <div>
+          <p class="h-body ps-body">Ownership structure, financing, tax, foreign exchange and cash-flow requirements are considered together before acquisition, with appointed European specialists advising in their own fields. The structure put to the investor reflects the investor, the asset and the intended hold period.</p>
+          <dl class="ps-out"><dt>Output</dt><dd>A recommended ownership and financing structure.</dd></dl>
+        </div>
+      </div>
+
+      <div class="ps-row">
+        <div class="ps-lede">
+          <span class="h-num" aria-hidden="true">04</span>
+          <h3>Acquire</h3>
+          <p class="h-body ps-role">Diligence, negotiation and completion.</p>
+        </div>
+        <div>
+          <p class="h-body ps-body">Reiwa Capital coordinates due diligence, negotiation, documentation and completion across sellers and appointed advisers, working to the mandate agreed at the outset rather than to the momentum of the transaction.</p>
+          <dl class="ps-out"><dt>Output</dt><dd>A completed acquisition and an agreed ownership plan.</dd></dl>
+        </div>
+      </div>
+
+      <div class="ps-row">
+        <div class="ps-lede">
+          <span class="h-num" aria-hidden="true">05</span>
+          <h3>Oversee</h3>
+          <p class="h-body ps-role">Reporting, business plan and exit.</p>
+        </div>
+        <div>
+          <p class="h-body ps-body">Following completion, Reiwa Capital coordinates asset strategy, reporting, leasing, capital works, refinancing and eventual exit against the agreed ownership plan. This work continues throughout the investment period.</p>
+          <dl class="ps-out"><dt>Output</dt><dd>Continuing reporting and business-plan review through to exit.</dd></dl>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Process — five stages, all visible, continuous sequence -->
-<section class="process" data-screen-label="04 Approach — process">
-  <div class="shell">
-    <nav class="process-tracker" aria-label="Process stages">
-      <div class="pt-desktop">
-        <a class="pt-stage" href="#mandate"><span class="pt-node" aria-hidden="true"></span><span class="pt-label" data-en="Mandate" data-ja="方針">Mandate</span></a>
-        <a class="pt-stage" href="#assess"><span class="pt-node" aria-hidden="true"></span><span class="pt-label" data-en="Assess" data-ja="評価">Assess</span></a>
-        <a class="pt-stage" href="#structure"><span class="pt-node" aria-hidden="true"></span><span class="pt-label" data-en="Structure" data-ja="組成">Structure</span></a>
-        <a class="pt-stage" href="#acquisition"><span class="pt-node" aria-hidden="true"></span><span class="pt-label" data-en="Acquire" data-ja="取得">Acquire</span></a>
-        <a class="pt-stage" href="#oversight"><span class="pt-node" aria-hidden="true"></span><span class="pt-label" data-en="Oversee" data-ja="監督">Oversee</span></a>
+    <div class="ps-gate">
+      <span class="h-eyebrow">Investor approval typically applies to</span>
+      <div>
+        <p class="ps-gate-list"><span>Acquisition</span><span class="sep" aria-hidden="true">·</span><span>Disposal</span><span class="sep" aria-hidden="true">·</span><span>Refinancing</span><span class="sep" aria-hidden="true">·</span><span>Material capital expenditure</span><span class="sep" aria-hidden="true">·</span><span>Material leasing</span><span class="sep" aria-hidden="true">·</span><span>Material business-plan changes</span></p>
       </div>
-      <div class="pt-mobile" aria-hidden="true"><span class="pt-mobile-idx">01 / 05</span><span class="pt-mobile-name">Investment Mandate</span></div>
-    </nav>
-    <div class="process-list">
-
-      <div class="stage-row" id="mandate">
-        <div class="stage-rail"><span class="stage-node" aria-hidden="true"></span><span class="stage-num">01</span></div>
-        <h2 class="stage-title" data-en="Investment Mandate" data-ja="投資方針">Investment Mandate</h2>
-        <div class="stage-copy">
-          <p class="stage-obj" data-en="Before opportunities are considered, the investor&rsquo;s objectives are defined: target returns, hold period, risk tolerance, capital constraints, governance and reporting requirements." data-ja="案件の検討に先立ち、投資家の方針を確定します。目標とする利回り、保有期間、リスク許容度、資金の制約、ガバナンス、そして報告のあり方です。">Before opportunities are considered, the investor&rsquo;s objectives are defined: target returns, hold period, risk tolerance, capital constraints, governance and reporting requirements.</p>
-          <p class="stage-sup" data-en="These parameters determine what is pursued and how each opportunity is assessed." data-ja="この条件が、追求する対象と、各案件の評価基準を定めます。">These parameters determine what is pursued and how each opportunity is assessed.</p>
-        </div>
-      </div>
-
-      <div class="stage-row" id="assess">
-        <div class="stage-rail"><span class="stage-node" aria-hidden="true"></span><span class="stage-num">02</span></div>
-        <h2 class="stage-title" data-en="Sourcing and Assessment" data-ja="ソーシングと評価">Sourcing and Assessment</h2>
-        <div class="stage-copy">
-          <p class="stage-obj" data-en="Opportunities are sourced through local relationships, direct owner contact and adviser networks. Each asset is underwritten on location, income, condition, price, execution requirements and long-term suitability." data-ja="機会は、現地の関係、オーナーとの直接の接触、アドバイザーのネットワークを通じて発掘します。各資産は、立地、収益、状態、価格、実行可能性、そして長期的な適合性でアンダーライティングします。">Opportunities are sourced through local relationships, direct owner contact and adviser networks. Each asset is underwritten on location, income, condition, price, execution requirements and long-term suitability.</p>
-          <p class="stage-sup" data-en="The investment case is built at asset level." data-ja="投資判断は、資産ごとに積み上げます。">The investment case is built at asset level.</p>
-        </div>
-      </div>
-
-      <div class="stage-row" id="structure">
-        <div class="stage-rail"><span class="stage-node" aria-hidden="true"></span><span class="stage-num">03</span></div>
-        <h2 class="stage-title" data-en="Ownership and Financing" data-ja="保有と資金調達">Ownership and Financing</h2>
-        <div class="stage-copy">
-          <p class="stage-obj" data-en="Ownership structure, financing, tax, foreign exchange and cash-flow requirements are considered together before acquisition." data-ja="保有形態、資金調達、税務、為替、そしてキャッシュフローの要件を、取得に先立ち一体的に検討します。">Ownership structure, financing, tax, foreign exchange and cash-flow requirements are considered together before acquisition.</p>
-          <p class="stage-sup" data-en="The recommended structure reflects the investor, the asset and the intended hold period." data-ja="推奨するストラクチャーは、投資家、資産、そして想定する保有期間を反映したものとします。">The recommended structure reflects the investor, the asset and the intended hold period.</p>
-        </div>
-      </div>
-
-      <div class="stage-row" id="acquisition">
-        <div class="stage-rail"><span class="stage-node" aria-hidden="true"></span><span class="stage-num">04</span></div>
-        <h2 class="stage-title" data-en="Acquisition" data-ja="取得">Acquisition</h2>
-        <div class="stage-copy">
-          <p class="stage-obj" data-en="Reiwa&nbsp;Capital coordinates due diligence, negotiation, documentation and completion across sellers and appointed advisers." data-ja="Reiwa Capitalは、売主および選任アドバイザーとの間で、デューデリジェンス、交渉、文書化、そして取引完了までの実行を調整します。">Reiwa&nbsp;Capital coordinates due diligence, negotiation, documentation and completion across sellers and appointed advisers.</p>
-          <p class="stage-sup" data-en="The investor retains approval at each material decision point." data-ja="重要な意思決定の局面では、承認権限は投資家に残ります。">The investor retains approval at each material decision point.</p>
-        </div>
-      </div>
-
-      <div class="stage-row" id="oversight">
-        <div class="stage-rail"><span class="stage-node" aria-hidden="true"></span><span class="stage-num">05</span></div>
-        <h2 class="stage-title" data-en="Ownership Oversight" data-ja="保有支援">Ownership Oversight</h2>
-        <div class="stage-copy">
-          <p class="stage-obj" data-en="Following completion, Reiwa&nbsp;Capital coordinates asset strategy, reporting, leasing, capital works, refinancing and eventual exit against the agreed ownership plan." data-ja="取引完了後、Reiwa Capitalは、合意した保有方針に沿って、資産戦略、報告、リーシング、資本的支出、リファイナンス、そして将来の出口を投資家の立場から調整します。">Following completion, Reiwa&nbsp;Capital coordinates asset strategy, reporting, leasing, capital works, refinancing and eventual exit against the agreed ownership plan.</p>
-          <p class="stage-sup" data-en="This work continues throughout the investment period." data-ja="この実務は、保有期間を通じて続きます。">This work continues throughout the investment period.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- Operating model — one point of coordination -->
-<section class="responsibilities" data-screen-label="05 Approach — operating model">
+<section class="ap-sec om" data-screen-label="03 Approach — operating model" aria-labelledby="om-title">
   <div class="shell">
-    <div class="om-head">
-      <span class="sec-eyebrow om-fx-eyebrow" data-en="Operating Model" data-ja="業務体制">Operating Model</span>
-      <h2 class="om-h om-fx-h" data-en="One Point Of Coordination" data-ja="調整の窓口は、一つ">One Point Of Coordination</h2>
-      <p class="om-intro om-fx-p" data-en="Reiwa Capital coordinates the European expertise required to execute and oversee each investment, while investment authority remains with the investor." data-ja="Reiwa Capitalは、各投資の実行と監督に必要な欧州の専門性を調整します。投資判断の権限は、常に投資家にあります。">Reiwa&nbsp;Capital coordinates the European expertise required to execute and oversee each investment, while investment authority remains with the investor.</p>
+    <div class="ap-head">
+      <span class="h-eyebrow">Operating model</span>
+      <h2 class="h-h2" id="om-title">One Point of Coordination.</h2>
+      <p class="h-body ap-lede">Reiwa Capital coordinates the European specialists required to acquire and oversee each investment. Investment authority remains with the investor, and specialist advice remains with the appointed advisers.</p>
     </div>
-    <div class="om-diagram" role="group" aria-label="Operating model">
-      <span class="om-tier-label" data-en="Investor" data-ja="投資家">Investor</span>
-      <p class="om-inline"><span data-en="Mandate" data-ja="投資方針">Mandate</span><span class="sep" aria-hidden="true">·</span><span data-en="Capital" data-ja="資本">Capital</span><span class="sep" aria-hidden="true">·</span><span data-en="Material approvals" data-ja="重要事項の承認">Material approvals</span><span class="sep" aria-hidden="true">·</span><span data-en="Hold / Refinance / Exit" data-ja="保有・借換え・売却">Hold / Refinance / Exit</span></p>
-      <span class="om-drop" aria-hidden="true"></span>
-      <div class="om-core">
-        <img class="om-core-logo" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital">
-        <span class="om-core-role" data-en="Single point of coordination" data-ja="単一の調整窓口">Single point of coordination</span>
-        <span class="om-core-verbs"><span data-en="Source" data-ja="発掘">Source</span><span class="sep" aria-hidden="true">·</span><span data-en="Underwrite" data-ja="査定">Underwrite</span><span class="sep" aria-hidden="true">·</span><span data-en="Structure" data-ja="組成">Structure</span><span class="sep" aria-hidden="true">·</span><span data-en="Acquire" data-ja="取得">Acquire</span><span class="sep" aria-hidden="true">·</span><span data-en="Oversee" data-ja="監督">Oversee</span></span>
+
+    <div class="om-tiers">
+      <div class="om-tier">
+        <span class="h-eyebrow">Investor</span>
+        <p class="om-line"><span>Mandate</span><span class="sep" aria-hidden="true">·</span><span>Capital</span><span class="sep" aria-hidden="true">·</span><span>Material approvals</span><span class="sep" aria-hidden="true">·</span><span>Hold, refinance or exit</span></p>
       </div>
-      <span class="om-drop" aria-hidden="true"></span>
-      <div class="om-net-wrap">
-        <span class="om-tier-label om-net-label" data-en="European specialists" data-ja="欧州の専門家">European specialists</span>
+
+      <div class="om-tier">
+        <span class="h-eyebrow">Coordination</span>
+        <div>
+          <img class="om-logo" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="150" height="24" loading="lazy" decoding="async">
+          <p class="om-role">A single point of coordination between the investor and the market.</p>
+          <p class="om-line"><span>Source</span><span class="sep" aria-hidden="true">·</span><span>Underwrite</span><span class="sep" aria-hidden="true">·</span><span>Structure</span><span class="sep" aria-hidden="true">·</span><span>Acquire</span><span class="sep" aria-hidden="true">·</span><span>Oversee</span></p>
+        </div>
+      </div>
+
+      <div class="om-tier">
+        <span class="h-eyebrow">European specialists</span>
         <ul class="om-net">
-          <li data-en="Agents &amp; Valuers" data-ja="仲介会社・評価会社">Agents &amp; Valuers</li>
-          <li data-en="Lenders" data-ja="金融機関">Lenders</li>
-          <li data-en="Legal &amp; Tax" data-ja="法務・税務">Legal &amp; Tax</li>
-          <li data-en="Technical &amp; Project Teams" data-ja="技術・プロジェクトチーム">Technical &amp; Project Teams</li>
-          <li data-en="Property Managers &amp; Operating Partners" data-ja="プロパティマネージャー・運営会社">Property Managers &amp; Operating Partners</li>
+          <li>Agents and valuers</li>
+          <li>Lenders</li>
+          <li>Legal and tax advisers</li>
+          <li>Technical and project teams</li>
+          <li>Property managers</li>
+          <li>Operating partners</li>
         </ul>
       </div>
     </div>
+
+    <p class="om-note">Specialists are appointed by, and accountable to, the investor or the ownership vehicle. Reiwa Capital coordinates their work against the mandate; it does not provide legal, tax, valuation or property-management advice.</p>
   </div>
 </section>
 
@@ -302,119 +267,5 @@
 <script src="shell.js?v=66"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=16"></script>
-<script>
-(function(){
-  var rows = Array.prototype.slice.call(document.querySelectorAll('.process-list .stage-row'));
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.process-tracker .pt-stage'));
-  var stageLabels = { en: ['Investment Mandate','Sourcing and Assessment','Ownership and Financing','Acquisition','Ownership Oversight'], ja: ['投資方針','ソーシングと評価','保有と資金調達','取得','保有支援'] };
-  var mobIdx = document.querySelector('.pt-mobile-idx');
-  var mobName = document.querySelector('.pt-mobile-name');
-  var trackerEl = document.querySelector('.process-tracker');
-  if (!rows.length) return;
-
-  function mobile() { return window.innerWidth <= 768; }
-  function updateMobile(idx) {
-    if (!mobName || idx < 0) return;
-    var lang = document.documentElement.getAttribute('lang') === 'ja' ? 'ja' : 'en';
-    mobIdx.textContent = ('0' + (idx + 1)).slice(-2) + ' / 05';
-    mobName.textContent = stageLabels[lang][idx];
-  }
-
-  var activeIdx = -1;
-  function applyDiscrete(idx) {
-    if (idx < 0 || idx === activeIdx) return;
-    activeIdx = idx;
-    updateMobile(idx);
-    rows.forEach(function (row, i) {
-      row.classList.toggle('is-active', i === idx);
-      row.classList.toggle('is-passed', i < idx);
-    });
-    navLinks.forEach(function (a, i) { a.classList.toggle('is-active', i === idx); a.classList.toggle('is-passed', i < idx); });
-  }
-
-  /* --pt-h backs the tracker's own sticky-offset math (scroll-margin-top) —
-     zero on mobile, where the tracker is no longer sticky. */
-  function measureTracker() {
-    if (!trackerEl) return 0;
-    var real = trackerEl.getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--pt-h', real + 'px');
-    return mobile() ? 0 : real;
-  }
-
-  /* Scrollspy — IntersectionObserver only, no scroll-position geometry.
-     The "principal section" line sits just under the sticky header+tracker;
-     whichever row is crossing that line becomes active. */
-  var io;
-  function buildObserver() {
-    if (io) io.disconnect();
-    var navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 67;
-    var offset = navH + measureTracker();
-    var band = Math.max(window.innerHeight - offset - 60, 40);
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) applyDiscrete(rows.indexOf(e.target)); });
-    }, { rootMargin: (-offset - 1) + 'px 0px -' + band + 'px 0px', threshold: 0 });
-    rows.forEach(function (r) { io.observe(r); });
-    if (activeIdx === -1) applyDiscrete(0);
-  }
-
-  buildObserver();
-  window.addEventListener('resize', buildObserver, { passive: true });
-  window.addEventListener('orientationchange', buildObserver);
-  window.addEventListener('pageshow', buildObserver);
-  window.addEventListener('languagechange', function () { var i = activeIdx; activeIdx = -1; applyDiscrete(i < 0 ? 0 : i); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(buildObserver, 50); });
-})();
-</script>
-<script>
-(function () {
-  function reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-  if (reduced()) return;
-  var rows = Array.prototype.slice.call(document.querySelectorAll('.stage-row'));
-  rows.forEach(function (row) {
-    row.classList.add('reveal');
-    var els = [row.querySelector('.stage-num'), row.querySelector('.stage-title'), row.querySelector('.stage-copy')];
-    var done = false;
-    function commit() {
-      if (done) return; done = true;
-      els.forEach(function (el) {
-        if (el) { el.style.transition = 'none'; el.style.opacity = '1'; el.style.transform = 'none'; }
-      });
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (e) {
-        if (e[0].isIntersecting) { row.classList.add('in'); io.disconnect(); setTimeout(commit, 700); }
-      }, { threshold: 0.15 });
-      io.observe(row);
-    }
-    /* Absolute guarantee: whether or not the observer ever delivers, and
-       whether or not the CSS transition advances, force the visible end
-       state. transition:none inline kills any pending/throttled fade. */
-    setTimeout(commit, 1600);
-  });
-})();
-</script>
-<script>
-(function () {
-  function reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-  if (reduced()) return;
-  function armAndObserve(el, armClass, fxClass, inClass, threshold) {
-    if (!el) return;
-    document.documentElement.classList.add(armClass);
-    if (fxClass) el.classList.add(fxClass);
-    var done = false;
-    function commit() { if (done) return; done = true; el.classList.add(inClass); }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { commit(); io.disconnect(); } }, { threshold: threshold });
-      io.observe(el);
-    }
-    setTimeout(commit, 1600);
-  }
-  function init() {
-    armAndObserve(document.querySelector('.om-head'), 'reveal-on', '', 'is-in', 0.2);
-    armAndObserve(document.querySelector('.nextnav'), 'nn-fx-arm', 'nn-fx', 'nn-fx-in', 0.15);
-  }
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
-})();
-</script>
 </body>
 </html>
