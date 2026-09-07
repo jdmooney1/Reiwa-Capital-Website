@@ -38,7 +38,10 @@
     about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership.', ariaEn: 'Next: Approach' },
     approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention.',               ariaEn: 'Next: Investment Focus' },
     focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details.',              ariaEn: 'Next: Company' },
-    company:  { to: 'index',            tEn: 'Home',             lead: 'European Real Estate. Structured for Japanese Capital.', kicker: 'Return to', ariaEn: 'Return to Home' }
+    /* Company is the last page in the flow, so its band closes the site
+       rather than pointing onward: the brand line carries it, and the
+       action reads Return Home. */
+    company:  { to: 'index',            tEn: 'European Real Estate.<br>Structured for Japanese Capital.', lead: 'Return Home', kicker: 'Reiwa Capital', ariaEn: 'Return to Home' }
   };
 
   const FLOW_JA = {
