@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=19">
 <link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=77">
+<link rel="stylesheet" href="editorial.css?v=78">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=23">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -111,16 +111,69 @@
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
 
-  /* The Focus Markets map is awaiting a professionally rendered asset. This
-     is a deliberate placeholder, not a map: it holds the slot and its
-     proportions so the final image drops straight in. */
+  /* Focus locations sit as markers over a static basemap. No polygons, no
+     boundaries: the basemap carries the geography, the markers carry the
+     focus. Positions come from real coordinates within the exact bounds the
+     basemap is exported at, so the layer needs no change when it lands. */
   .am-map { position: relative; aspect-ratio: 3 / 2; background: var(--paper-soft); border: 1px solid var(--rule); overflow: hidden; }
-  .am-img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .am-map--placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  .am-base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* While the basemap is outstanding the slot is hatched and captioned in
+     the corner, clear of the marker layer so the focus locations stay
+     readable and nothing pretends to be a map. */
+  .am-base--placeholder { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 3px; padding: 14px 16px;
     background: repeating-linear-gradient(135deg, var(--paper-soft) 0 14px, rgba(39,20,48,0.022) 14px 28px); }
-  .amp-mark { font-family: 'DM Sans', sans-serif; font-size: clamp(19px, 16px + 0.6vw, 24px); font-weight: 400; letter-spacing: -0.008em; color: var(--ink-3); }
-  .amp-note { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); opacity: 0.75; }
-  @media (max-width: 640px) { .am-map { aspect-ratio: 4 / 5; } }
+  .amp-mark { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 400; letter-spacing: -0.004em; color: var(--ink-3); }
+  .amp-note { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); opacity: 0.7; }
+
+  .am-pin { position: absolute; left: var(--x); top: var(--y); display: flex; align-items: center; gap: 7px; pointer-events: none; white-space: nowrap; }
+  /* Core is a filled sumire dot, selective an outlined one. A fine cream
+     ring keeps both legible over any part of the basemap. */
+  .am-dot { width: 9px; height: 9px; flex: none; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(252,250,241,0.9); }
+  .am-pin--core .am-dot { background: var(--sumire-purple, #271430); }
+  .am-pin--sel .am-dot { background: var(--paper-warm); border: 1.6px solid var(--reiwa-node, #5E3D78); }
+  .am-pin-label { transform: translate(var(--lx, 0), var(--ly, 0)); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.2; color: var(--ink);
+    text-shadow: 0 0 3px var(--paper-warm), 0 0 3px var(--paper-warm), 0 0 7px var(--paper-warm); }
+  .am-pin--core .am-pin-label { font-weight: 500; }
+  .am-pin--sel .am-pin-label { font-weight: 400; color: var(--ink-2); }
+  /* Which side the label sits on, so nine of them never collide. */
+  .am-pin--right  { transform: translate(-4.5px, -50%); }
+  .am-pin--left   { transform: translate(calc(-100% + 4.5px), -50%); flex-direction: row-reverse; }
+  .am-pin--above  { transform: translate(-50%, -100%); flex-direction: column; gap: 3px; }
+  .am-pin--below  { transform: translate(-50%, 0); flex-direction: column-reverse; gap: 3px; }
+  .am-pin--above .am-dot, .am-pin--below .am-dot { align-self: center; }
+
+  .am-key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px clamp(18px, 2.2vw, 28px); margin: 14px 0 0; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-2); }
+  .am-key-item { display: inline-flex; align-items: center; gap: 8px; }
+  .am-key .am-dot { box-shadow: none; }
+  .am-dot--core { background: var(--sumire-purple, #271430); }
+  .am-dot--sel { background: transparent; border: 1.6px solid var(--reiwa-node, #5E3D78); }
+  .am-key-note { color: var(--ink-3); font-size: 12.5px; }
+  /* Phones take the portrait crop: nine labels are not legible in a 3:2
+     frame at this width. Each pin carries its own coordinates and label
+     side for that framing. */
+  @media (max-width: 640px) {
+    .am-map { aspect-ratio: 4 / 5; }
+    .am-pin { left: var(--xm); top: var(--ym); }
+    .am-pin--m-right  { transform: translate(-4.5px, -50%); flex-direction: row; }
+    .am-pin--m-left   { transform: translate(calc(-100% + 4.5px), -50%); flex-direction: row-reverse; }
+    .am-pin--m-above  { transform: translate(-50%, -100%); flex-direction: column; gap: 3px; }
+    .am-pin--m-below  { transform: translate(-50%, 0); flex-direction: column-reverse; gap: 3px; }
+    /* Long names wrap at the slash so they occupy less width in the
+       portrait crop, and carry their own offsets for this framing. */
+    .am-pin-label { white-space: normal; max-width: 11ch; text-align: left;
+      transform: translate(var(--lxm, 0), var(--lym, 0)); }
+    .am-pin--m-left .am-pin-label { text-align: right; }
+    .am-pin--m-above .am-pin-label, .am-pin--m-below .am-pin-label { text-align: center; }
+  }
+  @media (max-width: 760px) {
+    .am-pin-label { font-size: 11.5px; }
+    .am-dot { width: 8px; height: 8px; }
+  }
+  @media (max-width: 380px) {
+    .am-pin-label { font-size: 10px; }
+    .am-pin { gap: 5px; }
+    .am-key { font-size: 12.5px; gap: 6px 16px; }
+  }
 
   .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
   .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
@@ -224,19 +277,38 @@
     <div class="am-panel is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
       <div class="am-grid">
         <div class="am-mapwrap">
-          <!-- FINAL ASSET SLOT — London focus map.
-               Drop in a professionally rendered basemap with the Reiwa focus
-               overlay, then replace this placeholder with:
+          <!-- BASEMAP SLOT — London. Two crops, each exported at exactly
+               these bounds (Web Mercator) or the markers will not line up.
+                 desktop 3:2   W -0.2077  S 51.4728  E -0.0453  N 51.5402   (11.23 x 7.49 km)
+                 mobile  4:5   W -0.193  S 51.4547  E -0.06  N 51.5583   (9.2 x 11.5 km)
+               Then replace the placeholder below with:
                  <picture>
-                   <source media="(max-width: 640px)" srcset="assets/maps/london-focus-map-mobile.webp">
-                   <img class="am-img" src="assets/maps/london-focus-map.webp"
-                        width="2000" height="1333" alt="…" loading="lazy" decoding="async">
+                   <source media="(max-width: 640px)" srcset="assets/maps/london-basemap-mobile.webp">
+                   <img class="am-base" src="assets/maps/london-basemap.webp"
+                        width="2000" height="1333" alt="Map of London."
+                        loading="lazy" decoding="async">
                  </picture>
-               and restore the legend and the indicative-boundaries note. -->
-          <div class="am-map am-map--placeholder" role="img" aria-label="London focus map to follow. It will show Thames, Hyde Park, Regent’s Park, the West End and City street pattern, with the nine focus submarkets marked.">
-            <span class="amp-mark" aria-hidden="true">London</span>
-            <span class="amp-note" aria-hidden="true">Focus map to follow</span>
+               The marker layer needs no change. -->
+          <div class="am-map">
+            <div class="am-base am-base--placeholder" role="img" aria-label="London basemap to follow.">
+              <span class="amp-mark" aria-hidden="true">London</span>
+              <span class="amp-note" aria-hidden="true">Basemap to follow</span>
+            </div>
+            <span class="am-pin am-pin--core am-pin--above am-pin--m-left" style="--x:37.38%;--y:44.83%;--xm:34.59%;--ym:46.65%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Mayfair</span></span>
+            <span class="am-pin am-pin--core am-pin--below am-pin--m-right" style="--x:42.8%;--y:53.43%;--xm:41.2%;--ym:52.25%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">St James’s</span></span>
+            <span class="am-pin am-pin--core am-pin--left am-pin--m-left" style="--x:33.81%;--y:31.77%;--xm:30.23%;--ym:38.15%;--lxm:0px;--lym:-14px"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Marylebone</span></span>
+            <span class="am-pin am-pin--core am-pin--below am-pin--m-right" style="--x:20.63%;--y:68.27%;--xm:14.14%;--ym:61.9%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">South Kensington</span></span>
+            <span class="am-pin am-pin--core am-pin--below am-pin--m-right" style="--x:25.18%;--y:78.65%;--xm:19.7%;--ym:68.65%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Chelsea</span></span>
+            <span class="am-pin am-pin--sel am-pin--right am-pin--m-right" style="--x:44.27%;--y:34.73%;--xm:43.01%;--ym:40.09%;--lxm:0px;--lym:22px"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Soho / Fitzrovia</span></span>
+            <span class="am-pin am-pin--sel am-pin--below am-pin--m-right" style="--x:72.35%;--y:38.59%;--xm:77.29%;--ym:42.6%;--lxm:0px;--lym:6px"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">City Core</span></span>
+            <span class="am-pin am-pin--sel am-pin--left am-pin--m-left" style="--x:63.12%;--y:25.83%;--xm:66.02%;--ym:34.29%;--lx:0px;--ly:14px;--lxm:0px;--lym:16px"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Farringdon / Clerkenwell</span></span>
+            <span class="am-pin am-pin--sel am-pin--above am-pin--m-left" style="--x:79.37%;--y:21.38%;--xm:85.86%;--ym:31.4%;--lxm:0px;--lym:-10px"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Shoreditch / City Fringe</span></span>
           </div>
+          <p class="am-key">
+            <span class="am-key-item"><span class="am-dot am-dot--core" aria-hidden="true"></span>Core focus</span>
+            <span class="am-key-item"><span class="am-dot am-dot--sel" aria-hidden="true"></span>Selective focus</span>
+            <span class="am-key-note">Focus locations are indicative.</span>
+          </p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -254,19 +326,34 @@
     <div class="am-panel" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
       <div class="am-grid">
         <div class="am-mapwrap">
-          <!-- FINAL ASSET SLOT — Amsterdam focus map.
-               Drop in a professionally rendered basemap with the Reiwa focus
-               overlay, then replace this placeholder with:
+          <!-- BASEMAP SLOT — Amsterdam. Two crops, each exported at exactly
+               these bounds (Web Mercator) or the markers will not line up.
+                 desktop 3:2   W 4.8043  S 52.3248  E 4.9641  N 52.39   (10.87 x 7.24 km)
+                 mobile  4:5   W 4.8451  S 52.3275  E 4.9233  N 52.3873   (5.32 x 6.64 km)
+               Then replace the placeholder below with:
                  <picture>
-                   <source media="(max-width: 640px)" srcset="assets/maps/amsterdam-focus-map-mobile.webp">
-                   <img class="am-img" src="assets/maps/amsterdam-focus-map.webp"
-                        width="2000" height="1333" alt="…" loading="lazy" decoding="async">
+                   <source media="(max-width: 640px)" srcset="assets/maps/amsterdam-basemap-mobile.webp">
+                   <img class="am-base" src="assets/maps/amsterdam-basemap.webp"
+                        width="2000" height="1333" alt="Map of Amsterdam."
+                        loading="lazy" decoding="async">
                  </picture>
-               and restore the legend and the indicative-boundaries note. -->
-          <div class="am-map am-map--placeholder" role="img" aria-label="Amsterdam focus map to follow. It will show The IJ, the canal ring, the Amstel, Jordaan, Vondelpark, Oud-Zuid and Zuidas, with the five focus submarkets marked.">
-            <span class="amp-mark" aria-hidden="true">Amsterdam</span>
-            <span class="amp-note" aria-hidden="true">Focus map to follow</span>
+               The marker layer needs no change. -->
+          <div class="am-map">
+            <div class="am-base am-base--placeholder" role="img" aria-label="Amsterdam basemap to follow.">
+              <span class="amp-mark" aria-hidden="true">Amsterdam</span>
+              <span class="amp-note" aria-hidden="true">Basemap to follow</span>
+            </div>
+            <span class="am-pin am-pin--core am-pin--left am-pin--m-left" style="--x:50%;--y:32.22%;--xm:50%;--ym:30.62%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Canal Belt</span></span>
+            <span class="am-pin am-pin--core am-pin--left am-pin--m-left" style="--x:46.62%;--y:22.1%;--xm:43.09%;--ym:19.58%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Jordaan</span></span>
+            <span class="am-pin am-pin--core am-pin--below am-pin--m-below" style="--x:47.5%;--y:49.4%;--xm:44.88%;--ym:49.35%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Museum Quarter / Oud-Zuid</span></span>
+            <span class="am-pin am-pin--sel am-pin--right am-pin--m-right" style="--x:56.88%;--y:25.78%;--xm:64.07%;--ym:23.59%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Historic Centre</span></span>
+            <span class="am-pin am-pin--sel am-pin--right am-pin--m-right" style="--x:43.12%;--y:77.93%;--xm:35.93%;--ym:80.45%"><span class="am-dot" aria-hidden="true"></span><span class="am-pin-label">Zuidas</span></span>
           </div>
+          <p class="am-key">
+            <span class="am-key-item"><span class="am-dot am-dot--core" aria-hidden="true"></span>Core focus</span>
+            <span class="am-key-item"><span class="am-dot am-dot--sel" aria-hidden="true"></span>Selective focus</span>
+            <span class="am-key-note">Focus locations are indicative.</span>
+          </p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
