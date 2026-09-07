@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — Reiwa Capital</title>
-<meta name="description" content="Reiwa Capital advises overseas investors on the acquisition, structuring and ownership of European real estate in London and Amsterdam.">
+<meta name="description" content="Reiwa Capital is built to give Japanese investors continuity across the acquisition and ownership of European real estate, with deep focus on London and Amsterdam.">
 <link rel="canonical" href="https://reiwa-capital.com/about.html">
 <link rel="alternate" hreflang="en" href="https://reiwa-capital.com/about.html">
 <link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/about.html">
@@ -15,146 +15,172 @@
 <meta property="og:site_name" content="Reiwa Capital">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About — Reiwa Capital">
-<meta property="og:description" content="Reiwa Capital advises overseas investors on the acquisition, structuring and ownership of European real estate in London and Amsterdam.">
+<meta property="og:description" content="Reiwa Capital is built to give Japanese investors continuity across the acquisition and ownership of European real estate, with deep focus on London and Amsterdam.">
 <meta property="og:url" content="https://reiwa-capital.com/about.html">
 <meta property="og:image" content="https://reiwa-capital.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About — Reiwa Capital">
-<meta name="twitter:description" content="Reiwa Capital advises overseas investors on the acquisition, structuring and ownership of European real estate in London and Amsterdam.">
+<meta name="twitter:description" content="Reiwa Capital is built to give Japanese investors continuity across the acquisition and ownership of European real estate, with deep focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
 <link rel="stylesheet" href="assets/colors_and_type.css?v=19">
 <link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=74">
+<link rel="stylesheet" href="editorial.css?v=75">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=22">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/about.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<link rel="preload" as="image" href="assets/imagery/about-hero-blur.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/imagery/about-hero-blur.webp" fetchpriority="high">
 <style>
-  .page-head .page-sub{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(15.5px,15px + 0.22vw,17px);line-height:1.5;letter-spacing:var(--type-statement-ls);color:var(--ink-2);margin:14px 0 0;max-width:var(--measure-lead)}
+  /* =====================================================================
+     ABOUT — hero, the continuity argument, the market maps, investor types.
+     Shared atoms (.h-eyebrow / .h-h2 / .h-body / .h-num) come from
+     editorial.css; only About's own composition lives here.
+     ===================================================================== */
 
-  /* Compact, deliberate hero — scoped to About only; approach/focus keep
-     their existing head-h and title size. */
-  body[data-page="about"] .page-head h1 { font-size: clamp(36px, 28px + 1.4vw, 48px); }
-  /* Quieter, slightly less washed-out than the shared treatment — same
-     photograph, a touch more of it reading through the cream scrim. */
-  body[data-page="about"] .page-head {
-    background-image:
-      linear-gradient(100deg, rgba(252,250,241,0.72) 0%, rgba(252,250,241,0.54) 18%, rgba(252,250,241,0.36) 36%, rgba(252,250,241,0.22) 54%, rgba(252,250,241,0.12) 72%, rgba(252,250,241,0.06) 100%),
-      url("assets/imagery/about-hero-blur.png");
+  /* --- 1 · Hero: calm, conceptual, and deliberately shorter than Home -- */
+  body[data-page="about"] .page-head { background-image: none; min-height: 0; display: block; border-bottom: 0; }
+  .ab-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: min(62vh, 620px); display: flex; align-items: flex-end; overflow: hidden; background: #e8eef4; }
+  .ab-hero .ab-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .ab-hero .ab-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 46%; display: block; }
+  /* The hero art is pale, so the scrim warms rather than darkens: a cream
+     wash from the left carries the sumire headline. */
+  .ab-hero .ab-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(96deg, rgba(252,250,241,0.94) 0%, rgba(252,250,241,0.82) 26%, rgba(252,250,241,0.56) 50%, rgba(252,250,241,0.30) 74%, rgba(252,250,241,0.16) 100%),
+                linear-gradient(0deg, rgba(252,250,241,0.55) 0%, rgba(252,250,241,0) 42%); }
+  .ab-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(44px, 5vw, 68px); }
+  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 24px + 1.9vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 15ch; }
+  .ab-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+  .ab-hero .loc { display: block; margin-top: clamp(22px, 2.6vw, 34px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: var(--ink-3); }
+  @media (max-width: 760px) {
+    .ab-hero { min-height: min(56vh, 460px); }
+    .ab-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
+    .ab-hero .sub { max-width: 34ch; }
   }
 
-  /* Shared section eyebrow — one small uppercase label per section */
-  .sec-eyebrow{display:block;font-family:'DM Sans',sans-serif;font-size:var(--type-label);font-weight:500;letter-spacing:var(--type-label-ls);text-transform:uppercase;color:var(--eyebrow-ink);margin-bottom:clamp(22px,2.6vw,32px)}
+  /* --- Section scaffold, matching Home's rhythm ------------------------ */
+  .ab-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
+  .ab-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
+  .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
+  .ab-head { max-width: 1060px; }
+  .ab-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
+  .ab-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 68ch; font-size: clamp(16px, 15.2px + 0.3vw, 18px); }
+  @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
-  /* Who we are — one statement, one short supporting line */
-  .markets .ed-row, .rationale .ed-row { align-items: start; }
-  .rationale { padding: clamp(56px, 5vw, 72px) 0 clamp(40px, 3.6vw, 56px); border-bottom: 1px solid var(--rule); }
-  .rationale-h { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 17px + 0.9vw, 28px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); margin: 0 0 18px; max-width: 560px; text-wrap: pretty; }
-  html[lang="ja"] .rationale-h { line-height: 1.6; letter-spacing: 0.02em; }
-  .rationale-copy { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.5px + 0.15vw, 17px); line-height: 1.55; letter-spacing: 0; color: var(--ink-2); margin: 0; max-width: var(--measure-body); }
-  .rationale-copy + .rationale-copy { margin-top: 14px; }
-  html[lang="ja"] .rationale-copy { line-height: 1.8; }
-  .ed-row .sec-eyebrow { display: block; font-size: var(--type-label); font-weight: 500; line-height: 1.4; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); margin: 0; max-width: none; padding-top: 4px; }
-
-  /* Market focus — plain-text selector, one crossfading stage, no rail, no cards */
-  .markets { padding: clamp(56px, 5.5vw, 84px) 0; border-bottom: 1px solid var(--rule); }
-  .mkt-intro { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.5px + 0.15vw, 17px); line-height: 1.5; letter-spacing: 0; color: var(--ink-2); margin: 0; max-width: var(--measure-body); }
-  html[lang="ja"] .mkt-intro { line-height: 1.8; }
-  .mkt-sel { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.9fr); gap: clamp(28px, 3.5vw, 56px); margin-top: clamp(22px, 2.4vw, 30px); border-top: 1px solid var(--rule-strong); padding-top: clamp(18px, 2vw, 24px); transition: grid-template-columns 420ms cubic-bezier(.4,0,.2,1); }
-  .mkt-sel > * { min-width: 0; }
-  .markets.amsterdam-active .mkt-sel { grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.5fr); }
-  @media (max-width: 1024px) { .mkt-sel, .markets.amsterdam-active .mkt-sel, .mkt-inner, .markets.amsterdam-active .mkt-inner { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 768px) { .mkt-tab { padding: 12px 14px; gap: 6px; } }
-  .mkt-tab { position: relative; appearance: none; background: var(--paper-soft); border: 0; margin: 0; padding: 13px 20px; cursor: pointer; text-align: left; display: flex; align-items: baseline; gap: 8px; font-family: 'DM Sans', sans-serif; transition: background 340ms var(--ease-out); }
-  .mkt-tab-num { font-size: clamp(11px, 10.5px + 0.1vw, 12px); font-weight: 500; letter-spacing: 0.12em; color: var(--ink-3); font-variant-numeric: tabular-nums; transition: color var(--dur-fast) var(--ease-out); }
-  .mkt-tab-label { font-weight: 400; font-size: var(--type-h3); line-height: 1; color: var(--ink-3); transition: color var(--dur-fast) var(--ease-out); }
-  .mkt-tab.is-on { background: var(--ink); }
-  .mkt-tab.is-on .mkt-tab-num { color: rgba(252,250,241,0.62); }
-  .mkt-tab.is-on .mkt-tab-label { color: var(--cream); }
-  @media (hover: hover) { .mkt-tab:not(.is-on):hover .mkt-tab-label { color: var(--ink-2); } }
-  .mkt-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }
-
-  /* No-JS / print default: both markets shown in normal flow. JS enhancement
-     (.js-enhanced) switches to a single crossfading stage. */
-  .mkt-stage { margin-top: clamp(32px, 4vw, 48px); display: grid; gap: clamp(48px, 5vw, 72px); }
-  .mkt-panel { display: block; }
-  .markets.js-enhanced .mkt-stage { display: grid; }
-  .markets.js-enhanced .mkt-panel { grid-area: 1 / 1; visibility: hidden; pointer-events: none; }
-  .markets.js-enhanced .mkt-panel.is-on { visibility: visible; pointer-events: auto; }
-  .mkt-inner { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.9fr); gap: clamp(28px, 3.5vw, 56px); align-items: start; }
-  .markets.amsterdam-active .mkt-inner { grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.5fr); }
-  .markets.amsterdam-active #mkt-panel-amsterdam .mkt-media { order: 2; }
-  .markets.amsterdam-active #mkt-panel-amsterdam .mkt-text { order: 1; }
-  .mkt-text { display: flex; flex-direction: column; justify-content: flex-start; gap: 22px; min-width: 0; }
-  .mkt-media { min-width: 0; }
-  .mkt-inner > * { min-width: 0; }
-  .markets.js-enhanced .mkt-inner { opacity: 0; transform: translateY(8px); transition: opacity var(--dur-section) var(--ease-out), transform var(--dur-section) var(--ease-out); }
-  .markets.js-enhanced .mkt-panel.is-on .mkt-inner { opacity: 1; transform: none; }
-  .mkt-media { aspect-ratio: 1.7 / 1; overflow: hidden; background: var(--ink); }
-  .mkt-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .mkt-media img[src*="amsterdam"] { object-position: 80% 25%; }
-  /* .mkt-media is a plain figure, not a link — no hover affordance. */
-  .mkt-group { text-align: left; }
-  .mkt-group + .mkt-group { padding-top: 20px; border-top: 1px solid var(--rule); }
-  /* First group carries the market's character — set slightly larger and darker
-     so the three blocks read as a hierarchy, not three identical text boxes. */
-  .mkt-group:first-child .mkt-value { font-size: clamp(16px, 15.2px + 0.28vw, 17.5px); line-height: 1.52; color: var(--ink); }
-  .mkt-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(11px, 10.5px + 0.1vw, 12px); font-weight: 500; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--eyebrow-ink); }
-  .mkt-value { margin: 8px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.5px + 0.15vw, 16px); line-height: 1.5; letter-spacing: 0; color: var(--ink); max-width: 42ch; }
-  html[lang="ja"] .mkt-value { line-height: 1.7; }
-  @media print { .markets.js-enhanced .mkt-stage { display: block; } .markets.js-enhanced .mkt-panel { display: block !important; visibility: visible !important; position: static; } .markets.js-enhanced .mkt-inner { opacity: 1 !important; transform: none !important; } }
-  @media (prefers-reduced-motion: reduce) { .mkt-tab, .mkt-tab::after, .mkt-inner, .mkt-media img, .mkt-sel { transition: none !important; } }
-  @media (max-width: 1100px) {
-    .mkt-sel, .markets.amsterdam-active .mkt-sel { grid-template-columns: 1fr 1fr; }
-    .mkt-inner, .markets.amsterdam-active .mkt-inner { grid-template-columns: 1fr; gap: 24px; }
-    .markets.amsterdam-active #mkt-panel-amsterdam .mkt-media,
-    .markets.amsterdam-active #mkt-panel-amsterdam .mkt-text { order: 0; }
-    .mkt-media, .mkt-text { width: 100%; max-width: none; }
-    .mkt-stage { gap: 40px; }
+  /* --- 2 · Why Reiwa exists: three stages, rules and arrows, no boxes -- */
+  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); position: relative; }
+  .aw-stage { padding: clamp(28px, 3vw, 40px) clamp(28px, 3.4vw, 52px) 0 0; position: relative; }
+  /* Numeral, title, role and detail line up across all three stages, so the
+     rule above each detail reads as one continuous horizontal line rather
+     than three at different heights. */
+  @supports (grid-template-rows: subgrid) {
+    .aw-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
   }
-  @media (max-width: 560px) {
-    /* Squarer crop on phones — a 1.7:1 strip loses the building. */
-    .mkt-media { aspect-ratio: 4 / 3; }
-    .mkt-stage { margin-top: clamp(24px, 6vw, 32px); }
-    .mkt-text { gap: 18px; }
-  }
-  /* "Amsterdam" is one unbreakable word at var(--type-h3) — in the 50/50
-     tab split below 400px it no longer fits (confirmed: overflows by 7px
-     at 320px). Stack the two tabs instead of shrinking the label. */
-  @media (max-width: 400px) {
-    .mkt-sel, .markets.amsterdam-active .mkt-sel { grid-template-columns: 1fr; }
+  .aw-stage + .aw-stage { border-left: 1px solid var(--rule); padding-left: clamp(28px, 3.4vw, 52px); }
+  /* The arrow sits on the rule between stages — the progression is drawn by
+     the grid itself, not by a box around each step. */
+  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: -6px; top: clamp(40px, 3.9vw, 54px); width: 11px; height: 11px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
+  .aw-stage h3 { margin: 16px 0 0; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 19px + 0.9vw, 30px); line-height: 1.14; letter-spacing: -0.012em; color: var(--ink); }
+  .aw-role { margin: 12px 0 0; align-self: start; font-size: clamp(15.5px, 15px + 0.2vw, 17px); color: var(--ink); }
+  .aw-detail { margin: 16px 0 0; align-self: start; padding-top: 16px; border-top: 1px solid var(--rule); max-width: 34ch; }
+  @media (max-width: 860px) {
+    .aw-stages { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 36px; }
+    .aw-stage { display: block; grid-row: auto; }
+    .aw-stage, .aw-stage + .aw-stage { padding: 26px 0 26px; border-left: 0; border-bottom: 1px solid var(--rule); }
+    .aw-stage:last-child { border-bottom: 0; padding-bottom: 0; }
+    /* Vertical progression: the chevron turns to point down the column. */
+    .aw-stage + .aw-stage::before { left: 4px; top: -6px; transform: rotate(135deg); }
+    .aw-detail { max-width: none; }
   }
 
-  /* Clients — four equal columns, institutional statement rather than a nav
-     strip: large category + small supporting line per column. 2x2 from
-     tablet down to 360px, single column below that. Hairline dividers only
-     — vertical between columns, horizontal once columns stack into rows. */
-  .clients { padding: clamp(56px,6vw,80px) 0; background: radial-gradient(120% 80% at 85% 0%, var(--reiwa-lavender) 0%, rgba(236,230,242,0) 60%), var(--paper-warm); }
-  .client-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px,4vw,64px); row-gap: 0; margin: clamp(28px,1.4vw + 20px,34px) 0 0; }
-  .cl-col { min-width: 0; overflow-wrap: break-word; border-left: 1px solid var(--rule); padding-left: clamp(32px,4vw,64px); }
-  .cl-col:nth-child(odd) { border-left: 0; padding-left: 0; }
-  .cl-col:nth-child(n+3) { border-top: 1px solid var(--rule); margin-top: clamp(28px,3vw,40px); padding-top: clamp(28px,3vw,40px); }
-  .cl-item { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 1.5vw, 27px); line-height: 1.2; letter-spacing: var(--type-h3-ls); color: var(--ink); }
-  .cl-desc { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 13.4px + 0.2vw, 15.5px); line-height: 1.55; color: var(--ink-3); max-width: 34ch; transition: color 250ms var(--ease-out); }
-  html[lang="ja"] .cl-desc { line-height: 1.7; }
-  @media (hover: hover) { .cl-col:hover .cl-desc { color: var(--ink-2); } }
-  @media (max-width: 1279px) {
-    .cl-col:nth-child(n+3) { margin-top: clamp(22px,2.6vw,30px); padding-top: clamp(22px,2.6vw,30px); }
+  /* --- 3 · Focus markets: the signature section ------------------------ */
+  .am-tabs { display: flex; gap: 0; margin-top: clamp(36px, 4vw, 56px); border-bottom: 1px solid var(--rule-strong); }
+  .am-tab { position: relative; appearance: none; background: none; border: 0; margin: 0 clamp(28px, 3vw, 44px) 0 0; padding: 0 0 14px; min-height: 44px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(19px, 16px + 0.7vw, 25px); font-weight: 400; letter-spacing: -0.008em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
+  .am-tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 240ms var(--ease-out); }
+  .am-tab[aria-selected="true"] { color: var(--ink); }
+  .am-tab[aria-selected="true"]::after { transform: scaleX(1); }
+  @media (hover: hover) { .am-tab:not([aria-selected="true"]):hover { color: var(--ink-2); } }
+  .am-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .am-panel[hidden] { display: none; }
+  .am-panel { animation: am-fade 200ms var(--ease-out); }
+  @keyframes am-fade { from { opacity: 0; } to { opacity: 1; } }
+  .am-grid { display: grid; grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.68fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
+  .am-mapwrap { display: flex; flex-direction: column; }
+
+  .am-map { position: relative; aspect-ratio: 900 / 700; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
+  .ab-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+  .ab-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .ab-svg--tight { display: none; }
+  .ab-area { vector-effect: non-scaling-stroke; transition: fill-opacity 200ms var(--ease-out); }
+  /* Three tiers, separated by fill weight and stroke, never by hue alone. */
+  .ab-ctx   { fill: var(--warm-300, #E5E1D5); fill-opacity: 0.75; stroke: var(--ink-3); stroke-opacity: 0.30; stroke-width: 1; }
+  .ab-broad { fill: var(--reiwa-lavender, #ECE6F2); fill-opacity: 0.95; stroke: var(--accent-sumire-light, #B79AD6); stroke-width: 1.15; }
+  .ab-prim  { fill: var(--reiwa-node, #5E3D78); fill-opacity: 0.82; stroke: var(--ink); stroke-width: 1.15; }
+  .ab-water { fill: none; stroke: var(--accent-ai, #5B7A94); stroke-opacity: 0.55; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .ab-lab { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); font-family: 'DM Sans', sans-serif; font-size: 11.5px; line-height: 1.25; text-align: center; white-space: nowrap; pointer-events: none; }
+  .ab-lab--primary { color: var(--paper-warm); font-weight: 500; letter-spacing: 0.005em; }
+  .ab-lab--broader { color: var(--ink); font-weight: 500; }
+  .ab-lab--context { color: var(--ink-3); font-weight: 400; }
+  /* A label whose district is too narrow to hold it sits on the ground
+     beside it, so colour and role are set independently. */
+  .ab-lab--on-ground { color: var(--ink); font-weight: 500; }
+  .ab-lab--water   { color: var(--accent-ai, #5B7A94); font-weight: 500; font-style: normal; letter-spacing: 0.06em; text-transform: uppercase; font-size: 10.5px; }
+
+  .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
+  .am-legend li { display: flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-2); }
+  .am-legend .sw { width: 13px; height: 13px; flex: none; }
+  .sw-prim  { background: var(--reiwa-node, #5E3D78); opacity: 0.82; border: 1px solid var(--ink); }
+  .sw-broad { background: var(--reiwa-lavender, #ECE6F2); border: 1px solid var(--accent-sumire-light, #B79AD6); }
+  .sw-ctx   { background: var(--warm-300, #E5E1D5); border: 1px solid rgba(39,20,48,0.30); }
+
+  .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
+  .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
+  .am-facts { margin: clamp(20px, 2.2vw, 26px) 0 0; }
+  .am-facts > div { padding: 14px 0; border-top: 1px solid var(--rule); }
+  .am-facts > div:first-child { border-top: 0; padding-top: 0; }
+  .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 8px; }
+  .am-facts dd { margin: 0; }
+  .am-subs { color: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
+  @media (max-width: 1024px) { .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; } }
+  @media (max-width: 760px) {
+    .am-tabs { margin-top: 28px; }
+    .am-grid { margin-top: 24px; gap: 24px; }
+    /* Phones get a tighter viewBox of the same geography so the focus
+       submarkets stay legible instead of shrinking with the whole frame. */
+    .ab-svg--wide { display: none; }
+    .ab-svg--tight { display: block; }
+    .ab-lab { left: var(--xm); top: var(--ym); font-size: 11px; }
+    .ab-lab--off { display: none; }
+    /* Phones keep the submarket names and the water; the context labels
+       (parks, Knightsbridge) would crowd them out, so only their shapes
+       remain. The frame is also a touch taller to give the map room. */
+    .ab-lab--context { display: none; }
+    .am-map { aspect-ratio: 4 / 3.4; }
+    .am-legend { gap: 8px 18px; }
+    .am-legend li { font-size: 12.5px; }
   }
-  @media (max-width: 768px) {
-    .clients { padding: 40px 0 44px; }
-    .cl-item { font-size: clamp(19px, 18px + 0.8vw, 22px); line-height: 1.25; }
+
+  /* --- 4 · Who we work with ------------------------------------------- */
+  .ac-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(40px, 4.5vw, 64px); border-top: 1px solid var(--rule-strong); }
+  .ac-item { padding: clamp(26px, 2.8vw, 36px) clamp(20px, 2.2vw, 32px) 0 0; }
+  .ac-item + .ac-item { border-left: 1px solid var(--rule); padding-left: clamp(20px, 2.2vw, 32px); }
+  .ac-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 17px + 0.5vw, 23px); line-height: 1.18; letter-spacing: -0.008em; color: var(--ink); }
+  .ac-item p { margin: 12px 0 0; }
+  @media (max-width: 900px) {
+    .ac-grid { grid-template-columns: 1fr 1fr; }
+    .ac-item:nth-child(-n+2) { border-bottom: 1px solid var(--rule); padding-bottom: clamp(26px, 2.8vw, 36px); }
+    .ac-item:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .ac-item:nth-child(even) { border-left: 1px solid var(--rule); }
   }
-  @media (max-width: 360px) {
-    .client-row { grid-template-columns: 1fr; }
-    .cl-col { border-left: 0; padding-left: 0; }
-    .cl-col:nth-child(n+2) { border-top: 1px solid var(--rule); margin-top: 20px; padding-top: 20px; }
+  @media (max-width: 620px) {
+    .ac-grid { grid-template-columns: 1fr; margin-top: 32px; }
+    .ac-item, .ac-item + .ac-item { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+    .ac-item:last-child { border-bottom: 0; }
   }
 </style>
 </head>
@@ -165,88 +191,170 @@
 
 <main id="main" tabindex="-1">
 
-<section class="page-head" data-screen-label="01 About — hero">
+<!-- ================================================================ 1 · HERO -->
+<section class="page-head ab-hero" data-screen-label="01 About — hero">
+  <div class="ab-media">
+    <img src="assets/imagery/about-hero-blur.webp" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+  </div>
+  <div class="ab-scrim"></div>
   <div class="inner">
-    <h1 data-en="About" data-ja="会社概要">About</h1>
+    <h1>Built Around the Investor.</h1>
+    <p class="sub">European real estate approached from the investor’s mandate, not the transaction.</p>
+    <span class="loc">London&nbsp;·&nbsp;Amsterdam</span>
   </div>
 </section>
 
-<section class="rationale" data-screen-label="03 About — purpose">
+<!-- ================================================================ 2 · WHY REIWA EXISTS -->
+<section class="ab-sec aw" data-screen-label="02 About — why Reiwa exists" aria-labelledby="aw-title">
   <div class="shell">
-    <div class="ed-row">
-      <h2 class="sec-eyebrow" data-en="Purpose" data-ja="存在意義">Purpose</h2>
-      <div>
-        <p class="rationale-h" data-en="Cross-Border Ownership Is Fragmented By Nature." data-ja="クロスボーダーの不動産保有は、その性質上分散しがちです。">Cross-Border Ownership Is Fragmented By Nature.</p>
-        <p class="rationale-copy" data-en="Reiwa&nbsp;Capital gives overseas investors a single point of continuity across European real estate acquisition and ownership." data-ja="Reiwa Capitalは、欧州不動産の取得から保有に至るまで、海外投資家に一貫した窓口を提供します。">Reiwa&nbsp;Capital gives overseas investors a single point of continuity across European real estate acquisition and ownership.</p>
-        <p class="rationale-copy" data-en="Reiwa&nbsp;Capital brings investment judgement, structuring and execution into one investor-side process, coordinating local specialists while the investor retains every material decision." data-ja="Reiwa Capitalは、投資判断・組成・実行を投資家側の一つのプロセスに統合し、現地の専門家と連携します。重要な意思決定は、常に投資家が保持します。">Reiwa&nbsp;Capital brings investment judgement, structuring and execution into one investor-side process, coordinating local specialists while the investor retains every material decision.</p>
+    <div class="ab-head">
+      <span class="h-eyebrow">Why Reiwa exists</span>
+      <h2 class="h-h2" id="aw-title">Cross-border ownership needs continuity.</h2>
+      <p class="h-body ab-lede">Acquiring an overseas asset is only one part of the investment. Investor objectives need to remain clear through underwriting, execution and ownership, even as local advisers, counterparties and market conditions change. Reiwa Capital is built to provide that continuity from the investor’s side.</p>
+    </div>
+    <div class="aw-stages">
+      <div class="aw-stage">
+        <span class="h-num" aria-hidden="true">01</span>
+        <h3>Investor Mandate</h3>
+        <p class="aw-role">Objectives, parameters and decision requirements.</p>
+        <p class="h-body aw-detail">We begin with what the investor is trying to achieve, how capital should be deployed and what conditions need to be satisfied.</p>
+      </div>
+      <div class="aw-stage">
+        <span class="h-num" aria-hidden="true">02</span>
+        <h3>Local Execution</h3>
+        <p class="aw-role">Sourcing, diligence, financing and acquisition.</p>
+        <p class="h-body aw-detail">Each opportunity is assessed and coordinated against the original mandate rather than pursued simply because it is available.</p>
+      </div>
+      <div class="aw-stage">
+        <span class="h-num" aria-hidden="true">03</span>
+        <h3>Ownership Oversight</h3>
+        <p class="aw-role">Business planning, reporting and key ownership decisions.</p>
+        <p class="h-body aw-detail">After acquisition, the same investor perspective continues through performance monitoring, strategic decisions and eventual exit.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="markets" id="markets" data-screen-label="04 About — market focus">
+<!-- ================================================================ 3 · FOCUS MARKETS -->
+<section class="ab-sec am" data-screen-label="03 About — focus markets" aria-labelledby="am-title">
   <div class="shell">
-    <div class="ed-row">
-      <h2 class="sec-eyebrow" data-en="Market Focus" data-ja="重点市場">Market Focus</h2>
-      <div class="mkt-copy">
-        <p class="mkt-intro" data-en="We concentrate on London and Amsterdam, where local depth matters more than broad geographic coverage." data-ja="ロンドンとアムステルダムに集中しています。広範な地域展開よりも、現地での深い知見を重視するためです。">We concentrate on London and Amsterdam, where local depth matters more than broad geographic coverage.</p>
-      </div>
+    <div class="ab-head">
+      <span class="h-eyebrow">Focus markets</span>
+      <h2 class="h-h2" id="am-title">Two Markets. Deeper Focus.</h2>
+      <p class="h-body ab-lede">Reiwa Capital concentrates initially on London and Amsterdam. The objective is not broad geographic coverage. It is to build repeatable judgement within a smaller number of markets and submarkets, supported by local relationships, detailed underwriting and continued ownership oversight.</p>
     </div>
-    <div class="mkt-sel" role="tablist" aria-label="Market">
-      <button class="mkt-tab is-on" type="button" role="tab" id="mkt-tab-london" aria-controls="mkt-panel-london" aria-selected="true">
-        <span class="mkt-tab-num" aria-hidden="true">01</span>
-        <span class="mkt-tab-label" data-en="London" data-ja="ロンドン">London</span>
-      </button>
-      <button class="mkt-tab" type="button" role="tab" id="mkt-tab-amsterdam" aria-controls="mkt-panel-amsterdam" aria-selected="false" tabindex="-1">
-        <span class="mkt-tab-num" aria-hidden="true">02</span>
-        <span class="mkt-tab-label" data-en="Amsterdam" data-ja="アムステルダム">Amsterdam</span>
-      </button>
+    <div class="am-tabs" role="tablist" aria-label="Focus market">
+      <button class="am-tab" type="button" role="tab" id="am-tab-london" data-market="london" aria-selected="true" aria-controls="am-panel-london">London</button>
+      <button class="am-tab" type="button" role="tab" id="am-tab-amsterdam" data-market="amsterdam" aria-selected="false" aria-controls="am-panel-amsterdam" tabindex="-1">Amsterdam</button>
     </div>
-    <div class="mkt-stage">
-      <div class="mkt-panel is-on" role="tabpanel" id="mkt-panel-london" aria-labelledby="mkt-tab-london">
-        <div class="mkt-inner">
-          <div class="mkt-media"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1600w" sizes="(max-width: 760px) 92vw, 58vw" width="1600" height="686" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
-          <div class="mkt-text">
-            <div class="mkt-group"><span class="mkt-label" data-en="Market characteristics" data-ja="市場特性">Market characteristics</span><p class="mkt-value" data-en="A deep, transparent real estate market supported by global occupier demand, transaction liquidity and specialist expertise." data-ja="高い透明性を備え、世界的な需要、取引流動性、専門人材に支えられた、奥行きのある不動産市場です。">A deep, transparent real estate market supported by global occupier demand, transaction liquidity and specialist expertise.</p></div>
-            <div class="mkt-group"><span class="mkt-label" data-en="Investment focus" data-ja="投資対象">Investment focus</span><p class="mkt-value" data-en="Income-producing and repositioning opportunities across commercial, residential, mixed-use and hospitality assets in established London submarkets." data-ja="需要基盤の明確なロンドンの各エリアを中心に、安定収益型および再生余地のあるオフィス、住宅、複合用途、ホテル等を対象とします。">Income-producing and repositioning opportunities across commercial, residential, mixed-use and hospitality assets in established London submarkets.</p></div>
-            
+    <div class="am-panel is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
+      <div class="am-grid">
+        <div class="am-mapwrap">
+          <div class="am-map" role="img" aria-label="Map of central London marking Reiwa Capital’s primary focus submarkets — Mayfair and St James’s, Marylebone, and South Kensington and Chelsea — and its broader coverage in Soho and Fitzrovia, the City of London and the City Fringe.">
+        <svg class="ab-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><g id="geo-london">
+          <path class="ab-area ab-ctx" d="M32.2 396L132.2 430.4L300 433.9L312.2 373.1L242.9 324.9L107.2 332.9Z"/>
+          <path class="ab-area ab-ctx" d="M200 189.4L335.7 183.7L346.4 97.6L271.4 60.9L185.7 109.1Z"/>
+          <path class="ab-area ab-ctx" d="M178.6 478.6L264.3 469.4L270 435L180 441.9Z"/>
+          <path class="ab-area ab-broad" d="M372.9 393.7L462.9 350.1L478.6 219.3L414.3 180.3L352.9 200.9L357.2 350.1Z"/>
+          <path class="ab-area ab-broad" d="M660.7 304.2L721.4 246.8L828.5 252.6L853.5 315.7L821.4 367.3L700 355.9Z"/>
+          <path class="ab-area ab-broad" d="M614.3 218.1L721.4 233.1L835.7 223.9L885.7 160.7L807.1 120.6L664.3 137.8L607.1 172.2Z"/>
+          <path class="ab-area ab-prim" d="M296.4 301.9L380 290.4L403.6 350.1L425 390.3L457.1 398.3L462.9 421.3L420 437.3L348.6 431.6L299.3 429.3L284.3 377.7Z"/>
+          <path class="ab-area ab-prim" d="M221.5 295L350 283.6L358.6 203.2L242.9 195.2L198.6 229.6Z"/>
+          <path class="ab-area ab-prim" d="M28.6 478.6L198.6 453.4L271.4 508.5L300 604.8L155.7 646.1L41.5 602.5Z"/>
+          <path class="ab-water" d="M-14.2 618.6L114.3 634.6L242.9 602.5L328.6 545.2L464.3 453.4L542.8 382.2L635.7 367.3L721.4 380L814.2 392.6L846.4 409.8L899.9 398.3L985.7 423.6"/>
+        </g></defs></svg>
+        <svg class="ab-svg ab-svg--wide" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><use href="#geo-london"/></svg>
+        <svg class="ab-svg ab-svg--tight" viewBox="-31.4 -31.9 977.1 830.5" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><use href="#geo-london"/></svg>
+        <span class="ab-lab ab-lab--context" style="--x:20.87%;--y:54.56%;--xm:22.43%;--ym:49.83%" aria-hidden="true">Hyde Park</span>
+        <span class="ab-lab ab-lab--context" style="--x:29.76%;--y:18.3%;--xm:30.62%;--ym:19.27%" aria-hidden="true">Regent’s Park</span>
+        <span class="ab-lab ab-lab--context ab-lab--on-ground" style="--x:8.26%;--y:71.33%;--xm:10.82%;--ym:63.96%" aria-hidden="true">Knightsbridge</span>
+        <span class="ab-lab ab-lab--broader" style="--x:45.17%;--y:40.34%;--xm:44.82%;--ym:37.84%" aria-hidden="true">Soho /<br>Fitzrovia</span>
+        <span class="ab-lab ab-lab--broader" style="--x:84.92%;--y:43.87%;--xm:81.43%;--ym:40.82%" aria-hidden="true">City of<br>London</span>
+        <span class="ab-lab ab-lab--broader" style="--x:81.52%;--y:25.84%;--xm:78.3%;--ym:25.62%" aria-hidden="true">City Fringe</span>
+        <span class="ab-lab ab-lab--primary" style="--x:41.97%;--y:54.69%;--xm:41.87%;--ym:49.93%" aria-hidden="true">Mayfair &<br>St James’s</span>
+        <span class="ab-lab ab-lab--primary" style="--x:30.48%;--y:34.47%;--xm:31.29%;--ym:32.9%" aria-hidden="true">Marylebone</span>
+        <span class="ab-lab ab-lab--primary" style="--x:18.44%;--y:78.43%;--xm:20.2%;--ym:69.95%" aria-hidden="true">South Kensington<br>& Chelsea</span>
+        <span class="ab-lab ab-lab--water" style="--x:57.93%;--y:61.49%;--xm:56.58%;--ym:55.67%" aria-hidden="true">Thames</span>
           </div>
+          <ul class="am-legend">
+            <li><span class="sw sw-prim" aria-hidden="true"></span>Primary focus</li>
+            <li><span class="sw sw-broad" aria-hidden="true"></span>Broader market coverage</li>
+            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
+          </ul>
+        </div>
+        <div class="am-side">
+          <figure class="am-figure">
+            <img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 36vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk">
+          </figure>
+          <dl class="am-facts">
+            <div><dt>Market character</dt><dd class="h-body">Deep, globally connected and highly segmented.</dd></div>
+            <div><dt>Where we focus</dt><dd class="h-body">Prime central and established commercial submarkets where location, income quality and execution can be assessed with depth.</dd></div>
+            <div><dt>Selected submarkets</dt><dd class="h-body am-subs">Mayfair &amp; St James’s · Marylebone · South Kensington &amp; Chelsea · City of London · City Fringe</dd></div>
+            <div><dt>Why it fits</dt><dd class="h-body">Institutional depth, strong transaction liquidity and a broad long-term buyer base.</dd></div>
+          </dl>
         </div>
       </div>
-      <div class="mkt-panel" role="tabpanel" id="mkt-panel-amsterdam" aria-labelledby="mkt-tab-amsterdam">
-        <div class="mkt-inner">
-          <div class="mkt-media"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1600w" sizes="(max-width: 760px) 92vw, 58vw" width="1600" height="686" loading="lazy" decoding="async" alt="A tree-lined canal in the Amsterdam Canal Belt at golden hour"></div>
-          <div class="mkt-text">
-            <div class="mkt-group"><span class="mkt-label" data-en="Market characteristics" data-ja="市場特性">Market characteristics</span><p class="mkt-value" data-en="A supply-constrained European market shaped by protected historic stock, limited development capacity and strong demand for well-located assets." data-ja="歴史的建造物の保全と開発余地の制約により、好立地の不動産供給が限られる欧州市場です。">A supply-constrained European market shaped by protected historic stock, limited development capacity and strong demand for well-located assets.</p></div>
-            <div class="mkt-group"><span class="mkt-label" data-en="Investment focus" data-ja="投資対象">Investment focus</span><p class="mkt-value" data-en="Income-producing and repositioning opportunities across mixed-use, residential and hospitality assets in Amsterdam&rsquo;s established central districts." data-ja="アムステルダム中心部の確立したエリアにおいて、安定収益または再生余地を有する複合用途、住宅、ホテル等を対象とします。">Income-producing and repositioning opportunities across mixed-use, residential and hospitality assets in Amsterdam&rsquo;s established central districts.</p></div>
-            
+    </div>
+    <div class="am-panel" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
+      <div class="am-grid">
+        <div class="am-mapwrap">
+          <div class="am-map" role="img" aria-label="Map of central Amsterdam marking Reiwa Capital’s primary focus districts — the Canal Belt, Museum Quarter and Oud-Zuid, and the Jordaan — with broader coverage in the historic centre.">
+        <svg class="ab-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><g id="geo-amsterdam">
+          <path class="ab-area ab-ctx" d="M48.4 603.1L197.4 542.1L173.3 488.3L35.2 542.1Z"/>
+          <path class="ab-area ab-ctx" d="M648.9 556.5L756.3 534.9L745.3 473.9L640.1 495.4Z"/>
+          <path class="ab-area ab-broad" d="M355.2 409.3L431.9 359.1L442.9 233.4L370.5 179.5L331.1 287.3Z"/>
+          <path class="ab-area ab-prim" d="M286.2 149L217.1 274.7L234.7 418.3L337.7 502.6L453.8 472.1L513 337.5L532.7 215.5L453.8 215.5L442.9 326.7L406.7 409.3L348.6 430.8L300.4 355.5L293.8 262.1L333.3 172.4Z"/>
+          <path class="ab-area ab-prim" d="M166.7 653.4L333.3 628.2L357.4 538.5L239 506.2L144.8 560Z"/>
+          <path class="ab-area ab-prim" d="M157.9 262.1L245.6 244.2L261 118.5L166.7 111.3L133.8 183.1Z"/>
+          <path class="ab-water" d="M6.7 57.5L258.8 50.3L445.1 28.7L664.2 64.6L872.5 125.7"/>
+          <path class="ab-water" d="M539.3 674.9L493.3 495.4L458.2 337.5L475.8 219L442.9 122.1"/>
+        </g></defs></svg>
+        <svg class="ab-svg ab-svg--wide" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><use href="#geo-amsterdam"/></svg>
+        <svg class="ab-svg ab-svg--tight" viewBox="-68.6 57.1 765.3 650.5" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><use href="#geo-amsterdam"/></svg>
+        <span class="ab-lab ab-lab--context" style="--x:8.78%;--y:89.74%;--xm:19.29%;--ym:87.79%" aria-hidden="true">Vondelpark</span>
+        <span class="ab-lab ab-lab--context ab-lab--off" style="--x:77.52%;--y:73.6%;--xm:100.13%;--ym:70.42%" aria-hidden="true">Oosterpark</span>
+        <span class="ab-lab ab-lab--broader" style="--x:43.12%;--y:41.54%;--xm:59.68%;--ym:35.93%" aria-hidden="true">Historic<br>Centre</span>
+        <span class="ab-lab ab-lab--primary ab-lab--on-ground" style="--x:14.39%;--y:50.79%;--xm:25.89%;--ym:45.87%" aria-hidden="true">Canal Belt</span>
+        <span class="ab-lab ab-lab--primary" style="--x:29.72%;--y:82.57%;--xm:43.92%;--ym:80.08%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
+        <span class="ab-lab ab-lab--primary" style="--x:21.44%;--y:26.26%;--xm:34.18%;--ym:19.48%" aria-hidden="true">Jordaan</span>
+        <span class="ab-lab ab-lab--water ab-lab--off" style="--x:59.19%;--y:5.64%;--xm:78.57%;--ym:-2.71%" aria-hidden="true">Het IJ</span>
+        <span class="ab-lab ab-lab--water" style="--x:58.47%;--y:85.13%;--xm:77.72%;--ym:82.83%" aria-hidden="true">Amstel</span>
           </div>
+          <ul class="am-legend">
+            <li><span class="sw sw-prim" aria-hidden="true"></span>Primary focus</li>
+            <li><span class="sw sw-broad" aria-hidden="true"></span>Broader market coverage</li>
+            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
+          </ul>
+        </div>
+        <div class="am-side">
+          <figure class="am-figure">
+            <img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 92vw, 36vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light">
+          </figure>
+          <dl class="am-facts">
+            <div><dt>Market character</dt><dd class="h-body">Supply-constrained, historic and relationship-driven.</dd></div>
+            <div><dt>Where we focus</dt><dd class="h-body">Central locations where scarcity, building character, durable occupier demand and identifiable value creation support the investment case.</dd></div>
+            <div><dt>Selected submarkets</dt><dd class="h-body am-subs">Canal Belt · Museum Quarter / Oud-Zuid · Jordaan · selected central districts</dd></div>
+            <div><dt>Why it fits</dt><dd class="h-body">Scarcity, distinctive asset character and opportunities for selective repositioning.</dd></div>
+          </dl>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="clients" data-screen-label="05 About — clients">
+<!-- ================================================================ 4 · WHO WE WORK WITH -->
+<section class="ab-sec ac" data-screen-label="04 About — who we work with" aria-labelledby="ac-title">
   <div class="shell">
-    <h2 class="sec-eyebrow" data-en="Who We Work With" data-ja="対象とする投資家">Who We Work With</h2>
-    <div class="client-row">
-      <div class="cl-col">
-        <span class="cl-item" data-en="Family Offices" data-ja="ファミリーオフィス">Family Offices</span>
-        <p class="cl-desc" data-en="Direct European exposure with long-term ownership flexibility." data-ja="長期保有に柔軟に対応した、欧州不動産への直接投資。">Direct European exposure with long-term ownership flexibility.</p>
-      </div>
-      <div class="cl-col">
-        <span class="cl-item" data-en="Private Capital" data-ja="プライベートキャピタル">Private Capital</span>
-        <p class="cl-desc" data-en="Selective direct investment with discretion and control." data-ja="裁量と統制を保った、選別的な直接投資。">Selective direct investment with discretion and control.</p>
-      </div>
-      <div class="cl-col">
-        <span class="cl-item" data-en="Corporates" data-ja="事業会社">Corporates</span>
-        <p class="cl-desc" data-en="Strategic deployment of balance-sheet capital." data-ja="自己資本の戦略的な配分。">Strategic deployment of balance-sheet capital.</p>
-      </div>
-      <div class="cl-col">
-        <span class="cl-item" data-en="Institutional Investors" data-ja="機関投資家">Institutional Investors</span>
-        <p class="cl-desc" data-en="Structured access to European real estate with local execution." data-ja="現地での実行体制を備えた、欧州不動産への体系的なアクセス。">Structured access to European real estate with local execution.</p>
-      </div>
+    <div class="ab-head">
+      <span class="h-eyebrow">Who we work with</span>
+      <h2 class="h-h2" id="ac-title">Built for Long-Term Capital.</h2>
+      <p class="h-body ab-lede">Reiwa Capital works with sophisticated Japanese investors seeking direct, well-governed exposure to European real estate.</p>
+    </div>
+    <div class="ac-grid">
+      <div class="ac-item"><h3>Japanese Corporates</h3><p class="h-body">Strategic deployment of balance-sheet capital into selected European real estate.</p></div>
+      <div class="ac-item"><h3>Family Offices</h3><p class="h-body">Long-term ownership with discretion, transparency and control.</p></div>
+      <div class="ac-item"><h3>Institutional Capital</h3><p class="h-body">Structured access to selected European investment opportunities.</p></div>
+      <div class="ac-item"><h3>Private Investors</h3><p class="h-body">Direct ownership for experienced investors seeking a considered cross-border approach.</p></div>
     </div>
   </div>
 </section>
@@ -254,51 +362,44 @@
 </main>
 
 <div data-shell="footer"></div>
+<script>
+/* Focus-market selector — London by default. Switching updates the map,
+   the photograph and all four information blocks together. ARIA tabs with
+   a roving tabindex; both panels are in the DOM without JS. */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.am-tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.am-panel'));
+  if (!tabs.length) return;
+  function select(key, focus) {
+    tabs.forEach(function (t) {
+      var on = t.dataset.market === key;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.setAttribute('tabindex', on ? '0' : '-1');
+      if (on && focus) t.focus();
+    });
+    panels.forEach(function (p) {
+      var on = p.dataset.market === key;
+      p.classList.toggle('is-on', on);
+      if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t.dataset.market); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n === null) return;
+      e.preventDefault();
+      select(tabs[n].dataset.market, true);
+    });
+  });
+})();
+</script>
 <script src="shell.js?v=66"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=16"></script>
-<script>
-(function () {
-  var section = document.querySelector('.markets');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.mkt-tab'));
-  var panels = { london: document.getElementById('mkt-panel-london'), amsterdam: document.getElementById('mkt-panel-amsterdam') };
-  function reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-  function select(key) {
-    document.querySelector('.markets').classList.toggle('amsterdam-active', key === 'amsterdam');
-    tabs.forEach(function (t) {
-      var on = t.id === 'mkt-tab-' + key;
-      t.classList.toggle('is-on', on);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.tabIndex = on ? 0 : -1;
-    });
-    Object.keys(panels).forEach(function (k) {
-      var p = panels[k], on = k === key;
-      p.classList.toggle('is-on', on);
-      if (on && !reduced()) {
-        var inner = p.querySelector('.mkt-inner');
-        inner.style.transition = 'none';
-        inner.style.opacity = '0';
-        inner.style.transform = 'translateY(4px)';
-        void inner.offsetHeight;
-        inner.style.transition = '';
-        setTimeout(function () { inner.style.opacity = ''; inner.style.transform = ''; }, 20);
-      }
-    });
-  }
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function () { select(t.id === 'mkt-tab-london' ? 'london' : 'amsterdam'); });
-    t.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'Home' || e.key === 'End') {
-        e.preventDefault();
-        var next = t.id === 'mkt-tab-london' ? 'amsterdam' : 'london';
-        select(next);
-        document.getElementById('mkt-tab-' + next).focus();
-      }
-    });
-  });
-  section.classList.add('js-enhanced');
-  section.classList.toggle('amsterdam-active', document.getElementById('mkt-tab-amsterdam').classList.contains('is-on'));
-})();
-</script>
 </body>
 </html>
