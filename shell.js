@@ -17,14 +17,13 @@
   ];
 
   /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
-     per the JA SEO brief (adds Insights; About/Contact reworded). Only used
+     per the JA SEO brief (About/Contact reworded). Only used
      when <body data-locale="ja">; the English NAV/FLOW above are untouched. */
   const NAV_JA = [
     { href: '/ja/',                          label: 'ホーム',       key: 'home' },
     { href: '/ja/about.html',                label: 'Reiwa Capital', key: 'about' },
     { href: '/ja/approach.html',             label: '投資アプローチ', key: 'approach' },
     { href: '/ja/investment-focus.html',     label: '投資戦略',     key: 'focus' },
-    { href: '/ja/insights/',                 label: 'Insights',    key: 'insights' },
     { href: '/ja/contact.html',              label: 'お問い合わせ', key: 'contact' },
   ];
 
@@ -44,7 +43,7 @@
     home:     { href: '/ja/about.html',              t: '会社概要', ariaLabel: '次へ：会社概要' },
     about:    { href: '/ja/approach.html',            t: 'アプローチ', ariaLabel: '次へ：アプローチ' },
     approach: { href: '/ja/investment-focus.html',    t: '投資戦略', ariaLabel: '次へ：投資戦略' },
-    focus:    { href: '/ja/insights/',                t: 'Insights', ariaLabel: '次へ：Insights' },
+    focus:    { href: '/ja/contact.html',             t: 'お問い合わせ', ariaLabel: '次へ：お問い合わせ' },
     insights: { href: '/ja/contact.html',             t: 'お問い合わせ', ariaLabel: '次へ：お問い合わせ' },
     contact:  { href: '/ja/', t: 'ホーム', label: 'トップへ', ariaLabel: 'トップへ戻る' }
   };
