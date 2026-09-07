@@ -34,11 +34,11 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            tJa: '会社概要',   ariaEn: 'Next: About',            ariaJa: '次へ：会社概要' },
-    about:    { to: 'approach',         tEn: 'Approach',         tJa: 'アプローチ', ariaEn: 'Next: Approach',         ariaJa: '次へ：アプローチ' },
-    approach: { to: 'investment-focus', tEn: 'Investment Focus', tJa: '重点領域',   ariaEn: 'Next: Investment Focus', ariaJa: '次へ：重点領域' },
-    focus:    { to: 'company',          tEn: 'Company',          tJa: '会社情報',   ariaEn: 'Next: Company',          ariaJa: '次へ：会社情報' },
-    company:  { to: 'index', tEn: 'Home', tJa: 'ホーム', labelEn: 'Return to', labelJa: 'トップへ', ariaEn: 'Return to Home', ariaJa: 'トップへ戻る' }
+    home:     { to: 'about',            tEn: 'About',            lead: 'Why Reiwa exists and where we focus.',              ariaEn: 'Next: About' },
+    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership.', ariaEn: 'Next: Approach' },
+    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention.',               ariaEn: 'Next: Investment Focus' },
+    focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details.',              ariaEn: 'Next: Company' },
+    company:  { to: 'index',            tEn: 'Home',             lead: 'European Real Estate. Structured for Japanese Capital.', kicker: 'Return to', ariaEn: 'Return to Home' }
   };
 
   const FLOW_JA = {
@@ -327,13 +327,15 @@
     } else {
       const f = FLOW[currentKey()];
       nextNav = f ? `
-      <nav class="nextnav" aria-label="Page navigation" data-aria-en="Page navigation" data-aria-ja="ページナビゲーション">
-        <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}" data-aria-en="${f.ariaEn}" data-aria-ja="${f.ariaJa}">
+      <nav class="nextnav nextnav--band" aria-label="Page navigation">
+        <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}">
           <span class="nn-inner">
-            <span class="nn-title-row">
-              <span class="nn-title" data-en="${f.tEn}" data-ja="${f.tJa}">${f.tEn}</span>
-              <svg class="nn-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg>
+            <span class="nn-text">
+              <span class="nn-kicker">${f.kicker || 'Next'}</span>
+              <span class="nn-title">${f.tEn}</span>
+              <span class="nn-lead">${f.lead}</span>
             </span>
+            <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
           </span>
         </a>
       </nav>` : '';
@@ -383,6 +385,7 @@
   // render normally. We add the class, tag content blocks, and let an observer
   // fade each one up as it enters. Staggered per sibling group for a soft cascade.
   const REVEAL_SELECTORS = [
+    '.hi-head', '.hi-cols', '.hm-head', '.hm-stage', '.hp-grid', '.hf-head', '.hf-grid',
     '.home-areas .areas-head',
     '.wwd-head', '.home-markets-head', '.activity-head', '.hww-head', '.hww-panel', '.platform-head', '.contact-cta-head',
     '.stage-rail',
