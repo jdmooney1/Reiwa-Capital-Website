@@ -127,6 +127,8 @@
   .ab-lab--pri { color: var(--ink); font-weight: 500; }
   .ab-lab--broader { color: var(--ink-2); font-weight: 500; }
   .ab-lab--context { color: var(--ink-3); font-weight: 400; font-size: 11px; }
+  /* Waterway names are map furniture, not focus areas. */
+  .ab-lab--water { color: #5E7C92; font-weight: 500; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
 
   .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
   .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
@@ -255,17 +257,17 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="assets/maps/london-wide.svg" alt="Map of central London. The River Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus micro-markets are Mayfair, St James’s, Marylebone, South Kensington and Chelsea; selective focus covers Soho and Fitzrovia, the City Core, Farringdon and Clerkenwell, and Shoreditch and the City Fringe." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/london-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:33.77%;--y:46.27%;--xt:33.77%;--yt:46.86%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.48%;--y:52.93%;--xt:43.48%;--yt:52.46%" aria-hidden="true">St James’s</span>
-          <span class="ab-lab ab-lab--pri" style="--x:26.77%;--y:36.26%;--xt:25.24%;--yt:36.16%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--pri" style="--x:12.09%;--y:65.48%;--xt:12.09%;--yt:63.04%" aria-hidden="true">South Kensington</span>
-          <span class="ab-lab ab-lab--pri" style="--x:18.89%;--y:73.65%;--xt:18.89%;--yt:69.92%" aria-hidden="true">Chelsea</span>
-          <span class="ab-lab ab-lab--pri" style="--x:41.04%;--y:36.23%;--xt:42.78%;--yt:39.8%" aria-hidden="true">Soho /<br>Fitzrovia</span>
-          <span class="ab-lab ab-lab--pri" style="--x:76.07%;--y:39.06%;--xt:76.07%;--yt:40.78%" aria-hidden="true">City Core</span>
-          <span class="ab-lab ab-lab--pri" style="--x:67.62%;--y:29.09%;--xt:66.53%;--yt:34.31%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
-          <span class="ab-lab ab-lab--pri" style="--x:86.31%;--y:25.89%;--xt:87.4%;--yt:28.13%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
-          <span class="ab-lab ab-lab--context" style="--x:16.2%;--y:50.64%;--xt:16.2%;--yt:50.54%" aria-hidden="true">Hyde Park</span>
-          <span class="ab-lab ab-lab--context" style="--x:25.27%;--y:25.0%;--xt:25.27%;--yt:28.95%" aria-hidden="true">Regent’s Park</span>
+          <span class="ab-lab ab-lab--pri" style="--x:36.43%;--y:46.12%;--xt:36.43%;--yt:46.73%" aria-hidden="true">Mayfair</span>
+          <span class="ab-lab ab-lab--pri" style="--x:41.85%;--y:53.52%;--xt:41.85%;--yt:52.97%" aria-hidden="true">St James’s</span>
+          <span class="ab-lab ab-lab--pri" style="--x:30.39%;--y:35.52%;--xt:28.42%;--yt:35.17%" aria-hidden="true">Marylebone</span>
+          <span class="ab-lab ab-lab--pri" style="--x:12.69%;--y:63.22%;--xt:12.69%;--yt:61.14%" aria-hidden="true">South Kensington</span>
+          <span class="ab-lab ab-lab--pri" style="--x:21.34%;--y:72.71%;--xt:21.34%;--yt:69.13%" aria-hidden="true">Chelsea</span>
+          <span class="ab-lab ab-lab--pri" style="--x:43.78%;--y:39.29%;--xt:46.64%;--yt:39.22%" aria-hidden="true">Soho /<br>Fitzrovia</span>
+          <span class="ab-lab ab-lab--pri" style="--x:80.52%;--y:42.19%;--xt:80.52%;--yt:43.43%" aria-hidden="true">City Core</span>
+          <span class="ab-lab ab-lab--pri" style="--x:67.56%;--y:30.83%;--xt:66.02%;--yt:36.32%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
+          <span class="ab-lab ab-lab--pri" style="--x:86.28%;--y:28.23%;--xt:87.82%;--yt:29.73%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
+          <span class="ab-lab ab-lab--context" style="--x:17.37%;--y:49.6%;--xt:17.37%;--yt:49.67%" aria-hidden="true">Hyde Park</span>
+          <span class="ab-lab ab-lab--context" style="--x:26.51%;--y:23.76%;--xt:26.51%;--yt:27.9%" aria-hidden="true">Regent’s Park</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
@@ -293,12 +295,15 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:56.47%;--y:39.0%;--xt:57.68%;--yt:39.0%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.69%;--y:29.88%;--xt:42.49%;--yt:29.88%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--pri" style="--x:45.55%;--y:65.47%;--xt:44.7%;--yt:65.47%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--pri" style="--x:40.75%;--y:85.76%;--xt:39.01%;--yt:85.76%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--pri" style="--x:61.79%;--y:32.37%;--xt:63.99%;--yt:32.37%" aria-hidden="true">Historic Centre</span>
-          <span class="ab-lab ab-lab--context" style="--x:24.36%;--y:57.78%;--xt:19.55%;--yt:57.78%" aria-hidden="true">Vondelpark</span>
+          <span class="ab-lab ab-lab--pri" style="--x:53.42%;--y:33.43%;--xt:54.05%;--yt:33.43%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-lab ab-lab--pri" style="--x:43.59%;--y:20.61%;--xt:42.37%;--yt:20.61%" aria-hidden="true">Jordaan</span>
+          <span class="ab-lab ab-lab--pri" style="--x:44.73%;--y:57.1%;--xt:43.72%;--yt:57.1%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
+          <span class="ab-lab ab-lab--pri" style="--x:61.07%;--y:29.24%;--xt:63.13%;--yt:29.24%" aria-hidden="true">Historic Centre</span>
+          <span class="ab-lab ab-lab--pri" style="--x:41.53%;--y:89.63%;--xt:39.93%;--yt:89.63%" aria-hidden="true">Zuidas</span>
+          <span class="ab-lab ab-lab--context" style="--x:27.4%;--y:52.75%;--xt:23.15%;--yt:52.75%" aria-hidden="true">Vondelpark</span>
+          <span class="ab-lab ab-lab--context" style="--x:90.7%;--y:50.61%;--xt:98.31%;--yt:50.61%" aria-hidden="true">Oosterpark</span>
+          <span class="ab-lab ab-lab--water" style="--x:77.89%;--y:5.0%;--xt:83.1%;--yt:5.0%" aria-hidden="true">IJ</span>
+          <span class="ab-lab ab-lab--water" style="--x:68.86%;--y:47.54%;--xt:72.38%;--yt:47.54%" aria-hidden="true">Amstel</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
