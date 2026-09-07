@@ -553,22 +553,28 @@ html[lang="ja"] .nn-title { font-size: clamp(32px, 1.8vw + 16px, 42px); line-hei
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
-/* English footer — cream, quiet, functional. A single hairline above,
-   copyright left, LinkedIn and Privacy right. No symbol, no wordmark, no
-   navigation, no location line. The Japanese footer keeps the sumire
-   treatment above until its own alignment phase. */
+/* English footer — deep sumire, quiet, functional. Copyright left,
+   LinkedIn and Privacy right. No symbol, no wordmark, no navigation, no
+   location line. It sits directly beneath the NEXT band, which is also
+   dark, so the two are kept apart deliberately: the footer is a step
+   deeper in tone, a fraction of the height, and carries only small
+   utility type, with one faint hairline marking the join. The Japanese
+   footer keeps the treatment it shipped with until its own phase. */
 .footer.footer-quiet {
-  background: var(--paper-warm);
-  color: var(--ink);
-  border-top: 1px solid var(--rule);
+  background: #1C0E23;
+  color: var(--paper-warm);
+  border-top: 1px solid rgba(252, 250, 241, 0.13);
 }
-.footer-quiet .footer-inner { height: 76px; }
-.footer-quiet .ff-copy { color: var(--ink-3); }
-.footer-quiet .ff-link { color: var(--ink-3); }
+.footer-quiet .footer-inner { height: 72px; }
+.footer-quiet .ff-copy { color: rgba(252, 250, 241, 0.60); font-size: 12px; }
+.footer-quiet .ff-link { color: rgba(252, 250, 241, 0.60); font-size: 12px; }
 .footer-quiet .ff-link:hover,
-.footer-quiet .ff-link[aria-current="page"] { color: var(--ink); }
-.footer-quiet :focus-visible { outline-color: var(--ink); }
-@media (max-width: 768px) { .footer-quiet .footer-inner { height: 66px; } }
+.footer-quiet .ff-link[aria-current="page"] { color: var(--paper-warm); }
+.footer-quiet :focus-visible { outline-color: var(--paper-warm); }
+@media (max-width: 768px) {
+  .footer-quiet .footer-inner { height: 62px; }
+  .footer-quiet .ff-copy, .footer-quiet .ff-link { font-size: 11.5px; }
+}
 /* Right-hand pair: LinkedIn, then Privacy. Two links, no list. */
 .ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
 .ff-link {
