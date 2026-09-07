@@ -119,13 +119,15 @@
      rule is ink because decision rights sit there; Reiwa's is sumire and
      its text is set in full ink because it is the coordinating layer. */
   .om-phase { display: flex; flex-wrap: wrap; gap: 0 clamp(22px, 2.4vw, 34px); margin-top: clamp(32px, 3.4vw, 44px); border-bottom: 1px solid var(--rule); }
-  .om-ph { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 0 0 12px; min-height: 40px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.35vw, 17px); font-weight: 400; letter-spacing: -0.004em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
-  .om-ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 220ms var(--ease-out); }
+  /* The inactive phases sit back further than a tab would, so the active
+     one reads as stronger without a weight change that would shift the row. */
+  .om-ph { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 0 0 12px; min-height: 40px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.35vw, 17px); font-weight: 400; letter-spacing: -0.004em; color: var(--ink-4); transition: color 180ms var(--ease-out); touch-action: manipulation; }
+  .om-ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 180ms var(--ease-out); }
   .om-ph[aria-checked="true"] { color: var(--ink); }
   .om-ph[aria-checked="true"]::after { transform: scaleX(1); }
   @media (hover: hover) { .om-ph:not([aria-checked="true"]):hover { color: var(--ink-2); } }
+  .om-phase { margin-bottom: clamp(30px, 3.2vw, 44px); }
   .om-ph:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  .om-phase-note { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.5; color: var(--ink-3); max-width: 62ch; }
 
   .om-cols { --om-gap: clamp(28px, 3.4vw, 60px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--om-gap); margin-top: clamp(32px, 3.4vw, 44px); }
   .om-col { position: relative; min-width: 0; padding-top: clamp(20px, 2.2vw, 28px); border-top: 1px solid var(--rule); }
@@ -136,13 +138,13 @@
   .om-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 16px + 0.6vw, 24px); line-height: 1.16; letter-spacing: -0.01em; color: var(--ink); }
   .om-col--specialists h3 { color: var(--ink-2); }
   .om-group { margin-top: clamp(18px, 2vw, 26px); }
-  .om-group dt { font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 9px; transition: color 200ms var(--ease-out); }
+  .om-group dt { font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 9px; transition: opacity 180ms var(--ease-out); }
   .om-group dd { margin: 0; }
   .om-list { list-style: none; margin: 0; padding: 0; }
-  .om-list li { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.45; color: var(--ink-2); padding: 3px 0; transition: color 200ms var(--ease-out); }
+  .om-list li { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.45; color: var(--ink-2); padding: 3px 0; transition: opacity 180ms var(--ease-out); }
   .om-col--reiwa .om-list li { color: var(--ink); }
   /* Emphasis only — the phase selector never removes or replaces content. */
-  .om-group.is-quiet dt, .om-list li.is-quiet { color: var(--ink-4); }
+  .om-group.is-quiet dt, .om-list li.is-quiet { opacity: 0.5; }
   .om-col--specialists .om-list { columns: 2; column-gap: clamp(16px, 1.8vw, 28px); }
   .om-col--specialists .om-list li { break-inside: avoid; }
   .om-lead { margin: 14px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); }
@@ -153,11 +155,17 @@
   @media (prefers-reduced-motion: reduce) { .om-ph, .om-ph::after, .om-group dt, .om-list li { transition: none; } }
   @media (max-width: 900px) {
     .om-cols { grid-template-columns: 1fr; row-gap: 0; }
-    .om-col { margin-top: 26px; }
+    .om-col { margin-top: 22px; padding-top: 20px; }
     .om-col:first-child { margin-top: 0; }
     .om-col + .om-col::before { left: 0; top: -6px; transform: rotate(135deg); background: var(--paper-warm); }
-    .om-col--specialists .om-list { columns: 1; }
+    /* Nothing is hidden: the model simply sets tighter down the page. */
+    .om-group { margin-top: 16px; }
+    .om-list li { padding: 1.5px 0; }
+    .om-phase { margin-bottom: 24px; }
+    .om-note { margin-top: 24px; padding-top: 16px; }
   }
+  /* Two-up stays comfortable down to 360px; below that it goes single. */
+  @media (max-width: 359px) { .om-col--specialists .om-list { columns: 1; } }
 
   /* --- 4 · Investment principle: the conceptual close ------------------- */
   .ip > .shell { padding-top: clamp(88px, 9vw, 132px); }
@@ -252,7 +260,6 @@
       <button class="om-ph" type="button" role="radio" data-phase="own" aria-checked="false" tabindex="-1">Ownership</button>
       <button class="om-ph" type="button" role="radio" data-phase="exit" aria-checked="false" tabindex="-1">Exit</button>
     </div>
-    <p class="om-phase-note">Selecting a phase changes emphasis only — every role below applies throughout.</p>
 
     <div class="om-cols">
       <div class="om-col om-col--investor">
@@ -310,11 +317,11 @@
         <dl class="om-group" data-group>
           <dt>Monitors</dt>
           <dd><ul class="om-list">
-            <li data-ph="own">Asset performance</li>
+            <li data-ph="own">Performance</li>
             <li data-ph="own">Business-plan delivery</li>
-            <li data-ph="own">Leasing and CapEx</li>
+            <li data-ph="own">Leasing &amp; CapEx</li>
             <li data-ph="own">Financing</li>
-            <li data-ph="own exit">Risks and exceptions</li>
+            <li data-ph="own exit">Risks &amp; exceptions</li>
           </ul></dd>
         </dl>
         <dl class="om-group" data-group>
@@ -322,7 +329,7 @@
           <dd><ul class="om-list">
             <li data-ph="own exit">Courses of action</li>
             <li data-ph="acq own exit">Material decisions</li>
-            <li data-ph="own exit">Hold, refinance or disposal options</li>
+            <li data-ph="own exit">Hold / refinance / disposal</li>
           </ul></dd>
         </dl>
       </div>
