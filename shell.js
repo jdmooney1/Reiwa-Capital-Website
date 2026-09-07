@@ -98,24 +98,18 @@
     host.innerHTML = `
       <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
         <div class="nav-inner">
-          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム">
+          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
           <ul class="nav-links">${links}</ul>
-          <div class="nav-right">
-            <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
-              <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
-              <span class="ls-sep" aria-hidden="true"></span>
-              <button type="button" data-lang="ja" lang="ja" aria-label="日本語">JA</button>
-            </div>
-          </div>
         </div>
       </nav>
     `;
-    host.querySelectorAll('[data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
-    });
-    syncLangButtons();
+    /* The English header ships without a language control for this release:
+       the Japanese site is deferred to its own localisation pass, so a JA
+       destination here would lead to deferred content. swapLanguage and
+       syncLangButtons remain for the Japanese header, which still offers a
+       route back to English. */
   }
 
   /* ---------------------------------------------------------------------
