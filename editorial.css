@@ -407,10 +407,10 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
    bar. Roughly a sixth smaller than desktop, and a touch smaller again on
    the narrowest phones. */
 @media (max-width: 760px) {
-  body:not([data-locale="ja"]) .nav-logo img { height: 25px; }
+  .nav-logo img { height: 25px; }
 }
 @media (max-width: 380px) {
-  body:not([data-locale="ja"]) .nav-logo img { height: 22px; }
+  .nav-logo img { height: 22px; }
 }
 
 /* Touch targets: comfortable without inflating the bar or shrinking type. */
@@ -1142,11 +1142,11 @@ html.nav-drawer-open { overflow: hidden; }
   .nav-drawer { transition: none; }
 }
 
-/* Responsive nav — drawer goes full-width on small screens.
-   Drawer-era geometry: the Japanese site still uses it. The English nav
-   is two-line and sets its own row height in the block above. */
+/* Drawer-era rules, retained only for the CSS the legacy Japanese pages
+   still reference. Neither header renders a drawer any more: both are the
+   same two-line flat bar, which sets its own row height in the block
+   above, in both languages. */
 @media (max-width: 720px) {
-  body[data-locale="ja"] .nav-inner { position: relative; padding: 9px var(--gutter); gap: 14px; }
   .nav-right { gap: 12px; }
   .nav-toggle { margin-left: 2px; }
   .nav-drawer { width: 100vw; border-left: 0; }

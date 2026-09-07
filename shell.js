@@ -3,8 +3,8 @@
    Renders the top nav + footer ONCE from a data model, then leaves the DOM
    alone. Language changes never rebuild these nodes — only text/aria swap
    in place (generic sweep in i18n.js + a couple of manual bits below) — so
-   scroll-derived classes, injected logo variants, drawer state and focus
-   all survive a language toggle untouched.
+   scroll-derived classes, injected logo variants and focus all survive a
+   language toggle untouched.
    ========================================================================= */
 
 (function () {
@@ -17,16 +17,16 @@
     { href: 'company.html',          en: 'Company',          ja: '会社情報',   key: 'company' },
   ];
 
-  /* Dedicated Japanese site (/ja/) — real static pages, own nav composition
-     per the JA SEO brief (adds Insights; About/Contact reworded). Only used
-     when <body data-locale="ja">; the English NAV/FLOW above are untouched. */
+  /* Dedicated Japanese site (/ja/) — the same four destinations as English,
+     in the same order, with the approved Japanese labels. The logo is the
+     Japanese Home link; Contact is a section inside 事業概要
+     (/ja/company.html#contact), not a nav item. Only used when
+     <body data-locale="ja">. */
   const NAV_JA = [
-    { href: '/ja/',                          label: 'ホーム',       key: 'home' },
-    { href: '/ja/about.html',                label: 'Reiwa Capital', key: 'about' },
-    { href: '/ja/approach.html',             label: '投資アプローチ', key: 'approach' },
-    { href: '/ja/investment-focus.html',     label: '投資戦略',     key: 'focus' },
-    { href: '/ja/insights/',                 label: 'Insights',    key: 'insights' },
-    { href: '/ja/contact.html',              label: 'お問い合わせ', key: 'contact' },
+    { href: '/ja/about.html',            label: 'Reiwaについて', key: 'about' },
+    { href: '/ja/approach.html',         label: '投資アプローチ', key: 'approach' },
+    { href: '/ja/investment-focus.html', label: '投資方針',      key: 'focus' },
+    { href: '/ja/company.html',          label: '事業概要',      key: 'company' },
   ];
 
   /* Guided onward journey — one continuous editorial read across the five
@@ -44,13 +44,20 @@
     company:  { to: 'index',            tEn: 'European Real Estate.<br>Structured for Japanese Capital.', lead: 'Return Home', kicker: 'Reiwa Capital', ariaEn: 'Return to Home' }
   };
 
+  /* The same guided read in Japanese, over the same five pages and in the
+     same order, rendered through the same cream band as English:
+     ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
+     事業概要 closes the loop rather than pointing onward. */
   const FLOW_JA = {
-    home:     { href: '/ja/about.html',              t: '会社概要', ariaLabel: '次へ：会社概要' },
-    about:    { href: '/ja/approach.html',            t: 'アプローチ', ariaLabel: '次へ：アプローチ' },
-    approach: { href: '/ja/investment-focus.html',    t: '投資戦略', ariaLabel: '次へ：投資戦略' },
-    focus:    { href: '/ja/insights/',                t: 'Insights', ariaLabel: '次へ：Insights' },
-    insights: { href: '/ja/contact.html',             t: 'お問い合わせ', ariaLabel: '次へ：お問い合わせ' },
-    contact:  { href: '/ja/', t: 'ホーム', label: 'トップへ', ariaLabel: 'トップへ戻る' }
+    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: 'Reiwaが果たす役割と、注力する市場。',        aria: '次へ：Reiwaについて' },
+    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ。', aria: '次へ：投資アプローチ' },
+    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか。',                aria: '次へ：投資方針' },
+    focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先。',            aria: '次へ：事業概要' },
+    company:  { to: '/ja/', t: '欧州の不動産を、<br>日本の投資家のために。', lead: 'トップページへ', kicker: 'Reiwa Capital', aria: 'トップページへ戻る' },
+    /* Legacy Japanese pages, retained pending their own disposition: they
+       keep an onward path rather than ending in a dead stop. */
+    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先。', aria: '次へ：事業概要' },
+    insights: { to: '/ja/',             t: 'ホーム',   lead: 'トップページへ',                aria: 'トップページへ戻る' }
   };
 
   function currentKey() {
@@ -59,11 +66,6 @@
   function lang() {
     return document.documentElement.getAttribute('lang') || 'en';
   }
-
-  /* Language-swap sequencing state — module scope so rapid EN↔JA toggles
-     supersede each other instead of interleaving stale timers. */
-  let langSwapSeq = 0;
-  let langSwapPending = null;
 
   function renderNav() {
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
@@ -101,146 +103,71 @@
           <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
+          <div class="nav-right">
+            <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
+              <button type="button" data-lang="en" aria-label="English">EN</button>
+              <span class="ls-sep" aria-hidden="true"></span>
+              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
+            </div>
+          </div>
           <ul class="nav-links">${links}</ul>
         </div>
       </nav>
-    `;
-    /* The English header ships without a language control for this release:
-       the Japanese site is deferred to its own localisation pass, so a JA
-       destination here would lead to deferred content. swapLanguage and
-       syncLangButtons remain for the Japanese header, which still offers a
-       route back to English. */
-  }
-
-  /* ---------------------------------------------------------------------
-     JAPANESE NAV — the drawer composition /ja/ shipped with, unchanged.
-     The Japanese site is deliberately out of scope for the English
-     redesign phase and gets its own alignment pass afterwards.
-     --------------------------------------------------------------------- */
-  function renderNavJa() {
-    const host = document.querySelector('[data-shell="nav"]');
-    if (!host) return;
-    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
-    const onDark = host.hasAttribute('data-dark');
-    const R = (typeof window !== 'undefined' && window.__resources) || {};
-    const logoSrc = onDark ? (R.logoWhite || 'assets/logos/lockup-white.svg')
-                           : (R.logoBlack || 'assets/logos/lockup-purple.svg');
-    const emblemSrc = (R.symbolPurple || 'assets/logos/symbol-purple.svg');
-    const cur = currentKey();
-    const drawerLinks = locale === 'ja' ? NAV_JA.map((n) => {
-      const active = n.key === cur ? 'aria-current="page"' : '';
-      return `<li><a href="${n.href}" ${active}><span class="dn-label">${n.label}</span></a></li>`;
-    }).join('') : NAV.map((n) => {
-      const active = n.key === cur ? 'aria-current="page"' : '';
-      return `<li><a href="${n.href}" ${active}>
-            <span class="dn-label" data-en="${n.en}" data-ja="${n.ja}">${n.en}</span>
-          </a></li>`;
-    }).join('');
-    const homeHref = locale === 'ja' ? '/ja/' : '/';
-
-    host.innerHTML = `
-      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
-        <div class="nav-inner">
-          <a class="nav-logo" href="${homeHref}" aria-label="Reiwa Capital">
-            <img class="nl-lockup" src="${logoSrc}" alt="">
-          </a>
-          <div class="nav-right">
-            <div class="lang-toggle" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
-              <button data-lang="en" aria-label="English">EN</button>
-              <button data-lang="ja" aria-label="日本語">JA</button>
-            </div>
-            <button class="nav-toggle" type="button" aria-controls="nav-drawer" aria-expanded="false" aria-label="Open menu">
-              <span class="nav-toggle-icon" aria-hidden="true"><span class="bar"></span><span class="bar"></span></span>
-            </button>
-          </div>
-        </div>
-      </nav>
-      <div class="nav-scrim" hidden></div>
-      <aside class="nav-drawer" id="nav-drawer" aria-hidden="true" aria-label="Menu" data-aria-en="Menu" data-aria-ja="メニュー">
-        <div class="drawer-inner">
-          <div class="drawer-head">
-            <img class="drawer-emblem" src="${emblemSrc}" alt="" aria-hidden="true">
-          </div>
-          <nav class="drawer-nav" aria-label="Pages" data-aria-en="Pages" data-aria-ja="ページ">
-            <ul>${drawerLinks}</ul>
-          </nav>
-          <div class="drawer-foot">
-            <a class="df-mail" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a>
-            <div class="df-social">
-              <a class="df-linkedin" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-      </aside>
     `;
     wireNav(host);
     syncLangButtons();
   }
 
-  /* All interaction wiring — runs exactly once, right after the nav is
-     built. Nothing here is ever re-attached, because the nav DOM is never
-     rebuilt again after this call. */
+  /* ---------------------------------------------------------------------
+     JAPANESE NAV — the same composition as English, not a drawer. Same
+     wrapping rules, same language switch, same active-page rule; only the
+     labels and the logo destination differ. The Japanese labels are static
+     text, not data-en/data-ja pairs: /ja/ is a Japanese site, so nothing
+     here depends on a runtime language sweep.
+     --------------------------------------------------------------------- */
+  function renderNavJa() {
+    const host = document.querySelector('[data-shell="nav"]');
+    if (!host) return;
+    const onDark = host.hasAttribute('data-dark');
+    const R = (typeof window !== 'undefined' && window.__resources) || {};
+    const logoSrc = onDark ? (R.logoWhite || '../assets/logos/lockup-white.svg')
+                           : (R.logoBlack || '../assets/logos/lockup-purple.svg');
+    const cur = currentKey();
+
+    const links = NAV_JA.map((n) => {
+      const active = n.key === cur ? ' aria-current="page"' : '';
+      return `<li><a href="${n.href}"${active}><span>${n.label}</span></a></li>`;
+    }).join('');
+
+    host.innerHTML = `
+      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="メイン">
+        <div class="nav-inner">
+          <a class="nav-logo" href="/ja/" aria-label="Reiwa Capital — ホーム" style="min-height:40px">
+            <img class="nl-lockup" src="${logoSrc}" alt="">
+          </a>
+          <div class="nav-right">
+            <div class="lang-switch" role="group" aria-label="言語">
+              <button type="button" data-lang="en" aria-label="English">EN</button>
+              <span class="ls-sep" aria-hidden="true"></span>
+              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
+            </div>
+          </div>
+          <ul class="nav-links">${links}</ul>
+        </div>
+      </nav>
+    `;
+    wireNav(host);
+    syncLangButtons();
+  }
+
+  /* Interaction wiring — runs exactly once, right after the nav is built.
+     Nothing here is ever re-attached, because the nav DOM is never rebuilt
+     again after this call. Both headers are flat bars, so the only wiring
+     the nav needs is the language switch. */
   function wireNav(host) {
     host.querySelectorAll('[data-lang]').forEach(btn => {
       btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
     });
-
-    const bar = host.querySelector('.nav-bar');
-    const toggle = host.querySelector('.nav-toggle');
-    const drawer = host.querySelector('.nav-drawer');
-    const scrim = host.querySelector('.nav-scrim');
-    const root = document.documentElement;
-    let lastFocus = null;
-    let closeTimer = null;
-
-    function trapKey(e) {
-      if (e.key === 'Escape') { closeDrawer(); return; }
-      if (e.key !== 'Tab') return;
-      const f = drawer.querySelectorAll('a[href], button');
-      if (!f.length) return;
-      const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-    function openDrawer() {
-      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
-      lastFocus = document.activeElement;
-      scrim.hidden = false;
-      root.classList.add('nav-drawer-open');
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { root.classList.add('nav-drawer-in'); });
-      });
-      toggle.setAttribute('aria-expanded', 'true');
-      syncMenuToggleLabel();
-      drawer.setAttribute('aria-hidden', 'false');
-      document.addEventListener('keydown', trapKey);
-      document.dispatchEvent(new CustomEvent('reiwa:drawer', { detail: { open: true } }));
-      const f = drawer.querySelector('a[href], button');
-      if (f) setTimeout(function () { f.focus(); }, 80);
-    }
-    function closeDrawer() {
-      root.classList.remove('nav-drawer-in');
-      toggle.setAttribute('aria-expanded', 'false');
-      syncMenuToggleLabel();
-      drawer.setAttribute('aria-hidden', 'true');
-      document.removeEventListener('keydown', trapKey);
-      document.dispatchEvent(new CustomEvent('reiwa:drawer', { detail: { open: false } }));
-      closeTimer = setTimeout(function () {
-        root.classList.remove('nav-drawer-open');
-        scrim.hidden = true;
-      }, 380); /* just past the 320ms slide (--dur-3) */
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
-    }
-    if (toggle && drawer && scrim) {
-      toggle.addEventListener('click', function () {
-        if (toggle.getAttribute('aria-expanded') === 'true') closeDrawer();
-        else openDrawer();
-      });
-      scrim.addEventListener('click', closeDrawer);
-      drawer.querySelectorAll('.drawer-nav a').forEach(function (a) {
-        a.addEventListener('click', closeDrawer);
-      });
-    }
   }
 
   /* ---- Small manual syncs that generic data-en/data-ja sweep can't cover,
@@ -248,76 +175,48 @@
      cheap and re-run on every languagechange. ---- */
   function syncLangButtons() {
     const l = lang();
-    document.querySelectorAll('.lang-toggle [data-lang], .lang-switch [data-lang]').forEach(btn => {
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
       const active = btn.dataset.lang === l;
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-pressed', String(active));
     });
   }
-  function syncMenuToggleLabel() {
-    const toggle = document.querySelector('.nav-toggle');
-    if (!toggle) return;
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    const l = lang();
-    toggle.setAttribute('aria-label', open ? (l === 'ja' ? 'メニューを閉じる' : 'Close menu')
-                                            : (l === 'ja' ? 'メニューを開く' : 'Open menu'));
-  }
 
+  /* EN <-> JA is a navigation, not a text swap: each site is written in
+     its own language in its own files, and every page declares its
+     counterpart on <body> (data-en-url / data-ja-url). A page with no
+     counterpart declared simply has nowhere to send the reader, so the
+     control does nothing rather than half-translating the page in place. */
   function swapLanguage(next) {
-    const cur = langSwapPending || lang();
-    if (next === cur) return;
+    if (next === lang()) return;
     const crossUrl = document.body.dataset[next + 'Url'];
-    if (crossUrl) { window.location.href = crossUrl; return; }
-    const commit = () => {
-      document.documentElement.setAttribute('lang', next);
-      try { localStorage.setItem('reiwa.lang', next); } catch {}
-      window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: next } }));
-    };
-    // Signature crossfade (craft.css owns the opacity rules): text breathes
-    // out, the swap happens while transparent, the new language breathes
-    // in. Height is held so nothing shifts. Reduced motion: instant swap.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { commit(); return; }
-    const root = document.documentElement;
-    const seq = ++langSwapSeq;
-    langSwapPending = next;
-    if (!document.body.style.minHeight) {
-      document.body.style.minHeight = document.body.offsetHeight + 'px';
-    }
-    root.classList.add('lang-x', 'lang-out');
-    // Flat, absolute schedule (not nested) so a throttled tab clamps each
-    // step once instead of compounding: out (0-210) -> swap -> in (310-510)
-    // -> settle (570). Every step is token-checked so a newer toggle
-    // supersedes this one cleanly.
-    setTimeout(() => { if (seq === langSwapSeq) commit(); }, 210);
-    setTimeout(() => { if (seq === langSwapSeq) root.classList.remove('lang-out'); }, 310);
-    setTimeout(() => {
-      if (seq !== langSwapSeq) return;
-      root.classList.remove('lang-x');
-      document.body.style.minHeight = '';
-      langSwapPending = null;
-    }, 570);
+    if (crossUrl) window.location.href = crossUrl;
   }
-  window.addEventListener('languagechange', () => { syncLangButtons(); syncMenuToggleLabel(); });
+  window.addEventListener('languagechange', syncLangButtons);
 
   function renderFooter() {
     const host = document.querySelector('[data-shell="footer"]');
     if (!host) return;
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
     const R = (typeof window !== 'undefined' && window.__resources) || {};
-    const symbol = R.symbolCream || 'assets/logos/symbol-cream.svg';
     const onPrivacy = document.body.dataset.page === 'privacy';
 
     let nextNav = '';
     if (locale === 'ja') {
+      /* Same cream band, same three-part text block, same arrow as English
+         — the closing treatment is part of the approved system, not of the
+         English language. */
       const fj = FLOW_JA[currentKey()];
       nextNav = fj ? `
-      <nav class="nextnav" aria-label="ページナビゲーション">
-        <a class="nn-link" href="${fj.href}" aria-label="${fj.ariaLabel}">
+      <nav class="nextnav nextnav--band" aria-label="ページナビゲーション">
+        <a class="nn-link" href="${fj.to}" aria-label="${fj.aria}">
           <span class="nn-inner">
-            <span class="nn-title-row">
+            <span class="nn-text">
+              <span class="nn-kicker">${fj.kicker || '次へ'}</span>
               <span class="nn-title">${fj.t}</span>
-              <svg class="nn-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg>
+              <span class="nn-lead">${fj.lead}</span>
             </span>
+            <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
           </span>
         </a>
       </nav>` : '';
@@ -338,26 +237,13 @@
       </nav>` : '';
     }
 
-    const homeHref = locale === 'ja' ? '/ja/' : '/';
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
-    /* English: a quiet cream footer — copyright left, LinkedIn and Privacy
-       right. No symbol, no navigation list, no location line. The onward
-       journey lives in the sumire NEXT block above it.
-       Japanese: the footer /ja/ shipped with, untouched this phase. */
-    const footer = locale === 'ja' ? `
-      <footer class="footer">
-        <a class="ff-brand" href="${homeHref}" aria-label="Reiwa Capital">
-          <img class="ff-symbol" src="${symbol}" alt="">
-        </a>
-        <div class="footer-inner">
-          <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
-          <div class="ff-right">
-            <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
-          </div>
-        </div>
-      </footer>` : `
+    /* One quiet cream footer in both languages — copyright left, LinkedIn
+       and Privacy right. No symbol, no navigation list, no location line.
+       The onward journey lives in the sumire NEXT block above it. */
+    const footer = `
       <footer class="footer footer-quiet">
         <div class="footer-inner">
           <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
@@ -443,12 +329,15 @@
   function insertSkipLink() {
     if (!document.getElementById('main')) return;
     if (document.querySelector('.skip-link')) return;
+    const ja = document.body.dataset.locale === 'ja';
     const a = document.createElement('a');
     a.className = 'skip-link';
     a.href = '#main';
     a.setAttribute('data-en', 'Skip to content');
     a.setAttribute('data-ja', '本文へスキップ');
-    a.textContent = 'Skip to content';
+    /* /ja/ pages are Japanese in source and carry no runtime sweep, so the
+       skip link has to be built in the language of the page it lands on. */
+    a.textContent = ja ? '本文へスキップ' : 'Skip to content';
     a.addEventListener('click', function (e) {
       const main = document.getElementById('main');
       if (!main) return;
@@ -461,12 +350,6 @@
 
   // -------------------- Init --------------------
   function boot() {
-    try {
-      if (document.body.dataset.locale !== 'ja') {
-        const savedLang = localStorage.getItem('reiwa.lang');
-        if (savedLang) document.documentElement.setAttribute('lang', savedLang);
-      }
-    } catch {}
     insertSkipLink();
     document.querySelectorAll('noscript').forEach(function (n) { n.remove(); });
     renderNav();
