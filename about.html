@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=19">
 <link rel="preload" href="assets/fonts/DMSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=76">
+<link rel="stylesheet" href="editorial.css?v=77">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=23">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -111,32 +111,16 @@
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
 
-  /* The map is a static, self-hosted SVG built from open geographic data.
-     Two framings of the same map: a wider one beside the copy on desktop, a
-     taller one when the panel stacks. Each SVG's viewBox is padded to its
-     frame's aspect, so the HTML labels — positioned as a percentage of the
-     frame — stay on register with the geography. */
-  .am-map { position: relative; aspect-ratio: 0.95; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
-  .am-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .am-img--tall { display: none; }
-
-  .ab-lab { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.24; text-align: center; white-space: nowrap; pointer-events: none;
-    /* A soft cream halo is standard cartographic practice — without it a name
-       crossing a boundary or a park edge becomes unreadable. */
-    text-shadow: 0 0 3px var(--paper-warm), 0 0 3px var(--paper-warm), 0 0 6px var(--paper-warm); }
-  .ab-lab--pri { color: var(--ink); font-weight: 500; letter-spacing: 0.004em; }
-  .ab-lab--sel { color: var(--ink-2); font-weight: 400; }
-  .ab-lab--context { color: var(--ink-3); font-weight: 400; font-size: 11px; }
-  /* Waterway names are map furniture, not focus areas. */
-  .ab-lab--water { color: #5E7C92; font-weight: 500; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
-
-  .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
-  .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
-  .am-legend li { display: flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-2); }
-  .am-legend .sw { width: 13px; height: 13px; flex: none; }
-  .sw-prim  { background: var(--reiwa-node, #5E3D78); opacity: 0.82; border: 1px solid var(--ink); }
-  .sw-broad { background: var(--reiwa-lavender, #ECE6F2); border: 1px solid var(--accent-sumire-light, #B79AD6); }
-  .sw-ctx   { background: var(--warm-300, #E5E1D5); border: 1px solid rgba(39,20,48,0.30); }
+  /* The Focus Markets map is awaiting a professionally rendered asset. This
+     is a deliberate placeholder, not a map: it holds the slot and its
+     proportions so the final image drops straight in. */
+  .am-map { position: relative; aspect-ratio: 3 / 2; background: var(--paper-soft); border: 1px solid var(--rule); overflow: hidden; }
+  .am-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .am-map--placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    background: repeating-linear-gradient(135deg, var(--paper-soft) 0 14px, rgba(39,20,48,0.022) 14px 28px); }
+  .amp-mark { font-family: 'DM Sans', sans-serif; font-size: clamp(19px, 16px + 0.6vw, 24px); font-weight: 400; letter-spacing: -0.008em; color: var(--ink-3); }
+  .amp-note { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); opacity: 0.75; }
+  @media (max-width: 640px) { .am-map { aspect-ratio: 4 / 5; } }
 
   .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
   .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
@@ -146,27 +130,13 @@
   .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 8px; }
   .am-facts dd { margin: 0; }
   .am-subs { color: var(--ink); }
-  @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .am-panel, .am-tab, .am-tab::after { animation: none; transition: none; } }
   @media (max-width: 1024px) {
     .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
-    .am-map { aspect-ratio: 0.80; }
-    .am-img--wide { display: none; }
-    .am-img--tall { display: block; }
-    .ab-lab { left: var(--xt); top: var(--yt); }
   }
   @media (max-width: 760px) {
     .am-tabs { margin-top: 28px; }
     .am-grid { margin-top: 24px; gap: 24px; }
-    /* Every named submarket stays; only the park labels step back. */
-    .ab-lab { font-size: 11px; }
-    .ab-lab--context { display: none; }
-  }
-  @media (max-width: 380px) {
-    /* Smallest phones: the same nine micro-markets, set a step smaller so
-       adjacent names still clear each other. */
-    .ab-lab { font-size: 9.5px; line-height: 1.2; }
-    .am-legend { gap: 8px 18px; }
-    .am-legend li { font-size: 12.5px; }
   }
 
   /* --- 4 · Who we work with ------------------------------------------- */
@@ -254,27 +224,19 @@
     <div class="am-panel is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
       <div class="am-grid">
         <div class="am-mapwrap">
-          <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg" alt="Map of central London. The River Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus micro-markets are Mayfair, St James’s, Marylebone, South Kensington and Chelsea; selective focus covers Soho and Fitzrovia, the City Core, Farringdon and Clerkenwell, and Shoreditch and the City Fringe." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:36.43%;--y:46.12%;--xt:36.43%;--yt:46.73%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--pri" style="--x:41.85%;--y:53.52%;--xt:41.85%;--yt:52.97%" aria-hidden="true">St James’s</span>
-          <span class="ab-lab ab-lab--pri" style="--x:30.39%;--y:35.52%;--xt:28.42%;--yt:35.17%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--pri" style="--x:12.69%;--y:63.22%;--xt:12.69%;--yt:61.14%" aria-hidden="true">South Kensington</span>
-          <span class="ab-lab ab-lab--pri" style="--x:21.34%;--y:72.71%;--xt:21.34%;--yt:69.13%" aria-hidden="true">Chelsea</span>
-          <span class="ab-lab ab-lab--sel" style="--x:43.78%;--y:39.29%;--xt:46.64%;--yt:39.22%" aria-hidden="true">Soho /<br>Fitzrovia</span>
-          <span class="ab-lab ab-lab--sel" style="--x:80.52%;--y:42.19%;--xt:80.52%;--yt:43.43%" aria-hidden="true">City Core</span>
-          <span class="ab-lab ab-lab--sel" style="--x:67.56%;--y:30.83%;--xt:66.02%;--yt:36.32%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
-          <span class="ab-lab ab-lab--sel" style="--x:86.28%;--y:28.23%;--xt:87.82%;--yt:29.73%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
-          <span class="ab-lab ab-lab--context" style="--x:17.37%;--y:49.6%;--xt:17.37%;--yt:49.67%" aria-hidden="true">Hyde Park</span>
-          <span class="ab-lab ab-lab--context" style="--x:26.51%;--y:23.76%;--xt:26.51%;--yt:27.9%" aria-hidden="true">Regent’s Park</span>
+          <!-- FINAL ASSET SLOT — London focus map.
+               Drop in a professionally rendered basemap with the Reiwa focus
+               overlay, then replace this placeholder with:
+                 <picture>
+                   <source media="(max-width: 640px)" srcset="assets/maps/london-focus-map-mobile.webp">
+                   <img class="am-img" src="assets/maps/london-focus-map.webp"
+                        width="2000" height="1333" alt="…" loading="lazy" decoding="async">
+                 </picture>
+               and restore the legend and the indicative-boundaries note. -->
+          <div class="am-map am-map--placeholder" role="img" aria-label="London focus map to follow. It will show Thames, Hyde Park, Regent’s Park, the West End and City street pattern, with the nine focus submarkets marked.">
+            <span class="amp-mark" aria-hidden="true">London</span>
+            <span class="amp-note" aria-hidden="true">Focus map to follow</span>
           </div>
-          <ul class="am-legend">
-            <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
-            <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
-          </ul>
-          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -292,25 +254,19 @@
     <div class="am-panel" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
       <div class="am-grid">
         <div class="am-mapwrap">
-          <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:53.42%;--y:33.43%;--xt:54.05%;--yt:33.43%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.59%;--y:20.61%;--xt:42.37%;--yt:20.61%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--pri" style="--x:44.73%;--y:57.1%;--xt:43.72%;--yt:57.1%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--sel" style="--x:61.07%;--y:29.24%;--xt:63.13%;--yt:29.24%" aria-hidden="true">Historic Centre</span>
-          <span class="ab-lab ab-lab--sel" style="--x:41.53%;--y:89.63%;--xt:39.93%;--yt:89.63%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--context" style="--x:27.4%;--y:52.75%;--xt:23.15%;--yt:52.75%" aria-hidden="true">Vondelpark</span>
-          <span class="ab-lab ab-lab--context" style="--x:90.7%;--y:50.61%;--xt:98.31%;--yt:50.61%" aria-hidden="true">Oosterpark</span>
-          <span class="ab-lab ab-lab--water" style="--x:77.89%;--y:5.0%;--xt:83.1%;--yt:5.0%" aria-hidden="true">IJ</span>
-          <span class="ab-lab ab-lab--water" style="--x:68.86%;--y:47.54%;--xt:72.38%;--yt:47.54%" aria-hidden="true">Amstel</span>
+          <!-- FINAL ASSET SLOT — Amsterdam focus map.
+               Drop in a professionally rendered basemap with the Reiwa focus
+               overlay, then replace this placeholder with:
+                 <picture>
+                   <source media="(max-width: 640px)" srcset="assets/maps/amsterdam-focus-map-mobile.webp">
+                   <img class="am-img" src="assets/maps/amsterdam-focus-map.webp"
+                        width="2000" height="1333" alt="…" loading="lazy" decoding="async">
+                 </picture>
+               and restore the legend and the indicative-boundaries note. -->
+          <div class="am-map am-map--placeholder" role="img" aria-label="Amsterdam focus map to follow. It will show The IJ, the canal ring, the Amstel, Jordaan, Vondelpark, Oud-Zuid and Zuidas, with the five focus submarkets marked.">
+            <span class="amp-mark" aria-hidden="true">Amsterdam</span>
+            <span class="amp-note" aria-hidden="true">Focus map to follow</span>
           </div>
-          <ul class="am-legend">
-            <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
-            <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
-          </ul>
-          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
