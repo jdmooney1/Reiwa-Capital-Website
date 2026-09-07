@@ -88,7 +88,7 @@
   /* Outputs — one quiet row, aligned to the stages above. */
   .lc-outs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 40px); margin-top: 14px; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule); }
   .lc-outs > div { min-width: 0; }
-  .lc-outs dt { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+  .lc-outs dt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
   .lc-outs dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 13px + 0.2vw, 15px); line-height: 1.35; color: var(--ink); }
   .lc-outs-label { display: block; margin-top: clamp(30px, 3.2vw, 44px); }
 
@@ -110,9 +110,7 @@
     .lc-stage h3 { margin-top: 6px; font-size: clamp(22px, 6.4vw, 26px); }
     .lc-role { margin-top: 8px; }
     /* Outputs fold to a compact two-column list rather than five blocks. */
-    .lc-outs { grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr); column-gap: 16px; row-gap: 9px; margin-top: 20px; padding-top: 18px; }
-    .lc-outs > div { display: contents; }
-    .lc-outs dt { margin: 0; align-self: baseline; }
+    .lc-outs { grid-template-columns: 1fr; row-gap: 8px; margin-top: 16px; padding-top: 18px; }
     .lc-outs-label { margin-top: 30px; }
   }
 
@@ -229,7 +227,7 @@
       <div><dt>Assess</dt><dd>Investment Memorandum</dd></div>
       <div><dt>Structure</dt><dd>Structure &amp; Execution Plan</dd></div>
       <div><dt>Acquire</dt><dd>Acquisition Decision Pack</dd></div>
-      <div><dt>Oversee</dt><dd>Ownership Reporting</dd></div>
+      <div><dt>Oversee</dt><dd>Ownership Oversight &amp; Reporting</dd></div>
     </dl>
 
     <p class="lc-gate"><b>Investor approval:</b> <span>Acquisition</span> <span class="sep" aria-hidden="true">·</span> <span>Disposal</span> <span class="sep" aria-hidden="true">·</span> <span>Refinancing</span> <span class="sep" aria-hidden="true">·</span> <span>Material CapEx</span> <span class="sep" aria-hidden="true">·</span> <span>Material leasing</span> <span class="sep" aria-hidden="true">·</span> <span>Business-plan changes</span></p>
