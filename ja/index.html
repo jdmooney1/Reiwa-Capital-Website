@@ -90,6 +90,20 @@
   .hi-col + .hi-col { border-left: 1px solid var(--rule); padding-left: clamp(24px, 3vw, 44px); }
   .hi-col h3 { margin: 16px 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(22px, 18px + 0.75vw, 26px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .hi-col p { margin: 14px 0 0; max-width: 20em; }
+  /* --- Micro-diagrams: the three functions --------------------------------
+     Not icons. Each is drawn from the four atoms already used on Approach
+     and Investment Focus — hairline, small square, decision square,
+     arrowhead, ring — so Home carries the same graphic language as the
+     pages it introduces. Same 72x48 footprint on all three, so the titles
+     below them stay on one baseline. Supplementary: the title and the
+     sentence beneath carry the meaning, so they are hidden from AT. */
+  .hi-dia { display: block; width: 72px; height: 48px; margin: 14px 0 0; overflow: visible; }
+  .hi-dia .d-line,
+  .hi-dia .d-ring,
+  .hi-dia .d-arrow { fill: none; stroke: var(--ink-3); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .hi-dia .d-arrow { stroke-linecap: round; stroke-linejoin: round; }
+  .hi-dia .d-pt   { fill: var(--ink); }
+  .hi-dia .d-node { fill: var(--reiwa-node, #5E3D78); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
     .hi-cols { grid-template-columns: 1fr; margin-top: 40px; }
@@ -97,6 +111,7 @@
     .hi-col + .hi-col { border-left: 0; padding-left: 0; }
     .hi-col:last-child { border-bottom: 0; }
     .hi-col .h-num { padding-top: 7px; align-self: start; }
+    .hi-dia { grid-column: 2; margin: 1px 0 12px; }
     .hi-col h3 { grid-column: 2; margin: 0; font-size: 23px; }
     .hi-col p { grid-column: 2; margin-top: 8px; max-width: none; }
   }
@@ -259,16 +274,50 @@
     <div class="hi-cols">
       <div class="hi-col">
         <span class="h-num" aria-hidden="true">01</span>
+        <svg class="hi-dia" viewBox="0 0 72 48" width="72" height="48" aria-hidden="true" focusable="false">
+          <path class="d-line" d="M4 10H24L30 17"/>
+          <path class="d-line" d="M4 17.5H30"/>
+          <path class="d-line" d="M4 30.5H30"/>
+          <path class="d-line" d="M4 38H24L30 31"/>
+          <path class="d-line" d="M30 17V31"/>
+          <path class="d-line" d="M30 24H38"/>
+          <circle class="d-ring" cx="52" cy="24" r="13"/>
+          <rect class="d-node" x="47.5" y="19.5" width="9" height="9"/>
+        </svg>
         <h3>投資分析</h3>
         <p class="h-body">物件、収益、事業計画、下方リスクを投資家の判断基準に照らして検証。</p>
       </div>
       <div class="hi-col">
         <span class="h-num" aria-hidden="true">02</span>
+        <svg class="hi-dia" viewBox="0 0 72 48" width="72" height="48" aria-hidden="true" focusable="false">
+          <rect class="d-pt" x="4" y="22" width="4" height="4"/>
+          <path class="d-line" d="M8 24H19"/>
+          <path class="d-arrow" d="M19 20.5L22.5 24L19 27.5"/>
+          <rect class="d-node" x="26" y="19.5" width="9" height="9"/>
+          <path class="d-line" d="M35 24H44"/>
+          <path class="d-arrow" d="M44 20.5L47.5 24L44 27.5"/>
+          <path class="d-line" d="M47.5 24H55"/>
+          <path class="d-line" d="M55 9V39"/>
+          <path class="d-line" d="M55 9H62"/>
+          <path class="d-line" d="M55 24H62"/>
+          <path class="d-line" d="M55 39H62"/>
+          <rect class="d-pt" x="62" y="7" width="4" height="4"/>
+          <rect class="d-pt" x="62" y="22" width="4" height="4"/>
+          <rect class="d-pt" x="62" y="37" width="4" height="4"/>
+        </svg>
         <h3>調整</h3>
         <p class="h-body">デューデリジェンス、資金調達、取得、現地専門家との連携を一つの窓口で調整。</p>
       </div>
       <div class="hi-col">
         <span class="h-num" aria-hidden="true">03</span>
+        <svg class="hi-dia" viewBox="0 0 72 48" width="72" height="48" aria-hidden="true" focusable="false">
+          <path class="d-line" d="M4 24H62"/>
+          <rect class="d-node" x="5" y="21" width="6" height="6"/>
+          <rect class="d-node" x="21" y="22" width="4" height="4"/>
+          <rect class="d-node" x="36" y="22" width="4" height="4"/>
+          <rect class="d-node" x="48" y="19.5" width="9" height="9"/>
+          <path class="d-arrow" d="M62 20.5L65.5 24L62 27.5"/>
+        </svg>
         <h3>モニタリング</h3>
         <p class="h-body">取得後の事業計画、収益、重要な判断事項を継続的に確認し、投資家向けに報告。</p>
       </div>
