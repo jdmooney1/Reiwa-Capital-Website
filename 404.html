@@ -16,8 +16,12 @@
 <link rel="stylesheet" href="/editorial.css?v=79">
 <link rel="stylesheet" href="/brand.css?v=7">
 <link rel="stylesheet" href="/craft.css?v=24">
-<script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
-(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}var s=rd(),l;if(u){l=u;wr(u);}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}document.documentElement.setAttribute('lang',l);window.__reiwaLang=l;if(l!=='en')document.documentElement.classList.add('i18n-cloak');if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.addEventListener('load',function(){document.documentElement.classList.remove('i18n-cloak');});})();</script>
+<script>/* Language routing — resolve before paint. A Japanese visitor is sent to
+   the Japanese 404 rather than having this page swapped in place: the host
+   serves this one file for every missing path, and an in-place swap left
+   Japanese labels on links pointing at English pages. Precedence: a /ja/
+   path that 404'd › ?lang param › stored choice › browser language. */
+(function(){var K='reiwa.lang';function rd(){try{return localStorage.getItem(K);}catch(e){return null;}}function wr(v){try{localStorage.setItem(K,v);}catch(e){}}var u=null;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ja'||q==='en')u=q;}catch(e){}if(u)wr(u);var underJa=false;try{underJa=/^\/ja(\/|$)/.test(location.pathname);}catch(e){}var s=rd(),l;if(underJa){l='ja';}else if(u){l=u;}else if(s==='ja'||s==='en'){l=s;}else{l=((navigator.language||navigator.userLanguage||'').toLowerCase().slice(0,2)==='ja')?'ja':'en';}if(l==='ja'&&location.pathname!=='/ja/404.html'){location.replace('/ja/404.html');return;}document.documentElement.setAttribute('lang','en');window.__reiwaLang='en';if(u){try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}})();</script>
 <style>
   .nf-body { padding: 0 0 var(--section); }
   .nf-lede { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: var(--type-body-l-lh); letter-spacing: var(--type-body-l-ls); color: var(--ink-2); max-width: var(--measure-lead); margin: 0 0 28px; }
@@ -25,7 +29,7 @@
   @media (max-width: 760px) { .nf-body { padding-bottom: 128px; } }
 </style>
 </head>
-<body data-page="error" data-ja-url="/ja/">
+<body data-page="error" data-ja-url="/ja/404.html">
 
 <noscript><div class="noscript-bar"><strong><a href="/" aria-label="Reiwa Capital — Home">Reiwa Capital</a></strong><nav aria-label="Primary"><a href="/about.html">About</a><a href="/approach.html">Approach</a><a href="/investment-focus.html">Investment Focus</a><a href="/company.html">Company</a><a href="/privacy.html">Privacy</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a></span></div></noscript>
 <div data-shell="nav"></div>
