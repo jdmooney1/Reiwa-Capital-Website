@@ -212,25 +212,24 @@
   }
 
   /* --- 6 · 投資規律: five principles on one ruled strip ------------------ */
-  .dis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); border-top: 1px solid var(--rule-strong); }
-  .dis > div { min-width: 0; padding: clamp(20px, 2.2vw, 28px) clamp(14px, 1.6vw, 24px) 0 0; }
-  .dis > div + div { border-left: 1px solid var(--rule); padding-left: clamp(14px, 1.6vw, 24px); }
-  .dis span { display: block; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-bottom: 12px; }
-  .dis p { margin: 0; max-width: none; font-family: var(--jp); font-size: clamp(14px, 12.8px + 0.38vw, 16.5px); line-height: 1.55; letter-spacing: 0.004em; color: var(--ink); }
-  @media (max-width: 900px) {
-    .dis { grid-template-columns: 1fr; margin-top: 24px; }
-    .dis > div, .dis > div + div { border-left: 0; padding: 16px 0; border-bottom: 1px solid var(--rule); }
-    .dis > div:last-child { border-bottom: 0; }
-    .dis span { display: inline; margin: 0 10px 0 0; }
-    .dis p { display: inline; }
-  }
-
-  /* Refinement: between 901–1024px five Japanese columns run to 3–5 glyphs a
-     line; three columns keep each field whole. Desktop and phone unchanged. */
+  /* Five rules, each standing on its own: a sumire square and numeral,
+     one short local hairline under it, then the rule itself. Nothing joins
+     one to the next — these are principles, not stages. */
+  .dis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 36px); margin-top: clamp(20px, 2.2vw, 30px); }
+  .dis > div { min-width: 0; }
+  .dis span { position: relative; display: flex; align-items: center; gap: 8px; padding-bottom: 12px; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .dis span::before { content: ""; display: inline-block; width: 5px; height: 5px; background: var(--reiwa-node, #5E3D78); flex: none; }
+  .dis span::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 1px; background: var(--rule-strong); }
+  .dis p { margin: 0; max-width: none; font-family: var(--jp); font-size: clamp(14.5px, 13.2px + 0.4vw, 17px); line-height: 1.55; letter-spacing: 0.004em; font-weight: 500; color: var(--ink); }
+  .dis-sec { padding-bottom: clamp(40px, 3.4vw, 52px); }
+  /* Tablet: three and two. */
   @media (min-width: 901px) and (max-width: 1024px) {
-    .dis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .dis > div:nth-child(4) { border-left: 0; padding-left: 0; }
-    .dis > div:nth-child(n+4) { border-top: 1px solid var(--rule); }
+    .dis { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: clamp(24px, 2.6vw, 32px); }
+  }
+  /* Stacked: the identifier and its rule carry the structure; no separators. */
+  @media (max-width: 900px) {
+    .dis { grid-template-columns: 1fr; column-gap: 0; row-gap: 22px; margin-top: 22px; }
+    .dis span { padding-bottom: 10px; margin-bottom: 11px; }
   }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
