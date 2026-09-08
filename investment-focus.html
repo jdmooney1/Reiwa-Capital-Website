@@ -70,16 +70,16 @@
      Five tests set close around one investment case. Geometry in SVG,
      names in HTML, so the type never scales with the viewBox. Below 900px
      the five become a plain stacked list. */
-  .lens { position: relative; width: 100%; max-width: 840px; margin: clamp(18px, 2vw, 30px) auto 0; aspect-ratio: 1000 / 620; }
+  .lens { position: relative; width: 100%; max-width: 1000px; margin: clamp(10px, 1.2vw, 18px) auto 0; aspect-ratio: 1000 / 532; }
   .lens svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .lens .ring { fill: none; stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .lens .spoke { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .lens .ring { fill: none; stroke: var(--ink-4); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .lens .spoke { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .lens .node { fill: var(--reiwa-node, #5E3D78); }
   /* The core sits on the cream ground and knocks out the spokes behind it,
      so the eyebrow never reads as crossing a line. */
-  .lens-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 20ch; padding: 12px 10px; background: var(--paper-warm); }
+  .lens-core { position: absolute; left: 50%; top: var(--cy, 50%); transform: translate(-50%, -50%); text-align: center; width: 20ch; padding: 10px 10px; background: var(--paper-warm); }
   .lens-core span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
-  .lens-core strong { display: block; margin-top: 11px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.72vw, 26px); line-height: 1.1; letter-spacing: -0.016em; color: var(--ink); }
+  .lens-core strong { display: block; margin-top: 9px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(22px, 15px + 0.85vw, 27px); line-height: 1.1; letter-spacing: -0.016em; color: var(--ink); }
   .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 20ch); }
   .lens-item--r, .lens-item--l { --w: 18ch; }
   .lens-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 13px + 0.6vw, 22px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
@@ -96,7 +96,10 @@
   .lens-list h3 { position: relative; margin: 0; padding-left: 22px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 5.2vw, 23px); line-height: 1.12; letter-spacing: -0.012em; color: var(--ink); }
   .lens-list h3::before { content: ""; position: absolute; left: 0; top: 0.44em; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
   .lens-list p { margin: 7px 0 0 22px; max-width: none; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
-  @media (max-width: 900px) { .lens { display: none; } .lens-list { display: block; } }
+  .lens-list-core { display: none; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rule-strong); }
+  .lens-list-core span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  .lens-list-core strong { display: block; margin-top: 9px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(22px, 5.6vw, 26px); line-height: 1.1; letter-spacing: -0.016em; color: var(--ink); }
+  @media (max-width: 900px) { .lens { display: none; } .lens-list, .lens-list-core { display: block; } }
 
   /* --- 3 · Mandate at a glance: five fields on hairlines ---------------- */
   .mg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); border-top: 1px solid var(--rule-strong); }
@@ -232,25 +235,25 @@
     </div>
 
     <div class="lens" role="img" aria-label="Five underwriting tests — location, income, asset quality, execution and exit — assessed together as one investment case.">
-      <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <circle class="ring" cx="500" cy="310" r="175"/>
-        <line class="spoke" x1="500" y1="238" x2="500" y2="135"/>
-        <line class="spoke" x1="568.5" y1="287.8" x2="666.4" y2="255.9"/>
-        <line class="spoke" x1="542.3" y1="368.2" x2="602.9" y2="451.6"/>
-        <line class="spoke" x1="457.7" y1="368.2" x2="397.1" y2="451.6"/>
-        <line class="spoke" x1="431.5" y1="287.8" x2="333.6" y2="255.9"/>
-        <rect class="node" x="495.5" y="130.5" width="9" height="9"/>
-        <rect class="node" x="661.9" y="251.4" width="9" height="9"/>
-        <rect class="node" x="598.4" y="447.1" width="9" height="9"/>
-        <rect class="node" x="392.6" y="447.1" width="9" height="9"/>
-        <rect class="node" x="329.1" y="251.4" width="9" height="9"/>
+      <svg viewBox="0 0 1000 532" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="500" cy="284" r="190"/>
+        <line class="spoke" x1="500" y1="284" x2="500.0" y2="94.0"/>
+        <line class="spoke" x1="500" y1="284" x2="680.7" y2="225.3"/>
+        <line class="spoke" x1="500" y1="284" x2="611.7" y2="437.7"/>
+        <line class="spoke" x1="500" y1="284" x2="388.3" y2="437.7"/>
+        <line class="spoke" x1="500" y1="284" x2="319.3" y2="225.3"/>
+        <rect class="node" x="494.5" y="88.5" width="11" height="11"/>
+        <rect class="node" x="675.2" y="219.8" width="11" height="11"/>
+        <rect class="node" x="606.2" y="432.2" width="11" height="11"/>
+        <rect class="node" x="382.8" y="432.2" width="11" height="11"/>
+        <rect class="node" x="313.8" y="219.8" width="11" height="11"/>
       </svg>
-      <div class="lens-core" aria-hidden="true"><span>Assessed together</span><strong>One Investment Case</strong></div>
-      <div class="lens-item lens-item--t"  style="--x:50%;--y:18.23%"><h3>Location</h3><p>Established submarkets with durable occupier demand.</p></div>
-      <div class="lens-item lens-item--r"  style="--x:68.64%;--y:39.98%"><h3>Income</h3><p>Tested against realistic leasing assumptions.</p></div>
-      <div class="lens-item lens-item--br" style="--x:61.49%;--y:75.74%"><h3>Asset quality</h3><p>Buildings that stay competitive for future owners.</p></div>
-      <div class="lens-item lens-item--bl" style="--x:38.51%;--y:75.74%"><h3>Execution</h3><p>A plan that can be delivered, not only modelled.</p></div>
-      <div class="lens-item lens-item--l"  style="--x:31.36%;--y:39.98%"><h3>Exit</h3><p>Identifiable buyers and demand at sale.</p></div>
+      <div class="lens-core" aria-hidden="true" style="--cy:53.38%"><span>Assessed together</span><strong>One Investment Case</strong></div>
+      <div class="lens-item lens-item--t"  style="--x:50.00%;--y:14.76%"><h3>Location</h3><p>Established submarkets with durable occupier demand.</p></div>
+      <div class="lens-item lens-item--r"  style="--x:69.62%;--y:42.35%"><h3>Income</h3><p>Tested against realistic leasing assumptions.</p></div>
+      <div class="lens-item lens-item--br" style="--x:60.62%;--y:85.19%"><h3>Asset quality</h3><p>Buildings that stay competitive for future owners.</p></div>
+      <div class="lens-item lens-item--bl" style="--x:39.38%;--y:85.19%"><h3>Execution</h3><p>A plan that can be delivered, not only modelled.</p></div>
+      <div class="lens-item lens-item--l"  style="--x:30.38%;--y:42.35%"><h3>Exit</h3><p>Identifiable buyers and demand at sale.</p></div>
     </div>
 
     <div class="lens-list">
@@ -260,6 +263,7 @@
       <div><h3>Execution</h3><p>A plan that can be delivered, not only modelled.</p></div>
       <div><h3>Exit</h3><p>Identifiable buyers and demand at sale.</p></div>
     </div>
+    <div class="lens-list-core"><span>Assessed together</span><strong>One Investment Case</strong></div>
   </div>
 </section>
 

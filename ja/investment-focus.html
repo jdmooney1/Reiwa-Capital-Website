@@ -88,14 +88,14 @@
   @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
 
   /* --- 2 · Investment Lens --------------------------------------------- */
-  .lens { position: relative; width: 100%; max-width: 840px; margin: clamp(18px, 2vw, 30px) auto 0; aspect-ratio: 1000 / 620; }
+  .lens { position: relative; width: 100%; max-width: 1000px; margin: clamp(10px, 1.2vw, 18px) auto 0; aspect-ratio: 1000 / 532; }
   .lens svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .lens .ring { fill: none; stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .lens .spoke { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .lens .ring { fill: none; stroke: var(--ink-4); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .lens .spoke { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
   .lens .node { fill: var(--reiwa-node, #5E3D78); }
-  .lens-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 12em; padding: 12px 10px; background: var(--paper-warm); }
+  .lens-core { position: absolute; left: 50%; top: var(--cy, 50%); transform: translate(-50%, -50%); text-align: center; width: 14em; padding: 10px 10px; background: var(--paper-warm); }
   .lens-core span { display: block; font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--ink-3); }
-  .lens-core strong { display: block; margin-top: 11px; font-family: var(--jp); font-weight: 400; font-size: clamp(20px, 14px + 0.76vw, 28px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .lens-core strong { display: block; margin-top: 9px; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 15px + 0.9vw, 29px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   /* Measured widths, not ch: the side labels have ~264px of clear frame and
      the corner labels ~324px at the 840px maximum. */
   .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 16em); }
@@ -114,7 +114,10 @@
   .lens-list h3 { position: relative; margin: 0; padding-left: 22px; font-family: var(--jp); font-weight: 400; font-size: clamp(18px, 4.8vw, 22px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .lens-list h3::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
   .lens-list p { margin: 7px 0 0 22px; max-width: none; font-family: var(--jp); font-size: 15px; line-height: 1.8; color: var(--ink-2); }
-  @media (max-width: 900px) { .lens { display: none; } .lens-list { display: block; } }
+  .lens-list-core { display: none; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rule-strong); }
+  .lens-list-core span { display: block; font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-3); }
+  .lens-list-core strong { display: block; margin-top: 9px; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 5.6vw, 27px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  @media (max-width: 900px) { .lens { display: none; } .lens-list, .lens-list-core { display: block; } }
 
   /* --- 3 · 投資方針の概要: five fields on hairlines ---------------------- */
   .mg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); border-top: 1px solid var(--rule-strong); }
@@ -247,25 +250,25 @@
     </div>
 
     <div class="lens" role="img" aria-label="五つの視点 — 立地、収益、物件の競争力、実行可能性、出口 — を総合的に検証し、一つの投資判断とします。">
-      <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <circle class="ring" cx="500" cy="310" r="175"/>
-        <line class="spoke" x1="500" y1="238" x2="500" y2="135"/>
-        <line class="spoke" x1="568.5" y1="287.8" x2="666.4" y2="255.9"/>
-        <line class="spoke" x1="542.3" y1="368.2" x2="602.9" y2="451.6"/>
-        <line class="spoke" x1="457.7" y1="368.2" x2="397.1" y2="451.6"/>
-        <line class="spoke" x1="431.5" y1="287.8" x2="333.6" y2="255.9"/>
-        <rect class="node" x="495.5" y="130.5" width="9" height="9"/>
-        <rect class="node" x="661.9" y="251.4" width="9" height="9"/>
-        <rect class="node" x="598.4" y="447.1" width="9" height="9"/>
-        <rect class="node" x="392.6" y="447.1" width="9" height="9"/>
-        <rect class="node" x="329.1" y="251.4" width="9" height="9"/>
+      <svg viewBox="0 0 1000 532" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="500" cy="284" r="190"/>
+        <line class="spoke" x1="500" y1="284" x2="500.0" y2="94.0"/>
+        <line class="spoke" x1="500" y1="284" x2="680.7" y2="225.3"/>
+        <line class="spoke" x1="500" y1="284" x2="611.7" y2="437.7"/>
+        <line class="spoke" x1="500" y1="284" x2="388.3" y2="437.7"/>
+        <line class="spoke" x1="500" y1="284" x2="319.3" y2="225.3"/>
+        <rect class="node" x="494.5" y="88.5" width="11" height="11"/>
+        <rect class="node" x="675.2" y="219.8" width="11" height="11"/>
+        <rect class="node" x="606.2" y="432.2" width="11" height="11"/>
+        <rect class="node" x="382.8" y="432.2" width="11" height="11"/>
+        <rect class="node" x="313.8" y="219.8" width="11" height="11"/>
       </svg>
-      <div class="lens-core" aria-hidden="true"><span>総合的に検証</span><strong>一つの投資判断</strong></div>
-      <div class="lens-item lens-item--t"  style="--x:50%;--y:18.23%"><h3>立地</h3><p>継続的なテナント需要が見込める、確立したエリア。</p></div>
-      <div class="lens-item lens-item--r"  style="--x:68.64%;--y:39.98%"><h3>収益</h3><p>現実的なリーシング前提に基づき検証。</p></div>
-      <div class="lens-item lens-item--br" style="--x:61.49%;--y:75.74%"><h3>物件の競争力</h3><p>将来の保有者にとっても競争力を維持できる建物。</p></div>
-      <div class="lens-item lens-item--bl" style="--x:38.51%;--y:75.74%"><h3>実行可能性</h3><p>モデル上だけでなく、実際に遂行可能な事業計画。</p></div>
-      <div class="lens-item lens-item--l"  style="--x:31.36%;--y:39.98%"><h3>出口</h3><p>売却時に想定できる買い手と投資需要。</p></div>
+      <div class="lens-core" aria-hidden="true" style="--cy:53.38%"><span>総合的に検証</span><strong>一つの投資判断</strong></div>
+      <div class="lens-item lens-item--t"  style="--x:50.00%;--y:15.13%"><h3>立地</h3><p>継続的なテナント需要が見込める、確立したエリア。</p></div>
+      <div class="lens-item lens-item--r"  style="--x:69.42%;--y:42.35%"><h3>収益</h3><p>現実的なリーシング前提に基づき検証。</p></div>
+      <div class="lens-item lens-item--br" style="--x:60.62%;--y:84.81%"><h3>物件の競争力</h3><p>将来の保有者にとっても競争力を維持できる建物。</p></div>
+      <div class="lens-item lens-item--bl" style="--x:39.38%;--y:84.81%"><h3>実行可能性</h3><p>モデル上だけでなく、実際に遂行可能な事業計画。</p></div>
+      <div class="lens-item lens-item--l"  style="--x:30.58%;--y:42.35%"><h3>出口</h3><p>売却時に想定できる買い手と投資需要。</p></div>
     </div>
 
     <div class="lens-list">
@@ -275,6 +278,7 @@
       <div><h3>実行可能性</h3><p>モデル上だけでなく、実際に遂行可能な事業計画。</p></div>
       <div><h3>出口</h3><p>売却時に想定できる買い手と投資需要。</p></div>
     </div>
+    <div class="lens-list-core"><span>総合的に検証</span><strong>一つの投資判断</strong></div>
   </div>
 </section>
 
