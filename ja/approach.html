@@ -208,14 +208,28 @@
 
   /* --- 4 · Investment principle: the memorable close -------------------- */
   .ip > .shell { padding-top: clamp(96px, 10vw, 148px); }
-  .ip { padding-bottom: clamp(100px, 10.5vw, 160px); }
+  .ip { padding-bottom: clamp(84px, 8.4vw, 120px); }
+  /* Two zones, as English: principle and clarification left, governance
+     hierarchy right, one quiet vertical hairline between. */
+  .ip-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); column-gap: clamp(48px, 6vw, 96px); align-items: end; }
+  .ip-left { min-width: 0; }
   .ip-statement { margin: clamp(24px, 2.8vw, 38px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(28px, 18px + 2.2vw, 45px); line-height: 1.34; letter-spacing: 0.004em; color: var(--ink); max-width: 11em; }
-  .ip-copy { margin: clamp(30px, 3.4vw, 46px) 0 0; max-width: 33em; }
-  .ip-close { margin: clamp(40px, 4.4vw, 62px) 0 0; padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-size: clamp(17px, 14.6px + 0.6vw, 23px); line-height: 1.65; letter-spacing: 0.004em; color: var(--ink); }
-  /* The three actors carry the weight; the verbs stay quiet. As English. */
-  .ip-close span { display: block; color: var(--ink-2); }
-  .ip-close b { font-weight: 500; color: var(--ink); }
-  @media (max-width: 760px) { .ip { padding-bottom: 84px; } .ip > .shell { padding-top: 80px; } .ip-statement { max-width: 10em; } }
+  .ip-copy { margin: clamp(24px, 2.8vw, 38px) 0 0; max-width: 33em; }
+  .ip-close { margin: 0; padding: 4px 0 4px clamp(28px, 3vw, 44px); border-left: 1px solid var(--rule); font-family: var(--jp); color: var(--ink); }
+  /* Japanese keeps each statement on one line so the particle never hangs
+     alone; the two levels are carried by size and weight instead. Ink for
+     the investor, sumire for Reiwa, a step quieter for the specialists. */
+  .ip-close span { display: block; font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink-2); }
+  .ip-close span + span { margin-top: clamp(14px, 1.6vw, 22px); }
+  .ip-close b { font-size: clamp(21px, 16.5px + 0.65vw, 27px); line-height: 1.2; font-weight: 500; color: var(--ink); }
+  .ip-close span:nth-child(2) b { color: var(--reiwa-node, #5E3D78); }
+  .ip-close span:nth-child(3) b { color: var(--ink-2); }
+  @media (max-width: 900px) {
+    .ip-grid { display: block; }
+    .ip-close { margin-top: clamp(32px, 4vw, 40px); padding: clamp(20px, 2.4vw, 26px) 0 0; border-left: 0; border-top: 1px solid var(--rule-strong); }
+    .ip-close span + span { margin-top: 6px; }
+  }
+  @media (max-width: 760px) { .ip { padding-bottom: 72px; } .ip > .shell { padding-top: 80px; } .ip-statement { max-width: 10em; } }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
   .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
@@ -349,10 +363,14 @@
 <!-- 投資原則 -->
 <section class="ap-sec ip" data-screen-label="04 投資アプローチ — 投資原則" aria-labelledby="ip-title">
   <div class="shell">
-    <span class="h-eyebrow">投資原則</span>
-    <p class="ip-statement" id="ip-title">重要な投資判断は、<br>投資家が行います。</p>
-    <p class="h-body ip-copy">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p>
-    <p class="ip-close"><span><b>投資家</b>が判断する。</span><span><b>Reiwa</b>が調整する。</span><span><b>専門家</b>が助言する。</span></p>
+    <div class="ip-grid">
+      <div class="ip-left">
+        <span class="h-eyebrow">投資原則</span>
+        <p class="ip-statement" id="ip-title">重要な投資判断は、<br>投資家が行います。</p>
+        <p class="h-body ip-copy">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p>
+      </div>
+      <p class="ip-close"><span><b>投資家</b>が判断する。</span><span><b>Reiwa</b>が調整する。</span><span><b>専門家</b>が助言する。</span></p>
+    </div>
   </div>
 </section>
 
