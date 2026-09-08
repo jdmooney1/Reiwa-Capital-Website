@@ -147,9 +147,11 @@
   .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
   .am-legend li { display: flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-2); }
   .am-legend .sw { width: 13px; height: 13px; flex: none; }
-  .sw-prim  { background: var(--reiwa-node, #5E3D78); opacity: 0.82; border: 1px solid var(--ink); }
-  .sw-broad { background: var(--reiwa-lavender, #ECE6F2); border: 1px solid var(--accent-sumire-light, #B79AD6); }
-  .sw-ctx   { background: var(--warm-300, #E5E1D5); border: 1px solid rgba(39,20,48,0.30); }
+  /* The swatches carry the same weights as the map: no outlines, because the
+     zones on the map have none either. */
+  .sw-prim  { background: rgba(94, 61, 120, 0.28); }
+  .sw-broad { background: rgba(94, 61, 120, 0.15); }
+  .sw-ctx   { background: var(--warm-300, #E5E1D5); }
 
   .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
   .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
@@ -272,26 +274,26 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg" alt="Map of central London. The River Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus micro-markets are Mayfair, St James’s, Marylebone, South Kensington and Chelsea; selective focus covers Soho and Fitzrovia, the City Core, Farringdon and Clerkenwell, and Shoreditch and the City Fringe." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:33.77%;--y:46.27%;--xt:33.77%;--yt:46.86%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.48%;--y:52.93%;--xt:43.48%;--yt:52.46%" aria-hidden="true">St James’s</span>
-          <span class="ab-lab ab-lab--pri" style="--x:26.77%;--y:36.26%;--xt:25.24%;--yt:36.16%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--pri" style="--x:12.09%;--y:65.48%;--xt:16.4%;--yt:62.2%" aria-hidden="true">South Kensington</span>
-          <span class="ab-lab ab-lab--pri" style="--x:18.89%;--y:73.65%;--xt:18.89%;--yt:69.92%" aria-hidden="true">Chelsea</span>
-          <span class="ab-lab ab-lab--pri" style="--x:41.04%;--y:36.23%;--xt:42.78%;--yt:39.8%" aria-hidden="true">Soho /<br>Fitzrovia</span>
-          <span class="ab-lab ab-lab--pri" style="--x:76.07%;--y:39.06%;--xt:76.07%;--yt:40.78%" aria-hidden="true">City Core</span>
-          <span class="ab-lab ab-lab--pri" style="--x:67.62%;--y:29.09%;--xt:66.53%;--yt:34.31%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
-          <span class="ab-lab ab-lab--pri" style="--x:86.31%;--y:25.89%;--xt:87.4%;--yt:28.13%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
+            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=2" alt="Map of central London. The River Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s focus is shown as soft indicative zones, not boundaries: core focus on Mayfair, St James’s, Marylebone, South Kensington and Chelsea; selective focus on Soho and Fitzrovia, the City Core, Farringdon and Clerkenwell, and Shoreditch and the City Fringe." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=2" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span class="ab-lab ab-lab--pri" style="--x:33.94%;--y:46.27%;--xt:33.94%;--yt:46.86%" aria-hidden="true">Mayfair</span>
+          <span class="ab-lab ab-lab--pri" style="--x:41.42%;--y:51.92%;--xt:41.42%;--yt:51.62%" aria-hidden="true">St James’s</span>
+          <span class="ab-lab ab-lab--pri" style="--x:29.50%;--y:37.17%;--xt:29.50%;--yt:39.19%" aria-hidden="true">Marylebone</span>
+          <span class="ab-lab ab-lab--pri" style="--x:12.74%;--y:65.40%;--xt:12.74%;--yt:62.97%" aria-hidden="true">South Kensington</span>
+          <span class="ab-lab ab-lab--pri" style="--x:16.72%;--y:73.01%;--xt:16.72%;--yt:69.38%" aria-hidden="true">Chelsea</span>
+          <span class="ab-lab ab-lab--broader" style="--x:42.27%;--y:40.05%;--xt:42.27%;--yt:41.62%" aria-hidden="true">Soho /<br>Fitzrovia</span>
+          <span class="ab-lab ab-lab--broader" style="--x:76.32%;--y:40.74%;--xt:76.32%;--yt:42.20%" aria-hidden="true">City Core</span>
+          <span class="ab-lab ab-lab--broader" style="--x:66.12%;--y:35.21%;--xt:66.12%;--yt:37.54%" aria-hidden="true">Farringdon /<br>Clerkenwell</span>
+          <span class="ab-lab ab-lab--broader" style="--x:86.61%;--y:28.06%;--xt:86.61%;--yt:31.52%" aria-hidden="true">Shoreditch /<br>City Fringe</span>
           <span class="ab-lab ab-lab--context" style="--x:16.2%;--y:50.64%;--xt:16.2%;--yt:50.54%" aria-hidden="true">Hyde Park</span>
           <span class="ab-lab ab-lab--context" style="--x:25.27%;--y:25.0%;--xt:25.27%;--yt:28.95%" aria-hidden="true">Regent’s Park</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
+            <li><span class="sw sw-ctx" aria-hidden="true"></span>Parks</li>
           </ul>
-          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
+          <p class="am-note">Focus areas are indicative and do not represent administrative boundaries.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -310,21 +312,21 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:56.47%;--y:39.0%;--xt:57.68%;--yt:39.0%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.69%;--y:29.88%;--xt:42.49%;--yt:29.88%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--pri" style="--x:45.55%;--y:65.47%;--xt:44.7%;--yt:65.47%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--pri" style="--x:40.75%;--y:85.76%;--xt:39.01%;--yt:85.76%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--pri" style="--x:61.79%;--y:32.37%;--xt:63.99%;--yt:32.37%" aria-hidden="true">Historic Centre</span>
+            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=2" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ as open water to the north and Vondelpark to the south-west. Reiwa Capital’s focus is shown as soft indicative zones, not boundaries: primary focus on the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=2" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span class="ab-lab ab-lab--pri" style="--x:46.53%;--y:39.86%;--xt:45.87%;--yt:39.86%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-lab ab-lab--pri" style="--x:36.65%;--y:30.75%;--xt:34.14%;--yt:30.75%" aria-hidden="true">Jordaan</span>
+          <span class="ab-lab ab-lab--pri" style="--x:33.46%;--y:60.41%;--xt:30.35%;--yt:60.41%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
+          <span class="ab-lab ab-lab--broader" style="--x:27.77%;--y:84.89%;--xt:23.60%;--yt:84.89%" aria-hidden="true">Zuidas</span>
+          <span class="ab-lab ab-lab--broader" style="--x:57.56%;--y:33.06%;--xt:58.97%;--yt:33.06%" aria-hidden="true">Historic Centre</span>
           <span class="ab-lab ab-lab--context" style="--x:24.36%;--y:57.78%;--xt:19.55%;--yt:57.78%" aria-hidden="true">Vondelpark</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
+            <li><span class="sw sw-ctx" aria-hidden="true"></span>Parks</li>
           </ul>
-          <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
+          <p class="am-note">Focus areas are indicative and do not represent administrative boundaries.</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
