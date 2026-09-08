@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=80">
+<link rel="stylesheet" href="../editorial.css?v=81">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -212,6 +212,7 @@
   .hf-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
   .hf-sub { margin-top: 10px; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); }
   .hf-link { display: inline-flex; align-items: center; gap: 10px; font-family: var(--jp); font-size: 14px; font-weight: 500; color: var(--ink); text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid var(--rule-strong); transition: border-color 220ms var(--ease-out); }
+  .hf-sub, .hf-link { white-space: nowrap; }
   .hf-link:hover { border-color: var(--ink); }
   @media (hover: hover) { .hf-link:hover .h-arrow { transform: translateX(4px); } }
   .hf-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 44px); margin-top: clamp(36px, 4vw, 56px); }
@@ -244,7 +245,10 @@
     .hf-grid { margin-top: 32px; gap: 36px; }
     .hf-media.r-frame::before { left: -6px; } .hf-media.r-frame::after { right: -6px; }
   }
-</style>
+
+  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
+  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
+  </style>
 </head>
 <body data-page="home" data-locale="ja" data-en-url="/" data-ja-url="/ja/">
 
@@ -333,7 +337,7 @@
 <section class="hm" data-screen-label="03 ホーム — 市場" aria-labelledby="hm-title">
   <div class="shell">
     <div class="hm-head">
-      <h2 class="h-h2" id="hm-title">ロンドンとアムステルダム。深く理解できる市場に。</h2>
+      <h2 class="h-h2" id="hm-title">ロンドンとアムステルダム。<br>深く理解できる市場に。</h2>
       <div class="hm-tabs" role="tablist" aria-label="市場">
         <button class="hm-tab" type="button" role="tab" id="hm-tab-uk" data-market="uk" aria-selected="true" aria-controls="hm-panel-uk">ロンドン</button>
         <button class="hm-tab" type="button" role="tab" id="hm-tab-nl" data-market="nl" aria-selected="false" aria-controls="hm-panel-nl" tabindex="-1">アムステルダム</button>
@@ -466,7 +470,7 @@
 })();
 </script>
 
-<script src="../shell.js?v=71"></script>
-<script src="../craft.js?v=16"></script>
+<script src="../shell.js?v=72"></script>
+<script src="../craft.js?v=17"></script>
 </body>
 </html>

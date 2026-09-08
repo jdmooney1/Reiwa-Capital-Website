@@ -34,14 +34,12 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            lead: 'Why Reiwa exists and where we focus.',              ariaEn: 'Next: About' },
-    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership.', ariaEn: 'Next: Approach' },
-    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention.',               ariaEn: 'Next: Investment Focus' },
-    focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details.',              ariaEn: 'Next: Company' },
-    /* Company is the last page in the flow, so its band closes the site
-       rather than pointing onward: the brand line carries it, and the
-       action reads Return Home. */
-    company:  { to: 'index',            tEn: 'European Real Estate.<br>Structured for Japanese Capital.', lead: 'Return Home', kicker: 'Reiwa Capital', ariaEn: 'Return to Home' }
+    home:     { to: 'about',            tEn: 'About',            lead: 'Why Reiwa exists and where we focus',              ariaEn: 'Next: About' },
+    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership', ariaEn: 'Next: Approach' },
+    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention',               ariaEn: 'Next: Investment Focus' },
+    focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details',              ariaEn: 'Next: Company' }
+    /* Company has no entry, and so no band: it is the last page in the
+       flow and the contact section closes it. The footer follows. */
   };
 
   /* The same guided read in Japanese, over the same five pages and in the
@@ -49,15 +47,15 @@
      ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
      事業概要 closes the loop rather than pointing onward. */
   const FLOW_JA = {
-    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: 'Reiwaが果たす役割と、注力する市場。',        aria: '次へ：Reiwaについて' },
-    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ。', aria: '次へ：投資アプローチ' },
-    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか。',                aria: '次へ：投資方針' },
-    focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先。',            aria: '次へ：事業概要' },
-    company:  { to: '/ja/', t: '欧州不動産を、<br>日本の投資家のために。', lead: 'トップページへ', kicker: 'Reiwa Capital', aria: 'トップページへ戻る' },
+    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: 'Reiwaが果たす役割と、注力する市場',        aria: '次へ：Reiwaについて' },
+    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ', aria: '次へ：投資アプローチ' },
+    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか',                aria: '次へ：投資方針' },
+    focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先',            aria: '次へ：事業概要' },
+    /* 事業概要 has no entry, and so no band: お問い合わせ closes the page. */
     /* Legacy Japanese pages, retained pending their own disposition: they
        keep an onward path rather than ending in a dead stop. */
-    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先。', aria: '次へ：事業概要' },
-    insights: { to: '/ja/',             t: 'ホーム',   lead: 'トップページへ',                aria: 'トップページへ戻る' }
+    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先', aria: '次へ：事業概要' },
+    insights: { to: '/ja/',             t: 'ホーム',   lead: 'トップページへ',              aria: 'トップページへ戻る' }
   };
 
   function currentKey() {
@@ -212,7 +210,6 @@
         <a class="nn-link" href="${fj.to}" aria-label="${fj.aria}">
           <span class="nn-inner">
             <span class="nn-text">
-              <span class="nn-kicker">${fj.kicker || '次へ'}</span>
               <span class="nn-title">${fj.t}</span>
               <span class="nn-lead">${fj.lead}</span>
             </span>
@@ -227,7 +224,6 @@
         <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}">
           <span class="nn-inner">
             <span class="nn-text">
-              <span class="nn-kicker">${f.kicker || 'Next'}</span>
               <span class="nn-title">${f.tEn}</span>
               <span class="nn-lead">${f.lead}</span>
             </span>
@@ -240,15 +236,20 @@
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
 
-    /* One quiet cream footer in both languages — copyright left, LinkedIn
-       and Privacy right. No symbol, no navigation list, no location line.
-       The onward journey lives in the sumire NEXT block above it. */
+    const homeHref = locale === 'ja' ? '/ja/' : '/';
+    const symbolSrc = locale === 'ja' ? '/assets/logos/symbol-cream.svg' : 'assets/logos/symbol-cream.svg';
+    const homeAria = locale === 'ja' ? 'Reiwa Capital — ホーム' : 'Reiwa Capital — Home';
+
+    /* One quiet cream footer in both languages — copyright left, the cream
+       emblem mathematically centred, Privacy right. No navigation list, no
+       location line, no socials. The onward journey lives in the NEXT block
+       above it, where the site still has one. */
     const footer = `
       <footer class="footer footer-quiet">
         <div class="footer-inner">
           <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
+          <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
           <div class="ff-right">
-            <a class="ff-link" href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
           </div>
         </div>

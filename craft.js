@@ -110,7 +110,9 @@
       var logo = bar.querySelector('.nav-logo');
       var h1 = document.querySelector('.home-hero h1, .page-head h1');
       if (floating && logo && h1) {
-        var a = logo.getBoundingClientRect();
+        /* The whole bar is measured, not the logo alone, so the link row and
+           the language switch dip out together with it. */
+        var a = (bar.querySelector('.nav-inner') || logo).getBoundingClientRect();
         var b = h1.getBoundingClientRect();
         // Hysteresis: enter at PAD_IN, leave only once clear of PAD_OUT.
         var P = bar.classList.contains('logo-needs-contrast') ? PAD_OUT : PAD_IN;

@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=21">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=80">
+<link rel="stylesheet" href="editorial.css?v=81">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -44,7 +44,7 @@
 
   /* --- 1 · Opening: cream, no art, shorter than the other pages --------- */
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
-  .co-open { min-height: min(44vh, 430px); display: flex; align-items: flex-end; }
+  .co-open { min-height: min(27vh, 350px); display: flex; align-items: flex-end; }
   .co-open .inner { padding: calc(var(--nav-h, 68px) + clamp(44px, 5vw, 72px)) var(--gutter) clamp(40px, 4.4vw, 60px); }
   .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(40px, 28px + 2.2vw, 54px); line-height: 1; letter-spacing: -0.025em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); }
   .co-open .sub { margin: clamp(18px, 2vw, 26px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16.5px, 15px + 0.4vw, 20px); line-height: 1.42; letter-spacing: -0.006em; color: var(--ink-2); max-width: 30ch; }
@@ -81,7 +81,8 @@
   .co-acts li { display: grid; grid-template-columns: clamp(52px, 5vw, 84px) minmax(0, 1fr); gap: clamp(14px, 1.8vw, 28px); align-items: baseline; padding: clamp(15px, 1.7vw, 22px) 0; border-top: 1px solid var(--rule); }
   .co-acts li:first-child { border-top: 0; padding-top: 0; }
   .co-acts li:last-child { border-bottom: 1px solid var(--rule); }
-  .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 13px + 0.5vw, 19px); font-weight: 400; line-height: 1.3; letter-spacing: 0.02em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  /* Brand: numerals follow the site index treatment (.h-num) — 13px / 500 / 0.06em. No square here. */
+  .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.3; letter-spacing: 0.06em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
   .co-acts .t { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.6px + 0.5vw, 21px); font-weight: 400; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
 
   /* --- 4 · Operating model: three tiers on one vertical axis ------------ */
@@ -117,11 +118,17 @@
     .co-general a { word-break: break-word; }
   }
 
-  /* --- 6 · Closing block: the shared cream band, set for the last page -- */
-  body[data-page="company"] .nn-link { height: auto; }
-  body[data-page="company"] .nn-inner { padding-top: clamp(56px, 5.6vw, 84px); padding-bottom: clamp(56px, 5.6vw, 84px); }
-  body[data-page="company"] .nn-title { font-size: clamp(24px, 15px + 1.1vw, 36px); line-height: 1.14; font-weight: 400; letter-spacing: -0.018em; }
-</style>
+  /* Company has no NEXT band — the contact section closes the page and the
+     footer follows. The band rules that lived here are gone with it. */
+  .co-general dt { white-space: nowrap; }
+
+  /* Mobile 8: the contact routes and the general email reach a comfortable
+     target. Air only — no button, no fill, no border. */
+  @media (max-width: 760px) {
+    .co-cta { padding: 11px 0 10px; min-height: 44px; }
+    .co-general a { display: inline-block; padding: 11px 0; margin: -11px 0 -8px; }
+  }
+  </style>
 </head>
 <body data-page="company" data-ja-url="/ja/company.html">
 
@@ -135,7 +142,6 @@
   <div class="inner">
     <h1>Company</h1>
     <p class="sub">Investor-side European real estate advisory and ownership oversight.</p>
-    <span class="loc">Tokyo base · London and Amsterdam focus</span>
   </div>
 </section>
 
@@ -148,7 +154,6 @@
         <div><dt>Name</dt><dd>Reiwa Capital</dd></div>
         <div><dt>Base</dt><dd>Tokyo, Japan</dd></div>
         <div><dt>Markets</dt><dd>United Kingdom and the Netherlands</dd></div>
-        <div><dt>Initial focus</dt><dd>London and Amsterdam</dd></div>
         <div><dt>Investor focus</dt><dd>Japanese corporate, institutional and private investors</dd></div>
         <div><dt>Business</dt><dd>Investor-side European real estate advisory and ownership oversight</dd></div>
       </dl>
@@ -162,12 +167,12 @@
     <div class="co-row">
       <h2 class="co-label" id="ca-label">Activities</h2>
       <ol class="co-acts">
-        <li><span class="n">01</span><span class="t">Investment mandate design</span></li>
-        <li><span class="n">02</span><span class="t">Investment sourcing and underwriting</span></li>
-        <li><span class="n">03</span><span class="t">Due diligence and acquisition coordination</span></li>
-        <li><span class="n">04</span><span class="t">Financing coordination and ownership structuring</span></li>
-        <li><span class="n">05</span><span class="t">Ownership oversight and investor reporting</span></li>
-        <li><span class="n">06</span><span class="t">Refinancing and exit planning</span></li>
+        <li><span class="n">01</span><span class="t">Investment Mandate Design</span></li>
+        <li><span class="n">02</span><span class="t">Investment Sourcing and Underwriting</span></li>
+        <li><span class="n">03</span><span class="t">Due Diligence and Acquisition Coordination</span></li>
+        <li><span class="n">04</span><span class="t">Financing Coordination and Ownership Structuring</span></li>
+        <li><span class="n">05</span><span class="t">Ownership Oversight and Investor Reporting</span></li>
+        <li><span class="n">06</span><span class="t">Refinancing and Exit Planning</span></li>
       </ol>
     </div>
   </div>
@@ -181,7 +186,7 @@
       <div>
         <div class="co-model">
           <div class="co-tier">
-            <h3>Japanese investors</h3>
+            <h3>Japanese investor</h3>
             <p>Investor objectives, requirements, communication and decision-making context.</p>
           </div>
           <span class="co-drop" aria-hidden="true"></span>
@@ -236,8 +241,8 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="shell.js?v=71"></script>
+<script src="shell.js?v=72"></script>
 <script src="i18n.js?v=2"></script>
-<script src="craft.js?v=16"></script>
+<script src="craft.js?v=17"></script>
 </body>
 </html>

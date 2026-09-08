@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=80">
+<link rel="stylesheet" href="../editorial.css?v=81">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -99,9 +99,9 @@
   /* Measured widths, not ch: the side labels have ~264px of clear frame and
      the corner labels ~324px at the 840px maximum. */
   .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 16em); }
-  .lens-item--r, .lens-item--l { --w: 15em; }
+  .lens-item--r, .lens-item--l { --w: 16em; }
   .lens-item h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(16px, 12.6px + 0.5vw, 20px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .lens-item p { margin: 7px 0 0; max-width: none; font-family: var(--jp); font-size: clamp(12.5px, 12.2px + 0.2vw, 14px); line-height: 1.7; color: var(--ink-2); }
+  .lens-item p { margin: 7px 0 0; max-width: none; font-family: var(--jp); font-size: clamp(12.5px, 12.2px + 0.2vw, 14px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
   .lens-item--t  { transform: translate(-50%, -100%); text-align: center; }
   .lens-item--r  { transform: translate(0, -50%); text-align: left; }
   .lens-item--l  { transform: translate(-100%, -50%); text-align: right; }
@@ -209,7 +209,18 @@
     .dis span { display: inline; margin: 0 10px 0 0; }
     .dis p { display: inline; }
   }
-</style>
+
+  /* Refinement: between 901–1024px five Japanese columns run to 3–5 glyphs a
+     line; three columns keep each field whole. Desktop and phone unchanged. */
+  @media (min-width: 901px) and (max-width: 1024px) {
+    .mg, .dis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mg > div:nth-child(4), .dis > div:nth-child(4) { border-left: 0; padding-left: 0; }
+    .mg > div:nth-child(n+4), .dis > div:nth-child(n+4) { border-top: 1px solid var(--rule); }
+  }
+
+  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
+  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
+  </style>
 </head>
 <body data-page="focus" data-locale="ja" data-en-url="/investment-focus.html">
 
@@ -233,7 +244,7 @@
   <div class="shell">
     <div class="if-head">
       <span class="h-eyebrow">投資分析</span>
-      <h2 class="h-h2" id="lens-title">五つの視点。すべての案件に。</h2>
+      <h2 class="h-h2" id="lens-title">五つの視点。<br>すべての案件に。</h2>
     </div>
 
     <div class="lens" role="img" aria-label="五つの視点 — 立地、収益、物件の競争力、実行可能性、出口 — を総合的に検証し、一つの投資判断とします。">
@@ -526,7 +537,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=71"></script>
-<script src="../craft.js?v=16"></script>
+<script src="../shell.js?v=72"></script>
+<script src="../craft.js?v=17"></script>
 </body>
 </html>

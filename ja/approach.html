@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=80">
+<link rel="stylesheet" href="../editorial.css?v=81">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -175,7 +175,13 @@
   .ip-close { margin: clamp(40px, 4.4vw, 62px) 0 0; padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-size: clamp(17px, 14.6px + 0.6vw, 23px); line-height: 1.65; letter-spacing: 0.004em; color: var(--ink); }
   .ip-close span { display: block; }
   @media (max-width: 760px) { .ip { padding-bottom: 84px; } .ip > .shell { padding-top: 80px; } .ip-statement { max-width: 10em; } }
-</style>
+
+  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
+  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
+
+  /* Mobile 6: the two largest joins lose ~24px at phone width. */
+  @media (max-width: 760px) { .om > .shell { padding-top: 44px; } .ip > .shell { padding-top: 56px; } }
+  </style>
 </head>
 <body data-page="approach" data-locale="ja" data-en-url="/approach.html">
 
@@ -305,7 +311,7 @@
 <section class="ap-sec ip" data-screen-label="04 投資アプローチ — 投資原則" aria-labelledby="ip-title">
   <div class="shell">
     <span class="h-eyebrow">投資原則</span>
-    <p class="ip-statement" id="ip-title">重要な投資判断は、投資家が行います。</p>
+    <p class="ip-statement" id="ip-title">重要な投資判断は、<br>投資家が行います。</p>
     <p class="h-body ip-copy">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p>
     <p class="ip-close"><span>投資家が判断する。</span><span>Reiwaが調整する。</span><span>専門家が助言する。</span></p>
   </div>
@@ -358,7 +364,7 @@
 })();
 </script>
 
-<script src="../shell.js?v=71"></script>
-<script src="../craft.js?v=16"></script>
+<script src="../shell.js?v=72"></script>
+<script src="../craft.js?v=17"></script>
 </body>
 </html>

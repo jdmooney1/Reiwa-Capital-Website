@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=80">
+<link rel="stylesheet" href="../editorial.css?v=81">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -91,7 +91,7 @@
   .co-table > div:first-child { border-top: 0; padding-top: 0; }
   .co-table > div:last-child { border-bottom: 1px solid var(--rule); padding-bottom: clamp(16px, 1.8vw, 22px); }
   .co-table dt { font-family: var(--jp); font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.6; color: var(--ink-3); margin: 0; white-space: nowrap; }
-  .co-table dd { margin: 0; font-family: var(--jp); font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink); }
+  .co-table dd { margin: 0; font-family: var(--jp); font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink); text-wrap: pretty; }
   @media (max-width: 620px) {
     .co-table > div { grid-template-columns: 1fr; gap: 6px; }
     .co-table dt { white-space: normal; }
@@ -111,7 +111,7 @@
   .co-tier h3 { margin: 0; font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; color: var(--ink); }
   /* Latin tier heading keeps the English micro-label treatment exactly. */
   .co-tier h3.lat { font-family: 'DM Sans', sans-serif; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; }
-  .co-tier p { margin: 10px auto 0; max-width: 44em; font-family: var(--jp); font-size: clamp(14.5px, 14px + 0.25vw, 16.5px); line-height: 1.78; color: var(--ink-2); }
+  .co-tier p { margin: 10px auto 0; max-width: 34em; font-family: var(--jp); font-size: clamp(14.5px, 14px + 0.25vw, 16.5px); line-height: 1.78; color: var(--ink-2); }
   /* The axis is a hairline with an arrowhead — no box, no container. */
   .co-drop { display: block; position: relative; width: 1px; height: clamp(34px, 3.6vw, 52px); margin: clamp(14px, 1.6vw, 20px) auto 0; background: var(--rule-strong); }
   .co-drop::after { content: ""; position: absolute; left: -3.5px; bottom: 0; width: 8px; height: 8px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); }
@@ -145,7 +145,16 @@
   body[data-page="company"] .nn-inner { padding-top: clamp(56px, 5.6vw, 84px); padding-bottom: clamp(56px, 5.6vw, 84px); }
   body[data-page="company"] .nn-title { font-size: clamp(23px, 15px + 1vw, 34px); line-height: 1.45; font-weight: 400; letter-spacing: 0.004em; }
   body[data-page="company"] .nn-kicker { letter-spacing: 0.16em; }
-</style>
+
+  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
+  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
+
+  /* Mobile 8: contact routes and the general email reach a comfortable target. */
+  @media (max-width: 760px) {
+    .co-cta { padding: 11px 0 10px; min-height: 44px; }
+    .co-general a { display: inline-block; padding: 9px 0; }
+  }
+  </style>
 </head>
 <body data-page="company" data-locale="ja" data-en-url="/company.html">
 
@@ -261,7 +270,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=71"></script>
-<script src="../craft.js?v=16"></script>
+<script src="../shell.js?v=72"></script>
+<script src="../craft.js?v=17"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=21">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=80">
+<link rel="stylesheet" href="editorial.css?v=81">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -73,7 +73,7 @@
   .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
   .ab-head { max-width: 1060px; }
   .ab-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
-  .ab-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 68ch; font-size: clamp(16px, 15.2px + 0.3vw, 18px); }
+  .ab-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 64ch; font-size: clamp(16px, 15.2px + 0.3vw, 18px); }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
   /* --- 2 · Why Reiwa exists: three stages, rules and arrows, no boxes -- */
@@ -92,6 +92,16 @@
   .aw-stage h3 { margin: 16px 0 0; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 19px + 0.9vw, 30px); line-height: 1.14; letter-spacing: -0.012em; color: var(--ink); }
   .aw-role { margin: 12px 0 0; align-self: start; font-size: clamp(15.5px, 15px + 0.2vw, 17px); color: var(--ink); }
   .aw-detail { margin: 16px 0 0; align-self: start; padding-top: 16px; border-top: 1px solid var(--rule); max-width: 34ch; }
+  /* Refinement: while the three stages sit side by side, the title area is a
+     constant two lines so role and detail share one baseline. */
+  @media (min-width: 861px) { .aw-stage h3 { min-height: 2.3em; } }
+  /* Brand: one hairline runs through the three numerals — continuity drawn, not
+     stated — with a single sumire square at the centre stage. Structural only. */
+  @media (min-width: 861px) {
+    .aw-stages::before { content: ""; position: absolute; left: 0; right: 0; top: calc(clamp(28px, 3vw, 40px) + 6px); height: 1px; background: var(--rule); pointer-events: none; }
+    .aw-stages::after { content: ""; position: absolute; left: 50%; top: calc(clamp(28px, 3vw, 40px) + 3px); width: 7px; height: 7px; margin-left: -3.5px; background: var(--reiwa-node, #5E3D78); pointer-events: none; }
+    .aw-stage .h-num { position: relative; z-index: 1; background: var(--paper-warm); padding-right: 10px; }
+  }
   @media (max-width: 860px) {
     .aw-stages { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 36px; }
     .aw-stage { display: block; grid-row: auto; }
@@ -178,7 +188,7 @@
   .ac-item + .ac-item { border-left: 1px solid var(--rule); padding-left: clamp(20px, 2.2vw, 32px); }
   .ac-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 17px + 0.5vw, 23px); line-height: 1.18; letter-spacing: -0.008em; color: var(--ink); }
   .ac-item p { margin: 12px 0 0; }
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .ac-grid { grid-template-columns: 1fr 1fr; }
     .ac-item:nth-child(-n+2) { border-bottom: 1px solid var(--rule); padding-bottom: clamp(26px, 2.8vw, 36px); }
     .ac-item:nth-child(odd) { border-left: 0; padding-left: 0; }
@@ -189,7 +199,12 @@
     .ac-item, .ac-item + .ac-item { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); }
     .ac-item:last-child { border-bottom: 0; }
   }
-</style>
+
+
+  /* Mobile 1: only the detailed submarket map steps out on phones. Tabs,
+     photograph, the four market facts and the submarket text all stay. */
+  @media (max-width: 760px) { .am-mapwrap { display: none; } }
+  </style>
 </head>
 <body data-page="about" data-ja-url="/ja/about.html">
 
@@ -207,7 +222,6 @@
   <div class="inner">
     <h1>Built Around the Investor.</h1>
     <p class="sub">European real estate approached from the investor’s mandate, not the transaction.</p>
-    <span class="loc">London&nbsp;·&nbsp;Amsterdam</span>
   </div>
 </section>
 
@@ -217,14 +231,14 @@
     <div class="ab-head">
       <span class="h-eyebrow">Why Reiwa exists</span>
       <h2 class="h-h2" id="aw-title">Cross-border ownership needs continuity.</h2>
-      <p class="h-body ab-lede">Acquiring an overseas asset is only one part of the investment. Investor objectives need to remain clear through underwriting, execution and ownership, even as local advisers, counterparties and market conditions change. Reiwa Capital is built to provide that continuity from the investor’s side.</p>
+      <p class="h-body ab-lede">Acquiring an overseas asset is only one part of the investment. Objectives set at the outset need to survive underwriting, execution and years of ownership.</p>
     </div>
     <div class="aw-stages">
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">01</span>
         <h3>Investor Mandate</h3>
         <p class="aw-role">Objectives, parameters and decision requirements.</p>
-        <p class="h-body aw-detail">We begin with what the investor is trying to achieve, how capital should be deployed and what conditions need to be satisfied.</p>
+        <p class="h-body aw-detail">The process begins with the investor’s objectives, how capital should be deployed and the conditions that need to be satisfied.</p>
       </div>
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">02</span>
@@ -248,7 +262,7 @@
     <div class="ab-head">
       <span class="h-eyebrow">Focus markets</span>
       <h2 class="h-h2" id="am-title">Two Markets. Deeper Focus.</h2>
-      <p class="h-body ab-lede">Reiwa Capital concentrates initially on London and Amsterdam. The objective is not broad geographic coverage. It is to build repeatable judgement within a smaller number of markets and submarkets, supported by local relationships, detailed underwriting and continued ownership oversight.</p>
+      <p class="h-body ab-lede">London and Amsterdam. Not broad coverage — repeatable judgement in two markets Reiwa knows well.</p>
     </div>
     <div class="am-tabs" role="tablist" aria-label="Focus market">
       <button class="am-tab" type="button" role="tab" id="am-tab-london" data-market="london" aria-selected="true" aria-controls="am-panel-london">London</button>
@@ -384,8 +398,8 @@
   });
 })();
 </script>
-<script src="shell.js?v=71"></script>
+<script src="shell.js?v=72"></script>
 <script src="i18n.js?v=2"></script>
-<script src="craft.js?v=16"></script>
+<script src="craft.js?v=17"></script>
 </body>
 </html>

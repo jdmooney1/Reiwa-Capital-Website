@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=21">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=80">
+<link rel="stylesheet" href="editorial.css?v=81">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -96,6 +96,7 @@
   .lc-gate { margin-top: clamp(26px, 2.8vw, 38px); font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.6; color: var(--ink-2); max-width: none; }
   .lc-gate b { font-weight: 500; color: var(--ink-3); }
   .lc-gate .sep { color: var(--ink-4); padding: 0 0.2em; }
+  .lc-gate span:not(.sep) { white-space: nowrap; }
 
   @media (max-width: 900px) {
     .lc-grid { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; margin-top: 36px; border-top: 1px solid var(--rule-strong); }
@@ -132,6 +133,10 @@
   .om-col--investor { border-top: 2px solid var(--ink); }
   .om-col--reiwa { border-top: 2px solid var(--reiwa-node, #5E3D78); }
   .om-col + .om-col::before { content: ""; position: absolute; left: calc(-1 * var(--om-gap) / 2 - 3px); top: -5px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  /* The Reiwa column is headed by the lockup, sized to the eyebrow cap-height
+     so the three column heads share one baseline. */
+  .om-col--reiwa h3 { line-height: 1; }
+  .om-lockup { display: block; height: 14px; width: auto; }
   .om-col h3 { margin: 0 0 clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); }
   .om-list { list-style: none; margin: 0; padding: 0; }
   .om-list li { font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.35; color: var(--ink-2); padding: 6px 0; transition: opacity 180ms var(--ease-out); }
@@ -164,9 +169,17 @@
   .ip-statement { margin: clamp(24px, 2.8vw, 38px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(32px, 19px + 2.6vw, 51px); line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); max-width: 17ch; text-wrap: balance; }
   .ip-copy { margin: clamp(30px, 3.4vw, 46px) 0 0; max-width: 54ch; }
   .ip-close { margin: clamp(40px, 4.4vw, 62px) 0 0; padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: clamp(18px, 15px + 0.6vw, 24px); line-height: 1.4; letter-spacing: -0.01em; color: var(--ink); }
-  .ip-close span { display: block; }
+  /* The three actors carry the weight; the verbs stay quiet, so the line has
+     rhythm without raising its volume. */
+  .ip-close span { display: block; color: var(--ink-2); }
+  .ip-close b { font-weight: 500; color: var(--ink); }
   @media (max-width: 760px) { .ip { padding-bottom: 84px; } .ip > .shell { padding-top: 80px; } }
-</style>
+
+
+  /* Mobile 6: the two largest joins on the site lose ~24px so Approach shares
+     the rhythm of the other pages at phone width. Desktop unchanged. */
+  @media (max-width: 760px) { .om > .shell { padding-top: 44px; } .ip > .shell { padding-top: 56px; } }
+  </style>
 </head>
 <body data-page="approach" data-ja-url="/ja/approach.html">
 
@@ -180,7 +193,6 @@
   <div class="inner">
     <h1>Conviction Before<br>Execution.</h1>
     <p class="sub">A disciplined process, aligned with investor authority.</p>
-    <span class="loc">London · Amsterdam</span>
   </div>
 </section>
 
@@ -234,7 +246,7 @@
       <div><dt>Oversee</dt><dd>Ownership Oversight &amp; Reporting</dd></div>
     </dl>
 
-    <p class="lc-gate"><b>Investor approval:</b> <span>Acquisition</span> <span class="sep" aria-hidden="true">·</span> <span>Disposal</span> <span class="sep" aria-hidden="true">·</span> <span>Refinancing</span> <span class="sep" aria-hidden="true">·</span> <span>Material CapEx</span> <span class="sep" aria-hidden="true">·</span> <span>Material leasing</span> <span class="sep" aria-hidden="true">·</span> <span>Business-plan changes</span></p>
+    <p class="lc-gate"><b>Investor Approval:</b> <span>Acquisition</span> <span class="sep" aria-hidden="true">·</span> <span>Disposal</span> <span class="sep" aria-hidden="true">·</span> <span>Refinancing</span> <span class="sep" aria-hidden="true">·</span> <span>Material CapEx</span> <span class="sep" aria-hidden="true">·</span> <span>Material leasing</span> <span class="sep" aria-hidden="true">·</span> <span>Business-plan changes</span></p>
   </div>
 </section>
 
@@ -263,7 +275,7 @@
       </div>
 
       <div class="om-col om-col--reiwa">
-        <h3>Reiwa Capital</h3>
+        <h3><img class="om-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="120" height="14"></h3>
         <ul class="om-list">
           <li data-ph="acq">Underwrite</li>
           <li data-ph="acq exit">Coordinate</li>
@@ -287,7 +299,6 @@
       </div>
     </div>
 
-    <p class="om-note"><span>Specialists are appointed by, and accountable to, the investor or the ownership vehicle. Specialist advice remains with the relevant appointed advisers.</span></p>
   </div>
 </section>
 
@@ -297,7 +308,7 @@
     <span class="h-eyebrow">Investment principle</span>
     <p class="ip-statement" id="ip-title">Investment authority remains with the investor.</p>
     <p class="h-body ip-copy">Reiwa develops the investment case, coordinates execution and oversees the business plan while material decisions remain with the investor.</p>
-    <p class="ip-close"><span>Investor decides.</span><span>Reiwa coordinates.</span><span>Specialists advise.</span></p>
+    <p class="ip-close"><span><b>Investor</b> decides.</span><span><b>Reiwa</b> coordinates.</span><span><b>Specialists</b> advise.</span></p>
   </div>
 </section>
 
@@ -347,8 +358,8 @@
   select('acq');
 })();
 </script>
-<script src="shell.js?v=71"></script>
+<script src="shell.js?v=72"></script>
 <script src="i18n.js?v=2"></script>
-<script src="craft.js?v=16"></script>
+<script src="craft.js?v=17"></script>
 </body>
 </html>
