@@ -197,6 +197,10 @@
     .am-panel--snapshot .am-img--tall { display: none; }
     .am-panel--snapshot .ab-lab { left: var(--x); top: var(--y); }
   }
+  /* Amsterdam: the same shell, its own camera. The wide map frame is 1.2
+     (964 x 803.6 units); the photograph sits on the facades, not the water. */
+  @media (min-width: 901px) { .am-panel--snapshot[data-market="amsterdam"] .am-map { aspect-ratio: 1.2; } }
+  .am-panel--snapshot[data-market="amsterdam"] .am-figure img { object-position: 50% 28%; }
   @media (max-width: 900px) { .am-panel--snapshot .am-grid { grid-template-columns: 1fr; } }
   @media (max-width: 760px) {
     .am-panel--snapshot .am-facts { grid-template-columns: 1fr; }
@@ -352,18 +356,18 @@
         </div>
       </div>
     </div>
-    <div class="am-panel" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
+    <div class="am-panel am-panel--snapshot" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
+            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=2" alt="Map of Amsterdam. The canal ring wraps the historic centre, with Het IJ to the north and Vondelpark to the south-west. Reiwa Capital’s primary focus is the Canal Belt, the Jordaan and the Museum Quarter and Oud-Zuid, with selective focus on the Historic Centre and Zuidas to the south." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-lab ab-lab--pri" style="--x:56.47%;--y:39.0%;--xt:57.68%;--yt:39.0%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--pri" style="--x:43.69%;--y:29.88%;--xt:42.49%;--yt:29.88%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--pri" style="--x:45.55%;--y:65.47%;--xt:44.7%;--yt:65.47%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
-          <span class="ab-lab ab-lab--pri" style="--x:40.75%;--y:85.76%;--xt:39.01%;--yt:85.76%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--pri" style="--x:61.79%;--y:32.37%;--xt:63.99%;--yt:32.37%" aria-hidden="true">Historic Centre</span>
-          <span class="ab-lab ab-lab--context" style="--x:24.36%;--y:57.78%;--xt:19.55%;--yt:57.78%" aria-hidden="true">Vondelpark</span>
+          <span class="ab-lab ab-lab--pri" style="--x:55.12%;--y:39.0%;--xt:57.68%;--yt:39.0%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-lab ab-lab--pri" style="--x:45.00%;--y:29.88%;--xt:42.49%;--yt:29.88%" aria-hidden="true">Jordaan</span>
+          <span class="ab-lab ab-lab--pri" style="--x:48.98%;--y:65.47%;--xt:44.7%;--yt:65.47%" aria-hidden="true">Museum Quarter /<br>Oud-Zuid</span>
+          <span class="ab-lab ab-lab--pri" style="--x:42.67%;--y:85.76%;--xt:39.01%;--yt:85.76%" aria-hidden="true">Zuidas</span>
+          <span class="ab-lab ab-lab--pri" style="--x:59.34%;--y:32.37%;--xt:63.99%;--yt:32.37%" aria-hidden="true">Historic Centre</span>
+          <span class="ab-lab ab-lab--context" style="--x:28.20%;--y:57.78%;--xt:19.55%;--yt:57.78%" aria-hidden="true">Vondelpark</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
@@ -379,7 +383,7 @@
           <dl class="am-facts">
             <div><dt>Market character</dt><dd class="h-body">Supply-constrained, historic and relationship-driven.</dd></div>
             <div><dt>Where we focus</dt><dd class="h-body">Central locations where scarcity, building character, durable occupier demand and identifiable value creation support the investment case.</dd></div>
-            <div><dt>Focus submarkets</dt><dd class="h-body am-subs">Canal Belt · Jordaan · Museum Quarter / Oud-Zuid · Historic Centre · Zuidas</dd></div>
+            <div><dt>Focus submarkets</dt><dd class="h-body am-subs"><ul><li>Canal Belt</li><li>Jordaan</li><li>Museum Quarter / Oud-Zuid</li><li>Historic Centre</li><li>Zuidas</li></ul></dd></div>
             <div><dt>Why it fits</dt><dd class="h-body">Scarcity, distinctive asset character and opportunities for selective repositioning.</dd></div>
           </dl>
         </div>
