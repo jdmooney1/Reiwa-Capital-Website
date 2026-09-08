@@ -53,7 +53,7 @@
     about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ。', aria: '次へ：投資アプローチ' },
     approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか。',                aria: '次へ：投資方針' },
     focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先。',            aria: '次へ：事業概要' },
-    company:  { to: '/ja/', t: '欧州の不動産を、<br>日本の投資家のために。', lead: 'トップページへ', kicker: 'Reiwa Capital', aria: 'トップページへ戻る' },
+    company:  { to: '/ja/', t: '欧州不動産を、<br>日本の投資家のために。', lead: 'トップページへ', kicker: 'Reiwa Capital', aria: 'トップページへ戻る' },
     /* Legacy Japanese pages, retained pending their own disposition: they
        keep an onward path rather than ending in a dead stop. */
     contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先。', aria: '次へ：事業概要' },
