@@ -111,7 +111,11 @@
     .hi-col + .hi-col { border-left: 0; padding-left: 0; }
     .hi-col:last-child { border-bottom: 0; }
     .hi-col .h-num { padding-top: 7px; align-self: start; }
-    .hi-dia { grid-column: 2; margin: 1px 0 12px; }
+    /* Phones return to numeral / title / copy. The diagrams are
+       supplementary, and stacking three of them added 183px to a
+       915px section. Hidden, not shrunk — display:none takes the
+       margins with it, so no gap is left behind. */
+    .hi-dia { display: none; }
     .hi-col h3 { grid-column: 2; margin: 0; font-size: 23px; }
     .hi-col p { grid-column: 2; margin-top: 8px; max-width: none; }
   }
