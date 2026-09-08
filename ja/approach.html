@@ -80,10 +80,12 @@
 
   /* --- 2 · Lifecycle --------------------------------------------------- */
   .lc-grid { --lc-gap: clamp(20px, 2.4vw, 40px);
-    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto auto;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto auto auto auto;
     column-gap: var(--lc-gap); margin-top: clamp(48px, 5.5vw, 80px); }
   @supports (grid-template-rows: subgrid) {
-    .lc-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+    .lc-stage { display: grid; grid-row: 1 / span 6; grid-template-rows: subgrid; align-content: start; }
+    .lc-stage .lc-out { grid-row: 6; }
+    .lc-stage:nth-child(1) { grid-column: 1; } .lc-stage:nth-child(2) { grid-column: 2; } .lc-stage:nth-child(3) { grid-column: 3; } .lc-stage:nth-child(4) { grid-column: 4; } .lc-stage:nth-child(5) { grid-column: 5; }
   }
   .lc-stage { position: relative; min-width: 0; }
   .lc-node { position: relative; display: block; height: 9px; }
@@ -100,20 +102,28 @@
   .lc-stage h3 { margin: 12px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(19px, 12px + 1vw, 24px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .lc-role { margin: 14px 0 0; align-self: start; font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.7; }
 
-  .lc-outs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 40px); margin-top: 14px; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule); }
-  .lc-outs > div { min-width: 0; }
-  .lc-outs dt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-  .lc-outs dd { margin: 0; font-family: var(--jp); font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.55; color: var(--ink); }
-  .lc-outs-label { display: block; margin-top: clamp(30px, 3.2vw, 44px); }
+  /* Outputs sit inside their stages on a sixth shared track, directly under
+     the stage that produces them. Track five carries the row label and one
+     rule across all five columns; the label is decorative here because each
+     output names itself. */
+  .lc-outs-label { grid-column: 1 / -1; grid-row: 5; margin-top: clamp(18px, 2vw, 28px); padding-top: clamp(14px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
+  .lc-out { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.55; font-weight: 500; color: var(--ink); }
+  .lc-out-k { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
   /* Investor approval — one line, nothing more. */
-  .lc-gate { margin-top: clamp(26px, 2.8vw, 38px); font-family: var(--jp); font-size: clamp(13.5px, 13.2px + 0.2vw, 15px); line-height: 1.9; color: var(--ink-2); max-width: none; }
-  .lc-gate b { font-weight: 500; color: var(--ink-3); }
+  /* Governance band: one rule, a sumire node with the micro-label, and the
+     material matters as a single run. A gate, not a warning. */
+  .lc-gate { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(24px, 2.8vw, 40px); align-items: baseline; margin-top: clamp(24px, 2.6vw, 34px); padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); }
+  .lc-gate-k { display: inline-flex; align-items: center; gap: 9px; }
+  .lc-gate-k::before { content: ""; width: 5px; height: 5px; background: var(--reiwa-node, #5E3D78); flex: none; }
+  .lc-gate-k b { font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.2; color: var(--eyebrow-ink); white-space: nowrap; }
+  .lc-gate-run { margin: 0; font-family: var(--jp); font-size: clamp(13.5px, 13.2px + 0.2vw, 15px); line-height: 1.9; color: var(--ink); }
   .lc-gate .sep { color: var(--ink-4); padding: 0 0.2em; }
+  .lc-gate span:not(.sep) { white-space: nowrap; }
 
   @media (max-width: 900px) {
     .lc-grid { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; margin-top: 36px; border-top: 1px solid var(--rule-strong); }
-    .lc-stage { display: block; grid-row: auto; grid-template-rows: auto auto auto; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+    .lc-grid > .lc-stage { display: block; grid-row: auto; grid-column: auto; grid-template-rows: auto auto auto; padding: 22px 0; border-bottom: 1px solid var(--rule); }
     .lc-stage:last-child { border-bottom: 0; }
     .lc-node { height: 0; }
     .lc-node i { top: 4px; }
@@ -123,8 +133,11 @@
     .lc-num { margin: 0 0 0 22px; }
     .lc-stage h3 { margin-top: 6px; font-size: clamp(20px, 5.8vw, 24px); }
     .lc-role { margin-top: 8px; }
-    .lc-outs { grid-template-columns: 1fr; row-gap: 8px; margin-top: 16px; padding-top: 18px; }
-    .lc-outs-label { margin-top: 30px; }
+    .lc-outs-label { display: none; }
+    .lc-out { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule); }
+    .lc-out-k { position: static; width: auto; height: auto; margin: 0; flex: none; clip-path: none; overflow: visible; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--eyebrow-ink); }
+    .lc-gate { display: block; }
+    .lc-gate-run { margin-top: 8px; }
   }
 
   /* --- 3 · Operating model --------------------------------------------- */
@@ -219,43 +232,40 @@
         <span class="lc-num">01</span>
         <h3>投資方針</h3>
         <p class="h-body lc-role">投資目的、投資基準、意思決定の前提を整理。</p>
+        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">投資方針・判断基準</span></p>
       </div>
       <div class="lc-stage">
         <span class="lc-node" aria-hidden="true"><i></i></span>
         <span class="lc-num">02</span>
         <h3>投資分析</h3>
         <p class="h-body lc-role">物件、事業計画、下方リスクを検証。</p>
+        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">投資分析資料</span></p>
       </div>
       <div class="lc-stage">
         <span class="lc-node" aria-hidden="true"><i></i></span>
         <span class="lc-num">03</span>
         <h3>ストラクチャー</h3>
         <p class="h-body lc-role">保有形態と資金調達の設計。</p>
+        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">保有・資金調達ストラクチャー案</span></p>
       </div>
       <div class="lc-stage">
         <span class="lc-node" aria-hidden="true"><i></i></span>
         <span class="lc-num">04</span>
         <h3>取得</h3>
         <p class="h-body lc-role">デューデリジェンスと取得プロセスを調整。</p>
+        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">取得判断資料</span></p>
       </div>
       <div class="lc-stage">
         <span class="lc-node" aria-hidden="true"><i></i></span>
         <span class="lc-num">05</span>
         <h3>保有</h3>
         <p class="h-body lc-role">事業計画の進捗をモニタリングし、出口まで支援。</p>
+        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">保有期間中のモニタリング・レポーティング</span></p>
       </div>
+      <span class="h-eyebrow lc-outs-label" aria-hidden="true">各段階の成果物</span>
     </div>
 
-    <span class="h-eyebrow lc-outs-label">各段階の成果物</span>
-    <dl class="lc-outs">
-      <div><dt>投資方針</dt><dd>投資方針・判断基準</dd></div>
-      <div><dt>投資分析</dt><dd>投資分析資料</dd></div>
-      <div><dt>ストラクチャー</dt><dd>保有・資金調達ストラクチャー案</dd></div>
-      <div><dt>取得</dt><dd>取得判断資料</dd></div>
-      <div><dt>保有</dt><dd>保有期間中のモニタリング・レポーティング</dd></div>
-    </dl>
-
-    <p class="lc-gate"><b>投資家の承認事項：</b> <span>取得</span> <span class="sep" aria-hidden="true">·</span> <span>売却</span> <span class="sep" aria-hidden="true">·</span> <span>借換え</span> <span class="sep" aria-hidden="true">·</span> <span>重要な資本的支出</span> <span class="sep" aria-hidden="true">·</span> <span>重要なリーシング判断</span> <span class="sep" aria-hidden="true">·</span> <span>事業計画の重要な変更</span></p>
+    <div class="lc-gate"><span class="lc-gate-k"><b>投資家の承認事項</b></span><p class="lc-gate-run"><span>取得</span> <span class="sep" aria-hidden="true">·</span> <span>売却</span> <span class="sep" aria-hidden="true">·</span> <span>借換え</span> <span class="sep" aria-hidden="true">·</span> <span>重要な資本的支出</span> <span class="sep" aria-hidden="true">·</span> <span>重要なリーシング判断</span> <span class="sep" aria-hidden="true">·</span> <span>事業計画の重要な変更</span></p></div>
   </div>
 </section>
 
