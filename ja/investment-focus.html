@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="二つの市場、三つの投資領域、そしてすべての案件に共通する五つの視点。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=20">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=79">
+<link rel="stylesheet" href="../editorial.css?v=80">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -52,7 +52,7 @@
      width of the "0" that ch is measured from.
      ===================================================================== */
   :root {
-    --jp: 'DM Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif;
+    --jp: var(--font-jp);
   }
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
@@ -141,7 +141,7 @@
   .ch-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .ch-text { min-width: 0; }
   .ch-num { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .ch-text h3 { margin: 12px 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(24px, 17px + 1.1vw, 34px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
+  .ch-text h3 { margin: 12px 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(24px, 17px + 1.1vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .ch-thesis { margin: clamp(12px, 1.4vw, 18px) 0 0; max-width: 25em; font-size: clamp(15px, 14.6px + 0.25vw, 16.5px); }
   .ch-assets { margin: clamp(18px, 2vw, 26px) 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
   .ch-assets dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 8px; }

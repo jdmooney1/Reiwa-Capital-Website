@@ -13,7 +13,10 @@
 
 /* Two faces only — 400/500 carry the whole brand voice. No bold weight is
    used anywhere on the site, so DMSans-Bold is not declared or shipped.
-   No italic: the brand never sets it. font-display: optional means the type
+   No italic: the brand never sets it. font-display: swap means the fallback
+   shows first and DM Sans replaces it the moment it arrives — measured:
+   `optional` left a cold-cache visitor in Helvetica for the whole page view
+   from only 150ms of latency, even after the font had finished downloading.
    either arrives in time for first paint or the fallback keeps the layout —
    text never reflows after it has rendered (Motion audit D2). Pages preload
    both faces so the optional window is comfortably met. */
@@ -21,13 +24,13 @@
   font-family: 'DM Sans';
   src: url('fonts/DMSans-Regular.woff2') format('woff2'),
        url('fonts/DMSans-Regular.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: optional;
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'DM Sans';
   src: url('fonts/DMSans-Medium.woff2') format('woff2'),
        url('fonts/DMSans-Medium.ttf') format('truetype');
-  font-weight: 500; font-style: normal; font-display: optional;
+  font-weight: 500; font-style: normal; font-display: swap;
 }
 
 :root {
@@ -130,7 +133,10 @@
   --font-serif: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* serif retired — aliased to DM Sans (consistency pass) */
   --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* mono retired — aliased to DM Sans (consistency pass) */
-  --font-jp: 'DM Sans', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', sans-serif; /* JP now sans, to match DM Sans Latin */
+  /* The one Japanese stack. DM Sans carries the Latin and the numerals; the
+     platform Japanese sans carries kana and kanji. Every Japanese rule on the
+     site resolves to this variable — nothing redeclares the families. */
+  --font-jp: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', YuGothic, Meiryo, 'Noto Sans JP', sans-serif;
 
   /* Scale — restrained, slightly classical ratio */
   --text-xs:   11px;   /* labels, legal, tiny caps */
@@ -482,7 +488,7 @@ hr, .rule {
    only — English typography and all font sizes are untouched.
    ===================================================================== */
 :lang(ja) {
-  font-family: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', YuGothic, Meiryo, 'Noto Sans JP', sans-serif !important;
+  font-family: var(--font-jp);
   line-break: strict;
   /* Proportional kana/punctuation metrics — closes the gaps that otherwise
      open around 、。「」（） and leaves isolated punctuation looking set

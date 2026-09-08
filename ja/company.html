@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Reiwa Capitalは、東京を拠点に、日本の投資家側に立って欧州不動産投資を支援します。ロンドンとアムステルダムを中心に、投資分析、取得・資金調達の調整、保有期間中のモニタリングと投資家向けレポーティングを行います。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=20">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=79">
+<link rel="stylesheet" href="../editorial.css?v=80">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -55,7 +55,7 @@
           than Latin at the same size and needs the air back.
      ===================================================================== */
   :root {
-    --jp: 'DM Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic UI', 'Yu Gothic', Meiryo, sans-serif;
+    --jp: var(--font-jp);
   }
   /* Shell text is rendered by shell.js from shared CSS, so the Japanese
      fallback has to reach it here. */
@@ -66,7 +66,7 @@
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
   .co-open { min-height: min(44vh, 430px); display: flex; align-items: flex-end; }
   .co-open .inner { padding: calc(var(--nav-h, 68px) + clamp(44px, 5vw, 72px)) var(--gutter) clamp(40px, 4.4vw, 60px); }
-  .co-open h1 { font-family: var(--jp); font-weight: 400; font-size: clamp(40px, 28px + 2.2vw, 64px); line-height: 1.12; letter-spacing: 0.005em; color: var(--ink); margin: 0; }
+  .co-open h1 { font-family: var(--jp); font-weight: 400; font-size: clamp(40px, 28px + 2.2vw, 50px); line-height: 1.12; letter-spacing: 0.005em; color: var(--ink); margin: 0; }
   .co-open .sub { margin: clamp(18px, 2vw, 26px) 0 0; font-family: var(--jp); font-size: clamp(16px, 14.8px + 0.35vw, 19px); line-height: 1.72; letter-spacing: 0.005em; color: var(--ink-2); max-width: 28em; }
   .co-open .loc { display: block; margin-top: clamp(24px, 2.8vw, 38px); font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; color: var(--ink-3); }
   @media (max-width: 760px) {
