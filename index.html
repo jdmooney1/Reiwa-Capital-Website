@@ -169,9 +169,19 @@
   .hm-copy { margin-top: 12px; max-width: 44ch; }
   /* Six market attributes as one run of text on the hairline — the same
      separator language as the About submarkets, not a list. */
-  .hm-attrs { margin: clamp(22px, 2.4vw, 30px) 0 0; padding: 16px 0 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.6; color: var(--ink); max-width: 46ch; }
-  .hm-attrs span:not(.sep) { white-space: nowrap; }
-  .hm-attrs .sep { color: var(--ink-4); padding: 0 0.45em; }
+  /* Six market characteristics as one compact grid — a sumire node and a
+     short fact per cell, three across and two down, one hairline above and
+     one between the rows. London and Amsterdam share the component. */
+  .hm-attrs { list-style: none; margin: clamp(14px, 1.5vw, 18px) 0 0; padding: 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hm-attrs li { display: flex; align-items: flex-start; gap: 9px; margin: 0; padding: 9px 14px 9px 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 500; line-height: 1.35; color: var(--ink); }
+  .hm-attrs li::before { content: ""; flex: none; width: 4px; height: 4px; margin-top: 0.52em; background: var(--reiwa-node, #5E3D78); }
+  .hm-attrs li:nth-child(n+4) { border-top: 1px solid var(--rule); }
+  /* Where the right-hand column is at its narrowest (above the 900px stack,
+     below the 1100px nav break) three cells wrap badly: two across, three down. */
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .hm-land, .hm-mark .dot::before, .hm-mark .dot::after, .hm-mark .name, .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
     .js .hm-panel.is-on { animation: none; }
@@ -194,7 +204,14 @@
     .hm-mark { left: var(--xm); top: var(--ym); }
     .hm-mark .name { font-size: 13.5px; }
     .hm-photo { aspect-ratio: 16 / 10; }
-    .hm-attrs { max-width: none; }
+    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hm-attrs li { padding: 8px 12px 8px 0; }
+    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
+  /* Narrowest phones (the existing 340px step): one vertical sequence, every fact on one line. */
+  @media (max-width: 340px) {
+    .hm-attrs { grid-template-columns: 1fr; }
+    .hm-attrs li:nth-child(n+2) { border-top: 1px solid var(--rule); }
   }
 
   /* --- 4 · Built from the investor side -------------------------------- */
@@ -371,12 +388,12 @@
           <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
             <h3 class="hm-city">London</h3>
             <p class="h-body hm-copy">Deep liquidity, global occupier demand and highly differentiated micro-markets create opportunities across income and repositioning strategies.</p>
-            <p class="hm-attrs"><span>Global liquidity</span><span class="sep" aria-hidden="true">·</span><wbr><span>Deep occupier markets</span><span class="sep" aria-hidden="true">·</span><wbr><span>Scarce control assets</span><span class="sep" aria-hidden="true">·</span><wbr><span>Transparent title</span><span class="sep" aria-hidden="true">·</span><wbr><span>Established lender market</span><span class="sep" aria-hidden="true">·</span><wbr><span>Broad exit buyer base</span></p>
+            <ul class="hm-attrs"><li>Global liquidity</li><li>Deep occupier markets</li><li>Scarce control assets</li><li>Transparent title</li><li>Established lender market</li><li>Broad exit buyer base</li></ul>
           </div>
           <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
             <h3 class="hm-city">Amsterdam</h3>
             <p class="h-body hm-copy">A compact, supply-constrained market where planning discipline, strong occupier demand and an institutional buyer base reward well-located, high-quality assets.</p>
-            <p class="hm-attrs"><span>Supply constrained</span><span class="sep" aria-hidden="true">·</span><wbr><span>Institutional depth</span><span class="sep" aria-hidden="true">·</span><wbr><span>Planning discipline</span><span class="sep" aria-hidden="true">·</span><wbr><span>Scarce historic stock</span><span class="sep" aria-hidden="true">·</span><wbr><span>Durable occupier demand</span><span class="sep" aria-hidden="true">·</span><wbr><span>Compact central core</span></p>
+            <ul class="hm-attrs"><li>Supply constrained</li><li>Institutional depth</li><li>Planning discipline</li><li>Scarce historic stock</li><li>Durable occupier demand</li><li>Compact central core</li></ul>
           </div>
         </div>
       </div>

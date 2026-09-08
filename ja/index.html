@@ -164,9 +164,19 @@
   .hm-copy { margin-top: 12px; max-width: 28em; }
   /* Six market attributes as one run of text on the hairline, as English.
      Six Japanese labels will not sit in six divided cells at this width. */
-  .hm-attrs { margin: clamp(22px, 2.4vw, 30px) 0 0; padding: 16px 0 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 13.5px; line-height: 1.9; color: var(--ink); max-width: 34em; }
-  .hm-attrs span:not(.sep) { white-space: nowrap; }
-  .hm-attrs .sep { color: var(--ink-4); padding: 0 0.45em; }
+  /* Six market characteristics as one compact grid — a sumire node and a
+     short fact per cell, three across and two down, one hairline above and
+     one between the rows. London and Amsterdam share the component. */
+  .hm-attrs { list-style: none; margin: clamp(14px, 1.5vw, 18px) 0 0; padding: 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hm-attrs li { display: flex; align-items: flex-start; gap: 9px; margin: 0; padding: 9px 14px 9px 0; font-family: var(--jp); font-size: 13.5px; font-weight: 500; line-height: 1.55; color: var(--ink); }
+  .hm-attrs li::before { content: ""; flex: none; width: 4px; height: 4px; margin-top: 0.62em; background: var(--reiwa-node, #5E3D78); }
+  .hm-attrs li:nth-child(n+4) { border-top: 1px solid var(--rule); }
+  /* Where the right-hand column is at its narrowest (above the 900px stack,
+     below the 1100px nav break) three cells wrap badly: two across, three down. */
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .hm-land, .hm-mark .dot::before, .hm-mark .dot::after, .hm-mark .name, .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
     .js .hm-panel.is-on { animation: none; }
@@ -185,7 +195,14 @@
     .hm-mark { left: var(--xm); top: var(--ym); }
     .hm-mark .name { font-size: 12.5px; }
     .hm-photo { aspect-ratio: 16 / 10; }
-    .hm-attrs { max-width: none; }
+    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hm-attrs li { padding: 8px 12px 8px 0; }
+    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
+  /* Narrowest phones (the existing 340px step): one vertical sequence, every fact on one line. */
+  @media (max-width: 340px) {
+    .hm-attrs { grid-template-columns: 1fr; }
+    .hm-attrs li:nth-child(n+2) { border-top: 1px solid var(--rule); }
   }
 
   /* --- 4 · 投資家の判断を起点に ----------------------------------------- */
@@ -364,12 +381,12 @@
           <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
             <h3 class="hm-city">ロンドン</h3>
             <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。インカムとリポジショニングの双方に機会があります。</p>
-            <p class="hm-attrs"><span>世界的な流動性</span><span class="sep" aria-hidden="true">·</span><wbr><span>厚みのあるテナント市場</span><span class="sep" aria-hidden="true">·</span><wbr><span>一棟所有が可能な希少物件</span><span class="sep" aria-hidden="true">·</span><wbr><span>明確な権利関係</span><span class="sep" aria-hidden="true">·</span><wbr><span>確立された融資市場</span><span class="sep" aria-hidden="true">·</span><wbr><span>幅広い買い手層</span></p>
+            <ul class="hm-attrs"><li>世界的な流動性</li><li>厚みのあるテナント市場</li><li>一棟所有が可能な希少物件</li><li>明確な権利関係</li><li>確立された融資市場</li><li>幅広い買い手層</li></ul>
           </div>
           <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
             <h3 class="hm-city">アムステルダム</h3>
             <p class="h-body hm-copy">供給が限られたコンパクトな市場。厳格な都市計画、堅調なテナント需要、そして機関投資家層の厚みが、立地と品質の高い物件を支えます。</p>
-            <p class="hm-attrs"><span>限られた供給</span><span class="sep" aria-hidden="true">·</span><wbr><span>機関投資家層の厚み</span><span class="sep" aria-hidden="true">·</span><wbr><span>厳格な都市計画</span><span class="sep" aria-hidden="true">·</span><wbr><span>希少な歴史的建築ストック</span><span class="sep" aria-hidden="true">·</span><wbr><span>底堅いテナント需要</span><span class="sep" aria-hidden="true">·</span><wbr><span>コンパクトな中心市街地</span></p>
+            <ul class="hm-attrs"><li>限られた供給</li><li>機関投資家層の厚み</li><li>厳格な都市計画</li><li>希少な歴史的建築ストック</li><li>底堅いテナント需要</li><li>コンパクトな中心市街地</li></ul>
           </div>
         </div>
       </div>
