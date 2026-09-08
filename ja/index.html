@@ -83,7 +83,7 @@
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
   .hi { padding: clamp(72px, 7vw, 104px) 0 clamp(64px, 6vw, 92px); }
-  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: clamp(18px, 2vw, 26px) 0 0; max-width: 1060px; }
+  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: 1060px; }
   .hi-support { margin-top: clamp(18px, 2vw, 24px); font-size: clamp(16px, 15.2px + 0.3vw, 18px); line-height: 1.85; max-width: 38em; }
   .hi-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); }
   .hi-col { padding: clamp(28px, 3vw, 40px) clamp(24px, 3vw, 44px) 0 0; }
@@ -162,9 +162,11 @@
   @keyframes hm-fade { from { opacity: 0; } to { opacity: 1; } }
   .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.85vw, 26px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 28em; }
-  .hm-attrs { list-style: none; margin: clamp(22px, 2.4vw, 30px) 0 0; padding: 16px 0 0; border-top: 1px solid var(--rule); display: flex; }
-  .hm-attrs li { flex: 1 1 0; min-width: 0; font-family: var(--jp); font-size: 13.5px; line-height: 1.65; color: var(--ink); padding-right: 14px; }
-  .hm-attrs li + li { border-left: 1px solid var(--rule); padding-left: 14px; }
+  /* Six market attributes as one run of text on the hairline, as English.
+     Six Japanese labels will not sit in six divided cells at this width. */
+  .hm-attrs { margin: clamp(22px, 2.4vw, 30px) 0 0; padding: 16px 0 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 13.5px; line-height: 1.9; color: var(--ink); max-width: 34em; }
+  .hm-attrs span:not(.sep) { white-space: nowrap; }
+  .hm-attrs .sep { color: var(--ink-4); padding: 0 0.45em; }
   @media (prefers-reduced-motion: reduce) {
     .hm-land, .hm-mark .dot::before, .hm-mark .dot::after, .hm-mark .name, .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
     .js .hm-panel.is-on { animation: none; }
@@ -183,8 +185,7 @@
     .hm-mark { left: var(--xm); top: var(--ym); }
     .hm-mark .name { font-size: 12.5px; }
     .hm-photo { aspect-ratio: 16 / 10; }
-    .hm-attrs { flex-direction: column; gap: 10px; }
-    .hm-attrs li + li { border-left: 0; padding-left: 0; }
+    .hm-attrs { max-width: none; }
   }
 
   /* --- 4 · 投資家の判断を起点に ----------------------------------------- */
@@ -275,9 +276,8 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <span class="h-eyebrow">投資家側に立つ、欧州不動産</span>
       <h2 class="hi-statement" id="hi-title">投資家の立場から、欧州不動産を考える。</h2>
-      <p class="h-body hi-support">Reiwa Capitalは、特定の商品やファンドを販売する立場ではなく、投資家の目的と判断基準を起点に欧州不動産投資を支援します。投資方針の整理、投資機会の発掘・分析、取得・資金調達の調整、取得後の事業計画モニタリングまでを一貫して支援し、案件の発掘から保有期間を通じて、一貫して投資家の立場を保ちます。</p>
+      <p class="h-body hi-support">投資分析・審査、現地との連携・調整、保有期間中の事業計画モニタリングにより、取得から売却までの投資を支えます。重要な投資判断は、投資家が行います。</p>
     </div>
     <div class="hi-cols">
       <div class="hi-col">
@@ -364,12 +364,12 @@
           <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
             <h3 class="hm-city">ロンドン</h3>
             <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。インカムとリポジショニングの双方に機会があります。</p>
-            <ul class="hm-attrs"><li>世界的な流動性</li><li>厚みのあるテナント市場</li><li>一棟所有が可能な希少物件</li></ul>
+            <p class="hm-attrs"><span>世界的な流動性</span><span class="sep" aria-hidden="true">·</span><wbr><span>厚みのあるテナント市場</span><span class="sep" aria-hidden="true">·</span><wbr><span>一棟所有が可能な希少物件</span><span class="sep" aria-hidden="true">·</span><wbr><span>明確な権利関係</span><span class="sep" aria-hidden="true">·</span><wbr><span>確立された融資市場</span><span class="sep" aria-hidden="true">·</span><wbr><span>幅広い買い手層</span></p>
           </div>
           <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
             <h3 class="hm-city">アムステルダム</h3>
             <p class="h-body hm-copy">供給が限られたコンパクトな市場。厳格な都市計画、堅調なテナント需要、そして機関投資家層の厚みが、立地と品質の高い物件を支えます。</p>
-            <ul class="hm-attrs"><li>限られた供給</li><li>機関投資家層の厚み</li><li>厳格な都市計画</li></ul>
+            <p class="hm-attrs"><span>限られた供給</span><span class="sep" aria-hidden="true">·</span><wbr><span>機関投資家層の厚み</span><span class="sep" aria-hidden="true">·</span><wbr><span>厳格な都市計画</span><span class="sep" aria-hidden="true">·</span><wbr><span>希少な歴史的建築ストック</span><span class="sep" aria-hidden="true">·</span><wbr><span>底堅いテナント需要</span><span class="sep" aria-hidden="true">·</span><wbr><span>コンパクトな中心市街地</span></p>
           </div>
         </div>
       </div>

@@ -144,6 +144,10 @@
   .om-col h3 { margin: 0 0 clamp(18px, 2vw, 26px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); }
   /* The one Latin column heading keeps the English micro-label treatment. */
   .om-col h3.lat { font-family: 'DM Sans', sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; }
+  /* The Reiwa column is headed by the lockup, at the cap-height of the other
+     two heads so the three column heads share one baseline. As English. */
+  .om-col--reiwa h3 { line-height: 1; }
+  .om-lockup { display: block; height: 14px; width: auto; }
   .om-list { list-style: none; margin: 0; padding: 0; }
   .om-list li { font-family: var(--jp); font-size: clamp(15px, 14.2px + 0.35vw, 17.5px); line-height: 1.55; color: var(--ink-2); padding: 6px 0; transition: opacity 180ms var(--ease-out); }
   .om-col--reiwa .om-list li { font-size: clamp(16.5px, 14.6px + 0.6vw, 21px); color: var(--ink); padding: 7px 0; letter-spacing: 0.004em; }
@@ -173,7 +177,9 @@
   .ip-statement { margin: clamp(24px, 2.8vw, 38px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(28px, 18px + 2.2vw, 45px); line-height: 1.34; letter-spacing: 0.004em; color: var(--ink); max-width: 11em; }
   .ip-copy { margin: clamp(30px, 3.4vw, 46px) 0 0; max-width: 33em; }
   .ip-close { margin: clamp(40px, 4.4vw, 62px) 0 0; padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-size: clamp(17px, 14.6px + 0.6vw, 23px); line-height: 1.65; letter-spacing: 0.004em; color: var(--ink); }
-  .ip-close span { display: block; }
+  /* The three actors carry the weight; the verbs stay quiet. As English. */
+  .ip-close span { display: block; color: var(--ink-2); }
+  .ip-close b { font-weight: 500; color: var(--ink); }
   @media (max-width: 760px) { .ip { padding-bottom: 84px; } .ip > .shell { padding-top: 80px; } .ip-statement { max-width: 10em; } }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
@@ -196,7 +202,6 @@
   <div class="inner">
     <h1>投資判断の前に、<br>確かな検証を。</h1>
     <p class="sub">投資家の意思決定を軸に、投資方針の整理から取得・保有までを一貫して支援します。</p>
-    <span class="loc">ロンドン · アムステルダム</span>
   </div>
 </section>
 
@@ -279,7 +284,7 @@
       </div>
 
       <div class="om-col om-col--reiwa">
-        <h3 class="lat">Reiwa Capital</h3>
+        <h3 class="lat"><img class="om-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="120" height="14"></h3>
         <ul class="om-list">
           <li data-ph="acq">投資分析・審査</li>
           <li data-ph="acq exit">調整</li>
@@ -303,7 +308,6 @@
       </div>
     </div>
 
-    <p class="om-note"><span>外部専門家は、投資家または保有主体のために案件ごとに選任されます。法務、税務、会計、鑑定評価その他の専門的助言は、それぞれの選任された専門アドバイザーが行います。</span></p>
   </div>
 </section>
 
@@ -313,7 +317,7 @@
     <span class="h-eyebrow">投資原則</span>
     <p class="ip-statement" id="ip-title">重要な投資判断は、<br>投資家が行います。</p>
     <p class="h-body ip-copy">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p>
-    <p class="ip-close"><span>投資家が判断する。</span><span>Reiwaが調整する。</span><span>専門家が助言する。</span></p>
+    <p class="ip-close"><span><b>投資家</b>が判断する。</span><span><b>Reiwa</b>が調整する。</span><span><b>専門家</b>が助言する。</span></p>
   </div>
 </section>
 
