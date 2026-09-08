@@ -86,6 +86,10 @@
   /* --- Section scaffold ------------------------------------------------ */
   .ab-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
   .ab-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
+  /* The continuity framework carries less floor than the other sections:
+     the rail and the aligned rows close it, so the next section can begin
+     nearer the useful content. Desktop only. */
+  @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(66px, 6.1vw, 92px); } }
   .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
   .ab-head { max-width: 1060px; }
   /* 24 Japanese characters holds every heading on this page to one line
@@ -95,25 +99,35 @@
   @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
   /* --- 2 · REIWAの役割: three stages, rules and arrows, no boxes -------- */
-  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); position: relative; }
+  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto auto; margin-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--rule-strong); position: relative; }
   .aw-stage { padding: clamp(28px, 3vw, 40px) clamp(28px, 3.4vw, 52px) 0 0; position: relative; }
   @supports (grid-template-rows: subgrid) {
-    .aw-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+    .aw-stage { display: grid; grid-row: span 5; grid-template-rows: subgrid; align-content: start; }
   }
-  .aw-stage + .aw-stage { border-left: 1px solid var(--rule); padding-left: clamp(28px, 3.4vw, 52px); }
-  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: -6px; top: clamp(40px, 3.9vw, 54px); width: 11px; height: 11px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
+  .aw-stage + .aw-stage { padding-left: clamp(28px, 3.4vw, 52px); }
+  /* Rail arrowhead: a 6px chevron on the rail line, just before each
+     following stage. Quiet by design — continuity, not a workflow. */
+  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: calc(-1 * clamp(28px, 3.4vw, 52px) / 2 - 3px); top: calc(clamp(28px, 3vw, 40px) + 3px); width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); opacity: 0.85; }
   /* 保有期間中のモニタリング is eleven full-width glyphs against a 379px
      column; the English 30px ceiling wrapped it, 27px does not. */
   .aw-stage h3 { margin: 16px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.75vw, 27px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
-  .aw-role { margin: 12px 0 0; align-self: start; font-family: var(--jp); font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.7; color: var(--ink); }
-  .aw-detail { margin: 16px 0 0; align-self: start; padding-top: 16px; border-top: 1px solid var(--rule); max-width: 22em; }
+  .aw-gap { display: block; height: 14px; }
+  .aw-role { margin: 10px 0 0; align-self: start; font-weight: 500; font-family: var(--jp); font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.7; color: var(--ink); }
+  .aw-detail { margin: 0; align-self: start; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 22em; }
   @media (min-width: 861px) { .aw-stage h3 { min-height: 2.6em; } }
+  /* The rail, as English: one hairline per stage from its numeral to the next
+     stage's edge, ending at the last node. The numeral masks its own start. */
+  @media (min-width: 861px) {
+    .aw-stage:not(:last-child)::after { content: ""; position: absolute; left: 0; right: 0; top: calc(clamp(28px, 3vw, 40px) + 6px); height: 1px; background: var(--rule); pointer-events: none; }
+    .aw-stage .h-num { position: relative; z-index: 1; justify-self: start; background: var(--paper-warm); padding-right: 10px; }
+  }
   @media (max-width: 860px) {
     .aw-stages { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 36px; }
     .aw-stage { display: block; grid-row: auto; }
+    .aw-stage:not(:last-child)::after { content: none; }
+    .aw-stage + .aw-stage::before { content: none; }
     .aw-stage, .aw-stage + .aw-stage { padding: 26px 0 26px; border-left: 0; border-bottom: 1px solid var(--rule); }
     .aw-stage:last-child { border-bottom: 0; padding-bottom: 0; }
-    .aw-stage + .aw-stage::before { left: 4px; top: -6px; transform: rotate(135deg); }
     .aw-detail { max-width: none; }
   }
 
@@ -244,18 +258,21 @@
         <span class="h-num" aria-hidden="true">01</span>
         <h3>投資方針</h3>
         <p class="aw-role">投資目的、投資基準、意思決定の要件。</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">投資家が何を実現しようとしているか、資金をどのように投じるか、どの条件を満たす必要があるかを起点とします。</p>
       </div>
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">02</span>
         <h3>現地との連携・調整</h3>
         <p class="aw-role">案件の発掘、デューデリジェンス、資金調達、取得。</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">各案件は、機会があるからではなく、当初の投資方針に照らして評価し、調整します。</p>
       </div>
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">03</span>
         <h3>保有期間中のモニタリング</h3>
         <p class="aw-role">事業計画、報告、保有に関する重要な判断。</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">取得後も同じ投資家の視点を保ち、事業計画の進捗、重要な判断、そして出口までを支援します。</p>
       </div>
     </div>

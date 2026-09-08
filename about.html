@@ -75,6 +75,10 @@
   /* --- Section scaffold, matching Home's rhythm ------------------------ */
   .ab-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
   .ab-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
+  /* The continuity framework carries less floor than the other sections:
+     the rail and the aligned rows close it, so the next section can begin
+     nearer the useful content. Desktop only. */
+  @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(66px, 6.1vw, 92px); } }
   .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
   .ab-head { max-width: 1060px; }
   .ab-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
@@ -82,38 +86,44 @@
   @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
   /* --- 2 · Why Reiwa exists: three stages, rules and arrows, no boxes -- */
-  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; margin-top: clamp(44px, 5vw, 72px); border-top: 1px solid var(--rule-strong); position: relative; }
+  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto auto; margin-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--rule-strong); position: relative; }
   .aw-stage { padding: clamp(28px, 3vw, 40px) clamp(28px, 3.4vw, 52px) 0 0; position: relative; }
   /* Numeral, title, role and detail line up across all three stages, so the
      rule above each detail reads as one continuous horizontal line rather
      than three at different heights. */
   @supports (grid-template-rows: subgrid) {
-    .aw-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+    .aw-stage { display: grid; grid-row: span 5; grid-template-rows: subgrid; align-content: start; }
   }
-  .aw-stage + .aw-stage { border-left: 1px solid var(--rule); padding-left: clamp(28px, 3.4vw, 52px); }
+  .aw-stage + .aw-stage { padding-left: clamp(28px, 3.4vw, 52px); }
   /* The arrow sits on the rule between stages — the progression is drawn by
      the grid itself, not by a box around each step. */
-  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: -6px; top: clamp(40px, 3.9vw, 54px); width: 11px; height: 11px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
+  /* Rail arrowhead: a 6px chevron on the rail line, just before each
+     following stage. Quiet by design — continuity, not a workflow. */
+  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: calc(-1 * clamp(28px, 3.4vw, 52px) / 2 - 3px); top: calc(clamp(28px, 3vw, 40px) + 3px); width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); opacity: 0.85; }
   .aw-stage h3 { margin: 16px 0 0; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 19px + 0.9vw, 30px); line-height: 1.14; letter-spacing: -0.012em; color: var(--ink); }
-  .aw-role { margin: 12px 0 0; align-self: start; font-size: clamp(15.5px, 15px + 0.2vw, 17px); color: var(--ink); }
-  .aw-detail { margin: 16px 0 0; align-self: start; padding-top: 16px; border-top: 1px solid var(--rule); max-width: 34ch; }
+  .aw-gap { display: block; height: 14px; }
+  .aw-role { margin: 10px 0 0; align-self: start; font-weight: 500; font-size: clamp(15.5px, 15px + 0.2vw, 17px); color: var(--ink); }
+  .aw-detail { margin: 0; align-self: start; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 34ch; }
   /* Refinement: while the three stages sit side by side, the title area is a
      constant two lines so role and detail share one baseline. */
   @media (min-width: 861px) { .aw-stage h3 { min-height: 2.3em; } }
   /* Brand: one hairline runs through the three numerals — continuity drawn, not
      stated — with a single sumire square at the centre stage. Structural only. */
   @media (min-width: 861px) {
-    .aw-stages::before { content: ""; position: absolute; left: 0; right: 0; top: calc(clamp(28px, 3vw, 40px) + 6px); height: 1px; background: var(--rule); pointer-events: none; }
-    .aw-stages::after { content: ""; position: absolute; left: 50%; top: calc(clamp(28px, 3vw, 40px) + 3px); width: 7px; height: 7px; margin-left: -3.5px; background: var(--reiwa-node, #5E3D78); pointer-events: none; }
-    .aw-stage .h-num { position: relative; z-index: 1; background: var(--paper-warm); padding-right: 10px; }
+    /* The rail: one hairline per stage, running from its numeral to the next
+       stage's edge, so the line ends at the last node instead of running on
+       to the container edge. The numeral masks its own start. */
+    .aw-stage:not(:last-child)::after { content: ""; position: absolute; left: 0; right: 0; top: calc(clamp(28px, 3vw, 40px) + 6px); height: 1px; background: var(--rule); pointer-events: none; }
+    .aw-stage .h-num { position: relative; z-index: 1; justify-self: start; background: var(--paper-warm); padding-right: 10px; }
   }
   @media (max-width: 860px) {
     .aw-stages { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 36px; }
     .aw-stage { display: block; grid-row: auto; }
+    .aw-stage:not(:last-child)::after { content: none; }
+    .aw-stage + .aw-stage::before { content: none; }
     .aw-stage, .aw-stage + .aw-stage { padding: 26px 0 26px; border-left: 0; border-bottom: 1px solid var(--rule); }
     .aw-stage:last-child { border-bottom: 0; padding-bottom: 0; }
     /* Vertical progression: the chevron turns to point down the column. */
-    .aw-stage + .aw-stage::before { left: 4px; top: -6px; transform: rotate(135deg); }
     .aw-detail { max-width: none; }
   }
 
@@ -243,18 +253,21 @@
         <span class="h-num" aria-hidden="true">01</span>
         <h3>Investor Mandate</h3>
         <p class="aw-role">Objectives, parameters and decision requirements.</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">The process begins with the investor’s objectives, how capital should be deployed and the conditions that need to be satisfied.</p>
       </div>
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">02</span>
         <h3>Local Coordination</h3>
         <p class="aw-role">Sourcing, diligence, financing and acquisition.</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">Each opportunity is assessed and coordinated against the original mandate rather than pursued simply because it is available.</p>
       </div>
       <div class="aw-stage">
         <span class="h-num" aria-hidden="true">03</span>
         <h3>Ownership Oversight</h3>
         <p class="aw-role">Business planning, reporting and key ownership decisions.</p>
+        <span class="aw-gap" aria-hidden="true"></span>
         <p class="h-body aw-detail">After acquisition, the same investor perspective continues through performance monitoring, strategic decisions and eventual exit.</p>
       </div>
     </div>
