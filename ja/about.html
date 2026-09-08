@@ -171,6 +171,34 @@
   .am-facts dt { font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 8px; }
   .am-facts dd { margin: 0; }
   .am-subs { color: var(--ink); }
+  /* Market snapshot shell — London now, Amsterdam in the next pass. Map and
+     side column at 53/47, a 2:1 photograph, and the four facts as a 2x2
+     editorial grid beneath one shared rule. Scoped by modifier so the other
+     panel keeps its current framing until it is refined in turn. */
+  .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
+  .am-panel--snapshot .am-legend { margin-top: 12px; }
+  .am-panel--snapshot .am-note { margin-top: 8px; }
+  .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
+  .am-panel--snapshot .am-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
+  .am-panel--snapshot .am-facts > div { padding: 12px 0 14px; border-top: 0; }
+  .am-panel--snapshot .am-facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .am-panel--snapshot .am-facts dd { font-size: 14px; line-height: 1.75; }
+  .am-panel--snapshot .am-subs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; row-gap: 2px; font-size: 13.5px; line-height: 1.6; }
+  .am-panel--snapshot .am-subs li { margin: 0; }
+  /* Between the Home stack point and the old stack point the two zones still
+     hold for the snapshot; the map takes the wide framing, not the tall one. */
+  @media (min-width: 901px) and (max-width: 1024px) {
+    .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); gap: 32px; }
+    .am-panel--snapshot .am-map { aspect-ratio: 0.95; }
+    .am-panel--snapshot .am-img--wide { display: block; }
+    .am-panel--snapshot .am-img--tall { display: none; }
+    .am-panel--snapshot .ab-lab { left: var(--x); top: var(--y); }
+  }
+  @media (max-width: 900px) { .am-panel--snapshot .am-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .am-panel--snapshot .am-facts { grid-template-columns: 1fr; }
+    .am-panel--snapshot .am-facts > div:nth-child(n+2) { border-top: 1px solid var(--rule); }
+  }
   @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
   @media (max-width: 1024px) {
     .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
@@ -291,7 +319,7 @@
       <button class="am-tab" type="button" role="tab" id="am-tab-london" data-market="london" aria-selected="true" aria-controls="am-panel-london">ロンドン</button>
       <button class="am-tab" type="button" role="tab" id="am-tab-amsterdam" data-market="amsterdam" aria-selected="false" aria-controls="am-panel-amsterdam" tabindex="-1">アムステルダム</button>
     </div>
-    <div class="am-panel is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
+    <div class="am-panel am-panel--snapshot is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -324,7 +352,7 @@
           <dl class="am-facts">
             <div><dt>市場の特性</dt><dd class="h-body">世界有数の不動産投資市場。豊富な取引量、幅広い買い手層、成熟した専門家ネットワーク。</dd></div>
             <div><dt>注力領域</dt><dd class="h-body">テナント需要と流動性を理解できる、プライムセントラルおよび確立した商業エリアに絞り込みます。</dd></div>
-            <div><dt>注力エリア</dt><dd class="h-body am-subs">Mayfair · St James’s · Marylebone · South Kensington · Chelsea · Soho / Fitzrovia · City Core · Farringdon / Clerkenwell · Shoreditch / City Fringe</dd></div>
+            <div><dt>注力エリア</dt><dd class="h-body am-subs"><ul><li>Mayfair</li><li>St James’s</li><li>Marylebone</li><li>South Kensington</li><li>Chelsea</li><li>Soho / Fitzrovia</li><li>City Core</li><li>Farringdon / Clerkenwell</li><li>Shoreditch / City Fringe</li></ul></dd></div>
             <div><dt>適合する理由</dt><dd class="h-body">機関投資家層の厚み、高い取引流動性、そして長期にわたる買い手層の広さ。</dd></div>
           </dl>
         </div>
