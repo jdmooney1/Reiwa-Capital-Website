@@ -141,7 +141,7 @@
   }
 
   /* --- 3 · Operating model --------------------------------------------- */
-  .om-phase { display: flex; flex-wrap: wrap; gap: 0 clamp(22px, 2.4vw, 34px); margin: clamp(36px, 4vw, 52px) 0 clamp(34px, 3.6vw, 48px); border-bottom: 1px solid var(--rule); }
+  .om-phase { display: flex; flex-wrap: wrap; gap: 0 clamp(22px, 2.4vw, 34px); margin: clamp(36px, 4vw, 52px) 0 clamp(28px, 3vw, 40px); border-bottom: 1px solid var(--rule); }
   .om-ph { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 0 0 12px; min-height: 40px; cursor: pointer; font-family: var(--jp); font-size: clamp(15px, 14px + 0.35vw, 17px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 180ms var(--ease-out); touch-action: manipulation; }
   .om-ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 180ms var(--ease-out); }
   .om-ph[aria-checked="true"] { color: var(--ink); }
@@ -149,23 +149,39 @@
   @media (hover: hover) { .om-ph:not([aria-checked="true"]):hover { color: var(--ink-2); } }
   .om-ph:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-  .om-cols { --om-gap: clamp(28px, 3.6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--om-gap); align-items: start; }
-  .om-col { position: relative; min-width: 0; padding-top: clamp(20px, 2.2vw, 28px); border-top: 1px solid var(--rule); }
-  .om-col--investor { border-top: 2px solid var(--ink); }
-  .om-col--reiwa { border-top: 2px solid var(--reiwa-node, #5E3D78); }
-  .om-col + .om-col::before { content: ""; position: absolute; left: calc(-1 * var(--om-gap) / 2 - 3px); top: -5px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .om-col h3 { margin: 0 0 clamp(18px, 2vw, 26px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); }
+  .om-cols { --om-gap: clamp(28px, 3.6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: var(--om-gap); align-items: start; }
+  /* Three parties on one relationship rail. Each column is a subgrid so the
+     heads, the rail and the first lines share rows: row one carries the
+     heading or the lockup, row two the rail, row three the list. */
+  @supports (grid-template-rows: subgrid) {
+    .om-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; }
+    .om-col:nth-child(1) { grid-column: 1; } .om-col:nth-child(2) { grid-column: 2; } .om-col:nth-child(3) { grid-column: 3; }
+  }
+  .om-col { position: relative; min-width: 0; }
+  .om-col h3 { margin: 0; align-self: end; font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.2; text-transform: none; color: var(--eyebrow-ink); }
   /* The one Latin column heading keeps the English micro-label treatment. */
   .om-col h3.lat { font-family: 'DM Sans', sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; }
-  /* The Reiwa column is headed by the lockup, at the cap-height of the other
-     two heads so the three column heads share one baseline. As English. */
+  /* Decision rights sit with the investor, so that head is set in ink. */
+  .om-col--investor h3 { color: var(--ink); }
   .om-col--reiwa h3 { line-height: 1; }
-  .om-lockup { display: block; height: 14px; width: auto; }
-  .om-list { list-style: none; margin: 0; padding: 0; }
+  .om-lockup { display: block; height: 20px; width: auto; }
+  /* The rail: a node per party on one hairline, arrowheads pointing the way
+     work flows — the investor's decisions to Reiwa, Reiwa's coordination to
+     the specialists. Ink for authority, sumire for the junction, an outline
+     for expertise. Flow, not delegation. */
+  .om-rail { position: relative; display: block; height: 9px; margin-top: clamp(14px, 1.5vw, 18px); }
+  .om-rail i { position: absolute; left: 0; top: 0; width: 9px; height: 9px; background: var(--ink); }
+  .om-col--reiwa .om-rail i { background: var(--reiwa-node, #5E3D78); }
+  .om-col--specialists .om-rail i { left: 1px; top: 1px; width: 7px; height: 7px; background: transparent; border: 1px solid var(--ink-3); }
+  .om-rail::before { content: ""; position: absolute; left: 15px; right: calc(-1 * var(--om-gap)); top: 4px; height: 1px; background: var(--rule-strong); }
+  .om-rail::after { content: ""; position: absolute; right: calc(-1 * var(--om-gap) + 6px); top: 1px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .om-col:last-child .om-rail::before, .om-col:last-child .om-rail::after { content: none; }
+  .om-list { list-style: none; margin: clamp(16px, 1.8vw, 22px) 0 0; padding: 0; }
   .om-list li { font-family: var(--jp); font-size: clamp(15px, 14.2px + 0.35vw, 17.5px); line-height: 1.55; color: var(--ink-2); padding: 6px 0; transition: opacity 180ms var(--ease-out); }
-  .om-col--reiwa .om-list li { font-size: clamp(16.5px, 14.6px + 0.6vw, 21px); color: var(--ink); padding: 7px 0; letter-spacing: 0.004em; }
+  /* Reiwa's verbs are the diagram's largest type — the coordinating layer. */
+  .om-col--reiwa .om-list li { font-size: clamp(16.5px, 14.6px + 0.6vw, 21px); color: var(--ink); padding: 5px 0; letter-spacing: 0.004em; }
   .om-col--specialists .om-list { columns: 2; column-gap: clamp(16px, 1.8vw, 28px); }
-  .om-col--specialists .om-list li { font-size: clamp(14.5px, 14px + 0.2vw, 16px); break-inside: avoid; }
+  .om-col--specialists .om-list li { font-size: clamp(14.5px, 14px + 0.2vw, 16px); padding: 4px 0; break-inside: avoid; }
   /* De-emphasis floor: 0.72 measured 4.12:1 against the warm paper, short
      of AA. 0.76 is the minimum that clears 4.5:1 (4.56:1 measured), so the
      phase selector keeps as much of its emphasis contrast as accessibility
@@ -173,13 +189,19 @@
   .om-list li.is-quiet { opacity: 0.76; }
   .om-note { max-width: none; margin: clamp(34px, 3.6vw, 48px) 0 0; padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
   .om-note span { display: block; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); max-width: 50em; }
+  .ap-sec.om { padding-bottom: clamp(70px, 6.4vw, 96px); }
   @media (prefers-reduced-motion: reduce) { .om-ph, .om-ph::after, .om-list li { transition: none; } }
   @media (max-width: 900px) {
-    .om-cols { grid-template-columns: 1fr; }
-    .om-col { margin-top: 24px; padding-top: 20px; }
-    .om-col:first-child { margin-top: 0; }
-    .om-col + .om-col::before { left: 0; top: -6px; transform: rotate(135deg); background: var(--paper-warm); }
-    .om-phase { margin-bottom: 28px; }
+    .om-cols { grid-template-columns: 1fr; grid-template-rows: none; }
+    .om-cols > .om-col { display: block; grid-row: auto; grid-column: auto; }
+    /* Stacked: the rail folds to a hairline and one small arrowhead between
+       groups, the same cue the lifecycle uses. */
+    .om-rail { display: none; }
+    .om-col + .om-col { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--rule); }
+    .om-col + .om-col::before { content: ""; position: absolute; left: 0; top: -6px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(135deg); background: var(--paper-warm); }
+    .om-lockup { height: 18px; }
+    .om-list { margin-top: 14px; }
+    .om-phase { margin-bottom: 24px; }
     .om-note { margin-top: 28px; padding-top: 18px; }
   }
   @media (max-width: 359px) { .om-col--specialists .om-list { columns: 1; } }
@@ -286,6 +308,7 @@
     <div class="om-cols">
       <div class="om-col om-col--investor">
         <h3>投資家の意思決定</h3>
+        <span class="om-rail" aria-hidden="true"><i></i></span>
         <ul class="om-list">
           <li data-ph="acq">投資方針を定める</li>
           <li data-ph="acq own">重要な投資判断を行う</li>
@@ -294,7 +317,8 @@
       </div>
 
       <div class="om-col om-col--reiwa">
-        <h3 class="lat"><img class="om-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="120" height="14"></h3>
+        <h3 class="lat"><img class="om-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></h3>
+        <span class="om-rail" aria-hidden="true"><i></i></span>
         <ul class="om-list">
           <li data-ph="acq">投資分析・審査</li>
           <li data-ph="acq exit">調整</li>
@@ -305,6 +329,7 @@
 
       <div class="om-col om-col--specialists">
         <h3>欧州の外部専門家</h3>
+        <span class="om-rail" aria-hidden="true"><i></i></span>
         <ul class="om-list">
           <li data-ph="acq exit">法務</li>
           <li data-ph="exit">税務</li>
