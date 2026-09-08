@@ -90,6 +90,7 @@
      the rail and the aligned rows close it, so the next section can begin
      nearer the useful content. Desktop only. */
   @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(66px, 6.1vw, 92px); } }
+  @media (min-width: 761px) { .ab-sec.ac { padding-bottom: clamp(70px, 6.4vw, 94px); } }
   .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
   .ab-head { max-width: 1060px; }
   /* 24 Japanese characters holds every heading on this page to one line
@@ -224,19 +225,23 @@
   }
 
   /* --- 4 · 対象投資家 --------------------------------------------------- */
-  .ac-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(40px, 4.5vw, 64px); border-top: 1px solid var(--rule-strong); }
-  .ac-item { padding: clamp(26px, 2.8vw, 36px) clamp(20px, 2.2vw, 32px) 0 0; }
-  .ac-item + .ac-item { border-left: 1px solid var(--rule); padding-left: clamp(20px, 2.2vw, 32px); }
-  .ac-item h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 15px + 0.45vw, 21px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .ac-item p { margin: 12px 0 0; }
+  .ac-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto; margin-top: clamp(32px, 3.4vw, 48px); border-top: 1px solid var(--rule-strong); }
+  /* Four profiles on three shared tracks — identifier, title, description —
+     so every title sits in one zone and every description starts on one row,
+     whichever title wraps. Identifiers only: no rail, no arrows. */
+  .ac-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; padding: clamp(20px, 2vw, 26px) clamp(20px, 2.2vw, 32px) 0 0; }
+  .ac-item .h-num { justify-self: start; align-self: start; }
+  .ac-item + .ac-item { padding-left: clamp(20px, 2.2vw, 32px); }
+  .ac-item h3 { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 15px + 0.45vw, 21px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .ac-item p { margin: 8px 0 0; align-self: start; }
   @media (max-width: 900px) {
     .ac-grid { grid-template-columns: 1fr 1fr; }
     .ac-item:nth-child(-n+2) { border-bottom: 1px solid var(--rule); padding-bottom: clamp(26px, 2.8vw, 36px); }
     .ac-item:nth-child(odd) { border-left: 0; padding-left: 0; }
-    .ac-item:nth-child(even) { border-left: 1px solid var(--rule); }
   }
   @media (max-width: 620px) {
-    .ac-grid { grid-template-columns: 1fr; margin-top: 32px; }
+    .ac-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 32px; }
+    .ac-item { display: block; grid-row: auto; }
     .ac-item, .ac-item + .ac-item { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); }
     .ac-item:last-child { border-bottom: 0; }
   }
@@ -253,7 +258,6 @@
     .ac-grid { grid-template-columns: 1fr 1fr; }
     .ac-item:nth-child(-n+2) { border-bottom: 1px solid var(--rule); padding-bottom: clamp(26px, 2.8vw, 36px); }
     .ac-item:nth-child(odd) { border-left: 0; padding-left: 0; }
-    .ac-item:nth-child(even) { border-left: 1px solid var(--rule); }
   }
   </style>
 </head>
@@ -408,10 +412,10 @@
       <p class="h-body ab-lede">Reiwa Capitalは、欧州不動産を直接かつ適切な統制のもとで保有することを検討する、日本の経験豊富な投資家とともに取り組みます。</p>
     </div>
     <div class="ac-grid">
-      <div class="ac-item"><h3>日本の事業会社</h3><p class="h-body">自己資金による、選定した欧州不動産への戦略的な投資。</p></div>
-      <div class="ac-item"><h3>ファミリーオフィス</h3><p class="h-body">秘匿性、透明性、そして統制を伴う長期保有。</p></div>
-      <div class="ac-item"><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的なアクセス。</p></div>
-      <div class="ac-item"><h3>プライベート投資家</h3><p class="h-body">クロスボーダー投資を検討する経験豊富な投資家による直接保有。</p></div>
+      <div class="ac-item"><span class="h-num" aria-hidden="true">01</span><h3>日本の事業会社</h3><p class="h-body">自己資金による、選定した欧州不動産への戦略的な投資。</p></div>
+      <div class="ac-item"><span class="h-num" aria-hidden="true">02</span><h3>ファミリーオフィス</h3><p class="h-body">秘匿性、透明性、そして統制を伴う長期保有。</p></div>
+      <div class="ac-item"><span class="h-num" aria-hidden="true">03</span><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的なアクセス。</p></div>
+      <div class="ac-item"><span class="h-num" aria-hidden="true">04</span><h3>プライベート投資家</h3><p class="h-body">クロスボーダー投資を検討する経験豊富な投資家による直接保有。</p></div>
     </div>
   </div>
 </section>
