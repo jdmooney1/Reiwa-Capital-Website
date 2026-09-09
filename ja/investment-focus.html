@@ -221,45 +221,62 @@
     .mech--repo .mk { padding: 0 4px; }
   }
 
-  /* --- 5 · リポジショニングのプロセス ------------------------------------ */
-  .rj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; column-gap: var(--rj-gap, clamp(28px, 3.4vw, 60px)); margin-top: clamp(26px, 2.8vw, 38px); }
+  /* --- 5 · Repositioning journey ---------------------------------------
+     Five stages on one hairline: sumire node, numeral, name, short
+     labels. The three working stages sit under one bracket and carry
+     one more label each — density through structure, not colour. Below,
+     one two-ended line from current to stabilised income, captioned as
+     the business plan and marked indicative. No figures, no facade
+     drawings, no rising curve. */
+  .rj { margin-top: clamp(26px, 2.8vw, 38px); }
+  .rj-line { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; column-gap: var(--rj-gap, clamp(24px, 3vw, 48px)); list-style: none; margin: 0; padding: 0; }
   @supports (grid-template-rows: subgrid) { .rj-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; } }
   .rj-stage { position: relative; min-width: 0; }
-  .rj-art { display: block; width: 100%; max-width: 228px; height: auto; }
-  .rj-art .el-line   { fill: none; stroke: var(--ink-2); stroke-opacity: 0.72; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
-  .rj-art .el-hair   { stroke: var(--ink-3); stroke-opacity: 0.42; stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .rj-art .el-grd    { stroke: var(--ink-2); stroke-opacity: 0.68; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
-  .rj-art .el-bay    { fill: none; stroke: var(--ink-3); stroke-opacity: 0.55; stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .rj-art .el-bay-dim { fill: none; stroke: var(--ink-3); stroke-opacity: 0.24; stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .rj-art .el-mull   { stroke: var(--ink-3); stroke-opacity: 0.34; stroke-width: 0.8; vector-effect: non-scaling-stroke; }
-  .rj-art .el-glaze  { fill: var(--warm-300, #E5E1D5); fill-opacity: 0.62; }
-  .rj-art .el-hatch  { stroke: var(--ink-3); stroke-opacity: 0.26; stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .rj-art .el-scaf   { stroke: var(--reiwa-node, #5E3D78); stroke-opacity: 0.42; stroke-width: 1; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; }
-  .rj-art .el-zone   { fill: none; stroke: var(--reiwa-node, #5E3D78); stroke-opacity: 0.85; stroke-width: 1.2; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
-  .rj-art .el-emph      { fill: none; stroke: var(--reiwa-node, #5E3D78); stroke-opacity: 1; stroke-width: 1.8; vector-effect: non-scaling-stroke; }
-  .rj-art .el-emph-line { stroke: var(--reiwa-node, #5E3D78); stroke-opacity: 0.95; stroke-width: 1.8; vector-effect: non-scaling-stroke; }
-  .rj-art .el-focus  { fill: var(--reiwa-node, #5E3D78); fill-opacity: 0.85; stroke: none; }
-  .rj-rule { position: relative; display: block; height: 9px; margin-top: clamp(20px, 2.2vw, 30px); }
-  .rj-rule i { position: absolute; left: 0; top: 0; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
-  .rj-rule::before { content: ""; position: absolute; left: 15px; right: calc(-1 * var(--rj-gap, 60px)); top: 4px; height: 1px; background: var(--rule-strong); }
-  .rj-rule::after { content: ""; position: absolute; right: calc(-1 * var(--rj-gap, 60px) + 6px); top: 1px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  /* Bracket over Diagnose, Execute and Stabilise. */
+  .rj-span { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--rj-gap, clamp(24px, 3vw, 48px)); }
+  .rj-span > span { position: relative; grid-column: 2 / 5; display: block; margin-right: calc(-1 * var(--rj-gap, 48px) + 9px); padding: 0 0 8px; border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: none; line-height: 1.2; color: var(--eyebrow-ink); text-align: center; }
+  .rj-span > span::before, .rj-span > span::after { content: ""; position: absolute; bottom: -7px; width: 1px; height: 7px; background: var(--rule); }
+  .rj-span > span::before { left: 0; }
+  .rj-span > span::after { right: 0; }
+  .rj-rule { position: relative; display: block; height: 7px; margin-top: 18px; }
+  .rj-rule i { position: absolute; left: 0; top: 0; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); }
+  .rj-rule::before { content: ""; position: absolute; left: 13px; right: calc(-1 * var(--rj-gap, 48px)); top: 3px; height: 1px; background: var(--rule-strong); }
+  .rj-rule::after { content: ""; position: absolute; right: calc(-1 * var(--rj-gap, 48px) + 6px); top: 0; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
   .rj-stage:last-child .rj-rule::before, .rj-stage:last-child .rj-rule::after { content: none; }
-  .rj-stage h3 { margin: 18px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(19px, 13.6px + 0.7vw, 25px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
+  .rj-num { display: block; margin-top: 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .rj-stage h3 { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(18px, 12.6px + 0.6vw, 23px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .rj-list { list-style: none; margin: 12px 0 0; padding: 0; align-self: start; }
-  .rj-list li { font-family: var(--jp); font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.65; color: var(--ink-2); padding: 3px 0; }
+  .rj-list li { font-family: var(--jp); font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.65; color: var(--ink-2); padding: 3px 0; }
+  /* Value-creation line: two ends, one direction, the business plan between. */
+  .rj-value { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; column-gap: 14px; align-items: center; margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
+  .rj-v-k { font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: none; line-height: 1.3; color: var(--ink); white-space: nowrap; }
+  .rj-v-line { position: relative; display: flex; justify-content: center; align-items: center; height: 1px; background: var(--rule-strong); }
+  .rj-v-line::after { content: ""; position: absolute; right: 1px; top: -3px; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .rj-v-line i { padding: 0 12px; background: var(--paper-warm); font-family: var(--jp); font-style: normal; font-size: 11.5px; letter-spacing: 0.04em; line-height: 1.3; color: var(--ink-3); white-space: nowrap; }
+  .rj-note { margin: 10px 0 0; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-4); }
   @media (max-width: 900px) {
-    .rj { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 26px; border-top: 1px solid var(--rule-strong); }
-    .rj-stage { display: grid; grid-row: auto; grid-template-rows: auto auto auto; grid-template-columns: 110px minmax(0, 1fr); column-gap: 18px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--rule); }
-    .rj-stage:last-child { border-bottom: 0; }
-    .rj-art { max-width: 110px; grid-column: 1; grid-row: 1 / span 3; margin-top: 2px; }
-    .rj-rule { grid-column: 2; grid-row: 1; height: 0; margin: 0; }
-    .rj-rule i { display: none; }
-    .rj-rule::before { content: none; }
-    .rj-stage + .rj-stage .rj-rule::after { content: ""; left: 0; right: auto; top: -26px; transform: rotate(135deg); background: var(--paper-warm); }
-    .rj-stage:first-child .rj-rule::after { content: none; }
-    .rj-stage h3 { grid-column: 2; grid-row: 2; margin: 0; font-size: clamp(19px, 5.2vw, 23px); }
-    .rj-list { grid-column: 2; grid-row: 3; margin: 8px 0 0; }
-    .rj-list li { padding: 2px 0; }
+    /* One stage per row, a chevron between; no rail. */
+    .rj { margin-top: 26px; }
+    .rj-span { display: none; }
+    .rj-line { display: block; border-top: 1px solid var(--rule-strong); }
+    .rj-stage { display: grid; grid-row: auto; grid-template-columns: 7px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; align-items: baseline; padding: 18px 0 16px; }
+    .rj-stage + .rj-stage { border-top: 1px solid var(--rule); }
+    .rj-stage + .rj-stage::before { content: ""; position: absolute; left: 1px; top: -4px; width: 6px; height: 6px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
+    .rj-rule { grid-column: 1; grid-row: 1; height: 7px; margin: 0; align-self: center; }
+    .rj-rule::before, .rj-rule::after { content: none; }
+    .rj-num { grid-column: 2; grid-row: 1; margin: 0; }
+    .rj-stage h3 { grid-column: 2; grid-row: 1; margin: 0 0 0 30px; font-size: clamp(18px, 4.8vw, 21px); }
+    .rj-list { grid-column: 2; grid-row: 2; display: flex; flex-wrap: wrap; margin: 6px 0 0; }
+    .rj-list li { padding: 0; font-size: 13px; }
+    .rj-list li:not(:last-child)::after { content: "·"; padding: 0 0.5em; color: var(--ink-4); }
+    .rj-value { margin-top: 22px; padding-top: 18px; column-gap: 10px; }
+    .rj-v-k { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .rj-v-line i { display: none; }
+    .rj-value { grid-template-columns: 1fr 1fr; row-gap: 10px; }
+    .rj-v-k:last-child { text-align: right; }
+    .rj-v-line { grid-column: 1 / -1; grid-row: 2; }
   }
 
   /* --- 6 · 投資規律: five principles on one ruled strip ------------------ */
@@ -415,171 +432,45 @@
     </div>
 
     <div class="rj">
-      <div class="rj-stage">
-        <svg class="rj-art" viewBox="0 0 240 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="建物の立面図。複数の区画が薄く描かれ、地上階の一区画が空室として示されています。">
-          <g opacity="0.72">
-          <line class="el-grd" x1="4" y1="162" x2="236" y2="162"/>
-          <rect class="el-line" x="20" y="24" width="200" height="6"/>
-          <rect class="el-line" x="24" y="30" width="192" height="132"/>
-          <line class="el-hair" x1="24" y1="64" x2="216" y2="64"/>
-          <line class="el-hair" x1="24" y1="96" x2="216" y2="96"/>
-          <line class="el-hair" x1="24" y1="128" x2="216" y2="128"/>
-          <line class="el-hair" x1="24" y1="134" x2="216" y2="134"/>
-          <rect class="el-bay" x="36" y="38" width="24" height="20"/>
-          <line class="el-hatch" x1="38" y1="58" x2="48" y2="48"/>
-          <line class="el-hatch" x1="48" y1="58" x2="58" y2="48"/>
-          <rect class="el-bay" x="72" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="38" x2="84" y2="58"/>
-          <rect class="el-bay" x="108" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="38" x2="120" y2="58"/>
-          <rect class="el-bay" x="144" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="38" x2="156" y2="58"/>
-          <rect class="el-bay" x="180" y="38" width="24" height="20"/>
-          <line class="el-hatch" x1="182" y1="58" x2="192" y2="48"/>
-          <line class="el-hatch" x1="192" y1="58" x2="202" y2="48"/>
-          <rect class="el-bay" x="36" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="70" x2="48" y2="90"/>
-          <rect class="el-bay" x="72" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="70" x2="84" y2="90"/>
-          <rect class="el-bay" x="108" y="70" width="24" height="20"/>
-          <line class="el-hatch" x1="110" y1="90" x2="120" y2="80"/>
-          <line class="el-hatch" x1="120" y1="90" x2="130" y2="80"/>
-          <rect class="el-bay" x="144" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="70" x2="156" y2="90"/>
-          <rect class="el-bay" x="180" y="70" width="24" height="20"/>
-          <line class="el-hatch" x1="182" y1="90" x2="192" y2="80"/>
-          <line class="el-hatch" x1="192" y1="90" x2="202" y2="80"/>
-          <rect class="el-bay" x="36" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="102" x2="48" y2="122"/>
-          <rect class="el-bay" x="72" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="102" x2="84" y2="122"/>
-          <rect class="el-bay" x="108" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="102" x2="120" y2="122"/>
-          <rect class="el-bay" x="144" y="102" width="24" height="20"/>
-          <line class="el-hatch" x1="146" y1="122" x2="156" y2="112"/>
-          <line class="el-hatch" x1="156" y1="122" x2="166" y2="112"/>
-          <rect class="el-bay" x="180" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="102" x2="192" y2="122"/>
-          <rect class="el-bay" x="36" y="138" width="68" height="24"/>
-          <rect class="el-bay" x="110" y="138" width="20" height="24"/>
-          <rect class="el-bay" x="136" y="138" width="68" height="24"/>
-          <line class="el-hatch" x1="38" y1="162" x2="62" y2="138"/>
-          <line class="el-hatch" x1="60" y1="162" x2="84" y2="138"/>
-          <line class="el-hatch" x1="82" y1="162" x2="106" y2="138"/>
-          </g>
-        </svg>
+      <div class="rj-span" aria-hidden="true"><span>改善施策</span></div>
+      <ol class="rj-line">
+      <li class="rj-stage">
         <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <h3>現状</h3>
-        <ul class="rj-list"><li>空室</li><li>低利用スペース</li><li>古い内装・設備</li><li>市場賃料を下回る収益</li></ul>
-      </div>
+        <span class="rj-num">01</span>
+        <h3>取得</h3>
+        <ul class="rj-list"><li>市場賃料を下回る収益</li><li>低利用スペース</li><li>古い内装・設備</li></ul>
+      </li>
 
-      <div class="rj-stage">
-        <svg class="rj-art" viewBox="0 0 240 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="同じ立面図。仮設足場に覆われ、二つの改修範囲が示されています。">
-          <line class="el-grd" x1="4" y1="162" x2="236" y2="162"/>
-          <rect class="el-line" x="20" y="24" width="200" height="6"/>
-          <rect class="el-line" x="24" y="30" width="192" height="132"/>
-          <line class="el-hair" x1="24" y1="64" x2="216" y2="64"/>
-          <line class="el-hair" x1="24" y1="96" x2="216" y2="96"/>
-          <line class="el-hair" x1="24" y1="128" x2="216" y2="128"/>
-          <line class="el-hair" x1="24" y1="134" x2="216" y2="134"/>
-          <rect class="el-bay" x="36" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="38" x2="48" y2="58"/>
-          <rect class="el-bay" x="72" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="38" x2="84" y2="58"/>
-          <rect class="el-bay" x="108" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="38" x2="120" y2="58"/>
-          <rect class="el-bay" x="144" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="38" x2="156" y2="58"/>
-          <rect class="el-bay" x="180" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="38" x2="192" y2="58"/>
-          <rect class="el-bay" x="36" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="70" x2="48" y2="90"/>
-          <rect class="el-bay" x="72" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="70" x2="84" y2="90"/>
-          <rect class="el-bay" x="108" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="70" x2="120" y2="90"/>
-          <rect class="el-bay" x="144" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="70" x2="156" y2="90"/>
-          <rect class="el-bay" x="180" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="70" x2="192" y2="90"/>
-          <rect class="el-bay" x="36" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="102" x2="48" y2="122"/>
-          <rect class="el-bay" x="72" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="102" x2="84" y2="122"/>
-          <rect class="el-bay" x="108" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="102" x2="120" y2="122"/>
-          <rect class="el-bay" x="144" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="102" x2="156" y2="122"/>
-          <rect class="el-bay" x="180" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="102" x2="192" y2="122"/>
-          <rect class="el-bay" x="36" y="138" width="68" height="24"/>
-          <rect class="el-bay" x="110" y="138" width="20" height="24"/>
-          <rect class="el-bay" x="136" y="138" width="68" height="24"/>
-          <line class="el-scaf" x1="16" y1="18" x2="16" y2="162"/>
-          <line class="el-scaf" x1="68" y1="18" x2="68" y2="162"/>
-          <line class="el-scaf" x1="120" y1="18" x2="120" y2="162"/>
-          <line class="el-scaf" x1="172" y1="18" x2="172" y2="162"/>
-          <line class="el-scaf" x1="224" y1="18" x2="224" y2="162"/>
-          <line class="el-scaf" x1="16" y1="20" x2="224" y2="20"/>
-          <line class="el-scaf" x1="16" y1="64" x2="224" y2="64"/>
-          <line class="el-scaf" x1="16" y1="96" x2="224" y2="96"/>
-          <line class="el-scaf" x1="16" y1="128" x2="224" y2="128"/>
-          <line class="el-scaf" x1="16" y1="158" x2="224" y2="158"/>
-          <rect class="el-zone" x="30" y="34" width="180" height="56"/>
-          <rect class="el-zone" x="32" y="134" width="76" height="30"/>
-        </svg>
+      <li class="rj-stage">
         <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <h3>改善施策</h3>
-        <ul class="rj-list"><li>重点的な改修</li><li>リーシング</li><li>資本的支出</li><li>運営改善</li></ul>
-      </div>
+        <span class="rj-num">02</span>
+        <h3>診断・分析</h3>
+        <ul class="rj-list"><li>リーシング</li><li>資本的支出の要否</li><li>用途</li><li>運営上の課題</li></ul>
+      </li>
 
-      <div class="rj-stage">
-        <svg class="rj-art" viewBox="0 0 240 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label="同じ立面図。すべての区画にガラスが入り、地上階の二区画が稼働しています。">
-          <line class="el-grd" x1="4" y1="162" x2="236" y2="162"/>
-          <rect class="el-emph" x="20" y="24" width="200" height="6"/>
-          <rect class="el-line" x="24" y="30" width="192" height="132"/>
-          <line class="el-hair" x1="24" y1="64" x2="216" y2="64"/>
-          <line class="el-hair" x1="24" y1="96" x2="216" y2="96"/>
-          <line class="el-hair" x1="24" y1="128" x2="216" y2="128"/>
-          <line class="el-emph-line" x1="24" y1="134" x2="216" y2="134"/>
-          <rect class="el-bay el-glaze" x="36" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="38" x2="48" y2="58"/>
-          <rect class="el-bay el-glaze" x="72" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="38" x2="84" y2="58"/>
-          <rect class="el-bay el-glaze" x="108" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="38" x2="120" y2="58"/>
-          <rect class="el-bay el-glaze" x="144" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="38" x2="156" y2="58"/>
-          <rect class="el-bay el-glaze" x="180" y="38" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="38" x2="192" y2="58"/>
-          <rect class="el-bay el-glaze" x="36" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="70" x2="48" y2="90"/>
-          <rect class="el-bay el-glaze" x="72" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="70" x2="84" y2="90"/>
-          <rect class="el-bay el-glaze" x="108" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="70" x2="120" y2="90"/>
-          <rect class="el-bay el-glaze" x="144" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="70" x2="156" y2="90"/>
-          <rect class="el-bay el-glaze" x="180" y="70" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="70" x2="192" y2="90"/>
-          <rect class="el-bay el-glaze" x="36" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="48" y1="102" x2="48" y2="122"/>
-          <rect class="el-bay el-glaze" x="72" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="84" y1="102" x2="84" y2="122"/>
-          <rect class="el-bay el-glaze" x="108" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="120" y1="102" x2="120" y2="122"/>
-          <rect class="el-bay el-glaze" x="144" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="156" y1="102" x2="156" y2="122"/>
-          <rect class="el-bay el-glaze" x="180" y="102" width="24" height="20"/>
-          <line class="el-mull" x1="192" y1="102" x2="192" y2="122"/>
-          <rect class="el-bay el-glaze" x="36" y="138" width="68" height="24"/>
-          <rect class="el-focus" x="110" y="138" width="20" height="24"/>
-          <rect class="el-bay el-glaze" x="136" y="138" width="68" height="24"/>
-        </svg>
+      <li class="rj-stage">
         <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <h3>安定稼働</h3>
-        <ul class="rj-list"><li>収益の改善</li><li>テナントへの訴求力向上</li><li>物件品質の改善</li><li>明確な売却戦略</li></ul>
-      </div>
+        <span class="rj-num">03</span>
+        <h3>実行</h3>
+        <ul class="rj-list"><li>重点的な改修</li><li>資本的支出</li><li>リーシング</li><li>運営改善</li></ul>
+      </li>
+
+      <li class="rj-stage">
+        <span class="rj-rule" aria-hidden="true"><i></i></span>
+        <span class="rj-num">04</span>
+        <h3>安定化</h3>
+        <ul class="rj-list"><li>収益</li><li>稼働率</li><li>物件品質</li><li>事業計画</li></ul>
+      </li>
+
+      <li class="rj-stage">
+        <span class="rj-rule" aria-hidden="true"><i></i></span>
+        <span class="rj-num">05</span>
+        <h3>価値実現</h3>
+        <ul class="rj-list"><li>保有</li><li>借換え</li><li>売却</li></ul>
+      </li>
+      </ol>
+      <div class="rj-value" role="img" aria-label="現状の収益から、事業計画を通じて、安定化後の収益へ。概念図であり、成果を保証するものではありません。"><span class="rj-v-k">現状の収益</span><span class="rj-v-line"><i>事業計画</i></span><span class="rj-v-k">安定化後の収益</span></div>
+      <p class="rj-note">概念図であり、成果を保証するものではありません。</p>
     </div>
   </div>
 </section>
