@@ -162,12 +162,63 @@
   .ch-assets dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 8px; }
   .ch-assets dd { margin: 0; font-family: var(--jp); font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.7; color: var(--ink); }
   .ch-assets .sep { color: var(--ink-4); padding: 0 0.3em; }
+  /* --- 4b · Strategy mechanics -------------------------------------------
+     One hairline diagram per strategy, same atoms (rule, sumire node,
+     12px label), three geometries: a continuous line for Income, a
+     stepped, directed sequence for Repositioning, a converging bracket
+     for Hospitality. No figures, no arrows in colour. */
+  .mech { --mk-font: var(--jp); --mk-size: 12px; --mk-ls: 0.04em; margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: var(--mk-font); font-size: var(--mk-size); line-height: 1.3; letter-spacing: var(--mk-ls); color: var(--ink-3); }
+  .mech .mk { display: inline-flex; align-items: center; white-space: nowrap; }
+  .mech .mk--em { color: var(--ink); font-weight: 500; }
+  .mech .mk--em::before { content: ""; width: 5px; height: 5px; margin-right: 8px; background: var(--reiwa-node, #5E3D78); flex: none; }
+  .mech .ml { position: relative; display: block; min-width: 14px; height: 1px; background: var(--rule-strong); }
+  .mech .ml--dir::after { content: ""; position: absolute; right: 1px; top: -3px; width: 5px; height: 5px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .mech .ml--work { background: repeating-linear-gradient(90deg, var(--reiwa-node, #5E3D78) 0 5px, transparent 5px 9px); opacity: 0.55; }
+  /* Income: one unbroken line, the holding stretch longest. */
+  .mech--income { display: flex; align-items: center; gap: 10px; }
+  .mech--income .ml { flex: 1 1 0; }
+  .mech--income .ml--hold { flex-grow: 2.2; }
+  /* Repositioning: the sequence steps up through the works. */
+  .mech--repo { display: grid; grid-template-columns: auto minmax(14px, 1fr) auto minmax(14px, 1fr) auto minmax(14px, 1fr) auto; grid-template-rows: auto auto; row-gap: 8px; align-items: center; }
+  .mech--repo .mk { padding: 0 8px; }
+  .mech--repo .mk:first-child { padding-left: 0; grid-row: 2; }
+  .mech--repo .mk:last-child { padding-right: 0; }
+  .mech--repo .ml--rise { grid-column: 2; grid-row: 1 / 3; align-self: stretch; height: auto; background: none; }
+  .mech--repo .ml--rise::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0.65em; height: 1px; background: var(--rule-strong); }
+  .mech--repo .ml--rise::after { content: ""; position: absolute; right: 0; top: 0.65em; bottom: 0.65em; width: 1px; background: var(--rule-strong); }
+  .mech--repo .mk--em { grid-row: 1; grid-column: 3; }
+  .mech--repo .ml--work { grid-row: 1; grid-column: 4; }
+  .mech--repo .mk:nth-child(5) { grid-row: 1; grid-column: 5; }
+  .mech--repo .ml--dir:nth-child(6) { grid-row: 1; grid-column: 6; }
+  .mech--repo .mk:last-child { grid-row: 1; grid-column: 7; }
+  /* Hospitality: three inputs gathered by a bracket into one case. */
+  .mech--hosp { display: grid; grid-template-columns: auto 22px 1px 22px auto; grid-template-rows: auto auto auto; row-gap: 6px; align-items: center; justify-content: start; }
+  .mech--hosp .mk:nth-child(-n+3) { grid-column: 1; }
+  .mech--hosp .mk:nth-child(1) { grid-row: 1; }
+  .mech--hosp .mk:nth-child(2) { grid-row: 2; }
+  .mech--hosp .mk:nth-child(3) { grid-row: 3; }
+  .mech--hosp .ml--in { grid-column: 2; min-width: 0; margin-left: 8px; }
+  .mech--hosp .ml--in:nth-child(4) { grid-row: 1; }
+  .mech--hosp .ml--in:nth-child(5) { grid-row: 2; }
+  .mech--hosp .ml--in:nth-child(6) { grid-row: 3; }
+  .mech--hosp .ml--spine { grid-column: 3; grid-row: 1 / 4; align-self: stretch; height: auto; min-width: 0; width: 1px; background: none; }
+  .mech--hosp .ml--spine::before { content: ""; position: absolute; left: 0; width: 1px; top: 0.65em; bottom: 0.65em; background: var(--rule-strong); }
+  .mech--hosp .ml--out { grid-column: 4; grid-row: 2; min-width: 0; }
+  .mech--hosp .mk--em { grid-column: 5; grid-row: 2; margin-left: 8px; }
   @media (max-width: 900px) {
     .ar-list { margin-top: 28px; }
     .chapter { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; }
     .chapter--rev .ch-media { order: 0; }
     .ch-media { aspect-ratio: 3 / 2; }
     .ch-thesis { max-width: none; }
+    .mech { margin-top: 16px; }
+    .mech--income { gap: 8px; }
+    .mech--repo { grid-template-columns: auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto; }
+    .mech--repo .mk { padding: 0 6px; }
+  }
+  @media (max-width: 360px) {
+    .mech--repo { grid-template-columns: auto minmax(10px, 1fr) auto minmax(10px, 1fr) auto minmax(10px, 1fr) auto; }
+    .mech--repo .mk { padding: 0 4px; }
   }
 
   /* --- 5 · リポジショニングのプロセス ------------------------------------ */
@@ -325,6 +376,7 @@
           <span class="ch-num">01</span>
           <h3>インカム</h3>
           <p class="h-body ch-thesis">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフローを重視します。</p>
+          <div class="mech mech--income" role="img" aria-label="取得、インカム、保有、売却。インカムを重視する段階。"><span class="mk">取得</span><span class="ml"></span><span class="mk mk--em">インカム</span><span class="ml ml--hold"></span><span class="mk">保有</span><span class="ml"></span><span class="mk">売却</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>プライムリテール<span class="sep" aria-hidden="true">·</span>住宅</dd></dl>
         </div>
       </article>
@@ -335,6 +387,7 @@
           <span class="ch-num">02</span>
           <h3>リポジショニング</h3>
           <p class="h-body ch-thesis">稼働率、収益、長期的な資産価値を改善できる明確な余地を持つ物件を対象とします。</p>
+          <div class="mech mech--repo" role="img" aria-label="取得、改善、安定化、保有・売却。改善を重視する段階。"><span class="mk">取得</span><span class="ml ml--rise"></span><span class="mk mk--em">改善</span><span class="ml ml--work ml--dir"></span><span class="mk">安定化</span><span class="ml ml--dir"></span><span class="mk">保有・売却</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>複合用途<span class="sep" aria-hidden="true">·</span>低利用物件</dd></dl>
         </div>
       </article>
@@ -345,6 +398,7 @@
           <span class="ch-num">03</span>
           <h3>ホスピタリティ</h3>
           <p class="h-body ch-thesis">立地、オペレーターの質、営業実績、そして資産としての基礎的条件が長期的な価値を支えるオペレーショナル不動産を対象とします。</p>
+          <div class="mech mech--hosp" role="img" aria-label="不動産、オペレーター、営業実績が一つの投資判断に集約される。"><span class="mk">不動産</span><span class="mk">オペレーター</span><span class="mk">営業実績</span><span class="ml ml--in"></span><span class="ml ml--in"></span><span class="ml ml--in"></span><span class="ml ml--spine"></span><span class="ml ml--out"></span><span class="mk mk--em">投資判断</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>ホテル<span class="sep" aria-hidden="true">·</span>サービスアパートメント<span class="sep" aria-hidden="true">·</span>中長期滞在型宿泊施設</dd></dl>
         </div>
       </article>
