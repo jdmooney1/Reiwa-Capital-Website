@@ -87,45 +87,39 @@
   .if-lede { margin-top: clamp(12px, 1.4vw, 18px); max-width: 34em; }
   @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
 
-  /* --- 2 · Investment Lens --------------------------------------------- */
-  .lens { position: relative; width: 100%; max-width: 1000px; margin: clamp(10px, 1.2vw, 18px) auto 0; aspect-ratio: 1000 / 532; }
-  .lens svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .lens .ring { fill: none; stroke: var(--ink-4); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .lens .spoke { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .lens .node { fill: var(--reiwa-node, #5E3D78); }
-  .lens-core { position: absolute; left: 50%; top: var(--cy, 50%); transform: translate(-50%, -50%); text-align: center; width: 14em; padding: 10px 10px; background: var(--paper-warm); }
-  .lens-core span { display: block; font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--ink-3); }
-  .lens-core strong { display: block; margin-top: 9px; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 15px + 0.9vw, 29px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  /* Measured widths, not ch: the side labels have ~264px of clear frame and
-     the corner labels ~324px at the 840px maximum. */
-  .lens-item { position: absolute; left: var(--x); top: var(--y); width: var(--w, 16em); }
-  .lens-item--r, .lens-item--l { --w: 16em; }
-  .lens-item h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(16px, 12.6px + 0.5vw, 20px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .lens-item p { margin: 7px 0 0; max-width: none; font-family: var(--jp); font-size: clamp(12.5px, 12.2px + 0.2vw, 14px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
-  .lens-item--t  { transform: translate(-50%, -100%); text-align: center; }
-  .lens-item--r  { transform: translate(0, -50%); text-align: left; }
-  .lens-item--l  { transform: translate(-100%, -50%); text-align: right; }
-  .lens-item--br { text-align: left; }
-  .lens-item--bl { transform: translate(-100%, 0); text-align: right; }
-
-  .lens-list { display: none; margin: 30px 0 0; border-top: 1px solid var(--rule-strong); }
-  .lens-list > div { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-  .lens-list > div:last-child { border-bottom: 0; }
-  .lens-list h3 { position: relative; margin: 0; padding-left: 22px; font-family: var(--jp); font-weight: 400; font-size: clamp(18px, 4.8vw, 22px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .lens-list h3::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
-  .lens-list p { margin: 7px 0 0 22px; max-width: none; font-family: var(--jp); font-size: 15px; line-height: 1.8; color: var(--ink-2); }
-  .lens-list-core { display: none; margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rule-strong); }
-  .lens-list-core span { display: block; font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-3); }
-  .lens-list-core strong { display: block; margin-top: 9px; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 5.6vw, 27px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  @media (max-width: 900px) { .lens { display: none; } .lens-list, .lens-list-core { display: block; } }
-
+  /* --- 2 · Five tests: the conjunction, set in type -----------------------
+     The tests are one sentence whose "and"s carry the only colour, then a
+     five-column ledger of what we look for and what ends the case, closed
+     by one rule and four words. No apparatus: discipline as language. */
+  .ft-h2 { max-width: 30ch; }
+  .ft-h2 em { font-style: normal; color: var(--reiwa-node, #5E3D78); }
+  .ft-ledger { display: grid; grid-template-columns: clamp(96px, 11vw, 132px) repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(16px, 2vw, 28px); margin-top: clamp(34px, 3.8vw, 50px); border-top: 1px solid var(--rule-strong); }
+  .ft-keys, .ft-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; padding-top: clamp(16px, 1.8vw, 22px); }
+  .ft-keys span { display: block; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); }
+  .ft-keys span:nth-child(2) { grid-row: 2; margin-top: 8px; padding-top: 3px; }
+  .ft-keys span:nth-child(3) { grid-row: 3; margin-top: 14px; padding-top: 13px; }
+  .ft-col h3 { grid-row: 1; margin: 0; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .ft-for { grid-row: 2; margin: 8px 0 0; font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.2vw, 14.5px); line-height: 1.7; color: var(--ink-2); }
+  .ft-stop { grid-row: 3; position: relative; margin: 14px 0 0; padding-top: 10px; font-family: var(--jp); font-size: 13px; line-height: 1.7; color: var(--ink-3); }
+  .ft-stop::before { content: ""; position: absolute; left: 0; top: 0; width: 24px; height: 1px; background: var(--rule); }
+  .ft-k { display: none; }
+  .ft-close { margin: clamp(28px, 3vw, 40px) 0 0; padding-top: clamp(14px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-size: clamp(17px, 15px + 0.5vw, 20px); font-weight: 500; line-height: 1.3; color: var(--ink); }
+  @media (max-width: 760px) {
+    .ft-ledger { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 28px; }
+    .ft-keys { display: none; }
+    .ft-col { display: block; grid-row: auto; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+    .ft-col:last-child { border-bottom: 0; }
+    .ft-for { max-width: 40ch; }
+    .ft-stop { margin-top: 10px; padding-top: 0; }
+    .ft-stop::before { content: none; }
+    .ft-k { display: block; margin-bottom: 2px; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); }
+  }
   /* --- 3 · 投資方針の概要: five fields on hairlines ---------------------- */
   /* Five parallel dimensions on one shared rule. Each field anchors to the
      rule with one small sumire square; nothing encloses a field and nothing
      points from one to the next — the mandate is a matrix, not a process. */
   .mg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(18px, 2.2vw, 32px); margin-top: clamp(22px, 2.4vw, 32px); border-top: 1px solid var(--rule-strong); }
   .mg > div { position: relative; min-width: 0; padding: clamp(18px, 2vw, 24px) 0 0; }
-  .mg > div::before { content: ""; position: absolute; left: 0; top: -4px; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); }
   .mg dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 9px; }
   .mg dd { margin: 0; font-family: var(--jp); font-size: clamp(14px, 13.2px + 0.28vw, 16px); line-height: 1.6; color: var(--ink); }
   .mg dd + dd { margin-top: 5px; }
@@ -156,152 +150,69 @@
   .ch-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .ch-text { min-width: 0; }
   .ch-num { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .ch-text h3 { margin: 12px 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(24px, 17px + 1.1vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
+  .ch-text h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(24px, 17px + 1.1vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .ch-thesis { margin: clamp(12px, 1.4vw, 18px) 0 0; max-width: 25em; font-size: clamp(15px, 14.6px + 0.25vw, 16.5px); }
   .ch-assets { margin: clamp(18px, 2vw, 26px) 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
   .ch-assets dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 8px; }
   .ch-assets dd { margin: 0; font-family: var(--jp); font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.7; color: var(--ink); }
   .ch-assets .sep { color: var(--ink-4); padding: 0 0.3em; }
-  /* --- 4b · Strategy mechanics -------------------------------------------
-     One hairline diagram per strategy, same atoms (rule, sumire node,
-     12px label), three geometries: a continuous line for Income, a
-     stepped, directed sequence for Repositioning, a converging bracket
-     for Hospitality. No figures, no arrows in colour. */
-  .mech { --mk-font: var(--jp); --mk-size: 12px; --mk-ls: 0.04em; margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: var(--mk-font); font-size: var(--mk-size); line-height: 1.3; letter-spacing: var(--mk-ls); color: var(--ink-3); }
-  .mech .mk { display: inline-flex; align-items: center; white-space: nowrap; }
-  .mech .mk--em { color: var(--ink); font-weight: 500; }
-  .mech .mk--em::before { content: ""; width: 5px; height: 5px; margin-right: 8px; background: var(--reiwa-node, #5E3D78); flex: none; }
-  .mech .ml { position: relative; display: block; min-width: 14px; height: 1px; background: var(--rule-strong); }
-  .mech .ml--dir::after { content: ""; position: absolute; right: 1px; top: -3px; width: 5px; height: 5px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .mech .ml--work { background: repeating-linear-gradient(90deg, var(--reiwa-node, #5E3D78) 0 5px, transparent 5px 9px); opacity: 0.55; }
-  /* Income: one unbroken line, the holding stretch longest. */
-  .mech--income { display: flex; align-items: center; gap: 10px; }
-  .mech--income .ml { flex: 1 1 0; }
-  .mech--income .ml--hold { flex-grow: 2.2; }
-  /* Repositioning: the sequence steps up through the works. */
-  .mech--repo { display: grid; grid-template-columns: auto minmax(14px, 1fr) auto minmax(14px, 1fr) auto minmax(14px, 1fr) auto; grid-template-rows: auto auto; row-gap: 8px; align-items: center; }
-  .mech--repo .mk { padding: 0 8px; }
-  .mech--repo .mk:first-child { padding-left: 0; grid-row: 2; }
-  .mech--repo .mk:last-child { padding-right: 0; }
-  .mech--repo .ml--rise { grid-column: 2; grid-row: 1 / 3; align-self: stretch; height: auto; background: none; }
-  .mech--repo .ml--rise::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0.65em; height: 1px; background: var(--rule-strong); }
-  .mech--repo .ml--rise::after { content: ""; position: absolute; right: 0; top: 0.65em; bottom: 0.65em; width: 1px; background: var(--rule-strong); }
-  .mech--repo .mk--em { grid-row: 1; grid-column: 3; }
-  .mech--repo .ml--work { grid-row: 1; grid-column: 4; }
-  .mech--repo .mk:nth-child(5) { grid-row: 1; grid-column: 5; }
-  .mech--repo .ml--dir:nth-child(6) { grid-row: 1; grid-column: 6; }
-  .mech--repo .mk:last-child { grid-row: 1; grid-column: 7; }
-  /* Hospitality: three inputs gathered by a bracket into one case. */
-  .mech--hosp { display: grid; grid-template-columns: auto 22px 1px 22px auto; grid-template-rows: auto auto auto; row-gap: 6px; align-items: center; justify-content: start; }
-  .mech--hosp .mk:nth-child(-n+3) { grid-column: 1; }
-  .mech--hosp .mk:nth-child(1) { grid-row: 1; }
-  .mech--hosp .mk:nth-child(2) { grid-row: 2; }
-  .mech--hosp .mk:nth-child(3) { grid-row: 3; }
-  .mech--hosp .ml--in { grid-column: 2; min-width: 0; margin-left: 8px; }
-  .mech--hosp .ml--in:nth-child(4) { grid-row: 1; }
-  .mech--hosp .ml--in:nth-child(5) { grid-row: 2; }
-  .mech--hosp .ml--in:nth-child(6) { grid-row: 3; }
-  .mech--hosp .ml--spine { grid-column: 3; grid-row: 1 / 4; align-self: stretch; height: auto; min-width: 0; width: 1px; background: none; }
-  .mech--hosp .ml--spine::before { content: ""; position: absolute; left: 0; width: 1px; top: 0.65em; bottom: 0.65em; background: var(--rule-strong); }
-  .mech--hosp .ml--out { grid-column: 4; grid-row: 2; min-width: 0; }
-  .mech--hosp .mk--em { grid-column: 5; grid-row: 2; margin-left: 8px; }
   @media (max-width: 900px) {
     .ar-list { margin-top: 28px; }
     .chapter { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; }
     .chapter--rev .ch-media { order: 0; }
     .ch-media { aspect-ratio: 3 / 2; }
     .ch-thesis { max-width: none; }
-    .mech { margin-top: 16px; }
-    .mech--income { gap: 8px; }
-    .mech--repo { grid-template-columns: auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto minmax(12px, 1fr) auto; }
-    .mech--repo .mk { padding: 0 6px; }
-  }
-  @media (max-width: 360px) {
-    .mech--repo { grid-template-columns: auto minmax(10px, 1fr) auto minmax(10px, 1fr) auto minmax(10px, 1fr) auto; }
-    .mech--repo .mk { padding: 0 4px; }
   }
 
-  /* --- 5 · Repositioning journey ---------------------------------------
-     Five stages on one hairline: sumire node, numeral, name, short
-     labels. The three working stages sit under one bracket and carry
-     one more label each — density through structure, not colour. Below,
-     one two-ended line from current to stabilised income, captioned as
-     the business plan and marked indicative. No figures, no facade
-     drawings, no rising curve. */
-  .rj { margin-top: clamp(26px, 2.8vw, 38px); }
-  .rj-line { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; column-gap: var(--rj-gap, clamp(24px, 3vw, 48px)); list-style: none; margin: 0; padding: 0; }
-  @supports (grid-template-rows: subgrid) { .rj-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; } }
-  .rj-stage { position: relative; min-width: 0; }
-  /* Bracket over Diagnose, Execute and Stabilise. */
-  .rj-span { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--rj-gap, clamp(24px, 3vw, 48px)); }
-  .rj-span > span { position: relative; grid-column: 2 / 5; display: block; margin-right: calc(-1 * var(--rj-gap, 48px) + 9px); padding: 0 0 8px; border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: none; line-height: 1.2; color: var(--eyebrow-ink); text-align: center; }
-  .rj-span > span::before, .rj-span > span::after { content: ""; position: absolute; bottom: -7px; width: 1px; height: 7px; background: var(--rule); }
-  .rj-span > span::before { left: 0; }
-  .rj-span > span::after { right: 0; }
-  .rj-rule { position: relative; display: block; height: 7px; margin-top: 18px; }
-  .rj-rule i { position: absolute; left: 0; top: 0; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); }
-  .rj-rule::before { content: ""; position: absolute; left: 13px; right: calc(-1 * var(--rj-gap, 48px)); top: 3px; height: 1px; background: var(--rule-strong); }
-  .rj-rule::after { content: ""; position: absolute; right: calc(-1 * var(--rj-gap, 48px) + 6px); top: 0; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .rj-stage:last-child .rj-rule::before, .rj-stage:last-child .rj-rule::after { content: none; }
-  .rj-num { display: block; margin-top: 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .rj-stage h3 { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(18px, 12.6px + 0.6vw, 23px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
-  .rj-list { list-style: none; margin: 12px 0 0; padding: 0; align-self: start; }
-  .rj-list li { font-family: var(--jp); font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.65; color: var(--ink-2); padding: 3px 0; }
-  /* Value-creation line: two ends, one direction, the business plan between. */
-  .rj-value { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; column-gap: 14px; align-items: center; margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
-  .rj-v-k { font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: none; line-height: 1.3; color: var(--ink); white-space: nowrap; }
-  .rj-v-line { position: relative; display: flex; justify-content: center; align-items: center; height: 1px; background: var(--rule-strong); }
-  .rj-v-line::after { content: ""; position: absolute; right: 1px; top: -3px; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .rj-v-line i { padding: 0 12px; background: var(--paper-warm); font-family: var(--jp); font-style: normal; font-size: 11.5px; letter-spacing: 0.04em; line-height: 1.3; color: var(--ink-3); white-space: nowrap; }
-  .rj-note { margin: 10px 0 0; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-4); }
-  @media (max-width: 900px) {
-    /* One stage per row, a chevron between; no rail. */
+  /* --- 5 · Repositioning journey: one line that changes character --------
+     The asset's income as a single level line: dashed and thin on the way
+     in, through a hatched works zone holding the three active stages, and
+     solid on the way out. Level, so no chart and no implied uplift; the
+     change from dashed to solid is the argument. */
+  .rj { margin-top: clamp(34px, 3.8vw, 52px); }
+  .rj-line { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr) minmax(0, 1fr); grid-template-rows: auto 64px auto; column-gap: 0; }
+  .rj-end, .rj-zone, .rj-stage { display: block; min-width: 0; }
+  @supports (grid-template-rows: subgrid) {
+    .rj-end, .rj-zone { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; }
+    .rj-zone { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; }
+    .rj-stage { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; }
+  }
+  .rj-head { grid-row: 1; }
+  .rj-line h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(20px, 13.5px + 0.9vw, 27px); line-height: 1.12; letter-spacing: 0.004em; color: var(--ink); }
+  .rj-inc { display: block; margin-top: 8px; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); color: var(--ink); }
+  .rj-sub { display: block; margin-top: 4px; font-family: var(--jp); font-size: 11.5px; line-height: 1.4; color: var(--ink-4); }
+  .rj-end--a { padding-right: clamp(12px, 1.6vw, 22px); }
+  .rj-end--z { padding-left: clamp(12px, 1.6vw, 22px); text-align: right; }
+  .rj-band { grid-row: 2; position: relative; display: block; align-self: stretch; }
+  .rj-end--a .rj-band::before { content: ""; position: absolute; left: 0; right: calc(-1 * clamp(12px, 1.6vw, 22px)); top: 50%; height: 1px; background: repeating-linear-gradient(90deg, var(--ink-3) 0 5px, transparent 5px 11px); }
+  .rj-end--z .rj-band::before { content: ""; position: absolute; left: calc(-1 * clamp(12px, 1.6vw, 22px)); right: 0; top: calc(50% - 0.5px); height: 2px; background: var(--ink-2); }
+  .rj-stage { padding: 0 clamp(10px, 1.4vw, 18px); }
+  .rj-stage .rj-band { margin: 0 calc(-1 * clamp(10px, 1.4vw, 18px)); background-image: repeating-linear-gradient(-45deg, rgba(39,20,48,0.13) 0 1px, transparent 1px 9px); }
+  .rj-stage:first-child .rj-band { border-left: 1px solid var(--rule-strong); }
+  .rj-stage:last-child .rj-band { border-right: 1px solid var(--rule-strong); }
+  .rj-list { grid-row: 3; margin: 14px 0 0; padding: 0; font-family: var(--jp); font-size: clamp(13px, 12.5px + 0.2vw, 14px); line-height: 1.7; color: var(--ink-3); max-width: 30ch; }
+  .rj-list .sep { color: var(--ink-4); }
+  .rj-end--z .rj-list { margin-left: auto; }
+  .rj-note { margin: clamp(18px, 2vw, 26px) 0 0; font-family: var(--jp); font-size: 12.5px; line-height: 1.7; color: var(--ink-4); }
+  @media (max-width: 760px) {
+    /* Rotated: dashed line down from Acquire, the hatched strip beside the
+       three active stages, the solid line down to Realise. */
     .rj { margin-top: 26px; }
-    .rj-span { display: none; }
-    .rj-line { display: block; border-top: 1px solid var(--rule-strong); }
-    .rj-stage { display: grid; grid-row: auto; grid-template-columns: 7px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; align-items: baseline; padding: 18px 0 16px; }
-    .rj-stage + .rj-stage { border-top: 1px solid var(--rule); }
-    .rj-stage + .rj-stage::before { content: ""; position: absolute; left: 1px; top: -4px; width: 6px; height: 6px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
-    .rj-rule { grid-column: 1; grid-row: 1; height: 7px; margin: 0; align-self: center; }
-    .rj-rule::before, .rj-rule::after { content: none; }
-    .rj-num { grid-column: 2; grid-row: 1; margin: 0; }
-    .rj-stage h3 { grid-column: 2; grid-row: 1; margin: 0 0 0 30px; font-size: clamp(18px, 4.8vw, 21px); }
-    .rj-list { grid-column: 2; grid-row: 2; display: flex; flex-wrap: wrap; margin: 6px 0 0; }
-    .rj-list li { padding: 0; font-size: 13px; }
-    .rj-list li:not(:last-child)::after { content: "·"; padding: 0 0.5em; color: var(--ink-4); }
-    .rj-value { margin-top: 22px; padding-top: 18px; column-gap: 10px; }
-    .rj-v-k { font-size: 11px; }
+    .rj-line { display: block; }
+    .rj-end, .rj-zone, .rj-stage { display: grid; grid-template-columns: 40px minmax(0, 1fr); grid-template-rows: none; column-gap: 16px; padding: 0; text-align: left; }
+    .rj-zone { display: block; }
+    .rj-end--a { padding-bottom: 18px; } .rj-end--z { padding-top: 18px; }
+    .rj-head { grid-column: 2; grid-row: 1; }
+    .rj-band { grid-column: 1; grid-row: 1 / span 2; margin: 0 !important; }
+    .rj-end--a .rj-band::before { left: 19px; right: auto; top: 0; bottom: -18px; width: 1px; height: auto; background: repeating-linear-gradient(180deg, var(--ink-3) 0 5px, transparent 5px 11px); }
+    .rj-end--z .rj-band::before { left: 18.5px; right: auto; top: -18px; bottom: 0; width: 2px; height: auto; }
+    .rj-stage { padding: 12px 0; }
+    .rj-stage:first-child .rj-band { border-left: 0; border-top: 1px solid var(--rule-strong); }
+    .rj-stage:last-child .rj-band { border-right: 0; border-bottom: 1px solid var(--rule-strong); }
+    .rj-stage .rj-band { margin: -12px 0 !important; }
+    .rj-list { grid-column: 2; grid-row: 2; margin-top: 6px; max-width: none; }
+    .rj-end--z .rj-list { margin-left: 0; }
   }
-  @media (max-width: 480px) {
-    .rj-v-line i { display: none; }
-    .rj-value { grid-template-columns: 1fr 1fr; row-gap: 10px; }
-    .rj-v-k:last-child { text-align: right; }
-    .rj-v-line { grid-column: 1 / -1; grid-row: 2; }
-  }
-
-  /* --- 6 · 投資規律: five principles on one ruled strip ------------------ */
-  /* Five rules, each standing on its own: a sumire square and numeral,
-     one short local hairline under it, then the rule itself. Nothing joins
-     one to the next — these are principles, not stages. */
-  .dis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 36px); margin-top: clamp(20px, 2.2vw, 30px); }
-  .dis > div { min-width: 0; }
-  .dis span { position: relative; display: flex; align-items: center; gap: 8px; padding-bottom: 12px; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-  .dis span::before { content: ""; display: inline-block; width: 5px; height: 5px; background: var(--reiwa-node, #5E3D78); flex: none; }
-  .dis span::after { content: ""; position: absolute; left: 0; bottom: 0; width: 40px; height: 1px; background: var(--rule-strong); }
-  .dis p { margin: 0; max-width: none; font-family: var(--jp); font-size: clamp(14.5px, 13.2px + 0.4vw, 17px); line-height: 1.55; letter-spacing: 0.004em; font-weight: 500; color: var(--ink); }
-  .dis-sec { padding-bottom: clamp(40px, 3.4vw, 52px); }
-  /* Tablet: three and two. */
-  @media (min-width: 901px) and (max-width: 1024px) {
-    .dis { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: clamp(24px, 2.6vw, 32px); }
-  }
-  /* Stacked: the identifier and its rule carry the structure; no separators. */
-  @media (max-width: 900px) {
-    .dis { grid-template-columns: 1fr; column-gap: 0; row-gap: 22px; margin-top: 22px; }
-    .dis span { padding-bottom: 10px; margin-bottom: 11px; }
-  }
-
-  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
-  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
   </style>
 </head>
 <body data-page="focus" data-locale="ja" data-en-url="/investment-focus.html">
@@ -324,40 +235,18 @@
 <section class="if-sec lens-sec" data-screen-label="02 投資方針 — 投資分析" aria-labelledby="lens-title">
   <div class="shell">
     <div class="if-head">
-      <span class="h-eyebrow">投資分析</span>
-      <h2 class="h-h2" id="lens-title">五つの視点。<br>すべての案件に。</h2>
+      <span class="h-eyebrow">投資分析 · 五つの視点、すべての案件に</span>
+      <h2 class="h-h2 ft-h2" id="lens-title">立地<em>と</em>収益<em>と</em>物件の競争力<em>と</em>実行可能性<em>と</em>出口。</h2>
     </div>
-
-    <div class="lens" role="img" aria-label="五つの視点 — 立地、収益、物件の競争力、実行可能性、出口 — を総合的に検証し、一つの投資判断とします。">
-      <svg viewBox="0 0 1000 532" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <circle class="ring" cx="500" cy="284" r="190"/>
-        <line class="spoke" x1="500" y1="284" x2="500.0" y2="94.0"/>
-        <line class="spoke" x1="500" y1="284" x2="680.7" y2="225.3"/>
-        <line class="spoke" x1="500" y1="284" x2="611.7" y2="437.7"/>
-        <line class="spoke" x1="500" y1="284" x2="388.3" y2="437.7"/>
-        <line class="spoke" x1="500" y1="284" x2="319.3" y2="225.3"/>
-        <rect class="node" x="494.5" y="88.5" width="11" height="11"/>
-        <rect class="node" x="675.2" y="219.8" width="11" height="11"/>
-        <rect class="node" x="606.2" y="432.2" width="11" height="11"/>
-        <rect class="node" x="382.8" y="432.2" width="11" height="11"/>
-        <rect class="node" x="313.8" y="219.8" width="11" height="11"/>
-      </svg>
-      <div class="lens-core" aria-hidden="true" style="--cy:53.38%"><span>総合的に検証</span><strong>一つの投資判断</strong></div>
-      <div class="lens-item lens-item--t"  style="--x:50.00%;--y:15.13%"><h3>立地</h3><p>継続的なテナント需要が見込める、確立したエリア。</p></div>
-      <div class="lens-item lens-item--r"  style="--x:69.42%;--y:42.35%"><h3>収益</h3><p>現実的なリーシング前提に基づき検証。</p></div>
-      <div class="lens-item lens-item--br" style="--x:60.62%;--y:84.81%"><h3>物件の競争力</h3><p>将来の保有者にとっても競争力を維持できる建物。</p></div>
-      <div class="lens-item lens-item--bl" style="--x:39.38%;--y:84.81%"><h3>実行可能性</h3><p>モデル上だけでなく、実際に遂行可能な事業計画。</p></div>
-      <div class="lens-item lens-item--l"  style="--x:30.58%;--y:42.35%"><h3>出口</h3><p>売却時に想定できる買い手と投資需要。</p></div>
+    <div class="ft-ledger">
+      <div class="ft-keys" aria-hidden="true"><span></span><span>求める条件</span><span>見送る条件</span></div>
+      <div class="ft-col"><h3>立地</h3><p class="ft-for"><span class="ft-k">求める条件</span>継続的なテナント需要が見込める、確立したエリア。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>後から変えられない弱点。</p></div>
+      <div class="ft-col"><h3>収益</h3><p class="ft-for"><span class="ft-k">求める条件</span>現実的なリーシング前提に基づき検証。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>守りきれない収益。</p></div>
+      <div class="ft-col"><h3>物件の競争力</h3><p class="ft-for"><span class="ft-k">求める条件</span>将来の保有者にとっても競争力を維持できる建物。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>非対称な下方リスク。</p></div>
+      <div class="ft-col"><h3>実行可能性</h3><p class="ft-for"><span class="ft-k">求める条件</span>モデル上だけでなく、実際に遂行可能な事業計画。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>前提の多すぎる計画。</p></div>
+      <div class="ft-col"><h3>出口</h3><p class="ft-for"><span class="ft-k">求める条件</span>売却時に想定できる買い手と投資需要。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>一つの結果への依存。</p></div>
     </div>
-
-    <div class="lens-list">
-      <div><h3>立地</h3><p>継続的なテナント需要が見込める、確立したエリア。</p></div>
-      <div><h3>収益</h3><p>現実的なリーシング前提に基づき検証。</p></div>
-      <div><h3>物件の競争力</h3><p>将来の保有者にとっても競争力を維持できる建物。</p></div>
-      <div><h3>実行可能性</h3><p>モデル上だけでなく、実際に遂行可能な事業計画。</p></div>
-      <div><h3>出口</h3><p>売却時に想定できる買い手と投資需要。</p></div>
-    </div>
-    <div class="lens-list-core"><span>総合的に検証</span><strong>一つの投資判断</strong></div>
+    <p class="ft-close">一つの投資判断。</p>
   </div>
 </section>
 
@@ -390,10 +279,8 @@
       <article class="chapter" id="income">
         <figure class="ch-media"><img src="../assets/imagery/bg-income-980.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 50vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
-          <span class="ch-num">01</span>
           <h3>インカム</h3>
           <p class="h-body ch-thesis">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフローを重視します。</p>
-          <div class="mech mech--income" role="img" aria-label="取得、インカム、保有、売却。インカムを重視する段階。"><span class="mk">取得</span><span class="ml"></span><span class="mk mk--em">インカム</span><span class="ml ml--hold"></span><span class="mk">保有</span><span class="ml"></span><span class="mk">売却</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>プライムリテール<span class="sep" aria-hidden="true">·</span>住宅</dd></dl>
         </div>
       </article>
@@ -401,10 +288,8 @@
       <article class="chapter chapter--rev" id="repositioning">
         <figure class="ch-media"><img src="../assets/imagery/bg-repositioning-1535.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 50vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
-          <span class="ch-num">02</span>
           <h3>リポジショニング</h3>
           <p class="h-body ch-thesis">稼働率、収益、長期的な資産価値を改善できる明確な余地を持つ物件を対象とします。</p>
-          <div class="mech mech--repo" role="img" aria-label="取得、改善、安定化、保有・売却。改善を重視する段階。"><span class="mk">取得</span><span class="ml ml--rise"></span><span class="mk mk--em">改善</span><span class="ml ml--work ml--dir"></span><span class="mk">安定化</span><span class="ml ml--dir"></span><span class="mk">保有・売却</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>複合用途<span class="sep" aria-hidden="true">·</span>低利用物件</dd></dl>
         </div>
       </article>
@@ -412,10 +297,8 @@
       <article class="chapter" id="hospitality">
         <figure class="ch-media"><img style="object-position:50% 15%" src="../assets/imagery/bg-hospitality-952.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 50vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></figure>
         <div class="ch-text">
-          <span class="ch-num">03</span>
           <h3>ホスピタリティ</h3>
           <p class="h-body ch-thesis">立地、オペレーターの質、営業実績、そして資産としての基礎的条件が長期的な価値を支えるオペレーショナル不動産を対象とします。</p>
-          <div class="mech mech--hosp" role="img" aria-label="不動産、オペレーター、営業実績が一つの投資判断に集約される。"><span class="mk">不動産</span><span class="mk">オペレーター</span><span class="mk">営業実績</span><span class="ml ml--in"></span><span class="ml ml--in"></span><span class="ml ml--in"></span><span class="ml ml--spine"></span><span class="ml ml--out"></span><span class="mk mk--em">投資判断</span></div>
           <dl class="ch-assets"><dt>主な対象</dt><dd>ホテル<span class="sep" aria-hidden="true">·</span>サービスアパートメント<span class="sep" aria-hidden="true">·</span>中長期滞在型宿泊施設</dd></dl>
         </div>
       </article>
@@ -430,68 +313,41 @@
       <span class="h-eyebrow">潜在価値から安定稼働へ</span>
       <h2 class="h-h2" id="rj-title">リポジショニングのプロセス</h2>
     </div>
-
-    <div class="rj">
-      <div class="rj-span" aria-hidden="true"><span>改善施策</span></div>
-      <ol class="rj-line">
-      <li class="rj-stage">
-        <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <span class="rj-num">01</span>
-        <h3>取得</h3>
-        <ul class="rj-list"><li>市場賃料を下回る収益</li><li>低利用スペース</li><li>古い内装・設備</li></ul>
-      </li>
-
-      <li class="rj-stage">
-        <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <span class="rj-num">02</span>
-        <h3>診断・分析</h3>
-        <ul class="rj-list"><li>リーシング</li><li>資本的支出の要否</li><li>用途</li><li>運営上の課題</li></ul>
-      </li>
-
-      <li class="rj-stage">
-        <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <span class="rj-num">03</span>
-        <h3>実行</h3>
-        <ul class="rj-list"><li>重点的な改修</li><li>資本的支出</li><li>リーシング</li><li>運営改善</li></ul>
-      </li>
-
-      <li class="rj-stage">
-        <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <span class="rj-num">04</span>
-        <h3>安定化</h3>
-        <ul class="rj-list"><li>収益</li><li>稼働率</li><li>物件品質</li><li>事業計画</li></ul>
-      </li>
-
-      <li class="rj-stage">
-        <span class="rj-rule" aria-hidden="true"><i></i></span>
-        <span class="rj-num">05</span>
-        <h3>価値実現</h3>
-        <ul class="rj-list"><li>保有</li><li>借換え</li><li>売却</li></ul>
-      </li>
-      </ol>
-      <div class="rj-value" role="img" aria-label="現状の収益から、事業計画を通じて、安定化後の収益へ。概念図であり、成果を保証するものではありません。"><span class="rj-v-k">現状の収益</span><span class="rj-v-line"><i>事業計画</i></span><span class="rj-v-k">安定化後の収益</span></div>
-      <p class="rj-note">概念図であり、成果を保証するものではありません。</p>
+    <div class="rj" role="group" aria-label="リポジショニングのプロセス：取得時の状態から、診断・分析、実行、安定化を経て、保有、借換え、売却により安定化後の状態で価値実現へ。概念図であり、成果を保証するものではありません。">
+    <div class="rj-line">
+      <div class="rj-end rj-end--a">
+        <div class="rj-head"><h3>取得</h3><span class="rj-inc">取得時の状態</span><span class="rj-sub">収益 · 稼働率 · 物件品質</span></div>
+        <span class="rj-band" aria-hidden="true"></span>
+        <p class="rj-list">市場賃料を下回る収益 <span class="sep" aria-hidden="true">·</span> 低利用スペース <span class="sep" aria-hidden="true">·</span> 古い内装・設備</p>
+      </div>
+      <div class="rj-zone">
+        <div class="rj-stage">
+          <div class="rj-head"><h3>診断・分析</h3></div>
+          <span class="rj-band" aria-hidden="true"></span>
+          <p class="rj-list">リーシング <span class="sep" aria-hidden="true">·</span> 資本的支出の要否 <span class="sep" aria-hidden="true">·</span> 用途 <span class="sep" aria-hidden="true">·</span> 運営上の課題</p>
+        </div>
+        <div class="rj-stage">
+          <div class="rj-head"><h3>実行</h3></div>
+          <span class="rj-band" aria-hidden="true"></span>
+          <p class="rj-list">重点的な改修 <span class="sep" aria-hidden="true">·</span> 資本的支出 <span class="sep" aria-hidden="true">·</span> リーシング <span class="sep" aria-hidden="true">·</span> 運営改善</p>
+        </div>
+        <div class="rj-stage">
+          <div class="rj-head"><h3>安定化</h3></div>
+          <span class="rj-band" aria-hidden="true"></span>
+          <p class="rj-list">収益 <span class="sep" aria-hidden="true">·</span> 稼働率 <span class="sep" aria-hidden="true">·</span> 物件品質 <span class="sep" aria-hidden="true">·</span> 事業計画</p>
+        </div>
+      </div>
+      <div class="rj-end rj-end--z">
+        <div class="rj-head"><h3>価値実現</h3><span class="rj-inc">安定化後の状態</span><span class="rj-sub">収益 · 稼働率 · 物件品質</span></div>
+        <span class="rj-band" aria-hidden="true"></span>
+        <p class="rj-list">保有 <span class="sep" aria-hidden="true">·</span> 借換え <span class="sep" aria-hidden="true">·</span> 売却</p>
+      </div>
+    </div>
+    <p class="rj-note">概念図であり、成果を保証するものではありません。</p>
     </div>
   </div>
 </section>
 
-<!-- 投資規律 -->
-<section class="if-sec if-sec--tight dis-sec" data-screen-label="06 投資方針 — 投資規律" aria-labelledby="dis-title">
-  <div class="shell">
-    <div class="if-head">
-      <span class="h-eyebrow">投資の姿勢</span>
-      <h2 class="h-h2" id="dis-title">投資規律</h2>
-      <p class="h-body if-lede">評価でき、管理でき、実行できるものに集中します。</p>
-    </div>
-    <div class="dis">
-      <div><span>01</span><p>不動産の基礎力を最優先</p></div>
-      <div><span>02</span><p>現実的な賃料前提</p></div>
-      <div><span>03</span><p>管理可能な実行リスク</p></div>
-      <div><span>04</span><p>複数の出口戦略</p></div>
-      <div><span>05</span><p>税務は投資判断を補完するものであり、前提ではない</p></div>
-    </div>
-  </div>
-</section>
 
 </main>
 

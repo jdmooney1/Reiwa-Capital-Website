@@ -78,178 +78,86 @@
   .ap-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 15em; }
   @media (max-width: 760px) { .ap-sec { padding-bottom: 64px; } .ap-sec > .shell { padding-top: 60px; } }
 
-  /* --- 2 · Lifecycle --------------------------------------------------- */
-  .lc-grid { --lc-gap: clamp(20px, 2.4vw, 40px);
-    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto auto auto auto auto;
-    column-gap: var(--lc-gap); margin-top: clamp(48px, 5.5vw, 80px); }
-  @supports (grid-template-rows: subgrid) {
-    .lc-stage { display: grid; grid-row: 1 / span 7; grid-template-rows: subgrid; align-content: start; }
-    .lc-stage .lc-out { grid-row: 6; }
-    .lc-stage:nth-child(1) { grid-column: 1; } .lc-stage:nth-child(2) { grid-column: 2; } .lc-stage:nth-child(3) { grid-column: 3; } .lc-stage:nth-child(4) { grid-column: 4; } .lc-stage:nth-child(5) { grid-column: 5; }
-  }
-  .lc-stage { position: relative; min-width: 0; }
-  .lc-node { position: relative; display: block; height: 9px; }
-  .lc-node i { position: absolute; left: 0; top: 0; width: 9px; height: 9px; background: var(--reiwa-node, #5E3D78); }
-  .lc-node::before { content: ""; position: absolute; left: 15px; right: calc(-1 * var(--lc-gap)); top: 4px; height: 1px; background: var(--rule-strong); }
-  .lc-node::after { content: ""; position: absolute; right: calc(-1 * var(--lc-gap) + 6px); top: 1px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .lc-stage:last-child .lc-node::before, .lc-stage:last-child .lc-node::after { content: none; }
-  .lc-num { display: block; margin: 20px 0 0; align-self: start; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  /* Japanese stage names are set a little smaller than the English: the
-     longest (ストラクチャー) is seven full-width glyphs against a column
-     that carries eight or nine Latin characters. The 24px ceiling is set
-     by measurement: it clears the 182px column at 1440 with room, where
-     the English 30px wraps and costs the whole rail a second line. */
-  .lc-stage h3 { margin: 12px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(19px, 12px + 1vw, 24px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
-  .lc-role { margin: 14px 0 0; align-self: start; font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.7; }
-
-  /* Outputs sit inside their stages on a sixth shared track, directly under
-     the stage that produces them. Track five carries the row label and one
-     rule across all five columns; the label is decorative here because each
-     output names itself. */
-  .lc-outs-label { grid-column: 1 / -1; grid-row: 5; margin-top: clamp(18px, 2vw, 28px); padding-top: clamp(14px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
-  .lc-out { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-size: clamp(13px, 12.6px + 0.2vw, 14.5px); line-height: 1.55; font-weight: 500; color: var(--ink); }
-  /* Each output is drawn as a sheet: one hairline edge, a sumire mark, four ruled
-     content lines. Representative contents only — no figures, no data. */
-  .lc-doc { grid-row: 7; align-self: start; position: relative; margin: 10px 0 0; padding: 8px 12px 6px; border: 1px solid var(--rule-strong); list-style: none; }
-  .lc-doc::before { content: ""; position: absolute; left: 12px; top: 9px; width: 5px; height: 5px; background: var(--reiwa-node, #5E3D78); }
-  .lc-doc li { padding: 3px 0; border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 12px; line-height: 1.5; letter-spacing: 0.02em; color: var(--ink-2); }
-  .lc-doc li:first-child { padding-top: 14px; }
-  .lc-doc li:last-child { border-bottom: 0; }
-  .lc-out-k { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-
-  /* Investor approval — one line, nothing more. */
-  /* Governance band: one rule, a sumire node with the micro-label, and the
-     material matters as a single run. A gate, not a warning. */
-  .lc-gate { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(24px, 2.8vw, 40px); align-items: baseline; margin-top: clamp(18px, 2vw, 26px); padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); }
-  .lc-gate-k { display: inline-flex; align-items: center; gap: 9px; }
-  .lc-gate-k::before { content: ""; width: 5px; height: 5px; background: var(--reiwa-node, #5E3D78); flex: none; }
-  .lc-gate-k b { font-family: var(--jp); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.2; color: var(--eyebrow-ink); white-space: nowrap; }
-  .lc-gate-run { margin: 0; font-family: var(--jp); font-size: clamp(13.5px, 13.2px + 0.2vw, 15px); line-height: 1.9; color: var(--ink); }
-  .lc-gate .sep { color: var(--ink-4); padding: 0 0.2em; }
-  .lc-gate span:not(.sep) { white-space: nowrap; }
-
+  /* --- 2 · Lifecycle: one duration-weighted spine with decision gaps ------
+     Five stages on one hairline. The widths are weighted, not measured:
+     ownership is the long phase of the relationship, so Oversee takes
+     roughly two fifths of the line. Above the line: stage and role. Below
+     it: the document the investor receives, with a short tab like the top
+     edge of a paper. The investor's approval is a break in the line with
+     one sumire square in the gap; the recurring approvals in ownership are
+     small squares on the Oversee stretch. The square means "the investor
+     decides" and nothing else. No numerals, no boxes, no arrowheads. */
+  .lc-spine { margin-top: clamp(40px, 4.4vw, 60px); }
+  .lc-track { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 15fr) minmax(0, 14fr) minmax(0, 16fr) clamp(84px, 9vw, 120px) minmax(0, 13fr) minmax(0, 32fr); grid-template-rows: auto auto 34px auto auto; column-gap: 0; }
+  .lc-st, .lc-gate { display: block; min-width: 0; }
+  @supports (grid-template-rows: subgrid) { .lc-st, .lc-gate { display: grid; grid-row: 1 / span 5; grid-template-rows: subgrid; align-content: start; } }
+  .lc-st { padding-right: clamp(14px, 1.8vw, 26px); }
+  .lc-st h3 { grid-row: 1; margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(18px, 12px + 0.75vw, 23px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); word-break: keep-all; overflow-wrap: normal; }
+  .lc-role { grid-row: 2; margin: 8px 0 0; font-size: clamp(13px, 12.5px + 0.2vw, 14px); line-height: 1.7; color: var(--ink-2); max-width: 24ch; }
+  .lc-rail { grid-row: 3; position: relative; display: block; align-self: stretch; }
+  .lc-rail::before { content: ""; position: absolute; left: 0; right: calc(-1 * clamp(14px, 1.8vw, 26px)); top: 50%; height: 1px; background: var(--rule-strong); }
+  .lc-st:last-child .lc-rail::before { right: 0; }
+  .lc-rail::after { content: ""; position: absolute; left: 0; top: calc(50% - 5px); width: 1px; height: 11px; background: var(--ink-3); }
+  .lc-mark { position: absolute; left: var(--p); top: 50%; width: 5px; height: 5px; transform: translate(-50%, -50%); background: var(--reiwa-node, #5E3D78); }
+  .lc-out { grid-row: 4; position: relative; margin: 12px 0 0; padding-top: 10px; }
+  .lc-out::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 1px; background: var(--rule-strong); }
+  .lc-out-k { display: block; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); margin: 0 0 5px; }
+  .lc-out-v { display: block; font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.25vw, 15px); font-weight: 500; line-height: 1.4; color: var(--ink); max-width: 22ch; }
+  .lc-matters { grid-row: 5; list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; align-items: baseline; }
+  .lc-matters-k { flex-basis: 100%; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); margin-bottom: 2px; }
+  .lc-matters li { font-family: var(--jp); font-size: 13px; line-height: 1.5; color: var(--ink-2); white-space: nowrap; }
+  .lc-matters li:not(.lc-matters-k):not(:last-child)::after { content: "·"; padding: 0 0.5em; color: var(--ink-4); }
+  .lc-matters li.lc-matters-k::before { content: none; }
+  .lc-gate { text-align: center; padding: 0 6px; }
+  .lc-gate-sq { grid-row: 3; position: relative; display: block; align-self: stretch; }
+  .lc-gate-sq::before { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; transform: translate(-50%, -50%); background: var(--reiwa-node, #5E3D78); }
+  .lc-gate-t { grid-row: 4; display: block; margin: 12px 0 0; padding-top: 10px; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); }
   @media (max-width: 900px) {
-    .lc-grid { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; margin-top: 36px; border-top: 1px solid var(--rule-strong); }
-    .lc-grid > .lc-stage { display: block; grid-row: auto; grid-column: auto; grid-template-rows: auto auto auto; padding: 22px 0; border-bottom: 1px solid var(--rule); }
-    .lc-stage:last-child { border-bottom: 0; }
-    .lc-node { height: 0; }
-    .lc-node i { top: 4px; }
-    .lc-node::before { content: none; }
-    .lc-stage + .lc-stage .lc-node::after { content: ""; left: 2px; right: auto; top: -28px; transform: rotate(135deg); background: var(--paper-warm); }
-    .lc-stage:first-child .lc-node::after { content: none; }
-    .lc-num { margin: 0 0 0 22px; }
-    .lc-stage h3 { margin-top: 6px; font-size: clamp(20px, 5.8vw, 24px); }
-    .lc-role { margin-top: 8px; }
-    .lc-outs-label { display: none; }
-    .lc-out { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule); }
-    .lc-out-k { position: static; width: auto; height: auto; margin: 0; flex: none; clip-path: none; overflow: visible; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--eyebrow-ink); }
-    /* Stacked: the sheet folds to the output name and three content labels. */
-    .lc-doc { display: flex; flex-wrap: wrap; margin: 6px 0 0; padding: 0; border: 0; }
-    .lc-doc::before { content: none; }
-    .lc-doc li { border: 0; padding: 0; font-size: 13px; }
-    .lc-doc li:first-child { padding-top: 0; }
-    .lc-doc li:nth-child(n+4) { display: none; }
-    .lc-doc li + li::before { content: "·"; padding: 0 0.5em; color: var(--ink-4); }
-    .lc-gate { display: block; }
-    .lc-gate-run { margin-top: 8px; }
+    /* Rotated: the spine runs down the left; stage heights follow duration,
+       so Oversee is the tallest block. The gap for the decision stays a gap. */
+    .lc-spine { margin-top: 30px; }
+    .lc-track { display: block; }
+    .lc-st, .lc-gate { display: grid; grid-template-columns: 28px minmax(0, 1fr); grid-template-rows: none; column-gap: 14px; position: relative; padding: 0 0 clamp(22px, 3.4vw, 30px); min-height: calc(var(--w, 12) * 5.5px); text-align: left; }
+    .lc-st:last-child { padding-bottom: 0; }
+    .lc-rail { grid-column: 1; grid-row: 1 / span 4; align-self: stretch; }
+    .lc-rail::before { left: 13px; right: auto; top: 0; bottom: calc(-1 * clamp(22px, 3.4vw, 30px)); width: 1px; height: auto; }
+    .lc-st:last-child .lc-rail::before { bottom: 0; right: auto; }
+    .lc-rail::after { left: 9px; top: 0.55em; width: 9px; height: 1px; }
+    .lc-st h3, .lc-role, .lc-out, .lc-matters { grid-column: 2; }
+    .lc-st h3 { grid-row: 1; } .lc-role { grid-row: 2; max-width: none; } .lc-out { grid-row: 3; } .lc-matters { grid-row: 4; }
+    .lc-matters li { white-space: normal; }
+    .lc-gate { padding: 0 0 clamp(22px, 3.4vw, 30px); min-height: 0; }
+    .lc-gate-sq { grid-column: 1; grid-row: 1; height: 16px; }
+    .lc-gate-sq::before { left: 13px; top: 6px; transform: translate(-50%, 0); }
+    .lc-gate-t { grid-column: 2; grid-row: 1; margin: 0; padding: 0; }
+    .lc-mark { left: 13px; top: var(--p); }
   }
-
-  /* --- 3 · Operating model --------------------------------------------- */
-  .om-phase { display: flex; flex-wrap: wrap; gap: 0 clamp(22px, 2.4vw, 34px); margin: clamp(36px, 4vw, 52px) 0 clamp(28px, 3vw, 40px); border-bottom: 1px solid var(--rule); }
-  .om-ph { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 0 0 12px; min-height: 40px; cursor: pointer; font-family: var(--jp); font-size: clamp(15px, 14px + 0.35vw, 17px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 180ms var(--ease-out); touch-action: manipulation; }
-  .om-ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 180ms var(--ease-out); }
-  .om-ph[aria-checked="true"] { color: var(--ink); }
-  .om-ph[aria-checked="true"]::after { transform: scaleX(1); }
-  @media (hover: hover) { .om-ph:not([aria-checked="true"]):hover { color: var(--ink-2); } }
-  .om-ph:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-
-  .om-cols { --om-gap: clamp(28px, 3.6vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: var(--om-gap); align-items: start; }
-  /* Three parties on one relationship rail. Each column is a subgrid so the
-     heads, the rail and the first lines share rows: row one carries the
-     heading or the lockup, row two the rail, row three the list. */
-  @supports (grid-template-rows: subgrid) {
-    .om-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; }
-    .om-col:nth-child(1) { grid-column: 1; } .om-col:nth-child(2) { grid-column: 2; } .om-col:nth-child(3) { grid-column: 3; }
+  /* --- 3 · Operating model: the point and the fan ------------------------
+     Investor authority above, eight specialist disciplines below, one
+     point between them. The only place on the site where lines converge,
+     which is the claim. Compact by design: it must not compete with the
+     lifecycle. */
+  .om-lede { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: var(--jp); font-size: clamp(17px, 15px + 0.6vw, 22px); line-height: 1.45; letter-spacing: 0.02em; color: var(--ink-2); max-width: 30ch; }
+  .om-lede b { font-weight: 500; color: var(--ink); }
+  .om-point { position: relative; max-width: 880px; margin: clamp(40px, 4.4vw, 60px) auto 0; text-align: center; }
+  .om-top { width: min(100%, 340px); margin: 0 auto; padding-top: 12px; border-top: 1px solid var(--ink-3); }
+  .om-top b { display: block; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); color: var(--ink); }
+  .om-top span { display: block; margin-top: 6px; font-family: var(--jp); font-size: 13.5px; line-height: 1.7; color: var(--ink-2); }
+  .om-stem { display: block; width: 1px; height: clamp(26px, 3vw, 40px); margin: 14px auto 0; background: var(--rule-strong); }
+  .om-hub { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .om-hub small { display: block; margin-top: 4px; font-family: var(--jp); font-size: 12.5px; font-weight: 400; line-height: 1.5; color: var(--ink-3); }
+  .om-fan { display: block; width: 100%; height: clamp(52px, 7vw, 84px); margin-top: 10px; overflow: visible; }
+  .om-stem--2 { display: none; }
+  .om-fan line { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .om-spec { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 6px; }
+  .om-spec li { padding-top: 10px; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.35; color: var(--ink); }
+  .om-close { max-width: 62ch; margin: clamp(30px, 3.4vw, 44px) auto 0; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.7; color: var(--ink-2); text-align: center; }
+  @media (max-width: 600px) {
+    .om-fan { display: none; }
+    .om-stem--2 { display: block; height: 22px; margin-top: 12px; }
+    .om-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 0; max-width: 300px; margin: 0 auto; border-top: 1px solid var(--rule-strong); }
+    .om-spec li { padding: 9px 0; border-top: 0; border-bottom: 1px solid var(--rule); text-align: center; }
   }
-  .om-col { position: relative; min-width: 0; }
-  .om-col h3 { margin: 0; align-self: end; font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.2; text-transform: none; color: var(--eyebrow-ink); }
-  /* The one Latin column heading keeps the English micro-label treatment. */
-  .om-col h3.lat { font-family: 'DM Sans', sans-serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; }
-  /* Decision rights sit with the investor, so that head is set in ink. */
-  .om-col--investor h3 { color: var(--ink); }
-  .om-col--reiwa h3 { line-height: 1; }
-  .om-lockup { display: block; height: 20px; width: auto; }
-  /* The rail: a node per party on one hairline, arrowheads pointing the way
-     work flows — the investor's decisions to Reiwa, Reiwa's coordination to
-     the specialists. Ink for authority, sumire for the junction, an outline
-     for expertise. Flow, not delegation. */
-  .om-rail { position: relative; display: block; height: 9px; margin-top: clamp(14px, 1.5vw, 18px); }
-  .om-rail i { position: absolute; left: 0; top: 0; width: 9px; height: 9px; background: var(--ink); }
-  .om-col--reiwa .om-rail i { background: var(--reiwa-node, #5E3D78); }
-  .om-col--specialists .om-rail i { left: 1px; top: 1px; width: 7px; height: 7px; background: transparent; border: 1px solid var(--ink-3); }
-  .om-rail::before { content: ""; position: absolute; left: 15px; right: calc(-1 * var(--om-gap)); top: 4px; height: 1px; background: var(--rule-strong); }
-  .om-rail::after { content: ""; position: absolute; right: calc(-1 * var(--om-gap) + 6px); top: 1px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .om-col:last-child .om-rail::before, .om-col:last-child .om-rail::after { content: none; }
-  .om-list { list-style: none; margin: clamp(16px, 1.8vw, 22px) 0 0; padding: 0; }
-  .om-list li { font-family: var(--jp); font-size: clamp(15px, 14.2px + 0.35vw, 17.5px); line-height: 1.55; color: var(--ink-2); padding: 6px 0; transition: opacity 180ms var(--ease-out); }
-  /* Reiwa's verbs are the diagram's largest type — the coordinating layer. */
-  .om-col--reiwa .om-list li { font-size: clamp(16.5px, 14.6px + 0.6vw, 21px); color: var(--ink); padding: 5px 0; letter-spacing: 0.004em; }
-  .om-col--specialists .om-list { columns: 2; column-gap: clamp(16px, 1.8vw, 28px); }
-  .om-col--specialists .om-list li { font-size: clamp(14.5px, 14px + 0.2vw, 16px); padding: 4px 0; break-inside: avoid; }
-  /* De-emphasis floor: 0.72 measured 4.12:1 against the warm paper, short
-     of AA. 0.76 is the minimum that clears 4.5:1 (4.56:1 measured), so the
-     phase selector keeps as much of its emphasis contrast as accessibility
-     allows. Approved exception to the English visual freeze. */
-  .om-list li.is-quiet { opacity: 0.76; }
-  .om-note { max-width: none; margin: clamp(34px, 3.6vw, 48px) 0 0; padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
-  .om-note span { display: block; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); max-width: 50em; }
-  .ap-sec.om { padding-bottom: clamp(70px, 6.4vw, 96px); }
-  @media (prefers-reduced-motion: reduce) { .om-ph, .om-ph::after, .om-list li { transition: none; } }
-  @media (max-width: 900px) {
-    .om-cols { grid-template-columns: 1fr; grid-template-rows: none; }
-    .om-cols > .om-col { display: block; grid-row: auto; grid-column: auto; }
-    /* Stacked: the rail folds to a hairline and one small arrowhead between
-       groups, the same cue the lifecycle uses. */
-    .om-rail { display: none; }
-    .om-col + .om-col { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--rule); }
-    .om-col + .om-col::before { content: ""; position: absolute; left: 0; top: -6px; width: 7px; height: 7px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(135deg); background: var(--paper-warm); }
-    .om-lockup { height: 18px; }
-    .om-list { margin-top: 14px; }
-    .om-phase { margin-bottom: 24px; }
-    .om-note { margin-top: 28px; padding-top: 18px; }
-  }
-  @media (max-width: 359px) { .om-col--specialists .om-list { columns: 1; } }
-
-  /* --- 4 · Investment principle: the memorable close -------------------- */
-  .ip > .shell { padding-top: clamp(96px, 10vw, 148px); }
-  .ip { padding-bottom: clamp(84px, 8.4vw, 120px); }
-  /* Two zones, as English: principle and clarification left, governance
-     hierarchy right, one quiet vertical hairline between. */
-  .ip-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); column-gap: clamp(48px, 6vw, 96px); align-items: end; }
-  .ip-left { min-width: 0; }
-  .ip-statement { margin: clamp(24px, 2.8vw, 38px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(28px, 18px + 2.2vw, 45px); line-height: 1.34; letter-spacing: 0.004em; color: var(--ink); max-width: 11em; }
-  .ip-copy { margin: clamp(24px, 2.8vw, 38px) 0 0; max-width: 33em; }
-  .ip-close { margin: 0; padding: 4px 0 4px clamp(28px, 3vw, 44px); border-left: 1px solid var(--rule); font-family: var(--jp); color: var(--ink); }
-  /* Japanese keeps each statement on one line so the particle never hangs
-     alone; the two levels are carried by size and weight instead. Ink for
-     the investor, sumire for Reiwa, a step quieter for the specialists. */
-  .ip-close span { display: block; font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink-2); }
-  .ip-close span + span { margin-top: clamp(14px, 1.6vw, 22px); }
-  .ip-close b { font-size: clamp(21px, 16.5px + 0.65vw, 27px); line-height: 1.2; font-weight: 500; color: var(--ink); }
-  .ip-close span:nth-child(2) b { color: var(--reiwa-node, #5E3D78); }
-  .ip-close span:nth-child(3) b { color: var(--ink-2); }
-  @media (max-width: 900px) {
-    .ip-grid { display: block; }
-    .ip-close { margin-top: clamp(32px, 4vw, 40px); padding: clamp(20px, 2.4vw, 26px) 0 0; border-left: 0; border-top: 1px solid var(--rule-strong); }
-    .ip-close span + span { margin-top: 6px; }
-  }
-  @media (max-width: 760px) { .ip { padding-bottom: 72px; } .ip > .shell { padding-top: 80px; } .ip-statement { max-width: 10em; } }
-
-  /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
-  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
-
-  /* Mobile 6: the two largest joins lose ~24px at phone width. */
-  @media (max-width: 760px) { .om > .shell { padding-top: 44px; } .ip > .shell { padding-top: 56px; } }
   </style>
 </head>
 <body data-page="approach" data-locale="ja" data-en-url="/approach.html">
@@ -275,52 +183,45 @@
       <span class="h-eyebrow">投資プロセス</span>
       <h2 class="h-h2" id="lc-title">投資方針から保有まで。</h2>
     </div>
-
-    <div class="lc-grid">
-      <div class="lc-stage">
-        <span class="lc-node" aria-hidden="true"><i></i></span>
-        <span class="lc-num">01</span>
+    <div class="lc-spine" role="group" aria-label="投資プロセス：投資方針、投資分析、ストラクチャー、投資家の取得承認、取得、そして出口までの保有。売却、借換え、重要な資本的支出、重要なリーシング判断、事業計画の重要な変更は投資家が承認します。">
+    <ol class="lc-track">
+      <li class="lc-st" style="--w:15">
         <h3>投資方針</h3>
         <p class="h-body lc-role">投資目的、投資基準、意思決定の前提を整理。</p>
-        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">投資方針・判断基準</span></p>
-        <ul class="lc-doc" aria-label="主な内容"><li>投資目的</li><li>収益基準</li><li>リスク条件</li><li>判断基準</li></ul>
-      </div>
-      <div class="lc-stage">
-        <span class="lc-node" aria-hidden="true"><i></i></span>
-        <span class="lc-num">02</span>
+        <span class="lc-rail" aria-hidden="true"></span>
+        <p class="lc-out"><span class="lc-out-k">成果物</span><span class="lc-out-v">投資方針・判断基準</span></p>
+      </li>
+      <li class="lc-st" style="--w:14">
         <h3>投資分析</h3>
         <p class="h-body lc-role">物件、事業計画、下方リスクを検証。</p>
-        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">投資分析資料</span></p>
-        <ul class="lc-doc" aria-label="主な内容"><li>投資判断</li><li>収益性</li><li>下方リスク</li><li>主要リスク</li></ul>
-      </div>
-      <div class="lc-stage">
-        <span class="lc-node" aria-hidden="true"><i></i></span>
-        <span class="lc-num">03</span>
-        <h3>ストラクチャー</h3>
+        <span class="lc-rail" aria-hidden="true"></span>
+        <p class="lc-out"><span class="lc-out-k">成果物</span><span class="lc-out-v">投資分析資料</span></p>
+      </li>
+      <li class="lc-st" style="--w:16">
+        <h3>ストラク<wbr>チャー</h3>
         <p class="h-body lc-role">保有形態と資金調達の設計。</p>
-        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">保有・資金調達ストラクチャー案</span></p>
-        <ul class="lc-doc" aria-label="主な内容"><li>保有形態</li><li>資金調達</li><li>デューデリジェンス</li><li>実行計画</li></ul>
-      </div>
-      <div class="lc-stage">
-        <span class="lc-node" aria-hidden="true"><i></i></span>
-        <span class="lc-num">04</span>
+        <span class="lc-rail" aria-hidden="true"></span>
+        <p class="lc-out"><span class="lc-out-k">成果物</span><span class="lc-out-v">保有・資金調達ストラクチャー案</span></p>
+      </li>
+      <li class="lc-gate">
+        <span class="lc-gate-sq" aria-hidden="true"></span>
+        <span class="lc-gate-t">投資家の承認</span>
+      </li>
+      <li class="lc-st" style="--w:13">
         <h3>取得</h3>
         <p class="h-body lc-role">デューデリジェンスと取得プロセスを調整。</p>
-        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">取得判断資料</span></p>
-        <ul class="lc-doc" aria-label="主な内容"><li>価格</li><li>資金調達</li><li>DD所見</li><li>承認事項</li></ul>
-      </div>
-      <div class="lc-stage">
-        <span class="lc-node" aria-hidden="true"><i></i></span>
-        <span class="lc-num">05</span>
+        <span class="lc-rail" aria-hidden="true"></span>
+        <p class="lc-out"><span class="lc-out-k">成果物</span><span class="lc-out-v">取得判断資料</span></p>
+      </li>
+      <li class="lc-st" style="--w:32">
         <h3>保有</h3>
         <p class="h-body lc-role">事業計画の進捗をモニタリングし、出口まで支援。</p>
-        <p class="lc-out"><span class="lc-out-k">成果物</span> <span class="lc-out-v">保有期間中のモニタリング・レポーティング</span></p>
-        <ul class="lc-doc" aria-label="主な内容"><li>収益</li><li>リーシング</li><li>資本的支出</li><li>事業計画</li></ul>
-      </div>
-      <span class="h-eyebrow lc-outs-label" aria-hidden="true">各段階の成果物</span>
+        <span class="lc-rail" aria-hidden="true"><i class="lc-mark" style="--p:14%"></i><i class="lc-mark" style="--p:31%"></i><i class="lc-mark" style="--p:48%"></i><i class="lc-mark" style="--p:65%"></i><i class="lc-mark" style="--p:82%"></i></span>
+        <p class="lc-out"><span class="lc-out-k">成果物</span><span class="lc-out-v">保有期間中のモニタリング・レポーティング</span></p>
+        <ul class="lc-matters" aria-label="投資家の承認"><li class="lc-matters-k" role="presentation">投資家の承認</li><li>売却</li><li>借換え</li><li>重要な資本的支出</li><li>重要なリーシング判断</li><li>事業計画の重要な変更</li></ul>
+      </li>
+    </ol>
     </div>
-
-    <div class="lc-gate"><span class="lc-gate-k"><b>投資家の承認事項</b></span><p class="lc-gate-run"><span>取得</span> <span class="sep" aria-hidden="true">·</span> <span>売却</span> <span class="sep" aria-hidden="true">·</span> <span>借換え</span> <span class="sep" aria-hidden="true">·</span> <span>重要な資本的支出</span> <span class="sep" aria-hidden="true">·</span> <span>重要なリーシング判断</span> <span class="sep" aria-hidden="true">·</span> <span>事業計画の重要な変更</span></p></div>
   </div>
 </section>
 
@@ -330,115 +231,24 @@
     <div class="ap-head">
       <span class="h-eyebrow">運営体制</span>
       <h2 class="h-h2" id="om-title">一つの窓口で、現地と連携。</h2>
+      <p class="om-lede"><b>投資家</b>が判断する。<b>Reiwa</b>が調整する。<b>専門家</b>が助言する。</p>
     </div>
-
-    <div class="om-phase" role="radiogroup" aria-label="投資フェーズ">
-      <button class="om-ph" type="button" role="radio" data-phase="acq" aria-checked="true">取得</button>
-      <button class="om-ph" type="button" role="radio" data-phase="own" aria-checked="false" tabindex="-1">保有</button>
-      <button class="om-ph" type="button" role="radio" data-phase="exit" aria-checked="false" tabindex="-1">売却</button>
+    <div class="om-point" role="img" aria-label="上に投資家の意思決定、中央にReiwa Capitalという一つの調整窓口、下に法務、税務、鑑定評価、技術、ファイナンス、リーシング、建物管理、プロジェクトの八つの欧州専門分野。">
+      <p class="om-top"><b>投資家の意思決定</b><span>投資方針を定める · 重要な投資判断を行う · 最終的な意思決定権限を保持する</span></p>
+      <span class="om-stem" aria-hidden="true"></span>
+      <p class="om-hub">Reiwa Capital<small>投資分析・審査 · 調整 · モニタリング · 提案</small></p>
+      <svg class="om-fan" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="400" y1="0" x2="50" y2="100"/><line x1="400" y1="0" x2="150" y2="100"/><line x1="400" y1="0" x2="250" y2="100"/><line x1="400" y1="0" x2="350" y2="100"/><line x1="400" y1="0" x2="450" y2="100"/><line x1="400" y1="0" x2="550" y2="100"/><line x1="400" y1="0" x2="650" y2="100"/><line x1="400" y1="0" x2="750" y2="100"/></svg>
+      <span class="om-stem om-stem--2" aria-hidden="true"></span>
+      <ul class="om-spec"><li>法務</li><li>税務</li><li>鑑定評価</li><li>技術</li><li>ファイナンス</li><li>リーシング</li><li>建物管理</li><li>プロジェクト</li></ul>
     </div>
-
-    <div class="om-cols">
-      <div class="om-col om-col--investor">
-        <h3>投資家の意思決定</h3>
-        <span class="om-rail" aria-hidden="true"><i></i></span>
-        <ul class="om-list">
-          <li data-ph="acq">投資方針を定める</li>
-          <li data-ph="acq own">重要な投資判断を行う</li>
-          <li data-ph="acq own exit">最終的な意思決定権限を保持する</li>
-        </ul>
-      </div>
-
-      <div class="om-col om-col--reiwa">
-        <h3 class="lat"><img class="om-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></h3>
-        <span class="om-rail" aria-hidden="true"><i></i></span>
-        <ul class="om-list">
-          <li data-ph="acq">投資分析・審査</li>
-          <li data-ph="acq exit">調整</li>
-          <li data-ph="own">モニタリング</li>
-          <li data-ph="own exit">提案</li>
-        </ul>
-      </div>
-
-      <div class="om-col om-col--specialists">
-        <h3>欧州の外部専門家</h3>
-        <span class="om-rail" aria-hidden="true"><i></i></span>
-        <ul class="om-list">
-          <li data-ph="acq exit">法務</li>
-          <li data-ph="exit">税務</li>
-          <li data-ph="acq exit">鑑定評価</li>
-          <li data-ph="acq">技術</li>
-          <li data-ph="acq own">ファイナンス</li>
-          <li data-ph="own">リーシング</li>
-          <li data-ph="own">建物管理</li>
-          <li data-ph="own">プロジェクト</li>
-        </ul>
-      </div>
-    </div>
-
+    <p class="h-body om-close">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。重要な投資判断は投資家が行います。</p>
   </div>
 </section>
 
-<!-- 投資原則 -->
-<section class="ap-sec ip" data-screen-label="04 投資アプローチ — 投資原則" aria-labelledby="ip-title">
-  <div class="shell">
-    <div class="ip-grid">
-      <div class="ip-left">
-        <span class="h-eyebrow">投資原則</span>
-        <p class="ip-statement" id="ip-title">重要な投資判断は、<br>投資家が行います。</p>
-        <p class="h-body ip-copy">Reiwa Capitalは、投資分析・審査、取得プロセスの調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p>
-      </div>
-      <p class="ip-close"><span><b>投資家</b>が判断する。</span><span><b>Reiwa</b>が調整する。</span><span><b>専門家</b>が助言する。</span></p>
-    </div>
-  </div>
-</section>
 
 </main>
 
 <div data-shell="footer"></div>
-<script>
-/* Operating-model phase selector — 取得 by default. Selecting a phase
-   changes emphasis only: nothing is added, removed or replaced, so the whole
-   model stays readable (and printable) with JavaScript off. Radio semantics,
-   because it is one choice of three, with a roving tabindex. */
-(function () {
-  var btns = Array.prototype.slice.call(document.querySelectorAll('.om-ph'));
-  var items = Array.prototype.slice.call(document.querySelectorAll('.om-list li[data-ph]'));
-  if (!btns.length || !items.length) return;
-
-  function apply(phase) {
-    items.forEach(function (li) {
-      li.classList.toggle('is-quiet', li.getAttribute('data-ph').split(' ').indexOf(phase) === -1);
-    });
-  }
-
-  function select(phase, focus) {
-    btns.forEach(function (b) {
-      var on = b.dataset.phase === phase;
-      b.setAttribute('aria-checked', on ? 'true' : 'false');
-      b.setAttribute('tabindex', on ? '0' : '-1');
-      if (on && focus) b.focus();
-    });
-    apply(phase);
-  }
-
-  btns.forEach(function (b, i) {
-    b.addEventListener('click', function () { select(b.dataset.phase); });
-    b.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % btns.length;
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + btns.length) % btns.length;
-      else if (e.key === 'Home') n = 0;
-      else if (e.key === 'End') n = btns.length - 1;
-      if (n === null) return;
-      e.preventDefault();
-      select(btns[n].dataset.phase, true);
-    });
-  });
-
-  select('acq');
-})();
-</script>
 
 <script src="../shell.js?v=72"></script>
 <script src="../craft.js?v=17"></script>

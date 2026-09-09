@@ -99,56 +99,30 @@
   .ab-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 40em; font-size: clamp(15.5px, 14.8px + 0.3vw, 17.5px); }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
-  /* --- 2 · REIWAの役割: three stages, rules and arrows, no boxes -------- */
-  /* --- 2 · Why Reiwa exists: the same lifecycle drawn twice --------------
-     Without a coordinating layer the investor holds six separate
-     relationships, so the rule above each party is its own short segment,
-     broken at every handoff. With Reiwa one investor-side layer carries the
-     context, so every rule runs unbroken across the full width. The contrast
-     is structural: broken hairlines against continuous ones. Same atoms as
-     the rest of the site — hairline, sumire square, arrowhead, type. */
-  .aw-models { margin-top: clamp(30px, 3.2vw, 42px); }
-  .aw-model + .aw-model { margin-top: clamp(34px, 3.4vw, 46px); }
-  .aw-cap { display: block; }
-  /* Shared column geometry, so the investor sits on the same line in both models. */
-  .aw-frag, .aw-step { display: grid; grid-template-columns: minmax(0, 0.24fr) minmax(0, 1fr); column-gap: clamp(24px, 3vw, 48px); align-items: start; }
-  .aw-frag { position: relative; margin-top: clamp(14px, 1.6vw, 20px); }
-  .aw-actor { margin: 0; padding-top: 14px; border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 15px + 0.35vw, 18.5px); line-height: 1.5; letter-spacing: 0.004em; color: var(--ink); }
-  /* One arrowhead in the gutter: the investor reaches each party directly. */
-  .aw-frag .aw-actor::after { content: ""; position: absolute; left: calc(24% + clamp(24px, 3vw, 48px) / 2 - 3px); top: -3px; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .aw-parties { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 24px); list-style: none; margin: 0; padding: 0; }
-  .aw-parties li { padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.25vw, 15.5px); line-height: 1.6; color: var(--ink-2); }
-  /* With Reiwa: four rows on one left axis, each on a full-width rule. */
-  .aw-cont { margin-top: clamp(14px, 1.6vw, 20px); }
-  .aw-step { position: relative; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
-  .aw-step + .aw-step { margin-top: clamp(18px, 1.8vw, 22px); }
-  .aw-step + .aw-step::before { content: ""; position: absolute; left: 1px; top: -4px; width: 6px; height: 6px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
-  .aw-step--spec { border-top-color: var(--rule); }
-  .aw-who { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 15px + 0.35vw, 18.5px); line-height: 1.5; letter-spacing: 0.004em; color: var(--ink); }
-  .aw-who .h-eyebrow { margin-top: 2px; }
-  .aw-who--reiwa { display: flex; align-items: center; gap: 10px; }
-  .aw-who--reiwa::before { content: ""; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); flex: none; }
-  .aw-what { margin: 0; align-self: center; font-family: var(--jp); font-size: clamp(14.5px, 14px + 0.25vw, 16px); line-height: 1.7; color: var(--ink-2); }
-  .aw-life { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 24px); list-style: none; margin: 0; padding: 0; }
-  .aw-life li { position: relative; font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 14px + 0.3vw, 16.5px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink); }
-  .aw-life li + li::before { content: ""; position: absolute; left: calc(-1 * clamp(14px, 1.6vw, 24px) / 2 - 3px); top: 0.55em; width: 5px; height: 5px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .aw-spec-run { margin: 0; align-self: center; font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.25vw, 15px); line-height: 1.75; color: var(--ink-3); }
-  .aw-spec-run .sep { padding: 0 0.1em; color: var(--ink-4); }
-  @media (max-width: 1024px) { .aw-parties { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 16px; } }
-  @media (max-width: 760px) {
-    .aw-models { margin-top: 30px; }
-    .aw-model + .aw-model { margin-top: 40px; }
-    .aw-frag, .aw-step { grid-template-columns: 1fr; row-gap: 12px; }
-    .aw-frag .aw-actor::after { content: none; }
-    .aw-parties { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; column-gap: 20px; }
-    .aw-parties li { word-break: keep-all; }   /* two wide columns: break only at the marked points */
-    .aw-step + .aw-step { margin-top: 22px; }
-    .aw-life { grid-template-columns: 1fr; row-gap: 8px; }
-    .aw-life li + li::before { content: none; }
-    .aw-life li { padding-left: 16px; }
-    .aw-life li::after { content: ""; position: absolute; left: 1px; top: 0.5em; width: 5px; height: 5px; background: var(--ink-3); }
+  /* --- 2 · Why Reiwa exists: two lines on one axis --------------------------
+     The same four phases twice. Without a coordinating layer the line is
+     four short segments that never touch, each held by a different party.
+     With Reiwa Capital it is one unbroken line. Monochrome, small type, no
+     square: there is no decision here, only continuity or its absence. */
+  .aw-lines { display: grid; grid-template-columns: clamp(150px, 19vw, 220px) minmax(0, 1fr); column-gap: clamp(20px, 3vw, 44px); row-gap: clamp(22px, 2.6vw, 34px); margin-top: clamp(30px, 3.4vw, 46px); align-items: start; }
+  .aw-axis { grid-column: 2; grid-row: 1; list-style: none; margin: 0; padding: 0 0 8px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--rule); }
+  .aw-axis li { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); color: var(--ink-3); }
+  .aw-axis .s { display: none; }
+  .aw-cap { grid-column: 1; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); color: var(--ink); }
+  .aw-cap--frag { grid-row: 2; } .aw-cap--cont { grid-row: 3; }
+  .aw-body { grid-column: 2; min-width: 0; }
+  .aw-body--frag { grid-row: 2; } .aw-body--cont { grid-row: 3; }
+  .aw-inv { display: block; margin-bottom: 8px; font-family: var(--jp); font-size: 12.5px; font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .aw-seg { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .aw-seg li { margin-right: 28%; padding-top: 10px; border-top: 1px solid var(--ink-3); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
+  .aw-run { padding-top: 10px; border-top: 1px solid var(--ink); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; line-height: 1.4; color: var(--ink); }
+  @media (max-width: 600px) {
+    .aw-lines { grid-template-columns: 1fr; row-gap: 10px; margin-top: 28px; }
+    .aw-axis, .aw-cap, .aw-body { grid-column: 1; }
+    .aw-axis { grid-row: 1; } .aw-cap--frag { grid-row: 2; margin-top: 8px; } .aw-body--frag { grid-row: 3; } .aw-cap--cont { grid-row: 4; margin-top: 22px; } .aw-body--cont { grid-row: 5; }
+    .aw-seg li { margin-right: 22%; }
   }
-
+  @media (max-width: 480px) { .aw-axis .l { display: none; } .aw-axis .s { display: inline; } }
   /* --- 3 · 注力市場: the signature section ------------------------------ */
   .am-tabs { display: flex; gap: 0; margin-top: clamp(36px, 4vw, 56px); border-bottom: 1px solid var(--rule-strong); }
   .am-tab { position: relative; appearance: none; background: none; border: 0; margin: 0 clamp(28px, 3vw, 44px) 0 0; padding: 0 0 14px; min-height: 44px; cursor: pointer; font-family: var(--jp); font-size: clamp(18px, 15px + 0.65vw, 23px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
@@ -249,7 +223,7 @@
   .ac-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; padding: clamp(20px, 2vw, 26px) clamp(20px, 2.2vw, 32px) 0 0; }
   .ac-item .h-num { justify-self: start; align-self: start; }
   .ac-item + .ac-item { padding-left: clamp(20px, 2.2vw, 32px); }
-  .ac-item h3 { margin: 10px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 15px + 0.45vw, 21px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .ac-item h3 { margin: 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 15px + 0.45vw, 21px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .ac-item p { margin: 8px 0 0; align-self: start; }
   @media (max-width: 900px) {
     .ac-grid { grid-template-columns: 1fr 1fr; }
@@ -306,47 +280,12 @@
       <h2 class="h-h2" id="aw-title">海外不動産の保有には、<br>一貫した視点が必要です。</h2>
       <p class="h-body ab-lede">海外資産の取得は、投資の一部にすぎません。投資の判断根拠は、実行、保有、そして出口まで一貫して保たれる必要があります。</p>
     </div>
-    <div class="aw-models">
-      <div class="aw-model aw-model--frag">
-        <span class="h-eyebrow aw-cap">継続的な調整機能がない場合</span>
-        <div class="aw-frag">
-          <p class="aw-actor">日本の投資家</p>
-          <ul class="aw-parties">
-            <li>ブローカー・<wbr>エージェント</li>
-            <li>法務</li>
-            <li>税務</li>
-            <li>レンダー</li>
-            <li>建物管理・<wbr>リーシング</li>
-            <li>売却アドバイザー</li>
-          </ul>
-        </div>
-      </div>
-      <div class="aw-model aw-model--cont">
-        <span class="h-eyebrow aw-cap">Reiwa Capitalによる一貫した投資家側の調整</span>
-        <div class="aw-cont">
-          <div class="aw-step">
-            <p class="aw-who">日本の投資家</p>
-            <p class="aw-what">投資方針を定め、重要な投資判断を行います。</p>
-          </div>
-          <div class="aw-step">
-            <p class="aw-who aw-who--reiwa">Reiwa Capital</p>
-            <p class="aw-what">取得から売却まで、一貫した投資家側の視点で調整します。</p>
-          </div>
-          <div class="aw-step">
-            <p class="aw-who"><span class="h-eyebrow">投資のライフサイクル</span></p>
-            <ol class="aw-life">
-              <li>取得</li>
-              <li>保有</li>
-              <li>借換え・事業計画</li>
-              <li>売却</li>
-            </ol>
-          </div>
-          <div class="aw-step aw-step--spec">
-            <p class="aw-who"><span class="h-eyebrow">外部専門家</span></p>
-            <p class="aw-spec-run"><span>法務</span> <span class="sep" aria-hidden="true">・</span> <span>税務</span> <span class="sep" aria-hidden="true">・</span> <span>鑑定評価</span> <span class="sep" aria-hidden="true">・</span> <span>ファイナンス</span> <span class="sep" aria-hidden="true">・</span> <span>技術</span> <span class="sep" aria-hidden="true">・</span> <span>リーシング</span> <span class="sep" aria-hidden="true">・</span> <span>建物管理</span> <span class="sep" aria-hidden="true">・</span> <span>プロジェクト</span></p>
-          </div>
-        </div>
-      </div>
+    <div class="aw-lines" role="img" aria-label="継続的な調整機能がない場合、投資は取得、保有、借換え、売却で別々の当事者に引き継がれます。Reiwa Capitalの場合、投資家側の一本の線が取得から売却まで途切れずに続きます。">
+      <ol class="aw-axis"><li><span class="l">取得</span><span class="s">取得</span></li><li><span class="l">保有</span><span class="s">保有</span></li><li><span class="l">借換え・事業計画</span><span class="s">借換え</span></li><li><span class="l">売却</span><span class="s">売却</span></li></ol>
+      <span class="aw-cap aw-cap--frag">継続的な調整機能がない場合</span>
+      <div class="aw-body aw-body--frag"><span class="aw-inv">日本の投資家</span><ol class="aw-seg"><li>ブローカー・法務</li><li>建物管理</li><li>レンダー・鑑定評価</li><li>エージェント・法務</li></ol></div>
+      <span class="aw-cap aw-cap--cont">Reiwa Capitalによる一貫した投資家側の調整</span>
+      <div class="aw-body aw-body--cont"><span class="aw-inv">日本の投資家</span><div class="aw-run">Reiwa Capital</div></div>
     </div>
   </div>
 </section>
@@ -448,10 +387,10 @@
       <p class="h-body ab-lede">Reiwa Capitalは、欧州不動産を直接かつ適切な統制のもとで保有することを検討する、日本の経験豊富な投資家とともに取り組みます。</p>
     </div>
     <div class="ac-grid">
-      <div class="ac-item"><span class="h-num" aria-hidden="true">01</span><h3>日本の事業会社</h3><p class="h-body">自己資金による、選定した欧州不動産への戦略的な投資。</p></div>
-      <div class="ac-item"><span class="h-num" aria-hidden="true">02</span><h3>ファミリーオフィス</h3><p class="h-body">秘匿性、透明性、そして統制を伴う長期保有。</p></div>
-      <div class="ac-item"><span class="h-num" aria-hidden="true">03</span><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的なアクセス。</p></div>
-      <div class="ac-item"><span class="h-num" aria-hidden="true">04</span><h3>プライベート投資家</h3><p class="h-body">クロスボーダー投資を検討する経験豊富な投資家による直接保有。</p></div>
+      <div class="ac-item"><h3>日本の事業会社</h3><p class="h-body">自己資金による、選定した欧州不動産への戦略的な投資。</p></div>
+      <div class="ac-item"><h3>ファミリーオフィス</h3><p class="h-body">秘匿性、透明性、そして統制を伴う長期保有。</p></div>
+      <div class="ac-item"><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的なアクセス。</p></div>
+      <div class="ac-item"><h3>プライベート投資家</h3><p class="h-body">クロスボーダー投資を検討する経験豊富な投資家による直接保有。</p></div>
     </div>
   </div>
 </section>

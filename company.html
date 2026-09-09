@@ -113,7 +113,7 @@
   .co-lockup { display: block; height: 20px; width: auto; margin-top: -1px; }
   .co-tier p { grid-column: 3; margin: 0; max-width: 52ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.25vw, 16.5px); line-height: 1.5; color: var(--ink-2); }
   .co-tier:nth-child(2) p { color: var(--ink); }
-  .co-spine { grid-column: 2; position: relative; align-self: stretch; width: 9px; }
+  .co-spine { display: none; }
   .co-spine i { position: absolute; left: 0; top: 4px; width: 9px; height: 9px; background: var(--ink); }
   .co-tier:nth-child(2) .co-spine i { background: var(--reiwa-node, #5E3D78); }
   .co-tier:nth-child(3) .co-spine i { left: 1px; top: 5px; width: 7px; height: 7px; background: transparent; border: 1px solid var(--ink-3); }
@@ -130,7 +130,6 @@
     .co-tier p { margin-top: 8px; max-width: none; }
     .co-spine { display: none; }
     /* Stacked: one small arrowhead on each hairline points the flow down. */
-    .co-tier + .co-tier::before { content: ""; position: absolute; left: 1px; top: -4px; width: 7px; height: 7px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
     .co-lockup { height: 18px; }
     .co-model-note { margin-top: 4px; max-width: none; }
   }
@@ -232,17 +231,14 @@
         <div class="co-model">
           <div class="co-tier">
             <h3>Japanese investor</h3>
-            <span class="co-spine" aria-hidden="true"><i></i></span>
             <p>Investor objectives, requirements, communication and decision-making context.</p>
           </div>
           <div class="co-tier">
             <h3><img class="co-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></h3>
-            <span class="co-spine" aria-hidden="true"><i></i></span>
             <p>Investment underwriting, transaction coordination and ongoing ownership oversight.</p>
           </div>
           <div class="co-tier">
             <h3>London / Amsterdam execution network</h3>
-            <span class="co-spine" aria-hidden="true"><i></i></span>
             <p>Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of each investment.</p>
           </div>
           <p class="co-model-note">Specialist legal, tax, accounting, valuation and other professional advice is provided by appointed professional advisers.</p>
