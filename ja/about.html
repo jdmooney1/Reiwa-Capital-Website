@@ -89,7 +89,7 @@
   /* The continuity framework carries less floor than the other sections:
      the rail and the aligned rows close it, so the next section can begin
      nearer the useful content. Desktop only. */
-  @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(66px, 6.1vw, 92px); } }
+  @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(56px, 5.2vw, 78px); } }
   @media (min-width: 761px) { .ab-sec.ac { padding-bottom: clamp(70px, 6.4vw, 94px); } }
   .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
   .ab-head { max-width: 1060px; }
@@ -100,36 +100,53 @@
   @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
 
   /* --- 2 · REIWAの役割: three stages, rules and arrows, no boxes -------- */
-  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto auto; margin-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--rule-strong); position: relative; }
-  .aw-stage { padding: clamp(28px, 3vw, 40px) clamp(28px, 3.4vw, 52px) 0 0; position: relative; }
-  @supports (grid-template-rows: subgrid) {
-    .aw-stage { display: grid; grid-row: span 5; grid-template-rows: subgrid; align-content: start; }
-  }
-  .aw-stage + .aw-stage { padding-left: clamp(28px, 3.4vw, 52px); }
-  /* Rail arrowhead: a 6px chevron on the rail line, just before each
-     following stage. Quiet by design — continuity, not a workflow. */
-  .aw-stage + .aw-stage::before { content: ""; position: absolute; left: calc(-1 * clamp(28px, 3.4vw, 52px) / 2 - 3px); top: calc(clamp(28px, 3vw, 40px) + 3px); width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); opacity: 0.85; }
-  /* 保有期間中のモニタリング is eleven full-width glyphs against a 379px
-     column; the English 30px ceiling wrapped it, 27px does not. */
-  .aw-stage h3 { margin: 16px 0 0; align-self: start; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.75vw, 27px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
-  .aw-gap { display: block; height: 14px; }
-  .aw-role { margin: 10px 0 0; align-self: start; font-weight: 500; font-family: var(--jp); font-size: clamp(15px, 14.6px + 0.2vw, 16.5px); line-height: 1.7; color: var(--ink); }
-  .aw-detail { margin: 0; align-self: start; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 22em; }
-  @media (min-width: 861px) { .aw-stage h3 { min-height: 2.6em; } }
-  /* The rail, as English: one hairline per stage from its numeral to the next
-     stage's edge, ending at the last node. The numeral masks its own start. */
-  @media (min-width: 861px) {
-    .aw-stage:not(:last-child)::after { content: ""; position: absolute; left: 0; right: 0; top: calc(clamp(28px, 3vw, 40px) + 6px); height: 1px; background: var(--rule); pointer-events: none; }
-    .aw-stage .h-num { position: relative; z-index: 1; justify-self: start; background: var(--paper-warm); padding-right: 10px; }
-  }
-  @media (max-width: 860px) {
-    .aw-stages { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 36px; }
-    .aw-stage { display: block; grid-row: auto; }
-    .aw-stage:not(:last-child)::after { content: none; }
-    .aw-stage + .aw-stage::before { content: none; }
-    .aw-stage, .aw-stage + .aw-stage { padding: 26px 0 26px; border-left: 0; border-bottom: 1px solid var(--rule); }
-    .aw-stage:last-child { border-bottom: 0; padding-bottom: 0; }
-    .aw-detail { max-width: none; }
+  /* --- 2 · Why Reiwa exists: the same lifecycle drawn twice --------------
+     Without a coordinating layer the investor holds six separate
+     relationships, so the rule above each party is its own short segment,
+     broken at every handoff. With Reiwa one investor-side layer carries the
+     context, so every rule runs unbroken across the full width. The contrast
+     is structural: broken hairlines against continuous ones. Same atoms as
+     the rest of the site — hairline, sumire square, arrowhead, type. */
+  .aw-models { margin-top: clamp(30px, 3.2vw, 42px); }
+  .aw-model + .aw-model { margin-top: clamp(34px, 3.4vw, 46px); }
+  .aw-cap { display: block; }
+  /* Shared column geometry, so the investor sits on the same line in both models. */
+  .aw-frag, .aw-step { display: grid; grid-template-columns: minmax(0, 0.24fr) minmax(0, 1fr); column-gap: clamp(24px, 3vw, 48px); align-items: start; }
+  .aw-frag { position: relative; margin-top: clamp(14px, 1.6vw, 20px); }
+  .aw-actor { margin: 0; padding-top: 14px; border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 15px + 0.35vw, 18.5px); line-height: 1.5; letter-spacing: 0.004em; color: var(--ink); }
+  /* One arrowhead in the gutter: the investor reaches each party directly. */
+  .aw-frag .aw-actor::after { content: ""; position: absolute; left: calc(24% + clamp(24px, 3vw, 48px) / 2 - 3px); top: -3px; width: 6px; height: 6px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .aw-parties { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 24px); list-style: none; margin: 0; padding: 0; }
+  .aw-parties li { padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.25vw, 15.5px); line-height: 1.6; color: var(--ink-2); }
+  /* With Reiwa: four rows on one left axis, each on a full-width rule. */
+  .aw-cont { margin-top: clamp(14px, 1.6vw, 20px); }
+  .aw-step { position: relative; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
+  .aw-step + .aw-step { margin-top: clamp(18px, 1.8vw, 22px); }
+  .aw-step + .aw-step::before { content: ""; position: absolute; left: 1px; top: -4px; width: 6px; height: 6px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); background: var(--paper-warm); }
+  .aw-step--spec { border-top-color: var(--rule); }
+  .aw-who { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 15px + 0.35vw, 18.5px); line-height: 1.5; letter-spacing: 0.004em; color: var(--ink); }
+  .aw-who .h-eyebrow { margin-top: 2px; }
+  .aw-who--reiwa { display: flex; align-items: center; gap: 10px; }
+  .aw-who--reiwa::before { content: ""; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); flex: none; }
+  .aw-what { margin: 0; align-self: center; font-family: var(--jp); font-size: clamp(14.5px, 14px + 0.25vw, 16px); line-height: 1.7; color: var(--ink-2); }
+  .aw-life { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: clamp(14px, 1.6vw, 24px); list-style: none; margin: 0; padding: 0; }
+  .aw-life li { position: relative; font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 14px + 0.3vw, 16.5px); line-height: 1.6; letter-spacing: 0.004em; color: var(--ink); }
+  .aw-life li + li::before { content: ""; position: absolute; left: calc(-1 * clamp(14px, 1.6vw, 24px) / 2 - 3px); top: 0.55em; width: 5px; height: 5px; border-top: 1px solid var(--ink-3); border-right: 1px solid var(--ink-3); transform: rotate(45deg); }
+  .aw-spec-run { margin: 0; align-self: center; font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.25vw, 15px); line-height: 1.75; color: var(--ink-3); }
+  .aw-spec-run .sep { padding: 0 0.1em; color: var(--ink-4); }
+  @media (max-width: 1024px) { .aw-parties { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 16px; } }
+  @media (max-width: 760px) {
+    .aw-models { margin-top: 30px; }
+    .aw-model + .aw-model { margin-top: 40px; }
+    .aw-frag, .aw-step { grid-template-columns: 1fr; row-gap: 12px; }
+    .aw-frag .aw-actor::after { content: none; }
+    .aw-parties { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; column-gap: 20px; }
+    .aw-parties li { word-break: keep-all; }   /* two wide columns: break only at the marked points */
+    .aw-step + .aw-step { margin-top: 22px; }
+    .aw-life { grid-template-columns: 1fr; row-gap: 8px; }
+    .aw-life li + li::before { content: none; }
+    .aw-life li { padding-left: 16px; }
+    .aw-life li::after { content: ""; position: absolute; left: 1px; top: 0.5em; width: 5px; height: 5px; background: var(--ink-3); }
   }
 
   /* --- 3 · 注力市場: the signature section ------------------------------ */
@@ -287,29 +304,48 @@
     <div class="ab-head">
       <span class="h-eyebrow">REIWAの役割</span>
       <h2 class="h-h2" id="aw-title">海外不動産の保有には、<br>一貫した視点が必要です。</h2>
-      <p class="h-body ab-lede">海外資産の取得は、投資の一部にすぎません。当初に定めた目的と判断基準は、投資分析、実行、そして数年にわたる保有期間を通じて、一貫して保たれる必要があります。</p>
+      <p class="h-body ab-lede">海外資産の取得は、投資の一部にすぎません。投資の判断根拠は、実行、保有、そして出口まで一貫して保たれる必要があります。</p>
     </div>
-    <div class="aw-stages">
-      <div class="aw-stage">
-        <span class="h-num" aria-hidden="true">01</span>
-        <h3>投資方針</h3>
-        <p class="aw-role">投資目的、投資基準、意思決定の要件。</p>
-        <span class="aw-gap" aria-hidden="true"></span>
-        <p class="h-body aw-detail">投資家が何を実現しようとしているか、資金をどのように投じるか、どの条件を満たす必要があるかを起点とします。</p>
+    <div class="aw-models">
+      <div class="aw-model aw-model--frag">
+        <span class="h-eyebrow aw-cap">継続的な調整機能がない場合</span>
+        <div class="aw-frag">
+          <p class="aw-actor">日本の投資家</p>
+          <ul class="aw-parties">
+            <li>ブローカー・<wbr>エージェント</li>
+            <li>法務</li>
+            <li>税務</li>
+            <li>レンダー</li>
+            <li>建物管理・<wbr>リーシング</li>
+            <li>売却アドバイザー</li>
+          </ul>
+        </div>
       </div>
-      <div class="aw-stage">
-        <span class="h-num" aria-hidden="true">02</span>
-        <h3>現地との連携・調整</h3>
-        <p class="aw-role">案件の発掘、デューデリジェンス、資金調達、取得。</p>
-        <span class="aw-gap" aria-hidden="true"></span>
-        <p class="h-body aw-detail">各案件は、機会があるからではなく、当初の投資方針に照らして評価し、調整します。</p>
-      </div>
-      <div class="aw-stage">
-        <span class="h-num" aria-hidden="true">03</span>
-        <h3>保有期間中のモニタリング</h3>
-        <p class="aw-role">事業計画、報告、保有に関する重要な判断。</p>
-        <span class="aw-gap" aria-hidden="true"></span>
-        <p class="h-body aw-detail">取得後も同じ投資家の視点を保ち、事業計画の進捗、重要な判断、そして出口までを支援します。</p>
+      <div class="aw-model aw-model--cont">
+        <span class="h-eyebrow aw-cap">Reiwa Capitalによる一貫した投資家側の調整</span>
+        <div class="aw-cont">
+          <div class="aw-step">
+            <p class="aw-who">日本の投資家</p>
+            <p class="aw-what">投資方針を定め、重要な投資判断を行います。</p>
+          </div>
+          <div class="aw-step">
+            <p class="aw-who aw-who--reiwa">Reiwa Capital</p>
+            <p class="aw-what">取得から売却まで、一貫した投資家側の視点で調整します。</p>
+          </div>
+          <div class="aw-step">
+            <p class="aw-who"><span class="h-eyebrow">投資のライフサイクル</span></p>
+            <ol class="aw-life">
+              <li>取得</li>
+              <li>保有</li>
+              <li>借換え・事業計画</li>
+              <li>売却</li>
+            </ol>
+          </div>
+          <div class="aw-step aw-step--spec">
+            <p class="aw-who"><span class="h-eyebrow">外部専門家</span></p>
+            <p class="aw-spec-run"><span>法務</span> <span class="sep" aria-hidden="true">・</span> <span>税務</span> <span class="sep" aria-hidden="true">・</span> <span>鑑定評価</span> <span class="sep" aria-hidden="true">・</span> <span>ファイナンス</span> <span class="sep" aria-hidden="true">・</span> <span>技術</span> <span class="sep" aria-hidden="true">・</span> <span>リーシング</span> <span class="sep" aria-hidden="true">・</span> <span>建物管理</span> <span class="sep" aria-hidden="true">・</span> <span>プロジェクト</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
