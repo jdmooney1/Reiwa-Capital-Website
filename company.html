@@ -44,13 +44,23 @@
 
   /* --- 1 · Opening: cream, no art, shorter than the other pages --------- */
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
-  .co-open { min-height: min(27vh, 350px); display: flex; align-items: flex-end; }
-  .co-open .inner { padding: calc(var(--nav-h, 68px) + clamp(44px, 5vw, 72px)) var(--gutter) clamp(40px, 4.4vw, 60px); }
+  /* One company sheet: the title and its sentence on the left, the five
+     facts on the right, both starting from the same line. No hero. */
+  /* The nav sits in flow above this head, so the padding does not add the
+     nav height again the way the art-directed heads do. */
+  .co-open .inner { padding: clamp(52px, 5.4vw, 80px) var(--gutter) clamp(28px, 3vw, 44px); }
+  .co-open-grid { display: grid; grid-template-columns: minmax(0, 0.47fr) minmax(0, 1fr); column-gap: clamp(32px, 4vw, 64px); align-items: start; }
+  .co-open-title { min-width: 0; }
   .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(40px, 28px + 2.2vw, 54px); line-height: 1; letter-spacing: -0.025em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); }
   .co-open .sub { margin: clamp(18px, 2vw, 26px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16.5px, 15px + 0.4vw, 20px); line-height: 1.42; letter-spacing: -0.006em; color: var(--ink-2); max-width: 30ch; }
-  .co-open .loc { display: block; margin-top: clamp(24px, 2.8vw, 38px); font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em; line-height: 1.5; text-transform: uppercase; color: var(--ink-3); }
+  .co-profile { min-width: 0; }
+  .co-profile .co-label { padding-top: 6px; }
+  @media (max-width: 900px) {
+    .co-open-grid { grid-template-columns: 1fr; row-gap: 36px; }
+    .co-profile .co-label { padding-top: 0; }
+  }
   @media (max-width: 760px) {
-    .co-open { min-height: min(42vh, 340px); }
+    .co-open .inner { padding-top: 40px; padding-bottom: 24px; }
     .co-open h1 { font-size: clamp(38px, 11vw, 46px); }
     .co-open .sub { max-width: 26ch; }
   }
@@ -66,14 +76,16 @@
   }
 
   /* --- 2 · Profile table: hairline rules, label and value --------------- */
-  .co-table { margin: 0; }
-  .co-table > div { display: grid; grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 40px); padding: clamp(14px, 1.6vw, 20px) 0; border-top: 1px solid var(--rule); align-items: baseline; }
-  .co-table > div:first-child { border-top: 0; padding-top: 0; }
-  .co-table > div:last-child { border-bottom: 1px solid var(--rule); padding-bottom: clamp(16px, 1.8vw, 22px); }
+  /* Factsheet: a strong rule under the label, a hairline between rows. */
+  .co-table { margin: clamp(12px, 1.4vw, 18px) 0 0; border-top: 1px solid var(--rule-strong); }
+  .co-table > div { display: grid; grid-template-columns: minmax(0, 0.34fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 40px); padding: clamp(12px, 1.4vw, 17px) 0; border-top: 1px solid var(--rule); align-items: baseline; }
+  .co-table > div:first-child { border-top: 0; }
+  .co-table > div:last-child { border-bottom: 1px solid var(--rule); }
   .co-table dt { font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.4; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); line-height: 1.4; letter-spacing: -0.006em; color: var(--ink); }
+  .co-table dd { margin: 0; max-width: 44ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.6px + 0.35vw, 18px); font-weight: 500; line-height: 1.4; letter-spacing: -0.006em; color: var(--ink); }
   @media (max-width: 620px) {
-    .co-table > div { grid-template-columns: 1fr; gap: 6px; }
+    .co-table > div { grid-template-columns: 1fr; gap: 5px; padding: 13px 0; }
+    .co-table dd { max-width: none; }
   }
 
   /* --- 3 · Activities: six numbered rows, one hairline each ------------- */
@@ -173,18 +185,15 @@
 <main id="main" tabindex="-1">
 
 <!-- Opening — cream, no art, shorter than the other pages -->
-<section class="page-head co-open" data-screen-label="01 Company — opening">
+<section class="page-head co-open" data-screen-label="01 Company — opening and profile">
   <div class="inner">
-    <h1>Company</h1>
-    <p class="sub">Investor-side European real estate advisory and ownership oversight.</p>
-  </div>
-</section>
-
-<!-- Company profile -->
-<section class="co-sec" data-screen-label="02 Company — profile" aria-labelledby="cp-label">
-  <div class="shell">
-    <div class="co-row">
-      <h2 class="co-label" id="cp-label">Company profile</h2>
+    <div class="co-open-grid">
+      <div class="co-open-title">
+        <h1>Company</h1>
+        <p class="sub">Investor-side European real estate advisory and ownership oversight.</p>
+      </div>
+      <section class="co-profile" aria-labelledby="cp-label">
+        <h2 class="co-label" id="cp-label">Company profile</h2>
       <dl class="co-table">
         <div><dt>Name</dt><dd>Reiwa Capital</dd></div>
         <div><dt>Base</dt><dd>Tokyo, Japan</dd></div>
@@ -192,6 +201,7 @@
         <div><dt>Investor focus</dt><dd>Japanese corporate, institutional and private investors</dd></div>
         <div><dt>Business</dt><dd>Investor-side European real estate advisory and ownership oversight</dd></div>
       </dl>
+      </section>
     </div>
   </div>
 </section>
