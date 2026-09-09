@@ -273,7 +273,6 @@
     '.home-areas .areas-head',
     '.wwd-head', '.home-markets-head', '.activity-head', '.hww-head', '.hww-panel', '.platform-head', '.contact-cta-head',
     '.stage-rail',
-    '.om-investor', '.om-reiwa', '.om-specialists',
     '.contact-direct',
     '.identity .ed-row', '.rationale .ed-row', '.markets .ed-row', '.clients .shell',
     '.assessment .assess-grid', '.areas .chapter',

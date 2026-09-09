@@ -64,85 +64,122 @@
   .ap-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
   @media (max-width: 760px) { .ap-sec { padding-bottom: 64px; } .ap-sec > .shell { padding-top: 60px; } }
 
-  /* --- 2 · Lifecycle: one duration-weighted spine with decision gaps ------
-     Five stages on one hairline. The widths are weighted, not measured:
-     ownership is the long phase of the relationship, so Oversee takes
-     roughly two fifths of the line. Above the line: stage and role. Below
-     it: the document the investor receives, with a short tab like the top
-     edge of a paper. The investor's approval is a break in the line with
-     one sumire square in the gap; the recurring approvals in ownership are
-     small squares on the Oversee stretch. The square means "the investor
-     decides" and nothing else. No numerals, no boxes, no arrowheads. */
-  .lc-spine { margin-top: clamp(40px, 4.4vw, 60px); }
-  .lc-track { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 14fr) minmax(0, 13fr) minmax(0, 13fr) clamp(84px, 9vw, 120px) minmax(0, 12fr) minmax(0, 40fr); grid-template-rows: auto auto 34px auto auto; column-gap: 0; }
-  .lc-st, .lc-gate { display: block; min-width: 0; }
-  @supports (grid-template-rows: subgrid) { .lc-st, .lc-gate { display: grid; grid-row: 1 / span 5; grid-template-rows: subgrid; align-content: start; } }
-  .lc-st { padding-right: clamp(14px, 1.8vw, 26px); }
-  .lc-st h3 { grid-row: 1; margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 13px + 0.85vw, 26px); line-height: 1.12; letter-spacing: -0.014em; color: var(--ink); }
-  .lc-role { grid-row: 2; margin: 8px 0 0; font-size: clamp(13.5px, 13px + 0.25vw, 15px); line-height: 1.45; color: var(--ink-2); max-width: 24ch; }
-  .lc-rail { grid-row: 3; position: relative; display: block; align-self: stretch; }
-  .lc-rail::before { content: ""; position: absolute; left: 0; right: calc(-1 * clamp(14px, 1.8vw, 26px)); top: 50%; height: 1px; background: var(--rule-strong); }
-  .lc-st:last-child .lc-rail::before { right: 0; }
-  .lc-rail::after { content: ""; position: absolute; left: 0; top: calc(50% - 5px); width: 1px; height: 11px; background: var(--ink-3); }
-  .lc-mark { position: absolute; left: var(--p); top: 50%; width: 5px; height: 5px; transform: translate(-50%, -50%); background: var(--reiwa-node, #5E3D78); }
-  .lc-out { grid-row: 4; position: relative; margin: 12px 0 0; padding-top: 10px; }
-  .lc-out::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 1px; background: var(--rule-strong); }
-  .lc-out-k { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--eyebrow-ink); margin: 0 0 5px; }
-  .lc-out-v { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 13px + 0.25vw, 15px); font-weight: 500; line-height: 1.4; color: var(--ink); max-width: 22ch; }
-  .lc-matters { grid-row: 5; list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; align-items: baseline; }
-  .lc-matters-k { flex-basis: 100%; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--eyebrow-ink); margin-bottom: 2px; }
-  .lc-matters li { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.5; color: var(--ink-2); white-space: nowrap; }
-  .lc-matters li:not(.lc-matters-k):not(:last-child)::after { content: "·"; padding: 0 0.5em; color: var(--ink-4); }
-  .lc-matters li.lc-matters-k::before { content: none; }
-  .lc-gate { text-align: center; padding: 0 6px; }
-  .lc-gate-sq { grid-row: 3; position: relative; display: block; align-self: stretch; }
-  .lc-gate-sq::before { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; transform: translate(-50%, -50%); background: var(--reiwa-node, #5E3D78); }
-  .lc-gate-t { grid-row: 4; display: block; margin: 12px 0 0; padding-top: 10px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--eyebrow-ink); }
-  @media (max-width: 900px) {
-    /* Rotated: the spine runs down the left; stage heights follow duration,
-       so Oversee is the tallest block. The gap for the decision stays a gap. */
-    .lc-spine { margin-top: 30px; }
-    .lc-track { display: block; }
-    .lc-st, .lc-gate { display: grid; grid-template-columns: 28px minmax(0, 1fr); grid-template-rows: none; column-gap: 14px; position: relative; padding: 0 0 clamp(22px, 3.4vw, 30px); min-height: calc(var(--w, 12) * 5.5px); text-align: left; }
-    .lc-st:last-child { padding-bottom: 0; }
-    .lc-rail { grid-column: 1; grid-row: 1 / span 4; align-self: stretch; }
-    .lc-rail::before { left: 13px; right: auto; top: 0; bottom: calc(-1 * clamp(22px, 3.4vw, 30px)); width: 1px; height: auto; }
-    .lc-st:last-child .lc-rail::before { bottom: 0; right: auto; }
-    .lc-rail::after { left: 9px; top: 0.55em; width: 9px; height: 1px; }
-    .lc-st h3, .lc-role, .lc-out, .lc-matters { grid-column: 2; }
-    .lc-st h3 { grid-row: 1; } .lc-role { grid-row: 2; max-width: none; } .lc-out { grid-row: 3; } .lc-matters { grid-row: 4; }
-    .lc-matters li { white-space: normal; }
-    .lc-gate { padding: 0 0 clamp(22px, 3.4vw, 30px); min-height: 0; }
-    .lc-gate-sq { grid-column: 1; grid-row: 1; height: 16px; }
-    .lc-gate-sq::before { left: 13px; top: 6px; transform: translate(-50%, 0); }
-    .lc-gate-t { grid-column: 2; grid-row: 1; margin: 0; padding: 0; }
-    .lc-mark { left: 13px; top: var(--p); }
+  /* --- 2 · Investment lifecycle: one datum, one decision -----------------
+     A single line of custody. Four preparatory stages sit on a soft
+     hairline with their outputs hung beneath short ticks. The line breaks;
+     the sumire square fills the gap; it resumes in ink and runs off the
+     right edge, so ownership reads as continuing beyond the frame. A faint
+     warm tone sits behind the ownership side: tone, not a container. The
+     square means "the investor decides" and appears nowhere else. No
+     numerals, no boxes, no arrowheads, no cards. */
+  .lc { overflow-x: hidden; overflow-x: clip; }
+  .dm { margin-top: clamp(38px, 4.2vw, 56px); }
+  .dm-track {
+    --gap: clamp(70px, 5.4vw, 80px);
+    --inset: clamp(20px, 2.4vw, 34px);
+    --pad: clamp(14px, 1.8vw, 26px);
+    --tone: #F8F3E7;
+    position: relative; z-index: 0; margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 15fr) minmax(0, 14fr) minmax(0, 16fr) minmax(0, 15fr) var(--gap) minmax(0, 48fr);
+    grid-template-rows: auto auto clamp(38px, 4vw, 48px) auto;
+    column-gap: 0;
   }
-  /* --- 3 · Operating model: the point and the fan ------------------------
-     Investor authority above, eight specialist disciplines below, one
-     point between them. The only place on the site where lines converge,
-     which is the claim. Compact by design: it must not compete with the
-     lifecycle. */
-  .om-lede { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.6vw, 22px); line-height: 1.45; letter-spacing: 0.01em; color: var(--ink-2); max-width: 30ch; }
-  .om-lede b { font-weight: 500; color: var(--ink); }
-  .om-point { position: relative; max-width: 880px; margin: clamp(40px, 4.4vw, 60px) auto 0; text-align: center; }
-  .om-top { width: min(100%, 340px); margin: 0 auto; padding-top: 12px; border-top: 1px solid var(--ink-3); }
-  .om-top b { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--eyebrow-ink); color: var(--ink); }
-  .om-top span { display: block; margin-top: 6px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
-  .om-stem { display: block; width: 1px; height: clamp(26px, 3vw, 40px); margin: 14px auto 0; background: var(--rule-strong); }
-  .om-hub { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); font-weight: 500; line-height: 1.3; color: var(--ink); }
-  .om-hub small { display: block; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.5; color: var(--ink-3); }
-  .om-fan { display: block; width: 100%; height: clamp(52px, 7vw, 84px); margin-top: 10px; overflow: visible; }
-  .om-stem--2 { display: none; }
-  .om-fan line { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .om-spec { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 6px; }
-  .om-spec li { padding-top: 10px; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.35; color: var(--ink); }
-  .om-close { max-width: 62ch; margin: clamp(30px, 3.4vw, 44px) auto 0; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.45; color: var(--ink-2); text-align: center; }
-  @media (max-width: 600px) {
-    .om-fan { display: none; }
-    .om-stem--2 { display: block; height: 22px; margin-top: 12px; }
-    .om-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 0; max-width: 300px; margin: 0 auto; border-top: 1px solid var(--rule-strong); }
-    .om-spec li { padding: 9px 0; border-top: 0; border-bottom: 1px solid var(--rule); text-align: center; }
+  .dm-tone { grid-column: 6; grid-row: 1 / -1; position: relative; }
+  .dm-tone::before { content: ""; position: absolute; z-index: -1; left: 0; right: -50vw; top: calc(-1 * clamp(10px, 1.4vw, 18px)); bottom: calc(-1 * clamp(20px, 2.6vw, 34px)); background: var(--tone); }
+  .dm-band { grid-row: 1; padding-bottom: clamp(34px, 4vw, 52px); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4; color: var(--ink-3); }
+  .dm-band--pre { grid-column: 1 / 5; }
+  .dm-band--own { grid-column: 6; }
+  .dm-st, .dm-gate { grid-row: 2 / span 3; min-width: 0; }
+  .dm-st { grid-column: var(--c); }
+  .dm-gate { grid-column: 5; }
+  @supports (grid-template-rows: subgrid) { .dm-st, .dm-gate { display: grid; grid-template-rows: subgrid; } }
+  .dm-n { grid-row: 1; align-self: end; margin: 0 var(--pad) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17.5px, 12px + 0.72vw, 25px); line-height: 1.14; letter-spacing: -0.014em; color: var(--ink); }
+  .dm-rail { grid-row: 2; position: relative; display: block; align-self: stretch; }
+  .dm-rail::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-strong); }
+  .dm-rail::after { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 12px; background: var(--rule-strong); }
+  .dm-o { grid-row: 3; margin: clamp(9px, 1.1vw, 13px) var(--pad) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.3vw, 14px); line-height: 1.5; color: var(--ink-3); }
+  /* Ownership: the same line, in ink, inset past the break and off the page. */
+  .dm-st--own .dm-n, .dm-st--own .dm-o { margin-left: var(--inset); margin-right: 0; }
+  .dm-st--own .dm-rail::before { right: -50vw; background: var(--ink); }
+  .dm-st--own .dm-rail::after { left: var(--inset); background: var(--ink); }
+  /* The break, and the one square that fills it. */
+  .dm-gate-t { grid-row: 1; align-self: end; justify-self: center; width: max-content; max-width: 68px; text-align: center; padding: 0 0 7px; font-family: 'DM Sans', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.35; color: var(--eyebrow-ink); }
+  .dm-gate-sq { grid-row: 2; position: relative; display: block; align-self: stretch; }
+  .dm-gate-sq::before { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; transform: translate(-50%, -50%); background: var(--reiwa-node, #5E3D78); }
+  .dm-foot { margin: clamp(46px, 5.4vw, 78px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12.5px + 0.2vw, 14.5px); line-height: 1.55; color: var(--ink-3); max-width: 74ch; }
+  @media (max-width: 760px) {
+    /* Rotated. The datum runs down the left edge, breaks at the square and
+       resumes in ink; the ownership tone bleeds off both sides. */
+    .dm { margin-top: 28px; }
+    .dm-track { display: block; }
+    .dm-band { display: block; grid-column: auto; padding: 0 0 13px; }
+    .dm-band--own { padding-top: clamp(30px, 7vw, 40px); }
+    .dm-st, .dm-gate { display: block; position: relative; }
+    .dm-st { padding: 0 0 clamp(22px, 5vw, 28px) 40px; }
+    .dm-st--own { min-height: clamp(146px, 34vw, 196px); padding-bottom: 0; }
+    .dm-n { display: block; margin: 0; font-size: 17px; }
+    .dm-o { display: block; margin: 5px 0 0; font-size: 12.5px; }
+    .dm-st--own .dm-n, .dm-st--own .dm-o { margin-left: 0; }
+    .dm-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 27px; }
+    .dm-rail::before { left: 13px; right: auto; top: 0.7em; bottom: calc(-1 * clamp(22px, 5vw, 28px)); width: 1px; height: auto; }
+    .dm-rail::after { left: 13px; top: 0.7em; width: 14px; height: 1px; }
+    .dm-st--last-pre .dm-rail::before { bottom: 0; }
+    .dm-st--own .dm-rail::before { right: auto; bottom: calc(-1 * clamp(30px, 8vw, 52px)); }
+    .dm-st--own .dm-rail::after { left: 13px; }
+    .dm-gate { padding: 0 0 clamp(16px, 4vw, 22px) 40px; }
+    .dm-gate-t { display: block; justify-self: start; width: auto; max-width: none; text-align: left; padding: 0; }
+    .dm-gate-sq { position: absolute; left: 0; top: 0; width: 27px; height: 1.1em; }
+    .dm-gate-sq::before { left: 13px; top: 0.2em; transform: translate(-50%, 0); }
+    .dm-tone { display: none; }
+    .dm-st--own::before { content: ""; position: absolute; z-index: -1; left: -50vw; right: -50vw; top: calc(-1 * clamp(52px, 12vw, 70px)); bottom: calc(-1 * clamp(30px, 8vw, 52px)); background: var(--tone); }
+    .dm-foot { margin-top: clamp(56px, 14vw, 76px); }
+  }
+
+  /* --- 3 · Operating model: one authority line, one point ----------------
+     Copy on the left, the relationship on the right. An ink line drops from
+     the investor and ends at Reiwa Capital, the largest type in the
+     diagram; from that same point three soft hairlines fan out into the
+     specialist groups. Nothing is boxed, and no square sits on Reiwa: the
+     one square belongs beside "approves material decisions", because that
+     is the only place the investor decides. Deliberately quieter than the
+     lifecycle above it. */
+  .om-grid { display: grid; grid-template-columns: minmax(0, 360fr) minmax(0, 680fr); column-gap: clamp(40px, 5.5vw, 92px); align-items: start; }
+  .om-copy { max-width: 44ch; }
+  .om-lede { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.25vw, 16px); line-height: 1.6; color: var(--ink-2); }
+  .cv { --ax: min(36%, 300px); --run: clamp(48px, 5.4vw, 84px); position: relative; padding-top: clamp(2px, 0.8vw, 10px); }
+  .cv-upper { position: relative; padding: 0 0 clamp(64px, 8vw, 126px) calc(var(--ax) + clamp(12px, 1.2vw, 18px)); }
+  .cv-axis { position: absolute; left: var(--ax); top: 5px; bottom: 0; width: 1px; background: var(--ink); }
+  .cv-who { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.2vw, 16.5px); font-weight: 500; line-height: 1.25; color: var(--ink); }
+  .cv-acts { list-style: none; margin: 12px 0 0; padding: 0; display: grid; row-gap: 7px; }
+  .cv-acts li { font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.25vw, 13.5px); line-height: 1.4; color: var(--ink-3); }
+  .cv-acts .dec { display: flex; align-items: baseline; gap: 8px; color: var(--ink-2); }
+  .cv-acts .dec::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--reiwa-node, #5E3D78); }
+  .cv-lower { position: relative; }
+  .cv-hub { position: absolute; top: 0; right: calc(100% - var(--ax) + clamp(12px, 1.2vw, 18px)); margin: 0; text-align: right; font-family: 'DM Sans', sans-serif; font-size: clamp(19px, 6px + 1.35vw, 26px); font-weight: 500; line-height: 1.15; letter-spacing: -0.012em; color: var(--ink); transform: translateY(-0.575em); }
+  .cv-hub span { display: block; margin-top: 9px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.5; color: var(--ink-3); }
+  .cv-fan { position: absolute; left: var(--ax); top: 0; width: var(--run); height: 169px; overflow: visible; }
+  .cv-fan line { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .cv-br { list-style: none; margin: 0; padding: 62px 0 0 calc(var(--ax) + var(--run)); display: grid; grid-template-rows: repeat(3, 50px); }
+  .cv-br-k { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--ink-3); }
+  .cv-br-v { display: block; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12.5px + 0.2vw, 14px); line-height: 1.35; color: var(--ink); }
+  @media (max-width: 900px) {
+    .om-grid { display: block; }
+    .om-copy { max-width: 62ch; }
+    .cv { max-width: 640px; margin-top: clamp(34px, 5vw, 48px); }
+  }
+  @media (max-width: 760px) {
+    /* One vertical line: investor, Reiwa, then the groups on short ticks. */
+    .cv { --ax: 13px; max-width: none; }
+    .cv-upper { padding: 0 0 clamp(42px, 10vw, 62px) 34px; }
+    .cv-axis { bottom: -15px; }
+    .cv-lower { padding-left: 34px; }
+    .cv-lower::before { content: ""; position: absolute; left: 13px; top: 15px; bottom: clamp(18px, 4.4vw, 26px); width: 1px; background: var(--rule-strong); }
+    .cv-hub { position: static; transform: none; text-align: left; font-size: 22px; }
+    .cv-fan { display: none; }
+    .cv-br { padding: clamp(24px, 6vw, 32px) 0 0; grid-template-rows: none; row-gap: clamp(20px, 5vw, 26px); }
+    .cv-br li { position: relative; }
+    .cv-br li::before { content: ""; position: absolute; left: -21px; top: 6px; width: 14px; height: 1px; background: var(--rule-strong); }
   }
   </style>
 </head>
@@ -168,44 +205,19 @@
       <span class="h-eyebrow">Investment lifecycle</span>
       <h2 class="h-h2" id="lc-title">From Mandate to Ownership.</h2>
     </div>
-    <div class="lc-spine" role="group" aria-label="Investment lifecycle: Mandate, Assess, Structure, the investor’s acquisition approval, Acquire, then Oversee through exit, with disposal, refinancing, material capital expenditure, material leasing and business-plan changes approved by the investor.">
-    <ol class="lc-track">
-      <li class="lc-st" style="--w:14">
-        <h3>Mandate</h3>
-        <p class="h-body lc-role">Define objectives and decision parameters.</p>
-        <span class="lc-rail" aria-hidden="true"></span>
-        <p class="lc-out"><span class="lc-out-k">Output</span><span class="lc-out-v">Investment Mandate</span></p>
-      </li>
-      <li class="lc-st" style="--w:13">
-        <h3>Assess</h3>
-        <p class="h-body lc-role">Test the asset, business plan and downside.</p>
-        <span class="lc-rail" aria-hidden="true"></span>
-        <p class="lc-out"><span class="lc-out-k">Output</span><span class="lc-out-v">Investment Memorandum</span></p>
-      </li>
-      <li class="lc-st" style="--w:13">
-        <h3>Structure</h3>
-        <p class="h-body lc-role">Design ownership and financing.</p>
-        <span class="lc-rail" aria-hidden="true"></span>
-        <p class="lc-out"><span class="lc-out-k">Output</span><span class="lc-out-v">Structure &amp; Execution Plan</span></p>
-      </li>
-      <li class="lc-gate">
-        <span class="lc-gate-sq" aria-hidden="true"></span>
-        <span class="lc-gate-t">Investor approval</span>
-      </li>
-      <li class="lc-st" style="--w:12">
-        <h3>Acquire</h3>
-        <p class="h-body lc-role">Coordinate diligence and completion.</p>
-        <span class="lc-rail" aria-hidden="true"></span>
-        <p class="lc-out"><span class="lc-out-k">Output</span><span class="lc-out-v">Acquisition Decision Pack</span></p>
-      </li>
-      <li class="lc-st" style="--w:38">
-        <h3>Oversee</h3>
-        <p class="h-body lc-role">Monitor the plan through exit.</p>
-        <span class="lc-rail" aria-hidden="true"><i class="lc-mark" style="--p:14%"></i><i class="lc-mark" style="--p:31%"></i><i class="lc-mark" style="--p:48%"></i><i class="lc-mark" style="--p:65%"></i><i class="lc-mark" style="--p:82%"></i></span>
-        <p class="lc-out"><span class="lc-out-k">Output</span><span class="lc-out-v">Ownership Oversight &amp; Reporting</span></p>
-        <ul class="lc-matters" aria-label="Investor approval"><li class="lc-matters-k" role="presentation">Investor approval</li><li>Disposal</li><li>Refinancing</li><li>Material CapEx</li><li>Material leasing</li><li>Business-plan changes</li></ul>
-      </li>
-    </ol>
+    <div class="dm" role="group" aria-label="Investment lifecycle. Four preparatory stages — Mandate, Assess, Structure and Acquire — prepare the investor’s acquisition approval. Ownership then runs from Oversee through exit, with disposal, refinancing, material capital expenditure, material leasing and business-plan changes approved by the investor.">
+      <div class="dm-track">
+        <span class="dm-tone" aria-hidden="true"></span>
+        <span class="dm-band dm-band--pre">Pre-acquisition</span>
+        <div class="dm-st" style="--c:1"><h3 class="dm-n">Mandate</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Investment Mandate</p></div>
+        <div class="dm-st" style="--c:2"><h3 class="dm-n">Assess</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Investment Memorandum</p></div>
+        <div class="dm-st" style="--c:3"><h3 class="dm-n">Structure</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Structure &amp; Execution Plan</p></div>
+        <div class="dm-st dm-st--last-pre" style="--c:4"><h3 class="dm-n">Acquire</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Acquisition Decision Pack</p></div>
+        <div class="dm-gate"><span class="dm-gate-t">Investor approval</span><span class="dm-gate-sq" aria-hidden="true"></span></div>
+        <span class="dm-band dm-band--own">Ownership</span>
+        <div class="dm-st dm-st--own" style="--c:6"><h3 class="dm-n">Oversee</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Ownership Oversight &amp; Reporting</p></div>
+      </div>
+      <p class="dm-foot">Investor retains approval authority throughout: disposal, refinancing, material capital expenditure, material leasing and business-plan changes.</p>
     </div>
   </div>
 </section>
@@ -213,20 +225,25 @@
 <!-- Operating model -->
 <section class="ap-sec om" data-screen-label="03 Approach — operating model" aria-labelledby="om-title">
   <div class="shell">
-    <div class="ap-head">
-      <span class="h-eyebrow">Operating model</span>
-      <h2 class="h-h2" id="om-title">One Point of Coordination.</h2>
-      <p class="om-lede"><b>Investor</b> decides. <b>Reiwa</b> coordinates. <b>Specialists</b> advise.</p>
+    <div class="om-grid">
+      <div class="ap-head om-copy">
+        <span class="h-eyebrow">Operating model</span>
+        <h2 class="h-h2" id="om-title">One Point of Coordination.</h2>
+        <p class="h-body om-lede">The investor sets the mandate and retains final authority. Reiwa develops the investment case, coordinates execution and oversees the business plan, working with appointed European specialists through a single line of accountability.</p>
+      </div>
+      <div class="cv" role="group" aria-label="Operating model. The investor sets the mandate, approves material decisions and retains final authority. One line of authority runs from the investor to Reiwa Capital, which underwrites, coordinates, monitors and recommends. From that point, appointed European specialists group into transaction — legal, tax and valuation; capital — financing; and asset and projects — technical, leasing, property and projects.">
+        <div class="cv-upper">
+          <span class="cv-axis" aria-hidden="true"></span>
+          <p class="cv-who">Investor</p>
+          <ul class="cv-acts"><li>Sets mandate</li><li class="dec">Approves material decisions</li><li>Retains final authority</li></ul>
+        </div>
+        <div class="cv-lower">
+          <p class="cv-hub">Reiwa Capital<span>Underwrites · Coordinates · Monitors · Recommends</span></p>
+          <svg class="cv-fan" viewBox="0 0 100 169" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="0" y1="0" x2="100" y2="69"/><line x1="0" y1="0" x2="100" y2="119"/><line x1="0" y1="0" x2="100" y2="169"/></svg>
+          <ul class="cv-br"><li><span class="cv-br-k">Transaction</span><span class="cv-br-v">Legal · Tax · Valuation</span></li><li><span class="cv-br-k">Capital</span><span class="cv-br-v">Financing</span></li><li><span class="cv-br-k">Asset &amp; projects</span><span class="cv-br-v">Technical · Leasing · Property · Projects</span></li></ul>
+        </div>
+      </div>
     </div>
-    <div class="om-point" role="img" aria-label="Investor authority above; Reiwa Capital as the single point of coordination where the lines meet; eight independent European specialist disciplines below: legal, tax, valuation, technical, financing, leasing, property and projects.">
-      <p class="om-top"><b>Investor authority</b><span>Sets the mandate · approves material decisions · retains final authority</span></p>
-      <span class="om-stem" aria-hidden="true"></span>
-      <p class="om-hub">Reiwa Capital<small>Underwrite · Coordinate · Monitor · Recommend</small></p>
-      <svg class="om-fan" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="400" y1="0" x2="50" y2="100"/><line x1="400" y1="0" x2="150" y2="100"/><line x1="400" y1="0" x2="250" y2="100"/><line x1="400" y1="0" x2="350" y2="100"/><line x1="400" y1="0" x2="450" y2="100"/><line x1="400" y1="0" x2="550" y2="100"/><line x1="400" y1="0" x2="650" y2="100"/><line x1="400" y1="0" x2="750" y2="100"/></svg>
-      <span class="om-stem om-stem--2" aria-hidden="true"></span>
-      <ul class="om-spec"><li>Legal</li><li>Tax</li><li>Valuation</li><li>Technical</li><li>Financing</li><li>Leasing</li><li>Property</li><li>Projects</li></ul>
-    </div>
-    <p class="h-body om-close">Reiwa develops the investment case, coordinates execution and oversees the business plan while material decisions remain with the investor.</p>
   </div>
 </section>
 
