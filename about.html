@@ -158,10 +158,9 @@
   .am-img--tall { display: none; }
 
   .ab-lab { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.24; text-align: center; white-space: nowrap; pointer-events: none;
-    /* A soft cream halo is standard cartographic practice — without it a name
-       crossing a boundary or a park edge becomes unreadable. */
-    text-shadow: 0 0 3px var(--paper-warm), 0 0 3px var(--paper-warm), 0 0 6px var(--paper-warm); }
-  .ab-lab--core { color: #F7F3EC; font-weight: 500; text-shadow: 0 0 3px rgba(47,31,58,0.9), 0 0 3px rgba(47,31,58,0.9), 0 0 6px rgba(47,31,58,0.7); }
+    /* The faintest halo that keeps a name legible where it crosses an edge. */
+    text-shadow: 0 0 2px rgba(252,250,241,0.85); }
+  .ab-lab--core { color: #F7F3EC; font-weight: 500; text-shadow: 0 0 2px rgba(47,31,58,0.85); }
   .ab-lab--sel { color: var(--ink); font-weight: 500; }
 
   .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
@@ -170,7 +169,6 @@
   .am-legend .sw { width: 13px; height: 13px; flex: none; }
   .sw-prim  { background: #2F1F3A; opacity: 0.94; border: 1px solid #2F1F3A; }
   .sw-broad { background: #E6D9E4; opacity: 0.9; border: 1px solid #8E7A9C; }
-  .sw-ctx   { background: #F7F3EC; border: 1px solid #8E7A9C; }
 
   .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
   .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
@@ -229,6 +227,7 @@
     /* Phones: labels that cannot sit inside their area without touching a
        neighbour are hidden here and remain in the submarket list. */
     .ab-lab--hide-sm { display: none; }
+    .ab-lab { font-size: 10.5px; letter-spacing: 0; }
   }
   @media (max-width: 380px) {
     .ab-lab { font-size: 9.5px; line-height: 1.2; }
@@ -352,12 +351,12 @@
             <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=3" alt="Map of central London. The Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus areas are Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden, Westminster and the City of London; selective focus covers Bloomsbury, Holborn / Midtown, Farringdon, Clerkenwell, Shoreditch and Aldgate, and the South Bank." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=3" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <span class="ab-lab ab-lab--core" data-area="Marylebone" style="--x:14.93%;--y:39.9%;--xt:17.85%;--yt:38.9%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--core" data-area="Fitzrovia" style="--x:28.68%;--y:40.28%;--xt:29.13%;--yt:42.68%" aria-hidden="true">Fitzrovia</span>
+          <span class="ab-lab ab-lab--core" data-area="Fitzrovia" style="--x:28.68%;--y:40.28%;--xt:30.2%;--yt:42.4%" aria-hidden="true">Fitzrovia</span>
           <span class="ab-lab ab-lab--core ab-lab--hide-sm" data-area="Soho" style="--x:32.06%;--y:45.57%;--xt:32.06%;--yt:46.56%" aria-hidden="true">Soho</span>
           <span class="ab-lab ab-lab--core" data-area="Mayfair" style="--x:22.2%;--y:49.1%;--xt:22.2%;--yt:49.24%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--core" data-area="St James's" style="--x:31.82%;--y:54.41%;--xt:29.41%;--yt:53.83%" aria-hidden="true">St James's</span>
-          <span class="ab-lab ab-lab--core" data-area="Covent Garden" style="--x:37.73%;--y:49.66%;--xt:40.87%;--yt:49.71%" aria-hidden="true">Covent Garden</span>
-          <span class="ab-lab ab-lab--core" data-area="Westminster" style="--x:34.23%;--y:64.92%;--xt:31.97%;--yt:62.56%" aria-hidden="true">Westminster</span>
+          <span class="ab-lab ab-lab--core" data-area="St James's" style="--x:31.82%;--y:54.41%;--xt:29.0%;--yt:54.1%" aria-hidden="true">St James's</span>
+          <span class="ab-lab ab-lab--core" data-area="Covent Garden" style="--x:37.73%;--y:49.66%;--xt:41.4%;--yt:50.3%" aria-hidden="true">Covent Garden</span>
+          <span class="ab-lab ab-lab--core" data-area="Westminster" style="--x:34.23%;--y:64.92%;--xt:32.4%;--yt:62.9%" aria-hidden="true">Westminster</span>
           <span class="ab-lab ab-lab--core" data-area="City of London" style="--x:67.49%;--y:43.47%;--xt:65.82%;--yt:45.29%" aria-hidden="true">City of London</span>
           <span class="ab-lab ab-lab--sel" data-area="Bloomsbury" style="--x:36.04%;--y:33.17%;--xt:37.58%;--yt:35.82%" aria-hidden="true">Bloomsbury</span>
           <span class="ab-lab ab-lab--sel ab-lab--hide-sm" data-area="Holborn / Midtown" style="--x:45.33%;--y:42.1%;--xt:43.78%;--yt:43.62%" aria-hidden="true">Holborn / Midtown</span>
@@ -369,7 +368,6 @@
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
           </ul>
           <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
@@ -412,7 +410,6 @@
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective focus</li>
-            <li><span class="sw sw-ctx" aria-hidden="true"></span>Other areas</li>
           </ul>
           <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
