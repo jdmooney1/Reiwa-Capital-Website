@@ -68,8 +68,7 @@
      A single line of custody. Four preparatory stages sit on a soft
      hairline with their outputs hung beneath short ticks. The line breaks;
      the sumire square fills the gap; it resumes in ink and runs off the
-     right edge, so ownership reads as continuing beyond the frame. A faint
-     warm tone sits behind the ownership side: tone, not a container. The
+     right edge, so ownership reads as continuing beyond the frame. The
      square means "the investor decides" and appears nowhere else. No
      numerals, no boxes, no arrowheads, no cards. */
   .lc { overflow-x: hidden; overflow-x: clip; }
@@ -78,15 +77,12 @@
     --gap: clamp(70px, 5.4vw, 80px);
     --inset: clamp(20px, 2.4vw, 34px);
     --pad: clamp(14px, 1.8vw, 26px);
-    --tone: #F8F3E7;
     position: relative; z-index: 0; margin: 0; padding: 0;
     display: grid;
     grid-template-columns: minmax(0, 15fr) minmax(0, 14fr) minmax(0, 16fr) minmax(0, 15fr) var(--gap) minmax(0, 48fr);
     grid-template-rows: auto auto clamp(38px, 4vw, 48px) auto;
     column-gap: 0;
   }
-  .dm-tone { grid-column: 6; grid-row: 1 / -1; position: relative; }
-  .dm-tone::before { content: ""; position: absolute; z-index: -1; left: 0; right: -50vw; top: calc(-1 * clamp(10px, 1.4vw, 18px)); bottom: calc(-1 * clamp(20px, 2.6vw, 34px)); background: var(--tone); }
   .dm-band { grid-row: 1; padding-bottom: clamp(34px, 4vw, 52px); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4; color: var(--ink-3); }
   .dm-band--pre { grid-column: 1 / 5; }
   .dm-band--own { grid-column: 6; }
@@ -110,14 +106,14 @@
   .dm-foot { margin: clamp(46px, 5.4vw, 78px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12.5px + 0.2vw, 14.5px); line-height: 1.55; color: var(--ink-3); max-width: 74ch; }
   @media (max-width: 760px) {
     /* Rotated. The datum runs down the left edge, breaks at the square and
-       resumes in ink; the ownership tone bleeds off both sides. */
+       resumes in ink, running longer than everything before it. */
     .dm { margin-top: 28px; }
     .dm-track { display: block; }
     .dm-band { display: block; grid-column: auto; padding: 0 0 13px; }
     .dm-band--own { padding-top: clamp(30px, 7vw, 40px); }
     .dm-st, .dm-gate { display: block; position: relative; }
     .dm-st { padding: 0 0 clamp(22px, 5vw, 28px) 40px; }
-    .dm-st--own { min-height: clamp(146px, 34vw, 196px); padding-bottom: 0; }
+    .dm-st--own { min-height: clamp(104px, 24vw, 140px); padding-bottom: 0; }
     .dm-n { display: block; margin: 0; font-size: 17px; }
     .dm-o { display: block; margin: 5px 0 0; font-size: 12.5px; }
     .dm-st--own .dm-n, .dm-st--own .dm-o { margin-left: 0; }
@@ -131,55 +127,34 @@
     .dm-gate-t { display: block; justify-self: start; width: auto; max-width: none; text-align: left; padding: 0; }
     .dm-gate-sq { position: absolute; left: 0; top: 0; width: 27px; height: 1.1em; }
     .dm-gate-sq::before { left: 13px; top: 0.2em; transform: translate(-50%, 0); }
-    .dm-tone { display: none; }
-    .dm-st--own::before { content: ""; position: absolute; z-index: -1; left: -50vw; right: -50vw; top: calc(-1 * clamp(52px, 12vw, 70px)); bottom: calc(-1 * clamp(30px, 8vw, 52px)); background: var(--tone); }
     .dm-foot { margin-top: clamp(56px, 14vw, 76px); }
   }
 
-  /* --- 3 · Operating model: one authority line, one point ----------------
-     Copy on the left, the relationship on the right. An ink line drops from
-     the investor and ends at Reiwa Capital, the largest type in the
-     diagram; from that same point three soft hairlines fan out into the
-     specialist groups. Nothing is boxed, and no square sits on Reiwa: the
-     one square belongs beside "approves material decisions", because that
-     is the only place the investor decides. Deliberately quieter than the
-     lifecycle above it. */
-  .om-grid { display: grid; grid-template-columns: minmax(0, 360fr) minmax(0, 680fr); column-gap: clamp(40px, 5.5vw, 92px); align-items: start; }
-  .om-copy { max-width: 44ch; }
-  .om-lede { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.25vw, 16px); line-height: 1.6; color: var(--ink-2); }
-  .cv { --ax: min(36%, 300px); --run: clamp(48px, 5.4vw, 84px); position: relative; padding-top: clamp(2px, 0.8vw, 10px); }
-  .cv-upper { position: relative; padding: 0 0 clamp(64px, 8vw, 126px) calc(var(--ax) + clamp(12px, 1.2vw, 18px)); }
-  .cv-axis { position: absolute; left: var(--ax); top: 5px; bottom: 0; width: 1px; background: var(--ink); }
-  .cv-who { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.2vw, 16.5px); font-weight: 500; line-height: 1.25; color: var(--ink); }
-  .cv-acts { list-style: none; margin: 12px 0 0; padding: 0; display: grid; row-gap: 7px; }
-  .cv-acts li { font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.25vw, 13.5px); line-height: 1.4; color: var(--ink-3); }
-  .cv-acts .dec { display: flex; align-items: baseline; gap: 8px; color: var(--ink-2); }
-  .cv-acts .dec::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--reiwa-node, #5E3D78); }
-  .cv-lower { position: relative; }
-  .cv-hub { position: absolute; top: 0; right: calc(100% - var(--ax) + clamp(12px, 1.2vw, 18px)); margin: 0; text-align: right; font-family: 'DM Sans', sans-serif; font-size: clamp(19px, 6px + 1.35vw, 26px); font-weight: 500; line-height: 1.15; letter-spacing: -0.012em; color: var(--ink); transform: translateY(-0.575em); }
-  .cv-hub span { display: block; margin-top: 9px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; line-height: 1.5; color: var(--ink-3); }
-  .cv-fan { position: absolute; left: var(--ax); top: 0; width: var(--run); height: 169px; overflow: visible; }
-  .cv-fan line { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .cv-br { list-style: none; margin: 0; padding: 62px 0 0 calc(var(--ax) + var(--run)); display: grid; grid-template-rows: repeat(3, 50px); }
-  .cv-br-k { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--ink-3); }
-  .cv-br-v { display: block; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12.5px + 0.2vw, 14px); line-height: 1.35; color: var(--ink); }
-  @media (max-width: 900px) {
-    .om-grid { display: block; }
-    .om-copy { max-width: 62ch; }
-    .cv { max-width: 640px; margin-top: clamp(34px, 5vw, 48px); }
-  }
-  @media (max-width: 760px) {
-    /* One vertical line: investor, Reiwa, then the groups on short ticks. */
-    .cv { --ax: 13px; max-width: none; }
-    .cv-upper { padding: 0 0 clamp(42px, 10vw, 62px) 34px; }
-    .cv-axis { bottom: -15px; }
-    .cv-lower { padding-left: 34px; }
-    .cv-lower::before { content: ""; position: absolute; left: 13px; top: 15px; bottom: clamp(18px, 4.4vw, 26px); width: 1px; background: var(--rule-strong); }
-    .cv-hub { position: static; transform: none; text-align: left; font-size: 22px; }
-    .cv-fan { display: none; }
-    .cv-br { padding: clamp(24px, 6vw, 32px) 0 0; grid-template-rows: none; row-gap: clamp(20px, 5vw, 26px); }
-    .cv-br li { position: relative; }
-    .cv-br li::before { content: ""; position: absolute; left: -21px; top: 6px; width: 14px; height: 1px; background: var(--rule-strong); }
+  /* --- 3 · Operating model: the point and the fan ------------------------
+     Investor authority above, eight specialist disciplines below, one
+     point between them. The only place on the site where lines converge,
+     which is the claim. Compact by design: it must not compete with the
+     lifecycle. */
+  .om-lede { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.6vw, 22px); line-height: 1.45; letter-spacing: 0.01em; color: var(--ink-2); max-width: 30ch; }
+  .om-lede b { font-weight: 500; color: var(--ink); }
+  .om-point { position: relative; max-width: 880px; margin: clamp(40px, 4.4vw, 60px) auto 0; text-align: center; }
+  .om-top { width: min(100%, 340px); margin: 0 auto; padding-top: 12px; border-top: 1px solid var(--ink-3); }
+  .om-top b { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3; color: var(--eyebrow-ink); color: var(--ink); }
+  .om-top span { display: block; margin-top: 6px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+  .om-stem { display: block; width: 1px; height: clamp(26px, 3vw, 40px); margin: 14px auto 0; background: var(--rule-strong); }
+  .om-hub { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .om-hub small { display: block; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.5; color: var(--ink-3); }
+  .om-fan { display: block; width: 100%; height: clamp(52px, 7vw, 84px); margin-top: 10px; overflow: visible; }
+  .om-stem--2 { display: none; }
+  .om-fan line { stroke: var(--rule-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .om-spec { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); column-gap: 6px; }
+  .om-spec li { padding-top: 10px; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.35; color: var(--ink); }
+  .om-close { max-width: 62ch; margin: clamp(30px, 3.4vw, 44px) auto 0; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.45; color: var(--ink-2); text-align: center; }
+  @media (max-width: 600px) {
+    .om-fan { display: none; }
+    .om-stem--2 { display: block; height: 22px; margin-top: 12px; }
+    .om-spec { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 0; max-width: 300px; margin: 0 auto; border-top: 1px solid var(--rule-strong); }
+    .om-spec li { padding: 9px 0; border-top: 0; border-bottom: 1px solid var(--rule); text-align: center; }
   }
   </style>
 </head>
@@ -207,7 +182,6 @@
     </div>
     <div class="dm" role="group" aria-label="Investment lifecycle. Four preparatory stages — Mandate, Assess, Structure and Acquire — prepare the investor’s acquisition approval. Ownership then runs from Oversee through exit, with disposal, refinancing, material capital expenditure, material leasing and business-plan changes approved by the investor.">
       <div class="dm-track">
-        <span class="dm-tone" aria-hidden="true"></span>
         <span class="dm-band dm-band--pre">Pre-acquisition</span>
         <div class="dm-st" style="--c:1"><h3 class="dm-n">Mandate</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Investment Mandate</p></div>
         <div class="dm-st" style="--c:2"><h3 class="dm-n">Assess</h3><span class="dm-rail" aria-hidden="true"></span><p class="dm-o">Investment Memorandum</p></div>
@@ -225,25 +199,20 @@
 <!-- Operating model -->
 <section class="ap-sec om" data-screen-label="03 Approach — operating model" aria-labelledby="om-title">
   <div class="shell">
-    <div class="om-grid">
-      <div class="ap-head om-copy">
-        <span class="h-eyebrow">Operating model</span>
-        <h2 class="h-h2" id="om-title">One Point of Coordination.</h2>
-        <p class="h-body om-lede">The investor sets the mandate and retains final authority. Reiwa develops the investment case, coordinates execution and oversees the business plan, working with appointed European specialists through a single line of accountability.</p>
-      </div>
-      <div class="cv" role="group" aria-label="Operating model. The investor sets the mandate, approves material decisions and retains final authority. One line of authority runs from the investor to Reiwa Capital, which underwrites, coordinates, monitors and recommends. From that point, appointed European specialists group into transaction — legal, tax and valuation; capital — financing; and asset and projects — technical, leasing, property and projects.">
-        <div class="cv-upper">
-          <span class="cv-axis" aria-hidden="true"></span>
-          <p class="cv-who">Investor</p>
-          <ul class="cv-acts"><li>Sets mandate</li><li class="dec">Approves material decisions</li><li>Retains final authority</li></ul>
-        </div>
-        <div class="cv-lower">
-          <p class="cv-hub">Reiwa Capital<span>Underwrites · Coordinates · Monitors · Recommends</span></p>
-          <svg class="cv-fan" viewBox="0 0 100 169" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="0" y1="0" x2="100" y2="69"/><line x1="0" y1="0" x2="100" y2="119"/><line x1="0" y1="0" x2="100" y2="169"/></svg>
-          <ul class="cv-br"><li><span class="cv-br-k">Transaction</span><span class="cv-br-v">Legal · Tax · Valuation</span></li><li><span class="cv-br-k">Capital</span><span class="cv-br-v">Financing</span></li><li><span class="cv-br-k">Asset &amp; projects</span><span class="cv-br-v">Technical · Leasing · Property · Projects</span></li></ul>
-        </div>
-      </div>
+    <div class="ap-head">
+      <span class="h-eyebrow">Operating model</span>
+      <h2 class="h-h2" id="om-title">One Point of Coordination.</h2>
+      <p class="om-lede"><b>Investor</b> decides. <b>Reiwa</b> coordinates. <b>Specialists</b> advise.</p>
     </div>
+    <div class="om-point" role="img" aria-label="Investor authority above; Reiwa Capital as the single point of coordination where the lines meet; eight independent European specialist disciplines below: legal, tax, valuation, technical, financing, leasing, property and projects.">
+      <p class="om-top"><b>Investor authority</b><span>Sets the mandate · approves material decisions · retains final authority</span></p>
+      <span class="om-stem" aria-hidden="true"></span>
+      <p class="om-hub">Reiwa Capital<small>Underwrite · Coordinate · Monitor · Recommend</small></p>
+      <svg class="om-fan" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line x1="400" y1="0" x2="50" y2="100"/><line x1="400" y1="0" x2="150" y2="100"/><line x1="400" y1="0" x2="250" y2="100"/><line x1="400" y1="0" x2="350" y2="100"/><line x1="400" y1="0" x2="450" y2="100"/><line x1="400" y1="0" x2="550" y2="100"/><line x1="400" y1="0" x2="650" y2="100"/><line x1="400" y1="0" x2="750" y2="100"/></svg>
+      <span class="om-stem om-stem--2" aria-hidden="true"></span>
+      <ul class="om-spec"><li>Legal</li><li>Tax</li><li>Valuation</li><li>Technical</li><li>Financing</li><li>Leasing</li><li>Property</li><li>Projects</li></ul>
+    </div>
+    <p class="h-body om-close">Reiwa develops the investment case, coordinates execution and oversees the business plan while material decisions remain with the investor.</p>
   </div>
 </section>
 
