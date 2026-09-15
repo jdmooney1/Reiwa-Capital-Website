@@ -1,32 +1,18 @@
 /* =========================================================================
    Reiwa Capital — shared site shell
    Renders the top nav + footer ONCE from a data model, then leaves the DOM
-   alone. Language changes never rebuild these nodes — only text/aria swap
-   in place (generic sweep in i18n.js + a couple of manual bits below) — so
-   scroll-derived classes, injected logo variants and focus all survive a
-   language toggle untouched.
+   alone: scroll-derived classes, injected logo variants and focus all
+   survive for the life of the page.
    ========================================================================= */
 
 (function () {
   /* Four visible destinations. The logo is the Home link; Contact is a
      section inside Company (/company.html#contact), not a nav item. */
   const NAV = [
-    { href: 'about.html',            en: 'About',            ja: '会社概要',   key: 'about' },
-    { href: 'approach.html',         en: 'Approach',         ja: 'アプローチ', key: 'approach' },
-    { href: 'investment-focus.html', en: 'Investment Focus', ja: '重点領域',   key: 'focus' },
-    { href: 'company.html',          en: 'Company',          ja: '会社情報',   key: 'company' },
-  ];
-
-  /* Dedicated Japanese site (/ja/) — the same four destinations as English,
-     in the same order, with the approved Japanese labels. The logo is the
-     Japanese Home link; Contact is a section inside 事業概要
-     (/ja/company.html#contact), not a nav item. Only used when
-     <body data-locale="ja">. */
-  const NAV_JA = [
-    { href: '/ja/about.html',            label: 'Reiwaについて', key: 'about' },
-    { href: '/ja/approach.html',         label: '投資アプローチ', key: 'approach' },
-    { href: '/ja/investment-focus.html', label: '投資方針',      key: 'focus' },
-    { href: '/ja/company.html',          label: '事業概要',      key: 'company' },
+    { href: 'about.html',            label: 'About',            key: 'about' },
+    { href: 'approach.html',         label: 'Approach',         key: 'approach' },
+    { href: 'investment-focus.html', label: 'Investment Focus', key: 'focus' },
+    { href: 'company.html',          label: 'Company',          key: 'company' },
   ];
 
   /* Guided onward journey — one continuous editorial read across the five
@@ -34,54 +20,31 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            lead: 'Why Reiwa exists and where we focus',              ariaEn: 'Next: About' },
-    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership', ariaEn: 'Next: Approach' },
-    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention',               ariaEn: 'Next: Investment Focus' },
-    focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details',              ariaEn: 'Next: Company' }
+    home:     { to: 'about',            title: 'About',            lead: 'Why Reiwa exists and where we focus',              aria: 'Next: About' },
+    about:    { to: 'approach',         title: 'Approach',         lead: 'How an investment moves from mandate to ownership', aria: 'Next: Approach' },
+    approach: { to: 'investment-focus', title: 'Investment Focus', lead: 'Where we concentrate our attention',               aria: 'Next: Investment Focus' },
+    focus:    { to: 'company',          title: 'Company',          lead: 'Company profile and contact details',              aria: 'Next: Company' }
     /* Company has no entry, and so no band: it is the last page in the
        flow and the contact section closes it. The footer follows. */
-  };
-
-  /* The same guided read in Japanese, over the same five pages and in the
-     same order, rendered through the same cream band as English:
-     ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
-     事業概要 closes the loop rather than pointing onward. */
-  const FLOW_JA = {
-    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: 'Reiwaが果たす役割と、注力する市場',        aria: '次へ：Reiwaについて' },
-    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ', aria: '次へ：投資アプローチ' },
-    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか',                aria: '次へ：投資方針' },
-    focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先',            aria: '次へ：事業概要' },
-    /* 事業概要 has no entry, and so no band: お問い合わせ closes the page. */
-    /* Legacy Japanese pages, retained pending their own disposition: they
-       keep an onward path rather than ending in a dead stop. */
-    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先', aria: '次へ：事業概要' },
-    insights: { to: '/ja/',             t: 'ホーム',   lead: 'トップページへ',              aria: 'トップページへ戻る' }
   };
 
   function currentKey() {
     return document.body.dataset.page || 'home';
   }
-  function lang() {
-    return document.documentElement.getAttribute('lang') || 'en';
-  }
-
-  function renderNav() {
-    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
-    if (locale === 'ja') renderNavJa(); else renderNavEn();
-  }
 
   /* ---------------------------------------------------------------------
-     ENGLISH NAV — all six destinations visible at every width. No
-     hamburger, no drawer, no hidden menu.
+     NAV — all four destinations visible at every width. No hamburger, no
+     drawer, no hidden menu.
 
-       >=1101px  logo | link row | language toggle, on one line
-       <=1100px  logo + language toggle on line one, the link row wraps to
-                 its own full-width second line and scrolls horizontally
+       >=1101px  logo | link row, on one line
+       <=1100px  logo on line one, the link row wraps to its own full-width
+                 second line
 
      One <ul>, repositioned by CSS. Never a duplicated link list, so
-     aria-current and the language sweep each have exactly one target.
+     aria-current has exactly one target. The logo holds the 40px row
+     height that sets the bar's proportions.
      --------------------------------------------------------------------- */
-  function renderNavEn() {
+  function renderNav() {
     const host = document.querySelector('[data-shell="nav"]');
     if (!host) return;
     const onDark = host.hasAttribute('data-dark');
@@ -92,165 +55,51 @@
 
     const links = NAV.map((n) => {
       const active = n.key === cur ? ' aria-current="page"' : '';
-      return `<li><a href="${n.href}"${active}><span data-en="${n.en}" data-ja="${n.ja}">${n.en}</span></a></li>`;
-    }).join('');
-
-    host.innerHTML = `
-      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
-        <div class="nav-inner">
-          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
-            <img class="nl-lockup" src="${logoSrc}" alt="">
-          </a>
-          <div class="nav-right">
-            <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
-              <button type="button" data-lang="en" aria-label="English">EN</button>
-              <span class="ls-sep" aria-hidden="true"></span>
-              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
-            </div>
-          </div>
-          <ul class="nav-links">${links}</ul>
-        </div>
-      </nav>
-    `;
-    wireNav(host);
-    syncLangButtons();
-  }
-
-  /* ---------------------------------------------------------------------
-     JAPANESE NAV — the same composition as English, not a drawer. Same
-     wrapping rules, same language switch, same active-page rule; only the
-     labels and the logo destination differ. The Japanese labels are static
-     text, not data-en/data-ja pairs: /ja/ is a Japanese site, so nothing
-     here depends on a runtime language sweep.
-     --------------------------------------------------------------------- */
-  function renderNavJa() {
-    const host = document.querySelector('[data-shell="nav"]');
-    if (!host) return;
-    const onDark = host.hasAttribute('data-dark');
-    const R = (typeof window !== 'undefined' && window.__resources) || {};
-    const logoSrc = onDark ? (R.logoWhite || '../assets/logos/lockup-white.svg')
-                           : (R.logoBlack || '../assets/logos/lockup-purple.svg');
-    const cur = currentKey();
-
-    const links = NAV_JA.map((n) => {
-      const active = n.key === cur ? ' aria-current="page"' : '';
       return `<li><a href="${n.href}"${active}><span>${n.label}</span></a></li>`;
     }).join('');
 
     host.innerHTML = `
-      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="メイン">
+      <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary">
         <div class="nav-inner">
-          <a class="nav-logo" href="/ja/" aria-label="Reiwa Capital — ホーム" style="min-height:40px">
+          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
-          <div class="nav-right">
-            <div class="lang-switch" role="group" aria-label="言語">
-              <button type="button" data-lang="en" aria-label="English">EN</button>
-              <span class="ls-sep" aria-hidden="true"></span>
-              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
-            </div>
-          </div>
           <ul class="nav-links">${links}</ul>
         </div>
       </nav>
     `;
-    wireNav(host);
-    syncLangButtons();
   }
-
-  /* Interaction wiring — runs exactly once, right after the nav is built.
-     Nothing here is ever re-attached, because the nav DOM is never rebuilt
-     again after this call. Both headers are flat bars, so the only wiring
-     the nav needs is the language switch. */
-  function wireNav(host) {
-    host.querySelectorAll('[data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
-    });
-  }
-
-  /* ---- Small manual syncs that generic data-en/data-ja sweep can't cover,
-     because they encode state (active/open) rather than pure text. Both are
-     cheap and re-run on every languagechange. ---- */
-  function syncLangButtons() {
-    const l = lang();
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
-      const active = btn.dataset.lang === l;
-      btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-pressed', String(active));
-    });
-  }
-
-  /* EN <-> JA is a navigation, not a text swap: each site is written in
-     its own language in its own files, and every page declares its
-     counterpart on <body> (data-en-url / data-ja-url). A page with no
-     counterpart declared simply has nowhere to send the reader, so the
-     control does nothing rather than half-translating the page in place. */
-  function swapLanguage(next) {
-    if (next === lang()) return;
-    const crossUrl = document.body.dataset[next + 'Url'];
-    if (crossUrl) window.location.href = crossUrl;
-  }
-  window.addEventListener('languagechange', syncLangButtons);
 
   function renderFooter() {
     const host = document.querySelector('[data-shell="footer"]');
     if (!host) return;
-    const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
-    const R = (typeof window !== 'undefined' && window.__resources) || {};
     const onPrivacy = document.body.dataset.page === 'privacy';
 
-    let nextNav = '';
-    if (locale === 'ja') {
-      /* Same cream band, same three-part text block, same arrow as English
-         — the closing treatment is part of the approved system, not of the
-         English language. */
-      const fj = FLOW_JA[currentKey()];
-      nextNav = fj ? `
-      <nav class="nextnav nextnav--band" aria-label="ページナビゲーション">
-        <a class="nn-link" href="${fj.to}" aria-label="${fj.aria}">
-          <span class="nn-inner">
-            <span class="nn-text">
-              <span class="nn-title">${fj.t}</span>
-              <span class="nn-lead">${fj.lead}</span>
-            </span>
-            <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
-          </span>
-        </a>
-      </nav>` : '';
-    } else {
-      const f = FLOW[currentKey()];
-      nextNav = f ? `
+    const f = FLOW[currentKey()];
+    const nextNav = f ? `
       <nav class="nextnav nextnav--band" aria-label="Page navigation">
-        <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}">
+        <a class="nn-link" href="${f.to}.html" aria-label="${f.aria}">
           <span class="nn-inner">
             <span class="nn-text">
-              <span class="nn-title">${f.tEn}</span>
+              <span class="nn-title">${f.title}</span>
               <span class="nn-lead">${f.lead}</span>
             </span>
             <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
           </span>
         </a>
       </nav>` : '';
-    }
 
-    const privacyHref = locale === 'ja' ? '/ja/privacy.html' : 'privacy.html';
-    const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
-
-    const homeHref = locale === 'ja' ? '/ja/' : '/';
-    const symbolSrc = locale === 'ja' ? '/assets/logos/symbol-cream.svg' : 'assets/logos/symbol-cream.svg';
-    const homeAria = locale === 'ja' ? 'Reiwa Capital — ホーム' : 'Reiwa Capital — Home';
-
-    /* One quiet cream footer in both languages — copyright left, the cream
-       emblem mathematically centred, Privacy right. No navigation list, no
-       location line, no socials. The onward journey lives in the NEXT block
-       above it, where the site still has one. */
+    /* One quiet cream footer — copyright left, the cream emblem
+       mathematically centred, Privacy right. No navigation list, no
+       location line, no socials. The onward journey lives in the NEXT
+       block above it, where the site still has one. */
     const footer = `
       <footer class="footer footer-quiet">
         <div class="footer-inner">
           <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
-          <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
+          <a class="ff-brand" href="/" aria-label="Reiwa Capital — Home"><img class="ff-symbol" src="assets/logos/symbol-cream.svg" alt="" width="26" height="26"></a>
           <div class="ff-right">
-            <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
+            <a class="ff-link ff-privacy" href="privacy.html"${onPrivacy ? ' aria-current="page"' : ''}><span>Privacy</span></a>
           </div>
         </div>
       </footer>`;
@@ -329,15 +178,10 @@
   function insertSkipLink() {
     if (!document.getElementById('main')) return;
     if (document.querySelector('.skip-link')) return;
-    const ja = document.body.dataset.locale === 'ja';
     const a = document.createElement('a');
     a.className = 'skip-link';
     a.href = '#main';
-    a.setAttribute('data-en', 'Skip to content');
-    a.setAttribute('data-ja', '本文へスキップ');
-    /* /ja/ pages are Japanese in source and carry no runtime sweep, so the
-       skip link has to be built in the language of the page it lands on. */
-    a.textContent = ja ? '本文へスキップ' : 'Skip to content';
+    a.textContent = 'Skip to content';
     a.addEventListener('click', function (e) {
       const main = document.getElementById('main');
       if (!main) return;

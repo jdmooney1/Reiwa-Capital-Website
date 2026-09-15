@@ -32,19 +32,14 @@
 /* The nav labels sit in the band where the hero's own scrim is weakest,
    over the palest part of the photograph. A soft top-down wash, fully
    transparent by the bar's lower edge, gives them a base without
-   introducing a visible header block or a hard edge. Both languages now
-   run the same flat bar over the same hero, so both take the wash. */
+   introducing a visible header block or a hard edge. */
 .nav-bar.nav-over-hero {
   background: linear-gradient(180deg,
               rgba(16, 11, 20, 0.46) 0%,
               rgba(16, 11, 20, 0.22) 58%,
               rgba(16, 11, 20, 0) 100%);
 }
-.nav-bar.nav-over-hero .lang-toggle { border-color: rgba(255,255,255,0.30); }
-.nav-bar.nav-over-hero .lang-toggle button { color: rgba(255,255,255,0.66); }
-.nav-bar.nav-over-hero .lang-toggle button.is-active { background: #fff; color: var(--ink); }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }
-/* .lang-switch (English) inverts in editorial.css alongside .nav-links. */
 .nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
 
 /* Inner pages with a full-bleed pale hero (About · Approach · Investment
@@ -137,21 +132,6 @@
 }
 .area .cap .arr { transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out); }
 .area:hover .cap .arr { transform: translate(3px, -3px); }
-
-/* =====================================================================
-   LANGUAGE SWAP — the signature interaction. A 0.4s crossfade: the page's
-   text breathes out (200ms), the language swaps while fully transparent,
-   the new text breathes in (200ms). shell.js sequences the classes and
-   holds the body height during the swap so nothing shifts. The footer
-   swaps instantly — no motion there.
-   ===================================================================== */
-@media (prefers-reduced-motion: no-preference) {
-  html.lang-x [data-en] { transition: opacity var(--dur-2) var(--ease) !important; }
-  html.lang-out [data-en] { opacity: 0; }
-  html.lang-x [data-shell="footer"] [data-en] { transition: none !important; opacity: 1 !important; }
-  /* The toggle itself animates its active pill. */
-  .lang-toggle button { transition: background var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out); }
-}
 
 /* House easing applied to the generic section reveal. */
 @media (prefers-reduced-motion: no-preference) {

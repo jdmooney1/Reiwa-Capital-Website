@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The ten core pages of the bilingual site: five English, five Japanese.
-     Privacy, the contact redirects, the 404 pages and the legacy Japanese
-     content are deliberately absent — all carry noindex. -->
+<!-- The five core pages of the site. The privacy notice, the contact
+     redirect and the 404 page are deliberately absent — each carries a
+     noindex directive of its own. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://reiwa-capital.com/</loc></url>
   <url><loc>https://reiwa-capital.com/about.html</loc></url>
   <url><loc>https://reiwa-capital.com/approach.html</loc></url>
   <url><loc>https://reiwa-capital.com/investment-focus.html</loc></url>
   <url><loc>https://reiwa-capital.com/company.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/about.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/approach.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/investment-focus.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/company.html</loc></url>
 </urlset>

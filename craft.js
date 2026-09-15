@@ -2,7 +2,7 @@
    Reiwa Capital — Craft & interaction
    Calm, restrained motion: opacity/transform only, one house easing.
    Everything degrades: reduced-motion and no-JS leave all content visible.
-   Loads AFTER shell.js + i18n.js.
+   Loads AFTER shell.js.
    ========================================================================= */
 (function () {
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -31,7 +31,7 @@
      updateHeaderState() derives the header's appearance from: current page,
      whether it has a hero, scroll position, whether the hero heading
      geometrically overlaps the logo, and drawer open/closed. It runs after
-     load, scroll, resize, drawer open/close, language change and bfcache
+     load, scroll, resize, drawer open/close and bfcache
      restore. The nav DOM itself is built once by shell.js and never
      rebuilt, so this never needs to "re-find" a fresh bar — the reference
      stays valid for the life of the page. */
@@ -110,8 +110,8 @@
       var logo = bar.querySelector('.nav-logo');
       var h1 = document.querySelector('.home-hero h1, .page-head h1');
       if (floating && logo && h1) {
-        /* The whole bar is measured, not the logo alone, so the link row and
-           the language switch dip out together with it. */
+        /* The whole bar is measured, not the logo alone, so the link row
+           dips out together with it. */
         var a = (bar.querySelector('.nav-inner') || logo).getBoundingClientRect();
         var b = h1.getBoundingClientRect();
         // Hysteresis: enter at PAD_IN, leave only once clear of PAD_OUT.
@@ -134,7 +134,6 @@
     updateHeaderState();
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate, { passive: true });
-    window.addEventListener('languagechange', requestUpdate);
     window.addEventListener('orientationchange', requestUpdate);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(requestUpdate);
     window.addEventListener('pageshow', requestUpdate); // bfcache restore

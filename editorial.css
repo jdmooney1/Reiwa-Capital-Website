@@ -153,13 +153,12 @@ p { text-wrap: pretty; }
           backdrop-filter: saturate(140%) blur(18px);
   border-bottom: 0;
 }
-.nav-right { display: inline-flex; align-items: center; gap: clamp(14px, 1.6vw, 22px); }
 .nav-inner {
   max-width: var(--container);
   margin: 0 auto;
-  /* Row height is driven by .lang-toggle (45.5px — its buttons carry a 44px
-     min-height tap-target floor), NOT by the 30px logo. Solve padding
-     against that: 14 + 45.5 + 14 = 73.5px, mid-band. */
+  /* Row height is driven by .nav-logo, which carries a 40px min-height
+     floor (set in shell.js) rather than sitting at the lockup's 30px.
+     Solve padding against that: 14 + 40 + 14 = 68px, mid-band. */
   padding: 14px var(--gutter);
   display: flex;
   align-items: center;
@@ -181,9 +180,9 @@ p { text-wrap: pretty; }
 html.nav-drawer-open .nav-inner::after { opacity: 0; }
 .nav-logo { display: inline-flex; align-items: center; }
 .nav-logo img { height: 30px; display: block; }
-/* Drawer open: dissolve the bar chrome. The wordmark + language toggle
-   hide; the X (the morphed toggle) stays put on the right where the
-   parallel bars were; the emblem lives centred inside the panel. */
+/* Drawer open: dissolve the bar chrome. The wordmark hides; the X (the
+   morphed toggle) stays put on the right where the parallel bars were;
+   the emblem lives centred inside the panel. */
 html.nav-drawer-open .nav-bar {
   background: transparent;
   -webkit-backdrop-filter: none;
@@ -192,7 +191,6 @@ html.nav-drawer-open .nav-bar {
 }
 html.nav-drawer-open .nav-logo { visibility: hidden; }
 html.nav-drawer-open .logo-light { display: none !important; }
-html.nav-drawer-open .lang-toggle { display: none; }
 html.nav-drawer-open .nav-bar .nav-toggle { color: var(--ink); }
 /* While the drawer (a true-right-edge panel) is open, let the toggle
    escape the centred, max-width nav row and sit flush with the same true
@@ -201,84 +199,14 @@ html.nav-drawer-open .nav-bar .nav-toggle { color: var(--ink); }
 html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px; }
 @media (max-width: 720px) { html.nav-drawer-open .nav-bar .nav-inner { padding-right: var(--gutter); } }
 
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.lang-toggle {
-  display: inline-flex;
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  border-radius: var(--radius-pill);
-}
-.lang-toggle button {
-  font: inherit;
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--type-label);
-  font-weight: 500;
-  letter-spacing: var(--type-label-ls);
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 14px;
-  background: transparent;
-  color: var(--ink-3);
-  border: 0;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-.lang-toggle button.is-active { background: var(--ink); color: #fff; }
-
-/* =====================================================================
-   LANGUAGE SWITCH — "EN | JA". Two text buttons either side of a short
-   hairline. The active language is ink at medium weight; the other is
-   quiet. No pill, no fill, no border: it should never compete with the
-   logo. Tap targets stay comfortable through padding, not visible bulk.
-   ===================================================================== */
-.lang-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-}
-.lang-switch button {
-  font: inherit;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12.5px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  min-width: 34px;
-  padding: 0 6px;
-  margin: 0;
-  background: transparent;
-  color: var(--ink-3);
-  border: 0;
-  border-radius: 1px;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: color 200ms var(--ease-out);
-}
-.lang-switch button.is-active { color: var(--ink); font-weight: 500; cursor: default; }
-@media (hover: hover) { .lang-switch button:not(.is-active):hover { color: var(--ink-2); } }
-.lang-switch button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.lang-switch .ls-sep {
-  display: block;
-  width: 1px;
-  height: 12px;
-  background: var(--rule-strong);
-  opacity: 0.9;
-}
-@media (prefers-reduced-motion: reduce) { .lang-switch button { transition: none; } }
-
 /* =====================================================================
    PRIMARY NAV LINKS — six destinations, visible at every width.
    No hamburger and no drawer on the English site: the reader can always
    see where the site goes. One <ul>, repositioned by CSS.
 
-     >=1101px   logo | links | language toggle, on a single line
-     <=1100px   logo + toggle on line one; the links wrap to their own
-                full-width second line and scroll horizontally
+     >=1101px   logo | links, on a single line
+     <=1100px   logo on line one; the links wrap to their own full-width
+                second line
 
    The active page carries a solid 1px rule; hover draws the same rule in
    from the left. No pills, no boxes, no background states.
@@ -337,21 +265,14 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 .nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
 @media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
 .nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
-.nav-bar.nav-over-hero .lang-switch button { color: rgba(255, 255, 255, 0.62); }
-.nav-bar.nav-over-hero .lang-switch button.is-active { color: #fff; }
-@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch button:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
-.nav-bar.nav-over-hero .lang-switch button:focus-visible { outline-color: #fff; }
-.nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
 
-/* The nav row is the flex line; the logo opens it and the language
-   toggle closes it. */
+/* The nav row is the flex line; the logo opens it. */
 .nav-logo { order: 1; }
-.nav-right { order: 3; }
 .nav-inner { flex-wrap: wrap; row-gap: 0; }
 
 /* ---- Two-line navigation below 1101px -------------------------------
-   The four links drop to their own full-width line beneath the logo and
-   language switch. Nothing scrolls, nothing clips: at every supported
+   The four links drop to their own full-width line beneath the logo.
+   Nothing scrolls, nothing clips: at every supported
    width all four labels are visible. If a very narrow viewport cannot fit
    them on one line at readable size, the row wraps to two lines rather
    than shrinking the type or hiding a destination. */
@@ -362,11 +283,10 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
     padding-top: 8px;
     padding-bottom: 0;
   }
-  /* The logo and the language switch share line one; the links take line
-     two. Both must sit before the link row in flex order, or the switch is
-     pushed onto a third line by the row's 100% basis. */
+  /* The logo owns line one; the links take line two. The logo must sit
+     before the link row in flex order, or the row's 100% basis pushes it
+     onto a line of its own. */
   .nav-logo { order: 1; }
-  .nav-right { order: 2; margin-left: auto; }
   .nav-links {
     order: 3;
     flex: 1 0 100%;
@@ -406,11 +326,11 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
 }
 
 /* Design lab · Nav 2: the bar is measured whole (see craft.js), so the link
-   row and the language switch dip out together with the logo while the hero
-   headline passes behind the bar — previously the logo left on its own. */
-.nav-bar.nav-over-hero .nav-links, .nav-bar.nav-over-hero .nav-right,
-.nav-bar.nav-over-head .nav-links, .nav-bar.nav-over-head .nav-right { transition: opacity 140ms var(--ease-out); }
-.nav-bar.logo-needs-contrast .nav-links, .nav-bar.logo-needs-contrast .nav-right { opacity: 0; pointer-events: none; }
+   row dips out together with the logo while the hero headline passes behind
+   the bar — previously the logo left on its own. */
+.nav-bar.nav-over-hero .nav-links,
+.nav-bar.nav-over-head .nav-links { transition: opacity 140ms var(--ease-out); }
+.nav-bar.logo-needs-contrast .nav-links { opacity: 0; pointer-events: none; }
 
 /* Mobile logo: the lockup is the Home control but should not dominate the
    bar. Roughly a sixth smaller than desktop, and a touch smaller again on
@@ -507,11 +427,6 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
   color: var(--ink);
   transition: transform 280ms var(--ease-out);
 }
-/* Japanese keeps its own leading and tracking here, but no longer its own
-   size: the size that used to live on this rule was written for the compact
-   Japanese NEXT block that no longer exists, and its specificity was beating
-   the band rule below — a 25% EN/JA gap nobody chose. */
-html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-height: 1.32; letter-spacing: 0.01em; }
 .nn-title-row { grid-column: 2; justify-self: end; display: flex; align-items: baseline; gap: 8px; }
 .nn-arrow { display: inline-block; flex: none; transition: transform 200ms var(--ease-out); }
 /* Arrow moves; the title never does. One text-link language site-wide. */
@@ -597,13 +512,12 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
-/* English footer — deep sumire, quiet, functional. Copyright left,
+/* Footer — deep sumire, quiet, functional. Copyright left,
    LinkedIn and Privacy right. No symbol, no wordmark, no navigation, no
    location line. It sits directly beneath the NEXT band, which is also
    dark, so the two are kept apart deliberately: the footer is a step
    deeper in tone, a fraction of the height, and carries only small
-   utility type, with one faint hairline marking the join. The Japanese
-   footer keeps the treatment it shipped with until its own phase. */
+   utility type, with one faint hairline marking the join. */
 .footer.footer-quiet {
   background: #1C0E23;
   color: var(--paper-warm);
@@ -654,7 +568,6 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
     line-height: 1.12;
     text-wrap: balance;
   }
-  html[lang="ja"] .nn-title { font-size: clamp(27px, 3vw + 16px, 34px); line-height: 1.4; }
   .nn-title-row { grid-column: 1; }
   .nn-link:focus-visible { outline-offset: -4px; }
   .footer-inner { height: 72px; }
@@ -967,7 +880,15 @@ select:focus-visible,
 }
 .nav-bar { view-transition-name: site-nav; }
 
-/* Menu toggle — labelled button, shown on every breakpoint */
+/* ---------------------------------------------------------------------
+   DRAWER — dead code. Neither header has rendered a hamburger or a drawer
+   since the nav became a flat two-line bar; the rules survived only for
+   the legacy Japanese pages, which have now been removed. Nothing in the
+   markup or in shell.js emits .nav-toggle, .nav-scrim or .nav-drawer.
+   Kept for one release so the flat bar can be reverted cheaply if needed,
+   then deletable in full, together with the .nav-over-hero .nav-toggle
+   pair in craft.css.
+   --------------------------------------------------------------------- */
 .nav-toggle {
   display: inline-flex;
   align-items: center;
@@ -1172,25 +1093,20 @@ html.nav-drawer-open { overflow: hidden; }
   .nav-drawer { transition: none; }
 }
 
-/* Drawer-era rules, retained only for the CSS the legacy Japanese pages
-   still reference. Neither header renders a drawer any more: both are the
-   same two-line flat bar, which sets its own row height in the block
-   above, in both languages. */
+/* Drawer-era rules. Neither header renders a drawer any more: the bar is
+   the same two-line flat composition at every width, and it sets its own
+   row height in the block above. */
 @media (max-width: 720px) {
-  .nav-right { gap: 12px; }
   .nav-toggle { margin-left: 2px; }
   .nav-drawer { width: 100vw; border-left: 0; }
   .drawer-inner { padding: 84px 28px 32px; }
 }
-/* Below ~380px the wordmark + language pill + menu button no longer fit
-   the bar at their tablet sizing (confirmed by direct measurement: they
-   overflow the viewport by ~48px at 320px). Trim the same three levers a
-   little further — nothing shrinks below its 44px tap target. */
+/* Below ~380px the wordmark no longer sits comfortably inside the bar's
+   tablet gutters. Trim the gutter and the lockup a little further —
+   nothing shrinks below its 44px tap target. */
 @media (max-width: 380px) {
   .nav-inner { padding-left: 14px; padding-right: 14px; }
   .nav-logo img { height: 24px; }
-  .nav-right { gap: 8px; }
-  .lang-toggle button { padding: 0 11px; }
 }
 
 /* =====================================================================

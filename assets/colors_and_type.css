@@ -133,10 +133,6 @@
   --font-serif: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* serif retired — aliased to DM Sans (consistency pass) */
   --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* mono retired — aliased to DM Sans (consistency pass) */
-  /* The one Japanese stack. DM Sans carries the Latin and the numerals; the
-     platform Japanese sans carries kana and kanji. Every Japanese rule on the
-     site resolves to this variable — nothing redeclares the families. */
-  --font-jp: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', YuGothic, Meiryo, 'Noto Sans JP', sans-serif;
 
   /* Scale — restrained, slightly classical ratio */
   --text-xs:   11px;   /* labels, legal, tiny caps */
@@ -453,12 +449,6 @@ code, .mono {
   font-variant-numeric: lining-nums;
 }
 
-/* Japanese support class */
-.ja {
-  font-family: var(--font-jp);
-  letter-spacing: 0.04em;
-}
-
 /* Horizontal rule — hairline, full width */
 hr, .rule {
   border: 0;
@@ -480,56 +470,3 @@ hr, .rule {
 .on-dark small { color: var(--fg-inverse-2); }
 .on-dark hr { background: var(--line-inverse); }
 
-/* =====================================================================
-   JAPANESE TYPOGRAPHY — explicit system CJK stack (DM Sans has no
-   Japanese glyphs, so never leave it to fall through to an arbitrary
-   system default), a touch more line-height on reading-length body copy,
-   and stricter kinsoku line-breaking. Scoped to the JA document language
-   only — English typography and all font sizes are untouched.
-   ===================================================================== */
-:lang(ja) {
-  font-family: var(--font-jp);
-  line-break: strict;
-  /* Proportional kana/punctuation metrics — closes the gaps that otherwise
-     open around 、。「」（） and leaves isolated punctuation looking set
-     rather than dropped in. */
-  font-feature-settings: "palt" 1;
-  text-spacing-trim: trim-start;
-}
-html[lang="ja"] {
-  --type-statement-lh: 1.55;
-  --type-body-l-lh:    1.7;
-  --type-body-lh:      1.7;
-  --type-caption-lh:   1.5;
-}
-
-/* =====================================================================
-   JA READING MEASURE — `ch` is the width of the Latin "0" (~0.55em in DM
-   Sans), so a `Nch` cap holds only ~0.55N full-width Japanese characters.
-   Every measure authored in `ch` therefore renders roughly HALF its
-   intended character count in Japanese: lines break early, paragraphs
-   fragment, and the page runs much taller than the English original.
-   Japanese is monospaced at 1em per character, so the same measures are
-   restated here in `em` at a comfortable 35–45 character line.
-   Higher specificity than the page-level `.class { max-width: Nch }`
-   rules, so these win wherever they apply.
-   ===================================================================== */
-html[lang="ja"] {
-  --measure:      42em;   /* long-form body        (was 66ch ≈ 36 JA chars) */
-  --measure-lead: 24em;   /* lead / intro lines    (was 38ch ≈ 21 JA chars) */
-  --measure-body: 40em;   /* market-page body      (was 660px, fixed px)    */
-}
-html[lang="ja"] .wwd-desc,
-html[lang="ja"] .hww-node p     { max-width: 26em; }
-html[lang="ja"] .mkt-value      { max-width: 25em; }
-html[lang="ja"] .cl-desc        { max-width: 20em; }
-html[lang="ja"] .contact-lead   { max-width: 30em; }
-html[lang="ja"] .stage-obj,
-html[lang="ja"] .stage-sup      { max-width: 38em; }
-html[lang="ja"] .home-hero h1   { max-width: 15em; }
-html[lang="ja"] .cta-statement  { max-width: 11em; }
-html[lang="ja"] .page-head h1   { max-width: 15em; }
-html[lang="ja"] .home-hero .sub { max-width: 30em; }
-html[lang="ja"] .hww-intro      { max-width: 34em; }
-html[lang="ja"] .ed-row h2      { max-width: 14em; }
-html[lang="ja"] .list-row h3    { max-width: 11em; }
