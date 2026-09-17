@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="六段階の投資プロセス、投資判断を支える五つの検証、そして投資家に留保される判断。重要な投資判断は、投資家が行います。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=22">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../editorial.css?v=83">
@@ -55,7 +55,12 @@
   /* Shared heading atoms, set for Japanese. Tracked uppercase has no
      meaning on kana or kanji, and letterspacing them reads as broken. */
   .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; }
+  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  @media (max-width: 400px) {
+    /* Japanese has no inter-word space to absorb a short last line: at the
+       shared 26px floor an 11-character clause orphans one character. */
+    .h-h2 { font-size: 21px; }
+  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -71,8 +76,8 @@
 
   /* --- Section scaffold ------------------------------------------------ */
   .ap-intro { padding: clamp(44px, 4.6vw, 72px) 0 clamp(18px, 2vw, 26px); }
-  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; text-wrap: balance; }
-  .ap-h2--huge { font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.36; letter-spacing: 0.01em; }
+  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
+  .ap-h2--huge { font-size: clamp(24px, 16px + 1.3vw, 36px); line-height: 1.36; letter-spacing: 0.01em; }
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18em; } }
 
