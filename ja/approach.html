@@ -199,6 +199,8 @@
   .tw-name--2 { grid-column: 3; grid-row: 2; justify-self: start; align-self: center; text-align: left; }
   .tw-name--3 { grid-column: 3; grid-row: 3; justify-self: start; align-self: start; text-align: left; }
   .tw-name--4 { grid-column: 1; grid-row: 3; justify-self: end; align-self: start; text-align: right; }
+  /* The one two-line ring label: break only after 価格と, never mid-katakana. */
+  .tw-name--4 { word-break: keep-all; }
   .tw-name--5 { grid-column: 1; grid-row: 2; justify-self: end; align-self: center; text-align: right; }
   .tw-panel { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 18px); min-height: 250px; }
   .tw-panel h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(20px, 15px + 0.9vw, 26px); line-height: 1.5; letter-spacing: -0.018em; color: var(--ink); max-width: 18em; text-wrap: balance; }
@@ -294,7 +296,7 @@
 <section class="page-head ap-hero" data-screen-label="01 投資アプローチ — hero">
   <div class="inner">
     <h1>マンデートから、<wbr>出口まで</h1>
-    <p class="sub">引受・実行・保有を一本の規律でつなぐ投資プロセス</p>
+    <p class="sub">投資分析・実行・保有を一つの規律でつなぐ投資プロセス</p>
   </div>
 </section>
 
@@ -328,7 +330,7 @@
           <div class="lf-gates">
             <button class="lf-gate" type="button" data-gate="0" aria-pressed="false" aria-label="投資家の承認ポイント：取得" style="--x: calc(50% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
             <button class="lf-gate" type="button" data-gate="1" aria-pressed="false" aria-label="投資家の承認ポイント：事業計画の重要な変更" style="--x: calc(66.67% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
-            <button class="lf-gate" type="button" data-gate="2" aria-pressed="false" aria-label="投資家の承認ポイント：資金調達・再調達" style="--x: calc(75% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
+            <button class="lf-gate" type="button" data-gate="2" aria-pressed="false" aria-label="投資家の承認ポイント：資金調達・借換え" style="--x: calc(75% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
             <button class="lf-gate" type="button" data-gate="3" aria-pressed="false" aria-label="投資家の承認ポイント：売却" style="--x: calc(83.33% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
           </div>
           <p class="lf-key"><span class="lf-key-sq" aria-hidden="true"></span><span class="lf-key-t">投資家の承認ポイント</span></p>
@@ -349,7 +351,7 @@
                 </ul>
             </div>
           </div>
-          <span class="lf-cont">投資家の権限は、保有・再調達・売却の全期間を通じて継続します</span>
+          <span class="lf-cont">投資家の権限は、保有・借換え・売却の全期間を通じて継続します</span>
         </div>
         <div class="lf-spine" role="group" aria-label="一つのマンデート、六つの段階">
           <span class="lf-sp-period">形成</span>
@@ -377,14 +379,14 @@
                 <span class="lf-sp-n">評価</span>
               </button>
               <div class="lf-sp-body" id="lf-sp-1" hidden>
-                <p>詳細な引受検討に値する案件かを見極めます</p>
+                <p>詳細な投資分析・審査に値する案件かを見極めます</p>
                 <dl class="lf-sp-pair"><dt>成果物</dt><dd>投資メモランダム</dd></dl>
                 <dl class="lf-sp-pair lf-sp-pair--gate"><dt>投資家の承認</dt><dd>重要案件を前進させる承認</dd></dl>
                 <div class="lf-sp-role">
                 <span class="lf-role-t">案件を検証する</span>
                 <ul class="lf-role-list">
                   <li><span class="lf-role-n">選別</span><span class="lf-role-b">合意したマンデートに適合するかを判断する</span></li>
-                  <li><span class="lf-role-n">引受検討</span><span class="lf-role-b">収益、価値、必要資本、調達、出口の前提を検証する</span></li>
+                  <li><span class="lf-role-n">投資分析</span><span class="lf-role-b">収益、価値、必要資本、調達、出口の前提を検証する</span></li>
                   <li><span class="lf-role-n">検証</span><span class="lf-role-b">重要なリスク、依存関係、未解決の論点を洗い出す</span></li>
                 </ul>
                 </div>
@@ -456,7 +458,7 @@
                 <span class="lf-sp-n">売却</span><span class="lf-sp-gate" aria-hidden="true"></span>
               </button>
               <div class="lf-sp-body" id="lf-sp-5" hidden>
-                <p>再調達・一部回収・売却をマンデートに照らして評価します</p>
+                <p>借換え・一部回収・売却をマンデートに照らして評価します</p>
                 <dl class="lf-sp-pair"><dt>成果物</dt><dd>売却に関する提案と実行計画</dd></dl>
                 <dl class="lf-sp-pair lf-sp-pair--gate"><dt>投資家の承認</dt><dd>時期・価格・売却条件</dd></dl>
                 <div class="lf-sp-role">
@@ -471,7 +473,7 @@
             </div>
           </div>
           <p class="lf-key"><span class="lf-key-sq" aria-hidden="true"></span><span class="lf-key-t">投資家の承認ポイント</span></p>
-          <span class="lf-cont">投資家の権限は、保有・再調達・売却の全期間を通じて継続します</span>
+          <span class="lf-cont">投資家の権限は、保有・借換え・売却の全期間を通じて継続します</span>
         </div>
       </div>
     </div>
@@ -509,7 +511,7 @@
         <button class="tw-name tw-name--1" type="button" data-test="0" aria-pressed="false" aria-controls="tw-panel">マンデート適合</button>
         <button class="tw-name tw-name--2" type="button" data-test="1" aria-pressed="false" aria-controls="tw-panel">市場の前提</button>
         <button class="tw-name tw-name--3" type="button" data-test="2" aria-pressed="false" aria-controls="tw-panel">資産の基礎</button>
-        <button class="tw-name tw-name--4" type="button" data-test="3" aria-pressed="false" aria-controls="tw-panel">価格と下方</button>
+        <button class="tw-name tw-name--4" type="button" data-test="3" aria-pressed="false" aria-controls="tw-panel">価格と<wbr>下方リスク</button>
         <button class="tw-name tw-name--5" type="button" data-test="4" aria-pressed="false" aria-controls="tw-panel">実行と出口</button>
       </div>
 
@@ -533,14 +535,14 @@
 <section class="ap-sec ic-sec" data-screen-label="05 投資アプローチ — 投資家の統制" aria-labelledby="ic-title">
   <div class="shell">
     <h2 class="ap-h2" id="ic-title">投資家の統制と、調整された実行</h2>
-    <p class="ap-lede">決定するのは投資家です。令和キャピタルは一本化された提案を維持します</p>
+    <p class="ap-lede">決定するのは投資家です。Reiwa Capitalは一本化された提案を維持します</p>
     <div class="ic-stack">
       <div class="ic-row ic-row--investor">
         <span class="ic-name">投資家</span>
         <p class="ic-acts"><span class="ic-act">マンデートを定める</span><span class="ic-sq" aria-hidden="true"></span><span class="ic-act">重要な判断を承認する</span></p>
       </div>
       <div class="ic-row ic-row--reiwa">
-        <span class="ic-name">令和キャピタル</span>
+        <span class="ic-name">Reiwa Capital</span>
         <span class="ic-line">投資家側の視点を一つに保ちます</span>
       </div>
       <div class="ic-row ic-row--spec">
@@ -567,21 +569,21 @@
 
   var STAGES = [
   {n:'マンデート',p:'投資家の目的を、明確な取得マンデートに翻訳します',o:'投資マンデート',a:'マンデートと意思決定の枠組み'},
-  {n:'評価',p:'詳細な引受検討に値する案件かを見極めます',o:'投資メモランダム',a:'重要案件を前進させる承認'},
+  {n:'評価',p:'詳細な投資分析・審査に値する案件かを見極めます',o:'投資メモランダム',a:'重要案件を前進させる承認'},
   {n:'組成',p:'コミット前に、保有・調達・税務のストラクチャーをまとめます',o:'ストラクチャーと実行計画',a:'ストラクチャーと合意条件の承認'},
   {n:'取得',p:'一つの計画のもとで、デューデリジェンス・調達・契約を完了します',o:'取得判断資料',a:'最終投資判断'},
   {n:'保有',p:'保有期間と環境変化を通じて、投資判断の前提を維持します',o:'資産の監督、報告、意思決定の支援',a:'借換え、重要な資本的支出、承認済み事業計画の変更'},
-  {n:'売却',p:'再調達・一部回収・売却をマンデートに照らして評価します',o:'売却に関する提案と実行計画',a:'時期・価格・売却条件'}
+  {n:'売却',p:'借換え・一部回収・売却をマンデートに照らして評価します',o:'売却に関する提案と実行計画',a:'時期・価格・売却条件'}
   ];
   var GATES = [
   {n:'取得',d:'いかなるコミットの前にも、投資家が最終投資判断を行います',x:50,r:3},
   {n:'事業計画の重要な変更',d:'戦略、資本的支出、リーシング方針の変更は、投資家の承認に付されます',x:66.67,r:4},
-  {n:'資金調達・再調達',d:'新規および借換えの調達は、その条件について投資家が承認します',x:75,r:4},
+  {n:'資金調達・借換え',d:'新規および借換えの調達は、その条件について投資家が承認します',x:75,r:4},
   {n:'売却',d:'時期・価格・売却条件は、投資家の判断に留まります',x:83.33,r:5}
   ];
   var ROLE = [
   {t:'マンデートを定める',i:[['整理','投資家の目的、制約、保有の要件を明確にする'],['設定','対象市場、リスクの範囲、判断基準を定める'],['整合','案件の選別と意思決定に共通の基準をつくる']]},
-  {t:'案件を検証する',i:[['選別','合意したマンデートに適合するかを判断する'],['引受検討','収益、価値、必要資本、調達、出口の前提を検証する'],['検証','重要なリスク、依存関係、未解決の論点を洗い出す']]},
+  {t:'案件を検証する',i:[['選別','合意したマンデートに適合するかを判断する'],['投資分析','収益、価値、必要資本、調達、出口の前提を検証する'],['検証','重要なリスク、依存関係、未解決の論点を洗い出す']]},
   {t:'投資を組成する',i:[['設計','適切な保有、調達、ガバナンスの枠組みを組み立てる'],['調整','法務、税務、調達、専門家の助言をまとめる'],['準備','提案する枠組みを実行可能な投資計画に落とし込む']]},
   {t:'取得を実行する',i:[['デューデリジェンス','事業、法務、税務、財務、技術の調査を統括する'],['交渉','価格、条件、調達、契約で一貫した立場を保つ'],['クロージング','条件、承認、実行を完了まで管理する']]},
   {t:'保有期間における業務',i:[['モニタリング','収益、稼働、評価、負債、事業計画の進捗'],['調整','プロパティマネージャー、仲介、レンダー、専門アドバイザー'],['対処','計画との乖離、賃貸借の変動、資本的支出、新たなリスク'],['報告','報告、提言、承認用資料を提供する']]},
@@ -591,7 +593,7 @@
   {n:'マンデート適合',k:'その機会は、投資家の目的・制約・保有要件に適合しているか。',p:['目的、保有期間、報告要件','通貨、ストラクチャー、税務上の制約','ガバナンスと承認プロセスの想定']},
   {n:'市場の前提',k:'需要・流動性・規制は、想定する戦略を支えているか。',p:['テナント需要と競合供給','同種資産における投資市場の厚み','都市計画、許認可、規制の方向性']},
   {n:'資産の基礎',k:'建物・収益・必要資本は、十分に理解され説明可能か。',p:['建物の状態、設備、法令適合','賃貸借の構造、テナント信用力、収益構成','保有期間に要する資本的支出']},
-  {n:'価格と下方',k:'市場の追い風に頼らずとも、リターンは許容水準にとどまるか。',p:['再調達価格と長期収益に対する取得価格の位置','出口利回りと調達コストに対する感応度','環境が改善しない場合に残る成果']},
+  {n:'価格と下方リスク',k:'市場の追い風に頼らずとも、リターンは許容水準にとどまるか。',p:['再調達価格と長期収益に対する取得価格の位置','出口利回りと調達コストに対する感応度','環境が改善しない場合に残る成果']},
   {n:'実行と出口',k:'事業計画を実行し、統制し、最終的に回収できるか。',p:['現地の実行体制と責任範囲','保有期間に投資家へ留保される判断','回収時に想定される買い手の類型']}
   ];
   var L = { held: '投資家に留保' };
