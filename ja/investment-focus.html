@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=81">
+<link rel="stylesheet" href="../editorial.css?v=82">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=24">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -87,147 +87,200 @@
   .if-lede { margin-top: clamp(12px, 1.4vw, 18px); max-width: 34em; }
   @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
 
-  /* --- 2 · Five tests: the conjunction, set in type -----------------------
-     The tests are one sentence whose "and"s carry the only colour, then a
-     five-column ledger of what we look for and what ends the case, closed
-     by one rule and four words. No apparatus: discipline as language. */
-  .ft-h2 { max-width: 30ch; }
-  .ft-h2 em { font-style: normal; color: var(--reiwa-node, #5E3D78); }
-  .ft-ledger { display: grid; grid-template-columns: clamp(96px, 11vw, 132px) repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(16px, 2vw, 28px); margin-top: clamp(34px, 3.8vw, 50px); border-top: 1px solid var(--rule-strong); }
-  .ft-keys, .ft-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; padding-top: clamp(16px, 1.8vw, 22px); }
-  .ft-keys span { display: block; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); }
-  .ft-keys span:nth-child(2) { grid-row: 2; margin-top: 8px; padding-top: 3px; }
-  .ft-keys span:nth-child(3) { grid-row: 3; margin-top: 14px; padding-top: 13px; }
-  .ft-col h3 { grid-row: 1; margin: 0; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); font-weight: 500; line-height: 1.3; color: var(--ink); }
-  .ft-for { grid-row: 2; margin: 8px 0 0; font-family: var(--jp); font-size: clamp(13.5px, 13px + 0.2vw, 14.5px); line-height: 1.7; color: var(--ink-2); }
-  .ft-stop { grid-row: 3; position: relative; margin: 14px 0 0; padding-top: 10px; font-family: var(--jp); font-size: 13px; line-height: 1.7; color: var(--ink-3); }
-  .ft-stop::before { content: ""; position: absolute; left: 0; top: 0; width: 24px; height: 1px; background: var(--rule); }
-  .ft-k { display: none; }
-  .ft-close { margin: clamp(28px, 3vw, 40px) 0 0; padding-top: clamp(14px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-size: clamp(17px, 15px + 0.5vw, 20px); font-weight: 500; line-height: 1.3; color: var(--ink); }
-  @media (max-width: 760px) {
-    .ft-ledger { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 28px; }
-    .ft-keys { display: none; }
-    .ft-col { display: block; grid-row: auto; padding: 16px 0; border-bottom: 1px solid var(--rule); }
-    .ft-col:last-child { border-bottom: 0; }
-    .ft-for { max-width: 40ch; }
-    .ft-stop { margin-top: 10px; padding-top: 0; }
-    .ft-stop::before { content: none; }
-    .ft-k { display: block; margin-bottom: 2px; font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; line-height: 1.4; color: var(--eyebrow-ink); }
-  }
-  /* --- 3 · 投資方針の概要: five fields on hairlines ---------------------- */
-  /* Five parallel dimensions on one shared rule. Each field anchors to the
-     rule with one small sumire square; nothing encloses a field and nothing
-     points from one to the next — the mandate is a matrix, not a process. */
-  .mg { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: clamp(18px, 2.2vw, 32px); margin-top: clamp(22px, 2.4vw, 32px); border-top: 1px solid var(--rule-strong); }
-  .mg > div { position: relative; min-width: 0; padding: clamp(18px, 2vw, 24px) 0 0; }
-  .mg dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 9px; }
-  .mg dd { margin: 0; font-family: var(--jp); font-size: clamp(14px, 13.2px + 0.28vw, 16px); line-height: 1.6; color: var(--ink); }
-  .mg dd + dd { margin-top: 5px; }
-  .mg-sec { padding-bottom: clamp(42px, 3.6vw, 54px); }
-  /* Tablet: three and two, the second row on its own rule. */
-  @media (min-width: 901px) and (max-width: 1024px) {
-    .mg { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .mg > div:nth-child(n+4) { margin-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule); }
-  }
-  /* Stacked: node beside the label, one hairline between fields. */
+  /* --- 2 · The investment focus field ------------------------------------
+     One field, two approaches. Income and Repositioning are not a risk
+     spectrum: they are two readings of the same discipline, so they share one
+     photographic component of one fixed height. Opening a panel redistributes
+     width only — the page below never moves. */
+  /* Each block inside these sections carries its own vertical rhythm, so the
+     shared .if-sec padding would double it. The two coloured sections are
+     separated by their own ground, not by a hairline. */
+  .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
+  .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
+  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(44px, 4.4vw, 70px); }
+  .fx-h2 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.8vw, 24px); line-height: 1.62; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
+  .fx-lede { margin: clamp(11px, 1.2vw, 16px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-param { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; margin-top: clamp(30px, 3.2vw, 46px); padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
+  .fx-param-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; letter-spacing: 0.005em; color: var(--ink-3); }
+  .fx-param-v { margin: 0; font-family: var(--jp); font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.85; color: var(--ink-2); max-width: 52em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 900px) {
-    .mg { grid-template-columns: 1fr; column-gap: 0; margin-top: 24px; }
-    .mg > div { padding: 15px 0 14px; border-top: 1px solid var(--rule); }
-    .mg > div:first-child { border-top: 0; padding-top: 2px; }
-    .mg > div::before { top: auto; }
-    .mg dt { position: relative; padding-left: 17px; margin-bottom: 7px; }
-    .mg dt::before { content: ""; position: absolute; left: 0; top: 0.32em; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); }
-    .mg > div::before { content: none; }
-    .mg dd + dd { margin-top: 4px; }
+    .fx-param { grid-template-columns: minmax(0, 1fr); gap: clamp(9px, 1vw, 12px); }
+    .fx-h2 { max-width: none; }
   }
 
-  /* --- 4 · 投資領域: three chapters, images carry the weight ------------- */
-  .ar-list { margin-top: clamp(30px, 3.4vw, 48px); }
-  .chapter { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: clamp(28px, 3.6vw, 60px); align-items: center; padding: clamp(22px, 2.4vw, 32px) 0; border-top: 1px solid var(--rule); }
-  .chapter:first-child { border-top: 1px solid var(--rule-strong); }
-  .chapter--rev .ch-media { order: 2; }
-  .ch-media { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
-  .ch-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
-  .ch-text { min-width: 0; }
-  .ch-num { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .ch-text h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(24px, 17px + 1.1vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
-  .ch-thesis { margin: clamp(12px, 1.4vw, 18px) 0 0; max-width: 25em; font-size: clamp(15px, 14.6px + 0.25vw, 16.5px); }
-  .ch-assets { margin: clamp(18px, 2vw, 26px) 0 0; padding-top: 14px; border-top: 1px solid var(--rule); }
-  .ch-assets dt { font-family: var(--jp); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: none; color: var(--eyebrow-ink); margin: 0 0 8px; }
-  .ch-assets dd { margin: 0; font-family: var(--jp); font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); line-height: 1.7; color: var(--ink); }
-  .ch-assets .sep { color: var(--ink-4); padding: 0 0.3em; }
-  @media (max-width: 900px) {
-    .ar-list { margin-top: 28px; }
-    .chapter { grid-template-columns: 1fr; gap: 20px; padding: 26px 0; }
-    .chapter--rev .ch-media { order: 0; }
-    .ch-media { aspect-ratio: 3 / 2; }
-    .ch-thesis { max-width: none; }
+  /* The component itself. One height for every state. */
+  .fx-fieldwrap > .shell { padding-top: clamp(27px, 2.9vw, 42px); padding-bottom: clamp(24px, 2.6vw, 36px); }
+  .fx-field { display: flex; align-items: stretch; gap: 2px; height: clamp(510px, 37.5vw, 620px); background: rgba(28,14,35,.14); }
+  .fx-panel { position: relative; flex: 1.5 1 0; min-width: 0; overflow: hidden; background: #DCD6CC; transition: flex-grow 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-field[data-open="0"] .fx-panel--inc, .fx-field[data-open="1"] .fx-panel--rep { flex-grow: 1.62; }
+  .fx-field[data-open="0"] .fx-panel--rep, .fx-field[data-open="1"] .fx-panel--inc { flex-grow: 1; }
+  .fx-shut { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; display: block; background: transparent; text-align: left; outline-offset: -3px; }
+  .fx-shut:focus-visible, .fx-imgbtn:focus-visible, .fx-back:focus-visible, .fx-stage:focus-visible { outline: 2px solid var(--cream); }
+  .fx-shut img, .fx-imgbtn img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fx-panel--inc img { object-position: 58% 58%; }
+  .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.80) 0%, rgba(28,14,35,.34) 52%, rgba(28,14,35,0) 100%); }
+  .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.58) 36%, rgba(28,14,35,0) 100%); }
+  .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
+  .fx-name { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
+  .fx-body { font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--cream); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-cue { margin-top: 2px; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); }
+
+  /* Expanded state */
+  .fx-open { position: absolute; inset: 0; display: flex; flex-direction: column; }
+  .fx-open[hidden], .fx-shut[hidden] { display: none; }
+  .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 30%; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.72) 0%, rgba(31,18,40,.34) 52%, rgba(31,18,40,0) 100%); -webkit-mask-image: linear-gradient(to left, #000 0%, #000 46%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, #000 46%, rgba(0,0,0,0) 100%); }
+  .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px clamp(20px, 2.2vw, 30px); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 3; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  @media (hover: hover) { .fx-back:hover { color: rgba(252,250,241,.78); } }
+  .fx-imgbtn { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: relative; display: block; flex: 58 1 0; min-height: 0; overflow: hidden; background: #DCD6CC; text-align: left; outline-offset: -3px; }
+  .fx-imgbtn .fx-scrim { left: 0; width: 72%; right: auto; height: 64%; background: linear-gradient(to top, rgba(31,18,40,.80) 0%, rgba(31,18,40,.38) 46%, rgba(31,18,40,0) 100%); -webkit-mask-image: linear-gradient(to right, #000 0%, #000 44%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, #000 44%, rgba(0,0,0,0) 100%); }
+  .fx-imgbtn .fx-cap { gap: 12px; }
+  .fx-open .fx-name { font-size: clamp(24px, 15px + 1.3vw, 36px); }
+  .fx-band { flex: 42 1 0; min-height: 0; background: #F5F0E6; padding: clamp(22px, 2.2vw, 30px); }
+  .fx-band-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; height: 100%; }
+  .fx-band-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; padding: 0 clamp(18px, 2vw, 28px); }
+  .fx-band-col + .fx-band-col { border-left: 1px solid var(--rule-strong); }
+  .fx-band-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
+  .fx-band-i { font-family: var(--jp); font-size: 12.5px; line-height: 1.8; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+
+  /* One master panorama, panned rather than swapped, so the roofline stays
+     continuous across the three stages. */
+  .fx-pan { position: absolute; inset: 0; overflow: hidden; }
+  .fx-pan img { height: 100%; max-width: none; object-fit: cover; object-position: 50% 58%; display: block; }
+  .fx-frame { position: absolute; top: 0; bottom: 0; pointer-events: none; background: rgba(28,14,35,.10); }
+  .fx-frame--l { left: 0; width: var(--fl, 2%); transition: width 520ms cubic-bezier(.4,0,.2,1); }
+  .fx-frame--r { left: var(--fe, 60%); right: 0; transition: left 520ms cubic-bezier(.4,0,.2,1); }
+  .fx-topscrim { position: absolute; left: 0; right: 0; top: 0; height: 132px; pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,.58) 0%, rgba(28,14,35,.20) 56%, rgba(28,14,35,0) 100%); }
+  .fx-stagescrim { position: absolute; left: 0; right: 0; bottom: 0; height: 42%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.80) 0%, rgba(28,14,35,.34) 52%, rgba(28,14,35,0) 100%); }
+  .fx-replabel { position: absolute; left: 0; top: 0; padding: clamp(28px, 2.4vw, 40px); pointer-events: none; font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
+  .fx-stages { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; }
+  .fx-stage { appearance: none; background: none; border: 0; margin: 0; padding: clamp(22px, 2vw, 32px) clamp(16px, 1.5vw, 24px); cursor: pointer; text-align: left; display: flex; flex-direction: column; justify-content: flex-end; gap: 7px; min-width: 0; outline-offset: -3px; opacity: .86; transition: opacity 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-stage[aria-pressed="true"] { opacity: 1; }
+  .fx-stage-n { font-family: var(--jp); font-weight: 500; font-size: clamp(15px, 12px + 0.4vw, 18px); line-height: 1.4; letter-spacing: -0.016em; color: var(--cream); transition: font-size 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-stage[aria-pressed="true"] .fx-stage-n { font-size: clamp(17px, 12px + 0.6vw, 22px); }
+  .fx-stage-b { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--cream); max-width: 21em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-stage-b[hidden] { display: none; }
+
+  @media (max-width: 1024px) {
+    .fx-field { height: clamp(488px, 54vw, 580px); }
+    .fx-cap { padding: clamp(24px, 2.6vw, 30px); }
+    .fx-imgbtn { flex-grow: 55; }
+    .fx-imgbtn .fx-scrim { width: 88%; }
+    .fx-band { flex-grow: 45; padding: clamp(18px, 2.2vw, 24px); }
+    .fx-band-col { gap: 9px; padding: 0 clamp(16px, 2vw, 22px); }
+    .fx-back { padding: 12px clamp(16px, 2vw, 22px); }
+    .fx-backscrim { width: min(74%, 300px); height: 34%; }
+    .fx-topscrim { height: 108px; }
+    .fx-stagescrim { height: 48%; }
+    .fx-stage { padding: 20px 16px; }
+    .fx-replabel { padding: clamp(22px, 2.4vw, 28px); }
   }
 
-  /* --- 5 · Repositioning journey: one line that resolves -----------------
-     Five stages on a single datum. The line carries the argument: it
-     arrives broken and light at acquisition, is worked through dotted,
-     hatched and closing textures across the three intervention stages,
-     and leaves solid. Level throughout, so nothing is charted and no
-     uplift is implied — the change in the line's character is the point.
-     A faint hatch sits under the three worked stages: ground, not a box. */
-  .rj { margin-top: clamp(34px, 3.8vw, 50px); }
-  .rj-track {
-    --pad: clamp(12px, 1.6vw, 22px);
-    list-style: none; margin: 0; padding: 0;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-template-rows: auto clamp(40px, 4vw, 54px) auto;
-    column-gap: 0;
-  }
-  .rj-st { grid-column: var(--c); min-width: 0; }
-  @supports (grid-template-rows: subgrid) { .rj-st { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; } }
-  .rj-n { grid-row: 1; align-self: end; margin: 0 var(--pad) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 11px + 0.72vw, 22px); line-height: 1.32; letter-spacing: 0.004em; color: var(--ink); }
-  .rj-band { grid-row: 2; position: relative; display: block; align-self: stretch; }
-  /* The datum. Each stage draws its own segment; with no column gap the
-     five segments read as one line changing character along its length. */
-  .rj-band::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--tex); }
-  /* Stage tick, below the line. */
-  .rj-band::after { content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 11px; background: var(--rule-strong); }
-  .rj-st--1 { --tex: repeating-linear-gradient(90deg, var(--ink-4) 0 6px, transparent 6px 14px); }
-  .rj-st--2 { --tex: repeating-linear-gradient(90deg, var(--ink-3) 0 1.5px, transparent 1.5px 5.5px); }
-  .rj-st--3 { --tex: repeating-linear-gradient(90deg, var(--ink-3) 0 3px, transparent 3px 6px); }
-  .rj-st--4 { --tex: repeating-linear-gradient(90deg, var(--ink-2) 0 10px, transparent 10px 13px); }
-  .rj-st--5 { --tex: var(--ink); }
-  .rj-st--5 .rj-band::before { height: 1.5px; top: calc(50% - 0.25px); }
-  .rj-st--5 .rj-band::after { background: var(--ink-3); }
-  /* The three worked stages each carry one texture beneath the line —
-     dotted while the asset is read, hatched while it is worked, linear as
-     it settles. Ground, not a box: no edges, no fill, no rule. */
-  .rj-tex { position: absolute; left: 0; right: 0; top: calc(50% + 4px); height: 13px; }
-  .rj-st--2 .rj-tex { background-image: radial-gradient(circle at 1px 1px, rgba(39, 20, 48, 0.20) 0.7px, transparent 0.8px); background-size: 6px 6px; }
-  .rj-st--3 .rj-tex { background-image: repeating-linear-gradient(-45deg, rgba(39, 20, 48, 0.13) 0 1px, transparent 1px 6px); }
-  .rj-st--4 .rj-tex { background-image: repeating-linear-gradient(90deg, rgba(39, 20, 48, 0.10) 0 1px, transparent 1px 9px); }
-  /* Stage five closes the datum with a terminal tick. */
-  .rj-st--5 .rj-tex { left: auto; right: 0; top: 50%; width: 1px; height: 11px; background: var(--ink-3); }
-  .rj-cap { grid-row: 3; margin: clamp(10px, 1.2vw, 14px) var(--pad) 0 0; font-family: var(--jp); font-size: clamp(12.5px, 12px + 0.3vw, 14px); line-height: 1.75; color: var(--ink-3); max-width: 16em; }
-  .rj-note { margin: clamp(24px, 2.8vw, 38px) 0 0; font-family: var(--jp); font-size: 12.5px; line-height: 1.7; color: var(--ink-4); }
+  /* --- Mobile: one two-option selector, one large image ------------------ */
+  .fx-mob { display: none; }
+  .fx-mob > .shell { padding-top: clamp(24px, 2.8vw, 32px); padding-bottom: clamp(22px, 2.6vw, 30px); }
   @media (max-width: 760px) {
-    /* Rotated. The datum runs down the left with the same progression;
-       the stages sit to its right with room to breathe. */
-    .rj { margin-top: 26px; }
-    .rj-track { --gap-v: clamp(30px, 8vw, 40px); display: block; }
-    .rj-st { display: block; position: relative; padding: 0 0 var(--gap-v) 44px; }
-    .rj-st:last-child { padding-bottom: 0; }
-    .rj-n { display: block; margin: 0; font-size: 17px; }
-    .rj-cap { display: block; margin: 6px 0 0; max-width: none; font-size: 12.5px; }
-    .rj-band { position: absolute; left: 0; top: 0; bottom: 0; width: 27px; }
-    .rj-band::before { left: 13px; right: auto; top: 0.7em; bottom: calc(-1 * var(--gap-v)); width: 1px; height: auto; }
-    .rj-st--1 { --tex: repeating-linear-gradient(180deg, var(--ink-4) 0 6px, transparent 6px 14px); }
-    .rj-st--2 { --tex: repeating-linear-gradient(180deg, var(--ink-3) 0 1.5px, transparent 1.5px 5.5px); }
-    .rj-st--3 { --tex: repeating-linear-gradient(180deg, var(--ink-3) 0 3px, transparent 3px 6px); }
-    .rj-st--4 { --tex: repeating-linear-gradient(180deg, var(--ink-2) 0 10px, transparent 10px 13px); }
-    .rj-st--5 .rj-band::before { width: 1.5px; height: auto; left: 12.75px; bottom: 0; }
-    .rj-band::after { left: 13px; top: 0.7em; width: 14px; height: 1px; }
-    .rj-tex { left: 17px; right: auto; top: 0.7em; bottom: var(--gap-v); width: 11px; height: auto; }
-    .rj-st--4 .rj-tex { background-image: repeating-linear-gradient(180deg, rgba(39, 20, 48, 0.10) 0 1px, transparent 1px 9px); }
-    .rj-st--5 .rj-tex { left: 13px; right: auto; top: auto; bottom: 0; width: 14px; height: 1px; }
-    .rj-note { margin-top: clamp(30px, 8vw, 40px); }
+    .fx-fieldwrap { display: none; }
+    .fx-mob { display: block; }
+  }
+  .fx-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 10px; }
+  .fx-tab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: var(--jp); font-weight: 400; font-size: 15px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
+  .fx-tab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
+  .fx-tab:focus-visible, .fx-mtab:focus-visible { outline: 2px solid var(--ink); }
+  .fx-tabpanel { margin-top: 22px; }
+  .fx-tabpanel[hidden] { display: none; }
+  .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
+  .fx-mimg > img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; display: block; }
+  .fx-mscrim { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.84) 0%, rgba(28,14,35,.42) 42%, rgba(28,14,35,0) 100%); }
+  .fx-mname { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px; pointer-events: none; font-family: var(--jp); font-weight: 500; font-size: 25px; line-height: 1.4; letter-spacing: -0.018em; color: var(--cream); }
+  .fx-mbody { margin: 18px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
+  .fx-mband-col { display: flex; flex-direction: column; gap: 8px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
+  .fx-mtabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; margin-top: 22px; }
+  .fx-mtab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: var(--jp); font-weight: 400; font-size: 13.5px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
+  .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
+  @media (max-width: 360px) {
+    .fx-mimg { height: 300px; }
+    .fx-mname { font-size: 22px; }
+    .fx-tab { font-size: 14px; }
+    .fx-mtab { font-size: 12.5px; }
+    .fx-mtabs { gap: 0 8px; }
+  }
+
+  /* --- Potential sources of improvement, then the view -------------------- */
+  .fx-levers > .shell { padding-top: clamp(4px, .6vw, 8px); padding-bottom: clamp(29px, 3vw, 41px); }
+  .fx-lever-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 22px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
+  .fx-lever-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
+  .fx-lever { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; color: var(--ink); padding-left: 20px; border-left: 1px solid var(--rule-strong); word-break: keep-all; line-break: strict; }
+  .fx-lever:first-of-type { padding-left: 0; border-left: 0; }
+  .fx-view > .shell { padding-top: 0; padding-bottom: clamp(51px, 5.1vw, 80px); }
+  .fx-view-in { padding-top: 13px; border-top: 1px solid rgba(39,20,48,.28); }
+  .fx-view-in p { margin: 0; max-width: 46em; font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.75; letter-spacing: -0.012em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  @media (max-width: 760px) {
+    .fx-lever-row { gap: 10px 16px; }
+    .fx-lever { padding-left: 14px; }
+    .fx-levers > .shell { padding-bottom: clamp(26px, 3vw, 34px); }
+    .fx-view > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
+  }
+
+  /* --- 3 · Selective hospitality: a specialist application ---------------
+     Deliberately shorter than the main field: the photograph carries the
+     section, the ivory panel overlaps its edge, three tests run beneath. */
+  .hs-sec { background: var(--paper-soft); }
+  .hs-sec > .shell { padding-top: clamp(37px, 3.7vw, 52px); padding-bottom: clamp(37px, 3.7vw, 54px); border-top: 0; }
+  .hs-grid { display: grid; grid-template-columns: minmax(0, 69fr) minmax(0, 31fr); align-items: end; }
+  .hs-media { height: clamp(274px, 22.5vw, 356px); overflow: hidden; background: #E4DDD2; }
+  .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
+  .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: clamp(26px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 10px; }
+  .hs-kicker { font-family: var(--jp); font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
+  .hs-title { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
+  .hs-state { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.95; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
+  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  @media (max-width: 1024px) {
+    .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
+    .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
+    .hs-tests { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px) clamp(20px, 3vw, 40px); }
+  }
+  @media (max-width: 760px) {
+    .hs-sec > .shell { padding-top: clamp(34px, 3.4vw, 44px); padding-bottom: clamp(35px, 3.5vw, 47px); }
+    /* align-items:end is a grid cross-axis rule; in a column flex box it
+       would shrink the photograph to its content width. */
+    .hs-grid { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
+    .hs-media { height: 274px; }
+    .hs-media img { object-position: 50% 52%; }
+    .hs-panel { margin: 0; padding: 0; background: none; }
+    .hs-tests { margin-top: 22px; display: flex; flex-direction: column; max-width: none; }
+    .hs-test { padding: 13px 0; }
+  }
+  @media (max-width: 390px) { .hs-media { height: 238px; } }
+
+  /* --- 4 · Where we draw the line ----------------------------------------
+     Four typographic principles on the purple ground. No numbers, no icons,
+     no explanatory copy: the refusals are the argument. */
+  .dl-sec { background: var(--ink); }
+  .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: clamp(44px, 4.4vw, 64px); border-top: 0; }
+  .dl-h2 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); }
+  .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
+  .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(36px, 4vw, 64px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
+  .dl-p span { display: block; font-family: var(--jp); font-weight: 500; font-size: clamp(17px, 12px + 0.7vw, 24px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-close { margin-top: clamp(32px, 3.4vw, 46px); padding-top: clamp(17px, 1.8vw, 22px); border-top: 1px solid rgba(252,250,241,.30); }
+  .dl-close p { margin: 0; max-width: 44em; font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 13px + 0.3vw, 17px); line-height: 1.85; letter-spacing: -0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  @media (max-width: 1024px) {
+    .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
+    .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+    .dl-p:nth-child(2n+1) { padding-left: 0; border-left: 0; }
+  }
+  @media (max-width: 760px) {
+    .dl-sec > .shell { padding-top: clamp(37px, 3.7vw, 48px); padding-bottom: clamp(36px, 3.6vw, 47px); }
+    .dl-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: clamp(22px, 2.6vw, 30px); }
+    .dl-p, .dl-p:nth-child(4n+1), .dl-p:nth-child(2n+1) { padding: 18px 0 20px; border-left: 0; border-top: 1px solid rgba(252,250,241,.30); }
+    .dl-close { margin-top: clamp(26px, 3vw, 34px); padding-top: 15px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fx-panel, .fx-frame--l, .fx-frame--r, .fx-stage, .fx-stage-n, .fx-back { transition: none; }
   }
   </style>
 </head>
@@ -243,111 +296,376 @@
 <section class="page-head if-hero" data-screen-label="01 投資方針 — hero">
   <div class="inner">
     <h1>投資対象を、厳選する。</h1>
-    <p class="sub">二つの市場、三つの投資領域、そしてすべての案件に共通する五つの視点。</p>
+    <p class="sub">持続的な収益と、自ら管理できる改善余地が、長期保有を支える既存資産。</p>
   </div>
 </section>
 
-<!-- 投資分析 -->
-<section class="if-sec lens-sec" data-screen-label="02 投資方針 — 投資分析" aria-labelledby="lens-title">
-  <div class="shell">
-    <div class="if-head">
-      <span class="h-eyebrow">投資分析 · 五つの視点、すべての案件に</span>
-      <h2 class="h-h2 ft-h2" id="lens-title">立地<em>と</em>収益<em>と</em>物件の競争力<em>と</em>実行可能性<em>と</em>出口。</h2>
+<!-- One investment focus field -->
+<section class="if-sec fx-sec" data-screen-label="02 投資方針 — 投資対象の全体像" aria-labelledby="fx-title" data-focusfield>
+  <div class="shell fx-head">
+    <h2 class="fx-h2" id="fx-title">確かなファンダメンタルズ。明確な潜在力。</h2>
+    <p class="fx-lede">自ら見解を形成し、厳格に検証し、擁護しうるものだけを提案します</p>
+    <div class="fx-param">
+      <span class="fx-param-k">投資対象の範囲</span>
+      <p class="fx-param-v">主にロンドンおよびアムステルダムの都市型資産を対象とし、既存建物、裏付けのある需要、そして具体的で管理可能な改善に基づく事業計画を重視します</p>
     </div>
-    <div class="ft-ledger">
-      <div class="ft-keys" aria-hidden="true"><span></span><span>求める条件</span><span>見送る条件</span></div>
-      <div class="ft-col"><h3>立地</h3><p class="ft-for"><span class="ft-k">求める条件</span>継続的なテナント需要が見込める、確立したエリア。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>後から変えられない弱点。</p></div>
-      <div class="ft-col"><h3>収益</h3><p class="ft-for"><span class="ft-k">求める条件</span>現実的なリーシング前提に基づき検証。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>守りきれない収益。</p></div>
-      <div class="ft-col"><h3>物件の競争力</h3><p class="ft-for"><span class="ft-k">求める条件</span>将来の保有者にとっても競争力を維持できる建物。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>非対称な下方リスク。</p></div>
-      <div class="ft-col"><h3>実行可能性</h3><p class="ft-for"><span class="ft-k">求める条件</span>モデル上だけでなく、実際に遂行可能な事業計画。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>前提の多すぎる計画。</p></div>
-      <div class="ft-col"><h3>出口</h3><p class="ft-for"><span class="ft-k">求める条件</span>売却時に想定できる買い手と投資需要。</p><p class="ft-stop"><span class="ft-k">見送る条件</span>一つの結果への依存。</p></div>
-    </div>
-    <p class="ft-close">一つの投資判断。</p>
   </div>
-</section>
 
-<!-- 投資条件 -->
-<section class="if-sec if-sec--tight mg-sec" data-screen-label="03 投資方針 — 投資条件" aria-labelledby="mg-title">
-  <div class="shell">
-    <div class="if-head">
-      <span class="h-eyebrow">投資条件</span>
-      <h2 class="h-h2" id="mg-title">投資方針の概要</h2>
-    </div>
-    <dl class="mg">
-      <div><dt>対象地域</dt><dd>ロンドン</dd><dd>アムステルダム</dd></div>
-      <div><dt>投資戦略</dt><dd>インカム</dd><dd>リポジショニング</dd><dd>ホスピタリティ</dd></div>
-      <div><dt>物件特性</dt><dd>確立した立地</dd><dd>理解可能な下方リスク</dd><dd>明確な事業計画</dd></div>
-      <div><dt>保有形態</dt><dd>直接保有、または投資家が支配する保有形態</dd></div>
-      <div><dt>保有期間</dt><dd>案件ごとに設定</dd></div>
-    </dl>
-  </div>
-</section>
+  <div class="fx-fieldwrap">
+    <div class="shell">
+      <div class="fx-field" role="group" aria-label="投資方針：収益型と再生型" data-field>
 
-<!-- 投資領域 -->
-<section class="if-sec ar" data-screen-label="04 投資方針 — 投資領域" aria-labelledby="ar-title">
-  <div class="shell">
-    <div class="if-head">
-      <span class="h-eyebrow">投資領域</span>
-      <h2 class="h-h2" id="ar-title">インカム、リポジショニング、ホスピタリティ。</h2>
-    </div>
-
-    <div class="ar-list">
-      <article class="chapter" id="income">
-        <figure class="ch-media"><img src="../assets/imagery/bg-income-980.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 50vw" width="980" height="1225" alt="" loading="lazy" decoding="async"></figure>
-        <div class="ch-text">
-          <h3>インカム</h3>
-          <p class="h-body ch-thesis">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフローを重視します。</p>
-          <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>プライムリテール<span class="sep" aria-hidden="true">·</span>住宅</dd></dl>
+        <div class="fx-panel fx-panel--inc">
+          <button class="fx-shut" type="button" data-focus="0" aria-pressed="false">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="../assets/imagery/focus-income-master.webp">
+              <img src="../assets/imagery/focus-income-balanced.webp" alt="" width="760" height="994" loading="lazy" decoding="async">
+            </picture>
+            <span class="fx-scrim" aria-hidden="true"></span>
+            <span class="fx-cap">
+              <span class="fx-name">収益型</span>
+              <span class="fx-body">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</span>
+              <span class="fx-cue" aria-hidden="true">収益型を見る →</span>
+            </span>
+          </button>
+          <div class="fx-open" hidden>
+            <span class="fx-backscrim" aria-hidden="true"></span>
+            <button class="fx-back" type="button" data-collapse aria-label="収益型と再生型の一覧に戻る">一覧に戻る</button>
+            <button class="fx-imgbtn" type="button" data-focus="0" aria-pressed="true">
+              <img src="../assets/imagery/focus-income-master.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="fx-scrim" aria-hidden="true"></span>
+              <span class="fx-cap">
+                <span class="fx-name">収益型</span>
+                <span class="fx-body">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</span>
+              </span>
+            </button>
+            <div class="fx-band">
+          <span class="fx-band-grid">
+            <span class="fx-band-col">
+              <span class="fx-band-k">私たちが求めるもの</span>
+              <span class="fx-band-i">予測ではなく、実際の稼働で裏付けられた需要</span>
+              <span class="fx-band-i">大幅な転用に頼らずとも競争力を保てる建物</span>
+              <span class="fx-band-i">収益リスクと必要資本の範囲を見極められること</span>
+              <span class="fx-band-i">借換えと売却を支える市場の厚み</span>
+            </span>
+            <span class="fx-band-col">
+              <span class="fx-band-k">機会を見いだす場面</span>
+              <span class="fx-band-i">空室、あるいは近い時期の賃貸借の変動</span>
+              <span class="fx-band-i">複雑な所有関係や売主側の事情</span>
+              <span class="fx-band-i">運用が行き届いていない収益</span>
+              <span class="fx-band-i">見せ方や位置づけによって覆われた品質</span>
+            </span>
+          </span>
+            </div>
+          </div>
         </div>
-      </article>
 
-      <article class="chapter chapter--rev" id="repositioning">
-        <figure class="ch-media"><img src="../assets/imagery/bg-repositioning-1535.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 50vw" width="1535" height="1024" alt="" loading="lazy" decoding="async"></figure>
-        <div class="ch-text">
-          <h3>リポジショニング</h3>
-          <p class="h-body ch-thesis">稼働率、収益、長期的な資産価値を改善できる明確な余地を持つ物件を対象とします。</p>
-          <dl class="ch-assets"><dt>主な対象</dt><dd>オフィス<span class="sep" aria-hidden="true">·</span>複合用途<span class="sep" aria-hidden="true">·</span>低利用物件</dd></dl>
+        <div class="fx-panel fx-panel--rep">
+          <div class="fx-pan" data-pan aria-hidden="true">
+            <img data-track src="../assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+          </div>
+          <button class="fx-shut" type="button" data-focus="1" aria-pressed="false">
+            <span class="fx-scrim" aria-hidden="true"></span>
+            <span class="fx-cap">
+              <span class="fx-name">再生型</span>
+              <span class="fx-body">建築的な品質と、競争力を高める明確な道筋</span>
+              <span class="fx-cue" aria-hidden="true">再生型を見る →</span>
+            </span>
+          </button>
+          <div class="fx-open" hidden>
+            <span class="fx-stagescrim" aria-hidden="true"></span>
+            <span class="fx-topscrim" aria-hidden="true"></span>
+            <span class="fx-frame fx-frame--l" aria-hidden="true"></span>
+            <span class="fx-frame fx-frame--r" aria-hidden="true"></span>
+            <span class="fx-replabel" aria-hidden="true">再生型</span>
+            <span class="fx-backscrim" aria-hidden="true"></span>
+            <button class="fx-back" type="button" data-collapse aria-label="収益型と再生型の一覧に戻る">一覧に戻る</button>
+            <div class="fx-stages" role="group" aria-label="再生型">
+            <button class="fx-stage" type="button" data-moment="0" aria-pressed="true"><span class="fx-stage-n">機会を見極める</span><span class="fx-stage-b">資産本来の品質を覆っている空室、位置づけ、運営、資本のいずれの制約かを特定する</span></button>
+            <button class="fx-stage" type="button" data-moment="1" aria-pressed="false"><span class="fx-stage-n">戦略を描く</span><span class="fx-stage-b" hidden>競争力を取り戻すために必要な賃貸、建物、運営、資本の打ち手を具体化する</span></button>
+            <button class="fx-stage" type="button" data-moment="2" aria-pressed="false"><span class="fx-stage-n">資産を強くする</span><span class="fx-stage-b" hidden>より強い収益と明確な位置づけ、そして確かな保有成果に向けて実行する</span></button>
+            </div>
+          </div>
         </div>
-      </article>
-
-      <article class="chapter" id="hospitality">
-        <figure class="ch-media"><img style="object-position:50% 15%" src="../assets/imagery/bg-hospitality-952.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 50vw" width="952" height="1269" alt="" loading="lazy" decoding="async"></figure>
-        <div class="ch-text">
-          <h3>ホスピタリティ</h3>
-          <p class="h-body ch-thesis">立地、オペレーターの質、営業実績、そして資産としての基礎的条件が長期的な価値を支えるオペレーショナル不動産を対象とします。</p>
-          <dl class="ch-assets"><dt>主な対象</dt><dd>ホテル<span class="sep" aria-hidden="true">·</span>サービスアパートメント<span class="sep" aria-hidden="true">·</span>中長期滞在型宿泊施設</dd></dl>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- リポジショニングのプロセス -->
-<section class="if-sec rj-sec" data-screen-label="05 投資方針 — リポジショニングのプロセス" aria-labelledby="rj-title">
-  <div class="shell">
-    <div class="if-head">
-      <span class="h-eyebrow">潜在価値から安定稼働へ</span>
-      <h2 class="h-h2" id="rj-title">リポジショニングのプロセス</h2>
-      <p class="h-body if-lede">リポジショニングは、いずれも同じ五つの段階をたどります。作業が進むにつれて、線は確かなものになります。</p>
-    </div>
-    <div class="rj" role="group" aria-label="リポジショニングのプロセス：一本の線上の五段階。取得時の状態から、診断・分析、実行、安定化という実務を経て、安定化後の状態で価値を実現します。概念図であり、成果を保証するものではありません。">
-      <div class="rj-track">
-        <div class="rj-st rj-st--1" style="--c:1"><h3 class="rj-n">取得</h3><span class="rj-band" aria-hidden="true"><i class="rj-tex"></i></span><p class="rj-cap">取得時の状態</p></div>
-        <div class="rj-st rj-st--2" style="--c:2"><h3 class="rj-n">診断・分析</h3><span class="rj-band" aria-hidden="true"><i class="rj-tex"></i></span><p class="rj-cap">リーシング・資本的支出</p></div>
-        <div class="rj-st rj-st--3" style="--c:3"><h3 class="rj-n">実行</h3><span class="rj-band" aria-hidden="true"><i class="rj-tex"></i></span><p class="rj-cap">改修とリーシング</p></div>
-        <div class="rj-st rj-st--4" style="--c:4"><h3 class="rj-n">安定化</h3><span class="rj-band" aria-hidden="true"><i class="rj-tex"></i></span><p class="rj-cap">収益と稼働率</p></div>
-        <div class="rj-st rj-st--5" style="--c:5"><h3 class="rj-n">価値実現</h3><span class="rj-band" aria-hidden="true"><i class="rj-tex"></i></span><p class="rj-cap">安定化後の状態</p></div>
       </div>
-      <p class="rj-note">概念図であり、成果を保証するものではありません。</p>
+    </div>
+  </div>
+
+  <div class="fx-mob">
+    <div class="shell">
+      <div class="fx-tabs" role="tablist" aria-label="投資方針：収益型と再生型">
+        <button class="fx-tab" type="button" role="tab" id="fx-tab-income" aria-controls="fx-panel-income" aria-selected="true" tabindex="0" data-focus="0">収益型</button>
+        <button class="fx-tab" type="button" role="tab" id="fx-tab-repositioning" aria-controls="fx-panel-repositioning" aria-selected="false" tabindex="-1" data-focus="1">再生型</button>
+      </div>
+
+      <div class="fx-tabpanel" id="fx-panel-income" role="tabpanel" aria-labelledby="fx-tab-income" tabindex="-1">
+        <div class="fx-mimg">
+          <img src="../assets/imagery/focus-income-master.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+        </div>
+        <p class="fx-mbody">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</p>
+        <div class="fx-mband">
+          <div class="fx-mband-col">
+            <span class="fx-band-k">私たちが求めるもの</span>
+            <span class="fx-band-i">予測ではなく、実際の稼働で裏付けられた需要</span>
+            <span class="fx-band-i">大幅な転用に頼らずとも競争力を保てる建物</span>
+            <span class="fx-band-i">収益リスクと必要資本の範囲を見極められること</span>
+            <span class="fx-band-i">借換えと売却を支える市場の厚み</span>
+          </div>
+          <div class="fx-mband-col">
+            <span class="fx-band-k">機会を見いだす場面</span>
+            <span class="fx-band-i">空室、あるいは近い時期の賃貸借の変動</span>
+            <span class="fx-band-i">複雑な所有関係や売主側の事情</span>
+            <span class="fx-band-i">運用が行き届いていない収益</span>
+            <span class="fx-band-i">見せ方や位置づけによって覆われた品質</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fx-tabpanel" id="fx-panel-repositioning" role="tabpanel" aria-labelledby="fx-tab-repositioning" tabindex="-1" hidden>
+        <div class="fx-mimg">
+          <span class="fx-pan" data-pan aria-hidden="true">
+            <img data-track src="../assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+          </span>
+          <span class="fx-mscrim" aria-hidden="true"></span>
+          <span class="fx-mname" aria-hidden="true" data-mname>機会を見極める</span>
+        </div>
+        <p class="fx-mbody" id="fx-stage-copy" aria-live="polite" data-mbody>資産本来の品質を覆っている空室、位置づけ、運営、資本のいずれの制約かを特定する</p>
+        <div class="fx-mtabs" role="tablist" aria-label="再生型">
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">見極める</button>
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">描く</button>
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">強くする</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fx-levers">
+    <div class="shell">
+      <div class="fx-lever-row">
+        <span class="fx-lever-k">改善の源泉となりうる要素</span>
+        <span class="fx-lever">賃貸と空室</span>
+        <span class="fx-lever">仕様と建物の状態</span>
+        <span class="fx-lever">用途、レイアウト、位置づけ</span>
+        <span class="fx-lever">運営の成果</span>
+        <span class="fx-lever">資本構成</span>
+        <span class="fx-lever">運営管理と監督</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fx-view">
+    <div class="shell">
+      <div class="fx-view-in">
+        <p>収益型と再生型はしばしば重なります。最も強い機会は、持続的なファンダメンタルズと、具体的に働きかけられる改善の源泉を併せ持ちます</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Selective hospitality -->
+<section class="if-sec hs-sec" data-screen-label="03 投資方針 — 選別的なホスピタリティ" aria-labelledby="hs-title">
+  <div class="shell">
+    <div class="hs-grid">
+      <div class="hs-media">
+        <img src="../assets/imagery/bg-hospitality-952.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 760px) 92vw, 62vw" width="952" height="1269" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="hs-panel">
+        <span class="hs-kicker">専門的な応用領域</span>
+        <span class="hs-title" id="hs-title">選別的なホスピタリティ</span>
+        <p class="hs-state">不動産そのもの、地域の需要、運営の構想が互いを高め合う、際立った物件</p>
+      </div>
+    </div>
+    <div class="hs-tests">
+        <span class="hs-test">守るに値する性格</span>
+        <span class="hs-test">立地に根ざした需要</span>
+        <span class="hs-test">建物と市場が支えうる運営モデル</span>
+    </div>
+  </div>
+</section>
+
+<!-- Where we draw the line -->
+<section class="if-sec dl-sec" data-screen-label="04 投資方針 — 私たちが線を引く地点" aria-labelledby="dl-title">
+  <div class="shell">
+    <h2 class="dl-h2" id="dl-title">私たちが線を引く地点</h2>
+    <p class="dl-lede">価格を検討する前に適用します</p>
+    <div class="dl-grid">
+      <div class="dl-p"><span>需要を裏付けられない</span></div>
+      <div class="dl-p"><span>改善の源泉が不明確</span></div>
+      <div class="dl-p"><span>実行リスクが機会を上回る</span></div>
+      <div class="dl-p"><span>出口が限られすぎた買い手層に依存する</span></div>
+    </div>
+    <div class="dl-close">
+      <p>下方リスクの範囲を見極められ、改善の源泉に明確に働きかけられる場合にのみ、前に進めます</p>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=72"></script>
+<script>
+/* Investment Focus — one field, two approaches.
+   Desktop: the two panels are expand/collapse buttons, not tabs; opening one
+   redistributes width inside a component of fixed height, so nothing below
+   moves. Return To Overview and Escape both restore the balanced state.
+   Mobile: the same two controls ARE a tablist, with a second tablist for the
+   three repositioning stages. One master panorama is panned, never swapped. */
+(function () {
+  var root = document.querySelector('[data-focusfield]');
+  if (!root) return;
+  var MOMENTS = [
+  {n:'機会を見極める',s:'見極める',b:'資産本来の品質を覆っている空室、位置づけ、運営、資本のいずれの制約かを特定する',fl:'2%',fe:'60%',a:0.12},
+  {n:'戦略を描く',s:'描く',b:'競争力を取り戻すために必要な賃貸、建物、運営、資本の打ち手を具体化する',fl:'20%',fe:'80%',a:0.5},
+  {n:'資産を強くする',s:'強くする',b:'より強い収益と明確な位置づけ、そして確かな保有成果に向けて実行する',fl:'40%',fe:'98%',a:0.88}
+  ];
+  var ZOOM = 116, CLOSED_ANCHOR = 0.12;
+
+  var field    = root.querySelector('[data-field]');
+  var panels   = [].slice.call(root.querySelectorAll('.fx-panel'));
+  var focusBtn = [].slice.call(root.querySelectorAll('[data-focus]'));
+  var backBtn  = [].slice.call(root.querySelectorAll('[data-collapse]'));
+  var momBtn   = [].slice.call(root.querySelectorAll('[data-moment]'));
+  var tabs     = [].slice.call(root.querySelectorAll('.fx-tab'));
+  var mtabs    = [].slice.call(root.querySelectorAll('.fx-mtab'));
+  var mpanels  = [].slice.call(root.querySelectorAll('.fx-tabpanel'));
+  var mname    = root.querySelector('[data-mname]');
+  var mbody    = root.querySelector('[data-mbody]');
+  var frames   = [].slice.call(root.querySelectorAll('.fx-frame'));
+
+  var narrow = function () { return window.matchMedia('(max-width: 760px)').matches; };
+  var reduce = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
+
+  /* Desktop opens balanced; the mobile selector is always resolved, so it
+     starts on Income. */
+  var focus = narrow() ? 0 : null, moment = 0;
+
+  /* Pan by scrolling the viewport: scrollLeft is not a style property, so a
+     later layout pass cannot reset it, and it needs no CSS transition. */
+  function pan(vp, zoomPct, anchor) {
+    if (!vp) return;
+    var img = vp.querySelector('[data-track]');
+    if (!img) return;
+    var vw = vp.clientWidth;
+    if (!vw) return;
+    var trackW = Math.round(vw * zoomPct / 100);
+    img.style.width = trackW + 'px';
+    var to = Math.round(anchor * (trackW - vw)), from = vp.scrollLeft;
+    if (vp.__t) { clearTimeout(vp.__t); vp.__t = null; }
+    if (reduce() || Math.abs(to - from) < 1) { vp.scrollLeft = to; return; }
+    var t0 = Date.now(), dur = 520;
+    /* restrained ease-in-out: continuity, not a cinematic sweep */
+    var ease = function (x) { return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; };
+    (function step() {
+      var k = Math.min(1, (Date.now() - t0) / dur);
+      vp.scrollLeft = Math.round(from + (to - from) * ease(k));
+      if (k < 1) vp.__t = setTimeout(step, 16); else vp.__t = null;
+    })();
+  }
+
+  function applyPan() {
+    var open = focus === 1;
+    var m = MOMENTS[moment] || MOMENTS[0];
+    var desk = root.querySelector('.fx-panel--rep [data-pan]');
+    var mob  = root.querySelector('.fx-tabpanel [data-pan]');
+    pan(desk, ZOOM, open ? m.a : CLOSED_ANCHOR);
+    pan(mob, ZOOM + 24, m.a);
+  }
+
+  function paint() {
+    var n = narrow();
+    if (field) field.setAttribute('data-open', focus === null ? '' : String(focus));
+    panels.forEach(function (p, i) {
+      var open = focus === i;
+      var shut = p.querySelector('.fx-shut'), body = p.querySelector('.fx-open');
+      if (shut) { shut.hidden = open; shut.setAttribute('aria-pressed', open ? 'true' : 'false'); }
+      if (body) body.hidden = !open;
+      var ib = p.querySelector('.fx-imgbtn');
+      if (ib) ib.setAttribute('aria-pressed', open ? 'true' : 'false');
+    });
+    tabs.forEach(function (t, i) {
+      var on = focus === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    mpanels.forEach(function (p, i) { p.hidden = focus !== i; });
+    momBtn.forEach(function (b) {
+      var on = +b.dataset.moment === moment;
+      if (b.classList.contains('fx-mtab')) {
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+      } else {
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var c = b.querySelector('.fx-stage-b');
+        if (c) c.hidden = !on;
+      }
+    });
+    var m = MOMENTS[moment] || MOMENTS[0];
+    frames.forEach(function (f) {
+      f.style.setProperty('--fl', m.fl);
+      f.style.setProperty('--fe', m.fe);
+    });
+    if (mname) mname.textContent = m.n;
+    if (mbody) mbody.textContent = m.b;
+    applyPan();
+    if (n && focus === null) { focus = 0; paint(); }
+  }
+
+  function setFocus(i) {
+    /* Desktop: activating the open panel again returns to the overview.
+       Mobile: the selector is a tablist, so it always resolves to one panel. */
+    focus = (!narrow() && focus === i) ? null : i;
+    paint();
+  }
+  function collapse() { if (!narrow() && focus !== null) { focus = null; paint(); } }
+  function setMoment(i) { moment = i; if (!narrow()) focus = 1; paint(); }
+
+  focusBtn.forEach(function (b) {
+    var i = +b.dataset.focus;
+    b.addEventListener('click', function () { setFocus(i); });
+  });
+  backBtn.forEach(function (b) { b.addEventListener('click', collapse); });
+  momBtn.forEach(function (b) {
+    var i = +b.dataset.moment;
+    b.addEventListener('click', function () { setMoment(i); });
+  });
+
+  /* Arrow keys move selection inside the two mobile tablists only: the
+     desktop panels are expand/collapse buttons, where arrows mean nothing. */
+  function arrows(list, get, set) {
+    list.forEach(function (b, i) {
+      b.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+        var j = (i + d + list.length) % list.length;
+        set(j);
+        list[j].focus();
+      });
+    });
+  }
+  arrows(tabs, null, function (j) { focus = j; paint(); });
+  arrows(mtabs, null, function (j) { setMoment(j); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') collapse();
+  });
+
+  var rt = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { paint(); }, 120);
+  });
+  if (typeof ResizeObserver === 'function') {
+    var ro = new ResizeObserver(function () { applyPan(); });
+    [].slice.call(root.querySelectorAll('[data-pan]')).forEach(function (v) { ro.observe(v); });
+  }
+
+  paint();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(applyPan);
+  window.addEventListener('load', applyPan);
+})();
+</script>
+<script src="../shell.js?v=73"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

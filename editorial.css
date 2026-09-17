@@ -1281,3 +1281,71 @@ h2.eyebrow, h3.eyebrow { margin: 0; }
 html.pt-enter #main { opacity: 0; transform: translateY(8px); transition: none; }
 html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
 @media (prefers-reduced-motion: reduce) { html.pt-enter #main, html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: none; } }
+
+/* =====================================================================
+   SHARED SHELL — TOUCH TARGETS
+   The header sets its type and rhythm first; these rules only grow the
+   hit area around each control to 44px, with a transparent overlay, so
+   nothing moves and nothing is redrawn. The horizontal reach stops short
+   of half the gap to the next control, so neighbouring targets never
+   overlap.
+   ===================================================================== */
+.nav-links a, .lang-switch button, .nav-logo { position: relative; touch-action: manipulation; }
+.lang-switch button::before,
+.nav-logo::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 44px;
+  min-height: 100%;
+}
+.lang-switch button::before { left: -2px; right: -2px; }
+/* The footer symbol repeats the header logo, so its reach stops at its own
+   edges rather than crossing the privacy link beside it. */
+.nav-logo::before { left: 0; right: 0; }
+.ff-brand::before { left: 0; right: 0; }
+/* On one line there is room above and below each label, so the overlay grows.
+   Once the row wraps, an overlay would cross into the row above, so the link
+   itself carries the target and the rows are given room to clear it. */
+@media (min-width: 1101px) {
+  .nav-links a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    right: -8px;
+    transform: translateY(-50%);
+    height: 44px;
+    min-height: 100%;
+  }
+}
+@media (max-width: 1100px) {
+  .nav-links { row-gap: 4px; }
+  .nav-links a { min-height: 44px; }
+}
+@media (max-width: 340px) {
+  .nav-links { row-gap: 4px; }
+  .nav-links a { min-height: 44px; }
+}
+
+/* Standalone controls elsewhere in the shell and on Home: the same transparent
+   overlay, so the type and spacing are untouched. Links set inside a sentence
+   are left alone — WCAG 2.2 exempts them, and padding them would break the
+   line they sit in. */
+/* .ff-brand is already absolutely centred in the footer bar, so it must not be
+   re-positioned here — only its overlay is added. */
+.hm-tab, .hf-link, .nf-body a.link, .legal-contact a.link { position: relative; }
+.ff-brand, .hm-tab, .hf-link, .nf-body a.link, .legal-contact a.link { touch-action: manipulation; }
+.ff-brand::before, .hm-tab::before, .hf-link::before, .nf-body a.link::before,
+.legal-contact a.link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  right: -6px;
+  transform: translateY(-50%);
+  height: 44px;
+  min-height: 100%;
+}
+.skip-link { min-height: 44px; }

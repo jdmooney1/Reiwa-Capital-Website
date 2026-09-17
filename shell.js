@@ -98,7 +98,7 @@
     host.innerHTML = `
       <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="Primary" data-aria-en="Primary" data-aria-ja="メイン">
         <div class="nav-inner">
-          <a class="nav-logo" href="/" aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
+          <a class="nav-logo" href="/"${cur === 'home' ? ' aria-current="page"' : ''} aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
           <div class="nav-right">
@@ -140,7 +140,7 @@
     host.innerHTML = `
       <nav class="nav-bar ${onDark ? 'on-dark' : ''}" role="navigation" aria-label="メイン">
         <div class="nav-inner">
-          <a class="nav-logo" href="/ja/" aria-label="Reiwa Capital — ホーム" style="min-height:40px">
+          <a class="nav-logo" href="/ja/"${cur === 'home' ? ' aria-current="page"' : ''} aria-label="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
           <div class="nav-right">
