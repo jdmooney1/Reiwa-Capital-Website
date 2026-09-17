@@ -20,9 +20,9 @@
     window.addEventListener('load', load);
     // Safety: once the reveal has had time to play, drop the transitions so
     // content can never sit stuck mid-reveal (backgrounded tab / frozen
-    // compositor).
+    // compositor). The photograph is never part of the entrance.
     setTimeout(function () {
-      var sel = hero.querySelectorAll('h1, .sub, .loc, .hero-media');
+      var sel = hero.querySelectorAll('h1, .sub, .loc');
       for (var i = 0; i < sel.length; i++) sel[i].style.transition = 'none';
     }, 1200);
   }
@@ -75,7 +75,14 @@
       // by :target scroll-margin-top so anchor jumps (Process stages,
       // Home's Acquire/Structure/Oversee links) always clear the fixed bar.
       // Recomputed on every trigger below, incl. font load + orientation.
+      // The disclosure panel (<1101px) sits inside the bar, so the bar's
+      // own box grows by the panel's height while the menu is open. The
+      // header's height is the row + rule only — measuring the whole bar
+      // here moved the hero up by the panel's height on the first scroll
+      // with the menu open.
       var navH = Math.ceil(bar.getBoundingClientRect().height);
+      var drawer = bar.querySelector('.nav-drawer');
+      if (drawer && !drawer.hidden) navH -= Math.ceil(drawer.getBoundingClientRect().height);
       // --nav-h is the header's TRUE height: consumers that must sit flush
       // beneath it (the hero's negative offset, the Approach sticky process
       // tracker's `top`) cannot carry a fudge factor or a strip of scrolling

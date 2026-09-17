@@ -196,6 +196,9 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       drawer.hidden = !open;
       bar.classList.toggle('nav-menu-open', open);
+      /* craft.js re-measures the header on this event, so the hero offset
+         and anchor clearance stay right while the panel is open. */
+      try { document.dispatchEvent(new CustomEvent('reiwa:drawer', { detail: { open } })); } catch (e) {}
     };
     const close = () => { if (toggle.getAttribute('aria-expanded') === 'true') setOpen(false); };
 
@@ -320,12 +323,14 @@
   }
 
   // -------------------- Scroll reveals --------------------
-  // The CSS in editorial.css keeps content fully visible unless <html> carries
-  // `reveal-on` AND motion is welcome — so print, no-JS, and reduced-motion all
-  // render normally. We add the class, tag content blocks, and let an observer
-  // fade each one up as it enters. Staggered per sibling group for a soft cascade.
+  // The CSS in editorial.css / craft.css keeps content fully visible unless
+  // <html> carries `reveal-on` AND motion is welcome — so print, no-JS, and
+  // reduced-motion all render normally. We add the class, tag content
+  // blocks, and let an observer fade each one up as it enters, once.
+  // Groups of siblings that clearly belong together step in on a short
+  // stagger (the group is tagged, each child gets its index).
   const REVEAL_SELECTORS = [
-    '.hi-head', '.hi-cols', '.hm-head', '.hm-stage', '.hp-grid', '.hf-head', '.hf-grid',
+    '.hi-head', '.hm-head', '.hm-stage', '.hf-head',
     '.home-areas .areas-head',
     '.wwd-head', '.home-markets-head', '.activity-head', '.hww-head', '.hww-panel', '.platform-head', '.contact-cta-head',
     '.stage-rail',
@@ -334,45 +339,68 @@
     '.assessment .assess-grid', '.areas .chapter',
     '.profile', '.contact-body .shell'
   ];
+  const REVEAL_GROUPS = ['.hi-cols', '.hp-grid', '.hf-grid'];
 
   function setupReveals() {
     if (!('IntersectionObserver' in window)) return;
-    const els = Array.prototype.slice.call(
-      document.querySelectorAll(REVEAL_SELECTORS.join(','))
-    );
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const singles = Array.prototype.slice.call(document.querySelectorAll(REVEAL_SELECTORS.join(',')));
+    const groups = Array.prototype.slice.call(document.querySelectorAll(REVEAL_GROUPS.join(',')));
+    const els = singles.concat(groups);
     if (!els.length) return;
 
     document.documentElement.classList.add('reveal-on');
-    els.forEach(el => el.setAttribute('data-reveal', ''));
+    singles.forEach(el => el.setAttribute('data-reveal', ''));
+    groups.forEach(el => {
+      el.setAttribute('data-reveal-group', '');
+      Array.prototype.forEach.call(el.children, (c, i) => c.style.setProperty('--i', i));
+    });
+
+    const settle = (el) => {
+      // Drop the transition once it has had time to play, so a frozen
+      // compositor (e.g. backgrounded tab) never leaves content hidden.
+      const nodes = el.hasAttribute('data-reveal-group') ? Array.prototype.slice.call(el.children) : [el];
+      const last = nodes.length;
+      setTimeout(() => { nodes.forEach(n => { n.style.transition = 'none'; }); }, 700 + 60 * last);
+    };
+    const show = (el, instant) => {
+      if (el.classList.contains('is-in')) return;
+      if (instant) {
+        const nodes = el.hasAttribute('data-reveal-group') ? Array.prototype.slice.call(el.children) : [el];
+        nodes.forEach(n => { n.style.transition = 'none'; });
+      }
+      el.classList.add('is-in');
+      if (!instant) settle(el);
+    };
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('is-in');
-          // Drop the transition once it has had time to play, so a frozen
-          // compositor (e.g. backgrounded tab) never leaves content hidden.
-          const t = e.target;
-          setTimeout(() => { t.style.transition = 'none'; }, 1100);
+          show(e.target, false);
           io.unobserve(e.target);
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
     els.forEach(el => io.observe(el));
 
-    // Absolute guarantee: whether or not the observer ever delivers for a
-    // given element (throttled/backgrounded tab, a browser that never fires
-    // the callback, an element already in view at odd geometry), force the
-    // visible end state after a generous delay. transition:none first kills
-    // any pending/throttled fade so nothing can be caught mid-transition.
-    setTimeout(() => {
+    // Guarantee for what is on screen: whether or not the observer delivers
+    // for an element already in view (throttled/backgrounded tab, odd
+    // geometry), force the visible end state for anything within the
+    // viewport after a generous delay — and again whenever the tab comes
+    // back. Content below the fold keeps its entrance for when it arrives;
+    // it can never be caught mid-reveal because it has not started.
+    const forceVisible = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
       els.forEach(el => {
-        if (!el.classList.contains('is-in')) {
-          el.style.transition = 'none';
-          el.classList.add('is-in');
-        }
+        if (el.classList.contains('is-in')) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) { show(el, true); io.unobserve(el); }
       });
-    }, 1600);
+    };
+    setTimeout(forceVisible, 1600);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(forceVisible, 250); });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) forceVisible(); });
   }
 
   // -------------------- Page transitions --------------------

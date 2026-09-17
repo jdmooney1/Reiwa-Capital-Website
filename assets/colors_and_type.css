@@ -277,25 +277,34 @@
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);   /* two-way / looping     */
   --ease-in:     cubic-bezier(0.40, 0, 1, 1);      /* exits only            */
 
-  /* ---- ONE motion system. Four durations, one easing (--ease, top of :root).
-     Fast interaction 180 · standard hover 280 · section 450 · panel 600.
-     The numbered ladder and older aliases below all resolve ONTO these four,
-     so every existing reference across the site lands on the one system and
-     future edits change a token, never an instance. */
-  --dur-fast:    180ms;   /* fast interaction — toggle press, tiny fades      */
-  --dur-hover:   280ms;   /* standard hover — colour / border / arrow nudge   */
-  --dur-section: 260ms;   /* content crossfade — header solidify, logo swap, drawer */
-  --dur-panel:   380ms;   /* one-time reveal — stage/chapter entries, [data-reveal] */
-  /* Scroll reveals sit in their own band (450–650ms) — longer than a panel
-     crossfade, shorter than the hero settle. One token, used by the
-     [data-reveal] rule in editorial.css and nothing else. */
-  --dur-reveal-scroll: 520ms;
+  /* ---- ONE motion system, three bands. Every transition on the site
+     resolves onto one of these, so a timing is changed here, never at an
+     instance. Visually tuned on the homepage (motion pass, Sept 2026):
+       feedback  · hover / focus colour, underline, arrow, press   120–200ms
+       panel     · header solidify, tab panel, drawer, crossfade   200–350ms
+       entrance  · hero copy and one-time section reveals          350–550ms
+     All three run on --ease-out: a plain decelerating curve, no bounce
+     or overshoot anywhere. */
+  --motion-feedback: 160ms;
+  --motion-panel:    280ms;
+  --motion-entrance: 460ms;
+  --motion-stagger:  60ms;    /* between siblings that clearly belong together */
+  --motion-rise:     12px;    /* the one vertical travel for entrances (8px on phones) */
+
+  /* The numbered ladder and the older names below all resolve onto the
+     three bands, so every existing reference across the site lands on the
+     one system. */
+  --dur-fast:    var(--motion-feedback);  /* toggle press, tiny fades              */
+  --dur-hover:   200ms;                   /* colour / border / arrow nudge         */
+  --dur-section: var(--motion-panel);     /* header solidify, logo swap, drawer    */
+  --dur-panel:   320ms;                   /* panel changes, chapter entries        */
+  --dur-reveal-scroll: var(--motion-entrance); /* [data-reveal] section entrances */
 
   --dur-1: var(--dur-fast);
   --dur-2: var(--dur-hover);
   --dur-3: var(--dur-section);
   --dur-4: var(--dur-panel);
-  --dur-hero: var(--dur-reveal); /* hero image settle — deliberate exception (0.9s) */
+  --dur-hero: var(--dur-reveal); /* inner-page hero wash settle — deliberate exception (0.9s) */
 
   /* Older aliases → the four tokens above. */
   --ease-standard: var(--ease-out);
@@ -305,8 +314,8 @@
   --dur-med:       var(--dur-panel);
   --dur-slow:      var(--dur-panel);
   --dur-deliberate:var(--dur-hero);
-  --stagger:       70ms;
-  --reveal-y:      12px;
+  --stagger:       var(--motion-stagger);
+  --reveal-y:      var(--motion-rise);
 
   /* =====================================================================
      PHOTOGRAPHY — one curated collection. Every photograph on the
@@ -334,9 +343,11 @@
    transition on the site shortens from this one override. */
 @media (max-width: 760px) {
   :root {
-    --dur-section: 340ms;
-    --dur-panel:   440ms;
-    --dur-reveal:  560ms;
+    --motion-panel:    240ms;
+    --motion-entrance: 400ms;
+    --motion-rise:     8px;
+    --dur-panel:       280ms;
+    --dur-reveal:      560ms;
   }
 }
 

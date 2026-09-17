@@ -19,9 +19,38 @@
 /* Only opacity/colour transition — the blur is set without animating it,
    since backdrop-filter is paint-bound. */
 .nav-bar {
-  transition: background var(--dur-3) var(--ease-out),
-              border-color var(--dur-3) var(--ease-out);
+  transition: background var(--motion-panel) var(--ease-out),
+              border-color var(--motion-panel) var(--ease-out);
 }
+/* The bar's height never changes between the floating and settled states
+   (same padding both sides); only colour and hairline move. The row's
+   controls keep their own feedback-speed colour transitions (editorial.css),
+   so the inversion from white-on-hero to ink-on-cream lands a fraction
+   ahead of the ground and never snaps. */
+.nav-bar .nav-links a::after { transition-duration: var(--motion-feedback); }
+/* Press feedback on the shell's text controls — colour only, no movement. */
+.nav-links a:active, .lang-switch button:not(.is-active):active { color: var(--ink); }
+.nav-bar.nav-over-hero .nav-links a:active { color: #fff; }
+
+/* Disclosure panel (<1101px): the links settle in with one short rise as
+   the panel opens; closing is immediate (hidden), which reads as decisive
+   rather than laggy. Nothing here changes the panel's height. */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-drawer:not([hidden]) li {
+    animation: rc-drawer-in var(--motion-panel) var(--ease-out) both;
+  }
+  .nav-drawer:not([hidden]) li:nth-child(2) { animation-delay: 40ms; }
+  .nav-drawer:not([hidden]) li:nth-child(3) { animation-delay: 80ms; }
+  .nav-drawer:not([hidden]) li:nth-child(4) { animation-delay: 120ms; }
+  .nav-drawer:not([hidden]) li:nth-child(n+5) { animation-delay: 160ms; }
+}
+@keyframes rc-drawer-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+.nav-drawer a { transition: color var(--motion-feedback) var(--ease-out); }
+@media (hover: hover) { .nav-drawer a:hover { color: var(--ink); } }
+.nav-drawer a:active { color: var(--ink); }
 /* Only the home page floats the nav over a dark hero. */
 .nav-bar.nav-over-hero {
   background: transparent;
@@ -102,21 +131,20 @@
 }
 
 /* =====================================================================
-   HERO — one restrained fade-up for the media + headline group. No
-   parallax, no per-line clip masks: a single quiet entrance, once.
+   HERO — one restrained, one-time entrance for the copy. The photograph
+   is never held back: it paints with the page, so the first frame is
+   already the hero. The heading rises 12px (8px on phones) and settles;
+   the location line follows a beat later. No per-letter or per-line
+   work, no loading sequence. craft.js arms this (html.hero-arm) only when
+   motion is welcome, and strips the transitions after they have played.
    ===================================================================== */
 @media (prefers-reduced-motion: no-preference) {
-  html.hero-arm .home-hero .hero-media {
-    opacity: 0;
-    transition: opacity var(--dur-hero) var(--ease-out);
-  }
-  html.hero-arm .home-hero.is-loaded .hero-media { opacity: 1; }
-
   html.hero-arm .home-hero h1,
   html.hero-arm .home-hero .inner > .sub,
   html.hero-arm .home-hero .inner > .loc {
-    opacity: 0; transform: translateY(var(--reveal-y));
-    transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+    opacity: 0; transform: translateY(var(--motion-rise));
+    transition: opacity var(--motion-entrance) var(--ease-out),
+                transform var(--motion-entrance) var(--ease-out);
   }
   html.hero-arm .home-hero.is-loaded h1 { opacity: 1; transform: none; }
   html.hero-arm .home-hero.is-loaded .inner > .sub { opacity: 1; transform: none; transition-delay: 80ms; }
@@ -149,9 +177,128 @@
   /* The toggle itself animates its active pill. */
 }
 
-/* House easing applied to the generic section reveal. */
+/* =====================================================================
+   SECTION ENTRANCES — one quiet fade-and-rise per content group as it
+   enters, once. Heads and stages move as a block; grids of siblings that
+   clearly belong together (the three functions, the four principles, the
+   three strategies) step in on a short stagger. shell.js tags the groups
+   and observes them; nothing replays on the way back up. No JS, print and
+   reduced motion all render fully visible content.
+   ===================================================================== */
 @media (prefers-reduced-motion: no-preference) {
   html.reveal-on [data-reveal] {
-    transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+    transition: opacity var(--motion-entrance) var(--ease-out),
+                transform var(--motion-entrance) var(--ease-out);
   }
+  /* Staggered groups: the group itself stays put; its children carry the
+     motion, each one beat behind the last. */
+  html.reveal-on [data-reveal-group] { opacity: 1; transform: none; transition: none; }
+  html.reveal-on [data-reveal-group] > * {
+    opacity: 0;
+    transform: translateY(var(--motion-rise));
+    transition: opacity var(--motion-entrance) var(--ease-out),
+                transform var(--motion-entrance) var(--ease-out);
+    transition-delay: calc(var(--motion-stagger) * var(--i, 0));
+  }
+  html.reveal-on [data-reveal-group].is-in > * { opacity: 1; transform: none; }
+  /* Shared hairline grids draw their own dividers on the children, so the
+     rules fade in with the copy rather than sitting alone on the page. */
+}
+
+/* =====================================================================
+   LINKS, CARDS AND CALLS TO ACTION — hover, focus and press share one
+   vocabulary: a colour step, an underline that draws from the left, an
+   arrow that moves 4px along its own line. Focus-visible always mirrors
+   hover, so keyboard users see the same state. No scale, no lift, no
+   shadow.
+   ===================================================================== */
+/* Text link with arrow ("Our investment focus") */
+.hf-link { transition: border-color var(--motion-feedback) var(--ease-out), color var(--motion-feedback) var(--ease-out); }
+.hf-link .h-arrow { transition: transform var(--motion-feedback) var(--ease-out); }
+.hf-link:hover, .hf-link:focus-visible { border-color: var(--ink); }
+.hf-link:hover .h-arrow, .hf-link:focus-visible .h-arrow { transform: translateX(4px); }
+.hf-link:active { color: var(--ink-2); }
+
+/* Strategy cards — the whole card is one link, so the whole card responds:
+   the photograph eases fractionally larger behind its frame, its wash
+   lifts, the title steps to full ink and the arrow moves. Touch gets the
+   same state on press, without a lingering hover. */
+.hf-item .hf-media img { transition: transform var(--motion-panel) var(--ease-out); }
+.hf-item .hf-media::after { transition: background var(--motion-panel) var(--ease-out); }
+.hf-item .hf-cap h3 { transition: color var(--motion-feedback) var(--ease-out); }
+.hf-item .h-arrow { transition: transform var(--motion-feedback) var(--ease-out); }
+.hf-item:focus-visible .hf-media img,
+.hf-item:active .hf-media img { transform: scale(1.02); }
+.hf-item:focus-visible .hf-media::after,
+.hf-item:active .hf-media::after { background: var(--img-overlay-hover); }
+.hf-item:focus-visible .h-arrow,
+.hf-item:active .h-arrow { transform: translateX(4px); }
+@media (hover: hover) {
+  .hf-item:hover .hf-media img { transform: scale(1.02); }
+  .hf-item:hover .hf-media::after { background: var(--img-overlay-hover); }
+  .hf-item:hover .h-arrow { transform: translateX(4px); }
+}
+/* The r-frame brackets on the card image draw in a touch stronger on hover,
+   so the frame reads as part of the response rather than a static mark. */
+.hf-item .hf-media.r-frame::before,
+.hf-item .hf-media.r-frame::after { transition: border-color var(--motion-feedback) var(--ease-out); }
+.hf-item:focus-visible .hf-media.r-frame::before, .hf-item:focus-visible .hf-media.r-frame::after,
+.hf-item:active .hf-media.r-frame::before, .hf-item:active .hf-media.r-frame::after { border-color: var(--reiwa-node); }
+@media (hover: hover) {
+  .hf-item:hover .hf-media.r-frame::before, .hf-item:hover .hf-media.r-frame::after { border-color: var(--reiwa-node); }
+}
+
+/* Next-page band — the arrow keeps its 8px travel; the ground change
+   settles on the panel clock. */
+.nextnav--band .nn-link { transition: background var(--motion-panel) var(--ease-out); }
+.nextnav--band .nn-arrow { transition: transform var(--motion-feedback) var(--ease-out); }
+
+/* =====================================================================
+   MARKET SELECTOR (Home) — London / Amsterdam. The selected tab is
+   unmistakable: full ink, a 1.5px underline drawn from the left, and the
+   map, photograph and copy answer it together. The tabs keep one weight
+   in both states so selecting never shifts the neighbouring tab. Panels
+   crossfade with a 6px settle; both remain in the DOM, the inactive one
+   display:none so it holds no focusable content.
+   ===================================================================== */
+.hm-tabs .hm-tab { font-weight: 400; transition: color var(--motion-feedback) var(--ease-out); }
+.hm-tabs .hm-tab[aria-selected="true"] { font-weight: 400; color: var(--ink); }
+.hm-tabs .hm-tab::after { height: 1.5px; transition: transform var(--motion-panel) var(--ease-out), opacity var(--motion-panel) var(--ease-out); }
+.hm-tabs .hm-tab:active { color: var(--ink); }
+/* Hover previews the underline faintly; selection draws it fully. */
+@media (hover: hover) {
+  .hm-tabs .hm-tab:not([aria-selected="true"]):hover { color: var(--ink); }
+  .hm-tabs .hm-tab:not([aria-selected="true"]):hover::after { transform: scaleX(1); opacity: 0.32; }
+}
+.hm-tabs .hm-tab[aria-selected="true"]::after { opacity: 1; }
+.hm-tabs .hm-tab:focus-visible { outline-offset: 4px; }
+
+.hm-photo img { transition: opacity var(--motion-panel) var(--ease-out); }
+.hm-map .hm-land { transition: fill-opacity var(--motion-panel) var(--ease-out), stroke-opacity var(--motion-panel) var(--ease-out); }
+.hm-map .hm-mark .dot::before,
+.hm-map .hm-mark .dot::after { transition-duration: var(--motion-panel); }
+.hm-map .hm-mark .name { transition-duration: var(--motion-feedback); }
+html.js .hm-panels .hm-panel.is-on { animation: rc-panel-in var(--motion-panel) var(--ease-out) both; }
+@keyframes rc-panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* =====================================================================
+   REDUCED MOTION — every transition and animation this layer adds is
+   switched off; states still change, instantly.
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .nav-bar, .nav-bar .nav-links a::after,
+  .nav-drawer a, .nav-drawer li,
+  .hf-link, .hf-link .h-arrow, .hf-item .hf-media img, .hf-item .hf-media::after, .hf-item .hf-cap h3, .hf-item .h-arrow,
+  .hf-item .hf-media.r-frame::before, .hf-item .hf-media.r-frame::after,
+  .nextnav--band .nn-link, .nextnav--band .nn-arrow,
+  .hm-tabs .hm-tab, .hm-tabs .hm-tab::after, .hm-photo img, .hm-map .hm-land,
+  .hm-map .hm-mark .dot::before, .hm-map .hm-mark .dot::after, .hm-map .hm-mark .name {
+    transition: none !important;
+    animation: none !important;
+  }
+  html.js .hm-panels .hm-panel.is-on { animation: none; }
+  .nav-drawer:not([hidden]) li { animation: none; }
 }
