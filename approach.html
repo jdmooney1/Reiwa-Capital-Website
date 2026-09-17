@@ -25,12 +25,12 @@
 <meta name="twitter:description" content="A six-stage investment lifecycle with a defined output at each stage, the five tests behind every investment case, and the decisions reserved to the investor.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=21">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=22">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=82">
+<link rel="stylesheet" href="editorial.css?v=83">
 <link rel="stylesheet" href="brand.css?v=7">
-<link rel="stylesheet" href="craft.css?v=24">
+<link rel="stylesheet" href="craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -104,6 +104,7 @@
   .lf-pair { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 2px 14px; align-items: baseline; padding-top: 2px; }
   .lf-pair dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: rgba(252,250,241,.5); }
   .lf-pair dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.5; color: rgba(252,250,241,.86); }
+  .lf-pair[hidden] { display: none; }
   .lf-pair--gate { margin-top: 4px; padding-top: 10px; border-top: 1px solid rgba(252,250,241,.34); }
   .lf-pair--gate dt { color: var(--accent-sumire-light, #B79AD6); }
   .lf-pair--gate dd { color: var(--cream); }
@@ -610,22 +611,28 @@
     var f = {
       name: lf.querySelector('[data-lf="name"]'),
       purpose: lf.querySelector('[data-lf="purpose"]'),
-      output: lf.querySelector('[data-lf="output"]'),
       outputV: lf.querySelector('[data-lf="output-v"]'),
       approvalV: lf.querySelector('[data-lf="approval-v"]'),
       roleTitle: lf.querySelector('[data-lf="role-title"]'),
       roleItems: lf.querySelector('[data-lf="role-items"]')
     };
+    /* ONE state: the active lifecycle stage. An investor approval point is
+       not a second state — selecting one activates the stage that approval
+       governs (GATES[i].r), so every field below, and every open spine item,
+       is read from that single stage. `gate` records only which approval
+       marker was pressed, for the marker and the progress bar; it never
+       sources copy, so no field can disagree with another. */
     var stage = DEFAULT_STAGE, gate = null;
 
     function paint() {
+      var s = STAGES[stage];
       stageBtns.forEach(function (b) {
-        var on = gate === null && +b.dataset.stage === stage;
+        var on = +b.dataset.stage === stage;
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
         if (b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded', on ? 'true' : 'false');
       });
       items.forEach(function (it) {
-        var on = gate === null && +it.dataset.spItem === stage;
+        var on = +it.dataset.spItem === stage;
         it.classList.toggle('is-on', on);
         var body = it.querySelector('.lf-sp-body');
         if (body) body.hidden = !on;
@@ -633,19 +640,15 @@
       gateBtns.forEach(function (b) {
         b.setAttribute('aria-pressed', (gate !== null && +b.dataset.gate === gate) ? 'true' : 'false');
       });
-      var g = gate === null ? null : GATES[gate];
-      var s = STAGES[stage];
-      var x = g ? g.x : stage * (100 / 6);
-      if (progress) progress.style.setProperty('--w', 'calc(' + x + '% + 4px)');
-      f.name.textContent = g ? g.n : s.n;
-      f.purpose.textContent = g ? g.d : s.p;
-      f.output.hidden = !!g;
-      if (!g) f.outputV.textContent = s.o;
-      /* On an approval point, the right column shows the work Reiwa does at
-         the stage that point governs — the decision itself stays the
-         investor's, and is named as reserved to them. */
-      f.approvalV.textContent = g ? L.held : s.a;
-      var role = ROLE[g ? g.r : stage] || ROLE[0];
+      if (progress) {
+        var x = gate === null ? stage * (100 / 6) : GATES[gate].x;
+        progress.style.setProperty('--w', 'calc(' + x + '% + 4px)');
+      }
+      f.name.textContent = s.n;
+      f.purpose.textContent = s.p;
+      f.outputV.textContent = s.o;
+      f.approvalV.textContent = s.a;
+      var role = ROLE[stage] || ROLE[0];
       if (f.roleTitle) f.roleTitle.textContent = role.t;
       if (f.roleItems) {
         f.roleItems.textContent = '';
@@ -658,7 +661,8 @@
       }
     }
     function setStage(i) { stage = i; gate = null; paint(); }
-    function setGate(i) { gate = i; paint(); }
+    /* An approval point is a way into the stage it governs. */
+    function setGate(i) { stage = GATES[i].r; gate = i; paint(); }
     stageBtns.forEach(function (b) {
       var i = +b.dataset.stage;
       b.addEventListener('click', function () { setStage(i); });
@@ -670,9 +674,10 @@
     paint();
     var detail = lf.querySelector('.lf-detail');
     relock.push(function () {
+      /* Approval points resolve to a stage, so the six stages are every
+         state the panel can render — measuring them measures all of them. */
       var ks = stage, kg = gate, states = [];
       STAGES.forEach(function (_, i) { states.push(function () { stage = i; gate = null; }); });
-      GATES.forEach(function (_, i) { states.push(function () { gate = i; }); });
       floorTo(detail, paint, states, function () { stage = ks; gate = kg; });
     });
     lf._reset = function () { if (stage !== DEFAULT_STAGE || gate !== null) setStage(DEFAULT_STAGE); };
@@ -733,202 +738,7 @@
   });
 })();
 </script>
-<script>
-/* Approach — the investment lifecycle and the five tests.
-   Lifecycle: one selection at a time, a stage or an investor approval point,
-   opening on Own. Click and keyboard activation both change the detailed
-   content; hover does not. Escape returns to the loaded state. */
-(function () {
-  var lf = document.querySelector('[data-lifecycle]');
-  var tw = document.querySelector('[data-tests]');
-  if (!lf && !tw) return;
-
-  var STAGES = [
-  {n:'Mandate',p:'Translate the investor’s objectives into a clear acquisition mandate',o:'Investment Mandate',a:'Mandate and decision framework'},
-  {n:'Assess',p:'Test whether an opportunity merits detailed underwriting',o:'Investment Memorandum',a:'Authority to progress material opportunities'},
-  {n:'Structure',p:'Set the ownership, financing and tax structure before commitment',o:'Structure and Execution Plan',a:'Approval of structure and agreed terms'},
-  {n:'Acquire',p:'Complete diligence, financing and documentation under one plan',o:'Acquisition Decision Pack',a:'Final investment decision'},
-  {n:'Own',p:'Maintain the investment case through ownership and changing conditions',o:'Asset Oversight, Reporting and Decision Support',a:'Refinancing, material capital expenditure and changes to the approved business plan'},
-  {n:'Exit',p:'Evaluate refinancing, partial realisation or sale against the mandate',o:'Exit Recommendation and Execution Plan',a:'Timing, pricing and disposal terms'}
-  ];
-  var GATES = [
-  {n:'Acquisition',d:'The investor takes the final investment decision before any commitment is made',x:50,r:3},
-  {n:'Material Business-Plan Changes',d:'Changes to strategy, capital expenditure or leasing policy return to the investor for approval',x:66.67,r:4},
-  {n:'Financing or Refinancing',d:'Any new or replacement financing is approved by the investor on its terms',x:75,r:4},
-  {n:'Exit',d:'Timing, pricing and disposal terms remain the investor’s decision',x:83.33,r:5}
-  ];
-  var ROLE = [
-  {t:'Defining The Mandate',i:[['Clarify','Establish the investor’s objectives, constraints and ownership requirements'],['Define','Set target markets, risk parameters and decision criteria'],['Align','Create a clear basis for screening opportunities and making decisions']]},
-  {t:'Testing The Opportunity',i:[['Screen','Determine whether the opportunity fits the agreed mandate'],['Underwrite','Test income, value, capital requirements, financing and exit assumptions'],['Challenge','Identify material risks, dependencies and unresolved questions']]},
-  {t:'Preparing The Investment',i:[['Design','Develop the appropriate ownership, financing and governance structure'],['Coordinate','Bring together legal, tax, financing and specialist advice'],['Prepare','Translate the proposed structure into an executable investment plan']]},
-  {t:'Executing The Acquisition',i:[['Diligence','Coordinate commercial, legal, tax, financial and technical review'],['Negotiate','Maintain one position across pricing, terms, financing and documentation'],['Close','Manage conditions, approvals and execution through completion']]},
-  {t:'During Ownership',i:[['Monitor','Income, occupancy, valuation, debt and business-plan performance'],['Coordinate','Property managers, agents, lenders and specialist advisers'],['Intervene','Address variance, leasing events, capital expenditure and emerging risks'],['Report','Deliver reporting, recommendations and approval materials']]},
-  {t:'Realising The Investment',i:[['Review','Assess continued ownership, refinancing, partial realisation and sale'],['Recommend','Present the preferred route, timing and value implications'],['Execute','Coordinate preparation, marketing, negotiation and completion']]}
-  ];
-  var TESTS = [
-  {n:'Mandate Fit',k:'Does the opportunity meet the investor’s objectives, constraints and ownership requirements?',p:['Objectives, hold horizon and reporting requirements','Currency, structure and tax constraints','Governance and approval expectations']},
-  {n:'Market Case',k:'Do demand, liquidity and regulation support the proposed strategy?',p:['Occupier demand and competing supply','Depth of the investment market at this profile','Planning, licensing and regulatory direction']},
-  {n:'Asset Fundamentals',k:'Are the building, income and capital requirements understood and defensible?',p:['Building condition, services and compliance','Lease structure, covenant and income profile','Capital expenditure required during the hold']},
-  {n:'Pricing and Downside',k:'Does the return remain acceptable without relying on favourable market movement?',p:['Basis against replacement cost and long-run income','Sensitivity to exit yield and financing cost','What the case returns if conditions do not improve']},
-  {n:'Execution and Exit',k:'Can the business plan be delivered, controlled and ultimately realised?',p:['Local execution capability and accountability','Decisions reserved to the investor during ownership','Likely buyer profile at realisation']}
-  ];
-  var L = { held: 'Reserved to the investor' };
-  var IDLE = { n: 'Weighed together, not in order', k: 'Select a test to see the question Reiwa asks and the considerations behind it' };
-  var DEFAULT_STAGE = 4;
-
-  /* Both panels are floored to their own tallest state, so the page below
-     them never moves as selections change. Measured rather than declared:
-     the tallest state differs by width, language and loaded font. Any floor
-     the stylesheet sets for composition is kept as the lower bound. */
-  function floorTo(el, paint, states, restore) {
-    if (!el) return;
-    el.style.minHeight = '';
-    var base = parseFloat(getComputedStyle(el).minHeight) || 0;
-    var live = el.getAttribute('aria-live');
-    if (live) el.removeAttribute('aria-live');
-    el.style.minHeight = '0px';
-    var max = 0;
-    states.forEach(function (set) { set(); paint(); if (el.offsetHeight > max) max = el.offsetHeight; });
-    restore(); paint();
-    el.style.minHeight = max ? Math.max(max, base) + 'px' : '';
-    if (live) el.setAttribute('aria-live', live);
-  }
-  var relock = [];
-  function relockAll() { relock.forEach(function (f) { f(); }); }
-
-  /* ---------------- lifecycle ---------------- */
-  if (lf) {
-    var stageBtns = [].slice.call(lf.querySelectorAll('[data-stage]'));
-    var gateBtns  = [].slice.call(lf.querySelectorAll('[data-gate]'));
-    var items     = [].slice.call(lf.querySelectorAll('[data-sp-item]'));
-    var progress  = lf.querySelector('.lf-progress');
-    var f = {
-      name: lf.querySelector('[data-lf="name"]'),
-      purpose: lf.querySelector('[data-lf="purpose"]'),
-      output: lf.querySelector('[data-lf="output"]'),
-      outputV: lf.querySelector('[data-lf="output-v"]'),
-      approvalV: lf.querySelector('[data-lf="approval-v"]'),
-      roleTitle: lf.querySelector('[data-lf="role-title"]'),
-      roleItems: lf.querySelector('[data-lf="role-items"]')
-    };
-    var stage = DEFAULT_STAGE, gate = null;
-
-    function paint() {
-      stageBtns.forEach(function (b) {
-        var on = gate === null && +b.dataset.stage === stage;
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        if (b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded', on ? 'true' : 'false');
-      });
-      items.forEach(function (it) {
-        var on = gate === null && +it.dataset.spItem === stage;
-        it.classList.toggle('is-on', on);
-        var body = it.querySelector('.lf-sp-body');
-        if (body) body.hidden = !on;
-      });
-      gateBtns.forEach(function (b) {
-        b.setAttribute('aria-pressed', (gate !== null && +b.dataset.gate === gate) ? 'true' : 'false');
-      });
-      var g = gate === null ? null : GATES[gate];
-      var s = STAGES[stage];
-      var x = g ? g.x : stage * (100 / 6);
-      if (progress) progress.style.setProperty('--w', 'calc(' + x + '% + 4px)');
-      f.name.textContent = g ? g.n : s.n;
-      f.purpose.textContent = g ? g.d : s.p;
-      f.output.hidden = !!g;
-      if (!g) f.outputV.textContent = s.o;
-      /* On an approval point, the right column shows the work Reiwa does at
-         the stage that point governs — the decision itself stays the
-         investor's, and is named as reserved to them. */
-      f.approvalV.textContent = g ? L.held : s.a;
-      var role = ROLE[g ? g.r : stage] || ROLE[0];
-      if (f.roleTitle) f.roleTitle.textContent = role.t;
-      if (f.roleItems) {
-        f.roleItems.textContent = '';
-        role.i.forEach(function (x) {
-          var li = document.createElement('li');
-          var n = document.createElement('span'); n.className = 'lf-role-n'; n.textContent = x[0];
-          var b = document.createElement('span'); b.className = 'lf-role-b'; b.textContent = x[1];
-          li.appendChild(n); li.appendChild(b); f.roleItems.appendChild(li);
-        });
-      }
-    }
-    function setStage(i) { stage = i; gate = null; paint(); }
-    function setGate(i) { gate = i; paint(); }
-    stageBtns.forEach(function (b) {
-      var i = +b.dataset.stage;
-      b.addEventListener('click', function () { setStage(i); });
-    });
-    gateBtns.forEach(function (b) {
-      var i = +b.dataset.gate;
-      b.addEventListener('click', function () { setGate(i); });
-    });
-    paint();
-    var detail = lf.querySelector('.lf-detail');
-    relock.push(function () {
-      var ks = stage, kg = gate, states = [];
-      STAGES.forEach(function (_, i) { states.push(function () { stage = i; gate = null; }); });
-      GATES.forEach(function (_, i) { states.push(function () { gate = i; }); });
-      floorTo(detail, paint, states, function () { stage = ks; gate = kg; });
-    });
-    lf._reset = function () { if (stage !== DEFAULT_STAGE || gate !== null) setStage(DEFAULT_STAGE); };
-  }
-
-  /* ---------------- five tests ---------------- */
-  if (tw) {
-    var names = [].slice.call(tw.querySelectorAll('[data-test]'));
-    var live = tw.querySelector('.tw-live');
-    var pn = tw.querySelector('[data-tw="name"]');
-    var pa = tw.querySelector('[data-tw="ask"]');
-    var pp = tw.querySelector('[data-tw="points"]');
-    /* Touch layouts open on the first test so the interaction is self-evident;
-       wider layouts open on the framework itself, with nothing singled out. */
-    var START = (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) ? 0 : null;
-    var sel = START;
-
-    function paintTests() {
-      names.forEach(function (b) {
-        b.setAttribute('aria-pressed', (+b.dataset.test === sel) ? 'true' : 'false');
-      });
-      if (live) {
-        live.hidden = sel === null;
-        if (sel !== null) live.setAttribute('transform', 'rotate(' + (-126 + 72 * sel) + ' 50 50)');
-      }
-      var t = sel === null ? null : TESTS[sel];
-      pn.textContent = t ? t.n : IDLE.n;
-      pa.textContent = t ? t.k : IDLE.k;
-      pp.textContent = '';
-      if (t) t.p.forEach(function (x) {
-        var li = document.createElement('li'); li.textContent = x; pp.appendChild(li);
-      });
-    }
-    function toggle(i) { sel = (sel === i) ? null : i; paintTests(); }
-    names.forEach(function (b) {
-      var i = +b.dataset.test;
-      b.addEventListener('click', function () { toggle(i); });
-    });
-    paintTests();
-    var panel = tw.querySelector('.tw-panel');
-    relock.push(function () {
-      var k = sel, states = [function () { sel = null; }];
-      TESTS.forEach(function (_, i) { states.push(function () { sel = i; }); });
-      floorTo(panel, paintTests, states, function () { sel = k; });
-    });
-    tw._reset = function () { if (sel !== START) { sel = START; paintTests(); } };
-  }
-
-  relockAll();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relockAll);
-  var t = 0;
-  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(relockAll, 150); });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    if (tw && tw._reset) tw._reset();
-    if (lf && lf._reset) lf._reset();
-  });
-})();
-</script>
-<script src="shell.js?v=73"></script>
+<script src="shell.js?v=74"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=17"></script>
 </body>
