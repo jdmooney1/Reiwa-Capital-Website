@@ -136,7 +136,14 @@ p { text-wrap: pretty; }
 .df-mail, .cd-v a { white-space: nowrap; }
 
 /* =====================================================================
-   NAV (overrides shell.js base)
+   HEADER — one row: the lockup opens it, the four destinations sit on the
+   optical centre, the language switch closes it. Below 1101px the links
+   move into a disclosure panel under the header rule, so the bar stays a
+   single 64px line instead of wrapping to two. The rule is part of the
+   header, not a border on the row, so it holds the content grid.
+   craft.js owns the scroll states (.nav-over-hero / .nav-over-head /
+   .is-scrolled / .header-past-threshold / .logo-needs-contrast); this file
+   only describes what they look like.
    ===================================================================== */
 /* The shell injects the nav into this wrapper. Without display:contents the
    wrapper box is only as tall as the nav, so position:sticky unsticks as soon
@@ -148,83 +155,188 @@ p { text-wrap: pretty; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 246, 238, 0.68);
-  -webkit-backdrop-filter: saturate(140%) blur(18px);
-          backdrop-filter: saturate(140%) blur(18px);
+  background: rgba(252, 250, 241, 0.97);
   border-bottom: 0;
+  transition: background 240ms var(--ease-out);
 }
-.nav-right { display: inline-flex; align-items: center; gap: clamp(14px, 1.6vw, 22px); }
 .nav-inner {
   max-width: var(--container);
   margin: 0 auto;
-  /* Row height is driven by .lang-toggle (45.5px — its buttons carry a 44px
-     min-height tap-target floor), NOT by the 30px logo. Solve padding
-     against that: 14 + 45.5 + 14 = 73.5px, mid-band. */
   padding: 14px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 16px;
   position: relative;
 }
-/* Header separator — content-aligned hairline on the same grid. */
-.nav-inner::after {
-  content: "";
-  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 0;
-  height: 1px;
-  background: var(--rule);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms var(--ease-out);
-}
-.nav-bar.header-past-threshold .nav-inner::after { opacity: 1; }
-html.nav-drawer-open .nav-inner::after { opacity: 0; }
-.nav-logo { display: inline-flex; align-items: center; }
-.nav-logo img { height: 30px; display: block; }
-/* Drawer open: dissolve the bar chrome. The wordmark + language toggle
-   hide; the X (the morphed toggle) stays put on the right where the
-   parallel bars were; the emblem lives centred inside the panel. */
-html.nav-drawer-open .nav-bar {
-  background: transparent;
-  -webkit-backdrop-filter: none;
-          backdrop-filter: none;
-  border-bottom-color: transparent;
-}
-html.nav-drawer-open .nav-logo { visibility: hidden; }
-html.nav-drawer-open .logo-light { display: none !important; }
-html.nav-drawer-open .lang-toggle { display: none; }
-html.nav-drawer-open .nav-bar .nav-toggle { color: var(--ink); }
-/* While the drawer (a true-right-edge panel) is open, let the toggle
-   escape the centred, max-width nav row and sit flush with the same true
-   right edge — so the X lines up with the drawer's own content below it
-   instead of stopping at the container's inset gutter. */
-html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px; }
-@media (max-width: 720px) { html.nav-drawer-open .nav-bar .nav-inner { padding-right: var(--gutter); } }
+.nav-logo { display: inline-flex; align-items: center; flex: none; }
+.nav-logo img { height: 30px; max-width: 210px; width: auto; display: block; }
 
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.lang-toggle {
-  display: inline-flex;
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  border-radius: var(--radius-pill);
+/* The destinations sit on the centre of the bar, not in the flex flow, so
+   the row reads lockup · destinations · language rather than a left-packed
+   list whose position drifts with the length of the labels. */
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: clamp(17px, 1.75vw, 30px);
 }
-.lang-toggle button {
-  font: inherit;
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--type-label);
-  font-weight: 500;
-  letter-spacing: var(--type-label-ls);
+.nav-links li { display: block; }
+.nav-links a {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0 14px;
-  background: transparent;
-  color: var(--ink-3);
+  min-height: 32px;
+  padding: 5px 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(13px, 0.3vw + 11.7px, 14.5px);
+  font-weight: 400;
+  letter-spacing: 0.004em;
+  line-height: 1.2;
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 200ms var(--ease-out);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms var(--ease-out);
+}
+@media (hover: hover) {
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+}
+.nav-links a[aria-current="page"] { color: var(--ink); }
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.nav-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 1px; }
+
+.nav-right { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; flex: none; }
+
+/* The header rule rides the content grid, and is always drawn — it only
+   changes weight between the floating and settled states. */
+.nav-rule {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.nav-rule::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--rule);
+  transition: background 240ms var(--ease-out);
+}
+
+/* ---- Disclosure menu below 1101px --------------------------------- */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: none;
   border: 0;
+  margin: 0 -11px 0 2px;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  position: relative;
   cursor: pointer;
   touch-action: manipulation;
+  outline-offset: 2px;
 }
-.lang-toggle button.is-active { background: var(--ink); color: #fff; }
+.nav-toggle:focus-visible { outline: 2px solid var(--ink); }
+.nt-bar {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  width: 22px;
+  height: 1.25px;
+  background: var(--ink);
+  transition: transform 240ms var(--ease-out), background 240ms var(--ease-out);
+}
+.nt-bar:nth-child(1) { transform: translateY(calc(-50% - 3.5px)); }
+.nt-bar:nth-child(2) { transform: translateY(calc(-50% + 3.5px)); }
+.nav-toggle[aria-expanded="true"] .nt-bar:nth-child(1) { transform: translateY(-50%) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nt-bar:nth-child(2) { transform: translateY(-50%) rotate(-45deg); }
+
+.nav-drawer { display: none; background: var(--paper-warm); }
+.nav-drawer ul {
+  list-style: none;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 8px var(--gutter) 14px;
+  display: flex;
+  flex-direction: column;
+}
+.nav-drawer a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.nav-drawer a[aria-current="page"] { color: var(--ink); }
+.nav-drawer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (max-width: 1100px) {
+  .nav-inner { padding-top: 10px; padding-bottom: 10px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-drawer { display: block; }
+  .nav-drawer[hidden] { display: none; }
+  /* The open panel supplies its own ground, so the bar settles with it. */
+  .nav-bar.nav-menu-open { background: var(--paper-warm); }
+}
+@media (max-width: 760px) { .nav-logo img { height: 25px; max-width: 160px; } }
+@media (max-width: 380px) { .nav-logo img { height: 22px; max-width: 132px; } }
+
+/* ---- Floating over a hero ----------------------------------------- */
+.nav-bar.nav-over-hero, .nav-bar.nav-over-head { background: rgba(252, 250, 241, 0); }
+.nav-bar.nav-over-hero .nav-rule::after,
+.nav-bar.nav-over-head .nav-rule::after { background: rgba(39, 20, 48, 0.10); }
+.nav-bar.nav-menu-open .nav-rule::after { background: var(--rule); }
+/* Over the dark home hero the whole row inverts, matching the white
+   lockup swap craft.js performs on the same class. */
+.nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.78); }
+.nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
+@media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
+.nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .nt-bar { background: #fff; }
+.nav-bar.nav-over-hero .nav-toggle:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .nav-rule::after { background: rgba(255, 255, 255, 0.22); }
+.nav-bar.nav-over-hero .lang-switch button { color: rgba(255, 255, 255, 0.62); }
+.nav-bar.nav-over-hero .lang-switch button.is-active { color: #fff; }
+@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch button:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
+.nav-bar.nav-over-hero .lang-switch button:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
+/* Once the menu is open the panel is the ground, so the row reads on cream
+   again even while the bar is still nominally over the hero. */
+.nav-bar.nav-over-hero.nav-menu-open .nt-bar { background: var(--ink); }
+.nav-bar.nav-over-hero.nav-menu-open .lang-switch button { color: var(--ink-3); }
+.nav-bar.nav-over-hero.nav-menu-open .lang-switch button.is-active { color: var(--ink); }
+.nav-bar.nav-over-hero.nav-menu-open .lang-switch .ls-sep { background: var(--rule-strong); }
+
+/* The logo sits over the headline: the whole row steps back rather than
+   fighting it (craft.js measures the collision). */
+.nav-bar.logo-needs-contrast .nav-links,
+.nav-bar.logo-needs-contrast .nav-right { opacity: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-bar, .nav-links a, .nav-links a::after, .nt-bar, .nav-rule::after { transition: none; }
+}
 
 /* =====================================================================
    LANGUAGE SWITCH — "EN | JA". Two text buttons either side of a short
@@ -270,166 +382,6 @@ html.nav-drawer-open .nav-bar .nav-inner { max-width: none; padding-right: 36px;
   opacity: 0.9;
 }
 @media (prefers-reduced-motion: reduce) { .lang-switch button { transition: none; } }
-
-/* =====================================================================
-   PRIMARY NAV LINKS — six destinations, visible at every width.
-   No hamburger and no drawer on the English site: the reader can always
-   see where the site goes. One <ul>, repositioned by CSS.
-
-     >=1101px   logo | links | language toggle, on a single line
-     <=1100px   logo + toggle on line one; the links wrap to their own
-                full-width second line and scroll horizontally
-
-   The active page carries a solid 1px rule; hover draws the same rule in
-   from the left. No pills, no boxes, no background states.
-   ===================================================================== */
-.nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: clamp(17px, 1.75vw, 30px);
-  order: 2;
-  flex: 0 1 auto;
-}
-.nav-links li { display: block; }
-.nav-links a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 32px;
-  padding: 5px 0;
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(13px, 0.3vw + 11.7px, 14.5px);
-  font-weight: 400;
-  letter-spacing: 0.004em;
-  line-height: 1.2;
-  color: var(--ink-2);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 200ms var(--ease-out);
-}
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 240ms var(--ease-out);
-}
-@media (hover: hover) {
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a:hover::after { transform: scaleX(1); }
-}
-.nav-links a[aria-current="page"] { color: var(--ink); }
-.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
-.nav-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 1px; }
-@media (prefers-reduced-motion: reduce) {
-  .nav-links a, .nav-links a::after { transition: none; }
-}
-
-/* Over the dark home hero the whole row inverts, matching the white
-   lockup swap craft.js performs on the same class. */
-.nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.78); }
-.nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
-@media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
-.nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
-.nav-bar.nav-over-hero .lang-switch button { color: rgba(255, 255, 255, 0.62); }
-.nav-bar.nav-over-hero .lang-switch button.is-active { color: #fff; }
-@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch button:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
-.nav-bar.nav-over-hero .lang-switch button:focus-visible { outline-color: #fff; }
-.nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
-
-/* The nav row is the flex line; the logo opens it and the language
-   toggle closes it. */
-.nav-logo { order: 1; }
-.nav-right { order: 3; }
-.nav-inner { flex-wrap: wrap; row-gap: 0; }
-
-/* ---- Two-line navigation below 1101px -------------------------------
-   The four links drop to their own full-width line beneath the logo and
-   language switch. Nothing scrolls, nothing clips: at every supported
-   width all four labels are visible. If a very narrow viewport cannot fit
-   them on one line at readable size, the row wraps to two lines rather
-   than shrinking the type or hiding a destination. */
-@media (max-width: 1100px) {
-  .nav-inner {
-    column-gap: 16px;
-    row-gap: 0;
-    padding-top: 8px;
-    padding-bottom: 0;
-  }
-  /* The logo and the language switch share line one; the links take line
-     two. Both must sit before the link row in flex order, or the switch is
-     pushed onto a third line by the row's 100% basis. */
-  .nav-logo { order: 1; }
-  .nav-right { order: 2; margin-left: auto; }
-  .nav-links {
-    order: 3;
-    flex: 1 0 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px clamp(16px, 5.2vw, 30px);
-    margin: 8px 0 0;
-    padding: 10px 0 9px;
-    border-top: 1px solid var(--rule);
-  }
-  /* Design lab · Nav 1 + 3: the wrapped row is centred rather than ranged
-     left, and each label reaches a 40px target while the bar loses ~6px. */
-  .nav-links a { min-height: 40px; padding: 1px 0; font-size: 13.5px; }
-  /* The links row now owns the bar's bottom edge, so the scroll hairline
-     would double up on it. */
-  .nav-bar.header-past-threshold .nav-inner::after { opacity: 0; }
-  /* Over the home hero the divider needs to read on dark. */
-  .nav-bar.nav-over-hero .nav-links { border-top-color: rgba(255, 255, 255, 0.22); }
-}
-
-/* Narrowest phones (≤340px): four labels will not sit on one line at a
-   readable size, and a natural wrap leaves Company stranded alone on a
-   second line. Compose it instead: a deliberate 2 × 2 with the columns
-   aligned, so the row reads as a small, ordered index rather than a spill. */
-@media (max-width: 340px) {
-  .nav-links {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    column-gap: clamp(22px, 8vw, 36px);
-    row-gap: 0;
-    justify-content: start;
-    padding-top: 6px;
-    padding-bottom: 8px;
-  }
-  .nav-links li { display: block; }
-  .nav-links a { min-height: 40px; }
-}
-
-/* Design lab · Nav 2: the bar is measured whole (see craft.js), so the link
-   row and the language switch dip out together with the logo while the hero
-   headline passes behind the bar — previously the logo left on its own. */
-.nav-bar.nav-over-hero .nav-links, .nav-bar.nav-over-hero .nav-right,
-.nav-bar.nav-over-head .nav-links, .nav-bar.nav-over-head .nav-right { transition: opacity 140ms var(--ease-out); }
-.nav-bar.logo-needs-contrast .nav-links, .nav-bar.logo-needs-contrast .nav-right { opacity: 0; pointer-events: none; }
-
-/* Mobile logo: the lockup is the Home control but should not dominate the
-   bar. Roughly a sixth smaller than desktop, and a touch smaller again on
-   the narrowest phones. */
-@media (max-width: 760px) {
-  .nav-logo img { height: 25px; }
-  /* Design lab · Nav 2: the row above now carries the bar's lower air. */
-  .nav-inner { padding-top: 8px; padding-bottom: 0; }
-}
-/* Coarse pointers get the same 40px target the wrapped row uses. */
-@media (hover: none) { .nav-links a { min-height: 40px; } }
-@media (max-width: 380px) {
-  .nav-logo img { height: 22px; }
-}
-
-/* Touch targets: comfortable without inflating the bar or shrinking type. */
-@media (hover: none) {
-  .nav-links a { min-height: 34px; }
-}
 
 /* =====================================================================
    FOOTER — the final moment. A deep sumire banner carries the mark in
@@ -523,7 +475,10 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
    EDITORIAL ATOMS — established on Home and shared from there: eyebrow,
    section heading, body copy, the numbered Index mark and the arrow.
    ===================================================================== */
-.h-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.2; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0; }
+/* The section label is a quiet line of ordinary sentence case, not a tracked
+   uppercase rule. Uppercase tracking reads as a legacy corporate device and
+   competes with the heading beneath it for the same attention. */
+.h-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0; }
 .h-h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.4vw, 38px); line-height: 1.15; letter-spacing: -0.014em; color: var(--ink); margin: 0; text-wrap: pretty; }
 .h-body { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); line-height: 1.6; color: var(--ink-2); margin: 0; }
 /* The Index — a numeral led by a small filled sumire square. The one
@@ -559,11 +514,11 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
   height: auto;
   max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(60px, 7vw, 100px) var(--gutter);
+  padding: clamp(44px, 4.6vw, 70px) var(--gutter);
 }
 .nn-text { display: block; min-width: 0; }
 .nextnav--band .nn-text { justify-self: end; }
-.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: var(--eyebrow-ink); margin-bottom: clamp(16px, 1.8vw, 24px); }
+.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: clamp(12px, 1.4vw, 18px); }
 /* Capped at 46px: at the old 58px ceiling this onward-navigation affordance
    was set larger than the H1 of the page it sits under. */
 .nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(32px, 20px + 1.8vw, 46px); line-height: 1.04; letter-spacing: -0.02em; color: var(--ink); }
@@ -736,17 +691,6 @@ body[data-page="focus"] .page-head { border-bottom: 1px solid var(--rule-strong)
   margin: 0 auto;
   padding: var(--head-top) var(--gutter) var(--head-bottom);
 }
-.page-head .marker {
-  display: flex; align-items: center; gap: 12px;
-  font-size: var(--type-eyebrow);
-  font-weight: 500;
-  letter-spacing: var(--type-eyebrow-ls);
-  line-height: var(--type-eyebrow-lh);
-  text-transform: uppercase;
-  color: var(--eyebrow-ink);
-  margin-bottom: 96px;
-}
-.page-head .marker .dot { width: 5px; height: 5px; border-radius: var(--radius-sm); background: var(--ink); }
 .page-head h1 {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
@@ -777,57 +721,80 @@ body[data-page="company"] .page-head {
 body[data-page="about"] .page-head,
 body[data-page="approach"] .page-head,
 body[data-page="focus"] .page-head {
-  --head-h: clamp(260px, 21vw, 300px);
   margin-top: calc(var(--nav-h, 74px) * -1);
   min-height: calc(var(--head-h) + var(--nav-h, 74px));
   display: flex;
   align-items: flex-end;
   border-bottom: 0;
 }
+/* Head depth is set per page rather than shared: the three photographs are
+   different crops carrying different amounts of sky, so each is given the
+   depth its own image needs. All three are deliberately shallow — the page
+   should open on the argument, not on the picture. */
+body[data-page="about"]    .page-head { --head-h: clamp(300px, 22vw,   340px); }
+body[data-page="approach"] .page-head { --head-h: clamp(312px, 23vw,   360px); }
+body[data-page="focus"]    .page-head { --head-h: clamp(296px, 21.5vw, 340px); }
 @media (max-width: 1024px) {
-  body[data-page="about"] .page-head,
-  body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(250px, 24vw, 285px); }
+  body[data-page="about"]    .page-head { --head-h: clamp(260px, 32vw, 296px); }
+  body[data-page="approach"] .page-head { --head-h: clamp(272px, 33vw, 314px); }
+  body[data-page="focus"]    .page-head { --head-h: clamp(258px, 31vw, 294px); }
 }
-@media (max-width: 760px) {
-  body[data-page="about"] .page-head,
-  body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(220px, 32vw, 250px); }
+@media (max-width: 480px) {
+  body[data-page="about"]    .page-head { --head-h: 245px; }
+  body[data-page="approach"] .page-head { --head-h: 258px; }
+  body[data-page="focus"]    .page-head { --head-h: 244px; }
 }
-@media (max-width: 420px) {
-  body[data-page="about"] .page-head,
-  body[data-page="approach"] .page-head,
-  body[data-page="focus"] .page-head { --head-h: clamp(200px, 44vw, 230px); }
+@media (max-width: 360px) {
+  body[data-page="about"]    .page-head { --head-h: 240px; }
+  body[data-page="approach"] .page-head { --head-h: 250px; }
+  body[data-page="focus"]    .page-head { --head-h: 236px; }
 }
 body[data-page="about"] .page-head .inner,
 body[data-page="approach"] .page-head .inner,
 body[data-page="focus"] .page-head .inner {
-  padding: calc(var(--nav-h, 74px) + 56px) var(--gutter) clamp(40px, 4vw, 52px);
+  padding: calc(var(--nav-h, 74px) + 28px) var(--gutter) clamp(34px, 3vw, 46px);
+}
+@media (max-width: 1100px) {
+  body[data-page="about"] .page-head .inner,
+  body[data-page="approach"] .page-head .inner,
+  body[data-page="focus"] .page-head .inner {
+    padding: calc(var(--nav-h, 74px) + 24px) var(--gutter) 28px;
+  }
 }
 /* Inner-page heads: About and Investment Focus carry a sharp photograph
    beneath a warm cream scrim — dark title on the cream-heavy left, the
    image reading through to the right (same photography used elsewhere on
    each page, echoed here). Approach and Contact stay on clean paper. */
+/* The photograph is framed off-centre, the way the design crops it, and the
+   ramp runs top to bottom so the image dissolves into the cream rather than
+   being wiped across from the left. */
 body[data-page="about"] .page-head,
 body[data-page="approach"] .page-head,
 body[data-page="focus"] .page-head {
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 50% 36%;
   background-size: cover;
+}
+body[data-page="about"] .page-head { background-position: 50% 100%; }
+body[data-page="focus"] .page-head { background-position: 52% 44%; }
+@media (max-width: 760px) {
+  body[data-page="approach"] .page-head { background-position: 56% 40%; }
+  body[data-page="about"] .page-head    { background-position: 30% 100%; }
+  body[data-page="focus"] .page-head    { background-position: 58% 46%; }
 }
 body[data-page="about"] .page-head {
   background-image:
-    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
     url("assets/imagery/about-hero-blur.webp");
 }
 body[data-page="approach"] .page-head {
   background-image:
-    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
     url("assets/imagery/approach-hero-blur.webp");
 }
 body[data-page="focus"] .page-head {
   background-image:
-    linear-gradient(100deg, rgba(252,250,241,0.80) 0%, rgba(252,250,241,0.60) 18%, rgba(252,250,241,0.40) 36%, rgba(252,250,241,0.24) 54%, rgba(252,250,241,0.13) 72%, rgba(252,250,241,0.07) 100%),
+    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
     url("assets/imagery/focus-hero-blur.webp");
 }
 .page-head .ja {
@@ -967,231 +934,10 @@ select:focus-visible,
 }
 .nav-bar { view-transition-name: site-nav; }
 
-/* Menu toggle — labelled button, shown on every breakpoint */
-.nav-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0 4px;
-  margin-left: 6px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  touch-action: manipulation;
-  font-family: inherit;
-  color: var(--ink);
-}
-.nav-toggle-icon {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  width: 26px;
-}
-.nav-toggle-icon .bar {
-  display: block;
-  width: 26px;
-  height: 2px;
-  background: currentColor;
-  transition: transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1)),
-              opacity var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
-}
-/* Toggle morphs to an X while the drawer is open */
-.nav-drawer-open .nav-toggle-icon .bar:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-.nav-drawer-open .nav-toggle-icon .bar:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
-
-/* ---------------------------------------------------------------------
-   RIGHT SLIDE-OUT DRAWER (desktop + mobile)
-   --------------------------------------------------------------------- */
-.nav-scrim {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  background: rgba(17, 10, 26, 0.36);
-  opacity: 0;
-  transition: opacity var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
-}
-.nav-drawer-in .nav-scrim { opacity: 1; }
-
-.nav-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 95;
-  width: min(440px, 92vw);
-  height: 100%;
-  background: var(--warm-beige, #FCFAF1);
-  border-left: 1px solid var(--rule, rgba(39,20,48,0.12));
-  transform: translateX(100%);
-  /* Closed: off-screen AND out of the tab order + AT tree. `nav-drawer-open`
-     persists through the whole slide-out (JS removes it only after the
-     transform finishes), so visibility can flip with no transition and never
-     leaves focusable links stranded off-canvas. */
-  visibility: hidden;
-  transition: transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-html.nav-drawer-open .nav-drawer { visibility: visible; }
-.nav-drawer-in .nav-drawer { transform: translateX(0); }
-
-.drawer-inner {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  padding: 92px 40px 40px;
-  box-sizing: border-box;
-}
-.drawer-head {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 67px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-.drawer-emblem {
-  height: 27px;
-  width: auto;
-  display: block;
-}
-.drawer-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.drawer-nav li { border-top: 1px solid var(--sumire-purple); }
-.drawer-nav li:last-child { border-bottom: 1px solid var(--sumire-purple); }
-.drawer-nav a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 15.5px 16px;
-  margin: 0 -16px;
-  border-radius: 2px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: background-color var(--dur-2) var(--ease-out);
-}
-.drawer-nav a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: var(--ink);
-  opacity: 0;
-  transition: opacity var(--dur-2) var(--ease-out);
-}
-.drawer-nav a[aria-current="page"] { background: color-mix(in srgb, var(--ink) 5%, transparent); }
-.drawer-nav a[aria-current="page"]::before { opacity: 1; }
-@media (hover: hover) { .drawer-nav a:not([aria-current="page"]):hover { background: color-mix(in srgb, var(--ink) 3%, transparent); } }
-.drawer-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; background: color-mix(in srgb, var(--ink) 3%, transparent); }
-.drawer-nav .dn-label {
-  font-size: var(--type-h3);
-  letter-spacing: var(--type-h3-ls);
-  line-height: 1;
-  color: var(--warm-600, #6E6A5F);
-  font-weight: 400;
-  transition: color var(--dur-2) var(--ease-out);
-}
-.drawer-nav a:hover .dn-label { color: var(--warm-700, #4A463E); }
-.drawer-nav a[aria-current="page"] .dn-label { color: var(--ink); font-weight: 500; }
-
-/* Staggered reveal of the index as the drawer opens */
-@media (prefers-reduced-motion: no-preference) {
-  .nav-drawer .drawer-head,
-  .nav-drawer .drawer-nav li,
-  .nav-drawer .drawer-foot {
-    opacity: 0;
-    transform: translateY(var(--reveal-y, 14px));
-    transition: opacity var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1)),
-                transform var(--dur-3, 320ms) var(--ease-out, cubic-bezier(0.22,1,0.36,1));
-  }
-  .nav-drawer-in .nav-drawer .drawer-head,
-  .nav-drawer-in .nav-drawer .drawer-nav li,
-  .nav-drawer-in .nav-drawer .drawer-foot {
-    opacity: 1;
-    transform: none;
-  }
-  .nav-drawer-in .nav-drawer .drawer-head    { transition-delay: 60ms; }
-  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(1) { transition-delay: 100ms; }
-  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(2) { transition-delay: 140ms; }
-  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(3) { transition-delay: 180ms; }
-  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(4) { transition-delay: 220ms; }
-  .nav-drawer-in .nav-drawer .drawer-nav li:nth-child(5) { transition-delay: 260ms; }
-  .nav-drawer-in .nav-drawer .drawer-foot    { transition-delay: 300ms; }
-}
-
-.drawer-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: auto;
-  padding-top: 40px;
-}
-.df-mail {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  font-size: var(--type-caption);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  transition: border-color var(--dur-2) var(--ease-out);
-}
-.df-mail:hover { border-bottom-color: var(--ink); }
-.df-social { display: flex; align-items: center; gap: 16px; }
-.df-social a {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  color: var(--ink);
-  /* fade, don't lift — boxes never move on hover (Motion audit System 3) */
-  opacity: 0.72;
-  transition: opacity var(--dur-2) var(--ease-out);
-}
-.df-social a:hover { opacity: 1; }
-.df-social svg { display: block; }
-
-/* Lock the page while the drawer is open */
-html.nav-drawer-open { overflow: hidden; }
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-scrim,
-  .nav-drawer { transition: none; }
-}
-
-/* Drawer-era rules, retained only for the CSS the legacy Japanese pages
-   still reference. Neither header renders a drawer any more: both are the
-   same two-line flat bar, which sets its own row height in the block
-   above, in both languages. */
-@media (max-width: 720px) {
-  .nav-right { gap: 12px; }
-  .nav-toggle { margin-left: 2px; }
-  .nav-drawer { width: 100vw; border-left: 0; }
-  .drawer-inner { padding: 84px 28px 32px; }
-}
-/* Below ~380px the wordmark + language pill + menu button no longer fit
-   the bar at their tablet sizing (confirmed by direct measurement: they
-   overflow the viewport by ~48px at 320px). Trim the same three levers a
-   little further — nothing shrinks below its 44px tap target. */
-@media (max-width: 380px) {
-  .nav-inner { padding-left: 14px; padding-right: 14px; }
-  .nav-logo img { height: 24px; }
-  .nav-right { gap: 8px; }
-  .lang-toggle button { padding: 0 11px; }
-}
+/* The legacy off-canvas drawer — its toggle icon, scrim, panel, social
+   row and body scroll lock — is gone with the header rewrite above. The
+   disclosure panel is an inline block under the header rule: no scrim, no
+   scroll lock, nothing off-canvas. */
 
 /* =====================================================================
    MOBILE REFINEMENT — a single confident gutter, tightened page heads,
@@ -1259,8 +1005,6 @@ main:focus, [id="main"]:focus { outline: none; }
   outline-color: var(--paper-warm);
 }
 
-.df-social a.df-linkedin { opacity: 1; font-size: var(--type-caption); font-weight: 500; color: var(--ink); border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color var(--dur-2) var(--ease-out); }
-.df-social a.df-linkedin:hover { border-bottom-color: var(--ink); }
 
 /* Standalone text CTAs clear the 44px comfortable-target height. */
 .df-linkedin { min-height: 44px; }
@@ -1349,3 +1093,25 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
   min-height: 100%;
 }
 .skip-link { min-height: 44px; }
+
+/* =====================================================================
+   JAPANESE DISPLAY TYPE
+   Display headings are set in a mincho; body copy stays on the gothic
+   stack. The two faces do different jobs: the serif carries the editorial
+   voice, the sans carries the reading. Labels are not display type and
+   stay on the sans with the prose they introduce.
+   ===================================================================== */
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang="ja"] h3,
+html[lang="ja"] .jp-display {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+}
+html[lang="ja"] .h-eyebrow,
+html[lang="ja"] .co-label,
+html[lang="ja"] .nav-links a,
+html[lang="ja"] .nav-drawer a {
+  font-family: var(--font-jp);
+  font-weight: 400;
+}

@@ -32,6 +32,17 @@
        url('fonts/DMSans-Medium.ttf') format('truetype');
   font-weight: 500; font-style: normal; font-display: swap;
 }
+/* Japanese display serif. Shippori Mincho Medium, SIL Open Font License 1.1
+   (assets/fonts/OFL-ShipporiMincho.txt), subset to the glyphs the site's
+   Japanese display headings use plus the kana block, ASCII and Japanese
+   punctuation — 71KB rather than the 1.4MB full face. Regenerate with
+   tools/subset-ja-serif.py after changing Japanese heading copy; anything
+   outside the subset falls back per glyph to a platform mincho. */
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('fonts/ShipporiMincho-Medium.subset.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
 
 :root {
   /* =====================================================================
@@ -137,6 +148,11 @@
      platform Japanese sans carries kana and kanji. Every Japanese rule on the
      site resolves to this variable — nothing redeclares the families. */
   --font-jp: 'DM Sans', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', YuGothic, Meiryo, 'Noto Sans JP', sans-serif;
+  /* Japanese display headings only; body copy stays on the gothic stack above.
+     After the subset come the platform minchos, so a glyph outside the subset
+     is still drawn with serifs rather than dropping to a sans. The Noto entry
+     is a local-only fallback — nothing is downloaded for it. */
+  --font-jp-serif: 'DM Sans', 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'Noto Serif JP', serif;
 
   /* Scale — restrained, slightly classical ratio */
   --text-xs:   11px;   /* labels, legal, tiny caps */
@@ -341,15 +357,6 @@ body, .body {
   text-rendering: optimizeLegibility;
 }
 
-/* Eyebrow / section kicker — ubiquitous in institutional decks */
-.eyebrow {
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: var(--ls-caps);
-  color: var(--fg-2);
-}
 
 /* Display — for hero statements and section openers. DM Sans 400; any stray
    em/i is forced upright so italics never appear. */
@@ -420,14 +427,6 @@ small, .caption {
   color: var(--fg-3);
 }
 
-.label {
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--fg-2);
-}
 
 code, .mono {
   font-family: var(--font-mono);

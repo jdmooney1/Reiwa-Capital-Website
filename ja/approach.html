@@ -59,22 +59,19 @@
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
-     The production inner-page head: the photograph wash and cream scrim
-     already shared with About and Investment Focus, at the height those
-     three pages open on, carrying the approved headline and standfirst. */
-  body[data-page="approach"] .page-head.ap-hero { min-height: min(62vh, 620px); }
-  .ap-hero .inner { padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(44px, 5vw, 68px); }
-  .ap-hero h1 { font-family: var(--jp); font-weight: 400; font-size: clamp(32px, 23px + 1.7vw, 50px); line-height: 1.3; letter-spacing: 0.005em; color: var(--ink); margin: 0; text-indent: 0; max-width: 17em; word-break: keep-all; text-wrap: balance; }
-  .ap-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: var(--jp); font-size: clamp(15.5px, 14.6px + 0.3vw, 18px); line-height: 1.8; color: var(--ink-2); max-width: 27em; text-wrap: pretty; }
+     Depth, the vertical wash and the inner padding all come from the shared
+     head in editorial.css; the page supplies only its own type. The head is
+     shallow on purpose: the page opens on the argument, not the picture. */
+  .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.34; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
+  .ap-hero .sub { margin: clamp(10px, 1.2vw, 15px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 32em; text-wrap: pretty; }
   @media (max-width: 760px) {
-    body[data-page="approach"] .page-head.ap-hero { min-height: min(56vh, 460px); }
-    .ap-hero h1 { font-size: clamp(27px, 7.4vw, 34px); max-width: 12em; }
+    .ap-hero h1 { font-size: clamp(25px, 6.8vw, 31px); max-width: 12em; }
     .ap-hero .sub { max-width: 20em; }
   }
 
   /* --- Section scaffold ------------------------------------------------ */
   .ap-intro { padding: clamp(44px, 4.6vw, 72px) 0 clamp(18px, 2vw, 26px); }
-  .ap-h2 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; text-wrap: balance; }
+  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; text-wrap: balance; }
   .ap-h2--huge { font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.36; letter-spacing: 0.01em; }
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18em; } }
@@ -116,7 +113,7 @@
      move as selections change. */
   .lf-detail { margin-top: clamp(24px, 2.2vw, 34px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 26px clamp(26px, 2.6vw, 44px); align-items: start; }
   .lf-detail-main { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-  .lf-detail-main h3 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(20px, 15px + 0.9vw, 26px); line-height: 1.5; letter-spacing: -0.018em; color: var(--cream); }
+  .lf-detail-main h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(20px, 15px + 0.9vw, 26px); line-height: 1.5; letter-spacing: -0.018em; color: var(--cream); }
   .lf-detail-main p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.88); max-width: 33em; text-wrap: pretty; }
   .lf-pair { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 2px 14px; align-items: baseline; padding-top: 2px; }
   .lf-pair dt { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: rgba(252,250,241,.5); }
@@ -203,7 +200,7 @@
   .tw-name--4 { grid-column: 1; grid-row: 3; justify-self: end; align-self: start; text-align: right; }
   .tw-name--5 { grid-column: 1; grid-row: 2; justify-self: end; align-self: center; text-align: right; }
   .tw-panel { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 18px); min-height: 250px; }
-  .tw-panel h3 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(20px, 15px + 0.9vw, 26px); line-height: 1.5; letter-spacing: -0.018em; color: var(--ink); max-width: 18em; text-wrap: balance; }
+  .tw-panel h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(20px, 15px + 0.9vw, 26px); line-height: 1.5; letter-spacing: -0.018em; color: var(--ink); max-width: 18em; text-wrap: balance; }
   .tw-panel p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   .tw-points { list-style: none; margin: 0; padding: 2px 0 0; display: flex; flex-direction: column; gap: 7px; }
   .tw-points li { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-3); }
@@ -260,7 +257,7 @@
   .ic-row--investor { padding-bottom: clamp(16px, 1.8vw, 22px); border-bottom: 1px solid var(--ink); }
   .ic-row--reiwa { margin-top: clamp(20px, 2.2vw, 30px); background: var(--ink); padding: clamp(22px, 2.2vw, 30px) clamp(22px, 2.2vw, 32px); }
   .ic-row--spec { margin-top: clamp(20px, 2.2vw, 30px); padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); }
-  .ic-name { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.5; letter-spacing: -0.016em; color: var(--ink); }
+  .ic-name { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.5; letter-spacing: -0.016em; color: var(--ink); }
   .ic-row--reiwa .ic-name { color: var(--cream); }
   .ic-row--spec .ic-name { font-size: clamp(16px, 14px + 0.4vw, 18px); letter-spacing: -0.012em; color: var(--ink-2); }
   .ic-acts { display: flex; align-items: baseline; gap: clamp(14px, 1.6vw, 22px); flex-wrap: wrap; }
@@ -557,6 +554,201 @@
 
 <div data-shell="footer"></div>
 
+<script>
+/* Approach — the investment lifecycle and the five tests.
+   Lifecycle: one selection at a time, a stage or an investor approval point,
+   opening on Own. Click and keyboard activation both change the detailed
+   content; hover does not. Escape returns to the loaded state. */
+(function () {
+  var lf = document.querySelector('[data-lifecycle]');
+  var tw = document.querySelector('[data-tests]');
+  if (!lf && !tw) return;
+
+  var STAGES = [
+  {n:'マンデート',p:'投資家の目的を、明確な取得マンデートに翻訳します',o:'投資マンデート',a:'マンデートと意思決定の枠組み'},
+  {n:'評価',p:'詳細な引受検討に値する案件かを見極めます',o:'投資メモランダム',a:'重要案件を前進させる承認'},
+  {n:'組成',p:'コミット前に、保有・調達・税務のストラクチャーを定めます',o:'ストラクチャーと実行計画',a:'ストラクチャーと合意条件の承認'},
+  {n:'取得',p:'一つの計画のもとで、デューデリジェンス・調達・契約を完了します',o:'取得判断資料',a:'最終投資判断'},
+  {n:'保有',p:'保有期間と環境変化を通じて、投資判断の前提を維持します',o:'資産の監督、報告、意思決定の支援',a:'借換え、重要な資本的支出、承認済み事業計画の変更'},
+  {n:'売却',p:'再調達・一部回収・売却をマンデートに照らして評価します',o:'売却に関する提案と実行計画',a:'時期・価格・売却条件'}
+  ];
+  var GATES = [
+  {n:'取得',d:'いかなるコミットの前にも、投資家が最終投資判断を行います',x:50,r:3},
+  {n:'事業計画の重要な変更',d:'戦略、資本的支出、リーシング方針の変更は、投資家の承認に付されます',x:66.67,r:4},
+  {n:'資金調達・再調達',d:'新規および借換えの調達は、その条件について投資家が承認します',x:75,r:4},
+  {n:'売却',d:'時期・価格・売却条件は、投資家の判断に留まります',x:83.33,r:5}
+  ];
+  var ROLE = [
+  {t:'マンデートを定める',i:[['整理','投資家の目的、制約、保有の要件を明確にする'],['設定','対象市場、リスクの範囲、判断基準を定める'],['整合','案件の選別と意思決定に共通の基準をつくる']]},
+  {t:'案件を検証する',i:[['選別','合意したマンデートに適合するかを判断する'],['引受検討','収益、価値、必要資本、調達、出口の前提を検証する'],['検証','重要なリスク、依存関係、未解決の論点を洗い出す']]},
+  {t:'投資を組成する',i:[['設計','適切な保有、調達、ガバナンスの枠組みを組み立てる'],['調整','法務、税務、調達、専門家の助言をまとめる'],['準備','提案する枠組みを実行可能な投資計画に落とし込む']]},
+  {t:'取得を実行する',i:[['デューデリジェンス','事業、法務、税務、財務、技術の調査を統括する'],['交渉','価格、条件、調達、契約で一貫した立場を保つ'],['クロージング','条件、承認、実行を完了まで管理する']]},
+  {t:'保有期間における業務',i:[['モニタリング','収益、稼働、評価、負債、事業計画の進捗'],['調整','プロパティマネージャー、仲介、レンダー、専門アドバイザー'],['対処','計画との乖離、賃貸借の変動、資本的支出、新たなリスク'],['報告','報告、提言、承認用資料を提供する']]},
+  {t:'投資を回収する',i:[['検討','継続保有、借換え、一部回収、売却を評価する'],['提言','推奨する道筋、時期、価値への影響を示す'],['実行','準備、マーケティング、交渉、完了を統括する']]}
+  ];
+  var TESTS = [
+  {n:'マンデート適合',k:'その機会は、投資家の目的・制約・保有要件に適合しているか。',p:['目的、保有期間、報告要件','通貨、ストラクチャー、税務上の制約','ガバナンスと承認プロセスの想定']},
+  {n:'市場の前提',k:'需要・流動性・規制は、想定する戦略を支えているか。',p:['テナント需要と競合供給','同種資産における投資市場の厚み','都市計画、許認可、規制の方向性']},
+  {n:'資産の基礎',k:'建物・収益・必要資本は、十分に理解され説明可能か。',p:['建物の状態、設備、法令適合','賃貸借の構造、テナント信用力、収益構成','保有期間に要する資本的支出']},
+  {n:'価格と下方',k:'市場の追い風に頼らずとも、リターンは許容水準にとどまるか。',p:['再調達価格と長期収益に対する取得価格の位置','出口利回りと調達コストに対する感応度','環境が改善しない場合に残る成果']},
+  {n:'実行と出口',k:'事業計画を実行し、統制し、最終的に回収できるか。',p:['現地の実行体制と責任範囲','保有期間に投資家へ留保される判断','回収時に想定される買い手の類型']}
+  ];
+  var L = { held: '投資家に留保' };
+  var IDLE = { n: '順序ではなく、同時に検討します', k: '各観点を選ぶと、確認する問いと主な検討事項が表示されます' };
+  var DEFAULT_STAGE = 4;
+
+  /* Both panels are floored to their own tallest state, so the page below
+     them never moves as selections change. Measured rather than declared:
+     the tallest state differs by width, language and loaded font. Any floor
+     the stylesheet sets for composition is kept as the lower bound. */
+  function floorTo(el, paint, states, restore) {
+    if (!el) return;
+    el.style.minHeight = '';
+    var base = parseFloat(getComputedStyle(el).minHeight) || 0;
+    var live = el.getAttribute('aria-live');
+    if (live) el.removeAttribute('aria-live');
+    el.style.minHeight = '0px';
+    var max = 0;
+    states.forEach(function (set) { set(); paint(); if (el.offsetHeight > max) max = el.offsetHeight; });
+    restore(); paint();
+    el.style.minHeight = max ? Math.max(max, base) + 'px' : '';
+    if (live) el.setAttribute('aria-live', live);
+  }
+  var relock = [];
+  function relockAll() { relock.forEach(function (f) { f(); }); }
+
+  /* ---------------- lifecycle ---------------- */
+  if (lf) {
+    var stageBtns = [].slice.call(lf.querySelectorAll('[data-stage]'));
+    var gateBtns  = [].slice.call(lf.querySelectorAll('[data-gate]'));
+    var items     = [].slice.call(lf.querySelectorAll('[data-sp-item]'));
+    var progress  = lf.querySelector('.lf-progress');
+    var f = {
+      name: lf.querySelector('[data-lf="name"]'),
+      purpose: lf.querySelector('[data-lf="purpose"]'),
+      output: lf.querySelector('[data-lf="output"]'),
+      outputV: lf.querySelector('[data-lf="output-v"]'),
+      approvalV: lf.querySelector('[data-lf="approval-v"]'),
+      roleTitle: lf.querySelector('[data-lf="role-title"]'),
+      roleItems: lf.querySelector('[data-lf="role-items"]')
+    };
+    var stage = DEFAULT_STAGE, gate = null;
+
+    function paint() {
+      stageBtns.forEach(function (b) {
+        var on = gate === null && +b.dataset.stage === stage;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      items.forEach(function (it) {
+        var on = gate === null && +it.dataset.spItem === stage;
+        it.classList.toggle('is-on', on);
+        var body = it.querySelector('.lf-sp-body');
+        if (body) body.hidden = !on;
+      });
+      gateBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', (gate !== null && +b.dataset.gate === gate) ? 'true' : 'false');
+      });
+      var g = gate === null ? null : GATES[gate];
+      var s = STAGES[stage];
+      var x = g ? g.x : stage * (100 / 6);
+      if (progress) progress.style.setProperty('--w', 'calc(' + x + '% + 4px)');
+      f.name.textContent = g ? g.n : s.n;
+      f.purpose.textContent = g ? g.d : s.p;
+      f.output.hidden = !!g;
+      if (!g) f.outputV.textContent = s.o;
+      /* On an approval point, the right column shows the work Reiwa does at
+         the stage that point governs — the decision itself stays the
+         investor's, and is named as reserved to them. */
+      f.approvalV.textContent = g ? L.held : s.a;
+      var role = ROLE[g ? g.r : stage] || ROLE[0];
+      if (f.roleTitle) f.roleTitle.textContent = role.t;
+      if (f.roleItems) {
+        f.roleItems.textContent = '';
+        role.i.forEach(function (x) {
+          var li = document.createElement('li');
+          var n = document.createElement('span'); n.className = 'lf-role-n'; n.textContent = x[0];
+          var b = document.createElement('span'); b.className = 'lf-role-b'; b.textContent = x[1];
+          li.appendChild(n); li.appendChild(b); f.roleItems.appendChild(li);
+        });
+      }
+    }
+    function setStage(i) { stage = i; gate = null; paint(); }
+    function setGate(i) { gate = i; paint(); }
+    stageBtns.forEach(function (b) {
+      var i = +b.dataset.stage;
+      b.addEventListener('click', function () { setStage(i); });
+    });
+    gateBtns.forEach(function (b) {
+      var i = +b.dataset.gate;
+      b.addEventListener('click', function () { setGate(i); });
+    });
+    paint();
+    var detail = lf.querySelector('.lf-detail');
+    relock.push(function () {
+      var ks = stage, kg = gate, states = [];
+      STAGES.forEach(function (_, i) { states.push(function () { stage = i; gate = null; }); });
+      GATES.forEach(function (_, i) { states.push(function () { gate = i; }); });
+      floorTo(detail, paint, states, function () { stage = ks; gate = kg; });
+    });
+    lf._reset = function () { if (stage !== DEFAULT_STAGE || gate !== null) setStage(DEFAULT_STAGE); };
+  }
+
+  /* ---------------- five tests ---------------- */
+  if (tw) {
+    var names = [].slice.call(tw.querySelectorAll('[data-test]'));
+    var live = tw.querySelector('.tw-live');
+    var pn = tw.querySelector('[data-tw="name"]');
+    var pa = tw.querySelector('[data-tw="ask"]');
+    var pp = tw.querySelector('[data-tw="points"]');
+    /* Touch layouts open on the first test so the interaction is self-evident;
+       wider layouts open on the framework itself, with nothing singled out. */
+    var START = (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) ? 0 : null;
+    var sel = START;
+
+    function paintTests() {
+      names.forEach(function (b) {
+        b.setAttribute('aria-pressed', (+b.dataset.test === sel) ? 'true' : 'false');
+      });
+      if (live) {
+        live.hidden = sel === null;
+        if (sel !== null) live.setAttribute('transform', 'rotate(' + (-126 + 72 * sel) + ' 50 50)');
+      }
+      var t = sel === null ? null : TESTS[sel];
+      pn.textContent = t ? t.n : IDLE.n;
+      pa.textContent = t ? t.k : IDLE.k;
+      pp.textContent = '';
+      if (t) t.p.forEach(function (x) {
+        var li = document.createElement('li'); li.textContent = x; pp.appendChild(li);
+      });
+    }
+    function toggle(i) { sel = (sel === i) ? null : i; paintTests(); }
+    names.forEach(function (b) {
+      var i = +b.dataset.test;
+      b.addEventListener('click', function () { toggle(i); });
+    });
+    paintTests();
+    var panel = tw.querySelector('.tw-panel');
+    relock.push(function () {
+      var k = sel, states = [function () { sel = null; }];
+      TESTS.forEach(function (_, i) { states.push(function () { sel = i; }); });
+      floorTo(panel, paintTests, states, function () { sel = k; });
+    });
+    tw._reset = function () { if (sel !== START) { sel = START; paintTests(); } };
+  }
+
+  relockAll();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relockAll);
+  var t = 0;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(relockAll, 150); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (tw && tw._reset) tw._reset();
+    if (lf && lf._reset) lf._reset();
+  });
+})();
+</script>
 <script>
 /* Approach — the investment lifecycle and the five tests.
    Lifecycle: one selection at a time, a stage or an investor approval point,

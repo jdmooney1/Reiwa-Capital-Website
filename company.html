@@ -61,15 +61,16 @@
     .co-profile { margin-top: 26px; }
   }
 
-  /* --- Section scaffold: micro-label left, content right ---------------- */
-  .co-sec { padding: clamp(52px, 5vw, 76px) 0 clamp(52px, 5vw, 76px); border-top: 1px solid var(--rule); }
-  .co-sec:first-of-type { border-top: 1px solid var(--rule-strong); }
-  .co-row { display: grid; grid-template-columns: minmax(0, 0.26fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: start; }
-  .co-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.5; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0; padding-top: 3px; }
-  @media (max-width: 900px) {
-    .co-sec { padding: 44px 0; }
-    .co-row { grid-template-columns: 1fr; gap: 20px; }
-  }
+  /* --- Section scaffold ------------------------------------------------
+     One idiom, four times: a quiet label, then a rule-topped list whose rows
+     are divided by hairlines. The page is a reference sheet and should read
+     as one continuous document, so nothing is separated by a band rule —
+     the lists do that work themselves. */
+  .co-sec { padding: clamp(30px, 3vw, 44px) 0 0; border-top: 0; }
+  .co-sec:last-of-type { padding-bottom: clamp(48px, 4.6vw, 66px); }
+  .co-row { display: block; max-width: min(100%, 880px); }
+  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0 0 clamp(10px, 1.1vw, 14px); padding-top: 0; }
+  @media (max-width: 760px) { .co-sec { padding-top: 26px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
@@ -82,85 +83,62 @@
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
 
-  /* --- 3 · Activities: six numbered rows, one hairline each ------------- */
-  .co-acts { list-style: none; margin: 0; padding: 0; }
-  .co-acts li { display: grid; grid-template-columns: clamp(52px, 5vw, 84px) minmax(0, 1fr); gap: clamp(14px, 1.8vw, 28px); align-items: baseline; padding: clamp(15px, 1.7vw, 22px) 0; border-top: 1px solid var(--rule); }
-  .co-acts li:first-child { border-top: 0; padding-top: 0; }
-  .co-acts li:last-child { border-bottom: 1px solid var(--rule); }
-  /* Brand: numerals follow the site index treatment (.h-num) — 13px / 500 / 0.06em. No square here. */
-  .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.3; letter-spacing: 0.06em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .co-acts .t { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.6px + 0.5vw, 21px); font-weight: 400; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
+  /* --- 3 · Activities ---------------------------------------------------
+     The same rows as the company facts above: an index in the label column,
+     the activity in the reading column. */
+  .co-acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+  .co-acts li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
+  .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .co-acts .t { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
 
-  /* --- 4 · Operating model: three tiers on one vertical axis ------------ */
-  /* Three tiers as three rows across the content column: actor left,
-     responsibility right, and one spine between them — a node per tier on
-     one axis, a hairline and arrowhead from each tier to the next. Ink for
-     the investor's authority, sumire for Reiwa's coordination, an outline
-     for the specialists' expertise. The safeguard hangs off the third tier
-     in the description column, a scope note on the specialist layer. */
-  .co-model { --tp: clamp(16px, 1.8vw, 22px); display: grid; grid-template-columns: minmax(0, 0.47fr) 9px minmax(0, 1fr); column-gap: clamp(22px, 2.6vw, 40px); }
-  .co-tier { position: relative; display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: inherit; align-items: start; padding: var(--tp) 0; }
-  .co-tier:first-child { padding-top: 0; }
-  .co-tier + .co-tier { border-top: 1px solid var(--rule); }
-  .co-tier h3 { grid-column: 1; margin: 0; font-family: 'DM Sans', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.16em; line-height: 1.5; text-transform: uppercase; color: var(--ink-2); }
-  .co-tier:first-child h3 { color: var(--ink); }
-  .co-lockup { display: block; height: 20px; width: auto; margin-top: -1px; }
-  .co-tier p { grid-column: 3; margin: 0; max-width: 52ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.25vw, 16.5px); line-height: 1.5; color: var(--ink-2); }
-  .co-tier:nth-child(2) p { color: var(--ink); }
-  .co-spine { display: none; }
-  .co-spine i { position: absolute; left: 0; top: 4px; width: 9px; height: 9px; background: var(--ink); }
-  .co-tier:nth-child(2) .co-spine i { background: var(--reiwa-node, #5E3D78); }
-  .co-tier:nth-child(3) .co-spine i { left: 1px; top: 5px; width: 7px; height: 7px; background: transparent; border: 1px solid var(--ink-3); }
-  /* From under one node down through the row padding to just above the next. */
-  .co-spine::before { content: ""; position: absolute; left: 4px; top: 19px; bottom: calc(-2 * var(--tp) + 2px); width: 1px; background: var(--rule-strong); }
-  .co-spine::after { content: ""; position: absolute; left: 1px; bottom: calc(-2 * var(--tp) + 2px); width: 7px; height: 7px; border-right: 1px solid var(--ink-3); border-bottom: 1px solid var(--ink-3); transform: rotate(45deg); }
-  .co-tier:last-of-type .co-spine::before, .co-tier:last-of-type .co-spine::after { content: none; }
-  .co-model-note { grid-column: 3; margin: clamp(14px, 1.6vw, 20px) 0 0; padding-top: clamp(12px, 1.4vw, 16px); border-top: 1px solid var(--rule); max-width: 52ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
-  .co-sec.co-om { padding-bottom: clamp(44px, 4.2vw, 60px); }
-  @media (max-width: 900px) {
-    .co-model { grid-template-columns: 1fr; column-gap: 0; }
-    .co-tier { grid-template-columns: 1fr; padding: 20px 0; }
-    .co-tier h3, .co-tier p, .co-model-note { grid-column: 1; }
-    .co-tier p { margin-top: 8px; max-width: none; }
-    .co-spine { display: none; }
-    /* Stacked: one small arrowhead on each hairline points the flow down. */
-    .co-lockup { height: 18px; }
-    .co-model-note { margin-top: 4px; max-width: none; }
+  /* --- 4 · Operating model ----------------------------------------------
+     Three tiers, read top to bottom. The order is the argument: the investor
+     sets the mandate, Reiwa coordinates, appointed specialists execute. It
+     needs no drawing to say so — the sequence and the rules carry it, and
+     the rows match every other list on the page. */
+  .co-model { display: block; }
+  .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
+  .co-tier-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+  .co-tiers > li:first-child .co-tier-n { color: var(--ink); }
+  .co-tier-d { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-lockup { display: block; height: 18px; width: auto; }
+  .co-model-note { margin: clamp(14px, 1.6vw, 20px) 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+  @media (max-width: 760px) {
+    .co-acts li, .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
 
-  /* --- 5 · Contact: three routes, then the general line ----------------- */
+  /* --- 5 · Contact ------------------------------------------------------
+     The section closes the sheet in the same idiom: the label, the two
+     general routes as rows, then the three enquiry routes side by side under
+     one rule. No boxes and no columns of their own — the page has used the
+     same grid four times and ends on it. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
-  /* Two zones: the general address on the left under the section label,
-     the three routes on the right under one shared rule. The left column
-     is wider here than the page scaffold so the address sits on one line. */
-  .co-contact .co-row { grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr); align-items: start; }
   .co-contact-left { min-width: 0; }
-  .co-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(22px, 2.6vw, 44px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule-strong); }
-  .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
-  .co-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 15px + 0.6vw, 24px); line-height: 1.12; letter-spacing: -0.014em; color: var(--ink); }
-  .co-col p { margin: 10px 0 0; max-width: 30ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); }
-  /* The action: word and arrow, one size under the heading, no rule. */
-  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 6px 0 5px; min-height: 32px; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13.6px + 0.2vw, 15.5px); color: var(--ink); transition: color 200ms var(--ease-out); }
-  .co-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
-  @media (hover: hover) { .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--ink); } }
-  /* The two general routes — the address and the LinkedIn page — as labelled
-     rows, matching the company facts above. Neither may wrap. */
-  .co-general { margin: clamp(24px, 2.6vw, 36px) 0 0; }
-  /* Label above value at every width: this column is narrow, and neither the
-     address nor the LinkedIn name may wrap. */
-  .co-gen-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
-  .co-gen-row + .co-gen-row { margin-top: clamp(12px, 1.4vw, 18px); border-top: 1px solid var(--rule); }
+  .co-general { margin: 0; }
+  .co-gen-row { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
+  .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
   .co-general dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
   .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
   .co-general a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; overflow-wrap: normal; word-break: normal; color: var(--ink); border-bottom: 1px solid var(--rule-strong); transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .co-general a:hover { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
+
+  .co-cols { margin-top: clamp(30px, 3vw, 44px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(22px, 2.6vw, 44px); padding-top: clamp(15px, 1.5vw, 19px); border-top: 1px solid var(--rule-strong); }
+  .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
+  .co-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.18; letter-spacing: -0.012em; color: var(--ink); }
+  .co-col p { margin: 9px 0 0; max-width: 30ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 6px 0 5px; min-height: 32px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+  .co-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
+  @media (hover: hover) { .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--ink); } }
   .co-sec.co-contact { padding-bottom: clamp(48px, 4.6vw, 66px); }
   @media (max-width: 900px) {
-    .co-contact .co-row { grid-template-columns: 1fr; gap: 28px; }
-    .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; }
-    .co-col { display: block; grid-row: auto; padding: 20px 0 22px; border-top: 1px solid var(--rule); }
+    .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
+    .co-col { display: block; grid-row: auto; padding: 18px 0 20px; border-top: 1px solid var(--rule); }
     .co-col p { max-width: none; }
-    .co-general { margin-top: 18px; }
+  }
+  @media (max-width: 760px) {
+    .co-gen-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 14px 0 12px; }
+    .co-cta { padding: 11px 0 10px; min-height: 44px; }
   }
 
   /* Company has no NEXT band — the contact section closes the page and the
@@ -222,22 +200,13 @@
   <div class="shell">
     <div class="co-row">
       <h2 class="co-label" id="cm-label">Operating model</h2>
-      <div>
-        <div class="co-model">
-          <div class="co-tier">
-            <h3>Japanese investor</h3>
-            <p>Investor objectives, requirements, communication and decision-making context.</p>
-          </div>
-          <div class="co-tier">
-            <h3><img class="co-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></h3>
-            <p>Investment underwriting, transaction coordination and ongoing ownership oversight.</p>
-          </div>
-          <div class="co-tier">
-            <h3>London / Amsterdam execution network</h3>
-            <p>Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of each investment.</p>
-          </div>
-          <p class="co-model-note">Specialist legal, tax, accounting, valuation and other professional advice is provided by appointed professional advisers.</p>
-        </div>
+      <div class="co-model">
+        <ol class="co-tiers">
+          <li><span class="co-tier-n">Japanese investor</span><p class="co-tier-d">Investor objectives, requirements, communication and decision-making context.</p></li>
+          <li><span class="co-tier-n"><img class="co-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">Investment underwriting, transaction coordination and ongoing ownership oversight.</p></li>
+          <li><span class="co-tier-n">London / Amsterdam execution network</span><p class="co-tier-d">Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of each investment.</p></li>
+        </ol>
+        <p class="co-model-note">Specialist legal, tax, accounting, valuation and other professional advice is provided by appointed professional advisers.</p>
       </div>
     </div>
   </div>

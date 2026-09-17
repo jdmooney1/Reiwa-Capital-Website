@@ -43,28 +43,26 @@
      (.h-eyebrow / .h-h2 / .h-body) come from editorial.css.
      ===================================================================== */
 
-  /* --- 1 · Hero -------------------------------------------------------- */
-  body[data-page="focus"] .page-head.if-hero { min-height: min(62vh, 620px); }
-  .if-hero .inner { padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(44px, 5vw, 68px); }
-  .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 24px + 1.9vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 15ch; }
-  .if-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
-  .if-hero .loc { display: block; margin-top: clamp(22px, 2.6vw, 34px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: var(--ink-3); }
+  /* --- 1 · Hero ---------------------------------------------------------
+     Depth, the vertical wash and the inner padding come from the shared head
+     in editorial.css. The head is shallow by design: the page opens on the
+     first idea, not on the photograph. */
+  .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 14ch; text-wrap: balance; }
+  .if-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
-    body[data-page="focus"] .page-head.if-hero { min-height: min(56vh, 460px); }
-    .if-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
+    .if-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 12ch; }
     .if-hero .sub { max-width: 34ch; }
   }
 
-  /* --- Section scaffold ------------------------------------------------ */
+  /* --- Section scaffold --------------------------------------------------
+     Sections are separated by their own ground, not by a hairline. A rule
+     between every band reads as a form; a change of paper reads as a change
+     of subject. Rules are kept for divisions inside a section. */
   .if-sec { padding: 0 0 clamp(56px, 5vw, 78px); }
-  .if-sec > .shell { padding-top: clamp(52px, 4.8vw, 70px); }
-  .if-sec + .if-sec > .shell { border-top: 1px solid var(--rule); }
-  .if-sec--tight { padding-bottom: clamp(48px, 4.2vw, 64px); }
-  .if-sec--tight > .shell { padding-top: clamp(44px, 4vw, 58px); }
+  .if-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .if-head { max-width: 1060px; }
-  .if-head .h-h2 { margin-top: clamp(12px, 1.4vw, 18px); max-width: 22ch; }
-  .if-lede { margin-top: clamp(12px, 1.4vw, 18px); max-width: 56ch; }
-  @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
+  .if-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 50ch; }
+  @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · The investment focus field ------------------------------------
      One field, two approaches. Income and Repositioning are not a risk
@@ -481,6 +479,168 @@
 </main>
 
 <div data-shell="footer"></div>
+<script>
+/* Investment Focus — one field, two approaches.
+   Desktop: the two panels are expand/collapse buttons, not tabs; opening one
+   redistributes width inside a component of fixed height, so nothing below
+   moves. Return To Overview and Escape both restore the balanced state.
+   Mobile: the same two controls ARE a tablist, with a second tablist for the
+   three repositioning stages. One master panorama is panned, never swapped. */
+(function () {
+  var root = document.querySelector('[data-focusfield]');
+  if (!root) return;
+  var MOMENTS = [
+  {n:'Identify The Opportunity',s:'Identify',b:'Isolate the vacancy, positioning, management or capital constraint obscuring the asset’s underlying quality',fl:'2%',fe:'60%',a:0.12},
+  {n:'Shape The Strategy',s:'Shape',b:'Define the leasing, physical, operational and capital interventions required to restore relevance',fl:'20%',fe:'80%',a:0.5},
+  {n:'Strengthen The Asset',s:'Strengthen',b:'Execute toward more resilient income, clearer positioning and a stronger ownership outcome',fl:'40%',fe:'98%',a:0.88}
+  ];
+  var ZOOM = 116, CLOSED_ANCHOR = 0.12;
+
+  var field    = root.querySelector('[data-field]');
+  var panels   = [].slice.call(root.querySelectorAll('.fx-panel'));
+  var focusBtn = [].slice.call(root.querySelectorAll('[data-focus]'));
+  var backBtn  = [].slice.call(root.querySelectorAll('[data-collapse]'));
+  var momBtn   = [].slice.call(root.querySelectorAll('[data-moment]'));
+  var tabs     = [].slice.call(root.querySelectorAll('.fx-tab'));
+  var mtabs    = [].slice.call(root.querySelectorAll('.fx-mtab'));
+  var mpanels  = [].slice.call(root.querySelectorAll('.fx-tabpanel'));
+  var mname    = root.querySelector('[data-mname]');
+  var mbody    = root.querySelector('[data-mbody]');
+  var frames   = [].slice.call(root.querySelectorAll('.fx-frame'));
+
+  var narrow = function () { return window.matchMedia('(max-width: 760px)').matches; };
+  var reduce = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
+
+  /* Desktop opens balanced; the mobile selector is always resolved, so it
+     starts on Income. */
+  var focus = narrow() ? 0 : null, moment = 0;
+
+  /* Pan by scrolling the viewport: scrollLeft is not a style property, so a
+     later layout pass cannot reset it, and it needs no CSS transition. */
+  function pan(vp, zoomPct, anchor) {
+    if (!vp) return;
+    var img = vp.querySelector('[data-track]');
+    if (!img) return;
+    var vw = vp.clientWidth;
+    if (!vw) return;
+    var trackW = Math.round(vw * zoomPct / 100);
+    img.style.width = trackW + 'px';
+    var to = Math.round(anchor * (trackW - vw)), from = vp.scrollLeft;
+    if (vp.__t) { clearTimeout(vp.__t); vp.__t = null; }
+    if (reduce() || Math.abs(to - from) < 1) { vp.scrollLeft = to; return; }
+    var t0 = Date.now(), dur = 520;
+    /* restrained ease-in-out: continuity, not a cinematic sweep */
+    var ease = function (x) { return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; };
+    (function step() {
+      var k = Math.min(1, (Date.now() - t0) / dur);
+      vp.scrollLeft = Math.round(from + (to - from) * ease(k));
+      if (k < 1) vp.__t = setTimeout(step, 16); else vp.__t = null;
+    })();
+  }
+
+  function applyPan() {
+    var open = focus === 1;
+    var m = MOMENTS[moment] || MOMENTS[0];
+    var desk = root.querySelector('.fx-panel--rep [data-pan]');
+    var mob  = root.querySelector('.fx-tabpanel [data-pan]');
+    pan(desk, ZOOM, open ? m.a : CLOSED_ANCHOR);
+    pan(mob, ZOOM + 24, m.a);
+  }
+
+  function paint() {
+    var n = narrow();
+    if (field) field.setAttribute('data-open', focus === null ? '' : String(focus));
+    panels.forEach(function (p, i) {
+      var open = focus === i;
+      var shut = p.querySelector('.fx-shut'), body = p.querySelector('.fx-open');
+      if (shut) { shut.hidden = open; shut.setAttribute('aria-pressed', open ? 'true' : 'false'); }
+      if (body) body.hidden = !open;
+      var ib = p.querySelector('.fx-imgbtn');
+      if (ib) ib.setAttribute('aria-pressed', open ? 'true' : 'false');
+    });
+    tabs.forEach(function (t, i) {
+      var on = focus === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    mpanels.forEach(function (p, i) { p.hidden = focus !== i; });
+    momBtn.forEach(function (b) {
+      var on = +b.dataset.moment === moment;
+      if (b.classList.contains('fx-mtab')) {
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+      } else {
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var c = b.querySelector('.fx-stage-b');
+        if (c) c.hidden = !on;
+      }
+    });
+    var m = MOMENTS[moment] || MOMENTS[0];
+    frames.forEach(function (f) {
+      f.style.setProperty('--fl', m.fl);
+      f.style.setProperty('--fe', m.fe);
+    });
+    if (mname) mname.textContent = m.n;
+    if (mbody) mbody.textContent = m.b;
+    applyPan();
+    if (n && focus === null) { focus = 0; paint(); }
+  }
+
+  function setFocus(i) {
+    /* Desktop: activating the open panel again returns to the overview.
+       Mobile: the selector is a tablist, so it always resolves to one panel. */
+    focus = (!narrow() && focus === i) ? null : i;
+    paint();
+  }
+  function collapse() { if (!narrow() && focus !== null) { focus = null; paint(); } }
+  function setMoment(i) { moment = i; if (!narrow()) focus = 1; paint(); }
+
+  focusBtn.forEach(function (b) {
+    var i = +b.dataset.focus;
+    b.addEventListener('click', function () { setFocus(i); });
+  });
+  backBtn.forEach(function (b) { b.addEventListener('click', collapse); });
+  momBtn.forEach(function (b) {
+    var i = +b.dataset.moment;
+    b.addEventListener('click', function () { setMoment(i); });
+  });
+
+  /* Arrow keys move selection inside the two mobile tablists only: the
+     desktop panels are expand/collapse buttons, where arrows mean nothing. */
+  function arrows(list, get, set) {
+    list.forEach(function (b, i) {
+      b.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+        var j = (i + d + list.length) % list.length;
+        set(j);
+        list[j].focus();
+      });
+    });
+  }
+  arrows(tabs, null, function (j) { focus = j; paint(); });
+  arrows(mtabs, null, function (j) { setMoment(j); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') collapse();
+  });
+
+  var rt = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { paint(); }, 120);
+  });
+  if (typeof ResizeObserver === 'function') {
+    var ro = new ResizeObserver(function () { applyPan(); });
+    [].slice.call(root.querySelectorAll('[data-pan]')).forEach(function (v) { ro.observe(v); });
+  }
+
+  paint();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(applyPan);
+  window.addEventListener('load', applyPan);
+})();
+</script>
 <script>
 /* Investment Focus — one field, two approaches.
    Desktop: the two panels are expand/collapse buttons, not tabs; opening one

@@ -40,9 +40,6 @@
               rgba(16, 11, 20, 0.22) 58%,
               rgba(16, 11, 20, 0) 100%);
 }
-.nav-bar.nav-over-hero .lang-toggle { border-color: rgba(255,255,255,0.30); }
-.nav-bar.nav-over-hero .lang-toggle button { color: rgba(255,255,255,0.66); }
-.nav-bar.nav-over-hero .lang-toggle button.is-active { background: #fff; color: var(--ink); }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }
 /* .lang-switch (English) inverts in editorial.css alongside .nav-links. */
 .nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
@@ -150,7 +147,6 @@
   html.lang-out [data-en] { opacity: 0; }
   html.lang-x [data-shell="footer"] [data-en] { transition: none !important; opacity: 1 !important; }
   /* The toggle itself animates its active pill. */
-  .lang-toggle button { transition: background var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out); }
 }
 
 /* House easing applied to the generic section reveal. */

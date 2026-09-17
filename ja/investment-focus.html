@@ -60,32 +60,26 @@
   .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
-  /* --- 1 · Hero -------------------------------------------------------- */
-  body[data-page="focus"] .page-head.if-hero { min-height: min(62vh, 620px); }
-  .if-hero .inner { padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(44px, 5vw, 68px); }
-  .if-hero h1 { font-family: var(--jp); font-weight: 400; font-size: clamp(32px, 23px + 1.7vw, 50px); line-height: 1.3; letter-spacing: 0.005em; color: var(--ink); margin: 0; max-width: 17em; }
-  .if-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: var(--jp); font-size: clamp(15.5px, 14.6px + 0.3vw, 18px); line-height: 1.8; color: var(--ink-2); max-width: 27em; }
-  .if-hero .loc { display: block; margin-top: clamp(22px, 2.6vw, 34px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: var(--ink-3); }
+  /* --- 1 · Hero ---------------------------------------------------------
+     Depth, the vertical wash and the inner padding come from the shared head
+     in editorial.css. The head is shallow by design: the page opens on the
+     first idea, not on the photograph. */
+  .if-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.34; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 12em; text-wrap: balance; }
+  .if-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
-    body[data-page="focus"] .page-head.if-hero { min-height: min(56vh, 460px); }
-    .if-hero h1 { font-size: clamp(27px, 7.4vw, 34px); max-width: 12em; }
+    .if-hero h1 { font-size: clamp(25px, 6.8vw, 31px); max-width: 11em; }
     .if-hero .sub { max-width: 20em; }
   }
 
-  /* --- Section scaffold ------------------------------------------------ */
+  /* --- Section scaffold --------------------------------------------------
+     Sections are separated by their own ground, not by a hairline. A rule
+     between every band reads as a form; a change of paper reads as a change
+     of subject. Rules are kept for divisions inside a section. */
   .if-sec { padding: 0 0 clamp(56px, 5vw, 78px); }
-  .if-sec > .shell { padding-top: clamp(52px, 4.8vw, 70px); }
-  .if-sec + .if-sec > .shell { border-top: 1px solid var(--rule); }
-  .if-sec--tight { padding-bottom: clamp(48px, 4.2vw, 64px); }
-  .if-sec--tight > .shell { padding-top: clamp(44px, 4vw, 58px); }
+  .if-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .if-head { max-width: 1060px; }
-  /* Japanese breaks between kana, so a heading measure tuned for English
-     splits ホスピタリティ across two lines. Widened to 23 Japanese
-     characters, which holds every heading on this page to one line from
-     1024 up; below that the natural break is normal Japanese setting. */
-  .if-head .h-h2 { margin-top: clamp(12px, 1.4vw, 18px); max-width: 23em; }
-  .if-lede { margin-top: clamp(12px, 1.4vw, 18px); max-width: 34em; }
-  @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 46px; } }
+  .if-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 33em; }
+  @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · The investment focus field ------------------------------------
      One field, two approaches. Income and Repositioning are not a risk
@@ -98,7 +92,7 @@
   .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
   .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(44px, 4.4vw, 70px); }
-  .fx-h2 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.8vw, 24px); line-height: 1.62; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
+  .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 13px + 0.8vw, 24px); line-height: 1.62; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   .fx-lede { margin: clamp(11px, 1.2vw, 16px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .fx-param { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; margin-top: clamp(30px, 3.2vw, 46px); padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
   .fx-param-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; letter-spacing: 0.005em; color: var(--ink-3); }
@@ -121,7 +115,7 @@
   .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.80) 0%, rgba(28,14,35,.34) 52%, rgba(28,14,35,0) 100%); }
   .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.58) 36%, rgba(28,14,35,0) 100%); }
   .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
-  .fx-name { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
+  .fx-name { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--cream); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .fx-cue { margin-top: 2px; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); }
 
@@ -151,11 +145,11 @@
   .fx-frame--r { left: var(--fe, 60%); right: 0; transition: left 520ms cubic-bezier(.4,0,.2,1); }
   .fx-topscrim { position: absolute; left: 0; right: 0; top: 0; height: 132px; pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,.58) 0%, rgba(28,14,35,.20) 56%, rgba(28,14,35,0) 100%); }
   .fx-stagescrim { position: absolute; left: 0; right: 0; bottom: 0; height: 42%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.80) 0%, rgba(28,14,35,.34) 52%, rgba(28,14,35,0) 100%); }
-  .fx-replabel { position: absolute; left: 0; top: 0; padding: clamp(28px, 2.4vw, 40px); pointer-events: none; font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
+  .fx-replabel { position: absolute; left: 0; top: 0; padding: clamp(28px, 2.4vw, 40px); pointer-events: none; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
   .fx-stages { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; }
   .fx-stage { appearance: none; background: none; border: 0; margin: 0; padding: clamp(22px, 2vw, 32px) clamp(16px, 1.5vw, 24px); cursor: pointer; text-align: left; display: flex; flex-direction: column; justify-content: flex-end; gap: 7px; min-width: 0; outline-offset: -3px; opacity: .86; transition: opacity 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-pressed="true"] { opacity: 1; }
-  .fx-stage-n { font-family: var(--jp); font-weight: 500; font-size: clamp(15px, 12px + 0.4vw, 18px); line-height: 1.4; letter-spacing: -0.016em; color: var(--cream); transition: font-size 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-stage-n { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(15px, 12px + 0.4vw, 18px); line-height: 1.4; letter-spacing: -0.016em; color: var(--cream); transition: font-size 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-pressed="true"] .fx-stage-n { font-size: clamp(17px, 12px + 0.6vw, 22px); }
   .fx-stage-b { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--cream); max-width: 21em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .fx-stage-b[hidden] { display: none; }
@@ -191,7 +185,7 @@
   .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
   .fx-mimg > img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; display: block; }
   .fx-mscrim { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.84) 0%, rgba(28,14,35,.42) 42%, rgba(28,14,35,0) 100%); }
-  .fx-mname { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px; pointer-events: none; font-family: var(--jp); font-weight: 500; font-size: 25px; line-height: 1.4; letter-spacing: -0.018em; color: var(--cream); }
+  .fx-mname { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px; pointer-events: none; font-family: var(--font-jp-serif); font-weight: 500; font-size: 25px; line-height: 1.4; letter-spacing: -0.018em; color: var(--cream); }
   .fx-mbody { margin: 18px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
   .fx-mband-col { display: flex; flex-direction: column; gap: 8px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
@@ -214,7 +208,7 @@
   .fx-lever:first-of-type { padding-left: 0; border-left: 0; }
   .fx-view > .shell { padding-top: 0; padding-bottom: clamp(51px, 5.1vw, 80px); }
   .fx-view-in { padding-top: 13px; border-top: 1px solid rgba(39,20,48,.28); }
-  .fx-view-in p { margin: 0; max-width: 46em; font-family: var(--jp); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.75; letter-spacing: -0.012em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-view-in p { margin: 0; max-width: 46em; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.75; letter-spacing: -0.012em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .fx-lever-row { gap: 10px 16px; }
     .fx-lever { padding-left: 14px; }
@@ -232,10 +226,10 @@
   .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
   .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: clamp(26px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 10px; }
   .hs-kicker { font-family: var(--jp); font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
-  .hs-title { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
+  .hs-title { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
   .hs-state { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.95; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
-  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule-strong); font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule-strong); font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
     .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
@@ -259,14 +253,14 @@
      no explanatory copy: the refusals are the argument. */
   .dl-sec { background: var(--ink); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: clamp(44px, 4.4vw, 64px); border-top: 0; }
-  .dl-h2 { margin: 0; font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); }
+  .dl-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); }
   .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
   .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(36px, 4vw, 64px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
-  .dl-p span { display: block; font-family: var(--jp); font-weight: 500; font-size: clamp(17px, 12px + 0.7vw, 24px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-p span { display: block; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(17px, 12px + 0.7vw, 24px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .dl-close { margin-top: clamp(32px, 3.4vw, 46px); padding-top: clamp(17px, 1.8vw, 22px); border-top: 1px solid rgba(252,250,241,.30); }
-  .dl-close p { margin: 0; max-width: 44em; font-family: var(--jp); font-weight: 500; font-size: clamp(14.5px, 13px + 0.3vw, 17px); line-height: 1.85; letter-spacing: -0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-close p { margin: 0; max-width: 44em; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.3vw, 17px); line-height: 1.85; letter-spacing: -0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
     .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
@@ -503,6 +497,168 @@
 </main>
 
 <div data-shell="footer"></div>
+<script>
+/* Investment Focus — one field, two approaches.
+   Desktop: the two panels are expand/collapse buttons, not tabs; opening one
+   redistributes width inside a component of fixed height, so nothing below
+   moves. Return To Overview and Escape both restore the balanced state.
+   Mobile: the same two controls ARE a tablist, with a second tablist for the
+   three repositioning stages. One master panorama is panned, never swapped. */
+(function () {
+  var root = document.querySelector('[data-focusfield]');
+  if (!root) return;
+  var MOMENTS = [
+  {n:'機会を見極める',s:'見極める',b:'資産本来の品質を覆っている空室、位置づけ、運営、資本のいずれの制約かを特定する',fl:'2%',fe:'60%',a:0.12},
+  {n:'戦略を描く',s:'描く',b:'競争力を取り戻すために必要な賃貸、建物、運営、資本の打ち手を具体化する',fl:'20%',fe:'80%',a:0.5},
+  {n:'資産を強くする',s:'強くする',b:'より強い収益と明確な位置づけ、そして確かな保有成果に向けて実行する',fl:'40%',fe:'98%',a:0.88}
+  ];
+  var ZOOM = 116, CLOSED_ANCHOR = 0.12;
+
+  var field    = root.querySelector('[data-field]');
+  var panels   = [].slice.call(root.querySelectorAll('.fx-panel'));
+  var focusBtn = [].slice.call(root.querySelectorAll('[data-focus]'));
+  var backBtn  = [].slice.call(root.querySelectorAll('[data-collapse]'));
+  var momBtn   = [].slice.call(root.querySelectorAll('[data-moment]'));
+  var tabs     = [].slice.call(root.querySelectorAll('.fx-tab'));
+  var mtabs    = [].slice.call(root.querySelectorAll('.fx-mtab'));
+  var mpanels  = [].slice.call(root.querySelectorAll('.fx-tabpanel'));
+  var mname    = root.querySelector('[data-mname]');
+  var mbody    = root.querySelector('[data-mbody]');
+  var frames   = [].slice.call(root.querySelectorAll('.fx-frame'));
+
+  var narrow = function () { return window.matchMedia('(max-width: 760px)').matches; };
+  var reduce = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
+
+  /* Desktop opens balanced; the mobile selector is always resolved, so it
+     starts on Income. */
+  var focus = narrow() ? 0 : null, moment = 0;
+
+  /* Pan by scrolling the viewport: scrollLeft is not a style property, so a
+     later layout pass cannot reset it, and it needs no CSS transition. */
+  function pan(vp, zoomPct, anchor) {
+    if (!vp) return;
+    var img = vp.querySelector('[data-track]');
+    if (!img) return;
+    var vw = vp.clientWidth;
+    if (!vw) return;
+    var trackW = Math.round(vw * zoomPct / 100);
+    img.style.width = trackW + 'px';
+    var to = Math.round(anchor * (trackW - vw)), from = vp.scrollLeft;
+    if (vp.__t) { clearTimeout(vp.__t); vp.__t = null; }
+    if (reduce() || Math.abs(to - from) < 1) { vp.scrollLeft = to; return; }
+    var t0 = Date.now(), dur = 520;
+    /* restrained ease-in-out: continuity, not a cinematic sweep */
+    var ease = function (x) { return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; };
+    (function step() {
+      var k = Math.min(1, (Date.now() - t0) / dur);
+      vp.scrollLeft = Math.round(from + (to - from) * ease(k));
+      if (k < 1) vp.__t = setTimeout(step, 16); else vp.__t = null;
+    })();
+  }
+
+  function applyPan() {
+    var open = focus === 1;
+    var m = MOMENTS[moment] || MOMENTS[0];
+    var desk = root.querySelector('.fx-panel--rep [data-pan]');
+    var mob  = root.querySelector('.fx-tabpanel [data-pan]');
+    pan(desk, ZOOM, open ? m.a : CLOSED_ANCHOR);
+    pan(mob, ZOOM + 24, m.a);
+  }
+
+  function paint() {
+    var n = narrow();
+    if (field) field.setAttribute('data-open', focus === null ? '' : String(focus));
+    panels.forEach(function (p, i) {
+      var open = focus === i;
+      var shut = p.querySelector('.fx-shut'), body = p.querySelector('.fx-open');
+      if (shut) { shut.hidden = open; shut.setAttribute('aria-pressed', open ? 'true' : 'false'); }
+      if (body) body.hidden = !open;
+      var ib = p.querySelector('.fx-imgbtn');
+      if (ib) ib.setAttribute('aria-pressed', open ? 'true' : 'false');
+    });
+    tabs.forEach(function (t, i) {
+      var on = focus === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    mpanels.forEach(function (p, i) { p.hidden = focus !== i; });
+    momBtn.forEach(function (b) {
+      var on = +b.dataset.moment === moment;
+      if (b.classList.contains('fx-mtab')) {
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+      } else {
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var c = b.querySelector('.fx-stage-b');
+        if (c) c.hidden = !on;
+      }
+    });
+    var m = MOMENTS[moment] || MOMENTS[0];
+    frames.forEach(function (f) {
+      f.style.setProperty('--fl', m.fl);
+      f.style.setProperty('--fe', m.fe);
+    });
+    if (mname) mname.textContent = m.n;
+    if (mbody) mbody.textContent = m.b;
+    applyPan();
+    if (n && focus === null) { focus = 0; paint(); }
+  }
+
+  function setFocus(i) {
+    /* Desktop: activating the open panel again returns to the overview.
+       Mobile: the selector is a tablist, so it always resolves to one panel. */
+    focus = (!narrow() && focus === i) ? null : i;
+    paint();
+  }
+  function collapse() { if (!narrow() && focus !== null) { focus = null; paint(); } }
+  function setMoment(i) { moment = i; if (!narrow()) focus = 1; paint(); }
+
+  focusBtn.forEach(function (b) {
+    var i = +b.dataset.focus;
+    b.addEventListener('click', function () { setFocus(i); });
+  });
+  backBtn.forEach(function (b) { b.addEventListener('click', collapse); });
+  momBtn.forEach(function (b) {
+    var i = +b.dataset.moment;
+    b.addEventListener('click', function () { setMoment(i); });
+  });
+
+  /* Arrow keys move selection inside the two mobile tablists only: the
+     desktop panels are expand/collapse buttons, where arrows mean nothing. */
+  function arrows(list, get, set) {
+    list.forEach(function (b, i) {
+      b.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+        var j = (i + d + list.length) % list.length;
+        set(j);
+        list[j].focus();
+      });
+    });
+  }
+  arrows(tabs, null, function (j) { focus = j; paint(); });
+  arrows(mtabs, null, function (j) { setMoment(j); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') collapse();
+  });
+
+  var rt = 0;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { paint(); }, 120);
+  });
+  if (typeof ResizeObserver === 'function') {
+    var ro = new ResizeObserver(function () { applyPan(); });
+    [].slice.call(root.querySelectorAll('[data-pan]')).forEach(function (v) { ro.observe(v); });
+  }
+
+  paint();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(applyPan);
+  window.addEventListener('load', applyPan);
+})();
+</script>
 <script>
 /* Investment Focus — one field, two approaches.
    Desktop: the two panels are expand/collapse buttons, not tabs; opening one

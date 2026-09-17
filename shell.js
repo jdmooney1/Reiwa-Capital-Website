@@ -101,14 +101,22 @@
           <a class="nav-logo" href="/"${cur === 'home' ? ' aria-current="page"' : ''} aria-label="Reiwa Capital — Home" data-aria-en="Reiwa Capital — Home" data-aria-ja="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
+          <ul class="nav-links">${links}</ul>
           <div class="nav-right">
             <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
               <button type="button" data-lang="en" aria-label="English">EN</button>
               <span class="ls-sep" aria-hidden="true"></span>
               <button type="button" data-lang="ja" aria-label="日本語">JA</button>
             </div>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="rc-nav" aria-label="Menu" data-aria-en="Menu" data-aria-ja="メニュー">
+              <span class="nt-bar" aria-hidden="true"></span>
+              <span class="nt-bar" aria-hidden="true"></span>
+            </button>
           </div>
-          <ul class="nav-links">${links}</ul>
+        </div>
+        <div class="nav-rule" aria-hidden="true"></div>
+        <div class="nav-drawer" id="rc-nav" hidden>
+          <ul>${links}</ul>
         </div>
       </nav>
     `;
@@ -143,14 +151,22 @@
           <a class="nav-logo" href="/ja/"${cur === 'home' ? ' aria-current="page"' : ''} aria-label="Reiwa Capital — ホーム" style="min-height:40px">
             <img class="nl-lockup" src="${logoSrc}" alt="">
           </a>
+          <ul class="nav-links">${links}</ul>
           <div class="nav-right">
             <div class="lang-switch" role="group" aria-label="言語">
               <button type="button" data-lang="en" aria-label="English">EN</button>
               <span class="ls-sep" aria-hidden="true"></span>
               <button type="button" data-lang="ja" aria-label="日本語">JA</button>
             </div>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="rc-nav" aria-label="メニュー">
+              <span class="nt-bar" aria-hidden="true"></span>
+              <span class="nt-bar" aria-hidden="true"></span>
+            </button>
           </div>
-          <ul class="nav-links">${links}</ul>
+        </div>
+        <div class="nav-rule" aria-hidden="true"></div>
+        <div class="nav-drawer" id="rc-nav" hidden>
+          <ul>${links}</ul>
         </div>
       </nav>
     `;
@@ -166,6 +182,46 @@
     host.querySelectorAll('[data-lang]').forEach(btn => {
       btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
     });
+
+    /* Below 1100px the four destinations move into a disclosure panel under
+       the header rule. The button keeps one constant name and carries its
+       state in aria-expanded, so a language sweep can never leave the label
+       describing the wrong state. */
+    const toggle = host.querySelector('.nav-toggle');
+    const drawer = host.querySelector('.nav-drawer');
+    const bar = host.querySelector('.nav-bar');
+    if (!toggle || !drawer || !bar) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drawer.hidden = !open;
+      bar.classList.toggle('nav-menu-open', open);
+    };
+    const close = () => { if (toggle.getAttribute('aria-expanded') === 'true') setOpen(false); };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      close();
+      toggle.focus();
+    });
+    document.addEventListener('click', (e) => {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      if (bar.contains(e.target)) return;
+      close();
+    });
+    /* The panel only exists below 1100px; crossing back up must not leave a
+       stale open state behind the row of links. */
+    if (window.matchMedia) {
+      const mq = window.matchMedia('(min-width: 1101px)');
+      const onChange = () => { if (mq.matches) close(); };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
   }
 
   /* ---- Small manual syncs that generic data-en/data-ja sweep can't cover,

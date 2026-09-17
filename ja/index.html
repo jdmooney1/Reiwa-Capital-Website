@@ -27,12 +27,12 @@
 <meta name="twitter:description" content="日本の投資家側に立った、欧州不動産のアドバイザリーと保有期間中のモニタリング。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=22">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=82">
+<link rel="stylesheet" href="../editorial.css?v=83">
 <link rel="stylesheet" href="../brand.css?v=7">
-<link rel="stylesheet" href="../craft.css?v=24">
+<link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -54,8 +54,8 @@
   }
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
-  .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; }
+  .h-eyebrow { font-family: var(--font-jp); font-size: 13px; line-height: 1.6; letter-spacing: 0; text-transform: none; }
+  .h-h2 { font-family: var(--font-jp-serif); line-height: 1.42; letter-spacing: 0.004em; }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
@@ -64,7 +64,7 @@
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
-  .home-hero h1 { font-family: var(--jp); font-weight: 400; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
+  .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
   .home-hero .loc { display: block; margin-top: clamp(26px, 3.2vw, 44px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized so 欧州不動産を、 holds one line and the
@@ -88,7 +88,7 @@
   .hi-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; margin-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--rule-strong); }
   .hi-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding: clamp(24px, 2.6vw, 34px) clamp(24px, 3vw, 44px) 2px 0; }
   .hi-col + .hi-col { border-left: 1px solid var(--rule); padding-left: clamp(24px, 3vw, 44px); }
-  .hi-col h3 { margin: 12px 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(22px, 18px + 0.75vw, 26px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
+  .hi-col h3 { margin: 12px 0 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 18px + 0.75vw, 26px); line-height: 1.3; letter-spacing: 0.004em; color: var(--ink); }
   .hi-col p { margin: 14px 0 0; max-width: 20em; }
   /* --- Micro-diagrams: the three functions --------------------------------
      Not icons. Each is drawn from the four atoms already used on Approach
@@ -212,7 +212,7 @@
   .hp-item:nth-child(even) { border-left: 1px solid var(--rule); padding-left: clamp(28px, 4vw, 64px); padding-right: 0; }
   .hp-item:nth-last-child(-n+2) { border-bottom: 0; }
   .hp-item .h-num { padding-top: 6px; align-self: start; }
-  .hp-item h3 { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hp-item p { margin: 10px 0 0; max-width: 27em; }
   @media (max-width: 760px) {
     .hp { padding: 0 0 64px; }
@@ -256,7 +256,7 @@
   }
   .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
   .hf-cap { display: grid; margin-top: 20px; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: baseline; }
-  .hf-cap h3 { grid-column: 1; margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .hf-cap h3 { grid-column: 1; margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hf-cap .h-arrow { grid-column: 2; grid-row: 1; color: var(--ink); align-self: center; }
   .hf-cap p { grid-column: 1 / -1; margin: 10px 0 0; max-width: 24em; }
   @media (prefers-reduced-motion: reduce) { .hf-media img, .hf-media::after { transition: none; } }
@@ -452,7 +452,7 @@
 })();
 </script>
 
-<script src="../shell.js?v=73"></script>
+<script src="../shell.js?v=74"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

@@ -42,49 +42,33 @@
      editorial.css; only About's own composition lives here.
      ===================================================================== */
 
-  /* --- 1 · Hero: calm, conceptual, and deliberately shorter than Home -- */
-  body[data-page="about"] .page-head { background-image: none; min-height: 0; display: block; border-bottom: 0; }
-  /* The rule above zeroes the shared page-head so About can supply its own
-     hero, but it also outranks .ab-hero — which is why the height and the
-     bottom alignment below never applied. Restated here at the same
-     specificity Approach and Investment Focus already use. */
-  body[data-page="about"] .page-head.ab-hero { min-height: clamp(500px, 42vw, 605px); display: flex; align-items: flex-end; }
-  .ab-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: clamp(500px, 42vw, 605px); display: flex; align-items: flex-end; overflow: hidden; background: #e8eef4; }
+  /* --- 1 · Hero ---------------------------------------------------------
+     Depth and inner padding come from the shared head in editorial.css. The
+     photograph is a real image rather than a background, so it is the page's
+     LCP element; the wash above it runs top to bottom, settling the picture
+     into the cream instead of wiping it across from the left. */
+  .ab-hero { position: relative; overflow: hidden; background: #e8eef4; }
   .ab-hero .ab-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
   .ab-hero .ab-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; display: block; filter: contrast(1.12) saturate(1.06); }
-  /* The hero art is pale, so the scrim warms rather than darkens: a cream
-     wash from the left carries the sumire headline. */
   .ab-hero .ab-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(96deg, rgba(252,250,241,0.93) 0%, rgba(252,250,241,0.80) 24%, rgba(252,250,241,0.46) 48%, rgba(252,250,241,0.18) 72%, rgba(252,250,241,0.06) 100%),
-                linear-gradient(0deg, rgba(252,250,241,0.36) 0%, rgba(252,250,241,0) 34%); }
-  .ab-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: calc(var(--nav-h, 68px) + clamp(48px, 6vw, 80px)) var(--gutter) clamp(64px, 6.1vw, 88px); }
-  /* editorial.css sets the inner padding for every inner-page head at a
-     higher specificity than .ab-hero .inner, so the floor beneath the copy
-     is restated here at that specificity, scoped to About. */
-  body[data-page="about"] .page-head.ab-hero .inner { padding-bottom: clamp(64px, 6.1vw, 88px); }
-  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 24px + 1.9vw, 54px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 15ch; }
-  .ab-hero .sub { margin: clamp(16px, 1.8vw, 22px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
-  .ab-hero .loc { display: block; margin-top: clamp(22px, 2.6vw, 34px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: var(--ink-3); }
+    background: linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, var(--cream) 100%); }
+  .ab-hero .inner { position: relative; z-index: 2; }
+  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
+  .ab-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
-    body[data-page="about"] .page-head.ab-hero { min-height: clamp(400px, 108vw, 440px); }
     .ab-hero .ab-media img { object-position: 30% 100%; }
     .ab-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
     .ab-hero .sub { max-width: 34ch; }
   }
 
-  /* --- Section scaffold, matching Home's rhythm ------------------------ */
-  .ab-sec { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .ab-sec > .shell { padding-top: clamp(72px, 7vw, 100px); }
-  /* The continuity framework carries less floor than the other sections:
-     the rail and the aligned rows close it, so the next section can begin
-     nearer the useful content. Desktop only. */
-  @media (min-width: 761px) { .ab-sec.aw { padding-bottom: clamp(56px, 5.2vw, 78px); } }
-  @media (min-width: 761px) { .ab-sec.ac { padding-bottom: clamp(70px, 6.4vw, 94px); } }
-  .ab-sec + .ab-sec > .shell { border-top: 1px solid var(--rule); }
+  /* --- Section scaffold --------------------------------------------------
+     Sections are separated by their own ground and by space, not by a rule
+     across the page. Rules are kept for divisions inside a section. */
+  .ab-sec { padding: 0 0 clamp(56px, 5.4vw, 84px); }
+  .ab-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .ab-head { max-width: 1060px; }
-  .ab-head .h-h2 { margin-top: clamp(14px, 1.6vw, 20px); max-width: 20ch; }
-  .ab-lede { margin-top: clamp(16px, 1.8vw, 22px); max-width: 64ch; font-size: clamp(16px, 15.2px + 0.3vw, 18px); }
-  @media (max-width: 760px) { .ab-sec { padding-bottom: 64px; } .ab-sec > .shell { padding-top: 60px; } }
+  .ab-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 50ch; }
+  @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · Why Reiwa exists: the continuity switch --------------------------
      The same four phases, read two ways. Without a coordinating layer the
@@ -163,11 +147,17 @@
   .am-img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .am-img--tall { display: none; }
 
-  .ab-lab { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.24; text-align: center; white-space: nowrap; pointer-events: none;
-    /* The faintest halo that keeps a name legible where it crosses an edge. */
-    text-shadow: 0 0 2px rgba(252,250,241,0.85); }
-  .ab-lab--core { color: #F7F3EC; font-weight: 500; text-shadow: 0 0 2px rgba(47,31,58,0.85); }
-  .ab-lab--sel { color: var(--ink); font-weight: 500; }
+  /* Grouped geography is the drawn layer: six names on London, three on
+     Amsterdam. Every approved submarket is still there — as an outline you
+     can hover, click or reach from the list beside the map, which names it
+     and gives its classification. A fully labelled map is a GIS plot; this
+     is an editorial one. */
+  .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: var(--w, max-content); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12.5px; line-height: 1.3; text-align: center; pointer-events: none; z-index: 3; transition: opacity 200ms var(--ease-out); }
+  .ab-grp--core { color: #F7F3EC; text-shadow: 0 1px 3px rgba(31,18,38,.55); }
+  .ab-grp--sel { color: var(--ink); text-shadow: 0 1px 3px rgba(252,250,241,.75); }
+  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); } }
+  @media (max-width: 480px) { .ab-grp { font-size: 11px; } }
+  @media (max-width: 380px) { .ab-grp { font-size: 10.5px; } }
 
   .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
   .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
@@ -181,7 +171,7 @@
   .am-facts { margin: clamp(20px, 2.2vw, 26px) 0 0; }
   .am-facts > div { padding: 14px 0; border-top: 1px solid var(--rule); }
   .am-facts > div:first-child { border-top: 0; padding-top: 0; }
-  .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--eyebrow-ink); margin: 0 0 8px; }
+  .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0 0 8px; }
   .am-facts dd { margin: 0; }
   .am-subs { color: var(--ink); }
   /* Market snapshot shell — London now, Amsterdam in the next pass. Map and
@@ -205,7 +195,6 @@
     .am-panel--snapshot .am-map { aspect-ratio: 0.95; }
     .am-panel--snapshot .am-img--wide { display: block; }
     .am-panel--snapshot .am-img--tall { display: none; }
-    .am-panel--snapshot .ab-lab { left: var(--x); top: var(--y); }
   }
   /* Amsterdam: the same shell, its own camera. The wide map frame is 1.2
      (964 x 803.6 units); the photograph sits on the facades, not the water. */
@@ -222,48 +211,40 @@
     .am-map { aspect-ratio: 0.80; }
     .am-img--wide { display: none; }
     .am-img--tall { display: block; }
-    .ab-lab { left: var(--xt); top: var(--yt); }
   }
   @media (max-width: 760px) {
     .am-tabs { margin-top: 28px; }
     .am-grid { margin-top: 24px; gap: 24px; }
-    .ab-lab { font-size: 11px; }
   }
   @media (max-width: 480px) {
     /* Phones: labels that cannot sit inside their area without touching a
        neighbour are hidden here and remain in the submarket list. */
-    .ab-lab--hide-sm { display: none; }
-    .ab-lab { font-size: 10.5px; letter-spacing: 0; }
   }
   @media (max-width: 380px) {
-    .ab-lab { font-size: 9.5px; line-height: 1.2; }
     .am-legend { gap: 8px 18px; }
     .am-legend li { font-size: 12.5px; }
   }
 
-  /* --- 4 · Who we work with ------------------------------------------- */
-  .ac-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto; margin-top: clamp(32px, 3.4vw, 48px); border-top: 1px solid var(--rule-strong); }
-  /* Four profiles on three shared tracks — identifier, title, description —
-     so every title sits in one zone and every description starts on one row,
-     whichever title wraps. Identifiers only: no rail, no arrows. */
-  .ac-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; padding: clamp(20px, 2vw, 26px) clamp(20px, 2.2vw, 32px) 0 0; }
-  .ac-item .h-num { justify-self: start; align-self: start; }
-  .ac-item + .ac-item { padding-left: clamp(20px, 2.2vw, 32px); }
-  .ac-item h3 { margin: 0; align-self: start; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 17px + 0.5vw, 23px); line-height: 1.18; letter-spacing: -0.008em; color: var(--ink); }
-  .ac-item p { margin: 8px 0 0; align-self: start; }
-  @media (max-width: 1100px) {
-    .ac-grid { grid-template-columns: 1fr 1fr; }
-    .ac-item:nth-child(-n+2) { border-bottom: 1px solid var(--rule); padding-bottom: clamp(26px, 2.8vw, 36px); }
-    .ac-item:nth-child(odd) { border-left: 0; padding-left: 0; }
-  }
-  @media (max-width: 620px) {
-    .ac-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 32px; }
-    .ac-item { display: block; grid-row: auto; }
-    .ac-item, .ac-item + .ac-item { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); }
-    .ac-item:last-child { border-bottom: 0; }
-  }
+  /* --- Why these two markets ---------------------------------------------
+     The two markets are chosen for different reasons; the page should say so
+     rather than leave the reader to infer it from the maps. */
+  .am-why { margin-top: clamp(34px, 4vw, 58px); padding-top: clamp(24px, 2.6vw, 32px); border-top: 1px solid var(--ink); }
+  .am-why h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 16px + 0.9vw, 28px); line-height: 1.18; letter-spacing: -0.014em; color: var(--ink); }
+  .am-why-grid { margin-top: clamp(22px, 2.4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 3vw, 56px); }
+  .am-why-col { display: flex; flex-direction: column; gap: 10px; }
+  .am-why-city { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 21px); line-height: 1.2; color: var(--ink); }
+  .am-why-t { font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.4; color: var(--ink); }
+  .am-why-d { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.6; color: var(--ink-2); max-width: 44ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
 
-
+  /* --- 4 · Long-term capital -------------------------------------------
+     Four investor types, read as four columns of plain type. No rails, no
+     numerals, no rules: the distinction between them is what they say. */
+  .ac-grid { margin-top: clamp(32px, 3.4vw, 48px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
+  @media (max-width: 1024px) { .ac-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(26px, 3vw, 40px); } }
+  @media (max-width: 560px) { .ac-grid { grid-template-columns: minmax(0, 1fr); } }
+  .ac-item { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .ac-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 21px); line-height: 1.2; letter-spacing: -0.008em; color: var(--ink); }
+  .ac-item p { margin: 0; max-width: 44ch; }
 
   /* Interactive selection over the approved map. The overlay carries one path
      per focus area, taken verbatim from the same source as the basemap, so the
@@ -287,7 +268,6 @@
   .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.24); stroke: #FCFAF1; stroke-width: 1.8; }
   .am-hit path[data-on="hover"][data-core="0"] { fill: rgba(39,20,48,.10); }
   .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.20); stroke: #271430; stroke-width: 1.8; }
-  .am-map .ab-lab { z-index: 3; }
   /* The selected area is named under the map, with its classification. The
      row keeps its height whether or not anything is selected. */
   .am-active { margin-top: 12px; min-height: 44px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -446,20 +426,12 @@
               <path d="M707 410L709 411L715 413L727 408L737 404L737 403L737 401L737 391L768 393L774 393L786 394L797 395L797 415L797 417L828 402L831 407L832 412L835 422L837 434L837 443L836 460L896 464L909 504L875 520L823 556L823 557L822 558L821 557L820 558L796 530L785 507L785 500L774 502L781 467L760 462L755 478L743 490L727 484L732 453L708 425L707 425L707 424L706 425L707 422L706 411L707 412L707 410Z" data-sub="shoreditch" data-core="0"></path>
               <path d="M919 733L931 733L933 733L935 733L936 733L938 733L944 733L944 734L945 734L944 733L946 733L947 733L947 736L942 737L930 739L938 791L943 804L957 816L959 821L956 834L939 842L886 807L801 741L794 722L797 713L801 704L811 692L808 692L809 690L810 690L813 690L817 692L824 695L825 694L834 698L841 703L849 711L849 712L848 713L850 715L851 716L852 716L856 718L858 719L859 718L864 720L870 723L876 726L876 727L878 728L879 725L883 726L883 724L886 725L897 729L899 729L898 732L900 733L904 733L907 733L907 734L908 735L911 735L911 734L919 733ZM472 668L473 667L474 667L475 666L475 665L476 664L479 661L485 657L495 652L496 651L497 651L498 651L500 651L500 650L502 649L503 649L510 646L522 643L525 645L525 646L528 646L532 645L534 644L536 644L538 644L540 643L549 642L549 641L549 640L556 640L576 640L578 640L578 641L581 641L581 640L583 640L583 639L596 639L597 639L600 639L601 639L603 640L603 639L607 640L607 639L612 639L613 640L614 640L618 640L633 641L633 640L640 641L641 639L642 639L643 641L644 641L645 642L648 642L653 644L654 644L654 645L658 647L672 652L679 654L680 654L680 655L683 656L685 656L685 655L688 656L689 656L691 656L692 656L692 657L696 658L697 658L698 658L706 659L707 658L710 659L710 660L711 660L710 662L708 662L707 662L703 674L698 681L692 688L656 698L678 712L669 733L637 764L622 786L615 804L618 814L611 819L614 837L592 861L585 855L577 835L527 811L528 852L495 830L493 833L484 828L480 837L458 832L449 830L447 832L446 831L445 834L443 832L444 828L444 826L447 801L450 769L451 766L453 764L453 767L475 751L494 754L486 744L485 743L484 742L458 713L458 717L456 714L456 713L456 711L457 705L457 704L458 699L459 693L462 686L464 682L465 680L465 678L468 674L471 669L472 670L472 669L473 668L472 668Z" data-sub="south-bank" data-core="0"></path>
             </svg>
-          <span class="ab-lab ab-lab--core" data-area="Marylebone" style="--x:14.93%;--y:39.9%;--xt:17.85%;--yt:38.9%" aria-hidden="true">Marylebone</span>
-          <span class="ab-lab ab-lab--core" data-area="Fitzrovia" style="--x:28.68%;--y:40.28%;--xt:30.2%;--yt:42.4%" aria-hidden="true">Fitzrovia</span>
-          <span class="ab-lab ab-lab--core ab-lab--hide-sm" data-area="Soho" style="--x:32.06%;--y:45.57%;--xt:32.06%;--yt:46.56%" aria-hidden="true">Soho</span>
-          <span class="ab-lab ab-lab--core" data-area="Mayfair" style="--x:22.2%;--y:49.1%;--xt:22.2%;--yt:49.24%" aria-hidden="true">Mayfair</span>
-          <span class="ab-lab ab-lab--core" data-area="St James's" style="--x:31.82%;--y:54.41%;--xt:29.0%;--yt:54.1%" aria-hidden="true">St James's</span>
-          <span class="ab-lab ab-lab--core" data-area="Covent Garden" style="--x:37.73%;--y:49.66%;--xt:41.4%;--yt:50.3%" aria-hidden="true">Covent Garden</span>
-          <span class="ab-lab ab-lab--core" data-area="Westminster" style="--x:34.23%;--y:64.92%;--xt:32.4%;--yt:62.9%" aria-hidden="true">Westminster</span>
-          <span class="ab-lab ab-lab--core" data-area="City of London" style="--x:67.49%;--y:43.47%;--xt:65.82%;--yt:45.29%" aria-hidden="true">City of London</span>
-          <span class="ab-lab ab-lab--sel" data-area="Bloomsbury" style="--x:36.04%;--y:33.17%;--xt:37.58%;--yt:35.82%" aria-hidden="true">Bloomsbury</span>
-          <span class="ab-lab ab-lab--sel ab-lab--hide-sm" data-area="Holborn / Midtown" style="--x:45.33%;--y:42.1%;--xt:43.78%;--yt:43.62%" aria-hidden="true">Holborn / Midtown</span>
-          <span class="ab-lab ab-lab--sel ab-lab--hide-sm" data-area="Farringdon" style="--x:53.11%;--y:36.66%;--xt:55.08%;--yt:38.85%" aria-hidden="true">Farringdon</span>
-          <span class="ab-lab ab-lab--sel" data-area="Clerkenwell" style="--x:58.75%;--y:29.86%;--xt:60.19%;--yt:33.48%" aria-hidden="true">Clerkenwell</span>
-          <span class="ab-lab ab-lab--sel" data-area="Shoreditch &amp; Aldgate" style="--x:78.05%;--y:35.96%;--xt:73.99%;--yt:38.63%" aria-hidden="true">Shoreditch &amp; Aldgate</span>
-          <span class="ab-lab ab-lab--sel" data-area="South Bank" style="--x:56.37%;--y:56.96%;--xt:56.37%;--yt:55.27%" aria-hidden="true">South Bank</span>
+          <span class="ab-grp ab-grp--core" style="--x:28%;--y:46%;--xt:28%;--yt:46.6%" aria-hidden="true">West End</span>
+          <span class="ab-grp ab-grp--core" style="--x:33.5%;--y:63%;--xt:33.5%;--yt:61%" aria-hidden="true">Westminster</span>
+          <span class="ab-grp ab-grp--core" style="--x:67%;--y:45%;--xt:67%;--yt:45.5%" aria-hidden="true">City of London</span>
+          <span class="ab-grp ab-grp--sel" style="--x:45%;--y:40%;--xt:45%;--yt:41.6%" aria-hidden="true">Midtown</span>
+          <span class="ab-grp ab-grp--sel" style="--x:64%;--y:30%;--xt:64%;--yt:33.2%" aria-hidden="true">City Fringe</span>
+          <span class="ab-grp ab-grp--sel" style="--x:56%;--y:58%;--xt:56%;--yt:56.7%;--w:132px" aria-hidden="true">South Bank &amp; Southwark</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
@@ -529,22 +501,9 @@
               <path d="M697 1213L695 1213L695 1212L695 1211L696 1208L696 1206L695 1204L693 1201L690 1198L686 1195L674 1189L665 1185L661 1183L652 1176L646 1172L643 1171L640 1170L632 1168L625 1168L615 1168L613 1167L604 1161L602 1159L599 1157L599 1155L597 1153L597 1151L596 1146L596 1144L596 1139L597 1135L602 1120L605 1111L606 1108L610 1098L611 1096L619 1083L621 1081L623 1076L623 1073L624 1067L624 1063L620 1053L620 1052L620 1051L620 1049L620 1046L621 1043L624 1040L625 1040L631 1037L635 1037L644 1039L644 1038L650 1038L654 1037L658 1036L659 1036L661 1035L665 1031L670 1028L675 1022L676 1019L676 1016L677 1013L680 1010L681 1010L686 1010L686 1008L685 1008L687 1005L685 1004L684 1004L683 1006L684 1004L682 1003L681 1005L682 997L684 997L682 996L684 997L685 996L682 995L683 994L685 996L688 992L686 991L687 989L686 988L684 991L683 991L684 988L685 988L688 983L699 975L704 972L707 971L711 970L719 967L720 967L722 966L725 964L729 962L732 959L735 956L738 953L739 952L740 953L742 952L743 951L743 952L744 951L745 950L744 950L747 948L754 940L755 941L760 938L759 936L760 935L760 932L760 931L761 930L764 928L761 929L760 928L760 927L764 926L763 925L758 927L755 928L753 927L743 925L741 924L739 922L737 919L732 912L730 906L727 895L730 892L730 891L729 888L728 884L731 887L732 890L753 907L762 912L775 924L833 968L837 969L936 997L926 1000L926 1010L913 1009L911 1009L910 1009L900 1013L897 1016L888 1021L882 1010L872 1010L831 997L819 1004L820 1006L811 1011L797 1010L797 1017L797 1018L795 1024L792 1030L787 1036L788 1038L782 1041L772 1046L767 1048L747 1058L728 1066L719 1067L725 1137L712 1141L711 1141L706 1142L704 1143L703 1144L700 1149L707 1157L702 1168L715 1176L715 1177L716 1178L728 1186L714 1211L702 1211L698 1211L697 1213Z" data-sub="overamstel" data-core="0"></path>
               <path d="M517 977L518 977L519 977L539 988L576 1017L589 1026L599 1033L604 1037L604 1038L588 1027L585 1026L580 1027L574 1030L568 1030L559 1029L559 1030L559 1083L559 1105L560 1133L561 1136L562 1136L568 1146L568 1147L564 1149L565 1153L565 1161L574 1160L586 1160L589 1159L588 1156L587 1151L586 1145L585 1139L584 1138L582 1139L578 1139L578 1138L579 1138L587 1134L588 1134L590 1132L588 1137L587 1141L587 1145L588 1150L591 1159L592 1159L593 1161L592 1161L593 1161L594 1164L591 1164L590 1162L587 1162L574 1163L563 1163L563 1162L499 1164L328 1167L327 1167L321 1168L321 1171L316 1171L316 1174L313 1174L313 1173L314 1169L314 1166L314 1115L315 1100L315 1081L313 1070L311 1059L310 1059L308 1049L295 1049L292 1044L290 1043L266 1041L266 1040L266 1039L278 1040L280 1040L280 1039L282 1039L282 1041L283 1041L283 1039L292 1040L292 1038L291 1037L291 1036L289 1036L289 1034L288 1034L288 1035L288 1037L279 1036L278 1036L278 1035L277 1036L274 1035L274 1034L271 1034L270 1035L266 1034L265 1034L263 1033L260 1031L261 1031L263 1030L267 1029L268 1030L269 1030L269 1029L276 1029L276 1032L279 1032L280 1031L280 1030L281 1030L281 1029L281 1030L283 1030L283 1031L286 1031L286 1033L289 1033L289 1030L295 1030L299 1030L302 1029L302 1028L304 1028L304 1029L304 1027L304 1028L303 1028L302 1028L301 1027L299 1027L288 1026L287 1025L287 1024L287 1022L286 1022L285 1023L284 1023L283 1022L284 1022L283 1011L282 1009L281 1009L280 1010L279 1012L279 1023L282 1023L282 1024L282 1025L281 1025L280 1024L279 1024L277 1024L276 1024L276 1021L277 1020L277 1018L276 1017L276 1020L276 1021L276 1022L276 1023L276 1024L272 1024L272 1023L266 1023L259 1025L258 1024L258 1020L258 1018L257 1017L256 1016L256 1013L259 1011L259 1017L266 1017L266 1011L269 1010L269 1013L274 1013L274 1008L275 1008L275 1007L257 1009L255 1008L251 1006L251 1005L255 1003L256 1003L257 1006L260 1006L260 1004L270 1004L270 1005L272 1005L272 1003L273 1002L273 1001L273 1000L273 998L272 997L268 997L268 1001L266 1001L265 993L258 994L258 992L256 993L256 995L254 995L254 996L253 997L253 996L252 991L257 990L255 989L247 990L246 990L246 992L245 992L244 992L245 990L244 988L245 988L245 980L245 979L244 977L245 977L246 977L246 975L254 973L321 967L321 982L459 974L517 977Z" data-sub="buitenveldert" data-core="0"></path>
             </svg>
-          <span class="ab-lab ab-lab--core" data-area="Jordaan" style="--x:48.3%;--y:40.02%;--xt:48.12%;--yt:39.72%" aria-hidden="true">Jordaan</span>
-          <span class="ab-lab ab-lab--core" data-area="Canal Belt" style="--x:50.58%;--y:44.46%;--xt:51.14%;--yt:43.49%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-lab ab-lab--core" data-area="Grachtengordel" style="--x:50.83%;--y:54.26%;--xt:52.43%;--yt:54.26%" aria-hidden="true">Grachtengordel</span>
-          <span class="ab-lab ab-lab--core" data-area="Oud-Zuid" style="--x:45.01%;--y:67.69%;--xt:43.0%;--yt:66.94%" aria-hidden="true">Oud-Zuid</span>
-          <span class="ab-lab ab-lab--core" data-area="Zuidas" style="--x:42.81%;--y:75.94%;--xt:38.87%;--yt:75.94%" aria-hidden="true">Zuidas</span>
-          <span class="ab-lab ab-lab--sel" data-area="Centrum" style="--x:58.17%;--y:48.73%;--xt:62.25%;--yt:47.29%" aria-hidden="true">Centrum</span>
-          <span class="ab-lab ab-lab--sel" data-area="Plantage" style="--x:69.07%;--y:49.9%;--xt:72.5%;--yt:52.89%" aria-hidden="true">Plantage</span>
-          <span class="ab-lab ab-lab--sel" data-area="Oud-West" style="--x:41.93%;--y:49.85%;--xt:39.24%;--yt:50.38%" aria-hidden="true">Oud-West</span>
-          <span class="ab-lab ab-lab--sel" data-area="West" style="--x:39.97%;--y:36.41%;--xt:36.8%;--yt:37.1%" aria-hidden="true">West</span>
-          <span class="ab-lab ab-lab--sel" data-area="De Pijp" style="--x:57.04%;--y:65.29%;--xt:60.27%;--yt:64.72%" aria-hidden="true">De Pijp</span>
-          <span class="ab-lab ab-lab--sel" data-area="Rivierenbuurt" style="--x:57.21%;--y:74.28%;--xt:62.22%;--yt:74.28%" aria-hidden="true">Rivierenbuurt</span>
-          <span class="ab-lab ab-lab--sel" data-area="Buitenveldert" style="--x:45.75%;--y:82.29%;--xt:43.63%;--yt:82.84%" aria-hidden="true">Buitenveldert</span>
-          <span class="ab-lab ab-lab--sel" data-area="Oost" style="--x:66.77%;--y:60.47%;--xt:74.73%;--yt:60.76%" aria-hidden="true">Oost</span>
-          <span class="ab-lab ab-lab--sel" data-area="Overamstel" style="--x:69.24%;--y:79.06%;--xt:78.3%;--yt:79.06%" aria-hidden="true">Overamstel</span>
-          <span class="ab-lab ab-lab--sel" data-area="Noord" style="--x:62.12%;--y:24.01%;--xt:68.18%;--yt:24.01%" aria-hidden="true">Noord</span>
-          <span class="ab-lab ab-lab--sel" data-area="Sloterdijk" style="--x:32.6%;--y:30.88%;--xt:23.37%;--yt:30.15%" aria-hidden="true">Sloterdijk</span>
+          <span class="ab-grp ab-grp--core" style="--x:54.2%;--y:54.9%;--xt:54.8%;--yt:53.7%" aria-hidden="true">Canal Belt &amp; Jordaan</span>
+          <span class="ab-grp ab-grp--core" style="--x:44.1%;--y:67%;--xt:41.2%;--yt:66.9%" aria-hidden="true">Oud-Zuid</span>
+          <span class="ab-grp ab-grp--core" style="--x:45.4%;--y:75.1%;--xt:41.2%;--yt:75.7%" aria-hidden="true">Zuidas</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
@@ -569,6 +528,21 @@
             <div><dt>Focus submarkets</dt><dd class="h-body am-subs"><ul><li><button class="am-sub" type="button" data-sub-btn="jordaan" data-market="amsterdam" aria-pressed="false">Jordaan</button></li><li><button class="am-sub" type="button" data-sub-btn="canal-belt" data-market="amsterdam" aria-pressed="false">Canal Belt</button></li><li><button class="am-sub" type="button" data-sub-btn="grachtengordel" data-market="amsterdam" aria-pressed="false">Grachtengordel</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-zuid" data-market="amsterdam" aria-pressed="false">Oud-Zuid</button></li><li><button class="am-sub" type="button" data-sub-btn="zuidas" data-market="amsterdam" aria-pressed="false">Zuidas</button></li><li><button class="am-sub" type="button" data-sub-btn="centrum" data-market="amsterdam" aria-pressed="false">Centrum</button></li><li><button class="am-sub" type="button" data-sub-btn="plantage" data-market="amsterdam" aria-pressed="false">Plantage</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-west" data-market="amsterdam" aria-pressed="false">Oud-West</button></li><li><button class="am-sub" type="button" data-sub-btn="west" data-market="amsterdam" aria-pressed="false">West</button></li><li><button class="am-sub" type="button" data-sub-btn="de-pijp" data-market="amsterdam" aria-pressed="false">De Pijp</button></li><li><button class="am-sub" type="button" data-sub-btn="rivierenbuurt" data-market="amsterdam" aria-pressed="false">Rivierenbuurt</button></li><li><button class="am-sub" type="button" data-sub-btn="buitenveldert" data-market="amsterdam" aria-pressed="false">Buitenveldert</button></li><li><button class="am-sub" type="button" data-sub-btn="oost" data-market="amsterdam" aria-pressed="false">Oost</button></li><li><button class="am-sub" type="button" data-sub-btn="overamstel" data-market="amsterdam" aria-pressed="false">Overamstel</button></li><li><button class="am-sub" type="button" data-sub-btn="noord" data-market="amsterdam" aria-pressed="false">Noord</button></li><li><button class="am-sub" type="button" data-sub-btn="sloterdijk" data-market="amsterdam" aria-pressed="false">Sloterdijk</button></li></ul></dd></div>
             <div><dt>Why it fits</dt><dd class="h-body">Scarcity, distinctive asset character and opportunities for selective repositioning.</dd></div>
           </dl>
+        </div>
+      </div>
+    </div>
+    <div class="am-why">
+      <h3>Why These Two Markets</h3>
+      <div class="am-why-grid">
+        <div class="am-why-col">
+          <span class="am-why-city">London</span>
+          <span class="am-why-t">Depth and Liquidity</span>
+          <p class="am-why-d">Deep segmentation, extensive transaction evidence and a broad exit buyer base</p>
+        </div>
+        <div class="am-why-col">
+          <span class="am-why-city">Amsterdam</span>
+          <span class="am-why-t">Scarcity and Selectivity</span>
+          <p class="am-why-d">Constrained supply, distinctive assets and greater reliance on local execution</p>
         </div>
       </div>
     </div>
