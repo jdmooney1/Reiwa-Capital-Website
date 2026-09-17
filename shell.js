@@ -330,7 +330,17 @@
   // Groups of siblings that clearly belong together step in on a short
   // stagger (the group is tagged, each child gets its index).
   const REVEAL_SELECTORS = [
+    /* Home */
     '.hi-head', '.hm-head', '.hm-stage', '.hf-head',
+    /* About */
+    '.ab-head', '.aw-field', '.am-tabs', '.am-why',
+    /* Approach */
+    '.ap-intro', '.lf-field', '.tw-head', '.tw-grid', '.ap-pause-frame', '.ic-sec .ap-h2', '.ic-sec .ap-lede',
+    /* Investment Focus */
+    '.fx-head', '.fx-field', '.fx-mob', '.fx-lever-row', '.fx-view-in', '.hs-grid', '.dl-h2', '.dl-lede', '.dl-close',
+    /* Company */
+    '.co-profile', '.co-sec .co-row',
+    /* Legacy selectors, retained for older compositions */
     '.home-areas .areas-head',
     '.wwd-head', '.home-markets-head', '.activity-head', '.hww-head', '.hww-panel', '.platform-head', '.contact-cta-head',
     '.stage-rail',
@@ -339,7 +349,11 @@
     '.assessment .assess-grid', '.areas .chapter',
     '.profile', '.contact-body .shell'
   ];
-  const REVEAL_GROUPS = ['.hi-cols', '.hp-grid', '.hf-grid'];
+  /* Sibling groups that step in on a stagger: the three functions, four
+     principles and three strategies on Home; investor types and the two
+     market rationales on About; the three authority rows on Approach; the
+     three tests and four disciplines on Investment Focus. */
+  const REVEAL_GROUPS = ['.hi-cols', '.hp-grid', '.hf-grid', '.ac-grid', '.am-why-grid', '.ic-stack', '.hs-tests', '.dl-grid'];
 
   function setupReveals() {
     if (!('IntersectionObserver' in window)) return;

@@ -27,6 +27,53 @@
     }, 1200);
   }
 
+  /* ---------- 1b. Inner page heads — the same one-time entrance -------
+     About / Approach / Investment Focus / Company / Privacy / 404: the
+     title and its supporting line rise in once; the wash or photograph
+     behind them paints with the page. */
+  function initHeadEntrance() {
+    if (REDUCED) return;
+    var head = document.querySelector('.page-head, .legal-head');
+    if (!head || document.querySelector('.home-hero')) return;
+    var root = document.documentElement;
+    root.classList.add('head-arm');
+    var go = function () { root.classList.add('head-in'); };
+    requestAnimationFrame(function () { requestAnimationFrame(go); });
+    setTimeout(go, 120);
+    window.addEventListener('load', go);
+    setTimeout(function () {
+      var sel = head.querySelectorAll('h1, .sub, .ja, .legal-lede, .legal-updated');
+      for (var i = 0; i < sel.length; i++) sel[i].style.transition = 'none';
+    }, 1200);
+  }
+
+  /* ---------- 1c. Content swaps — one short settle after a swap --------
+     Where a control replaces the copy of a panel in place, the page's own
+     controller has already painted the new content by the time this
+     bubbling listener runs; restarting the animation on the panel makes
+     the change register without touching that controller. */
+  function initSwapFades() {
+    if (REDUCED) return;
+    var MAP = [
+      ['[data-lifecycle]', '[data-stage], [data-gate]', '.lf-detail'],
+      ['[data-tests]',     '[data-test]',               '.tw-panel'],
+      ['[data-focusfield]', '.fx-mtab',                 '.fx-mbody']
+    ];
+    for (var i = 0; i < MAP.length; i++) (function (m) {
+      var root = document.querySelector(m[0]);
+      var target = root && root.querySelector(m[2]);
+      if (!root || !target || !Element.prototype.closest) return;
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest(m[1]);
+        if (!btn || !root.contains(btn)) return;
+        target.classList.remove('rc-swap');
+        void target.offsetWidth;
+        target.classList.add('rc-swap');
+      });
+      target.addEventListener('animationend', function () { target.classList.remove('rc-swap'); });
+    })(MAP[i]);
+  }
+
   /* ---------- 2. Header state — ONE authoritative function ------------
      updateHeaderState() derives the header's appearance from: current page,
      whether it has a hero, scroll position, whether the hero heading
@@ -205,6 +252,8 @@
   /* ---------- boot --------------------------------------------------- */
   function boot() {
     initHero();
+    initHeadEntrance();
+    initSwapFades();
     initHeaderState();
     initImageFades();
     initHeadWashFade();

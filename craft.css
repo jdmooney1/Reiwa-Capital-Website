@@ -285,6 +285,157 @@ html.js .hm-panels .hm-panel.is-on { animation: rc-panel-in var(--motion-panel) 
 }
 
 /* =====================================================================
+   INNER PAGE HEADS — the same one-time entrance as the home hero, for the
+   title and its supporting line on About, Approach, Investment Focus,
+   Company, Privacy and 404. The photograph or wash behind them is never
+   held back (the page-head wash has its own paper cover in editorial.css,
+   released the moment the image has decoded). craft.js arms this
+   (html.head-arm) only when motion is welcome.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html.head-arm .page-head .inner > h1,
+  html.head-arm .page-head .inner > .sub,
+  html.head-arm .page-head .inner > .ja,
+  html.head-arm .page-head .co-sheet > h1,
+  html.head-arm .page-head .co-sheet > .sub,
+  html.head-arm .legal-head h1,
+  html.head-arm .legal-head .legal-lede,
+  html.head-arm .legal-head .legal-updated {
+    opacity: 0; transform: translateY(var(--motion-rise));
+    transition: opacity var(--motion-entrance) var(--ease-out),
+                transform var(--motion-entrance) var(--ease-out);
+  }
+  html.head-arm.head-in .page-head .inner > h1,
+  html.head-arm.head-in .page-head .co-sheet > h1,
+  html.head-arm.head-in .legal-head h1 { opacity: 1; transform: none; }
+  html.head-arm.head-in .page-head .inner > .sub,
+  html.head-arm.head-in .page-head .co-sheet > .sub,
+  html.head-arm.head-in .legal-head .legal-lede { opacity: 1; transform: none; transition-delay: 80ms; }
+  html.head-arm.head-in .page-head .inner > .ja,
+  html.head-arm.head-in .legal-head .legal-updated { opacity: 1; transform: none; transition-delay: 140ms; }
+  /* Company: the profile table sits inside the head and is tagged as a
+     reveal; it follows the supporting line rather than racing it. */
+  html.reveal-on .co-profile[data-reveal] { transition-delay: 160ms; }
+}
+
+/* =====================================================================
+   CONTENT SWAPS — where a control replaces the copy in a panel in place
+   (the lifecycle detail, the five-tests panel, the repositioning stage
+   copy), craft.js restarts one short settle on the panel after the swap
+   so the change registers as a change. Panels that open from hidden
+   (the mobile lifecycle spine, the focus-field tab panels and opened
+   panels, the stage copy) play the same settle from display:none.
+   ===================================================================== */
+@keyframes rc-content-in { from { opacity: 0.25; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .rc-swap { animation: rc-content-in var(--motion-panel) var(--ease-out); }
+  body[data-page="approach"] .lf-sp-body:not([hidden]),
+  body[data-page="focus"] .fx-tabpanel:not([hidden]),
+  body[data-page="focus"] .fx-open:not([hidden]),
+  body[data-page="focus"] .fx-stage-b:not([hidden]),
+  body[data-page="about"] .am-panel:not([hidden]) {
+    animation: rc-panel-in var(--motion-panel) var(--ease-out) both;
+  }
+}
+
+/* =====================================================================
+   ABOUT — the continuity switch, the market tabs and the submarket list.
+   ===================================================================== */
+body[data-page="about"] .aw-sw { transition: color var(--motion-feedback) var(--ease-out), border-color var(--motion-feedback) var(--ease-out); }
+body[data-page="about"] .aw-sw:focus-visible,
+body[data-page="about"] .aw-sw:active { color: var(--cream); }
+/* The line is the argument: it draws on the entrance clock, and the ribbon
+   beneath it follows once the line has met — and leaves at once. */
+body[data-page="about"] .aw-line i,
+body[data-page="about"] .aw-sp-rail i { transition-duration: var(--motion-entrance); }
+body[data-page="about"] .aw-ribbon,
+body[data-page="about"] .aw-sp-ribbon { transition: opacity var(--motion-panel) var(--ease-out); }
+body[data-page="about"] .aw-field[data-flow="with"] .aw-ribbon,
+body[data-page="about"] .aw-field[data-flow="with"] .aw-sp-ribbon { transition-delay: 140ms; }
+
+body[data-page="about"] .am-tab { transition: color var(--motion-feedback) var(--ease-out); }
+body[data-page="about"] .am-tab::after { transition: transform var(--motion-panel) var(--ease-out), opacity var(--motion-panel) var(--ease-out); }
+body[data-page="about"] .am-tab[aria-selected="true"]::after { opacity: 1; }
+body[data-page="about"] .am-tab:active { color: var(--ink); }
+@media (hover: hover) {
+  body[data-page="about"] .am-tab:not([aria-selected="true"]):hover { color: var(--ink); }
+  body[data-page="about"] .am-tab:not([aria-selected="true"]):hover::after { transform: scaleX(1); opacity: 0.32; }
+}
+body[data-page="about"] .am-sub { transition: color var(--motion-feedback) var(--ease-out), border-color var(--motion-feedback) var(--ease-out); }
+body[data-page="about"] .am-sub:focus-visible,
+body[data-page="about"] .am-sub:active { color: var(--ink); border-bottom-color: var(--rule-strong); }
+body[data-page="about"] .am-clear { transition: color var(--motion-feedback) var(--ease-out), border-color var(--motion-feedback) var(--ease-out); }
+body[data-page="about"] .am-clear:hover,
+body[data-page="about"] .am-clear:focus-visible { color: var(--ink); border-bottom-color: var(--ink); }
+body[data-page="about"] .am-hit path { transition-duration: var(--motion-feedback); }
+body[data-page="about"] .ab-grp { transition-duration: var(--motion-feedback); }
+
+/* =====================================================================
+   APPROACH — the lifecycle track, its gates and the five tests.
+   ===================================================================== */
+body[data-page="approach"] .lf-stage-n,
+body[data-page="approach"] .lf-gate-sq,
+body[data-page="approach"] .lf-sp-item,
+body[data-page="approach"] .tw-name { transition-duration: var(--motion-feedback); }
+body[data-page="approach"] .lf-progress { transition: width var(--motion-panel) var(--ease-out); }
+body[data-page="approach"] .lf-stage:focus-visible .lf-stage-n,
+body[data-page="approach"] .lf-stage:active .lf-stage-n,
+body[data-page="approach"] .lf-sp-btn:active .lf-sp-n { color: var(--cream); }
+body[data-page="approach"] .lf-gate:focus-visible .lf-gate-sq,
+body[data-page="approach"] .lf-gate:active .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); }
+body[data-page="approach"] .tw-name:focus-visible,
+body[data-page="approach"] .tw-name:active { color: var(--ink); }
+body[data-page="approach"] .tw-live { transition: transform var(--dur-panel) var(--ease-out); }
+
+/* =====================================================================
+   INVESTMENT FOCUS — the focus field, its mobile tabs and the stage copy.
+   The selected tab used to swap a 1px rule for a 2px one, which moved
+   the label by a pixel; the 2px mark is now drawn over the constant rule.
+   ===================================================================== */
+body[data-page="focus"] .fx-tab,
+body[data-page="focus"] .fx-mtab { position: relative; transition: color var(--motion-feedback) var(--ease-out); }
+body[data-page="focus"] .fx-tab[aria-selected="true"],
+body[data-page="focus"] .fx-mtab[aria-selected="true"] { border-top: 1px solid var(--rule-strong); }
+body[data-page="focus"] .fx-tab::before,
+body[data-page="focus"] .fx-mtab::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px;
+  background: var(--ink); transform: scaleX(0); transform-origin: left center;
+  transition: transform var(--motion-panel) var(--ease-out);
+}
+body[data-page="focus"] .fx-tab[aria-selected="true"]::before,
+body[data-page="focus"] .fx-mtab[aria-selected="true"]::before { transform: scaleX(1); }
+body[data-page="focus"] .fx-tab:active,
+body[data-page="focus"] .fx-mtab:active { color: var(--ink); }
+@media (hover: hover) {
+  body[data-page="focus"] .fx-tab:not([aria-selected="true"]):hover,
+  body[data-page="focus"] .fx-mtab:not([aria-selected="true"]):hover { color: var(--ink); }
+}
+body[data-page="focus"] .fx-back { transition: color var(--motion-feedback) var(--ease-out); }
+body[data-page="focus"] .fx-back:focus-visible,
+body[data-page="focus"] .fx-back:active { color: rgba(252,250,241,.78); }
+body[data-page="focus"] .fx-stage { transition: opacity var(--motion-panel) var(--ease-out); }
+body[data-page="focus"] .fx-stage:focus-visible,
+body[data-page="focus"] .fx-stage:active { opacity: 1; }
+/* The closed panels answer hover and focus with their cue line, not with
+   movement — the field's own width change is the motion. */
+body[data-page="focus"] .fx-cue { transition: color var(--motion-feedback) var(--ease-out); }
+body[data-page="focus"] .fx-shut:focus-visible .fx-cue,
+body[data-page="focus"] .fx-shut:active .fx-cue { color: var(--cream); }
+@media (hover: hover) { body[data-page="focus"] .fx-shut:hover .fx-cue { color: var(--cream); } }
+
+/* =====================================================================
+   COMPANY, PRIVACY, 404 — text links and calls to action.
+   ===================================================================== */
+body[data-page="company"] .co-cta { transition: color var(--motion-feedback) var(--ease-out); }
+body[data-page="company"] .co-cta .h-arrow { transition: transform var(--motion-feedback) var(--ease-out), color var(--motion-feedback) var(--ease-out); }
+body[data-page="company"] .co-cta:focus-visible .h-arrow,
+body[data-page="company"] .co-cta:active .h-arrow { transform: translateX(4px); color: var(--ink); }
+body[data-page="company"] .co-general a { transition: border-color var(--motion-feedback) var(--ease-out), color var(--motion-feedback) var(--ease-out); }
+body[data-page="company"] .co-general a:focus-visible { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
+.link { transition: border-color var(--motion-feedback) var(--ease-out), color var(--motion-feedback) var(--ease-out); }
+.link:focus-visible, .link:active { border-color: var(--ink); }
+
+/* =====================================================================
    REDUCED MOTION — every transition and animation this layer adds is
    switched off; states still change, instantly.
    ===================================================================== */
@@ -301,4 +452,9 @@ html.js .hm-panels .hm-panel.is-on { animation: rc-panel-in var(--motion-panel) 
   }
   html.js .hm-panels .hm-panel.is-on { animation: none; }
   .nav-drawer:not([hidden]) li { animation: none; }
+  .rc-swap, .lf-sp-body, .fx-tabpanel, .fx-open, .fx-stage-b, .am-panel { animation: none !important; }
+  .aw-sw, .aw-line i, .aw-sp-rail i, .aw-ribbon, .aw-sp-ribbon, .am-tab, .am-tab::after, .am-sub, .am-clear, .am-hit path, .ab-grp,
+  .lf-stage-n, .lf-gate-sq, .lf-sp-item, .tw-name, .lf-progress, .tw-live,
+  .fx-tab, .fx-mtab, .fx-tab::before, .fx-mtab::before, .fx-back, .fx-stage, .fx-cue,
+  .co-cta, .co-cta .h-arrow, .co-general a, .link { transition: none !important; }
 }
