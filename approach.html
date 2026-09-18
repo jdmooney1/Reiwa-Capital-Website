@@ -74,11 +74,19 @@
   .lf-track { position: relative; margin-top: clamp(24px, 2.6vw, 36px); padding-bottom: 14px; }
   .lf-stages { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .lf-stage { appearance: none; background: none; border: 0; margin: 0; padding: 6px 4px 0; min-height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-align: left; outline-offset: 4px; }
-  .lf-stage:focus-visible { outline: 2px solid var(--cream); }
+  /* editorial.css's shared button:focus-visible carries outline-offset: 3px
+     and outranks the base rule, so the offset is set here alongside the
+     outline or it silently reverts. */
+  .lf-stage:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
   .lf-stage-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 1.5vw, 26px); line-height: 1.1; letter-spacing: -0.018em; color: rgba(252,250,241,.58); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-stage[aria-pressed="true"] .lf-stage-n { font-weight: 500; color: var(--cream); }
-  @media (hover: hover) { .lf-stage:hover .lf-stage-n { color: var(--cream); } }
-  .lf-tick { display: block; width: 1px; height: clamp(26px, 3vw, 44px); background: rgba(252,250,241,.3); }
+  /* The whole control answers the pointer, not just its name: the tick under
+     each stage lifts with it. Restrained by design — no fill, no box. */
+  @media (hover: hover) {
+    .lf-stage:hover .lf-stage-n { color: var(--cream); }
+    .lf-stage:hover .lf-tick { background: rgba(252,250,241,.66); }
+  }
+  .lf-tick { display: block; width: 1px; height: clamp(26px, 3vw, 44px); background: rgba(252,250,241,.3); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-stage[aria-pressed="true"] .lf-tick { background: var(--cream); }
   .lf-rule { position: absolute; left: 0; right: 0; bottom: 13px; height: 1px; background: rgba(252,250,241,.3); }
   .lf-progress { position: absolute; left: 0; bottom: 12.5px; width: var(--w, 0%); height: 2px; background: var(--cream); transition: width 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
@@ -86,9 +94,12 @@
   /* The square stays where the design puts it; the button around it is
      grown to a 44px target rather than the prototype's 41x31. */
   .lf-gate { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); appearance: none; background: none; border: 0; margin: 0; padding: 6px 0 0; width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: flex-start; cursor: pointer; outline-offset: 2px; }
-  .lf-gate:focus-visible { outline: 2px solid var(--cream); }
+  .lf-gate:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
   .lf-gate-sq { display: block; width: 9px; height: 9px; background: rgba(183,154,214,.55); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  @media (hover: hover) { .lf-gate:hover .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); } }
+  /* Hover brings the marker to full strength and rings it faintly; the
+     pressed state rings it twice as strongly and grows it. Focus outranks
+     both with a cream rule neither hover state draws. */
+  @media (hover: hover) { .lf-gate:hover .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.16); } }
   .lf-gate[aria-pressed="true"] .lf-gate-sq { width: 11px; height: 11px; background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.28); }
   .lf-key { display: flex; align-items: center; gap: 8px; }
   .lf-key-sq { display: block; width: 9px; height: 9px; background: var(--accent-sumire-light, #B79AD6); }
@@ -223,14 +234,23 @@
      A shallow band between the tests and the division of authority: the
      threshold of a London townhouse. Decorative, so it carries no caption
      and an empty alt. */
+  /* The frame sits on the same container every other section uses, rather
+     than stopping at an arbitrary 72vw. Its width is therefore constant at
+     1048px from 1240px up, which also caps the scaling: the source is 980px
+     wide, so it is drawn at 1.07x instead of the 1.41x the old 72vw reached
+     at 1920. The source is the full frame of the same photograph — same
+     980px width, but 1225px tall rather than a 524px slice, so the band is
+     chosen here by object-position instead of being baked into the file. */
   .ap-pause { padding: clamp(12px, 1.6vw, 28px) 0; }
-  .ap-pause-frame { width: 72%; height: clamp(240px, 17vw, 300px); overflow: hidden; background: #EDE7DC; }
-  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; display: block; }
+  .ap-pause-frame { width: 100%; height: clamp(240px, 17vw, 300px); overflow: hidden; background: #EDE7DC; }
+  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
   @media (max-width: 1024px) { .ap-pause-frame { height: clamp(210px, 21vw, 250px); } }
+  /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
+  @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
   @media (max-width: 760px) {
     .ap-pause { padding: 8px 0; }
     .ap-pause-frame { width: 100%; height: 250px; }
-    .ap-pause-frame img { object-position: 50% 50%; }
+    .ap-pause-frame img { object-position: 50% 84%; }
   }
   @media (max-width: 480px) { .ap-pause-frame { height: 230px; } }
 
@@ -509,8 +529,10 @@
 
 <!-- Architectural pause -->
 <div class="ap-pause" data-screen-label="04 Approach — architectural pause">
-  <div class="ap-pause-frame">
-    <img src="assets/imagery/approach-pause-townhouse.webp" alt="" width="980" height="524" loading="lazy" decoding="async">
+  <div class="shell">
+    <div class="ap-pause-frame">
+      <img src="assets/imagery/approach-pause-townhouse-full.webp" alt="" width="980" height="1225" loading="lazy" decoding="async">
+    </div>
   </div>
 </div>
 

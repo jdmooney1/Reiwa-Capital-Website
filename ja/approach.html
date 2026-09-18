@@ -91,13 +91,29 @@
   .lf-periods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 32px); }
   .lf-period { padding-bottom: 10px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: var(--jp); font-size: 13px; line-height: 1.4; color: rgba(252,250,241,.62); }
   .lf-track { position: relative; margin-top: clamp(24px, 2.6vw, 36px); padding-bottom: 14px; }
+  /* Japanese semantic tokens that must not split across lines. white-space:
+     nowrap is standards-based, so these hold in every engine rather than only
+     where word-break: auto-phrase is supported. Deliberately narrow: only the
+     terms measured splitting on this page, never whole paragraphs, because
+     protecting frequent words measurably worsens paragraph ragging. Compound
+     place names keep their break at the ・ — that break is correct. */
+  .jt { white-space: nowrap; }
+
   .lf-stages { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .lf-stage { appearance: none; background: none; border: 0; margin: 0; padding: 6px 4px 0; min-height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-align: left; outline-offset: 4px; }
-  .lf-stage:focus-visible { outline: 2px solid var(--cream); }
+  /* editorial.css's shared button:focus-visible carries outline-offset: 3px
+     and outranks the base rule, so the offset is set here alongside the
+     outline or it silently reverts. */
+  .lf-stage:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
   .lf-stage-n { font-family: var(--jp); font-weight: 400; font-size: clamp(15px, 1.3vw, 21px); line-height: 1.1; letter-spacing: -0.018em; color: rgba(252,250,241,.58); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-stage[aria-pressed="true"] .lf-stage-n { font-weight: 500; color: var(--cream); }
-  @media (hover: hover) { .lf-stage:hover .lf-stage-n { color: var(--cream); } }
-  .lf-tick { display: block; width: 1px; height: clamp(26px, 3vw, 44px); background: rgba(252,250,241,.3); }
+  /* The whole control answers the pointer, not just its name: the tick under
+     each stage lifts with it. Restrained by design — no fill, no box. */
+  @media (hover: hover) {
+    .lf-stage:hover .lf-stage-n { color: var(--cream); }
+    .lf-stage:hover .lf-tick { background: rgba(252,250,241,.66); }
+  }
+  .lf-tick { display: block; width: 1px; height: clamp(26px, 3vw, 44px); background: rgba(252,250,241,.3); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-stage[aria-pressed="true"] .lf-tick { background: var(--cream); }
   .lf-rule { position: absolute; left: 0; right: 0; bottom: 13px; height: 1px; background: rgba(252,250,241,.3); }
   .lf-progress { position: absolute; left: 0; bottom: 12.5px; width: var(--w, 0%); height: 2px; background: var(--cream); transition: width 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
@@ -105,9 +121,12 @@
   /* The square stays where the design puts it; the button around it is
      grown to a 44px target rather than the prototype's 41x31. */
   .lf-gate { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); appearance: none; background: none; border: 0; margin: 0; padding: 6px 0 0; width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: flex-start; cursor: pointer; outline-offset: 2px; }
-  .lf-gate:focus-visible { outline: 2px solid var(--cream); }
+  .lf-gate:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
   .lf-gate-sq { display: block; width: 9px; height: 9px; background: rgba(183,154,214,.55); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  @media (hover: hover) { .lf-gate:hover .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); } }
+  /* Hover brings the marker to full strength and rings it faintly; the
+     pressed state rings it twice as strongly and grows it. Focus outranks
+     both with a cream rule neither hover state draws. */
+  @media (hover: hover) { .lf-gate:hover .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.16); } }
   .lf-gate[aria-pressed="true"] .lf-gate-sq { width: 11px; height: 11px; background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.28); }
   .lf-key { display: flex; align-items: center; gap: 8px; }
   .lf-key-sq { display: block; width: 9px; height: 9px; background: var(--accent-sumire-light, #B79AD6); }
@@ -244,14 +263,23 @@
      A shallow band between the tests and the division of authority: the
      threshold of a London townhouse. Decorative, so it carries no caption
      and an empty alt. */
+  /* The frame sits on the same container every other section uses, rather
+     than stopping at an arbitrary 72vw. Its width is therefore constant at
+     1048px from 1240px up, which also caps the scaling: the source is 980px
+     wide, so it is drawn at 1.07x instead of the 1.41x the old 72vw reached
+     at 1920. The source is the full frame of the same photograph — same
+     980px width, but 1225px tall rather than a 524px slice, so the band is
+     chosen here by object-position instead of being baked into the file. */
   .ap-pause { padding: clamp(12px, 1.6vw, 28px) 0; }
-  .ap-pause-frame { width: 72%; height: clamp(240px, 17vw, 300px); overflow: hidden; background: #EDE7DC; }
-  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; display: block; }
+  .ap-pause-frame { width: 100%; height: clamp(240px, 17vw, 300px); overflow: hidden; background: #EDE7DC; }
+  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
   @media (max-width: 1024px) { .ap-pause-frame { height: clamp(210px, 21vw, 250px); } }
+  /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
+  @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
   @media (max-width: 760px) {
     .ap-pause { padding: 8px 0; }
     .ap-pause-frame { width: 100%; height: 250px; }
-    .ap-pause-frame img { object-position: 50% 50%; }
+    .ap-pause-frame img { object-position: 50% 84%; }
   }
   @media (max-width: 480px) { .ap-pause-frame { height: 230px; } }
 
@@ -308,7 +336,7 @@
 <!-- Investment lifecycle -->
 <section class="ap-sec" data-screen-label="02 投資アプローチ — 投資プロセス" aria-labelledby="lf-title">
   <div class="shell ap-intro">
-    <h2 class="ap-h2 ap-h2--huge" id="lf-title">一つのマンデート、六つの段階</h2>
+    <h2 class="ap-h2 ap-h2--huge" id="lf-title">一つの<span class="jt">マンデート</span>、六つの段階</h2>
     <p class="ap-lede">投資の定義から、保有、そして売却まで</p>
   </div>
   <div class="lf-wrap" data-lifecycle>
@@ -531,8 +559,10 @@
 
 <!-- Architectural pause -->
 <div class="ap-pause" data-screen-label="04 投資アプローチ — 建築のあいだ">
-  <div class="ap-pause-frame">
-    <img src="../assets/imagery/approach-pause-townhouse.webp" alt="" width="980" height="524" loading="lazy" decoding="async">
+  <div class="shell">
+    <div class="ap-pause-frame">
+      <img src="../assets/imagery/approach-pause-townhouse-full.webp" alt="" width="980" height="1225" loading="lazy" decoding="async">
+    </div>
   </div>
 </div>
 
@@ -601,6 +631,33 @@
   {n:'価格と下方リスク',k:'市場の追い風に頼らずとも、リターンは許容水準にとどまるか。',p:['再調達価格と長期収益に対する取得価格の位置','出口利回りと調達コストに対する感応度','環境が改善しない場合に残る成果']},
   {n:'実行と出口',k:'事業計画を実行し、統制し、最終的に回収できるか。',p:['現地の実行体制と責任範囲','保有期間に投資家へ留保される判断','回収時に想定される買い手の類型']}
   ];
+  /* The lifecycle and test copy is injected from the arrays above via
+     textContent, so it cannot carry <span class="jt"> the way static markup
+     does. Re-wrap the protected tokens after each paint instead: one pass
+     over the element's text nodes, splitting on the token list. */
+  var JT = ['\u30a2\u30c9\u30d0\u30a4\u30b6\u30fc','\u30ac\u30d0\u30ca\u30f3\u30b9','\u30b9\u30c8\u30e9\u30af\u30c1\u30e3\u30fc','\u30c7\u30e5\u30fc\u30c7\u30ea\u30b8\u30a7\u30f3\u30b9','\u30de\u30f3\u30c7\u30fc\u30c8','\u30ea\u30b9\u30af','\u30ec\u30f3\u30c0\u30fc'];
+  var JT_RE = new RegExp('(' + JT.join('|') + ')', 'g');
+  function protect(el) {
+    if (!el) return;
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [], n;
+    while ((n = w.nextNode())) nodes.push(n);
+    nodes.forEach(function (node) {
+      if (node.parentNode && node.parentNode.classList && node.parentNode.classList.contains('jt')) return;
+      var t = node.nodeValue;
+      if (!JT_RE.test(t)) { JT_RE.lastIndex = 0; return; }
+      JT_RE.lastIndex = 0;
+      var frag = document.createDocumentFragment(), last = 0, m;
+      while ((m = JT_RE.exec(t))) {
+        if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+        var sp = document.createElement('span'); sp.className = 'jt'; sp.textContent = m[0];
+        frag.appendChild(sp);
+        last = m.index + m[0].length;
+      }
+      if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
   var L = { held: '投資家に留保' };
   var IDLE = { n: '順序ではなく、同時に検討します', k: '各観点を選ぶと、確認する問いと主な検討事項が表示されます' };
   var DEFAULT_STAGE = 4;
@@ -682,6 +739,7 @@
           li.appendChild(n); li.appendChild(b); f.roleItems.appendChild(li);
         });
       }
+      [f.name, f.purpose, f.outputV, f.approvalV, f.roleTitle, f.roleItems].forEach(protect);
     }
     function setStage(i) { stage = i; gate = null; paint(); }
     /* An approval point is a way into the stage it governs. */
@@ -733,6 +791,7 @@
       if (t) t.p.forEach(function (x) {
         var li = document.createElement('li'); li.textContent = x; pp.appendChild(li);
       });
+      [pn, pa, pp].forEach(protect);
     }
     function toggle(i) { sel = (sel === i) ? null : i; paintTests(); }
     names.forEach(function (b) {
@@ -749,6 +808,11 @@
     tw._reset = function () { if (sel !== START) { sel = START; paintTests(); } };
   }
 
+  /* Static markup (the mobile spine, the section headings) carries the same
+     tokens as the injected copy, so protect the whole component once before
+     the panels are measured — nowrap changes where lines fall, and the floor
+     must be measured against the final wrapping. */
+  protect(lf); protect(tw);
   relockAll();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relockAll);
   var t = 0;

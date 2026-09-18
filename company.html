@@ -51,7 +51,11 @@
   /* The nav sits in flow above this head, so the padding does not add the
      nav height again the way the art-directed heads do. */
   .co-open .inner { padding: clamp(42px, 4vw, 60px) var(--gutter) clamp(24px, 2.4vw, 34px); }
-  .co-sheet { max-width: min(100%, 880px); }
+  /* The page used an 880px measure while every other page runs on the site
+     container's 1048px content column, so the measure visibly changed on
+     navigation. The shell now sets the width; long prose keeps its own cap
+     below, rather than being stretched to the full column. */
+  .co-sheet { max-width: none; }
   .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(29px, 22px + 1.55vw, 44px); line-height: 1.14; letter-spacing: -0.018em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 30ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   .co-open .sub { margin: clamp(14px, 1.5vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .co-profile { min-width: 0; margin-top: clamp(28px, 3vw, 42px); }
@@ -62,15 +66,20 @@
   }
 
   /* --- Section scaffold ------------------------------------------------
-     One idiom, four times: a quiet label, then a rule-topped list whose rows
-     are divided by hairlines. The page is a reference sheet and should read
-     as one continuous document, so nothing is separated by a band rule —
-     the lists do that work themselves. */
-  .co-sec { padding: clamp(30px, 3vw, 44px) 0 0; border-top: 0; }
+     One idiom, four times: a section heading, then a rule-topped list whose
+     rows are divided by hairlines. Four sections read as a single table when
+     a 13px grey label is all that divides them, so the separation is space
+     and a real heading rather than another band rule — the page already
+     carries a hairline on every row, and more of them would make it read
+     more like a table, not less. */
+  .co-sec { padding: clamp(46px, 5vw, 76px) 0 0; border-top: 0; }
   .co-sec:last-of-type { padding-bottom: clamp(48px, 4.6vw, 66px); }
-  .co-row { display: block; max-width: min(100%, 880px); }
-  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0 0 clamp(10px, 1.1vw, 14px); padding-top: 0; }
-  @media (max-width: 760px) { .co-sec { padding-top: 26px; } }
+  .co-row { display: block; max-width: none; }
+  /* A section heading, not an eyebrow: it has to outrank the 22px <h3>s in
+     the contact block it sits above. Still well below the 38-46px the
+     strategy pages use, so Company stays the quietest page on the site. */
+  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 16px + 0.85vw, 26px); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 clamp(16px, 1.8vw, 24px); padding-top: 0; }
+  @media (max-width: 760px) { .co-sec { padding-top: 38px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
@@ -78,7 +87,7 @@
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
   .co-table > div { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
   .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-table dd { margin: 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -89,7 +98,7 @@
   .co-acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-acts li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .co-acts .t { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-acts .t { max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
 
   /* --- 4 · Operating model ----------------------------------------------
      Three tiers, read top to bottom. The order is the argument: the investor
@@ -99,13 +108,22 @@
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
-  .co-tier-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
-  .co-tiers > li:first-child .co-tier-n { color: var(--ink); }
-  .co-tier-d { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-tier-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+  .co-tier-d { margin: 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .co-lockup { display: block; height: 18px; width: auto; }
-  .co-model-note { margin: clamp(14px, 1.6vw, 20px) 0 0; max-width: 48ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+  /* Sits in the value column under the tiers, so it reads as a note on the
+     operating model rather than a paragraph floating at the page margin. */
+  /* max-width and font-size are re-declared because the shared `p, .p` base
+     rule carries both; without them the note keeps --measure and --text-base,
+     which caps this grid at 533px and puts its 20ch track out of step with
+     the tier rows above. font-size: inherit matches the rows' context so the
+     note's label column lines up with theirs exactly. */
+  .co-model-note { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
+  .co-model-note > span { grid-column: 2; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
   @media (max-width: 760px) {
     .co-acts li, .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
+    .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .co-model-note > span { grid-column: 1; }
   }
 
   /* --- 5 · Contact ------------------------------------------------------
@@ -127,9 +145,12 @@
   .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
   .co-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.18; letter-spacing: -0.012em; color: var(--ink); }
   .co-col p { margin: 9px 0 0; max-width: 30ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 6px 0 5px; min-height: 32px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 11px 0 10px; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
   .co-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
-  @media (hover: hover) { .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--ink); } }
+  /* Hover answers in the label as well as the arrow, matching the general
+     contact links above. Air only — still no button, fill or border. */
+  @media (hover: hover) { .co-cta:hover { color: var(--reiwa-node, #5E3D78); } .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+  .co-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .co-sec.co-contact { padding-bottom: clamp(48px, 4.6vw, 66px); }
   @media (max-width: 900px) {
     .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
@@ -206,7 +227,7 @@
           <li><span class="co-tier-n"><img class="co-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">Investment underwriting, transaction coordination and ongoing ownership oversight.</p></li>
           <li><span class="co-tier-n">London / Amsterdam execution network</span><p class="co-tier-d">Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of each investment.</p></li>
         </ol>
-        <p class="co-model-note">Reiwa Capital maintains the investor-side investment view and coordinates the workstreams required to execute and oversee each investment. Legal, tax, accounting, valuation, technical, financing, leasing, property management and other specialist services are provided by separately appointed professional advisers and service providers.</p>
+        <p class="co-model-note"><span>Reiwa Capital maintains the investor-side investment view and coordinates the workstreams required to execute and oversee each investment. Legal, tax, accounting, valuation, technical, financing, leasing, property management and other specialist services are provided by separately appointed professional advisers and service providers.</span></p>
       </div>
     </div>
   </div>
