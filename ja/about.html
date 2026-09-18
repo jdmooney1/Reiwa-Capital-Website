@@ -200,7 +200,7 @@
   .am-panel--snapshot .am-note { margin-top: 8px; }
   .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   .am-panel--snapshot .am-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
-  .am-panel--snapshot .am-facts > div { padding: 12px 0 14px; border-top: 0; }
+  .am-panel--snapshot .am-facts > div { padding: 10px 0 12px; border-top: 0; }
   .am-panel--snapshot .am-facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
   .am-panel--snapshot .am-facts dd { font-size: 14px; line-height: 1.75; }
   .am-panel--snapshot .am-subs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 2px; font-size: 13.5px; line-height: 1.6; }
@@ -282,9 +282,9 @@
   }
   .am-hit path { fill: rgba(0,0,0,0); stroke: none; stroke-width: 0; cursor: pointer; transition: fill 160ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); vector-effect: non-scaling-stroke; }
   .am-hit path[data-on="hover"][data-core="1"] { fill: rgba(252,250,241,.13); }
-  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.24); stroke: #FCFAF1; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.34); stroke: #FCFAF1; stroke-width: 2.4; }
   .am-hit path[data-on="hover"][data-core="0"] { fill: rgba(39,20,48,.10); }
-  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.20); stroke: #271430; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.28); stroke: #271430; stroke-width: 2.4; }
   /* The selected area is named under the map, with its classification. The
      row keeps its height whether or not anything is selected. */
   .am-active { margin-top: 12px; min-height: 52px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -301,6 +301,15 @@
   .am-sub[aria-pressed="true"] { color: var(--ink); font-weight: 500; border-bottom-color: var(--ink); }
   @media (max-width: 760px) { .am-sub { padding: 8px 0; min-height: 44px; } }
   @media (prefers-reduced-motion: reduce) { .am-hit path, .am-sub { transition: none; } }
+  /* Japanese line breaking: break at phrase boundaries so a katakana word is
+     never split across lines (サザー|ク, プ|ライム, マーケッ|ト). Measured on
+     this page against keep-all + overflow-wrap:anywhere, which removed the same
+     splits but introduced new emergency breaks at 320px. Browsers without
+     auto-phrase fall back to the current behaviour, so nothing regresses. */
+  .h-body, .ab-grp, .aw-spec, .aw-inv-note, .aw-stage, .aw-sp-n, .aw-sp-s,
+  .am-tab, .am-sub, .am-name, .am-focus, .ac-item p, .ab-lede, .sub {
+    word-break: auto-phrase;
+  }
   </style>
 </head>
 <body data-page="about" data-locale="ja" data-en-url="/about.html">
@@ -360,7 +369,7 @@
         </div>
         <div class="aw-specs">
         <span class="aw-spec">仲介・法務</span>
-        <span class="aw-spec">プロパティマネジメント</span>
+        <span class="aw-spec">プロパティ<wbr>マネジメント</span>
         <span class="aw-spec">貸し手・鑑定</span>
         <span class="aw-spec">仲介・法務</span>
         </div>
@@ -380,7 +389,7 @@
           </div>
           <div class="aw-sp-rows">
             <div class="aw-sp-row"><span class="aw-sp-n">取得</span><span class="aw-sp-s">仲介・法務</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">保有</span><span class="aw-sp-s">プロパティマネジメント</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">保有</span><span class="aw-sp-s">プロパティ<wbr>マネジメント</span></div>
             <div class="aw-sp-row"><span class="aw-sp-n">借換え</span><span class="aw-sp-s">貸し手・鑑定</span></div>
             <div class="aw-sp-row"><span class="aw-sp-n">売却</span><span class="aw-sp-s">仲介・法務</span></div>
           </div>
@@ -449,7 +458,7 @@
           <span class="ab-grp ab-grp--core" style="--x:67%;--y:45%;--xt:67%;--yt:45.5%" aria-hidden="true">シティ・オブ・ロンドン</span>
           <span class="ab-grp ab-grp--sel" style="--x:45%;--y:40%;--xt:45%;--yt:41.6%" aria-hidden="true">ミッドタウン</span>
           <span class="ab-grp ab-grp--sel" style="--x:64%;--y:30%;--xt:64%;--yt:33.2%" aria-hidden="true">シティ・フリンジ</span>
-          <span class="ab-grp ab-grp--sel" style="--x:56%;--y:58%;--xt:56%;--yt:56.7%;--w:132px" aria-hidden="true">サウスバンク／サザーク</span>
+          <span class="ab-grp ab-grp--sel" style="--x:56%;--y:58%;--xt:56%;--yt:56.7%;--w:132px" aria-hidden="true">サウスバンク／<wbr>サザーク</span>
           </div>
 
           <ul class="am-legend">
