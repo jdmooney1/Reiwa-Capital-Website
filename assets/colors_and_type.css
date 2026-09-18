@@ -211,7 +211,7 @@
      characters). Long-form body maps to --measure; lead / intro lines that
      run at larger type stay narrower on --measure-lead so their physical
      width matches. Headings and side-notes keep their own tight measures. */
-  --measure:      66ch;
+  --measure:      52ch;
   --measure-lead: 38ch;
   /* ---- THREE deliberate content widths, one system. Everything that caps
      its width picks one of these — never a bare px value at the instance.

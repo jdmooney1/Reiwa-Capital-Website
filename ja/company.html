@@ -27,12 +27,12 @@
 <meta name="twitter:description" content="Reiwa Capitalは、東京を拠点に、日本の投資家側に立って欧州不動産投資を支援します。ロンドンとアムステルダムを中心に、投資分析、取得・資金調達の調整、保有期間中のモニタリングと投資家向けレポーティングを行います。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=82">
+<link rel="stylesheet" href="../editorial.css?v=83">
 <link rel="stylesheet" href="../brand.css?v=7">
-<link rel="stylesheet" href="../craft.css?v=24">
+<link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/company.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -71,8 +71,12 @@
   /* The nav sits in flow above this head, so the padding does not add the
      nav height again the way the art-directed heads do. */
   .co-open .inner { padding: clamp(42px, 4vw, 60px) var(--gutter) clamp(24px, 2.4vw, 34px); }
-  .co-sheet { max-width: min(100%, 880px); }
-  .co-open h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(20px, 15px + 0.8vw, 26px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 22em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
+  /* The page used an 880px measure while every other page runs on the site
+     container's 1048px content column, so the measure visibly changed on
+     navigation. The shell now sets the width; long prose keeps its own cap
+     below, rather than being stretched to the full column. */
+  .co-sheet { max-width: none; }
+  .co-open h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(24px, 18px + 1.4vw, 39px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 22em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   .co-open .sub { margin: clamp(14px, 1.5vw, 20px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-profile { min-width: 0; margin-top: clamp(28px, 3vw, 42px); }
   .co-profile .co-label { margin-bottom: clamp(10px, 1.1vw, 14px); }
@@ -82,23 +86,36 @@
   }
 
   /* --- Section scaffold ------------------------------------------------
-     One idiom, four times: a quiet label, then a rule-topped list whose rows
-     are divided by hairlines. The page is a reference sheet and should read
-     as one continuous document, so nothing is separated by a band rule —
-     the lists do that work themselves. */
-  .co-sec { padding: clamp(30px, 3vw, 44px) 0 0; border-top: 0; }
+     One idiom, four times: a section heading, then a rule-topped list whose
+     rows are divided by hairlines. Four sections read as a single table when
+     a 13px grey label is all that divides them, so the separation is space
+     and a real heading rather than another band rule — the page already
+     carries a hairline on every row, and more of them would make it read
+     more like a table, not less. */
+  .co-sec { padding: clamp(46px, 5vw, 76px) 0 0; border-top: 0; }
   .co-sec:last-of-type { padding-bottom: clamp(48px, 4.6vw, 66px); }
-  .co-row { display: block; max-width: min(100%, 880px); }
-  .co-label { display: block; font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.6; text-transform: none; color: var(--ink-3); margin: 0 0 clamp(10px, 1.1vw, 14px); padding-top: 0; }
-  @media (max-width: 760px) { .co-sec { padding-top: 26px; } }
+  .co-row { display: block; max-width: none; }
+  /* A section heading, not an eyebrow: it has to outrank the 19px <h3>s in
+     the contact block it sits above. Still well below the 31-35px the
+     strategy pages use, so Company stays the quietest page on the site. */
+  .co-label { display: block; font-family: var(--font-jp-serif); font-size: clamp(17px, 14px + 0.7vw, 22px); font-weight: 500; letter-spacing: 0.01em; line-height: 1.5; text-transform: none; color: var(--ink); margin: 0 0 clamp(16px, 1.8vw, 24px); padding-top: 0; }
+  @media (max-width: 760px) { .co-sec { padding-top: 38px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
      quiet and small; the value is read at body size, not promoted. */
+  /* Japanese semantic tokens that must not split across lines. white-space:
+     nowrap is standards-based, so these hold in every engine rather than only
+     where word-break: auto-phrase is supported. Only the terms measured
+     splitting on this page are protected. Compound place names keep their
+     break at the ・, and プロパティ／マネジメント stay separate spans so a
+     break between the two words remains possible. */
+  .jt { white-space: nowrap; }
+
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
   .co-table > div { display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
   .co-table dt { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .co-table dd { margin: 0; max-width: 44em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -109,7 +126,7 @@
   .co-acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-acts li { display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-acts .n { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .co-acts .t { font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .co-acts .t { max-width: 44em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
 
   /* --- 4 · Operating model ----------------------------------------------
      Three tiers, read top to bottom. The order is the argument: the investor
@@ -119,13 +136,22 @@
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
-  .co-tier-n { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
-  .co-tiers > li:first-child .co-tier-n { color: var(--ink); }
-  .co-tier-d { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .co-tier-n { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+  .co-tier-d { margin: 0; max-width: 44em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-lockup { display: block; height: 18px; width: auto; }
-  .co-model-note { margin: clamp(14px, 1.6vw, 20px) 0 0; max-width: 42em; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); }
+  /* Sits in the value column under the tiers, so it reads as a note on the
+     operating model rather than a paragraph floating at the page margin. */
+  /* max-width and font-size are re-declared because the shared `p, .p` base
+     rule carries both; without them the note keeps --measure and --text-base,
+     which caps this grid at 533px and puts its 20ch track out of step with
+     the tier rows above. font-size: inherit matches the rows' context so the
+     note's label column lines up with theirs exactly. */
+  .co-model-note { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
+  .co-model-note > span { grid-column: 2; max-width: 44em; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); }
   @media (max-width: 760px) {
     .co-acts li, .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
+    .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .co-model-note > span { grid-column: 1; }
   }
 
   /* --- 5 · Contact ------------------------------------------------------
@@ -147,9 +173,12 @@
   .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
   .co-col h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); }
   .co-col p { margin: 9px 0 0; max-width: 30ch; font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 6px 0 5px; min-height: 32px; font-family: var(--jp); font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 11px 0 10px; min-height: 44px; font-family: var(--jp); font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
   .co-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
-  @media (hover: hover) { .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--ink); } }
+  /* Hover answers in the label as well as the arrow, matching the general
+     contact links above. Air only — still no button, fill or border. */
+  @media (hover: hover) { .co-cta:hover { color: var(--reiwa-node, #5E3D78); } .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+  .co-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .co-sec.co-contact { padding-bottom: clamp(48px, 4.6vw, 66px); }
   @media (max-width: 900px) {
     .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
@@ -189,15 +218,15 @@
   <div class="inner">
     <div class="co-sheet">
         <h1>事業概要</h1>
-        <p class="sub">日本の投資家側に立った、欧州不動産のアドバイザリーと保有期間中のモニタリング。</p>
+        <p class="sub">日本の投資家側に立った、欧州不動産の<span class="jt">アドバイザリー</span>と保有期間中の<span class="jt">モニタリング</span>。</p>
       <section class="co-profile" aria-labelledby="cp-label">
         <h2 class="co-label" id="cp-label">基本情報</h2>
       <dl class="co-table">
         <div><dt>名称</dt><dd>Reiwa Capital</dd></div>
         <div><dt>拠点</dt><dd>東京、日本</dd></div>
         <div><dt>対象市場</dt><dd>英国、オランダ</dd></div>
-        <div><dt>対象投資家</dt><dd>日本の事業会社、機関投資家、プライベート投資家</dd></div>
-        <div><dt>事業内容</dt><dd>日本の投資家側に立った欧州不動産投資のアドバイザリー、および保有期間中のモニタリングと投資家向けレポーティング</dd></div>
+        <div><dt>対象投資家</dt><dd>日本の事業会社、機関投資家、<span class="jt">プライベート</span>投資家</dd></div>
+        <div><dt>事業内容</dt><dd>日本の投資家側に立った欧州不動産投資の<span class="jt">アドバイザリー</span>、および保有期間中の<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング</span></dd></div>
       </dl>
       </section>
     </div>
@@ -214,7 +243,7 @@
         <li><span class="n">02</span><span class="t">投資機会の発掘と投資分析・審査</span></li>
         <li><span class="n">03</span><span class="t">デューデリジェンスと取得プロセスの調整</span></li>
         <li><span class="n">04</span><span class="t">資金調達の調整と保有ストラクチャーの設計</span></li>
-        <li><span class="n">05</span><span class="t">保有期間中の事業計画モニタリングと投資家向けレポーティング</span></li>
+        <li><span class="n">05</span><span class="t">保有期間中の事業計画<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング</span></span></li>
         <li><span class="n">06</span><span class="t">借換えと売却・出口戦略の策定</span></li>
       </ol>
     </div>
@@ -229,10 +258,10 @@
       <div class="co-model">
         <ol class="co-tiers">
           <li><span class="co-tier-n">日本の投資家</span><p class="co-tier-d">投資目的、投資基準、社内での意思決定の進め方を整理します。重要な投資判断は、投資家が行います。</p></li>
-          <li><span class="co-tier-n"><img class="co-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">投資分析・審査、取得と資金調達の調整、保有期間中の事業計画モニタリングを通じて、投資家の意思決定を支援します。</p></li>
-          <li><span class="co-tier-n">ロンドン・アムステルダムの専門家ネットワーク</span><p class="co-tier-d">法務、税務、鑑定評価、技術、ファイナンス、リーシング、建物管理・運営の各分野において、案件ごとに外部専門家を選任します。</p></li>
+          <li><span class="co-tier-n"><img class="co-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">投資分析・審査、取得と資金調達の調整、保有期間中の事業計画<span class="jt">モニタリング</span>を通じて、投資家の意思決定を支援します。</p></li>
+          <li><span class="co-tier-n">ロンドン・アムステルダムの専門家<span class="jt">ネットワーク</span></span><p class="co-tier-d">法務、税務、鑑定評価、技術、<span class="jt">ファイナンス</span>、<span class="jt">リーシング</span>、建物管理・運営の各分野において、案件ごとに外部専門家を選任します。</p></li>
         </ol>
-        <p class="co-model-note">法務、税務、会計、鑑定評価その他の専門的助言は、選任された専門アドバイザーが行います。</p>
+        <p class="co-model-note"><span>Reiwa Capitalは、投資家側の視点を維持し、各投資の実行および保有に必要な業務を一体的に調整します。法務、税務、会計、鑑定評価、技術、資金調達、<span class="jt">リーシング</span>、<span class="jt">プロパティ</span><span class="jt">マネジメント</span>その他の専門業務は、別途選任された専門家および<span class="jt">サービス</span>提供者が行います。</span></p>
       </div>
     </div>
   </div>
@@ -281,7 +310,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=73"></script>
+<script src="../shell.js?v=74"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

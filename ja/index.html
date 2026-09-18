@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="日本の投資家側に立った、欧州不動産のアドバイザリーと保有期間中のモニタリング。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=22">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../editorial.css?v=83">
@@ -55,7 +55,12 @@
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
   .h-eyebrow { font-family: var(--font-jp); font-size: 13px; line-height: 1.6; letter-spacing: 0; text-transform: none; }
-  .h-h2 { font-family: var(--font-jp-serif); line-height: 1.42; letter-spacing: 0.004em; }
+  .h-h2 { font-family: var(--font-jp-serif); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  @media (max-width: 400px) {
+    /* Japanese has no inter-word space to absorb a short last line: at the
+       shared 26px floor an 11-character clause orphans one character. */
+    .h-h2 { font-size: 21px; }
+  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
@@ -71,14 +76,13 @@
      second clause takes at most two — measured, not guessed. The hero keeps
      the tighter gutter the English hero uses to buy that room. */
   @media (max-width: 760px) {
-    .home-hero .inner { padding-left: 16px; padding-right: 16px; padding-bottom: clamp(52px, 8vh, 72px); }
+    .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
     .home-hero h1 { font-size: clamp(27px, 8vw, 34px); line-height: 1.34; letter-spacing: 0.004em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
     .home-hero .loc { margin-top: 28px; }
   }
   @media (max-width: 340px) {
-    .home-hero .inner { padding-left: 14px; padding-right: 14px; }
-    .home-hero h1 { font-size: 26px; }
+    .home-hero h1 { font-size: 25px; }
   }
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
@@ -219,6 +223,10 @@
     .hp .shell { padding-top: 60px; }
     .hp-grid { grid-template-columns: 1fr; margin-top: 28px; }
     .hp-item, .hp-item:nth-child(even) { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); grid-template-columns: 1fr; }
+    /* The two-column rule that drops the last ROW's border outranks the line
+       above, which left the third principle without a divider once the grid
+       is one column. Restore it here; only the true last item goes borderless. */
+    .hp-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
     .hp-item:last-child { border-bottom: 0; }
     .hp-item p { max-width: none; }
   }
@@ -229,7 +237,7 @@
   .hf-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
   .hf-sub { margin-top: 10px; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); }
   .hf-link { display: inline-flex; align-items: center; gap: 10px; font-family: var(--jp); font-size: 14px; font-weight: 500; color: var(--ink); text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid var(--rule-strong); transition: border-color 220ms var(--ease-out); }
-  .hf-sub, .hf-link { white-space: nowrap; }
+  .hf-link { white-space: nowrap; }
   .hf-link:hover { border-color: var(--ink); }
   @media (hover: hover) { .hf-link:hover .h-arrow { transform: translateX(4px); } }
   .hf-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 44px); margin-top: clamp(36px, 4vw, 56px); }
@@ -271,11 +279,14 @@
     .hf .shell { padding-top: 60px; }
     .hf-head { flex-direction: column; align-items: flex-start; }
     .hf-grid { margin-top: 32px; gap: 36px; }
-    .hf-media.r-frame::before { left: -6px; } .hf-media.r-frame::after { right: -6px; }
   }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
   .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
+  /* The only break point is the <wbr> after the comma, so the heading splits
+     at its phrase join instead of inside 欧州. overflow-wrap is the safety
+     valve: enlarged text still reflows rather than overflowing. */
+  .hi-statement { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   </style>
 </head>
 <body data-page="home" data-locale="ja" data-en-url="/" data-ja-url="/ja/">
@@ -303,7 +314,7 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title">投資家の立場から、欧州不動産を考える。</h2>
+      <h2 class="hi-statement" id="hi-title">投資家の立場から、<wbr>欧州不動産を考える。</h2>
       <p class="h-body hi-support">投資分析・審査、現地との連携・調整、保有期間中の事業計画モニタリングにより、取得から売却までの投資を支えます。重要な投資判断は、投資家が行います。</p>
     </div>
     <div class="hi-cols">
@@ -353,13 +364,13 @@
         <div class="hm-panels">
           <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
             <h3 class="hm-city">ロンドン</h3>
-            <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。インカムとリポジショニングの双方に機会があります。</p>
+            <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。収益型と再生型の双方に機会があります。</p>
             <ul class="hm-attrs"><li>世界的な流動性</li><li>厚みのあるテナント市場</li><li>一棟所有が可能な希少物件</li><li>明確な権利関係</li><li>確立された融資市場</li><li>幅広い買い手層</li></ul>
           </div>
           <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
             <h3 class="hm-city">アムステルダム</h3>
             <p class="h-body hm-copy">供給が限られたコンパクトな市場。厳格な都市計画、堅調なテナント需要、そして機関投資家層の厚みが、立地と品質の高い物件を支えます。</p>
-            <ul class="hm-attrs"><li>限られた供給</li><li>機関投資家層の厚み</li><li>厳格な都市計画</li><li>希少な歴史的建築ストック</li><li>底堅いテナント需要</li><li>コンパクトな中心市街地</li></ul>
+            <ul class="hm-attrs"><li>限られた供給</li><li>機関投資家層の厚み</li><li>厳格な都市計画</li><li>希少な歴史的建築</li><li>底堅いテナント需要</li><li>コンパクトな中心市街地</li></ul>
           </div>
         </div>
       </div>
@@ -390,22 +401,22 @@
     <div class="hf-head">
       <div>
         <h2 class="h-h2" id="hf-title">投資方針</h2>
-        <p class="h-body hf-sub">三つの投資領域。</p>
+        <p class="h-body hf-sub">二つの中核戦略と、一つの選択的な応用領域。</p>
       </div>
       <a class="hf-link" href="investment-focus.html">投資方針の詳細 <svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg></a>
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
-        <span class="hf-media r-frame"><img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 30vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観"></span>
-        <span class="hf-cap"><h3>インカム</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフロー。</p></span>
+        <span class="hf-media"><img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 30vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観"></span>
+        <span class="hf-cap"><h3>収益型</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフロー。</p></span>
       </a>
       <a class="hf-item" href="investment-focus.html#repositioning">
-        <span class="hf-media r-frame"><img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 30vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物"></span>
-        <span class="hf-cap"><h3>リポジショニング</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">重点的な資本投下と継続的な関与により、収益や価値を改善できる物件。</p></span>
+        <span class="hf-media"><img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 30vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物"></span>
+        <span class="hf-cap"><h3>再生型</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">重点的な資本投下と継続的な関与により、収益や価値を改善できる物件。</p></span>
       </a>
       <a class="hf-item" href="investment-focus.html#hospitality">
-        <span class="hf-media r-frame"><img src="../assets/imagery/bg-hospitality-800.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 30vw" width="952" height="1269" loading="lazy" decoding="async" alt="夜間にライトアップされたホテルの角の外観"></span>
-        <span class="hf-cap"><h3>ホスピタリティ</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">不動産の基礎力と運営が、長期的な価値を支える物件。</p></span>
+        <span class="hf-media"><img src="../assets/imagery/bg-hospitality-800.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 30vw" width="952" height="1269" loading="lazy" decoding="async" alt="夜間にライトアップされたホテルの角の外観"></span>
+        <span class="hf-cap"><h3>選択的なホスピタリティ</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">不動産そのもの、地域の需要、運営の構想が互いを高め合う、際立った物件。</p></span>
       </a>
     </div>
   </div>

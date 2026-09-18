@@ -25,12 +25,12 @@
 <meta name="twitter:description" content="Reiwa Capital is built to give Japanese investors continuity across the acquisition and ownership of European real estate, with deep focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=21">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=23">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=82">
+<link rel="stylesheet" href="editorial.css?v=83">
 <link rel="stylesheet" href="brand.css?v=7">
-<link rel="stylesheet" href="craft.css?v=24">
+<link rel="stylesheet" href="craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/about.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -67,7 +67,7 @@
   .ab-sec { padding: 0 0 clamp(56px, 5.4vw, 84px); }
   .ab-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .ab-head { max-width: 1060px; }
-  .ab-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 50ch; }
+  .ab-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 50ch; text-wrap: balance; }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · Why Reiwa exists: the continuity switch --------------------------
@@ -171,7 +171,7 @@
   .am-facts { margin: clamp(20px, 2.2vw, 26px) 0 0; }
   .am-facts > div { padding: 14px 0; border-top: 1px solid var(--rule); }
   .am-facts > div:first-child { border-top: 0; padding-top: 0; }
-  .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0 0 8px; }
+  .am-facts dt { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0 0 6px; }
   .am-facts dd { margin: 0; }
   .am-subs { color: var(--ink); }
   /* Market snapshot shell — London now, Amsterdam in the next pass. Map and
@@ -183,7 +183,7 @@
   .am-panel--snapshot .am-note { margin-top: 8px; }
   .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   .am-panel--snapshot .am-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
-  .am-panel--snapshot .am-facts > div { padding: 12px 0 14px; border-top: 0; }
+  .am-panel--snapshot .am-facts > div { padding: 10px 0 12px; border-top: 0; }
   .am-panel--snapshot .am-facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
   .am-panel--snapshot .am-facts dd { font-size: 15px; line-height: 1.55; }
   .am-panel--snapshot .am-subs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 2px; font-size: 14px; line-height: 1.45; }
@@ -265,9 +265,9 @@
   }
   .am-hit path { fill: rgba(0,0,0,0); stroke: none; stroke-width: 0; cursor: pointer; transition: fill 160ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); vector-effect: non-scaling-stroke; }
   .am-hit path[data-on="hover"][data-core="1"] { fill: rgba(252,250,241,.13); }
-  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.24); stroke: #FCFAF1; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.34); stroke: #FCFAF1; stroke-width: 2.4; }
   .am-hit path[data-on="hover"][data-core="0"] { fill: rgba(39,20,48,.10); }
-  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.20); stroke: #271430; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.28); stroke: #271430; stroke-width: 2.4; }
   /* The selected area is named under the map, with its classification. The
      row keeps its height whether or not anything is selected. */
   .am-active { margin-top: 12px; min-height: 44px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -678,7 +678,7 @@
   });
 })();
 </script>
-<script src="shell.js?v=73"></script>
+<script src="shell.js?v=74"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=17"></script>
 </body>

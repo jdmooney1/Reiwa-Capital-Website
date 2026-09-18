@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=22">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=23">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="editorial.css?v=83">
@@ -54,16 +54,15 @@
   .home-hero .loc { display: block; text-align: center; margin-top: clamp(26px, 3.2vw, 44px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized to the widest it can be while keeping
      "European Real Estate." whole on one line — measured, not guessed. The
-     hero carries a slightly tighter gutter than body copy to buy that room,
-     which is why it sets its own padding rather than using --gutter. */
+     hero shares the body gutter so its left edge lines up with the header and
+     every section below it; the headline was re-measured and still fits. */
   @media (max-width: 760px) {
-    .home-hero .inner { padding-left: 16px; padding-right: 16px; padding-bottom: clamp(52px, 8vh, 72px); }
+    .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
     .home-hero h1 { font-size: 38px; line-height: 1.04; letter-spacing: -0.03em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 32ch; }
     .home-hero .loc { margin-top: 28px; }
   }
   @media (max-width: 340px) {
-    .home-hero .inner { padding-left: 14px; padding-right: 14px; }
     .home-hero h1 { font-size: 36px; }
     /* Mobile 3: the final forced break is released so "Capital." is not a lone
        final line; the production type size is unchanged. */
@@ -77,7 +76,7 @@
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
   .hi { padding: clamp(72px, 7vw, 104px) 0 clamp(48px, 4.5vw, 68px); }
   .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: 1060px; text-wrap: pretty; }
-  .hi-support { margin-top: clamp(18px, 2vw, 24px); font-size: clamp(17px, 16px + 0.3vw, 19px); line-height: 1.6; max-width: 60ch; }
+  .hi-support { margin-top: clamp(18px, 2vw, 24px); font-size: clamp(17px, 16px + 0.3vw, 19px); line-height: 1.6; max-width: 56ch; text-wrap: balance; }
   .hi-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; margin-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--rule-strong); }
   .hi-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding: clamp(24px, 2.6vw, 34px) clamp(24px, 3vw, 44px) 2px 0; }
   .hi-col + .hi-col { border-left: 1px solid var(--rule); padding-left: clamp(24px, 3vw, 44px); }
@@ -228,6 +227,10 @@
     .hp .shell { padding-top: 60px; }
     .hp-grid { grid-template-columns: 1fr; margin-top: 28px; }
     .hp-item, .hp-item:nth-child(even) { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); grid-template-columns: 1fr; }
+    /* The two-column rule that drops the last ROW's border outranks the line
+       above, which left the third principle without a divider once the grid
+       is one column. Restore it here; only the true last item goes borderless. */
+    .hp-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
     .hp-item:last-child { border-bottom: 0; }
     .hp-item p { max-width: none; }
   }
@@ -282,8 +285,6 @@
     .hf .shell { padding-top: 60px; }
     .hf-head { flex-direction: column; align-items: flex-start; }
     .hf-grid { margin-top: 32px; gap: 36px; }
-    /* Brackets sit 7px outside the frame; keep them clear of the gutter. */
-    .hf-media.r-frame::before { left: -6px; } .hf-media.r-frame::after { right: -6px; }
   }
   </style>
 </head>
@@ -397,22 +398,22 @@
     <div class="hf-head">
       <div>
         <h2 class="h-h2" id="hf-title">Investment Focus</h2>
-        <p class="h-body hf-sub">Three areas of concentration.</p>
+        <p class="h-body hf-sub">Two core strategies. One selective application.</p>
       </div>
       <a class="hf-link" href="investment-focus.html">Our investment focus <svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg></a>
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
-        <span class="hf-media r-frame"><img src="assets/imagery/bg-income-800.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 30vw" width="980" height="1225" loading="lazy" decoding="async" alt="Brick and stone facade of a well-kept London terrace"></span>
+        <span class="hf-media"><img src="assets/imagery/bg-income-800.webp" srcset="assets/imagery/bg-income-800.webp 800w, assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 30vw" width="980" height="1225" loading="lazy" decoding="async" alt="Brick and stone facade of a well-kept London terrace"></span>
         <span class="hf-cap"><h3>Income</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">Durable cash flow from well-located real estate with defensible occupier demand.</p></span>
       </a>
       <a class="hf-item" href="investment-focus.html#repositioning">
-        <span class="hf-media r-frame"><img src="assets/imagery/bg-repositioning-800.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 30vw" width="1535" height="1024" loading="lazy" decoding="async" alt="Row of canal-side buildings in Amsterdam at dusk"></span>
+        <span class="hf-media"><img src="assets/imagery/bg-repositioning-800.webp" srcset="assets/imagery/bg-repositioning-800.webp 800w, assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 30vw" width="1535" height="1024" loading="lazy" decoding="async" alt="Row of canal-side buildings in Amsterdam at dusk"></span>
         <span class="hf-cap"><h3>Repositioning</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">Assets where targeted capital and active oversight can materially improve income or value.</p></span>
       </a>
       <a class="hf-item" href="investment-focus.html#hospitality">
-        <span class="hf-media r-frame"><img src="assets/imagery/bg-hospitality-800.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 30vw" width="952" height="1269" loading="lazy" decoding="async" alt="Illuminated corner facade of a hotel building at night"></span>
-        <span class="hf-cap"><h3>Hospitality</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">Distinctive assets where real estate fundamentals and operations can create long-term value.</p></span>
+        <span class="hf-media"><img src="assets/imagery/bg-hospitality-800.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 30vw" width="952" height="1269" loading="lazy" decoding="async" alt="Illuminated corner facade of a hotel building at night"></span>
+        <span class="hf-cap"><h3>Selective Hospitality</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">Distinctive properties where the real estate, local demand and operating proposition reinforce one another.</p></span>
       </a>
     </div>
   </div>

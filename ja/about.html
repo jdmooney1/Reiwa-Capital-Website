@@ -27,12 +27,12 @@
 <meta name="twitter:description" content="欧州不動産を、取引そのものではなく、投資家の目的と意思決定を起点に考えます。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","sameAs":["https://www.linkedin.com/company/reiwa-cap/"],"email":"info@reiwa-capital.com"}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=21">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=82">
+<link rel="stylesheet" href="../editorial.css?v=83">
 <link rel="stylesheet" href="../brand.css?v=7">
-<link rel="stylesheet" href="../craft.css?v=24">
+<link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/about.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -56,7 +56,12 @@
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
   .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; }
+  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  @media (max-width: 400px) {
+    /* Japanese has no inter-word space to absorb a short last line: at the
+       shared 26px floor an 11-character clause orphans one character. */
+    .h-h2 { font-size: 21px; }
+  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -195,7 +200,7 @@
   .am-panel--snapshot .am-note { margin-top: 8px; }
   .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   .am-panel--snapshot .am-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.4vw, 32px); margin-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule); }
-  .am-panel--snapshot .am-facts > div { padding: 12px 0 14px; border-top: 0; }
+  .am-panel--snapshot .am-facts > div { padding: 10px 0 12px; border-top: 0; }
   .am-panel--snapshot .am-facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
   .am-panel--snapshot .am-facts dd { font-size: 14px; line-height: 1.75; }
   .am-panel--snapshot .am-subs ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 2px; font-size: 13.5px; line-height: 1.6; }
@@ -277,9 +282,9 @@
   }
   .am-hit path { fill: rgba(0,0,0,0); stroke: none; stroke-width: 0; cursor: pointer; transition: fill 160ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); vector-effect: non-scaling-stroke; }
   .am-hit path[data-on="hover"][data-core="1"] { fill: rgba(252,250,241,.13); }
-  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.24); stroke: #FCFAF1; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="1"]   { fill: rgba(252,250,241,.34); stroke: #FCFAF1; stroke-width: 2.4; }
   .am-hit path[data-on="hover"][data-core="0"] { fill: rgba(39,20,48,.10); }
-  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.20); stroke: #271430; stroke-width: 1.8; }
+  .am-hit path[data-on="sel"][data-core="0"]   { fill: rgba(39,20,48,.28); stroke: #271430; stroke-width: 2.4; }
   /* The selected area is named under the map, with its classification. The
      row keeps its height whether or not anything is selected. */
   .am-active { margin-top: 12px; min-height: 52px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
@@ -296,6 +301,22 @@
   .am-sub[aria-pressed="true"] { color: var(--ink); font-weight: 500; border-bottom-color: var(--ink); }
   @media (max-width: 760px) { .am-sub { padding: 8px 0; min-height: 44px; } }
   @media (prefers-reduced-motion: reduce) { .am-hit path, .am-sub { transition: none; } }
+  /* Japanese semantic tokens that must not split across lines. white-space:
+     nowrap is standards-based, so these hold in every engine rather than only
+     where word-break: auto-phrase is supported. Deliberately narrow: only the
+     terms actually observed breaking, never common words or whole paragraphs,
+     because protecting frequent short words measurably worsens paragraph
+     ragging. */
+  .jt { white-space: nowrap; }
+  /* Japanese line breaking: break at phrase boundaries so a katakana word is
+     never split across lines (サザー|ク, プ|ライム, マーケッ|ト). Measured on
+     this page against keep-all + overflow-wrap:anywhere, which removed the same
+     splits but introduced new emergency breaks at 320px. Browsers without
+     auto-phrase fall back to the current behaviour, so nothing regresses. */
+  .h-body, .ab-grp, .aw-spec, .aw-inv-note, .aw-stage, .aw-sp-n, .aw-sp-s,
+  .am-tab, .am-sub, .am-name, .am-focus, .ac-item p, .ab-lede, .sub {
+    word-break: auto-phrase;
+  }
   </style>
 </head>
 <body data-page="about" data-locale="ja" data-en-url="/about.html">
@@ -329,7 +350,7 @@
     <div class="aw-field" data-flow="with" data-continuity>
       <div class="aw-switch" role="group" aria-label="表示の切り替え">
         <button class="aw-sw" type="button" data-flow-btn="without" aria-pressed="false">調整役が不在の場合</button>
-        <button class="aw-sw" type="button" data-flow-btn="with" aria-pressed="true">令和キャピタルの場合</button>
+        <button class="aw-sw" type="button" data-flow-btn="with" aria-pressed="true">Reiwa Capitalの場合</button>
       </div>
 
       <div class="aw-flow">
@@ -340,7 +361,7 @@
         <div class="aw-stages">
         <span class="aw-stage">取得</span>
         <span class="aw-stage">保有</span>
-        <span class="aw-stage">再調達</span>
+        <span class="aw-stage">借換え</span>
         <span class="aw-stage">売却</span>
         </div>
         <div class="aw-line" aria-hidden="true">
@@ -355,7 +376,7 @@
         </div>
         <div class="aw-specs">
         <span class="aw-spec">仲介・法務</span>
-        <span class="aw-spec">プロパティマネジメント</span>
+        <span class="aw-spec">プロパティ<wbr><span class="jt">マネジメント</span></span>
         <span class="aw-spec">貸し手・鑑定</span>
         <span class="aw-spec">仲介・法務</span>
         </div>
@@ -375,8 +396,8 @@
           </div>
           <div class="aw-sp-rows">
             <div class="aw-sp-row"><span class="aw-sp-n">取得</span><span class="aw-sp-s">仲介・法務</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">保有</span><span class="aw-sp-s">プロパティマネジメント</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">再調達</span><span class="aw-sp-s">貸し手・鑑定</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">保有</span><span class="aw-sp-s">プロパティ<wbr><span class="jt">マネジメント</span></span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">借換え</span><span class="aw-sp-s">貸し手・鑑定</span></div>
             <div class="aw-sp-row"><span class="aw-sp-n">売却</span><span class="aw-sp-s">仲介・法務</span></div>
           </div>
         </div>
@@ -444,12 +465,12 @@
           <span class="ab-grp ab-grp--core" style="--x:67%;--y:45%;--xt:67%;--yt:45.5%" aria-hidden="true">シティ・オブ・ロンドン</span>
           <span class="ab-grp ab-grp--sel" style="--x:45%;--y:40%;--xt:45%;--yt:41.6%" aria-hidden="true">ミッドタウン</span>
           <span class="ab-grp ab-grp--sel" style="--x:64%;--y:30%;--xt:64%;--yt:33.2%" aria-hidden="true">シティ・フリンジ</span>
-          <span class="ab-grp ab-grp--sel" style="--x:56%;--y:58%;--xt:56%;--yt:56.7%;--w:132px" aria-hidden="true">サウスバンク／サザーク</span>
+          <span class="ab-grp ab-grp--sel" style="--x:56%;--y:58%;--xt:56%;--yt:56.7%;--w:132px" aria-hidden="true">サウスバンク／<wbr><span class="jt">サザーク</span></span>
           </div>
 
           <ul class="am-legend">
-            <li><span class="sw sw-prim" aria-hidden="true"></span>中核注力エリア</li>
-            <li><span class="sw sw-broad" aria-hidden="true"></span>選択的な注力エリア</li>
+            <li><span class="sw sw-prim" aria-hidden="true"></span>中核注力<span class="jt">エリア</span></li>
+            <li><span class="sw sw-broad" aria-hidden="true"></span>選択的な注力<span class="jt">エリア</span></li>
           </ul>
           <div class="am-active" aria-live="polite" data-market="london">
             <span>
@@ -458,16 +479,16 @@
             </span>
             <button class="am-clear" type="button" data-clear hidden>解除</button>
           </div>
-          <p class="am-note">注力エリアは目安であり、境界は概略です。</p>
+          <p class="am-note">注力<span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
             <img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 36vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
           </figure>
           <dl class="am-facts">
-            <div><dt>市場の特性</dt><dd class="h-body">世界有数の不動産投資市場。豊富な取引量、幅広い買い手層、成熟した専門家ネットワーク。</dd></div>
-            <div><dt>注力領域</dt><dd class="h-body">テナント需要と流動性を理解できる、プライムセントラルおよび確立した商業エリアに絞り込みます。</dd></div>
-            <div><dt>注力エリア</dt><dd class="h-body am-subs"><ul><li><button class="am-sub" type="button" data-sub-btn="marylebone" data-market="london" aria-pressed="false">Marylebone</button></li><li><button class="am-sub" type="button" data-sub-btn="fitzrovia" data-market="london" aria-pressed="false">Fitzrovia</button></li><li><button class="am-sub" type="button" data-sub-btn="soho" data-market="london" aria-pressed="false">Soho</button></li><li><button class="am-sub" type="button" data-sub-btn="mayfair" data-market="london" aria-pressed="false">Mayfair</button></li><li><button class="am-sub" type="button" data-sub-btn="st-jamess" data-market="london" aria-pressed="false">St James’s</button></li><li><button class="am-sub" type="button" data-sub-btn="covent-garden" data-market="london" aria-pressed="false">Covent Garden</button></li><li><button class="am-sub" type="button" data-sub-btn="westminster" data-market="london" aria-pressed="false">Westminster</button></li><li><button class="am-sub" type="button" data-sub-btn="city" data-market="london" aria-pressed="false">City of London</button></li><li><button class="am-sub" type="button" data-sub-btn="bloomsbury" data-market="london" aria-pressed="false">Bloomsbury</button></li><li><button class="am-sub" type="button" data-sub-btn="holborn" data-market="london" aria-pressed="false">Holborn / Midtown</button></li><li><button class="am-sub" type="button" data-sub-btn="farringdon" data-market="london" aria-pressed="false">Farringdon</button></li><li><button class="am-sub" type="button" data-sub-btn="clerkenwell" data-market="london" aria-pressed="false">Clerkenwell</button></li><li><button class="am-sub" type="button" data-sub-btn="shoreditch" data-market="london" aria-pressed="false">Shoreditch &amp; Aldgate</button></li><li><button class="am-sub" type="button" data-sub-btn="south-bank" data-market="london" aria-pressed="false">South Bank</button></li></ul></dd></div>
+            <div><dt>市場の特性</dt><dd class="h-body">世界有数の不動産投資市場。豊富な取引量、幅広い買い手層、成熟した専門家<span class="jt">ネットワーク</span>。</dd></div>
+            <div><dt>注力領域</dt><dd class="h-body">テナント需要と流動性を理解できる、<span class="jt">プライム</span><span class="jt">セントラル</span>および確立した商業<span class="jt">エリア</span>に絞り込みます。</dd></div>
+            <div><dt>注力<span class="jt">エリア</span></dt><dd class="h-body am-subs"><ul><li><button class="am-sub" type="button" data-sub-btn="marylebone" data-market="london" aria-pressed="false">Marylebone</button></li><li><button class="am-sub" type="button" data-sub-btn="fitzrovia" data-market="london" aria-pressed="false">Fitzrovia</button></li><li><button class="am-sub" type="button" data-sub-btn="soho" data-market="london" aria-pressed="false">Soho</button></li><li><button class="am-sub" type="button" data-sub-btn="mayfair" data-market="london" aria-pressed="false">Mayfair</button></li><li><button class="am-sub" type="button" data-sub-btn="st-jamess" data-market="london" aria-pressed="false">St James’s</button></li><li><button class="am-sub" type="button" data-sub-btn="covent-garden" data-market="london" aria-pressed="false">Covent Garden</button></li><li><button class="am-sub" type="button" data-sub-btn="westminster" data-market="london" aria-pressed="false">Westminster</button></li><li><button class="am-sub" type="button" data-sub-btn="city" data-market="london" aria-pressed="false">City of London</button></li><li><button class="am-sub" type="button" data-sub-btn="bloomsbury" data-market="london" aria-pressed="false">Bloomsbury</button></li><li><button class="am-sub" type="button" data-sub-btn="holborn" data-market="london" aria-pressed="false">Holborn / Midtown</button></li><li><button class="am-sub" type="button" data-sub-btn="farringdon" data-market="london" aria-pressed="false">Farringdon</button></li><li><button class="am-sub" type="button" data-sub-btn="clerkenwell" data-market="london" aria-pressed="false">Clerkenwell</button></li><li><button class="am-sub" type="button" data-sub-btn="shoreditch" data-market="london" aria-pressed="false">Shoreditch &amp; Aldgate</button></li><li><button class="am-sub" type="button" data-sub-btn="south-bank" data-market="london" aria-pressed="false">South Bank</button></li></ul></dd></div>
             <div><dt>適合する理由</dt><dd class="h-body">機関投資家層の厚み、高い取引流動性、そして長期にわたる買い手層の広さ。</dd></div>
           </dl>
         </div>
@@ -521,8 +542,8 @@
           </div>
 
           <ul class="am-legend">
-            <li><span class="sw sw-prim" aria-hidden="true"></span>中核注力エリア</li>
-            <li><span class="sw sw-broad" aria-hidden="true"></span>選択的な注力エリア</li>
+            <li><span class="sw sw-prim" aria-hidden="true"></span>中核注力<span class="jt">エリア</span></li>
+            <li><span class="sw sw-broad" aria-hidden="true"></span>選択的な注力<span class="jt">エリア</span></li>
           </ul>
           <div class="am-active" aria-live="polite" data-market="amsterdam">
             <span>
@@ -531,7 +552,7 @@
             </span>
             <button class="am-clear" type="button" data-clear hidden>解除</button>
           </div>
-          <p class="am-note">注力エリアは目安であり、境界は概略です。</p>
+          <p class="am-note">注力<span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
         <div class="am-side">
           <figure class="am-figure">
@@ -539,9 +560,9 @@
           </figure>
           <dl class="am-facts">
             <div><dt>市場の特性</dt><dd class="h-body">限られた供給、国際的な企業需要、高い都市競争力。長期保有を検討できる欧州主要都市の一つ。</dd></div>
-            <div><dt>注力領域</dt><dd class="h-body">希少性、建物の個性、継続的なテナント需要、そして明確な価値創出の余地が投資判断を支える中心エリア。</dd></div>
-            <div><dt>注力エリア</dt><dd class="h-body am-subs"><ul><li><button class="am-sub" type="button" data-sub-btn="jordaan" data-market="amsterdam" aria-pressed="false">Jordaan</button></li><li><button class="am-sub" type="button" data-sub-btn="canal-belt" data-market="amsterdam" aria-pressed="false">Canal Belt</button></li><li><button class="am-sub" type="button" data-sub-btn="grachtengordel" data-market="amsterdam" aria-pressed="false">Grachtengordel</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-zuid" data-market="amsterdam" aria-pressed="false">Oud-Zuid</button></li><li><button class="am-sub" type="button" data-sub-btn="zuidas" data-market="amsterdam" aria-pressed="false">Zuidas</button></li><li><button class="am-sub" type="button" data-sub-btn="centrum" data-market="amsterdam" aria-pressed="false">Centrum</button></li><li><button class="am-sub" type="button" data-sub-btn="plantage" data-market="amsterdam" aria-pressed="false">Plantage</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-west" data-market="amsterdam" aria-pressed="false">Oud-West</button></li><li><button class="am-sub" type="button" data-sub-btn="west" data-market="amsterdam" aria-pressed="false">West</button></li><li><button class="am-sub" type="button" data-sub-btn="de-pijp" data-market="amsterdam" aria-pressed="false">De Pijp</button></li><li><button class="am-sub" type="button" data-sub-btn="rivierenbuurt" data-market="amsterdam" aria-pressed="false">Rivierenbuurt</button></li><li><button class="am-sub" type="button" data-sub-btn="buitenveldert" data-market="amsterdam" aria-pressed="false">Buitenveldert</button></li><li><button class="am-sub" type="button" data-sub-btn="oost" data-market="amsterdam" aria-pressed="false">Oost</button></li><li><button class="am-sub" type="button" data-sub-btn="overamstel" data-market="amsterdam" aria-pressed="false">Overamstel</button></li><li><button class="am-sub" type="button" data-sub-btn="noord" data-market="amsterdam" aria-pressed="false">Noord</button></li><li><button class="am-sub" type="button" data-sub-btn="sloterdijk" data-market="amsterdam" aria-pressed="false">Sloterdijk</button></li></ul></dd></div>
-            <div><dt>適合する理由</dt><dd class="h-body">希少性、独自性のある物件、そして選択的なリポジショニングの機会。</dd></div>
+            <div><dt>注力領域</dt><dd class="h-body">希少性、建物の個性、継続的なテナント需要、そして明確な価値創出の余地が投資判断を支える中心<span class="jt">エリア</span>。</dd></div>
+            <div><dt>注力<span class="jt">エリア</span></dt><dd class="h-body am-subs"><ul><li><button class="am-sub" type="button" data-sub-btn="jordaan" data-market="amsterdam" aria-pressed="false">Jordaan</button></li><li><button class="am-sub" type="button" data-sub-btn="canal-belt" data-market="amsterdam" aria-pressed="false">Canal Belt</button></li><li><button class="am-sub" type="button" data-sub-btn="grachtengordel" data-market="amsterdam" aria-pressed="false">Grachtengordel</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-zuid" data-market="amsterdam" aria-pressed="false">Oud-Zuid</button></li><li><button class="am-sub" type="button" data-sub-btn="zuidas" data-market="amsterdam" aria-pressed="false">Zuidas</button></li><li><button class="am-sub" type="button" data-sub-btn="centrum" data-market="amsterdam" aria-pressed="false">Centrum</button></li><li><button class="am-sub" type="button" data-sub-btn="plantage" data-market="amsterdam" aria-pressed="false">Plantage</button></li><li><button class="am-sub" type="button" data-sub-btn="oud-west" data-market="amsterdam" aria-pressed="false">Oud-West</button></li><li><button class="am-sub" type="button" data-sub-btn="west" data-market="amsterdam" aria-pressed="false">West</button></li><li><button class="am-sub" type="button" data-sub-btn="de-pijp" data-market="amsterdam" aria-pressed="false">De Pijp</button></li><li><button class="am-sub" type="button" data-sub-btn="rivierenbuurt" data-market="amsterdam" aria-pressed="false">Rivierenbuurt</button></li><li><button class="am-sub" type="button" data-sub-btn="buitenveldert" data-market="amsterdam" aria-pressed="false">Buitenveldert</button></li><li><button class="am-sub" type="button" data-sub-btn="oost" data-market="amsterdam" aria-pressed="false">Oost</button></li><li><button class="am-sub" type="button" data-sub-btn="overamstel" data-market="amsterdam" aria-pressed="false">Overamstel</button></li><li><button class="am-sub" type="button" data-sub-btn="noord" data-market="amsterdam" aria-pressed="false">Noord</button></li><li><button class="am-sub" type="button" data-sub-btn="sloterdijk" data-market="amsterdam" aria-pressed="false">Sloterdijk</button></li></ul></dd></div>
+            <div><dt>適合する理由</dt><dd class="h-body">希少性、独自性のある物件、そして選択的な再生型投資の機会。</dd></div>
           </dl>
         </div>
       </div>
@@ -575,7 +596,7 @@
     <div class="ac-grid">
       <div class="ac-item"><h3>日本の事業会社</h3><p class="h-body">自己資金による、選定した欧州不動産への戦略的な投資。</p></div>
       <div class="ac-item"><h3>ファミリーオフィス</h3><p class="h-body">秘匿性、透明性、そして統制を伴う長期保有。</p></div>
-      <div class="ac-item"><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的なアクセス。</p></div>
+      <div class="ac-item"><h3>機関投資家</h3><p class="h-body">選定した欧州の投資機会への、体系的な<span class="jt">アクセス</span>。</p></div>
       <div class="ac-item"><h3>プライベート投資家</h3><p class="h-body">クロスボーダー投資を検討する経験豊富な投資家による直接保有。</p></div>
     </div>
   </div>
@@ -694,7 +715,7 @@
   });
 })();
 </script>
-<script src="../shell.js?v=73"></script>
+<script src="../shell.js?v=74"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>
