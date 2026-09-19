@@ -1094,6 +1094,53 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 }
 .skip-link { min-height: 44px; }
 
+/* The footer gained a Contact route. In Japanese both labels are long
+   (お問い合わせ + プライバシーポリシー = 189px against a 288px row at 320),
+   so below 400 the bar reflows to two rows rather than overflowing: the
+   copyright and the centred emblem keep the first row, the two links take
+   the second. Type, colour and spacing scale are unchanged; only the row
+   count changes, and only where the single row can no longer hold. */
+@media (max-width: 400px) {
+  .footer-quiet .footer-inner {
+    height: auto;
+    min-height: 62px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    row-gap: 2px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  /* relative, not static: the emblem's 44px touch overlay is ::before with
+     left/right -6px, so it must keep anchoring to the emblem itself. Against
+     a static emblem it would anchor to .footer-inner and spill 6px. */
+  .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; }
+  .footer-quiet .ff-right { justify-content: center; gap: 20px; }
+}
+
+/* =====================================================================
+   ENQUIRY — the mandate affordance that closes About, Approach and
+   Investment Focus. Company keeps the full three-route contact block;
+   this is the single investor route, placed where the argument ends so a
+   reader does not have to find Company in order to act. One rule, one
+   line, one text link — the grammar of .co-cta, with no button and no
+   panel, because a panel here would read as a sales banner.
+   ===================================================================== */
+.enq { padding: 0 0 clamp(56px, 5.6vw, 84px); }
+.enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
+.enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
+.enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.enq-cta { display: inline-flex; align-items: baseline; gap: 12px; white-space: nowrap; padding: 11px 0 10px; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+.enq-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
+@media (hover: hover) { .enq-cta:hover { color: var(--reiwa-node, #5E3D78); } .enq-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+.enq-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .enq-cta, .enq-cta .h-arrow { transition: none; } }
+@media (max-width: 760px) {
+  .enq-row { grid-template-columns: 1fr; row-gap: 2px; align-items: start; }
+  .enq-cta { justify-self: start; }
+}
+
 /* =====================================================================
    JAPANESE DISPLAY TYPE
    Display headings are set in a mincho; body copy stays on the gothic
@@ -1115,3 +1162,8 @@ html[lang="ja"] .nav-drawer a {
   font-family: var(--font-jp);
   font-weight: 400;
 }
+
+html[lang="ja"] .enq-d,
+html[lang="ja"] .enq-cta { font-family: var(--font-jp); line-height: 1.85; }
+html[lang="ja"] .enq-d { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+html[lang="ja"] .enq-cta { line-height: 1.5; }
