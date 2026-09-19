@@ -54,8 +54,7 @@
     /* 事業概要 has no entry, and so no band: お問い合わせ closes the page. */
     /* Legacy Japanese pages, retained pending their own disposition: they
        keep an onward path rather than ending in a dead stop. */
-    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先', aria: '次へ：事業概要' },
-    insights: { to: '/ja/',             t: 'ホーム',   lead: 'トップページへ',              aria: 'トップページへ戻る' }
+    contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先', aria: '次へ：事業概要' }
   };
 
   function currentKey() {
