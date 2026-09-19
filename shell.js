@@ -309,7 +309,7 @@
     const footer = `
       <footer class="footer footer-quiet">
         <div class="footer-inner">
-          <span class="ff-copy">© 2026 Reiwa&nbsp;Capital</span>
+          <span class="ff-copy">© ${new Date().getFullYear()} Reiwa&nbsp;Capital</span>
           <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
           <div class="ff-right">
             <a class="ff-link ff-contact" href="${contactHref}">${contactLabel}</a>
