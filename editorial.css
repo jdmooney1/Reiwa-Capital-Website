@@ -1165,5 +1165,10 @@ html[lang="ja"] .nav-drawer a {
 
 html[lang="ja"] .enq-d,
 html[lang="ja"] .enq-cta { font-family: var(--font-jp); line-height: 1.85; }
-html[lang="ja"] .enq-d { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+/* The measure is set in em, as the Japanese pages set theirs: ch is a Latin
+   advance width and gives a misleading one here. overflow-wrap stays as the
+   safety valve keep-all requires — without it the long clauses overflow at
+   375 and below. The sentence-final 承ります。 is held together in the markup
+   with .jt, which is how this site already stops a break landing badly. */
+html[lang="ja"] .enq-d { max-width: 34em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
 html[lang="ja"] .enq-cta { line-height: 1.5; }
