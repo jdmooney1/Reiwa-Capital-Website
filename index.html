@@ -163,7 +163,7 @@
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 14px + 0.5vw, 21px); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); }
+  .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
   @media (max-width: 1100px) {
     .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: clamp(30px, 3.4vw, 44px); }
     .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
@@ -260,7 +260,7 @@
 <section class="hm" data-screen-label="03 Home — markets" aria-labelledby="hm-title">
   <div class="shell">
     <div class="hm-head">
-      <h2 class="h-h2" id="hm-title">Two Markets. Local Understanding.</h2>
+      <h2 class="h-h2" id="hm-title">Two Markets.</h2>
       <div class="hm-tabs" role="tablist" aria-label="Market">
         <button class="hm-tab" type="button" role="tab" id="hm-tab-uk" data-market="uk" aria-selected="true" aria-controls="hm-panel-uk">London</button>
         <button class="hm-tab" type="button" role="tab" id="hm-tab-nl" data-market="nl" aria-selected="false" aria-controls="hm-panel-nl" tabindex="-1">Amsterdam</button>
@@ -294,9 +294,9 @@
       </div>
       <div class="hp-item"><div><h3>Asset Fundamentals First</h3><p class="h-body">Investment merit must stand independently of tax, structuring or financial engineering.</p></div>
       </div>
-      <div class="hp-item"><div><h3>Local Execution</h3><p class="h-body">European specialists are coordinated from the investor’s side rather than the transaction side.</p></div>
+      <div class="hp-item"><div><h3>Local Execution</h3><p class="h-body">Specialists in each market are appointed for the investment and coordinated from the investor’s side, not the transaction side.</p></div>
       </div>
-      <div class="hp-item"><div><h3>Continuity Through Ownership</h3><p class="h-body">The same investment logic used at acquisition is monitored throughout the hold period.</p></div>
+      <div class="hp-item"><div><h3>Continuity Through Ownership</h3><p class="h-body">During ownership, performance is monitored against the investment case set at acquisition.</p></div>
       </div>
     </div>
   </div>
