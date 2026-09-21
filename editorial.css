@@ -1131,11 +1131,21 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
 .enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
 .enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+/* The enquiry treatment, defined once. Company's three routes and the
+   enquiry row that closes About, Approach and Investment Focus are the same
+   gesture — air, a label, an arrow, no button — and were carried by two
+   near-identical rule sets. Company keeps only its own placement. */
+.co-cta,
 .enq-cta { display: inline-flex; align-items: baseline; gap: 12px; white-space: nowrap; padding: 11px 0 10px; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+.co-cta .h-arrow,
 .enq-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
-@media (hover: hover) { .enq-cta:hover { color: var(--reiwa-node, #5E3D78); } .enq-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+@media (hover: hover) {
+  .co-cta:hover, .enq-cta:hover { color: var(--reiwa-node, #5E3D78); }
+  .co-cta:hover .h-arrow, .enq-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); }
+}
+.co-cta:focus-visible,
 .enq-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { .enq-cta, .enq-cta .h-arrow { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .co-cta, .co-cta .h-arrow, .enq-cta, .enq-cta .h-arrow { transition: none; } }
 @media (max-width: 760px) {
   .enq-row { grid-template-columns: 1fr; row-gap: 2px; align-items: start; }
   .enq-cta { justify-self: start; }

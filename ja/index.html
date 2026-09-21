@@ -126,7 +126,7 @@
 
   /* --- 3 · 市場 --------------------------------------------------------- */
   .hm { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .hm .shell { border-top: 1px solid var(--rule); padding-top: clamp(56px, 5.5vw, 80px); }
+  .hm .shell { padding-top: clamp(64px, 6.2vw, 92px); }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
   .hm-tabs { display: flex; gap: clamp(22px, 2.4vw, 36px); margin: 0; padding: 0; }
   .hm-tab { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 8px 0 9px; min-height: 40px; cursor: pointer; font-family: var(--jp); font-size: clamp(14.5px, 13.6px + 0.2vw, 15.5px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
@@ -171,14 +171,9 @@
   /* Six market characteristics as one compact grid — a sumire node and a
      short fact per cell, three across and two down, one hairline above and
      one between the rows. London and Amsterdam share the component. */
-  .hm-attrs { list-style: none; margin: clamp(14px, 1.5vw, 18px) 0 0; padding: 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .hm-attrs li { display: block; margin: 0; padding: 9px 14px 9px 0; font-family: var(--jp); font-size: 13.5px; font-weight: 500; line-height: 1.55; color: var(--ink); }
-  .hm-attrs li:nth-child(n+4) { border-top: 1px solid var(--rule); }
   /* Where the right-hand column is at its narrowest (above the 900px stack,
      below the 1100px nav break) three cells wrap badly: two across, three down. */
   @media (min-width: 901px) and (max-width: 1100px) {
-    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
   }
   @media (prefers-reduced-motion: reduce) {
     .hm-land, .hm-mark .dot::before, .hm-mark .dot::after, .hm-mark .name, .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
@@ -197,88 +192,97 @@
     .hm-svg--tight { display: block; }
     .hm-mark { left: var(--xm); top: var(--ym); }
     .hm-mark .name { font-size: 12.5px; }
-    .hm-photo { aspect-ratio: 16 / 10; }
-    .hm-attrs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .hm-attrs li { padding: 8px 12px 8px 0; }
-    .hm-attrs li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    /* Mobile composition: on a phone the homepage otherwise runs more than two
+       thousand pixels of stacked text before the first photograph. The market
+       photograph and the two focus fields leave the gutter and run edge to
+       edge, which gives the column a change of texture at the two points where
+       the argument changes, and keeps the focus imagery at a scale worth
+       looking at rather than turning it into a pair of thumbnails. */
+    .hm-photo, .hf-grid { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .hm-photo { aspect-ratio: 5 / 4; }
+    .hf-item { aspect-ratio: 4 / 5; }
+    .hf-cap { padding: clamp(20px, 5vw, 28px) var(--gutter); }
   }
   /* Narrowest phones (the existing 340px step): one vertical sequence, every fact on one line. */
   @media (max-width: 340px) {
-    .hm-attrs { grid-template-columns: 1fr; }
-    .hm-attrs li:nth-child(n+2) { border-top: 1px solid var(--rule); }
   }
 
   /* --- 4 · 投資家の判断を起点に ----------------------------------------- */
-  .hp { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .hp .shell { border-top: 1px solid var(--rule); padding-top: clamp(72px, 7vw, 100px); }
-  .hp-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(32px, 3.5vw, 48px); border-top: 1px solid var(--rule-strong); }
-  .hp-item { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: clamp(12px, 1.6vw, 20px); padding: clamp(28px, 3vw, 40px) clamp(28px, 4vw, 64px) clamp(28px, 3vw, 40px) 0; border-bottom: 1px solid var(--rule); }
-  .hp-item:nth-child(even) { border-left: 1px solid var(--rule); padding-left: clamp(28px, 4vw, 64px); padding-right: 0; }
-  .hp-item:nth-last-child(-n+2) { border-bottom: 0; }
-  .hp-item .h-num { padding-top: 6px; align-self: start; }
-  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .hp-item p { margin: 10px 0 0; max-width: 27em; }
+  /* The one moment of weight on the homepage. The aubergine field is the
+     register this firm speaks in when it is being accountable — it carries
+     the approval gates on Approach and the exclusions on Investment Focus,
+     and the four principles belong to the same argument. Full-bleed ground,
+     light hairlines dividing the columns, nothing else: the section reads as
+     a page of a document rather than a panel of cards. */
+  .hp { background: var(--ink); padding: 0 0 clamp(64px, 6.2vw, 92px); }
+  .hp .shell { padding-top: clamp(64px, 6.2vw, 92px); }
+  .hp .h-h2 { color: var(--cream); max-width: 22ch; }
+  /* subgrid so every paragraph starts on one line, whatever its heading does:
+     two of the four headings wrap, and without this the column feet stagger. */
+  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: start; }
+  .hp-item > div { display: contents; }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item:first-child { padding-left: 0; border-left: 0; }
+  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 20px); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
+  .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
+  @media (max-width: 1100px) {
+    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: clamp(30px, 3.4vw, 44px); }
+    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  }
   @media (max-width: 760px) {
-    .hp { padding: 0 0 64px; }
-    .hp .shell { padding-top: 60px; }
-    .hp-grid { grid-template-columns: 1fr; margin-top: 28px; }
-    .hp-item, .hp-item:nth-child(even) { border-left: 0; padding: 22px 0; border-bottom: 1px solid var(--rule); grid-template-columns: 1fr; }
-    /* The two-column rule that drops the last ROW's border outranks the line
-       above, which left the third principle without a divider once the grid
-       is one column. Restore it here; only the true last item goes borderless. */
-    .hp-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
-    .hp-item:last-child { border-bottom: 0; }
+    .hp { padding: 0 0 56px; }
+    .hp .shell { padding-top: 56px; }
+    .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
+    .hp-item { display: block; grid-row: auto; }
+    .hp-item, .hp-item:nth-child(even) { padding: 0 0 0 18px; border-left: 1px solid rgba(252,250,241,.30); }
     .hp-item p { max-width: none; }
   }
 
   /* --- 5 · 投資方針 ----------------------------------------------------- */
+  /* Investment Focus, in the grammar the Investment Focus page already uses:
+     two large fields, the photograph carrying the panel, the caption set on
+     the image behind a scrim. No card, no border, no arrow per item. The
+     third strategy is a specialist application rather than a third equal
+     strategy, so it sits under the fields as one quiet line — which is the
+     hierarchy the inner page states. */
   .hf { padding: 0 0 clamp(72px, 7vw, 104px); }
-  .hf .shell { border-top: 1px solid var(--rule); padding-top: clamp(72px, 7vw, 100px); }
-  .hf-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
-  .hf-sub { margin-top: 10px; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); }
-  .hf-link { display: inline-flex; align-items: center; gap: 10px; font-family: var(--jp); font-size: 14px; font-weight: 500; color: var(--ink); text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid var(--rule-strong); transition: border-color 220ms var(--ease-out); }
-  .hf-link { white-space: nowrap; }
-  .hf-link:hover { border-color: var(--ink); }
-  @media (hover: hover) { .hf-link:hover .h-arrow { transform: translateX(4px); } }
-  .hf-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 44px); margin-top: clamp(36px, 4vw, 56px); }
-  .hf-item { display: block; text-decoration: none; color: inherit; }
-  .hf-media { display: block; position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--paper-soft); }
-  .hf-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 700ms var(--ease-out); }
-  .hf-media::after { content: ""; position: absolute; inset: 0; background: var(--img-overlay); pointer-events: none; transition: background 400ms var(--ease-out); }
-  .hf-item[href*="repositioning"] .hf-media img { filter: var(--img-grade) saturate(0.9) hue-rotate(-4deg) brightness(0.98); }
-  .hf-item[href*="hospitality"] .hf-media img { filter: var(--img-grade) saturate(0.82) hue-rotate(-6deg) brightness(0.96); }
-  /* Framing, per strategy. The 4:3 frame shows ~60% of the two portrait
-     assets, so the vertical position is the crop; the 16:10 frame below
-     900px shows ~50%, so each carries its own value for that frame.
-     Income sits on the stucco ground floor and the entrance, cut at the
-     railings; Hospitality on the building mass with the curved crown kept;
-     Repositioning is landscape and fills both frames vertically, so it is
-     anchored on the white mansion and the brick townhouse. */
-  .hf-item[href*="income"]        { --hf-pos: 50% 92%; --hf-pos-m: 50% 80%; }
-  .hf-item[href*="repositioning"] { --hf-pos: 38% 50%; --hf-pos-m: 38% 80%; }
-  .hf-item[href*="hospitality"]   { --hf-pos: 50% 78%; --hf-pos-m: 50% 90%; }
+  .hf .shell { padding-top: clamp(80px, 7.6vw, 112px); }
+  .hf-sub { margin-top: 10px; font-size: clamp(17px, 16px + 0.25vw, 18px); }
+  .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1vw, 16px); margin-top: clamp(36px, 4vw, 56px); }
+  .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
+  .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
+  .hf-scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.74) 28%, rgba(28,14,35,.36) 62%, rgba(28,14,35,0) 100%); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
+  .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
+  .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hf-cue { font-family: var(--jp); font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
+  .hf-cue-a { display: inline-block; transition: transform 220ms var(--ease-out); }
+  .hf-item[href*="income"]        { --hf-pos: 50% 84%; --hf-pos-m: 50% 80%; }
+  .hf-item[href*="repositioning"] { --hf-pos: 42% 56%; --hf-pos-m: 38% 70%; }
   @media (hover: hover) {
-    .hf-item:hover .hf-media img, .hf-item:focus-visible .hf-media img { transform: scale(1.025); }
-    .hf-item:hover .hf-media::after, .hf-item:focus-visible .hf-media::after { background: var(--img-overlay-hover); }
-    .hf-item:hover .h-arrow, .hf-item:focus-visible .h-arrow { transform: translateX(4px); }
+    .hf-item:hover img { transform: scale(1.02); }
+    .hf-item:hover .hf-cue { color: var(--cream); }
+    .hf-item:hover .hf-cue-a { transform: translateX(4px); }
   }
-  .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
-  .hf-cap { display: grid; margin-top: 20px; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: baseline; }
-  .hf-cap h3 { grid-column: 1; margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(19px, 17px + 0.45vw, 23px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .hf-cap .h-arrow { grid-column: 2; grid-row: 1; color: var(--ink); align-self: center; }
-  .hf-cap p { grid-column: 1 / -1; margin: 10px 0 0; max-width: 24em; }
-  @media (prefers-reduced-motion: reduce) { .hf-media img, .hf-media::after { transition: none; } }
+  .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  /* The specialist application: named, reachable, and plainly subordinate. */
+  .hf-spec { max-width: none; margin-top: clamp(18px, 1.8vw, 24px); padding-top: clamp(16px, 1.6vw, 22px); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px clamp(14px, 1.6vw, 22px); }
+  .hf-spec-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+  .hf-spec a { font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; }
+  .hf-spec a .hf-cue-a { color: var(--ink-3); }
+  @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+  .hf-spec a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a { transition: none; } }
   @media (max-width: 900px) {
-    .hf-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hf-media { aspect-ratio: 16 / 10; }
-    .hf-media img { object-position: var(--hf-pos-m, var(--hf-pos, 50% 50%)); }
+    .hf-grid { grid-template-columns: 1fr; gap: 12px; }
+    .hf-item { aspect-ratio: 16 / 11; }
+    .hf-item img { object-position: var(--hf-pos-m, var(--hf-pos, 50% 50%)); }
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
     .hf { padding: 0 0 64px; }
     .hf .shell { padding-top: 60px; }
-    .hf-head { flex-direction: column; align-items: flex-start; }
-    .hf-grid { margin-top: 32px; gap: 36px; }
+    .hf-grid { margin-top: 32px; }
   }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
@@ -365,12 +369,10 @@
           <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
             <h3 class="hm-city">ロンドン</h3>
             <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。収益型と再生型の双方に機会があります。</p>
-            <ul class="hm-attrs"><li>世界的な流動性</li><li>厚みのあるテナント市場</li><li>一棟所有が可能な希少物件</li><li>明確な権利関係</li><li>確立された融資市場</li><li>幅広い買い手層</li></ul>
           </div>
           <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
             <h3 class="hm-city">アムステルダム</h3>
             <p class="h-body hm-copy">供給が限られたコンパクトな市場。厳格な都市計画、堅調なテナント需要、そして機関投資家層の厚みが、立地と品質の高い物件を支えます。</p>
-            <ul class="hm-attrs"><li>限られた供給</li><li>機関投資家層の厚み</li><li>厳格な都市計画</li><li>希少な歴史的建築</li><li>底堅いテナント需要</li><li>コンパクトな中心市街地</li></ul>
           </div>
         </div>
       </div>
@@ -399,26 +401,33 @@
 <section class="hf" data-screen-label="05 ホーム — 投資方針" aria-labelledby="hf-title">
   <div class="shell">
     <div class="hf-head">
-      <div>
-        <h2 class="h-h2" id="hf-title">投資方針</h2>
-        <p class="h-body hf-sub">二つの中核戦略と、一つの選択的な応用領域。</p>
-      </div>
-      <a class="hf-link" href="investment-focus.html">投資方針の詳細 <svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg></a>
+      <h2 class="h-h2" id="hf-title">投資方針</h2>
+      <p class="h-body hf-sub">二つの中核戦略と、一つの選択的な応用領域。</p>
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
-        <span class="hf-media"><img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 30vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観"></span>
-        <span class="hf-cap"><h3>収益型</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">優れた立地と安定したテナント需要に支えられた、持続的なキャッシュフロー。</p></span>
+        <img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 46vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観">
+        <span class="hf-scrim" aria-hidden="true"></span>
+        <span class="hf-cap">
+          <h3>収益型</h3>
+          <p>確かな立地と底堅いテナント需要に支えられた、継続的なキャッシュフロー。</p>
+          <span class="hf-cue">収益型を見る <span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
+        </span>
       </a>
       <a class="hf-item" href="investment-focus.html#repositioning">
-        <span class="hf-media"><img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 30vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物"></span>
-        <span class="hf-cap"><h3>再生型</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">重点的な資本投下と継続的な関与により、収益や価値を改善できる物件。</p></span>
-      </a>
-      <a class="hf-item" href="investment-focus.html#hospitality">
-        <span class="hf-media"><img src="../assets/imagery/bg-hospitality-800.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 900px) 92vw, 30vw" width="952" height="1269" loading="lazy" decoding="async" alt="夜間にライトアップされたホテルの角の外観"></span>
-        <span class="hf-cap"><h3>選択的なホスピタリティ</h3><svg class="h-arrow" viewBox="0 0 22 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0.5 6H20.5M14 0.5L20.5 6L14 11.5"/></svg><p class="h-body">不動産そのもの、地域の需要、運営の構想が互いを高め合う、際立った物件。</p></span>
+        <img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 46vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物">
+        <span class="hf-scrim" aria-hidden="true"></span>
+        <span class="hf-cap">
+          <h3>再生型</h3>
+          <p>的確な資本投下と能動的な監督により、収益または価値を実質的に高められる資産。</p>
+          <span class="hf-cue">再生型を見る <span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
+        </span>
       </a>
     </div>
+    <p class="hf-spec">
+      <span class="hf-spec-k">選択的な応用領域</span>
+      <a href="investment-focus.html#hospitality">選択的な<span class="jt">ホスピタリティ</span> <span class="hf-cue-a" aria-hidden="true">&rarr;</span></a>
+    </p>
   </div>
 </section>
 

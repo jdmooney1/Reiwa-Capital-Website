@@ -173,12 +173,10 @@
   .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
   .co-col h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); }
   .co-col p { margin: 9px 0 0; max-width: 30ch; font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .co-cta { display: inline-flex; align-items: baseline; gap: 12px; justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); padding: 11px 0 10px; min-height: 44px; font-family: var(--jp); font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
-  .co-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
   /* Hover answers in the label as well as the arrow, matching the general
      contact links above. Air only — still no button, fill or border. */
-  @media (hover: hover) { .co-cta:hover { color: var(--reiwa-node, #5E3D78); } .co-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
-  .co-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  /* Placement and the Japanese face only: the treatment lives in editorial.css. */
+  .co-cta { justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); font-family: var(--jp); }
   .co-sec.co-contact { padding-bottom: clamp(48px, 4.6vw, 66px); }
   @media (max-width: 900px) {
     .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
