@@ -150,6 +150,24 @@ p { text-wrap: pretty; }
    as it scrolls past — promote the nav to a direct child of <body>. */
 [data-shell="nav"] { display: contents; }
 
+/* The header's own height, stated ahead of the shell. craft.js measures the
+   rendered bar and rewrites this on load, orientation change and font load —
+   but the hero's negative offset and the page-head depth both read it during
+   the very first layout, before any script has run. Declaring the real value
+   here rather than leaving each consumer to guess a fallback keeps that first
+   layout identical to the one the measurement produces, so nothing moves.
+   Measured, not assumed: 69px above the nav break, 65px at or below it. */
+:root { --nav-h: 69px; }
+@media (max-width: 1100px) { :root { --nav-h: 65px; } }
+/* …and the wrapper holds that height open until the shell fills it, so the
+   first layout already has the header's box in it and <main> does not drop
+   by 69px the moment the script runs. :empty stops matching as soon as the
+   nav is injected, at which point display:contents returns and the sticky
+   bar is a direct child of <body> again. Gated on .has-js, set by the
+   pre-paint script in the head: without scripting no nav ever arrives, and
+   the page should not hold a band open for one. */
+html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h); }
+
 .nav-bar {
   position: -webkit-sticky;
   position: sticky;

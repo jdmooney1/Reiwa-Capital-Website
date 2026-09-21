@@ -30,11 +30,11 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=84">
+<link rel="stylesheet" href="../editorial.css?v=85">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
-(function(){var K='reiwa.lang';var EN='/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';})();</script>
+(function(){var K='reiwa.lang';var EN='/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
 <link rel="preload" as="image" href="../assets/imagery/approach-hero-blur.webp" fetchpriority="high">
 <style>
@@ -294,9 +294,14 @@
      the same act: the investor approving. */
   .ic-sec { background: var(--paper-soft); padding: clamp(48px, 4.8vw, 72px) 0; }
   .ic-stack { margin-top: clamp(34px, 3.6vw, 54px); display: flex; flex-direction: column; }
-  .ic-row { display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr); gap: clamp(20px, 2.4vw, 44px); align-items: baseline; }
+  .ic-stack { --ic-gap: clamp(20px, 2.4vw, 44px); --ic-pad: clamp(22px, 2.2vw, 32px); }
+  .ic-row { display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr); gap: var(--ic-gap); align-items: baseline; }
   .ic-row--investor { padding-bottom: clamp(16px, 1.8vw, 22px); border-bottom: 1px solid var(--ink); }
-  .ic-row--reiwa { margin-top: clamp(20px, 2.2vw, 30px); background: var(--ink); padding: clamp(22px, 2.2vw, 30px) clamp(22px, 2.2vw, 32px); }
+  /* The filled row is inset from its own edge, as a filled field should be,
+     but that inset narrows its content box and pushes the second column off
+     the line the open rows above and below hold. The first column is sized
+     back to the outer geometry so all three second columns share one edge. */
+  .ic-row--reiwa { margin-top: clamp(20px, 2.2vw, 30px); background: var(--ink); padding: clamp(22px, 2.2vw, 30px) var(--ic-pad); grid-template-columns: calc(0.34 * (100% + 2 * var(--ic-pad) - var(--ic-gap)) - var(--ic-pad)) minmax(0, 1fr); }
   .ic-row--spec { margin-top: clamp(20px, 2.2vw, 30px); padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); }
   .ic-name { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.5; letter-spacing: -0.016em; color: var(--ink); }
   .ic-row--reiwa .ic-name { color: var(--cream); }
@@ -841,7 +846,7 @@
   });
 })();
 </script>
-<script src="../shell.js?v=75"></script>
+<script src="../shell.js?v=76"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

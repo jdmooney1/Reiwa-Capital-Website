@@ -30,11 +30,11 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=84">
+<link rel="stylesheet" href="../editorial.css?v=85">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
-(function(){var K='reiwa.lang';var EN='/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';})();</script>
+(function(){var K='reiwa.lang';var EN='/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
 <link rel="preload" as="image" href="../assets/imagery/home-hero-blur.webp" fetchpriority="high">
 <style>
@@ -92,7 +92,7 @@
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
   .hi-ops { max-width: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding-top: clamp(20px, 2.2vw, 28px); border-top: 1px solid var(--rule-strong); font-family: var(--font-jp); font-weight: 500; font-size: clamp(18px, 15px + 0.55vw, 23px); line-height: 1.5; letter-spacing: 0.02em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .hi-ops .sep { color: var(--ink-4); margin: 0 clamp(8px, 0.9vw, 14px); }
+  .hi-ops .sep { color: var(--ink-3); margin: 0 clamp(8px, 0.9vw, 14px); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
     .hi-ops { margin-top: 30px; padding-top: 20px; font-size: 19px; }
@@ -284,8 +284,8 @@
     </div>
     <div class="hm-stage" data-active="uk">
       <div class="hm-photo">
-        <img class="is-on" data-market="uk" src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 100vw, 55vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
-        <img data-market="nl" src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 100vw, 55vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み">
+        <img class="is-on" data-market="uk" src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 55vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
+        <img data-market="nl" src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 55vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み">
       </div>
       <div class="hm-panels">
         <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
@@ -326,7 +326,7 @@
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
-        <img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 900px) 92vw, 46vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観">
+        <img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観">
         <span class="hf-scrim" aria-hidden="true"></span>
         <span class="hf-cap">
           <h3>収益型</h3>
@@ -335,7 +335,7 @@
         </span>
       </a>
       <a class="hf-item" href="investment-focus.html#repositioning">
-        <img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 900px) 92vw, 46vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物">
+        <img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物">
         <span class="hf-scrim" aria-hidden="true"></span>
         <span class="hf-cap">
           <h3>再生型</h3>
@@ -392,7 +392,7 @@
 })();
 </script>
 
-<script src="../shell.js?v=75"></script>
+<script src="../shell.js?v=76"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

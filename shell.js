@@ -83,6 +83,10 @@
   function renderNavEn() {
     const host = document.querySelector('[data-shell="nav"]');
     if (!host) return;
+    /* The shell host is the page's banner landmark. Set here rather than in
+       fourteen documents, and on the host rather than a new wrapper, so the
+       fixed nav's box is untouched. */
+    host.setAttribute('role', 'banner');
     const onDark = host.hasAttribute('data-dark');
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const logoSrc = onDark ? (R.logoWhite || 'assets/logos/lockup-white.svg')
@@ -133,6 +137,10 @@
   function renderNavJa() {
     const host = document.querySelector('[data-shell="nav"]');
     if (!host) return;
+    /* The shell host is the page's banner landmark. Set here rather than in
+       fourteen documents, and on the host rather than a new wrapper, so the
+       fixed nav's box is untouched. */
+    host.setAttribute('role', 'banner');
     const onDark = host.hasAttribute('data-dark');
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const logoSrc = onDark ? (R.logoWhite || '../assets/logos/lockup-white.svg')
