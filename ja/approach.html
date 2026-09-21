@@ -75,7 +75,12 @@
   }
 
   /* --- Section scaffold ------------------------------------------------ */
-  .ap-intro { padding: clamp(44px, 4.6vw, 72px) 0 clamp(18px, 2vw, 26px); }
+  /* The lede that sat between this heading and the diagram is gone, and the
+     page title above it is nearly the same size, so the heading needs its own
+     field: more air above to separate it from the title, more below so it is
+     not resting on the panel. About and Investment Focus already run ~180px
+     between the page title and the first section heading; this matches them. */
+  .ap-intro { padding: clamp(72px, 7.4vw, 124px) 0 clamp(26px, 2.8vw, 40px); }
   .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
   .ap-h2--huge { font-size: clamp(24px, 16px + 1.3vw, 36px); line-height: 1.36; letter-spacing: 0.01em; }
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
@@ -329,7 +334,6 @@
 <section class="page-head ap-hero" data-screen-label="01 投資アプローチ — hero">
   <div class="inner">
     <h1>マンデートから、<wbr>出口まで</h1>
-    <p class="sub">投資分析・実行・保有を一つの規律でつなぐ投資プロセス</p>
   </div>
 </section>
 
@@ -337,7 +341,6 @@
 <section class="ap-sec" data-screen-label="02 投資アプローチ — 投資プロセス" aria-labelledby="lf-title">
   <div class="shell ap-intro">
     <h2 class="ap-h2 ap-h2--huge" id="lf-title">一つの<span class="jt">マンデート</span>、六つの段階</h2>
-    <p class="ap-lede">投資の定義から、保有、そして売却まで</p>
   </div>
   <div class="lf-wrap" data-lifecycle>
     <div class="shell">
@@ -570,7 +573,6 @@
 <section class="ap-sec ic-sec" data-screen-label="05 投資アプローチ — 投資家の統制" aria-labelledby="ic-title">
   <div class="shell">
     <h2 class="ap-h2" id="ic-title">投資家の統制と、調整された実行</h2>
-    <p class="ap-lede">決定するのは投資家です。Reiwa Capitalは一本化された提案を維持します</p>
     <div class="ic-stack">
       <div class="ic-row ic-row--investor">
         <span class="ic-name">投資家</span>
