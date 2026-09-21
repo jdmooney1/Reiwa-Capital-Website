@@ -1200,3 +1200,10 @@ html[lang="ja"] .enq-cta { font-family: var(--font-jp); line-height: 1.85; }
    with .jt, which is how this site already stops a break landing badly. */
 html[lang="ja"] .enq-d { max-width: 34em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
 html[lang="ja"] .enq-cta { line-height: 1.5; }
+
+/* Controlled breaks. Japanese has no inter-word space, so where a run must
+   not be split — a katakana loanword, a clause and the punctuation that
+   closes it — the markup says so with .jt. It was declared on three of the
+   five Japanese pages and used on five, which left the spans on Home and
+   Investment Focus doing nothing. Declared once, here. */
+html[lang="ja"] .jt { white-space: nowrap; }
