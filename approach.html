@@ -70,171 +70,76 @@
   @media (max-width: 900px) { .ap-h2 { max-width: 18ch; } }
 
   /* --- 2 · Investment lifecycle -----------------------------------------
-     Six stages under three periods on one dark field. The investor's
-     decisions are gates on the line, not stages of their own: the sumire
-     square marks where authority is exercised and nothing else. Selection
-     is one thing at a time — a stage or a gate. */
+     Six stages under three periods on one dark field, as one accordion at
+     every width. Each stage states its deliverable without being opened, so
+     the sequence and what it produces read in a single pass; opening one
+     adds its purpose and the approval it requires. Every stage carries an
+     approval, so none is marked out from the others. */
   .lf-wrap { padding: 0 0 clamp(8px, 1vw, 14px); }
-  .lf-field { background: var(--ink); padding: clamp(28px, 2.8vw, 40px) clamp(28px, 2.8vw, 44px); }
-  .lf-periods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 32px); }
-  .lf-period { padding-bottom: 10px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 12px + 0.3vw, 15px); line-height: 1.4; color: rgba(252,250,241,.62); }
-  .lf-track { position: relative; margin-top: clamp(24px, 2.6vw, 36px); padding-bottom: 14px; }
-  .lf-stages { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .lf-stage { appearance: none; background: none; border: 0; margin: 0; padding: 6px 4px 0; min-height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-align: left; outline-offset: 4px; }
-  /* editorial.css's shared button:focus-visible carries outline-offset: 3px
-     and outranks the base rule, so the offset is set here alongside the
-     outline or it silently reverts. */
-  .lf-stage:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
-  .lf-stage-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 1.5vw, 26px); line-height: 1.1; letter-spacing: -0.018em; color: rgba(252,250,241,.58); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-stage[aria-pressed="true"] .lf-stage-n { font-weight: 500; color: var(--cream); }
-  /* The whole control answers the pointer, not just its name: the tick under
-     each stage lifts with it. Restrained by design — no fill, no box. */
-  @media (hover: hover) {
-    .lf-stage:hover .lf-stage-n { color: var(--cream); }
-    .lf-stage:hover .lf-tick { background: rgba(252,250,241,.66); }
+  .lf-field { background: var(--ink); padding: clamp(26px, 2.6vw, 40px) clamp(26px, 2.8vw, 44px); }
+  .lf-period { display: block; padding: 0 0 10px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12px + 0.3vw, 14.5px); line-height: 1.4; color: rgba(252,250,241,.6); }
+  .lf-period + .lf-group { margin-bottom: clamp(16px, 2.2vw, 28px); }
+  .lf-item { border-left: 1px solid rgba(252,250,241,.24); padding-left: clamp(16px, 1.6vw, 22px); margin-left: 1px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-item.is-on { border-left: 2px solid var(--cream); }
+  .lf-btn { appearance: none; background: none; border: 0; margin: 0; padding: 14px 0; width: 100%; min-height: 48px; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; text-align: left; outline-offset: 2px; }
+  .lf-btn:focus-visible { outline: 2px solid var(--cream); }
+  .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(252,250,241,.66); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-btn[aria-expanded="true"] .lf-n { font-weight: 500; color: var(--cream); }
+  @media (hover: hover) { .lf-btn:hover .lf-n { color: var(--cream); } }
+  .lf-d { font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 12.5px + 0.2vw, 15px); line-height: 1.5; color: rgba(252,250,241,.72); text-wrap: pretty; }
+  .lf-body { padding: 0 0 20px; display: flex; flex-direction: column; gap: 12px; }
+  .lf-body[hidden] { display: none; }
+  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.3vw, 17px); line-height: 1.55; color: rgba(252,250,241,.88); max-width: 52ch; text-wrap: pretty; }
+  .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(252,250,241,.34); }
+  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(252,250,241,.56); }
+  .lf-ap dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
+  .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(252,250,241,.26); display: grid; gap: 14px; }
+  .lf-own li { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.72); }
+  .lf-own-b { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
+  .lf-cont { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.62); max-width: 52ch; }
+  @media (min-width: 901px) {
+    .lf-btn { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
+    .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px clamp(20px, 2vw, 30px); }
+    .lf-own li { padding-top: 11px; border-top: 1px solid rgba(252,250,241,.26); }
   }
-  .lf-tick { display: block; width: 1px; height: clamp(26px, 3vw, 44px); background: rgba(252,250,241,.3); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-stage[aria-pressed="true"] .lf-tick { background: var(--cream); }
-  .lf-rule { position: absolute; left: 0; right: 0; bottom: 13px; height: 1px; background: rgba(252,250,241,.3); }
-  .lf-progress { position: absolute; left: 0; bottom: 12.5px; width: var(--w, 0%); height: 2px; background: var(--cream); transition: width 300ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-gates { position: relative; height: 44px; }
-  /* The square stays where the design puts it; the button around it is
-     grown to a 44px target rather than the prototype's 41x31. */
-  .lf-gate { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); appearance: none; background: none; border: 0; margin: 0; padding: 6px 0 0; width: 44px; min-height: 44px; display: flex; justify-content: center; align-items: flex-start; cursor: pointer; outline-offset: 2px; }
-  .lf-gate:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
-  .lf-gate-sq { display: block; width: 9px; height: 9px; background: rgba(183,154,214,.55); transition: background 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  /* Hover brings the marker to full strength and rings it faintly; the
-     pressed state rings it twice as strongly and grows it. Focus outranks
-     both with a cream rule neither hover state draws. */
-  @media (hover: hover) { .lf-gate:hover .lf-gate-sq { background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.16); } }
-  .lf-gate[aria-pressed="true"] .lf-gate-sq { width: 11px; height: 11px; background: var(--accent-sumire-light, #B79AD6); outline: 3px solid rgba(183,154,214,.28); }
-  .lf-key { display: flex; align-items: center; gap: 8px; }
-  .lf-key-sq { display: block; width: 9px; height: 9px; background: var(--accent-sumire-light, #B79AD6); }
-  .lf-key-t { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; color: rgba(252,250,241,.62); }
-  /* Two columns once there is room: the stage, its output and the investor's
-     authority on the left; the work Reiwa carries out on the right. The area
-     is floored at runtime (see the controller) so the page below it does not
-     move as selections change. */
-  .lf-detail { margin-top: clamp(24px, 2.2vw, 34px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 26px clamp(26px, 2.6vw, 44px); align-items: start; }
-  .lf-detail-main { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-  .lf-detail-main h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 17px + 1.1vw, 30px); line-height: 1.12; letter-spacing: -0.018em; color: var(--cream); }
-  .lf-detail-main p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.88); max-width: 50ch; text-wrap: pretty; }
-  .lf-pair { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 2px 14px; align-items: baseline; padding-top: 2px; }
-  .lf-pair dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: rgba(252,250,241,.5); }
-  .lf-pair dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.5; color: rgba(252,250,241,.86); }
-  .lf-pair[hidden] { display: none; }
-  .lf-pair--gate { margin-top: 4px; padding-top: 10px; border-top: 1px solid rgba(252,250,241,.34); }
-  .lf-pair--gate dt { color: var(--accent-sumire-light, #B79AD6); }
-  .lf-pair--gate dd { color: var(--cream); }
-  .lf-cont { display: block; margin-top: clamp(24px, 2.2vw, 34px); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.62); max-width: 50ch; }
-  .lf-role { min-width: 0; padding-left: clamp(24px, 2.4vw, 40px); border-left: 1px solid rgba(252,250,241,.26); }
-  .lf-role-t { display: block; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: rgba(252,250,241,.5); margin-bottom: 16px; }
-  .lf-role-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 1.8vw, 24px) clamp(20px, 2vw, 30px); }
-  .lf-role-list li { min-width: 0; display: flex; flex-direction: column; gap: 5px; padding-top: 11px; border-top: 1px solid rgba(252,250,241,.26); }
-  .lf-role-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.005em; color: rgba(252,250,241,.72); }
-  .lf-role-b { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  @media (max-width: 1200px) {
-    .lf-detail { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-    .lf-role { padding-left: 0; border-left: 0; }
-    .lf-role-t { margin-bottom: 14px; }
-  }
-
-  /* Spine below 900px: the same six stages read down the page, each one
-     opening in place. No horizontal track to shrink. */
-  .lf-spine { display: none; }
-  @media (max-width: 900px) {
-    .lf-path { display: none; }
-    .lf-spine { display: block; }
-    .lf-sp-period { display: block; padding: 0 0 10px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 12px + 0.3vw, 15px); line-height: 1.4; color: rgba(252,250,241,.62); }
-    .lf-sp-period + .lf-sp-group { margin-bottom: clamp(18px, 3vw, 26px); }
-    .lf-sp-item { border-left: 1px solid rgba(252,250,241,.24); padding-left: 18px; margin-left: 1px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-    .lf-sp-item.is-on { border-left: 2px solid var(--cream); }
-    .lf-sp-btn { appearance: none; background: none; border: 0; margin: 0; padding: 14px 0; width: 100%; min-height: 48px; cursor: pointer; display: flex; align-items: center; gap: 10px; text-align: left; outline-offset: 2px; }
-    .lf-sp-btn:focus-visible { outline: 2px solid var(--cream); }
-    .lf-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 4.6vw, 26px); line-height: 1.2; letter-spacing: -0.015em; color: rgba(252,250,241,.62); }
-    .lf-sp-btn[aria-pressed="true"] .lf-sp-n { font-weight: 500; color: var(--cream); }
-    .lf-sp-gate { display: block; width: 9px; height: 9px; flex: none; background: var(--accent-sumire-light, #B79AD6); }
-    .lf-sp-body { padding: 0 0 20px; display: flex; flex-direction: column; gap: 12px; }
-    .lf-sp-body[hidden] { display: none; }
-    .lf-sp-body p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.88); }
-    .lf-sp-pair { display: flex; flex-direction: column; gap: 2px; }
-    .lf-sp-pair dt { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(252,250,241,.5); }
-    .lf-sp-pair dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: rgba(252,250,241,.86); }
-    .lf-sp-pair--gate { gap: 3px; padding-top: 12px; border-top: 1px solid rgba(252,250,241,.34); }
-    .lf-sp-pair--gate dt { color: var(--accent-sumire-light, #B79AD6); }
-    .lf-sp-pair--gate dd { color: var(--cream); }
-    .lf-sp-role { padding-top: 14px; border-top: 1px solid rgba(252,250,241,.26); }
-    .lf-sp-role .lf-role-t { font-size: 12px; margin-bottom: 14px; }
-    .lf-sp-role .lf-role-list { gap: 18px 20px; }
-    .lf-sp-role .lf-role-n { font-size: 12px; }
-    .lf-key { margin-top: 20px; }
-    .lf-cont { margin-top: 16px; }
-  }
-  @media (max-width: 380px) {
-    .lf-role-list { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 760px) {
-    /* The field runs edge to edge on phones; its own gutter carries the copy. */
+  @media (max-width: 600px) {
     .lf-wrap > .shell { padding-left: 0; padding-right: 0; }
-    .lf-field { padding: clamp(26px, 3.4vw, 34px) var(--gutter) clamp(28px, 3.4vw, 38px); }
+    .lf-field { padding: clamp(24px, 3.4vw, 32px) var(--gutter) clamp(26px, 3.4vw, 36px); }
   }
 
   /* --- 3 · Five tests ---------------------------------------------------
-     One ring of five equal arcs. Nothing is ranked: the arcs are the same
-     length and the names sit on the edge cells of a 3x3 grid around the
-     circle, so the composition is radial at every width. */
-  .tw-sec { padding: clamp(52px, 5.2vw, 80px) 0 clamp(48px, 4.8vw, 72px); }
-  .tw-head { display: flex; flex-direction: column; gap: clamp(10px, 1.2vw, 16px); max-width: 46ch; }
-  .tw-hint { display: none; margin-top: 26px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
-  .tw-grid { margin-top: clamp(30px, 3.2vw, 48px); display: grid; grid-template-columns: minmax(0, 48fr) minmax(0, 52fr); gap: clamp(28px, 3.6vw, 64px); align-items: center; }
-  .tw-ring { width: 100%; max-width: 620px; margin: 0 auto; display: grid; grid-template-columns: minmax(118px, 1fr) minmax(190px, 1.5fr) minmax(118px, 1fr); grid-template-rows: auto auto auto; gap: clamp(6px, .8vw, 10px) clamp(8px, 1vw, 14px); align-items: center; justify-items: center; }
-  .tw-circle { grid-column: 2; grid-row: 2; position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; margin: 0 auto; container-type: inline-size; }
-  .tw-circle svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .tw-arc { fill: none; stroke: #CEC5B5; stroke-width: 2; stroke-dasharray: 44.27 207.06; stroke-linecap: butt; }
-  .tw-live { fill: none; stroke: var(--ink); stroke-width: 4; stroke-dasharray: 44.27 207.06; transition: transform 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); transform-origin: 50px 50px; }
-  .tw-live[hidden] { display: none; }
-  .tw-spoke { stroke: #CFC7B8; stroke-width: 0.8; }
-  .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 24%; height: auto; display: block; }
-  .tw-name { max-width: 100%; min-width: 0; overflow-wrap: break-word; appearance: none; background: none; border: 0; margin: 0; padding: 10px 2px; min-height: 44px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(15px, 13px + 0.4vw, 17px); line-height: 1.3; color: var(--ink-2); outline-offset: 4px; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .tw-name:focus-visible { outline: 2px solid var(--ink); }
-  @media (hover: hover) { .tw-name:hover { color: var(--ink); } }
-  .tw-name[aria-pressed="true"] { font-weight: 500; color: var(--ink); }
-  .tw-name--1 { grid-column: 2; grid-row: 1; justify-self: center; align-self: end; text-align: center; }
-  .tw-name--2 { grid-column: 3; grid-row: 2; justify-self: start; align-self: center; text-align: left; }
-  .tw-name--3 { grid-column: 3; grid-row: 3; justify-self: start; align-self: start; text-align: left; }
-  .tw-name--4 { grid-column: 1; grid-row: 3; justify-self: end; align-self: start; text-align: right; }
-  .tw-name--5 { grid-column: 1; grid-row: 2; justify-self: end; align-self: center; text-align: right; }
-  .tw-panel { display: flex; flex-direction: column; gap: clamp(12px, 1.4vw, 18px); min-height: 250px; }
-  .tw-panel h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(23px, 17px + 1.1vw, 30px); line-height: 1.12; letter-spacing: -0.018em; color: var(--ink); max-width: 24ch; text-wrap: balance; }
-  .tw-panel p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; text-wrap: pretty; }
-  .tw-points { list-style: none; margin: 0; padding: 2px 0 0; display: flex; flex-direction: column; gap: 7px; }
-  .tw-points li { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.5; color: var(--ink-3); }
-  /* The names step down with the composition, so the longest of them never
-     has to break inside a word beside the ring. */
-  @media (max-width: 1100px) { .tw-name { font-size: 14px; } }
-  @media (max-width: 560px) { .tw-name { font-size: 13.5px; } }
-  @media (max-width: 1250px) {
-    .tw-grid { grid-template-columns: minmax(0, 1fr); }
-    .tw-ring { max-width: 560px; grid-template-columns: minmax(88px, 1fr) minmax(120px, 1.5fr) minmax(88px, 1fr); }
-    .tw-circle { max-width: 300px; }
-    .tw-panel { min-height: auto; }
+     Five questions, permanently visible, in the same key/value grammar as
+     the stages above. The considerations behind them sit in one disclosure
+     rather than five, so the checklist scans and the detail is one press
+     away. */
+  .tw-sec { padding: clamp(44px, 4.4vw, 68px) 0 clamp(40px, 4vw, 60px); }
+  .tw-head { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 12px); max-width: 46ch; }
+  .tw-list { margin: clamp(26px, 2.8vw, 40px) 0 0; display: grid; }
+  .tw-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(14px, 1.5vw, 18px) 0; border-top: 1px solid var(--rule); }
+  .tw-row:last-child { border-bottom: 1px solid var(--rule); }
+  .tw-row dt { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+  .tw-row dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  @media (min-width: 761px) {
+    .tw-row { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 44px); align-items: baseline; }
   }
-  @media (max-width: 760px) {
-    .tw-core { width: 26%; }
-    .tw-hint { display: block; }
-    .tw-grid { margin-top: 14px; }
-    .tw-ring { max-width: 100%; grid-template-columns: minmax(88px, 1fr) minmax(120px, 1.5fr) minmax(88px, 1fr); }
-    .tw-circle { max-width: 150px; }
-  }
-  @media (max-width: 380px) {
-    .tw-name { font-size: 12.5px; }
-    .tw-ring { grid-template-columns: minmax(74px, 1fr) minmax(96px, 1.5fr) minmax(74px, 1fr); }
-    .tw-circle { max-width: 104px; }
-  }
-  @media (max-width: 340px) {
-    .tw-name { font-size: 11.5px; }
-    .tw-ring { grid-template-columns: minmax(80px, 1fr) minmax(94px, 1.2fr) minmax(80px, 1fr); }
-    .tw-circle { max-width: 100px; }
+  .tw-more { margin-top: clamp(20px, 2.2vw, 30px); }
+  .tw-more-btn { appearance: none; background: none; border: 0; margin: 0; padding: 10px 0; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.5; color: var(--ink); outline-offset: 3px; }
+  .tw-more-btn:focus-visible { outline: 2px solid var(--ink); }
+  @media (hover: hover) { .tw-more-btn:hover { color: var(--reiwa-node, #5E3D78); } }
+  .tw-more-i { display: block; position: relative; width: 10px; height: 10px; flex: none; }
+  .tw-more-i::before, .tw-more-i::after { content: ""; position: absolute; left: 0; top: 4.5px; width: 10px; height: 1px; background: currentColor; transition: transform 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-more-i::after { transform: rotate(90deg); }
+  .tw-more-btn[aria-expanded="true"] .tw-more-i::after { transform: rotate(0deg); }
+  @media (prefers-reduced-motion: reduce) { .tw-more-i::before, .tw-more-i::after { transition: none; } }
+  .tw-detail { padding-top: clamp(16px, 1.8vw, 24px); display: grid; gap: clamp(20px, 2.2vw, 30px); }
+  .tw-detail[hidden] { display: none; }
+  .tw-det { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding-top: 12px; border-top: 1px solid var(--rule); }
+  .tw-det-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+  .tw-det ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .tw-det li { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  @media (min-width: 761px) {
+    .tw-det { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 44px); }
   }
 
   /* --- 4 · Architectural pause ------------------------------------------
@@ -262,43 +167,12 @@
   @media (max-width: 480px) { .ap-pause-frame { height: 230px; } }
 
   /* --- 5 · Investor control ---------------------------------------------
-     Three bands, read top to bottom. The investor's band carries the one
-     sumire square on the page outside the lifecycle gates, because that is
-     the same act: the investor approving. */
-  .ic-sec { background: var(--paper-soft); padding: clamp(48px, 4.8vw, 72px) 0; }
-  .ic-stack { margin-top: clamp(34px, 3.6vw, 54px); display: flex; flex-direction: column; }
-  .ic-stack { --ic-gap: clamp(20px, 2.4vw, 44px); --ic-pad: clamp(22px, 2.2vw, 32px); }
-  .ic-row { display: grid; grid-template-columns: minmax(0, 34fr) minmax(0, 66fr); gap: var(--ic-gap); align-items: baseline; }
-  .ic-row--investor { padding-bottom: clamp(16px, 1.8vw, 22px); border-bottom: 1px solid var(--ink); }
-  /* The filled row is inset from its own edge, as a filled field should be,
-     but that inset narrows its content box and pushes the second column off
-     the line the open rows above and below hold. The first column is sized
-     back to the outer geometry so all three second columns share one edge. */
-  .ic-row--reiwa { margin-top: clamp(20px, 2.2vw, 30px); background: var(--ink); padding: clamp(22px, 2.2vw, 30px) var(--ic-pad); grid-template-columns: calc(0.34 * (100% + 2 * var(--ic-pad) - var(--ic-gap)) - var(--ic-pad)) minmax(0, 1fr); }
-  .ic-row--spec { margin-top: clamp(20px, 2.2vw, 30px); padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); }
-  .ic-name { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 17px + 0.8vw, 27px); line-height: 1.18; letter-spacing: -0.016em; color: var(--ink); }
-  .ic-row--reiwa .ic-name { color: var(--cream); }
-  .ic-row--spec .ic-name { font-size: clamp(18px, 15px + 0.5vw, 21px); letter-spacing: -0.012em; color: var(--ink-2); }
-  .ic-acts { display: flex; align-items: baseline; gap: clamp(14px, 1.6vw, 22px); flex-wrap: wrap; }
-  .ic-act { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.3; color: var(--ink); }
-  .ic-sq { display: block; width: 8px; height: 8px; flex: none; background: var(--reiwa-node, #5E3D78); transform: translateY(-2px); }
-  .ic-line { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.35; text-wrap: pretty; }
-  .ic-row--reiwa .ic-line { color: rgba(252,250,241,.92); }
-  .ic-row--spec .ic-line { color: var(--ink-2); }
-  @media (max-width: 760px) {
-    .ic-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-    .ic-row--investor { padding-bottom: 14px; }
-    .ic-row--reiwa, .ic-row--spec { margin-top: 18px; }
-    .ic-row--reiwa { padding: 20px 18px; }
-    .ic-row--spec { padding-top: 14px; }
-    .ic-acts { gap: 10px; }
-  }
+     One statement, one party per sentence: who decides, who coordinates,
+     and who gives the professional advice. */
+  .ic-sec { background: var(--paper-soft); padding: clamp(40px, 4vw, 60px) 0; }
+  .ic-state { margin: clamp(22px, 2.4vw, 32px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.35vw, 17.5px); line-height: 1.6; color: var(--ink); max-width: 64ch; text-wrap: pretty; }
 
-
-  @media (prefers-reduced-motion: reduce) {
-    .lf-stage-n, .lf-gate-sq, .lf-progress, .lf-sp-item, .tw-name, .tw-live { transition: none; }
-  }
-  </style>
+</style>
 </head>
 <body data-page="approach" data-ja-url="/ja/approach.html">
 
@@ -322,172 +196,71 @@
   <div class="lf-wrap" data-lifecycle>
     <div class="shell">
       <div class="lf-field">
-        <div class="lf-path" role="group" aria-label="One Mandate, Six Stages">
-          <div class="lf-periods">
-          <span class="lf-period">Formation</span>
-          <span class="lf-period">Execution</span>
-          <span class="lf-period">Ownership</span>
-          </div>
-          <div class="lf-track">
-            <div class="lf-stages">
-            <button class="lf-stage" type="button" data-stage="0" aria-pressed="false"><span class="lf-stage-n">Mandate</span><span class="lf-tick" aria-hidden="true"></span></button>
-            <button class="lf-stage" type="button" data-stage="1" aria-pressed="false"><span class="lf-stage-n">Assess</span><span class="lf-tick" aria-hidden="true"></span></button>
-            <button class="lf-stage" type="button" data-stage="2" aria-pressed="false"><span class="lf-stage-n">Structure</span><span class="lf-tick" aria-hidden="true"></span></button>
-            <button class="lf-stage" type="button" data-stage="3" aria-pressed="false"><span class="lf-stage-n">Acquire</span><span class="lf-tick" aria-hidden="true"></span></button>
-            <button class="lf-stage" type="button" data-stage="4" aria-pressed="true"><span class="lf-stage-n">Own</span><span class="lf-tick" aria-hidden="true"></span></button>
-            <button class="lf-stage" type="button" data-stage="5" aria-pressed="false"><span class="lf-stage-n">Exit</span><span class="lf-tick" aria-hidden="true"></span></button>
-            </div>
-            <span class="lf-rule" aria-hidden="true"></span>
-            <span class="lf-progress" aria-hidden="true" style="--w: calc(66.67% + 4px)"></span>
-          </div>
-          <div class="lf-gates">
-            <button class="lf-gate" type="button" data-gate="0" aria-pressed="false" aria-label="Investor approval point: Acquisition" style="--x: calc(50% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
-            <button class="lf-gate" type="button" data-gate="1" aria-pressed="false" aria-label="Investor approval point: Material Business-Plan Changes" style="--x: calc(66.67% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
-            <button class="lf-gate" type="button" data-gate="2" aria-pressed="false" aria-label="Investor approval point: Financing or Refinancing" style="--x: calc(75% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
-            <button class="lf-gate" type="button" data-gate="3" aria-pressed="false" aria-label="Investor approval point: Exit" style="--x: calc(83.33% + 4px)"><span class="lf-gate-sq" aria-hidden="true"></span></button>
-          </div>
-          <p class="lf-key"><span class="lf-key-sq" aria-hidden="true"></span><span class="lf-key-t">Investor Approval Point</span></p>
-          <div class="lf-detail" aria-live="polite">
-            <div class="lf-detail-main">
-              <h3 data-lf="name">Own</h3>
-              <p data-lf="purpose">Maintain the investment case through ownership and changing conditions</p>
-              <dl class="lf-pair" data-lf="output"><dt>Output</dt><dd data-lf="output-v">Asset Oversight, Reporting and Decision Support</dd></dl>
-              <dl class="lf-pair lf-pair--gate"><dt>Investor Approval</dt><dd data-lf="approval-v">Refinancing, material capital expenditure and changes to the approved business plan</dd></dl>
-            </div>
-            <div class="lf-role">
-                <span class="lf-role-t" data-lf="role-title">During Ownership</span>
-                <ul class="lf-role-list" data-lf="role-items">
-                  <li><span class="lf-role-n">Monitor</span><span class="lf-role-b">Occupancy, rent, lease events, net operating income and cash flow against the approved business plan</span></li>
-                  <li><span class="lf-role-n">Coordinate</span><span class="lf-role-b">Property managers, agents, lenders, valuers and specialist advisers</span></li>
-                  <li><span class="lf-role-n">Intervene</span><span class="lf-role-b">Budget variance, leasing decisions, capital expenditure, financing events and emerging risks</span></li>
-                  <li><span class="lf-role-n">Report</span><span class="lf-role-b">Performance, valuation and market movement, with recommendations, the decisions ahead and approval materials</span></li>
-                </ul>
+        <span class="lf-period">Formation</span>
+        <div class="lf-group">
+          <div class="lf-item" data-item="0">
+            <button class="lf-btn" type="button" data-stage="0" aria-expanded="false" aria-controls="lf-b-0">
+              <span class="lf-n">Mandate</span><span class="lf-d">Investment Mandate</span>
+            </button>
+            <div class="lf-body" id="lf-b-0" hidden>
+              <p class="lf-p">Translate the investor’s objectives into a clear acquisition mandate</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Mandate and decision framework</dd></dl>
             </div>
           </div>
-          <span class="lf-cont">Investor authority continues throughout ownership, refinancing and exit</span>
+          <div class="lf-item" data-item="1">
+            <button class="lf-btn" type="button" data-stage="1" aria-expanded="false" aria-controls="lf-b-1">
+              <span class="lf-n">Assess</span><span class="lf-d">Investment Memorandum</span>
+            </button>
+            <div class="lf-body" id="lf-b-1" hidden>
+              <p class="lf-p">Test whether an opportunity merits detailed underwriting</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Progression of material opportunities to detailed underwriting</dd></dl>
+            </div>
+          </div>
         </div>
-        <div class="lf-spine" role="group" aria-label="One Mandate, Six Stages">
-          <span class="lf-sp-period">Formation</span>
-          <div class="lf-sp-group">
-            <div class="lf-sp-item" data-sp-item="0">
-              <button class="lf-sp-btn" type="button" data-stage="0" aria-pressed="false" aria-expanded="false" aria-controls="lf-sp-0">
-                <span class="lf-sp-n">Mandate</span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-0" hidden>
-                <p>Translate the investor’s objectives into a clear acquisition mandate</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Investment Mandate</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Mandate and decision framework</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">Defining The Mandate</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Clarify</span><span class="lf-role-b">Establish the investor’s objectives, constraints and ownership requirements</span></li>
-                  <li><span class="lf-role-n">Define</span><span class="lf-role-b">Set target markets, risk parameters and decision criteria</span></li>
-                  <li><span class="lf-role-n">Align</span><span class="lf-role-b">Create a clear basis for screening opportunities and making decisions</span></li>
-                </ul>
-                </div>
-              </div>
-            </div>
-            <div class="lf-sp-item" data-sp-item="1">
-              <button class="lf-sp-btn" type="button" data-stage="1" aria-pressed="false" aria-expanded="false" aria-controls="lf-sp-1">
-                <span class="lf-sp-n">Assess</span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-1" hidden>
-                <p>Test whether an opportunity merits detailed underwriting</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Investment Memorandum</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Authority to progress material opportunities</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">Testing The Opportunity</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Screen</span><span class="lf-role-b">Determine whether the opportunity fits the agreed mandate</span></li>
-                  <li><span class="lf-role-n">Underwrite</span><span class="lf-role-b">Test income, value, capital requirements, financing and exit assumptions</span></li>
-                  <li><span class="lf-role-n">Challenge</span><span class="lf-role-b">Identify material risks, dependencies and unresolved questions</span></li>
-                </ul>
-                </div>
-              </div>
+        <span class="lf-period">Execution</span>
+        <div class="lf-group">
+          <div class="lf-item" data-item="2">
+            <button class="lf-btn" type="button" data-stage="2" aria-expanded="false" aria-controls="lf-b-2">
+              <span class="lf-n">Structure</span><span class="lf-d">Structure and Execution Plan</span>
+            </button>
+            <div class="lf-body" id="lf-b-2" hidden>
+              <p class="lf-p">Coordinate the ownership, financing and tax structure before commitment</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Structure and agreed terms</dd></dl>
             </div>
           </div>
-          <span class="lf-sp-period">Execution</span>
-          <div class="lf-sp-group">
-            <div class="lf-sp-item" data-sp-item="2">
-              <button class="lf-sp-btn" type="button" data-stage="2" aria-pressed="false" aria-expanded="false" aria-controls="lf-sp-2">
-                <span class="lf-sp-n">Structure</span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-2" hidden>
-                <p>Coordinate the ownership, financing and tax structure before commitment</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Structure and Execution Plan</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Approval of structure and agreed terms</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">Preparing The Investment</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Design</span><span class="lf-role-b">Develop the appropriate ownership, financing and governance structure</span></li>
-                  <li><span class="lf-role-n">Coordinate</span><span class="lf-role-b">Bring together legal, tax, financing and specialist advice</span></li>
-                  <li><span class="lf-role-n">Prepare</span><span class="lf-role-b">Translate the proposed structure into an executable investment plan</span></li>
-                </ul>
-                </div>
-              </div>
-            </div>
-            <div class="lf-sp-item" data-sp-item="3">
-              <button class="lf-sp-btn" type="button" data-stage="3" aria-pressed="false" aria-expanded="false" aria-controls="lf-sp-3">
-                <span class="lf-sp-n">Acquire</span><span class="lf-sp-gate" aria-hidden="true"></span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-3" hidden>
-                <p>Complete diligence, financing and documentation under one plan</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Acquisition Decision Pack</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Final investment decision</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">Executing The Acquisition</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Diligence</span><span class="lf-role-b">Coordinate commercial, legal, tax, financial and technical review</span></li>
-                  <li><span class="lf-role-n">Negotiate</span><span class="lf-role-b">Maintain one position across pricing, terms, financing and documentation</span></li>
-                  <li><span class="lf-role-n">Close</span><span class="lf-role-b">Manage conditions, approvals and execution through completion</span></li>
-                </ul>
-                </div>
-              </div>
+          <div class="lf-item" data-item="3">
+            <button class="lf-btn" type="button" data-stage="3" aria-expanded="false" aria-controls="lf-b-3">
+              <span class="lf-n">Acquire</span><span class="lf-d">Acquisition Decision Pack</span>
+            </button>
+            <div class="lf-body" id="lf-b-3" hidden>
+              <p class="lf-p">Complete diligence, financing and documentation under one plan</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Final investment decision, before any commitment is made</dd></dl>
             </div>
           </div>
-          <span class="lf-sp-period">Ownership</span>
-          <div class="lf-sp-group">
-            <div class="lf-sp-item is-on" data-sp-item="4">
-              <button class="lf-sp-btn" type="button" data-stage="4" aria-pressed="true" aria-expanded="true" aria-controls="lf-sp-4">
-                <span class="lf-sp-n">Own</span><span class="lf-sp-gate" aria-hidden="true"></span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-4">
-                <p>Maintain the investment case through ownership and changing conditions</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Asset Oversight, Reporting and Decision Support</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Refinancing, material capital expenditure and changes to the approved business plan</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">During Ownership</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Monitor</span><span class="lf-role-b">Occupancy, rent, lease events, net operating income and cash flow against the approved business plan</span></li>
-                  <li><span class="lf-role-n">Coordinate</span><span class="lf-role-b">Property managers, agents, lenders, valuers and specialist advisers</span></li>
-                  <li><span class="lf-role-n">Intervene</span><span class="lf-role-b">Budget variance, leasing decisions, capital expenditure, financing events and emerging risks</span></li>
-                  <li><span class="lf-role-n">Report</span><span class="lf-role-b">Performance, valuation and market movement, with recommendations, the decisions ahead and approval materials</span></li>
-                </ul>
-                </div>
-              </div>
-            </div>
-            <div class="lf-sp-item" data-sp-item="5">
-              <button class="lf-sp-btn" type="button" data-stage="5" aria-pressed="false" aria-expanded="false" aria-controls="lf-sp-5">
-                <span class="lf-sp-n">Exit</span><span class="lf-sp-gate" aria-hidden="true"></span>
-              </button>
-              <div class="lf-sp-body" id="lf-sp-5" hidden>
-                <p>Evaluate refinancing, partial realisation or sale against the mandate</p>
-                <dl class="lf-sp-pair"><dt>Output</dt><dd>Exit Recommendation and Execution Plan</dd></dl>
-                <dl class="lf-sp-pair lf-sp-pair--gate"><dt>Investor Approval</dt><dd>Timing, pricing and disposal terms</dd></dl>
-                <div class="lf-sp-role">
-                <span class="lf-role-t">Realising The Investment</span>
-                <ul class="lf-role-list">
-                  <li><span class="lf-role-n">Review</span><span class="lf-role-b">Assess continued ownership, refinancing, partial realisation and sale</span></li>
-                  <li><span class="lf-role-n">Recommend</span><span class="lf-role-b">Present the preferred route, timing and value implications</span></li>
-                  <li><span class="lf-role-n">Execute</span><span class="lf-role-b">Coordinate preparation, marketing, negotiation and completion</span></li>
-                </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="lf-key"><span class="lf-key-sq" aria-hidden="true"></span><span class="lf-key-t">Investor Approval Point</span></p>
-          <span class="lf-cont">Investor authority continues throughout ownership, refinancing and exit</span>
         </div>
+        <span class="lf-period">Ownership</span>
+        <div class="lf-group">
+          <div class="lf-item is-on" data-item="4">
+            <button class="lf-btn" type="button" data-stage="4" aria-expanded="true" aria-controls="lf-b-4">
+              <span class="lf-n">Own</span><span class="lf-d">Asset Oversight, Reporting and Decision Support</span>
+            </button>
+            <div class="lf-body" id="lf-b-4">
+              <p class="lf-p">Review the investment case against performance and changing conditions</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Refinancing, material capital expenditure and changes to the approved business plan</dd></dl>
+            <ul class="lf-own"><li><span class="lf-own-n">Monitor</span><span class="lf-own-b">Rent, occupancy, lease events, NOI and cash flow against the approved business plan</span></li><li><span class="lf-own-n">Intervene</span><span class="lf-own-b">Budget variance, leasing decisions, capital expenditure, financing events and emerging risks</span></li><li><span class="lf-own-n">Report</span><span class="lf-own-b">Performance, valuation and market changes, with recommendations and materials for investor approval</span></li></ul>
+            </div>
+          </div>
+          <div class="lf-item" data-item="5">
+            <button class="lf-btn" type="button" data-stage="5" aria-expanded="false" aria-controls="lf-b-5">
+              <span class="lf-n">Exit</span><span class="lf-d">Exit Recommendation and Execution Plan</span>
+            </button>
+            <div class="lf-body" id="lf-b-5" hidden>
+              <p class="lf-p">Evaluate refinancing, partial realisation or sale against the mandate</p>
+              <dl class="lf-ap"><dt>Investor approval</dt><dd>Timing, pricing and disposal terms</dd></dl>
+            </div>
+          </div>
+        </div>
+        <span class="lf-cont">Investor authority continues throughout ownership, refinancing and exit</span>
       </div>
     </div>
   </div>
@@ -495,43 +268,26 @@
 
 <!-- Five tests -->
 <section class="ap-sec tw-sec" data-screen-label="03 Approach — five tests" aria-labelledby="tw-title">
-  <div class="shell" data-tests>
+  <div class="shell">
     <div class="tw-head">
       <h2 class="ap-h2" id="tw-title">Five Tests, One Investment Case</h2>
-      <p class="ap-lede">Five considerations assessed together. No single test substitutes for judgement</p>
+      <p class="ap-lede">No single test substitutes for judgement</p>
     </div>
-    <p class="tw-hint">Select a Test</p>
-    <div class="tw-grid">
-      <div class="tw-ring" role="group" aria-label="Five Tests, One Investment Case">
-        <div class="tw-circle">
-          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <g>
-          <circle class="tw-arc" cx="50" cy="50" r="40" transform="rotate(-126 50 50)"/>
-          <circle class="tw-arc" cx="50" cy="50" r="40" transform="rotate(-54 50 50)"/>
-          <circle class="tw-arc" cx="50" cy="50" r="40" transform="rotate(18 50 50)"/>
-          <circle class="tw-arc" cx="50" cy="50" r="40" transform="rotate(90 50 50)"/>
-          <circle class="tw-arc" cx="50" cy="50" r="40" transform="rotate(162 50 50)"/>
-            </g>
-            <circle class="tw-live" cx="50" cy="50" r="40" transform="rotate(-126 50 50)" hidden/>
-            <g class="tw-spoke" aria-hidden="true">
-              <line x1="50" y1="8" x2="50" y2="4"/><line x1="89.9" y1="37" x2="93.7" y2="35.8"/>
-              <line x1="74.7" y1="83.6" x2="77.1" y2="86.8"/><line x1="25.3" y1="83.6" x2="22.9" y2="86.8"/>
-              <line x1="10.1" y1="37" x2="6.3" y2="35.8"/>
-            </g>
-          </svg>
-          <img class="tw-core" src="assets/logos/symbol-purple.svg" alt="" width="747" height="801" loading="lazy" decoding="async">
-        </div>
-        <button class="tw-name tw-name--1" type="button" data-test="0" aria-pressed="false" aria-controls="tw-panel">Mandate Fit</button>
-        <button class="tw-name tw-name--2" type="button" data-test="1" aria-pressed="false" aria-controls="tw-panel">Market Case</button>
-        <button class="tw-name tw-name--3" type="button" data-test="2" aria-pressed="false" aria-controls="tw-panel">Asset Fundamentals</button>
-        <button class="tw-name tw-name--4" type="button" data-test="3" aria-pressed="false" aria-controls="tw-panel">Pricing and Downside</button>
-        <button class="tw-name tw-name--5" type="button" data-test="4" aria-pressed="false" aria-controls="tw-panel">Execution and Exit</button>
-      </div>
-
-      <div class="tw-panel" id="tw-panel" aria-live="polite">
-        <h3 data-tw="name">Weighed together, not in order</h3>
-        <p data-tw="ask">Select a test to see the question Reiwa asks and the considerations behind it</p>
-        <ul class="tw-points" data-tw="points"></ul>
+    <dl class="tw-list">
+      <div class="tw-row"><dt>Mandate Fit</dt><dd>Does the opportunity meet the investor’s objectives, constraints and ownership requirements?</dd></div>
+      <div class="tw-row"><dt>Market Case</dt><dd>Do demand, liquidity and regulation support the proposed strategy?</dd></div>
+      <div class="tw-row"><dt>Asset Fundamentals</dt><dd>Are the building, income and capital requirements understood and defensible?</dd></div>
+      <div class="tw-row"><dt>Pricing and Downside</dt><dd>Does the return remain acceptable without relying on favourable market movement?</dd></div>
+      <div class="tw-row"><dt>Execution and Exit</dt><dd>Can the business plan be delivered, controlled and ultimately realised?</dd></div>
+    </dl>
+    <div class="tw-more">
+      <button class="tw-more-btn" type="button" data-more aria-expanded="false" aria-controls="tw-detail">Detailed Investment Tests<span class="tw-more-i" aria-hidden="true"></span></button>
+      <div class="tw-detail" id="tw-detail" hidden>
+        <div class="tw-det"><span class="tw-det-n">Mandate Fit</span><ul><li>Objectives, hold horizon and reporting requirements</li><li>Currency, structure and tax constraints</li></ul></div>
+        <div class="tw-det"><span class="tw-det-n">Market Case</span><ul><li>Occupier demand and competing supply</li><li>Depth of the investment market at this profile</li><li>Planning, licensing and regulatory direction</li></ul></div>
+        <div class="tw-det"><span class="tw-det-n">Asset Fundamentals</span><ul><li>Building condition, services and compliance</li><li>Lease structure, covenant and income profile</li><li>Capital expenditure required during the hold</li></ul></div>
+        <div class="tw-det"><span class="tw-det-n">Pricing and Downside</span><ul><li>Basis against replacement cost and long-run income</li><li>Sensitivity to exit yield and financing cost</li><li>What the case returns if conditions do not improve</li></ul></div>
+        <div class="tw-det"><span class="tw-det-n">Execution and Exit</span><ul><li>Local execution capability and accountability</li><li>Decisions reserved to the investor during ownership</li><li>Likely buyer profile at realisation</li></ul></div>
       </div>
     </div>
   </div>
@@ -550,20 +306,7 @@
 <section class="ap-sec ic-sec" data-screen-label="05 Approach — investor control" aria-labelledby="ic-title">
   <div class="shell">
     <h2 class="ap-h2" id="ic-title">Investor Control, Coordinated Execution</h2>
-    <div class="ic-stack">
-      <div class="ic-row ic-row--investor">
-        <span class="ic-name">Investor</span>
-        <p class="ic-acts"><span class="ic-act">Sets the Mandate</span><span class="ic-sq" aria-hidden="true"></span><span class="ic-act">Approves Material Decisions</span></p>
-      </div>
-      <div class="ic-row ic-row--reiwa">
-        <span class="ic-name">Reiwa Capital</span>
-        <span class="ic-line">Maintains One Coordinated Investor-Side View</span>
-      </div>
-      <div class="ic-row ic-row--spec">
-        <span class="ic-name">Specialist Advice and Execution</span>
-        <span class="ic-line">Appointed According to the Mandate and Asset</span>
-      </div>
-    </div>
+    <p class="ic-state">The investor sets the mandate and approves acquisition, financing, material capital expenditure and exit. Reiwa Capital maintains one investor-side view and coordinates the work each investment requires, including property managers, agents, lenders, valuers and specialist advisers. Legal, tax, valuation and technical advice is given by those separately appointed specialists.</p>
   </div>
 </section>
 
@@ -574,7 +317,7 @@
     <div class="enq-row">
       <div>
         <h2 class="enq-h" id="enq-title">Discussing a Mandate</h2>
-        <p class="enq-d">Reiwa Capital begins each engagement from a mandate agreed with the investor. Enquiries are welcome from Japanese corporate, institutional and private investors.</p>
+        <p class="enq-d">Enquiries are welcome from Japanese corporate, institutional and private investors.</p>
       </div>
       <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investor enquiries: contact Reiwa Capital">Investor enquiries<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
@@ -585,201 +328,57 @@
 
 <div data-shell="footer"></div>
 <script>
-/* Approach — the investment lifecycle and the five tests.
-   Lifecycle: one selection at a time, a stage or an investor approval point,
-   opening on Own. Click and keyboard activation both change the detailed
-   content; hover does not. Escape returns to the loaded state. */
+/* Approach — the investment lifecycle accordion and the detailed-tests
+   disclosure. One stage is open at a time, opening on Own. Pressing the
+   open stage closes it; Escape returns both to their loaded state. */
 (function () {
   var lf = document.querySelector('[data-lifecycle]');
-  var tw = document.querySelector('[data-tests]');
-  if (!lf && !tw) return;
-
-  var STAGES = [
-  {n:'Mandate',p:'Translate the investor’s objectives into a clear acquisition mandate',o:'Investment Mandate',a:'Mandate and decision framework'},
-  {n:'Assess',p:'Test whether an opportunity merits detailed underwriting',o:'Investment Memorandum',a:'Authority to progress material opportunities'},
-  {n:'Structure',p:'Coordinate the ownership, financing and tax structure before commitment',o:'Structure and Execution Plan',a:'Approval of structure and agreed terms'},
-  {n:'Acquire',p:'Complete diligence, financing and documentation under one plan',o:'Acquisition Decision Pack',a:'Final investment decision'},
-  {n:'Own',p:'Maintain the investment case through ownership and changing conditions',o:'Asset Oversight, Reporting and Decision Support',a:'Refinancing, material capital expenditure and changes to the approved business plan'},
-  {n:'Exit',p:'Evaluate refinancing, partial realisation or sale against the mandate',o:'Exit Recommendation and Execution Plan',a:'Timing, pricing and disposal terms'}
-  ];
-  var GATES = [
-  {n:'Acquisition',d:'The investor takes the final investment decision before any commitment is made',x:50,r:3},
-  {n:'Material Business-Plan Changes',d:'Changes to strategy, capital expenditure or leasing policy return to the investor for approval',x:66.67,r:4},
-  {n:'Financing or Refinancing',d:'Any new or replacement financing is approved by the investor on its terms',x:75,r:4},
-  {n:'Exit',d:'Timing, pricing and disposal terms remain the investor’s decision',x:83.33,r:5}
-  ];
-  var ROLE = [
-  {t:'Defining The Mandate',i:[['Clarify','Establish the investor’s objectives, constraints and ownership requirements'],['Define','Set target markets, risk parameters and decision criteria'],['Align','Create a clear basis for screening opportunities and making decisions']]},
-  {t:'Testing The Opportunity',i:[['Screen','Determine whether the opportunity fits the agreed mandate'],['Underwrite','Test income, value, capital requirements, financing and exit assumptions'],['Challenge','Identify material risks, dependencies and unresolved questions']]},
-  {t:'Preparing The Investment',i:[['Design','Develop the appropriate ownership, financing and governance structure'],['Coordinate','Bring together legal, tax, financing and specialist advice'],['Prepare','Translate the proposed structure into an executable investment plan']]},
-  {t:'Executing The Acquisition',i:[['Diligence','Coordinate commercial, legal, tax, financial and technical review'],['Negotiate','Maintain one position across pricing, terms, financing and documentation'],['Close','Manage conditions, approvals and execution through completion']]},
-  {t:'During Ownership',i:[['Monitor','Occupancy, rent, lease events, net operating income and cash flow against the approved business plan'],['Coordinate','Property managers, agents, lenders, valuers and specialist advisers'],['Intervene','Budget variance, leasing decisions, capital expenditure, financing events and emerging risks'],['Report','Performance, valuation and market movement, with recommendations, the decisions ahead and approval materials']]},
-  {t:'Realising The Investment',i:[['Review','Assess continued ownership, refinancing, partial realisation and sale'],['Recommend','Present the preferred route, timing and value implications'],['Execute','Coordinate preparation, marketing, negotiation and completion']]}
-  ];
-  var TESTS = [
-  {n:'Mandate Fit',k:'Does the opportunity meet the investor’s objectives, constraints and ownership requirements?',p:['Objectives, hold horizon and reporting requirements','Currency, structure and tax constraints','Governance and approval expectations']},
-  {n:'Market Case',k:'Do demand, liquidity and regulation support the proposed strategy?',p:['Occupier demand and competing supply','Depth of the investment market at this profile','Planning, licensing and regulatory direction']},
-  {n:'Asset Fundamentals',k:'Are the building, income and capital requirements understood and defensible?',p:['Building condition, services and compliance','Lease structure, covenant and income profile','Capital expenditure required during the hold']},
-  {n:'Pricing and Downside',k:'Does the return remain acceptable without relying on favourable market movement?',p:['Basis against replacement cost and long-run income','Sensitivity to exit yield and financing cost','What the case returns if conditions do not improve']},
-  {n:'Execution and Exit',k:'Can the business plan be delivered, controlled and ultimately realised?',p:['Local execution capability and accountability','Decisions reserved to the investor during ownership','Likely buyer profile at realisation']}
-  ];
-  var L = { held: 'Reserved to the investor' };
-  var IDLE = { n: 'Weighed together, not in order', k: 'Select a test to see the question Reiwa asks and the considerations behind it' };
+  var more = document.querySelector('[data-more]');
   var DEFAULT_STAGE = 4;
 
-  /* Both panels are floored to their own tallest state, so the page below
-     them never moves as selections change. Measured rather than declared:
-     the tallest state differs by width, language and loaded font. Any floor
-     the stylesheet sets for composition is kept as the lower bound. */
-  function floorTo(el, paint, states, restore) {
-    if (!el) return;
-    el.style.minHeight = '';
-    var base = parseFloat(getComputedStyle(el).minHeight) || 0;
-    var live = el.getAttribute('aria-live');
-    if (live) el.removeAttribute('aria-live');
-    el.style.minHeight = '0px';
-    var max = 0;
-    states.forEach(function (set) { set(); paint(); if (el.offsetHeight > max) max = el.offsetHeight; });
-    restore(); paint();
-    el.style.minHeight = max ? Math.max(max, base) + 'px' : '';
-    if (live) el.setAttribute('aria-live', live);
-  }
-  var relock = [];
-  function relockAll() { relock.forEach(function (f) { f(); }); }
-
-  /* ---------------- lifecycle ---------------- */
   if (lf) {
-    var stageBtns = [].slice.call(lf.querySelectorAll('[data-stage]'));
-    var gateBtns  = [].slice.call(lf.querySelectorAll('[data-gate]'));
-    var items     = [].slice.call(lf.querySelectorAll('[data-sp-item]'));
-    var progress  = lf.querySelector('.lf-progress');
-    var f = {
-      name: lf.querySelector('[data-lf="name"]'),
-      purpose: lf.querySelector('[data-lf="purpose"]'),
-      outputV: lf.querySelector('[data-lf="output-v"]'),
-      approvalV: lf.querySelector('[data-lf="approval-v"]'),
-      roleTitle: lf.querySelector('[data-lf="role-title"]'),
-      roleItems: lf.querySelector('[data-lf="role-items"]')
-    };
-    /* ONE state: the active lifecycle stage. An investor approval point is
-       not a second state — selecting one activates the stage that approval
-       governs (GATES[i].r), so every field below, and every open spine item,
-       is read from that single stage. `gate` records only which approval
-       marker was pressed, for the marker and the progress bar; it never
-       sources copy, so no field can disagree with another. */
-    var stage = DEFAULT_STAGE, gate = null;
+    var btns  = [].slice.call(lf.querySelectorAll('[data-stage]'));
+    var items = [].slice.call(lf.querySelectorAll('[data-item]'));
+    var open = DEFAULT_STAGE;
 
     function paint() {
-      var s = STAGES[stage];
-      stageBtns.forEach(function (b) {
-        var on = +b.dataset.stage === stage;
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        if (b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded', on ? 'true' : 'false');
+      btns.forEach(function (b) {
+        b.setAttribute('aria-expanded', (+b.dataset.stage === open) ? 'true' : 'false');
       });
       items.forEach(function (it) {
-        var on = +it.dataset.spItem === stage;
+        var on = +it.dataset.item === open;
         it.classList.toggle('is-on', on);
-        var body = it.querySelector('.lf-sp-body');
+        var body = it.querySelector('.lf-body');
         if (body) body.hidden = !on;
       });
-      gateBtns.forEach(function (b) {
-        b.setAttribute('aria-pressed', (gate !== null && +b.dataset.gate === gate) ? 'true' : 'false');
-      });
-      if (progress) {
-        var x = gate === null ? stage * (100 / 6) : GATES[gate].x;
-        progress.style.setProperty('--w', 'calc(' + x + '% + 4px)');
-      }
-      f.name.textContent = s.n;
-      f.purpose.textContent = s.p;
-      f.outputV.textContent = s.o;
-      f.approvalV.textContent = s.a;
-      var role = ROLE[stage] || ROLE[0];
-      if (f.roleTitle) f.roleTitle.textContent = role.t;
-      if (f.roleItems) {
-        f.roleItems.textContent = '';
-        role.i.forEach(function (x) {
-          var li = document.createElement('li');
-          var n = document.createElement('span'); n.className = 'lf-role-n'; n.textContent = x[0];
-          var b = document.createElement('span'); b.className = 'lf-role-b'; b.textContent = x[1];
-          li.appendChild(n); li.appendChild(b); f.roleItems.appendChild(li);
-        });
-      }
     }
-    function setStage(i) { stage = i; gate = null; paint(); }
-    /* An approval point is a way into the stage it governs. */
-    function setGate(i) { stage = GATES[i].r; gate = i; paint(); }
-    stageBtns.forEach(function (b) {
+    btns.forEach(function (b) {
       var i = +b.dataset.stage;
-      b.addEventListener('click', function () { setStage(i); });
-    });
-    gateBtns.forEach(function (b) {
-      var i = +b.dataset.gate;
-      b.addEventListener('click', function () { setGate(i); });
+      b.addEventListener('click', function () { open = (open === i) ? null : i; paint(); });
     });
     paint();
-    var detail = lf.querySelector('.lf-detail');
-    relock.push(function () {
-      /* Approval points resolve to a stage, so the six stages are every
-         state the panel can render — measuring them measures all of them. */
-      var ks = stage, kg = gate, states = [];
-      STAGES.forEach(function (_, i) { states.push(function () { stage = i; gate = null; }); });
-      floorTo(detail, paint, states, function () { stage = ks; gate = kg; });
-    });
-    lf._reset = function () { if (stage !== DEFAULT_STAGE || gate !== null) setStage(DEFAULT_STAGE); };
+    lf._reset = function () { if (open !== DEFAULT_STAGE) { open = DEFAULT_STAGE; paint(); } };
   }
 
-  /* ---------------- five tests ---------------- */
-  if (tw) {
-    var names = [].slice.call(tw.querySelectorAll('[data-test]'));
-    var live = tw.querySelector('.tw-live');
-    var pn = tw.querySelector('[data-tw="name"]');
-    var pa = tw.querySelector('[data-tw="ask"]');
-    var pp = tw.querySelector('[data-tw="points"]');
-    /* Touch layouts open on the first test so the interaction is self-evident;
-       wider layouts open on the framework itself, with nothing singled out. */
-    var START = (window.matchMedia && window.matchMedia('(max-width: 760px)').matches) ? 0 : null;
-    var sel = START;
-
-    function paintTests() {
-      names.forEach(function (b) {
-        b.setAttribute('aria-pressed', (+b.dataset.test === sel) ? 'true' : 'false');
-      });
-      if (live) {
-        live.hidden = sel === null;
-        if (sel !== null) live.setAttribute('transform', 'rotate(' + (-126 + 72 * sel) + ' 50 50)');
+  if (more) {
+    var panel = document.getElementById(more.getAttribute('aria-controls'));
+    more.addEventListener('click', function () {
+      var on = more.getAttribute('aria-expanded') === 'true';
+      more.setAttribute('aria-expanded', on ? 'false' : 'true');
+      if (panel) panel.hidden = on;
+    });
+    more._reset = function () {
+      if (more.getAttribute('aria-expanded') === 'true') {
+        more.setAttribute('aria-expanded', 'false');
+        if (panel) panel.hidden = true;
       }
-      var t = sel === null ? null : TESTS[sel];
-      pn.textContent = t ? t.n : IDLE.n;
-      pa.textContent = t ? t.k : IDLE.k;
-      pp.textContent = '';
-      if (t) t.p.forEach(function (x) {
-        var li = document.createElement('li'); li.textContent = x; pp.appendChild(li);
-      });
-    }
-    function toggle(i) { sel = (sel === i) ? null : i; paintTests(); }
-    names.forEach(function (b) {
-      var i = +b.dataset.test;
-      b.addEventListener('click', function () { toggle(i); });
-    });
-    paintTests();
-    var panel = tw.querySelector('.tw-panel');
-    relock.push(function () {
-      var k = sel, states = [function () { sel = null; }];
-      TESTS.forEach(function (_, i) { states.push(function () { sel = i; }); });
-      floorTo(panel, paintTests, states, function () { sel = k; });
-    });
-    tw._reset = function () { if (sel !== START) { sel = START; paintTests(); } };
+    };
   }
-
-  relockAll();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relockAll);
-  var t = 0;
-  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(relockAll, 150); });
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (tw && tw._reset) tw._reset();
     if (lf && lf._reset) lf._reset();
+    if (more && more._reset) more._reset();
   });
 })();
 </script>
