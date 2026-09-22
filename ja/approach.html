@@ -80,7 +80,7 @@
      field: more air above to separate it from the title, more below so it is
      not resting on the panel. About and Investment Focus already run ~180px
      between the page title and the first section heading; this matches them. */
-  .ap-intro { padding: clamp(72px, 7.4vw, 124px) 0 clamp(26px, 2.8vw, 40px); }
+  .ap-intro { padding: clamp(52px, 5.2vw, 84px) 0 clamp(22px, 2.2vw, 32px); }
   .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
   .ap-h2--huge { font-size: clamp(24px, 16px + 1.3vw, 36px); line-height: 1.36; letter-spacing: 0.01em; }
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
@@ -98,7 +98,7 @@
   .lf-period + .lf-group { margin-bottom: clamp(16px, 2.2vw, 28px); }
   .lf-item { border-left: 1px solid rgba(252,250,241,.24); padding-left: clamp(16px, 1.6vw, 22px); margin-left: 1px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-item.is-on { border-left: 2px solid var(--cream); }
-  .lf-btn { appearance: none; background: none; border: 0; margin: 0; padding: 14px 0; width: 100%; min-height: 48px; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; text-align: left; outline-offset: 2px; }
+  .lf-btn { appearance: none; background: none; border: 0; margin: 0; padding: 11px 0; width: 100%; min-height: 48px; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; text-align: left; outline-offset: 2px; }
   .lf-btn:focus-visible { outline: 2px solid var(--cream); }
   .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(252,250,241,.66); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-btn[aria-expanded="true"] .lf-n { font-weight: 500; color: var(--cream); }
@@ -130,10 +130,10 @@
      the stages above. The considerations behind them sit in one disclosure
      rather than five, so the checklist scans and the detail is one press
      away. */
-  .tw-sec { padding: clamp(44px, 4.4vw, 68px) 0 clamp(40px, 4vw, 60px); }
+  .tw-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(32px, 3.2vw, 46px); }
   .tw-head { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 12px); max-width: 46ch; }
   .tw-list { margin: clamp(26px, 2.8vw, 40px) 0 0; display: grid; }
-  .tw-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(14px, 1.5vw, 18px) 0; border-top: 1px solid var(--rule); }
+  .tw-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(11px, 1.2vw, 14px) 0; border-top: 1px solid var(--rule); }
   .tw-row:last-child { border-bottom: 1px solid var(--rule); }
   .tw-row dt { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
   .tw-row dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
@@ -190,22 +190,22 @@
      980px width, but 1225px tall rather than a 524px slice, so the band is
      chosen here by object-position instead of being baked into the file. */
   .ap-pause { padding: clamp(12px, 1.6vw, 28px) 0; }
-  .ap-pause-frame { width: 100%; height: clamp(240px, 17vw, 300px); overflow: hidden; background: #EDE7DC; }
+  .ap-pause-frame { width: 100%; height: clamp(170px, 12vw, 210px); overflow: hidden; background: #EDE7DC; }
   .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
-  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(210px, 21vw, 250px); } }
+  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(165px, 16vw, 195px); } }
   /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
   @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
   @media (max-width: 760px) {
     .ap-pause { padding: 8px 0; }
-    .ap-pause-frame { width: 100%; height: 250px; }
+    .ap-pause-frame { width: 100%; height: 185px; }
     .ap-pause-frame img { object-position: 50% 84%; }
   }
-  @media (max-width: 480px) { .ap-pause-frame { height: 230px; } }
+  @media (max-width: 480px) { .ap-pause-frame { height: 170px; } }
 
   /* --- 5 · Investor control ---------------------------------------------
      One statement, one party per sentence: who decides, who coordinates,
      and who gives the professional advice. */
-  .ic-sec { background: var(--paper-soft); padding: clamp(40px, 4vw, 60px) 0; }
+  .ic-sec { background: var(--paper-soft); padding: clamp(34px, 3.4vw, 48px) 0; }
   .ic-state { margin: clamp(22px, 2.4vw, 32px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.35vw, 17.5px); line-height: 1.6; color: var(--ink); max-width: 64ch; text-wrap: pretty; }
 
 </style>
@@ -271,11 +271,11 @@
             </button>
             <div class="lf-body" id="lf-b-3" hidden>
               <p class="lf-p">一つの計画のもとで、デューデリジェンス・調達・契約を完了します</p>
-              <dl class="lf-ap"><dt>投資家の承認</dt><dd>いかなるコミットの前にも行う、最終投資判断</dd></dl>
+              <dl class="lf-ap"><dt>投資家の承認</dt><dd>取得に<span class="jt">コミット</span>する前の最終投資判断</dd></dl>
             </div>
           </div>
         </div>
-        <span class="lf-period">保有</span>
+        <span class="lf-period">保有期間</span>
         <div class="lf-group">
           <div class="lf-item is-on" data-item="4">
             <button class="lf-btn" type="button" data-stage="4" aria-expanded="true" aria-controls="lf-b-4">
