@@ -190,19 +190,29 @@
   .sw-prim  { background: #2F1F3A; opacity: 0.94; border: 1px solid #2F1F3A; }
   .sw-broad { background: #E6D9E4; opacity: 0.9; border: 1px solid #8E7A9C; }
 
-  .am-sum { margin: 0 0 clamp(20px, 2.2vw, 28px); max-width: 56ch; }
+  .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
+  .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
+  .am-sum { margin: clamp(18px, 2vw, 24px) 0 0; max-width: 46ch; }
   .am-panel--snapshot .am-sum { font-size: 15px; line-height: 1.6; }
-  /* Market snapshot shell — one column. The sentence leads at its own measure,
-     the map keeps roughly the width it had as the left column, and the legend
-     and note sit under it. The map's two aspect tunings are untouched, so the
-     group labels stay where they were placed against each crop. */
-  .am-panel--snapshot .am-grid { display: block; margin-top: clamp(24px, 2.4vw, 32px); }
-  @media (min-width: 901px) { .am-panel--snapshot .am-mapwrap { max-width: 520px; } }
+  /* Market snapshot shell. Map and side column at 53/47: the map, its legend
+     and its note on the left; the photograph and the sentence on the right.
+     Above the stack point the photograph takes up the slack so the two
+     columns end level, and the sentence sits under it. Below the stack point
+     the panel is linear and the photograph returns to its letterbox. */
+  .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
   .am-panel--snapshot .am-legend { margin-top: 14px; }
   .am-panel--snapshot .am-note { margin-top: 8px; }
+  .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
+  @media (min-width: 901px) {
+    .am-panel--snapshot .am-grid { align-items: stretch; }
+    .am-panel--snapshot .am-side { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+    .am-panel--snapshot .am-figure { aspect-ratio: auto; }
+  }
+  @media (max-width: 900px) { .am-panel--snapshot .am-grid { grid-template-columns: 1fr; } }
   /* Between the Home stack point and the old stack point the two zones still
      hold for the snapshot; the map takes the wide framing, not the tall one. */
   @media (min-width: 901px) and (max-width: 1024px) {
+    .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); gap: 32px; }
     .am-panel--snapshot .am-map { aspect-ratio: 0.95; }
     .am-panel--snapshot .am-img--wide { display: block; }
     .am-panel--snapshot .am-img--tall { display: none; }
@@ -210,6 +220,7 @@
   /* Amsterdam: the same shell, its own camera. The wide map frame is 1.2
      (964 x 803.6 units); the photograph sits on the facades, not the water. */
   @media (min-width: 901px) { .am-panel--snapshot[data-market="amsterdam"] .am-map { aspect-ratio: 1.2; } }
+  .am-panel--snapshot[data-market="amsterdam"] .am-figure img { object-position: 50% 28%; }
   @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
   @media (max-width: 1024px) {
     .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
@@ -363,7 +374,6 @@
     </div>
     <div class="am-panel am-panel--snapshot is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
       <div class="am-grid">
-        <p class="h-body am-sum">厚みと流動性があり、長期の買い手層が広い市場で、<span class="jt">プライム</span><span class="jt">セントラル</span>および確立した商業<span class="jt">エリア</span>に注力します。</p>
         <div class="am-mapwrap">
           <div class="am-map">
             <img class="am-img am-img--wide" src="../assets/maps/london-wide.svg?v=4" alt="ロンドン中心部の地図。テムズ川が画面を横切り、ハイドパーク、リージェンツパーク、グリーンパーク、セントジェームズパークが示されています。Reiwa Capitalの中核エリアはMayfair、St James’s、Marylebone、Fitzrovia、Soho、Covent Garden。選択的エリアはCity of London、Holborn / Midtown、Bloomsburyです。" loading="lazy" decoding="async">
@@ -379,11 +389,17 @@
           </ul>
           <p class="am-note">注力<span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
+      
+        <div class="am-side">
+          <figure class="am-figure">
+            <img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 42vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
+          </figure>
+          <p class="h-body am-sum">厚みと流動性があり、長期の買い手層が広い市場で、<span class="jt">プライム</span><span class="jt">セントラル</span>および確立した商業<span class="jt">エリア</span>に注力します。</p>
+        </div>
       </div>
     </div>
     <div class="am-panel am-panel--snapshot" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
       <div class="am-grid">
-        <p class="h-body am-sum">供給が限られ、長期保有が中心の市場で、建物の個性と継続的な<span class="jt">テナント</span>需要のある中心<span class="jt">エリア</span>に注力します。</p>
         <div class="am-mapwrap">
           <div class="am-map">
             <img class="am-img am-img--wide" src="../assets/maps/amsterdam-wide.svg?v=4" alt="アムステルダムの地図。運河環状地帯が歴史的中心部を囲み、北にIJ湾、南西にフォンデルパークがあります。Reiwa Capitalの中核エリアはCanal Belt（Grachtengordel）、Jordaan、Oud-Zuid、Zuidas。選択的エリアはDe Pijp、Plantage、Oud-Westです。" loading="lazy" decoding="async">
@@ -399,8 +415,15 @@
           </ul>
           <p class="am-note">注力<span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
+    
+        <div class="am-side">
+          <figure class="am-figure">
+            <img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 92vw, 42vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み">
+          </figure>
+          <p class="h-body am-sum">供給が限られ、長期保有が中心の市場で、建物の個性と継続的な<span class="jt">テナント</span>需要のある中心<span class="jt">エリア</span>に注力します。</p>
+        </div>
       </div>
-    </div>
+      </div>
   </div>
 </section>
 
