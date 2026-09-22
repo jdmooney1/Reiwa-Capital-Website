@@ -122,10 +122,6 @@
   /* --- 3 · Activities ---------------------------------------------------
      The same rows as the company facts above: an index in the label column,
      the activity in the reading column. */
-  .co-acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .co-acts li { display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
-  .co-acts .n { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .co-acts .t { max-width: 44em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
 
   /* --- 4 · Operating model ----------------------------------------------
      Three tiers, read top to bottom. The order is the argument: the investor
@@ -137,7 +133,6 @@
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 14em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink); }
   .co-tier-d { margin: 0; max-width: 44em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .co-lockup { display: block; height: 18px; width: auto; }
   /* Sits in the value column under the tiers, so it reads as a note on the
      operating model rather than a paragraph floating at the page margin. */
   /* max-width and font-size are re-declared because the shared `p, .p` base
@@ -148,7 +143,7 @@
   .co-model-note { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
   .co-model-note > span { grid-column: 2; max-width: 44em; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); }
   @media (max-width: 760px) {
-    .co-acts li, .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
+    .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
     .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .co-model-note > span { grid-column: 1; }
   }
@@ -229,35 +224,19 @@
   </div>
 </section>
 
-<!-- 業務内容 -->
-<section class="co-sec" data-screen-label="03 事業概要 — activities" aria-labelledby="ca-label">
-  <div class="shell">
-    <div class="co-row">
-      <h2 class="co-label" id="ca-label">業務内容</h2>
-      <ol class="co-acts">
-        <li><span class="n">01</span><span class="t">投資<span class="jt">マンデート</span>の設計</span></li>
-        <li><span class="n">02</span><span class="t">投資機会の発掘と投資分析</span></li>
-        <li><span class="n">03</span><span class="t">デューデリジェンスと取得プロセスの調整</span></li>
-        <li><span class="n">04</span><span class="t">資金調達の調整と保有ストラクチャーの設計</span></li>
-        <li><span class="n">05</span><span class="t">保有期間中の<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング</span></span></li>
-        <li><span class="n">06</span><span class="t">借換えと売却・出口戦略の策定</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
-<!-- 運営体制 -->
-<section class="co-sec co-om" data-screen-label="04 事業概要 — operating model" aria-labelledby="cm-label">
+<!-- Responsibilities -->
+<section class="co-sec co-om" data-screen-label="04 事業概要 — responsibilities" aria-labelledby="cm-label">
   <div class="shell">
     <div class="co-row">
-      <h2 class="co-label" id="cm-label">運営体制</h2>
+      <h2 class="co-label" id="cm-label">役割分担</h2>
       <div class="co-model">
         <ol class="co-tiers">
           <li><span class="co-tier-n">日本の投資家</span><p class="co-tier-d">投資目的、投資基準、社内での意思決定の進め方を整理します。重要な投資判断は、投資家が行います。</p></li>
-          <li><span class="co-tier-n"><img class="co-lockup" src="../assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">投資分析、取得と資金調達の調整、保有期間中の事業計画<span class="jt">モニタリング</span>を通じて、投資家の意思決定を支援します。</p></li>
+          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">投資<span class="jt">マンデート</span>の設計、投資機会の発掘と投資分析、取得および資金調達の調整、保有期間中の<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング</span>、借換えと売却・出口戦略の策定を通じて、投資家の意思決定を支援します。</p></li>
           <li><span class="co-tier-n">ロンドン・アムステルダムの専門家<span class="jt">ネットワーク</span></span><p class="co-tier-d">法務、税務、鑑定評価、技術、<span class="jt">ファイナンス、</span><span class="jt">リーシング、</span>建物管理・運営の各分野において、その投資の必要に応じて外部専門家を選任します。</p></li>
         </ol>
-        <p class="co-model-note"><span>Reiwa Capitalは、投資家側の視点を維持し、その投資の実行および保有に必要な業務を一体的に調整します。法務、税務、会計、鑑定評価、技術、資金調達、<span class="jt">リーシング、</span><span class="jt">プロパティ</span><span class="jt">マネジメント</span>その他の専門業務は、別途選任された専門家および<span class="jt">サービス</span>提供者が行います。</span></p>
+        <p class="co-model-note"><span>法務、税務、会計、鑑定評価および技術に関する業務は、別途選任された専門家が行います。</span></p>
       </div>
     </div>
   </div>

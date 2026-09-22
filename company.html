@@ -97,10 +97,6 @@
   /* --- 3 · Activities ---------------------------------------------------
      The same rows as the company facts above: an index in the label column,
      the activity in the reading column. */
-  .co-acts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .co-acts li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
-  .co-acts .n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .co-acts .t { max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
 
   /* --- 4 · Operating model ----------------------------------------------
      Three tiers, read top to bottom. The order is the argument: the investor
@@ -112,7 +108,6 @@
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
   .co-tier-d { margin: 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .co-lockup { display: block; height: 18px; width: auto; }
   /* Sits in the value column under the tiers, so it reads as a note on the
      operating model rather than a paragraph floating at the page margin. */
   /* max-width and font-size are re-declared because the shared `p, .p` base
@@ -123,7 +118,7 @@
   .co-model-note { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
   .co-model-note > span { grid-column: 2; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
   @media (max-width: 760px) {
-    .co-acts li, .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
+    .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
     .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .co-model-note > span { grid-column: 1; }
   }
@@ -196,35 +191,19 @@
   </div>
 </section>
 
-<!-- Activities -->
-<section class="co-sec" data-screen-label="03 Company — activities" aria-labelledby="ca-label">
-  <div class="shell">
-    <div class="co-row">
-      <h2 class="co-label" id="ca-label">Activities</h2>
-      <ol class="co-acts">
-        <li><span class="n">01</span><span class="t">Investment Mandate Design</span></li>
-        <li><span class="n">02</span><span class="t">Investment Sourcing and Underwriting</span></li>
-        <li><span class="n">03</span><span class="t">Due Diligence and Acquisition Coordination</span></li>
-        <li><span class="n">04</span><span class="t">Financing Coordination and Ownership Structuring</span></li>
-        <li><span class="n">05</span><span class="t">Ownership-Period Monitoring and Investor Reporting</span></li>
-        <li><span class="n">06</span><span class="t">Refinancing and Exit Planning</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
-<!-- Operating model -->
-<section class="co-sec co-om" data-screen-label="04 Company — operating model" aria-labelledby="cm-label">
+<!-- Responsibilities -->
+<section class="co-sec co-om" data-screen-label="04 Company — responsibilities" aria-labelledby="cm-label">
   <div class="shell">
     <div class="co-row">
-      <h2 class="co-label" id="cm-label">Operating model</h2>
+      <h2 class="co-label" id="cm-label">Responsibilities</h2>
       <div class="co-model">
         <ol class="co-tiers">
-          <li><span class="co-tier-n">Japanese investor</span><p class="co-tier-d">Investor objectives, requirements, communication and decision-making context. Material investment decisions are made by the investor.</p></li>
-          <li><span class="co-tier-n"><img class="co-lockup" src="assets/logos/lockup-purple.svg" alt="Reiwa Capital" width="110" height="20"></span><p class="co-tier-d">Investment underwriting, transaction coordination and business-plan monitoring through ownership, in support of the investor’s decisions.</p></li>
+          <li><span class="co-tier-n">Japanese investor</span><p class="co-tier-d">Investment objectives, requirements and decision-making context. Material investment decisions are made by the investor.</p></li>
+          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">Mandate design, sourcing and underwriting, transaction and financing coordination, ownership-period monitoring and investor reporting, and refinancing and exit planning, in support of the investor’s decisions.</p></li>
           <li><span class="co-tier-n">London / Amsterdam execution network</span><p class="co-tier-d">Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of the investment.</p></li>
         </ol>
-        <p class="co-model-note"><span>Reiwa Capital maintains the investor-side investment view and coordinates the workstreams required to execute and oversee the investment. Legal, tax, accounting, valuation, technical, financing, leasing, property management and other specialist services are provided by separately appointed professional advisers and service providers.</span></p>
+        <p class="co-model-note"><span>Legal, tax, accounting, valuation and technical services are provided by separately appointed specialists.</span></p>
       </div>
     </div>
   </div>
