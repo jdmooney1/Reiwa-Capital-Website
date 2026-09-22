@@ -327,8 +327,6 @@
   .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   .dl-p span { display: block; flex: 1 1 auto; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.55vw, 21px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .dl-close { margin-top: clamp(32px, 3.4vw, 46px); padding-top: clamp(17px, 1.8vw, 22px); border-top: 1px solid rgba(252,250,241,.30); }
-  .dl-close p { margin: 0; max-width: 44em; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.3vw, 17px); line-height: 1.85; letter-spacing: -0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
     .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
@@ -338,7 +336,6 @@
     .dl-sec > .shell { padding-top: clamp(37px, 3.7vw, 48px); padding-bottom: clamp(36px, 3.6vw, 47px); }
     .dl-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: clamp(22px, 2.6vw, 30px); }
     .dl-p, .dl-p:nth-child(4n+1), .dl-p:nth-child(2n+1) { padding: 18px 0 20px; border-left: 0; border-top: 1px solid rgba(252,250,241,.30); }
-    .dl-close { margin-top: clamp(26px, 3vw, 34px); padding-top: 15px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -407,9 +404,9 @@
                 <div class="fx-band-col">
                   <span class="fx-band-k">私たちが求めるもの</span>
                   <span class="fx-band-i">予測ではなく、実際の稼働で裏付けられた収益</span>
-                  <span class="fx-band-i">数年先まで読める賃貸借の構造、満了時期、テナント信用力</span>
+                  <span class="fx-band-i">賃貸条件、満了時期、テナント信用力</span>
                   <span class="fx-band-i">価格を検討する前に把握した、経常的および近い時期の資本的支出</span>
-                  <span class="fx-band-i">借換えと売却を支える市場の厚み</span>
+                  <span class="fx-band-i">借換えの余地と、売却時の買い手層の厚み</span>
                 </div>
                 <div class="fx-band-col">
                   <span class="fx-band-k">下方リスクの所在</span>
@@ -456,7 +453,7 @@
             <div class="fx-band fx-band--rep">
               <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
                 <p data-on>資産を抑えている制約を特定し、その制約が正当化する取得価格の水準を見極める</p>
-                <p>必要となる建物、賃貸、運営の工事範囲と、その費用、許認可、工期を精査する</p>
+                <p>建物改修・<span class="jt">リーシング</span>・運営上の施策と、その費用、必要な許認可、実行<span class="jt">スケジュール</span>を精査する</p>
                 <p>安定後の収益を実際の成約事例に照らして検証し、実行後に開ける出口の選択肢を確認する</p>
               </div>
               <div class="fx-stages" role="tablist" aria-label="再生型">
@@ -487,9 +484,9 @@
           <div class="fx-mband-col">
             <span class="fx-band-k">私たちが求めるもの</span>
             <span class="fx-band-i">予測ではなく、実際の稼働で裏付けられた収益</span>
-            <span class="fx-band-i">数年先まで読める賃貸借の構造、満了時期、テナント信用力</span>
+            <span class="fx-band-i">賃貸条件、満了時期、テナント信用力</span>
             <span class="fx-band-i">価格を検討する前に把握した、経常的および近い時期の資本的支出</span>
-            <span class="fx-band-i">借換えと売却を支える市場の厚み</span>
+            <span class="fx-band-i">借換えの余地と、売却時の買い手層の厚み</span>
           </div>
           <div class="fx-mband-col">
             <span class="fx-band-k">下方リスクの所在</span>
@@ -513,7 +510,7 @@
         </div>
         <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
           <p data-on>資産を抑えている制約を特定し、その制約が正当化する取得価格の水準を見極める</p>
-          <p>必要となる建物、賃貸、運営の工事範囲と、その費用、許認可、工期を精査する</p>
+          <p>建物改修・<span class="jt">リーシング</span>・運営上の施策と、その費用、必要な許認可、実行<span class="jt">スケジュール</span>を精査する</p>
           <p>安定後の収益を実際の成約事例に照らして検証し、実行後に開ける出口の選択肢を確認する</p>
         </div>
         <div class="fx-mtabs" role="tablist" aria-label="再生型">
@@ -542,7 +539,7 @@
   <div class="fx-view">
     <div class="shell">
       <div class="fx-view-in">
-        <p>収益型と再生型はしばしば<span class="jt">重なります。</span>最も強い機会は、持続的なファンダメンタルズと、具体的に働きかけられる改善の源泉を<span class="jt">併せ持ちます</span></p>
+        <p>下方<span class="jt">リスク</span>を特定し、価格に反映する</p>
       </div>
     </div>
   </div>
@@ -579,9 +576,6 @@
       <div class="dl-p"><span>改善の源泉が不明確</span></div>
       <div class="dl-p"><span>実行リスクが機会を上回る</span></div>
       <div class="dl-p"><span>出口が限られすぎた買い手層に依存する</span></div>
-    </div>
-    <div class="dl-close">
-      <p>下方リスクを特定して価格に反映でき、改善の源泉に明確に働きかけられる場合にのみ、前に進めます</p>
     </div>
   </div>
 </section>
