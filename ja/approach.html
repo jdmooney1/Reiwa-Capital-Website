@@ -67,6 +67,18 @@
      Depth, the vertical wash and the inner padding all come from the shared
      head in editorial.css; the page supplies only its own type. The head is
      shallow on purpose: the page opens on the argument, not the picture. */
+  /* The frame and the foot offset. editorial.css already bottom-aligns this
+     head; what it needed was a taller frame and a copy block at a fixed
+     proportion of it. Matching specificity, later file. */
+  body[data-page="approach"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="approach"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
+  /* Local contrast only: the picture above 40% is untouched, and the ramp
+     that carries the title is lengthened rather than deepened. */
+  body[data-page="approach"] .page-head {
+    background-image:
+      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      url("../assets/imagery/approach-hero-blur.webp");
+  }
   .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.34; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
   .ap-hero .sub { margin: clamp(10px, 1.2vw, 15px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 32em; text-wrap: pretty; }
   @media (max-width: 760px) {
@@ -86,6 +98,9 @@
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18em; } }
 
+  @media (max-width: 1024px) { body[data-page="approach"] .page-head { --head-h: clamp(290px, 36vw, 334px); } }
+  @media (max-width: 400px)  { body[data-page="approach"] .page-head { --head-h: 276px; } }
+
   /* --- 2 · Investment lifecycle -----------------------------------------
      Six stages under three periods on one dark field, as one accordion at
      every width. Each stage states its deliverable without being opened, so
@@ -97,28 +112,54 @@
   .lf-period { display: block; padding: 0 0 10px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(13px, 12px + 0.3vw, 14.5px); line-height: 1.4; color: rgba(252,250,241,.6); }
   .lf-period + .lf-group { margin-bottom: clamp(16px, 2.2vw, 28px); }
   .lf-item { border-left: 1px solid rgba(252,250,241,.24); padding-left: clamp(16px, 1.6vw, 22px); margin-left: 1px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-item.is-on { border-left: 2px solid var(--cream); }
-  .lf-btn { appearance: none; background: none; border: 0; margin: 0; padding: 11px 0; width: 100%; min-height: 48px; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; text-align: left; outline-offset: 2px; }
+  .lf-item.is-on { border-left: 2px solid var(--cream); background: rgba(252,250,241,.035); }
+  .lf-btn { appearance: none; background: none; border: 0; margin: 0; padding: 11px 0; width: 100%; min-height: 48px; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px 0; text-align: left; outline-offset: 2px; }
+  /* The stage number is the rail: six of them read as a sequence before
+     anything is opened, and the open one is the only one at full strength. */
+  .lf-i { font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.42); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-btn[aria-expanded="true"] .lf-i { color: rgba(252,250,241,.78); }
   .lf-btn:focus-visible { outline: 2px solid var(--cream); }
   .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(252,250,241,.66); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-btn[aria-expanded="true"] .lf-n { font-weight: 500; color: var(--cream); }
   @media (hover: hover) { .lf-btn:hover .lf-n { color: var(--cream); } }
   .lf-d { font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 12.5px + 0.2vw, 15px); line-height: 1.5; color: rgba(252,250,241,.72); text-wrap: pretty; }
   .lf-body { padding: 0 0 20px; display: flex; flex-direction: column; gap: 12px; }
+  /* Every block inside an open stage carries a label and sits on the same
+     two columns as the stage name and its output above it. */
+  .lf-k { display: block; font-family: var(--jp); font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.56); }
+  .lf-blk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .lf-body[hidden] { display: none; }
-  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.3vw, 17px); line-height: 1.55; color: rgba(252,250,241,.88); max-width: 52ch; text-wrap: pretty; }
+  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.88); max-width: 52ch; text-wrap: pretty; }
   .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(252,250,241,.34); }
   .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(252,250,241,.56); }
-  .lf-ap dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
+  .lf-ap dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
   .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(252,250,241,.26); display: grid; gap: 14px; }
   .lf-own li { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
   .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.72); }
-  .lf-own-b { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
+  .lf-own-b { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
   .lf-cont { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.62); max-width: 52ch; }
   @media (min-width: 901px) {
     .lf-btn { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
+    .lf-btn .lf-i { grid-column: 1; grid-row: 1; }
+    .lf-btn .lf-n { grid-column: 1; grid-row: 2; }
+    .lf-btn .lf-d { grid-column: 2; grid-row: 2; }
+    .lf-blk, .lf-ap { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
+    .lf-blk--own { align-items: start; }
+    .lf-blk--own .lf-own { grid-column: 2; }
     .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px clamp(20px, 2vw, 30px); }
     .lf-own li { padding-top: 11px; border-top: 1px solid rgba(252,250,241,.26); }
+  }
+  /* Below the stack point the six names have to scan in one screen, so the
+     closed rows are tight and the number sits on the rail rather than above
+     the name. Nothing is nested and nothing is indented twice. */
+  @media (max-width: 900px) {
+    .lf-item { padding-left: 34px; position: relative; }
+    .lf-btn { padding: 9px 0; min-height: 44px; }
+    .lf-i { position: absolute; left: 0; top: 12px; width: 26px; text-align: left; }
+    .lf-n { font-size: clamp(19px, 5vw, 22px); }
+    .lf-d { font-size: 13px; }
+    .lf-body { padding-bottom: 16px; gap: 10px; }
+    .lf-own { gap: 10px; }
   }
   @media (max-width: 600px) {
     .lf-wrap > .shell { padding-left: 0; padding-right: 0; }
@@ -131,12 +172,16 @@
      rather than five, so the checklist scans and the detail is one press
      away. */
   .tw-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(32px, 3.2vw, 46px); }
-  .tw-head { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 12px); max-width: 46ch; }
+  /* The heading keeps its own break; the line beneath it needs a wider
+     measure now that it carries both halves of the idea. */
+  .tw-head { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 12px); max-width: 44em; }
+  .tw-head .ap-h2 { max-width: 19em; }
+  .tw-head .ap-lede { max-width: 40em; }
   .tw-list { margin: clamp(26px, 2.8vw, 40px) 0 0; display: grid; }
   .tw-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(11px, 1.2vw, 14px) 0; border-top: 1px solid var(--rule); }
   .tw-row:last-child { border-bottom: 1px solid var(--rule); }
   .tw-row dt { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
-  .tw-row dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  .tw-row dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 64ch; text-wrap: pretty; }
   @media (min-width: 761px) {
     .tw-row { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 44px); align-items: baseline; }
   }
@@ -174,7 +219,12 @@
   .tw-row dt { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; }
   .tw-row dd { line-height: 1.9; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .tw-det li { line-height: 1.85; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .ic-state { line-height: 1.95; max-width: 40em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .ic-roles { margin: clamp(22px, 2.4vw, 32px) 0 0; display: grid; }
+  .ic-role { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(13px, 1.4vw, 17px) 0; border-top: 1px solid var(--rule); }
+  .ic-role:last-child { border-bottom: 1px solid var(--rule); }
+  .ic-role dt { font-family: var(--jp); font-weight: 400; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+  .ic-role dd { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.85; color: var(--ink-2); max-width: 64ch; text-wrap: pretty; }
+  @media (min-width: 901px) { .ic-role { grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 44px); align-items: baseline; } }
   @media (min-width: 901px) { .lf-btn { grid-template-columns: minmax(0, 13em) minmax(0, 1fr); } }
   @media (min-width: 761px) { .tw-row, .tw-det { grid-template-columns: minmax(0, 14em) minmax(0, 1fr); } }
 
@@ -208,6 +258,9 @@
   .ic-sec { background: var(--paper-soft); padding: clamp(34px, 3.4vw, 48px) 0; }
   .ic-state { margin: clamp(22px, 2.4vw, 32px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.35vw, 17.5px); line-height: 1.6; color: var(--ink); max-width: 64ch; text-wrap: pretty; }
 
+  /* Two routes close the page, matching About. */
+  .enq-ctas { display: grid; justify-items: start; gap: 0; }
+  @media (min-width: 761px) { .enq-ctas { justify-items: end; } }
 </style>
 </head>
 <body data-page="approach" data-locale="ja" data-en-url="/approach.html">
@@ -237,19 +290,19 @@
         <div class="lf-group">
           <div class="lf-item" data-item="0">
             <button class="lf-btn" type="button" data-stage="0" aria-expanded="false" aria-controls="lf-b-0">
-              <span class="lf-n">マンデート</span><span class="lf-d">投資マンデート</span>
+              <span class="lf-i" aria-hidden="true">1</span><span class="lf-n">マンデート</span><span class="lf-d">投資マンデート</span>
             </button>
             <div class="lf-body" id="lf-b-0" hidden>
-              <p class="lf-p">投資家の目的を、明確な取得マンデートとして整理します</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">投資家の目的を、明確な取得マンデートとして整理します</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>マンデートと意思決定の枠組み</dd></dl>
             </div>
           </div>
           <div class="lf-item" data-item="1">
             <button class="lf-btn" type="button" data-stage="1" aria-expanded="false" aria-controls="lf-b-1">
-              <span class="lf-n">評価</span><span class="lf-d">投資メモランダム</span>
+              <span class="lf-i" aria-hidden="true">2</span><span class="lf-n">評価</span><span class="lf-d">投資メモランダム</span>
             </button>
             <div class="lf-body" id="lf-b-1" hidden>
-              <p class="lf-p">詳細な投資分析に値する案件かを見極めます</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">詳細な投資分析に値する案件かを見極めます</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>重要案件の詳細検討への移行</dd></dl>
             </div>
           </div>
@@ -258,19 +311,19 @@
         <div class="lf-group">
           <div class="lf-item" data-item="2">
             <button class="lf-btn" type="button" data-stage="2" aria-expanded="false" aria-controls="lf-b-2">
-              <span class="lf-n">組成</span><span class="lf-d">ストラクチャーと実行計画</span>
+              <span class="lf-i" aria-hidden="true">3</span><span class="lf-n">組成</span><span class="lf-d">ストラクチャーと実行計画</span>
             </button>
             <div class="lf-body" id="lf-b-2" hidden>
-              <p class="lf-p">コミット前に、保有・調達・税務のストラクチャーをまとめます</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">コミット前に、保有・調達・税務のストラクチャーをまとめます</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>ストラクチャーと合意条件</dd></dl>
             </div>
           </div>
           <div class="lf-item" data-item="3">
             <button class="lf-btn" type="button" data-stage="3" aria-expanded="false" aria-controls="lf-b-3">
-              <span class="lf-n">取得</span><span class="lf-d">取得判断資料</span>
+              <span class="lf-i" aria-hidden="true">4</span><span class="lf-n">取得</span><span class="lf-d">取得判断資料</span>
             </button>
             <div class="lf-body" id="lf-b-3" hidden>
-              <p class="lf-p">一つの計画のもとで、デューデリジェンス・調達・契約を完了します</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">一つの計画のもとで、デューデリジェンス・調達・契約を完了します</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>取得に<span class="jt">コミット</span>する前の最終投資判断</dd></dl>
             </div>
           </div>
@@ -279,20 +332,20 @@
         <div class="lf-group">
           <div class="lf-item is-on" data-item="4">
             <button class="lf-btn" type="button" data-stage="4" aria-expanded="true" aria-controls="lf-b-4">
-              <span class="lf-n">保有</span><span class="lf-d">資産の監督、報告、意思決定の支援</span>
+              <span class="lf-i" aria-hidden="true">5</span><span class="lf-n">保有</span><span class="lf-d">資産の監督、報告、意思決定の支援</span>
             </button>
             <div class="lf-body" id="lf-b-4">
-              <p class="lf-p">保有期間中も、実績と環境の変化に照らして投資判断の前提を検証します</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">保有期間中も、実績と環境の変化に照らして投資判断の前提を検証します</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>借換え、重要な資本的支出、承認済み事業計画の変更</dd></dl>
-            <ul class="lf-own"><li><span class="lf-own-n">モニタリング</span><span class="lf-own-b">承認済みの事業計画に対する賃料、稼働率、賃貸借の変動、NOI、キャッシュフロー</span></li><li><span class="lf-own-n">対処</span><span class="lf-own-b">予算との乖離、リーシングの判断、資本的支出、借換えを含む資金調達、新たなリスク</span></li><li><span class="lf-own-n">報告</span><span class="lf-own-b">実績、評価額、市場の変化、提言、投資家の承認用資料</span></li></ul>
+            <div class="lf-blk lf-blk--own"><span class="lf-k">主な業務</span><ul class="lf-own"><li><span class="lf-own-n">モニタリング</span><span class="lf-own-b">承認済みの事業計画に対する賃料、稼働率、賃貸借の変動、NOI、キャッシュフロー</span></li><li><span class="lf-own-n">対処</span><span class="lf-own-b">予算との乖離、リーシングの判断、資本的支出、借換えを含む資金調達、新たなリスク</span></li><li><span class="lf-own-n">報告</span><span class="lf-own-b">実績、評価額、市場の変化、提言、投資家の承認用資料</span></li></ul></div>
             </div>
           </div>
           <div class="lf-item" data-item="5">
             <button class="lf-btn" type="button" data-stage="5" aria-expanded="false" aria-controls="lf-b-5">
-              <span class="lf-n">売却</span><span class="lf-d">売却に関する提案と実行計画</span>
+              <span class="lf-i" aria-hidden="true">6</span><span class="lf-n">売却</span><span class="lf-d">売却に関する提案と実行計画</span>
             </button>
             <div class="lf-body" id="lf-b-5" hidden>
-              <p class="lf-p">借換え・一部回収・売却をマンデートに照らして評価します</p>
+              <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">借換え・一部回収・売却をマンデートに照らして評価します</p></div>
               <dl class="lf-ap"><dt>投資家の承認</dt><dd>時期・価格・売却条件</dd></dl>
             </div>
           </div>
@@ -308,7 +361,7 @@
   <div class="shell">
     <div class="tw-head">
       <h2 class="ap-h2" id="tw-title">五つの検証、一つの投資判断</h2>
-      <p class="ap-lede">どの一つも、判断そのものに代わるものではありません</p>
+      <p class="ap-lede">順序ではなく、同時に検討します。どの一つも、判断そのものに代わるものではありません</p>
     </div>
     <dl class="tw-list">
       <div class="tw-row"><dt>マンデート適合</dt><dd>その機会は、投資家の目的・制約・保有要件に適合しているか。</dd></div>
@@ -343,7 +396,11 @@
 <section class="ap-sec ic-sec" data-screen-label="05 投資アプローチ — 投資家の統制" aria-labelledby="ic-title">
   <div class="shell">
     <h2 class="ap-h2" id="ic-title">投資家の統制と、調整された実行</h2>
-    <p class="ic-state">マンデートを定め、取得・資金調達・重要な資本的支出・売却を承認するのは投資家です。Reiwa Capitalは、投資家側の視点を一つに保ち、プロパティマネージャー、仲介、レンダー、鑑定会社、専門アドバイザーを含む、各投資に必要な業務を調整します。法務、税務、鑑定評価、技術に関する助言は、別途選任されたこれらの専門家が行います。</p>
+    <dl class="ic-roles">
+      <div class="ic-role"><dt>投資家</dt><dd><span class="jt">マンデート</span>を定め、取得・資金調達・重要な資本的支出・売却を承認するのは投資家です。</dd></div>
+      <div class="ic-role"><dt>Reiwa Capital</dt><dd>投資家側の視点を一つに保ち、<span class="jt">プロパティ</span><span class="jt">マネージャー、</span>仲介、<span class="jt">レンダー、</span>鑑定会社、専門<span class="jt">アドバイザー</span>を含む、各投資に必要な業務を調整します。</dd></div>
+      <div class="ic-role"><dt>専門的な助言と実行</dt><dd>法務、税務、鑑定評価、技術に関する助言は、別途選任されたこれらの専門家が行います。</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -356,7 +413,10 @@
         <h2 class="enq-h" id="enq-title"><span class="jt">マンデート</span>のご相談</h2>
         <p class="enq-d">日本の事業会社、機関投資家、<span class="jt">プライベート</span>投資家からのお問い合わせ<span class="jt">を承ります。</span></p>
       </div>
-      <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="投資に関するお問い合わせ">投資に関するお問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      <div class="enq-ctas">
+        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=%E6%8A%95%E8%B3%87%E5%AE%B6%E3%81%8B%E3%82%89%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" aria-label="投資家からのお問い合わせ">投資家からのお問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=%E6%A1%88%E4%BB%B6%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="案件のご相談">案件のご相談<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
     </div>
   </div>
 </section>
