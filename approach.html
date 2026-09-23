@@ -75,7 +75,10 @@
      field: more air above to separate it from the title, more below so it is
      not resting on the panel. About and Investment Focus already run ~180px
      between the page title and the first section heading; this matches them. */
-  .ap-intro { padding: clamp(52px, 5.2vw, 84px) 0 clamp(22px, 2.2vw, 32px); }
+  /* .shell sets the gutter with a shorthand; this rule's own shorthand
+     was overriding it with 0, so the section heading sat 96px left of
+     every other heading on the site. */
+  .ap-intro { padding: clamp(52px, 5.2vw, 84px) var(--gutter) clamp(22px, 2.2vw, 32px); }
   .ap-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 19px + 1.6vw, 42px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); max-width: none; text-wrap: balance; }
   .ap-h2--huge { font-size: clamp(30px, 21px + 1.85vw, 46px); line-height: 1.04; letter-spacing: -0.022em; }
   .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; text-wrap: balance; }
