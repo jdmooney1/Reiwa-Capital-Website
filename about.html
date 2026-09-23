@@ -52,16 +52,31 @@
   .ab-hero { position: relative; overflow: hidden; background: #e8eef4; }
   .ab-hero .ab-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
   .ab-hero .ab-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; display: block; filter: contrast(1.12) saturate(1.06); }
+  /* Two jobs, one wash: a light veil at the top so the transparent header
+     stays legible, then a longer ramp from 56% that sits under the copy and
+     settles the picture into the cream. The ramp is the local contrast the
+     type needs; nothing is drawn behind it. */
   .ab-hero .ab-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, var(--cream) 100%); }
+    background: linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, var(--cream) 100%); }
+  /* The frame and the foot offset. editorial.css already bottom-aligns this
+     head and pulls it under the transparent header; what it needed was a
+     taller frame and a copy block sitting at a fixed proportion of it,
+     rather than wherever the natural height happened to leave it. --head-h
+     is the token that rule reads, so the negative offset and the flex-end
+     alignment keep working untouched. Matching specificity, later file. */
+  body[data-page="about"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="about"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   .ab-hero .inner { position: relative; z-index: 2; }
   .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
-  .ab-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .ab-hero .sub { margin: clamp(12px, 1.2vw, 16px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
     .ab-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
     .ab-hero .sub { max-width: 34ch; }
   }
+
+  @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
+  @media (max-width: 400px)  { body[data-page="about"] .page-head { --head-h: 272px; } }
 
   /* --- Section scaffold --------------------------------------------------
      Sections are separated by their own ground and by space, not by a rule
@@ -84,16 +99,17 @@
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
   .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
-  .aw-flow { margin-top: clamp(28px, 3vw, 44px); }
+  .aw-flow { margin-top: clamp(22px, 2.4vw, 32px); }
   .aw-inv { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.24); }
   .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
   .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.6); }
-  .aw-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(36px, 3.8vw, 52px); }
+  .aw-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); }
   .aw-stage { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 12px + 1.6vw, 40px); line-height: 1; letter-spacing: -0.018em; color: var(--cream); }
   /* The line is the argument: four segments that stop short, or four that
      meet. Only the width and the colour change between states. */
-  .aw-line { position: relative; height: 3px; margin-top: clamp(28px, 3vw, 40px); }
-  .aw-line i { position: absolute; top: 0; height: 3px; width: 19%; background: #8E7A9C; transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-line { position: relative; height: 3px; margin-top: clamp(22px, 2.4vw, 32px); }
+  .aw-line::before { content: ""; position: absolute; left: 0; right: 0; top: 1px; height: 1px; background: rgba(252,250,241,.16); }
+  .aw-line i { position: absolute; top: 0; height: 3px; width: 16%; background: rgba(142,122,156,.92); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 25%; }
   .aw-line i:nth-child(3) { left: 50%; } .aw-line i:nth-child(4) { left: 75%; }
   .aw-field[data-flow="with"] .aw-line i { width: 25%; background: var(--cream); }
@@ -101,30 +117,33 @@
   .aw-field[data-flow="with"] .aw-ribbon { opacity: 1; }
   .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.66); }
-  .aw-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(18px, 2vw, 26px); column-gap: clamp(16px, 2vw, 28px); }
+  .aw-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(14px, 1.6vw, 20px); column-gap: clamp(16px, 2vw, 28px); }
   .aw-spec { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.6); }
   /* Below 760px the same four phases read down a spine. */
   .aw-spine { display: none; }
   @media (max-width: 760px) {
     .aw-flow { display: none; }
-    .aw-spine { display: block; margin-top: 26px; }
+    .aw-spine { display: block; margin-top: 20px; }
     .aw-inv { flex-direction: column; gap: 6px; align-items: flex-start; }
-    .aw-sp-track { position: relative; margin-top: 28px; padding-left: 30px; }
+    .aw-sp-track { position: relative; margin-top: 22px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 19%; background: #8E7A9C; transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+    .aw-sp-rail::before { content: ""; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: rgba(252,250,241,.16); }
+    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 16%; background: rgba(142,122,156,.92); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
     .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 25%; }
     .aw-sp-rail i:nth-child(3) { top: 50%; } .aw-sp-rail i:nth-child(4) { top: 75%; }
     .aw-field[data-flow="with"] .aw-sp-rail i { height: 25%; background: var(--cream); }
-    .aw-sp-rows { display: grid; grid-template-rows: repeat(4, minmax(88px, auto)); }
+    .aw-sp-rows { display: grid; grid-template-rows: repeat(4, minmax(62px, auto)); }
     .aw-sp-row { display: flex; flex-direction: column; gap: 6px; }
-    .aw-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 6vw, 28px); line-height: 1.05; letter-spacing: -0.018em; color: var(--cream); }
+    .aw-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 5vw, 23px); line-height: 1.05; letter-spacing: -0.018em; color: var(--cream); }
     .aw-sp-s { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.6); }
     .aw-sp-ribbon { min-height: 44px; margin-top: 18px; padding-left: 30px; display: flex; flex-direction: column; gap: 5px; opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
     .aw-field[data-flow="with"] .aw-sp-ribbon { opacity: 1; }
-    .aw-field { padding: 20px 18px 26px; }
+    .aw-field { padding: 20px 18px 24px; }
+    .aw-switch { gap: 18px; }
+    .aw-sw { font-size: 15px; padding: 4px 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .aw-sw, .aw-line i, .aw-ribbon, .aw-sp-rail i, .aw-sp-ribbon { transition: none; }
+    .aw-sw, .aw-line i, .aw-line::before, .aw-ribbon, .aw-sp-rail i, .aw-sp-rail::before, .aw-sp-ribbon { transition: none; }
   }
   /* --- 3 · Focus markets: the signature section ------------------------ */
   .am-tabs { display: flex; gap: 0; margin-top: clamp(36px, 4vw, 56px); border-bottom: 1px solid var(--rule-strong); }
@@ -187,6 +206,25 @@
   .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
   .am-panel--snapshot .am-legend { margin-top: 14px; }
   .am-panel--snapshot .am-note { margin-top: 8px; }
+  /* Three blocks of market content, same voice as the rest of the page: a
+     quiet label, then the prose. Characteristics and Why sit with the
+     photograph in the side column; What We Look For spans the section, so
+     the three things read across rather than down. */
+  .am-k { margin: 0 0 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
+  .am-p { margin: 0; font-size: 15px; line-height: 1.6; max-width: 48ch; }
+  .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: clamp(18px, 2vw, 24px); }
+  .am-block { padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
+  .am-look { margin-top: clamp(26px, 2.8vw, 38px); padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
+  .am-look-list { list-style: none; margin: clamp(12px, 1.4vw, 16px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+  .am-look-list li { font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  @media (max-width: 900px) {
+    .am-look-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+  }
+  /* Two links close the page now, one for investors and one for the people
+     who bring us opportunities. The row grammar is unchanged. */
+  .enq-ctas { display: grid; justify-items: start; gap: 0; }
+  @media (min-width: 761px) { .enq-ctas { justify-items: end; } }
   .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   @media (min-width: 901px) {
     .am-panel--snapshot .am-grid { align-items: stretch; }
@@ -357,13 +395,23 @@
           </ul>
           <p class="am-note">Focus areas are indicative and boundaries are approximate.</p>
         </div>
-      
         <div class="am-side">
           <figure class="am-figure">
             <img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 42vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk">
           </figure>
-          <p class="h-body am-sum">A deep, liquid market with a broad long-term buyer base, where we focus on prime central and established commercial areas.</p>
+          <div class="am-blocks">
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">London combines deep capital markets, broad occupier demand and a mature financing and advisory network. Even within established locations, performance varies materially by street, building quality, tenure and lease profile.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">The depth of demand and breadth of potential buyers can support resilient income and credible exit options. The market’s complexity also creates opportunities where vacancy, pricing or asset management issues can be clearly understood and addressed.</p></div>
+          </div>
         </div>
+      </div>
+      <div class="am-look">
+        <h3 class="am-k">What We Look For</h3>
+        <ul class="am-look-list">
+          <li>Prime central and established commercial locations with evidenced occupier demand</li>
+          <li>Durable income or a specific and controllable route to improvement</li>
+          <li>Realistic capital requirements and more than one credible exit route</li>
+        </ul>
       </div>
     </div>
     <div class="am-panel am-panel--snapshot" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
@@ -387,10 +435,21 @@
           <figure class="am-figure">
             <img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 92vw, 42vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light">
           </figure>
-          <p class="h-body am-sum">A supply-constrained, tightly held market, where we focus on central locations with building character and durable occupier demand.</p>
+          <div class="am-blocks">
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Amsterdam is compact, supply constrained and shaped by strict planning and sustainability requirements. High-quality property in established central and business locations remains scarce.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Scarcity and durable occupier demand can support well-located assets over long holding periods. Regulation, title, permitted use and building condition also create meaningful differences between superficially similar opportunities.</p></div>
+          </div>
         </div>
       </div>
+      <div class="am-look">
+        <h3 class="am-k">What We Look For</h3>
+        <ul class="am-look-list">
+          <li>Established central and business locations with clear occupational demand</li>
+          <li>Clear permitted use and manageable technical and sustainability requirements</li>
+          <li>Durable income or a credible route through leasing, repositioning or operational improvement</li>
+        </ul>
       </div>
+    </div>
   </div>
 </section>
 
@@ -416,9 +475,12 @@
     <div class="enq-row">
       <div>
         <h2 class="enq-h" id="enq-title">Discussing a Mandate</h2>
-        <p class="enq-d">Reiwa Capital begins each engagement from a mandate agreed with the investor. Enquiries are welcome from Japanese corporate, institutional and private investors.</p>
+        <p class="enq-d">Reiwa Capital begins each investor engagement from a mandate agreed with the investor. We also welcome early conversations with owners, brokers and advisers regarding selected opportunities in London and Amsterdam.</p>
       </div>
-      <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investor enquiries: contact Reiwa Capital">Investor enquiries<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      <div class="enq-ctas">
+        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investor enquiries: contact Reiwa Capital">Investor enquiries<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investment%20opportunity" aria-label="Submit an opportunity to Reiwa Capital">Submit an opportunity<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
     </div>
   </div>
 </section>
