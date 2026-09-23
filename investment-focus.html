@@ -57,6 +57,20 @@
      Depth, the vertical wash and the inner padding come from the shared head
      in editorial.css. The head is shallow by design: the page opens on the
      first idea, not on the photograph. */
+  /* Frame and foot offset, as on About and Approach: --head-h is the token
+     the shared head rule reads, so the negative offset under the
+     transparent header and the flex-end alignment stay untouched. */
+  body[data-page="focus"] .page-head { --head-h: clamp(316px, 23.5vw, 366px); }
+  body[data-page="focus"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
+  /* Local contrast only: above 40% the picture is untouched and the ramp
+     under the copy is lengthened rather than deepened. */
+  body[data-page="focus"] .page-head {
+    background-image:
+      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      url("assets/imagery/focus-hero-blur.webp");
+  }
+  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 35vw, 330px); } }
+  @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }
   .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 14ch; text-wrap: balance; }
   .if-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
@@ -86,7 +100,9 @@
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
   .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(44px, 4.4vw, 70px); }
   .fx-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.5vw, 38px); line-height: 1.1; letter-spacing: -0.014em; color: var(--ink); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
-  .fx-param { display: grid; grid-template-columns: minmax(0, 15ch) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; margin-top: clamp(30px, 3.2vw, 46px); padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
+  /* One criteria grammar: a label in the left column, the content in the
+     right, a rule of one weight above each. */
+  .fx-param { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; margin-top: clamp(30px, 3.2vw, 46px); padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
   .fx-param-k { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.45; letter-spacing: 0.005em; color: var(--ink-3); }
   .fx-param-v { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 12.5px + 0.35vw, 16px); line-height: 1.62; color: var(--ink-2); max-width: 56ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 900px) {
@@ -100,6 +116,12 @@
   .fx-fieldwrap > .shell { padding-top: clamp(27px, 2.9vw, 42px); padding-bottom: clamp(24px, 2.6vw, 36px); }
   .fx-field { display: flex; align-items: stretch; gap: 2px; min-height: clamp(510px, 37.5vw, 620px); background: rgba(28,14,35,.14); }
   .fx-panel { position: relative; flex: 1.5 1 0; min-width: 0; overflow: hidden; background: #DCD6CC; transition: flex-grow 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  /* Selected is unmistakable without a button or a raised card: a cream
+     hairline, the name at full strength, and the unselected picture a
+     step back. Both panels are identical until one is chosen. */
+  .fx-field[data-open] .fx-panel:has(.fx-open:not([hidden])) { box-shadow: inset 0 0 0 1px rgba(252,250,241,.66); }
+  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-photo img { filter: saturate(.86) brightness(.94); transition: filter 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-name { color: rgba(252,250,241,.82); }
   .fx-field[data-open="0"] .fx-panel--inc, .fx-field[data-open="1"] .fx-panel--rep { flex-grow: 1.62; }
   .fx-field[data-open="0"] .fx-panel--rep, .fx-field[data-open="1"] .fx-panel--inc { flex-grow: 1; }
 
@@ -247,12 +269,13 @@
      from every row at every width, with no per-breakpoint exceptions. (The
      old :first-of-type rule never matched anything: .fx-lever-k is the first
      <span> in the row, so it, not the first lever, held that slot.) */
-  .fx-lever-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 26px; padding-top: 13px; border-top: 1px solid var(--rule-strong); overflow: hidden; }
+  .fx-lever-row { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); overflow: hidden; }
+  .fx-lever-list { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 26px; min-width: 0; }
   .fx-lever-k { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
   .fx-lever { position: relative; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.45; color: var(--ink); word-break: normal; line-break: auto; }
   .fx-lever::before { content: ''; position: absolute; left: -13px; top: .12em; bottom: .12em; width: 1px; background: var(--rule-strong); }
   .fx-view > .shell { padding-top: 0; padding-bottom: clamp(51px, 5.1vw, 80px); }
-  .fx-view-in { padding-top: 13px; border-top: 1px solid rgba(39,20,48,.28); }
+  .fx-view-in { padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
   .fx-view-in p { margin: 0; max-width: 68ch; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.35; letter-spacing: -0.012em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .fx-lever-row { gap: 10px 20px; }
@@ -270,11 +293,11 @@
   .hs-media { height: clamp(274px, 22.5vw, 356px); overflow: hidden; background: #E4DDD2; }
   .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
   .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: clamp(26px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 10px; }
-  .hs-kicker { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
-  .hs-title { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 17px + 0.9vw, 28px); line-height: 1.2; letter-spacing: -0.014em; color: var(--ink); }
-  .hs-state { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .hs-kicker { display: block; padding-bottom: 11px; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
+  .hs-title { margin: 3px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 17px + 0.9vw, 28px); line-height: 1.2; letter-spacing: -0.014em; color: var(--ink); }
+  .hs-state { margin: 2px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 38ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 104ch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
-  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.35vw, 19px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.35vw, 19px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
     .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
@@ -299,11 +322,11 @@
   .dl-sec { background: var(--ink); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: clamp(44px, 4.4vw, 64px); border-top: 0; }
   .dl-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.5vw, 38px); line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); }
-  .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.74); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 clamp(4px, 0.6vw, 8px); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.74); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   /* align-items: start, so each rule stops where its own refusal stops. The
      columns are deliberately unequal; stretching them drew three-quarters of
      a column of empty rule under the shortest. */
-  .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: start; }
+  .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
   .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   .dl-p span { display: block; flex: 1 1 auto; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.85vw, 26px); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
@@ -505,12 +528,12 @@
     <div class="shell">
       <div class="fx-lever-row">
         <span class="fx-lever-k">Potential Sources Of Improvement</span>
-        <span class="fx-lever">Leasing and vacancy</span>
+        <div class="fx-lever-list"><span class="fx-lever">Leasing and vacancy</span>
         <span class="fx-lever">Specification and physical condition</span>
         <span class="fx-lever">Use, layout and positioning</span>
         <span class="fx-lever">Operational performance</span>
         <span class="fx-lever">Capital structure</span>
-        <span class="fx-lever">Management and operational oversight</span>
+        <span class="fx-lever">Management and operational oversight</span></div>
       </div>
     </div>
   </div>
