@@ -52,7 +52,7 @@
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
   /* The nav sits in flow above this head, so the padding does not add the
      nav height again the way the art-directed heads do. */
-  .co-open .inner { padding: clamp(42px, 4vw, 60px) var(--gutter) clamp(24px, 2.4vw, 34px); }
+  .co-open .inner { padding: clamp(48px, 4.4vw, 68px) var(--gutter) clamp(20px, 2vw, 28px); }
   /* The page used an 880px measure while every other page runs on the site
      container's 1048px content column, so the measure visibly changed on
      navigation. The shell now sets the width; long prose keeps its own cap
@@ -60,7 +60,7 @@
   .co-sheet { max-width: none; }
   .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(29px, 22px + 1.55vw, 44px); line-height: 1.14; letter-spacing: -0.018em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 30ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   .co-open .sub { margin: clamp(14px, 1.5vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .co-profile { min-width: 0; margin-top: clamp(28px, 3vw, 42px); }
+  .co-profile { min-width: 0; margin-top: clamp(32px, 3.4vw, 48px); }
   .co-profile .co-label { margin-bottom: clamp(10px, 1.1vw, 14px); }
   @media (max-width: 760px) {
     .co-open .inner { padding-top: 34px; padding-bottom: 20px; }
@@ -74,22 +74,22 @@
      and a real heading rather than another band rule — the page already
      carries a hairline on every row, and more of them would make it read
      more like a table, not less. */
-  .co-sec { padding: clamp(46px, 5vw, 76px) 0 0; border-top: 0; }
-  .co-sec:last-of-type { padding-bottom: clamp(48px, 4.6vw, 66px); }
+  .co-sec { padding: clamp(40px, 4.2vw, 62px) 0 0; border-top: 0; }
+  .co-sec:last-of-type { padding-bottom: clamp(44px, 4.2vw, 60px); }
   .co-row { display: block; max-width: none; }
   /* A section heading, not an eyebrow: it has to outrank the 22px <h3>s in
      the contact block it sits above. Still well below the 38-46px the
      strategy pages use, so Company stays the quietest page on the site. */
   .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 16px + 0.85vw, 26px); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 clamp(16px, 1.8vw, 24px); padding-top: 0; }
-  @media (max-width: 760px) { .co-sec { padding-top: 38px; } }
+  @media (max-width: 760px) { .co-sec { padding-top: 34px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
      quiet and small; the value is read at body size, not promoted. */
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
-  .co-table > div { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
-  .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-table > div { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.6; letter-spacing: 0.015em; color: var(--ink-4, #928799); margin: 0; }
+  .co-table dd { margin: 0; max-width: 54ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -105,9 +105,9 @@
      the rows match every other list on the page. */
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
-  .co-tier-n { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
-  .co-tier-d { margin: 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
+  .co-tier-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 15px + 0.4vw, 20px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+  .co-tier-d { margin: 0; max-width: 58ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Sits in the value column under the tiers, so it reads as a note on the
      operating model rather than a paragraph floating at the page margin. */
   /* max-width and font-size are re-declared because the shared `p, .p` base
@@ -115,7 +115,7 @@
      which caps this grid at 533px and puts its 20ch track out of step with
      the tier rows above. font-size: inherit matches the rows' context so the
      note's label column lines up with theirs exactly. */
-  .co-model-note { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
+  .co-model-note { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
   .co-model-note > span { grid-column: 2; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
   @media (max-width: 760px) {
     .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
@@ -131,20 +131,21 @@
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
   .co-general { margin: 0; }
-  .co-gen-row { display: grid; grid-template-columns: minmax(0, 20ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
+  .co-gen-row { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
-  .co-general dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
-  .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
+  .co-general dt { letter-spacing: 0.015em; color: var(--ink-4, #928799); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
+  .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
   .co-general a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; overflow-wrap: normal; word-break: normal; color: var(--ink); border-bottom: 1px solid var(--rule-strong); transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .co-general a:hover { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
+  .co-general a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-color: transparent; }
 
   .co-cols { margin-top: clamp(30px, 3vw, 44px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(22px, 2.6vw, 44px); padding-top: clamp(15px, 1.5vw, 19px); border-top: 1px solid var(--rule-strong); }
   .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
   .co-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.18; letter-spacing: -0.012em; color: var(--ink); }
-  .co-col p { margin: 9px 0 0; max-width: 30ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-col p { margin: 8px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Placement only: the treatment itself lives in editorial.css. */
   .co-cta { justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); }
-  .co-sec.co-contact { padding-bottom: clamp(48px, 4.6vw, 66px); }
+  .co-sec.co-contact { padding-bottom: clamp(44px, 4.2vw, 60px); }
   @media (max-width: 900px) {
     .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
     .co-col { display: block; grid-row: auto; padding: 18px 0 20px; border-top: 1px solid var(--rule); }
