@@ -228,7 +228,7 @@
   }
 
   /* --- Mobile: one two-option selector, one large image ------------------ */
-  .fx-mob { display: none; }
+  .fx-mob { display: none; scroll-margin-top: var(--anchor-h, 96px); }
   .fx-mob > .shell { padding-top: clamp(24px, 2.8vw, 32px); padding-bottom: clamp(22px, 2.6vw, 30px); }
   @media (max-width: 760px) {
     .fx-fieldwrap { display: none; }
@@ -265,7 +265,7 @@
   }
 
   /* --- Potential sources of improvement, then the view -------------------- */
-  .fx-levers > .shell { padding-top: clamp(4px, .6vw, 8px); padding-bottom: clamp(29px, 3vw, 41px); }
+  .fx-levers > .shell { padding-top: clamp(4px, .6vw, 8px); padding-bottom: clamp(51px, 5.1vw, 80px); }
   /* The rule belongs between two items on one line, but wrapping turns it
      into a tick hanging off the start of the next line. Drawing it as a
      box-shadow and clipping a single pixel at the row's left edge removes it
@@ -277,17 +277,13 @@
   .fx-lever-k { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
   .fx-lever { position: relative; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.45; color: var(--ink); word-break: normal; line-break: auto; }
   .fx-lever::before { content: ''; position: absolute; left: -13px; top: .12em; bottom: .12em; width: 1px; background: var(--rule-strong); }
-  .fx-view > .shell { padding-top: 0; padding-bottom: clamp(51px, 5.1vw, 80px); }
-  .fx-view-in { padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
-  .fx-view-in p { margin: 0; max-width: 68ch; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.35; letter-spacing: -0.012em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .fx-lever-row { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
     .fx-lever-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
     .fx-lever { padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; }
     .fx-lever:first-child { border-top: 0; padding-top: 2px; }
     .fx-lever::before { display: none; }
-    .fx-levers > .shell { padding-bottom: clamp(26px, 3vw, 34px); }
-    .fx-view > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
+    .fx-levers > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
   }
 
   /* --- 3 · Selective hospitality: a specialist application ---------------
@@ -328,6 +324,7 @@
   .dl-sec { background: var(--ink); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: clamp(44px, 4.4vw, 64px); border-top: 0; }
   .dl-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.5vw, 38px); line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); }
+  .dl-kicker { display: block; margin: 0 0 clamp(12px, 1.2vw, 16px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
   .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 clamp(4px, 0.6vw, 8px); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.74); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   /* align-items: start, so each rule stops where its own refusal stops. The
      columns are deliberately unequal; stretching them drew three-quarters of
@@ -461,9 +458,9 @@
             </div>
             <div class="fx-band fx-band--rep">
               <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
-                <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies</p>
-                <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme</p>
-                <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open</p>
+                <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies. The entry basis is set by what the constraint justifies, not by what the plan hopes to achieve</p>
+                <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme. Each item is costed, consented and sequenced before commitment</p>
+                <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open. Improvement is evidenced in income, occupancy and valuation before the exit is considered</p>
               </div>
               <div class="fx-stages" role="tablist" aria-label="Repositioning">
                 <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
@@ -518,9 +515,9 @@
           </span>
         </div>
         <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
-          <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies</p>
-          <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme</p>
-          <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open</p>
+          <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies. The entry basis is set by what the constraint justifies, not by what the plan hopes to achieve</p>
+          <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme. Each item is costed, consented and sequenced before commitment</p>
+          <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open. Improvement is evidenced in income, occupancy and valuation before the exit is considered</p>
         </div>
         <div class="fx-mtabs" role="tablist" aria-label="Repositioning">
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
@@ -545,13 +542,6 @@
     </div>
   </div>
 
-  <div class="fx-view">
-    <div class="shell">
-      <div class="fx-view-in">
-        <p>Downside must be identified and priced</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- Selective hospitality -->
@@ -578,8 +568,8 @@
 <!-- Where we draw the line -->
 <section class="if-sec dl-sec" data-screen-label="04 Investment Focus — where we draw the line" aria-labelledby="dl-title">
   <div class="shell">
+    <span class="dl-kicker">Downside must be identified and priced</span>
     <h2 class="dl-h2" id="dl-title">Where We Draw the Line</h2>
-    <p class="dl-lede">Applied before pricing, not after</p>
     <div class="dl-grid">
       <div class="dl-p"><span class="dl-n">Unevidenced Demand</span><span class="dl-x">Occupier demand resting on forecast rather than actual occupation</span></div>
       <div class="dl-p"><span class="dl-n">No Clear Source of Improvement</span><span class="dl-x">A business plan without a specific, costed lever</span></div>
@@ -637,6 +627,22 @@
   /* Desktop opens balanced; the mobile selector is always resolved, so it
      starts on Income. */
   var focus = narrow() ? 0 : null, moment = 0;
+
+  /* A link into a strategy (#income or #repositioning) selects that panel
+     before the first paint: on desktop the panel opens, on a phone the
+     selector lands on that tab. Desktop scroll position comes from the
+     shared :target scroll-margin, as for every other in-page anchor; the
+     phone selector is not the fragment's element, so it is brought under
+     the header here. */
+  function hashFocus() {
+    var h = (location.hash || '').replace(/^#/, '');
+    return h === 'income' ? 0 : (h === 'repositioning' ? 1 : null);
+  }
+  function showMobileSelector() {
+    var mob = root.querySelector('.fx-mob');
+    if (narrow() && mob && hashFocus() !== null) mob.scrollIntoView({ block: 'start' });
+  }
+  if (hashFocus() !== null) focus = hashFocus();
 
   function paint() {
     if (narrow() && focus === null) focus = 0;
@@ -756,6 +762,13 @@
     collapse(root.contains(document.activeElement));
   });
 
+  window.addEventListener('hashchange', function () {
+    var i = hashFocus();
+    if (i !== null && focus !== i) setFocus(i);
+    showMobileSelector();
+  });
+  window.addEventListener('load', showMobileSelector);
+
   var rt = 0;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
@@ -763,6 +776,7 @@
   });
 
   paint();
+  showMobileSelector();
 })();
 </script>
 <script src="shell.js?v=76"></script>

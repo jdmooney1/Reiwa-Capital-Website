@@ -91,17 +91,24 @@
   /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
-  .hi-ops { max-width: none; margin: clamp(26px, 2.8vw, 38px) 0 0; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); font-family: var(--font-jp); font-weight: 500; font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.6; letter-spacing: 0.12em; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .hi-ops .sep { color: var(--ink-3); margin: 0 clamp(8px, 0.9vw, 14px); }
+  /* 三つの機能を、三本の筋として並べる。それぞれに六段階の期間と、
+     投資アプローチのページから引いた一文を添える。 */
+  .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: center; }
+  .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
+  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
+  .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(21px, 15px + 0.8vw, 27px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
+  .hi-op-d { margin: 10px auto 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 20em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
+  .hi-ops-foot { text-align: center; }
+  .hi-ops-link { margin-top: clamp(20px, 2.2vw, 30px); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
-    .hi-ops { margin-top: 26px; padding-top: 16px; font-size: 13.5px; }
-    .hi-ops .sep { margin: 0 7px; }
-  }
-  /* 最小幅の端末では、一行に収める。 */
-  @media (max-width: 340px) {
-    .hi-ops { font-size: 12.5px; }
-    .hi-ops .sep { margin: 0 6px; }
+    .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: 18px 0; }
+    .hi-op { padding-top: 14px; }
+    .hi-op-v { font-size: 21px; }
+    .hi-op-d { max-width: none; }
+    .hi-ops-link { margin-top: 18px; }
   }
 
   /* --- 3 · 市場 --------------------------------------------------------- */
@@ -274,9 +281,26 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title">欧州不動産の<wbr><span class="jt">取得から保有まで、</span><wbr>日本の投資家を<span class="jt">支援します。</span></h2>
+      <h2 class="hi-statement" id="hi-title">取得から保有、出口まで。</h2>
     </div>
-    <p class="hi-ops"><span class="jt">投資分析</span><span class="sep" aria-hidden="true">・</span><span class="jt">組成</span><span class="sep" aria-hidden="true">・</span><span class="jt">モニタリング</span></p>
+    <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
+      <li class="hi-op">
+        <span class="hi-op-k"><b>01</b>形成</span>
+        <span class="hi-op-v">投資分析</span>
+        <p class="hi-op-d">資本を投じる前に、各案件を投資家の<span class="jt">マンデート</span>に照らして検証します</p>
+      </li>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>02</b>実行</span>
+        <span class="hi-op-v">組成</span>
+        <p class="hi-op-d">保有・調達・税務の<span class="jt">ストラクチャー</span>を整え、一つの計画のもとで<span class="jt">デューデリジェンス</span>と契約を完了します</p>
+      </li>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>03</b>保有期間</span>
+        <span class="hi-op-v"><span class="jt">モニタリング</span></span>
+        <p class="hi-op-d">投資判断の前提に照らして実績を監督し、借換えと売却の判断を投資家に諮ります</p>
+      </li>
+    </ol>
+    <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
@@ -300,9 +324,9 @@
           <h3 class="hm-city">ロンドン</h3>
           <p class="h-body hm-copy">収益型と再生型の双方に機会があります</p>
           <ul class="hm-facts">
-            <li>高い流動性</li>
-            <li>世界的な<span class="jt">テナント</span>需要</li>
+            <li>幅広い<span class="jt">テナント</span>需要</li>
             <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
+            <li>売却時の買い手層の厚み</li>
           </ul>
         </div>
         <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
@@ -326,7 +350,7 @@
     <div class="hp-grid">
       <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p></div>
       </div>
-      <div class="hp-item"><div><h3>不動産の基礎力を最優先</h3><p class="h-body">投資の妥当性は、税務やストラクチャー、金融技術に依存せず、それ自体で成立する必要があります。</p></div>
+      <div class="hp-item"><div><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、税務やストラクチャー、金融技術に依存せず、それ自体で成立する必要があります。</p></div>
       </div>
       <div class="hp-item"><div><h3>現地との連携</h3><p class="h-body">案件ごとに必要な専門家を起用し、取引を進める側ではなく、投資家の側に立って取りまとめます。</p></div>
       </div>

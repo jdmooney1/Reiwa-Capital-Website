@@ -198,21 +198,15 @@
      can hover, click or reach from the list beside the map, which names it
      and gives its classification. A fully labelled map is a GIS plot; this
      is an editorial one. */
-  .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: var(--w, max-content); font-family: var(--jp); font-weight: 500; font-size: 12.5px; line-height: 1.3; text-align: center; pointer-events: none; z-index: 3; transition: opacity 200ms var(--ease-out); }
-  /* The Canal Belt & Jordaan label is wider than the band it names, so part
-     of it always falls on pale ground. A tight halo under the drop shadow
-     keeps the white type readable wherever it lands. Colour, size, weight
-     and position are unchanged. */
-  .ab-grp--core { color: #F7F3EC; text-shadow: 0 1px 3px rgba(31,18,38,.55), 0 0 5px rgba(31,18,38,.92), 0 0 2px rgba(31,18,38,.95); }
-  .ab-grp--sel { color: var(--ink); text-shadow: 0 1px 3px rgba(252,250,241,.75); }
-  /* Phones: the map runs edge to edge so its labels keep a readable size;
-     the legend and note below it stay on the gutter. Label positions are
-     percentages of the frame, so the geography and placement are unchanged. */
-  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); } .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
+  .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: var(--w, max-content); padding: 2px 7px; border-radius: 2px; box-sizing: border-box; font-family: var(--jp); font-weight: 500; font-size: 12.5px; line-height: 1.3; text-align: center; pointer-events: none; z-index: 3; }
+  /* Each label sits on a small pill in its own area's colour (the legend
+     swatches), so it reads wherever the geography puts it: cream on the
+     core purple, ink on the pale selective tint. */
+  .ab-grp--core { background: rgba(47,31,58,.92); color: var(--cream); }
+  .ab-grp--sel { background: rgba(230,217,228,.92); color: var(--ink); }
+  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); width: var(--wt, var(--w, max-content)); } .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
   @media (max-width: 480px) { .ab-grp { font-size: 12.5px; } }
-  /* Japanese labels are wider: 11.5px is the largest size at which Midtown
-     and the City stay clear of each other on a 320px frame. */
-  @media (max-width: 380px) { .ab-grp { font-size: 11.5px; } }
+  @media (max-width: 380px) { .ab-grp { font-size: 12px; } }
 
   .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
   .am-note { margin: 10px 0 0; font-family: var(--jp); font-size: 12px; line-height: 1.7; color: var(--ink-3); max-width: 30em; }
@@ -455,9 +449,9 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="../assets/maps/london-wide.svg?v=4" alt="ロンドン中心部の地図。テムズ川が画面を横切り、ハイドパーク、リージェンツパーク、グリーンパーク、セントジェームズパークが示されています。Reiwa Capitalの中核エリアはMayfair、St James’s、Marylebone、Fitzrovia、Soho、Covent Garden。選択的エリアはCity of London、Holborn / Midtown、Bloomsburyです。" loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="../assets/maps/london-tall.svg?v=4" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:28%;--y:46%;--xt:28%;--yt:46.6%" aria-hidden="true">ウエストエンド</span>
-          <span class="ab-grp ab-grp--sel" style="--x:67%;--y:45%;--xt:67%;--yt:45.5%" aria-hidden="true">シティ・オブ・ロンドン</span>
-          <span class="ab-grp ab-grp--sel" style="--x:45%;--y:40%;--xt:45%;--yt:41.6%" aria-hidden="true">ミッドタウン</span>
+          <span class="ab-grp ab-grp--core" style="--x:26%;--y:47%;--xt:29%;--yt:47%" aria-hidden="true">ウェストエンド</span>
+          <span class="ab-grp ab-grp--sel" style="--x:67%;--y:46%;--xt:70%;--yt:46%;--wt:7.4em" aria-hidden="true"><span class="jt">シティ・オブ・</span><span class="jt">ロンドン</span></span>
+          <span class="ab-grp ab-grp--sel" style="--x:42%;--y:36%;--xt:42%;--yt:37%" aria-hidden="true">ミッドタウン</span>
           </div>
 
           <ul class="am-legend">
@@ -491,9 +485,9 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="../assets/maps/amsterdam-wide.svg?v=4" alt="アムステルダムの地図。運河環状地帯が歴史的中心部を囲み、北にIJ湾、南西にフォンデルパークがあります。Reiwa Capitalの中核エリアはCanal Belt（Grachtengordel）、Jordaan、Oud-Zuid、Zuidas。選択的エリアはDe Pijp、Plantage、Oud-Westです。" loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="../assets/maps/amsterdam-tall.svg?v=4" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:51.5%;--y:45%;--xt:52.5%;--yt:45%" aria-hidden="true">カナルベルト＆ヨルダーン</span>
-          <span class="ab-grp ab-grp--core" style="--x:42.8%;--y:68.5%;--xt:41.2%;--yt:66.9%" aria-hidden="true">アウド・ザウト</span>
-          <span class="ab-grp ab-grp--core" style="--x:43%;--y:75.3%;--xt:41.2%;--yt:75.7%" aria-hidden="true">ザイダス</span>
+          <span class="ab-grp ab-grp--core" style="--x:53%;--y:55%;--xt:59%;--yt:55%" aria-hidden="true">カナルベルト</span>
+          <span class="ab-grp ab-grp--core" style="--x:42%;--y:69%;--xt:37%;--yt:67%" aria-hidden="true">アウド・ザウト</span>
+          <span class="ab-grp ab-grp--core" style="--x:45%;--y:75%;--xt:40%;--yt:75%" aria-hidden="true">ザイダス</span>
           </div>
 
           <ul class="am-legend">

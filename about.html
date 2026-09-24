@@ -184,17 +184,13 @@
      can hover, click or reach from the list beside the map, which names it
      and gives its classification. A fully labelled map is a GIS plot; this
      is an editorial one. */
-  .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: var(--w, max-content); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12.5px; line-height: 1.3; text-align: center; pointer-events: none; z-index: 3; transition: opacity 200ms var(--ease-out); }
-  /* The Canal Belt & Jordaan label is wider than the band it names, so part
-     of it always falls on pale ground. A tight halo under the drop shadow
-     keeps the white type readable wherever it lands. Colour, size, weight
-     and position are unchanged. */
-  .ab-grp--core { color: #F7F3EC; text-shadow: 0 1px 3px rgba(31,18,38,.55), 0 0 5px rgba(31,18,38,.92), 0 0 2px rgba(31,18,38,.95); }
-  .ab-grp--sel { color: var(--ink); text-shadow: 0 1px 3px rgba(252,250,241,.75); }
-  /* Phones: the map runs edge to edge so its labels keep a readable size;
-     the legend and note below it stay on the gutter. Label positions are
-     percentages of the frame, so the geography and placement are unchanged. */
-  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); } .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
+  .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: var(--w, max-content); padding: 2px 7px; border-radius: 2px; box-sizing: border-box; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12.5px; line-height: 1.3; text-align: center; pointer-events: none; z-index: 3; }
+  /* Each label sits on a small pill in its own area's colour (the legend
+     swatches), so it reads wherever the geography puts it: cream on the
+     core purple, ink on the pale selective tint. */
+  .ab-grp--core { background: rgba(47,31,58,.92); color: var(--cream); }
+  .ab-grp--sel { background: rgba(230,217,228,.92); color: var(--ink); }
+  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); width: var(--wt, var(--w, max-content)); } .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
   @media (max-width: 480px) { .ab-grp { font-size: 12.5px; } }
   @media (max-width: 380px) { .ab-grp { font-size: 12px; } }
 
@@ -415,9 +411,9 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=4" alt="Map of central London. The Thames runs through the frame with Hyde Park, Regent’s Park, Green Park and St James’s Park marked. Reiwa Capital’s core focus areas are Mayfair, St James’s, Marylebone, Fitzrovia, Soho and Covent Garden; selective focus covers the City of London, Holborn / Midtown and Bloomsbury." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=4" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:28%;--y:46%;--xt:28%;--yt:46.6%" aria-hidden="true">West End</span>
-          <span class="ab-grp ab-grp--sel" style="--x:67%;--y:45%;--xt:67%;--yt:45.5%" aria-hidden="true">City of London</span>
-          <span class="ab-grp ab-grp--sel" style="--x:45%;--y:40%;--xt:45%;--yt:41.6%" aria-hidden="true">Midtown</span>
+          <span class="ab-grp ab-grp--core" style="--x:26%;--y:47%;--xt:26%;--yt:47%" aria-hidden="true">West End</span>
+          <span class="ab-grp ab-grp--sel" style="--x:66%;--y:42%;--xt:67%;--yt:46%" aria-hidden="true">City of London</span>
+          <span class="ab-grp ab-grp--sel" style="--x:43%;--y:40%;--xt:43%;--yt:39%" aria-hidden="true">Midtown</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>
@@ -450,9 +446,9 @@
           <div class="am-map">
             <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=4" alt="Map of Amsterdam. The canal ring wraps the historic centre, with the IJ to the north and Vondelpark to the south-west. Reiwa Capital’s core focus areas are the Canal Belt (Grachtengordel), the Jordaan, Oud-Zuid and Zuidas; selective focus covers De Pijp, Plantage and Oud-West." loading="lazy" decoding="async">
             <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=4" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:51.5%;--y:45%;--xt:52.5%;--yt:45%" aria-hidden="true">Canal Belt &amp; Jordaan</span>
-          <span class="ab-grp ab-grp--core" style="--x:44.1%;--y:67%;--xt:41.2%;--yt:66.9%" aria-hidden="true">Oud-Zuid</span>
-          <span class="ab-grp ab-grp--core" style="--x:44.1%;--y:75.3%;--xt:41.2%;--yt:75.7%" aria-hidden="true">Zuidas</span>
+          <span class="ab-grp ab-grp--core" style="--x:54%;--y:54%;--xt:53%;--yt:54%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-grp ab-grp--core" style="--x:45%;--y:67%;--xt:40%;--yt:68%" aria-hidden="true">Oud-Zuid</span>
+          <span class="ab-grp ab-grp--core" style="--x:45%;--y:75%;--xt:41%;--yt:75%" aria-hidden="true">Zuidas</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core focus</li>

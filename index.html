@@ -80,17 +80,26 @@
   .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: 1060px; text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
      replace restated the four principles in the aubergine field below. */
-  .hi-ops { max-width: none; margin: clamp(26px, 2.8vw, 38px) 0 0; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.4; letter-spacing: 0.085em; text-transform: uppercase; color: var(--ink-2); }
-  .hi-ops .sep { color: var(--ink-3); margin: 0 clamp(12px, 1.3vw, 20px); }
+  /* Three strands under the statement: the verbs read as one sequence on
+     one rule, each with the period of the six-stage process it belongs to
+     and a single line drawn from the Approach page. A short bar marks the
+     start of each strand, so the three read left to right as one line. */
+  .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: center; }
+  .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
+  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
+  .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 17px + 1vw, 32px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
+  .hi-op-d { margin: 10px auto 0; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 30ch; text-wrap: pretty; }
+  .hi-ops-foot { text-align: center; }
+  .hi-ops-link { margin-top: clamp(20px, 2.2vw, 30px); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
-    .hi-ops { margin-top: 26px; padding-top: 16px; font-size: 13px; }
-    .hi-ops .sep { margin: 0 10px; }
-  }
-  /* Narrowest phones: the operating line stays on one line. */
-  @media (max-width: 340px) {
-    .hi-ops { font-size: 12px; }
-    .hi-ops .sep { margin: 0 8px; }
+    .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: 18px 0; }
+    .hi-op { padding-top: 14px; }
+    .hi-op-v { font-size: 24px; }
+    .hi-op-d { max-width: none; }
+    .hi-ops-link { margin-top: 18px; }
   }
 
   /* --- 3 · Markets ------------------------------------------------------ */
@@ -249,7 +258,7 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1>European<br>Real Estate<br>Structured for<br>Japanese Capital</h1>
+    <h1>European<br>Real Estate<br>Structured for <br>Japanese Capital</h1>
     <span class="loc">Tokyo-based, focused on London and Amsterdam</span>
   </div>
 </section>
@@ -260,7 +269,24 @@
     <div class="hi-head">
       <h2 class="hi-statement" id="hi-title">Reiwa Capital supports Japanese investors across the acquisition and ownership of European real estate.</h2>
     </div>
-    <p class="hi-ops">Underwrite<span class="sep" aria-hidden="true">·</span>Structure<span class="sep" aria-hidden="true">·</span>Oversee</p>
+    <ol class="hi-ops" aria-label="What Reiwa Capital does">
+      <li class="hi-op">
+        <span class="hi-op-k"><b>01</b>Formation</span>
+        <span class="hi-op-v">Underwrite</span>
+        <p class="hi-op-d">Each opportunity is tested against the investor’s mandate before any capital is committed</p>
+      </li>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>02</b>Execution</span>
+        <span class="hi-op-v">Structure</span>
+        <p class="hi-op-d">Ownership, financing and tax structure are settled, then diligence and documentation completed under one plan</p>
+      </li>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>03</b>Ownership</span>
+        <span class="hi-op-v">Oversee</span>
+        <p class="hi-op-d">Performance is monitored against the investment case, and refinancing and exit decisions are brought to the investor</p>
+      </li>
+    </ol>
+    <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">See the six stages<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
@@ -284,9 +310,9 @@
           <h3 class="hm-city">London</h3>
           <p class="h-body hm-copy">Opportunities across income and repositioning strategies</p>
           <ul class="hm-facts">
-            <li>Deep liquidity</li>
-            <li>Global occupier demand</li>
+            <li>Breadth of occupier demand</li>
             <li>Highly differentiated micro-markets</li>
+            <li>Depth of buyers at exit</li>
           </ul>
         </div>
         <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
