@@ -113,8 +113,8 @@
 
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
   .co-table > div { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
-  .co-table dt { font-family: var(--jp); font-size: 12.5px; line-height: 1.6; letter-spacing: 0.015em; color: var(--ink-4, #928799); margin: 0; }
-  .co-table dd { margin: 0; max-width: 40em; font-family: var(--jp); font-size: 15.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .co-table dt { font-family: var(--jp); font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
+  .co-table dd { margin: 0; max-width: 40em; font-family: var(--jp); font-weight: 500; font-size: 15.5px; line-height: 1.85; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -132,20 +132,9 @@
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: var(--jp); font-weight: 400; font-size: clamp(17px, 15px + 0.35vw, 20px); line-height: 1.5; letter-spacing: 0.005em; color: var(--ink); }
-  .co-tier-d { margin: 0; max-width: 40em; font-family: var(--jp); font-size: 15.5px; line-height: 1.9; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  /* Sits in the value column under the tiers, so it reads as a note on the
-     operating model rather than a paragraph floating at the page margin. */
-  /* max-width and font-size are re-declared because the shared `p, .p` base
-     rule carries both; without them the note keeps --measure and --text-base,
-     which caps this grid at 533px and puts its 20ch track out of step with
-     the tier rows above. font-size: inherit matches the rows' context so the
-     note's label column lines up with theirs exactly. */
-  .co-model-note { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
-  .co-model-note > span { grid-column: 2; max-width: 44em; font-family: var(--jp); font-size: 13.5px; line-height: 1.85; color: var(--ink-3); }
+  .co-tier-d { margin: 0; max-width: 40em; font-family: var(--jp); font-size: 15.5px; line-height: 1.9; color: var(--ink); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
-    .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .co-model-note > span { grid-column: 1; }
   }
 
   /* --- 5 · Contact ------------------------------------------------------
@@ -155,32 +144,19 @@
      same grid four times and ends on it. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
+  .co-aud { margin: 0 0 clamp(18px, 2vw, 26px); max-width: 38em; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-general { margin: 0; }
   .co-gen-row { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
-  .co-general dt { letter-spacing: 0.015em; color: var(--ink-4, #928799); font-family: var(--jp); font-size: 12.5px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
+  .co-general dt { font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
   .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.9; letter-spacing: 0; color: var(--ink); }
   .co-general a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; overflow-wrap: normal; word-break: normal; color: var(--ink); border-bottom: 1px solid var(--rule-strong); transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .co-general a:hover { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
   .co-general a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-color: transparent; }
 
-  .co-cols { margin-top: clamp(30px, 3vw, 44px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(22px, 2.6vw, 44px); padding-top: clamp(15px, 1.5vw, 19px); border-top: 1px solid var(--rule-strong); }
-  .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
-  .co-col h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); }
-  .co-col p { margin: 8px 0 0; max-width: 22em; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  /* Hover answers in the label as well as the arrow, matching the general
-     contact links above. Air only — still no button, fill or border. */
-  /* Placement and the Japanese face only: the treatment lives in editorial.css. */
-  .co-cta { justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); font-family: var(--jp); }
   .co-sec.co-contact { padding-bottom: clamp(44px, 4.2vw, 60px); }
-  @media (max-width: 900px) {
-    .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
-    .co-col { display: block; grid-row: auto; padding: 18px 0 20px; border-top: 1px solid var(--rule); }
-    .co-col p { max-width: none; }
-  }
   @media (max-width: 760px) {
     .co-gen-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 14px 0 12px; }
-    .co-cta { padding: 11px 0 10px; min-height: 44px; }
   }
 
   /* --- 6 · Closing block: the shared cream band, set for the last page -- */
@@ -192,10 +168,6 @@
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
   .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
 
-  /* Mobile 8: contact routes and the general email reach a comfortable target. */
-  @media (max-width: 760px) {
-    .co-cta { padding: 11px 0 10px; min-height: 44px; }
-  }
   </style>
 </head>
 <body data-page="company" data-locale="ja" data-en-url="/company.html">
@@ -233,11 +205,10 @@
       <h2 class="co-label" id="cm-label">役割分担</h2>
       <div class="co-model">
         <ol class="co-tiers">
-          <li><span class="co-tier-n">日本の投資家</span><p class="co-tier-d">投資目的、投資基準、社内での意思決定の進め方を整理します。重要な投資判断は、投資家が行います。</p></li>
-          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">投資<span class="jt">マンデート</span>の設計、投資機会の発掘と投資分析、取得および資金調達の調整、保有期間中の<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング、</span>借換えと売却・出口戦略の策定を通じて、投資家の意思決定を支援します。</p></li>
-          <li><span class="co-tier-n">ロンドン・アムステルダムの専門家<span class="jt">ネットワーク</span></span><p class="co-tier-d">法務、税務、鑑定評価、技術、<span class="jt">ファイナンス、</span><span class="jt">リーシング、</span>建物管理・運営の各分野において、その投資の必要に応じて外部専門家を<span class="jt">選任します。</span></p></li>
+          <li><span class="co-tier-n">日本の投資家</span><p class="co-tier-d">投資目的と投資基準を定め、重要な投資判断を行います。</p></li>
+          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">投資<span class="jt">マンデート</span>の設計、投資機会の発掘と投資分析、取得および資金調達の調整、保有期間中の<span class="jt">モニタリング、</span>投資家向け<span class="jt">レポーティング、</span>出口戦略の策定を通じて、投資家の意思決定を支援します。</p></li>
+          <li><span class="co-tier-n">選任される専門家</span><p class="co-tier-d">法務、税務、会計、鑑定評価、技術、<span class="jt">ファイナンス、</span><span class="jt">リーシング、</span>建物管理・運営の各分野のロンドン・<span class="jt">アムステルダム</span>の専門家を、各投資の必要に応じて別途<span class="jt">選任します。</span></p></li>
         </ol>
-        <p class="co-model-note"><span>法務、税務、会計、鑑定評価および技術に関する業務は、別途選任された専門家が行います。</span></p>
       </div>
     </div>
   </div>
@@ -249,6 +220,7 @@
     <div class="co-row">
       <div class="co-contact-left">
         <h2 class="co-label" id="cc-label">お問い合わせ</h2>
+        <p class="co-aud">投資家の皆様、ロンドン・<span class="jt">アムステルダム</span>の案件をお持ちの物件所有者や仲介会社、ならびに<span class="jt">レンダー、</span><span class="jt">アドバイザー、</span><span class="jt">オペレーター</span>の皆様からのご連絡を<span class="jt">歓迎します。</span></p>
         <dl class="co-general">
           <div class="co-gen-row">
             <dt>一般のお問い合わせ</dt>
@@ -259,25 +231,6 @@
             <dd><a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener noreferrer" aria-label="Reiwa Capital の LinkedIn ページ（新しいタブで開きます）">Reiwa Capital</a></dd>
           </div>
         </dl>
-      </div>
-      <div>
-        <div class="co-cols">
-          <div class="co-col">
-            <h3>投資家の皆様</h3>
-            <p><span class="jt">マンデート</span>の整理や、欧州不動産に関するご要望について。</p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=%E6%8A%95%E8%B3%87%E5%AE%B6%E3%81%8B%E3%82%89%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" aria-label="投資マンデートに関するお問い合わせ">お問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-          <div class="co-col">
-            <h3>投資機会</h3>
-            <p>ロンドン・アムステルダムにおける投資機会のご提案<span class="jt">について。</span></p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=%E6%8A%95%E8%B3%87%E6%A9%9F%E4%BC%9A%E3%81%AE%E3%81%94%E6%8F%90%E6%A1%88" aria-label="投資機会のご提案に関するお問い合わせ">お問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-          <div class="co-col">
-            <h3>パートナー</h3>
-            <p>レンダー、アドバイザー、オペレーターなど、協業をご検討の皆様へ。</p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=%E5%8D%94%E6%A5%AD%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="協業に関するお問い合わせ">お問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-        </div>
       </div>
     </div>
   </div>

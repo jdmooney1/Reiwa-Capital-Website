@@ -53,7 +53,7 @@
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(37px, 25px + 2.7vw, 64px); line-height: 1.05; letter-spacing: -0.022em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 21ch; text-wrap: balance; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14.5px + 0.35vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 44ch; }
-  .home-hero .loc { display: block; text-align: center; margin-top: clamp(26px, 3.2vw, 44px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
+  .home-hero .loc { display: block; text-align: left; margin-top: clamp(18px, 1.8vw, 24px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized to the widest it can be while keeping
      "European Real Estate." whole on one line — measured, not guessed. The
      hero shares the body gutter so its left edge lines up with the header and
@@ -76,20 +76,20 @@
   @media (max-width: 430px) { .hi-statement { font-size: 24px; } }
 
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
-  .hi { padding: clamp(72px, 7vw, 104px) 0 clamp(48px, 4.5vw, 68px); }
+  .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
   .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: 1060px; text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
      replace restated the four principles in the aubergine field below. */
-  .hi-ops { max-width: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding-top: clamp(20px, 2.2vw, 28px); border-top: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.6vw, 24px); line-height: 1.35; letter-spacing: -0.006em; color: var(--ink); }
+  .hi-ops { max-width: none; margin: clamp(26px, 2.8vw, 38px) 0 0; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.4; letter-spacing: 0.085em; text-transform: uppercase; color: var(--ink-2); }
   .hi-ops .sep { color: var(--ink-3); margin: 0 clamp(12px, 1.3vw, 20px); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
-    .hi-ops { margin-top: 30px; padding-top: 20px; font-size: 19px; }
+    .hi-ops { margin-top: 26px; padding-top: 16px; font-size: 13px; }
     .hi-ops .sep { margin: 0 10px; }
   }
   /* Narrowest phones: the operating line stays on one line. */
   @media (max-width: 340px) {
-    .hi-ops { font-size: 16.5px; }
+    .hi-ops { font-size: 12px; }
     .hi-ops .sep { margin: 0 8px; }
   }
 
@@ -107,7 +107,7 @@
 
   /* Spacing 3: the markets heading balances its two lines rather than leaving a tail. */
   .hm-head .h-h2 { text-wrap: balance; }
-  .hm-stage { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: end; }
+  .hm-stage { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
 
   /* Photograph + copy for the selected market. Both panels exist in the
      DOM; JS shows one at a time with a short fade. No JS: both stack. */
@@ -121,6 +121,14 @@
   @keyframes hm-fade { from { opacity: 0; } to { opacity: 1; } }
   .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 18px + 0.9vw, 28px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 44ch; }
+  /* The photograph runs about 230px deeper than three lines of caption at
+     1440. Rather than pad the column, the characteristics already carried in
+     the sentence are set out under it: one lead, then the three facts that
+     sentence was enumerating. No claim is added. */
+  .hm-facts { list-style: none; margin: clamp(18px, 1.9vw, 24px) 0 0; padding: 0; display: grid; max-width: 44ch; }
+  .hm-facts li { padding: clamp(9px, 1vw, 12px) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
+  .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
+  @media (max-width: 900px) { .hm-facts { max-width: none; } }
   @media (prefers-reduced-motion: reduce) {
     .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
     .js .hm-panel.is-on { animation: none; }
@@ -158,9 +166,9 @@
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
   /* subgrid so every paragraph starts on one line, whatever its heading does:
      two of the four headings wrap, and without this the column feet stagger. */
-  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: start; }
+  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
   .hp-item > div { display: contents; }
-  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 14px + 0.5vw, 21px); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
   .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
@@ -241,8 +249,8 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1>European<br>Real Estate.<br>Structured for<br> Japanese Capital.</h1>
-    <span class="loc">Tokyo-based. Focused on London and Amsterdam.</span>
+    <h1>European<br>Real Estate<br>Structured for<br>Japanese Capital</h1>
+    <span class="loc">Tokyo-based, focused on London and Amsterdam</span>
   </div>
 </section>
 
@@ -252,7 +260,7 @@
     <div class="hi-head">
       <h2 class="hi-statement" id="hi-title">Reiwa Capital supports Japanese investors across the acquisition and ownership of European real estate.</h2>
     </div>
-    <p class="hi-ops">Underwrite<span class="sep" aria-hidden="true">·</span>Coordinate<span class="sep" aria-hidden="true">·</span>Oversee</p>
+    <p class="hi-ops">Underwrite<span class="sep" aria-hidden="true">·</span>Structure<span class="sep" aria-hidden="true">·</span>Oversee</p>
   </div>
 </section>
 
@@ -260,7 +268,7 @@
 <section class="hm" data-screen-label="03 Home — markets" aria-labelledby="hm-title">
   <div class="shell">
     <div class="hm-head">
-      <h2 class="h-h2" id="hm-title">Two Markets.</h2>
+      <h2 class="h-h2" id="hm-title">Two Markets</h2>
       <div class="hm-tabs" role="tablist" aria-label="Market">
         <button class="hm-tab" type="button" role="tab" id="hm-tab-uk" data-market="uk" aria-selected="true" aria-controls="hm-panel-uk">London</button>
         <button class="hm-tab" type="button" role="tab" id="hm-tab-nl" data-market="nl" aria-selected="false" aria-controls="hm-panel-nl" tabindex="-1">Amsterdam</button>
@@ -274,11 +282,21 @@
       <div class="hm-panels">
         <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
           <h3 class="hm-city">London</h3>
-          <p class="h-body hm-copy">Deep liquidity, global occupier demand and highly differentiated micro-markets create opportunities across income and repositioning strategies.</p>
+          <p class="h-body hm-copy">Opportunities across income and repositioning strategies</p>
+          <ul class="hm-facts">
+            <li>Deep liquidity</li>
+            <li>Global occupier demand</li>
+            <li>Highly differentiated micro-markets</li>
+          </ul>
         </div>
         <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
           <h3 class="hm-city">Amsterdam</h3>
-          <p class="h-body hm-copy">A compact, supply-constrained market where planning discipline, strong occupier demand and an institutional buyer base reward well-located, high-quality assets.</p>
+          <p class="h-body hm-copy">Planning discipline rewards well-located, high-quality assets</p>
+          <ul class="hm-facts">
+            <li>Compact and supply-constrained</li>
+            <li>Strong occupier demand</li>
+            <li>Institutional buyer base</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -288,7 +306,7 @@
 <!-- ================================================================ 4 · BUILT FROM THE INVESTOR SIDE -->
 <section class="hp" data-screen-label="04 Home — investor side" aria-labelledby="hp-title">
   <div class="shell">
-    <h2 class="h-h2" id="hp-title">Built From the Investor Side.</h2>
+    <h2 class="h-h2" id="hp-title">Built from the Investor Side</h2>
     <div class="hp-grid">
       <div class="hp-item"><div><h3>Investor Control</h3><p class="h-body">The investor retains approval over acquisition, financing, material expenditure and exit.</p></div>
       </div>
@@ -329,7 +347,7 @@
       </a>
     </div>
     <p class="hf-spec">
-      <span class="hf-spec-k">A specialist application</span>
+      <span class="hf-spec-k">A Specialist Application</span>
       <a href="investment-focus.html#hospitality">Selective Hospitality <span class="hf-cue-a" aria-hidden="true">&rarr;</span></a>
     </p>
   </div>

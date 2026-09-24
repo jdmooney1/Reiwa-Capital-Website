@@ -61,7 +61,12 @@
 /* Two logos stacked; JS toggles which is visible by class on the bar. */
 .nav-logo { position: relative; }
 .nav-logo .logo-light {
-  position: absolute; inset: 0;
+  /* inset:0 stretched the light mark to the link box, so it sat 5-9px above
+     the flex-centred dark one. During the cross-fade both were briefly
+     visible and out of register. Centre it instead, so the two occupy the
+     same pixels at every width. */
+  position: absolute; left: 0; top: 50%; right: auto; bottom: auto;
+  transform: translateY(-50%);
   opacity: 0; transition: opacity var(--dur-3) var(--ease-out);
   pointer-events: none;
 }

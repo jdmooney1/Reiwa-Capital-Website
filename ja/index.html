@@ -71,7 +71,7 @@
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
-  .home-hero .loc { display: block; margin-top: clamp(26px, 3.2vw, 44px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
+  .home-hero .loc { display: block; margin-top: clamp(18px, 1.8vw, 24px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized so 欧州不動産を、 holds one line and the
      second clause takes at most two — measured, not guessed. The hero keeps
      the tighter gutter the English hero uses to buy that room. */
@@ -86,21 +86,21 @@
   }
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
-  .hi { padding: clamp(72px, 7vw, 104px) 0 clamp(48px, 4.5vw, 68px); }
+  .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
   .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: 1060px; }
   /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
-  .hi-ops { max-width: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding-top: clamp(20px, 2.2vw, 28px); border-top: 1px solid var(--rule-strong); font-family: var(--font-jp); font-weight: 500; font-size: clamp(18px, 15px + 0.55vw, 23px); line-height: 1.5; letter-spacing: 0.02em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hi-ops { max-width: none; margin: clamp(26px, 2.8vw, 38px) 0 0; padding-top: clamp(16px, 1.8vw, 22px); border-top: 1px solid var(--rule-strong); font-family: var(--font-jp); font-weight: 500; font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.6; letter-spacing: 0.12em; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hi-ops .sep { color: var(--ink-3); margin: 0 clamp(8px, 0.9vw, 14px); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
-    .hi-ops { margin-top: 30px; padding-top: 20px; font-size: 19px; }
+    .hi-ops { margin-top: 26px; padding-top: 16px; font-size: 13.5px; }
     .hi-ops .sep { margin: 0 7px; }
   }
   /* 最小幅の端末では、一行に収める。 */
   @media (max-width: 340px) {
-    .hi-ops { font-size: 17px; }
+    .hi-ops { font-size: 12.5px; }
     .hi-ops .sep { margin: 0 6px; }
   }
 
@@ -116,7 +116,7 @@
   @media (hover: hover) { .hm-tab:not([aria-selected="true"]):hover { color: var(--ink-2); } }
   .hm-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-  .hm-stage { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: end; }
+  .hm-stage { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
 
   /* Photograph + copy for the selected market. Both panels exist in the
      DOM; JS shows one at a time with a short fade. No JS: both stack. */
@@ -130,6 +130,14 @@
   @keyframes hm-fade { from { opacity: 0; } to { opacity: 1; } }
   .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.85vw, 26px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 28em; }
+  /* The photograph runs about 230px deeper than three lines of caption at
+     1440. Rather than pad the column, the characteristics already carried in
+     the sentence are set out under it: one lead, then the three facts that
+     sentence was enumerating. No claim is added. */
+  .hm-facts { list-style: none; margin: clamp(18px, 1.9vw, 24px) 0 0; padding: 0; display: grid; max-width: 28em; }
+  .hm-facts li { padding: clamp(9px, 1vw, 12px) 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 14.5px; line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
+  .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
+  @media (max-width: 900px) { .hm-facts { max-width: none; } }
   @media (prefers-reduced-motion: reduce) {
     .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
     .js .hm-panel.is-on { animation: none; }
@@ -165,9 +173,9 @@
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
   /* subgrid so every paragraph starts on one line, whatever its heading does:
      two of the four headings wrap, and without this the column feet stagger. */
-  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: start; }
+  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
   .hp-item > div { display: contents; }
-  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 20px); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
   .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
@@ -256,9 +264,9 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1>欧州不動産を、<br>日本の投資家のために。</h1>
+    <h1>欧州不動産を、<br>日本の投資家のために</h1>
     <p class="sub">Reiwa Capitalは、日本の投資家側に立って、英国・オランダを中心とする欧州不動産投資を支援します。</p>
-    <span class="loc">東京拠点。ロンドンとアムステルダムに特化。</span>
+    <span class="loc">東京拠点、ロンドンと<span class="jt">アムステルダム</span>に特化</span>
   </div>
 </section>
 
@@ -268,7 +276,7 @@
     <div class="hi-head">
       <h2 class="hi-statement" id="hi-title">欧州不動産の<wbr><span class="jt">取得から保有まで、</span><wbr>日本の投資家を<span class="jt">支援します。</span></h2>
     </div>
-    <p class="hi-ops"><span class="jt">投資分析</span><span class="sep" aria-hidden="true">・</span><span class="jt">調整</span><span class="sep" aria-hidden="true">・</span><span class="jt">モニタリング</span></p>
+    <p class="hi-ops"><span class="jt">投資分析</span><span class="sep" aria-hidden="true">・</span><span class="jt">組成</span><span class="sep" aria-hidden="true">・</span><span class="jt">モニタリング</span></p>
   </div>
 </section>
 
@@ -276,7 +284,7 @@
 <section class="hm" data-screen-label="03 ホーム — 市場" aria-labelledby="hm-title">
   <div class="shell">
     <div class="hm-head">
-      <h2 class="h-h2" id="hm-title">二つの市場。</h2>
+      <h2 class="h-h2" id="hm-title">二つの市場</h2>
       <div class="hm-tabs" role="tablist" aria-label="市場">
         <button class="hm-tab" type="button" role="tab" id="hm-tab-uk" data-market="uk" aria-selected="true" aria-controls="hm-panel-uk">ロンドン</button>
         <button class="hm-tab" type="button" role="tab" id="hm-tab-nl" data-market="nl" aria-selected="false" aria-controls="hm-panel-nl" tabindex="-1">アムステルダム</button>
@@ -290,11 +298,21 @@
       <div class="hm-panels">
         <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
           <h3 class="hm-city">ロンドン</h3>
-          <p class="h-body hm-copy">高い流動性、世界的なテナント需要、そして細かく分かれたミクロマーケット。収益型と再生型の双方に機会があります。</p>
+          <p class="h-body hm-copy">収益型と再生型の双方に機会があります</p>
+          <ul class="hm-facts">
+            <li>高い流動性</li>
+            <li>世界的な<span class="jt">テナント</span>需要</li>
+            <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
+          </ul>
         </div>
         <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
           <h3 class="hm-city">アムステルダム</h3>
-          <p class="h-body hm-copy">供給が限られたコンパクトな市場。厳格な都市計画、堅調なテナント需要、そして機関投資家層の厚みが、立地と品質の高い物件を支えます。</p>
+          <p class="h-body hm-copy">厳格な都市計画が、立地と品質の高い物件を支えます</p>
+          <ul class="hm-facts">
+            <li>供給が限られた<span class="jt">コンパクト</span>な市場</li>
+            <li>堅調な<span class="jt">テナント</span>需要</li>
+            <li>機関投資家層の厚み</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -304,7 +322,7 @@
 <!-- ================================================================ 4 · 投資家の判断を起点に -->
 <section class="hp" data-screen-label="04 ホーム — 投資家側" aria-labelledby="hp-title">
   <div class="shell">
-    <h2 class="h-h2" id="hp-title">投資家の判断を起点に。</h2>
+    <h2 class="h-h2" id="hp-title">投資家の判断を起点に</h2>
     <div class="hp-grid">
       <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p></div>
       </div>

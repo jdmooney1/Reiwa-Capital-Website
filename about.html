@@ -67,12 +67,16 @@
   body[data-page="about"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
   body[data-page="about"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   .ab-hero .inner { position: relative; z-index: 2; }
-  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
-  .ab-hero .sub { margin: clamp(12px, 1.2vw, 16px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  /* Internal-page hero pattern (About sets it; Approach and Investment
+     Focus follow): the headline at roughly one and a half times the first
+     section heading, and the supporting sentence held close beneath it so
+     the two read as one group against the picture. */
+  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 22px + 2.4vw, 60px); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
+  .ab-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
-    .ab-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 13ch; }
-    .ab-hero .sub { max-width: 34ch; }
+    .ab-hero h1 { font-size: clamp(32px, 8.6vw, 38px); max-width: 13ch; }
+    .ab-hero .sub { margin-top: 10px; max-width: 34ch; }
   }
 
   @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
@@ -94,15 +98,17 @@
      view. One control, two states — the page says nothing a reader has to
      take on trust; it shows the difference. */
   .aw-field { margin-top: clamp(30px, 3.4vw, 46px); background: var(--ink); padding: clamp(22px, 2.2vw, 32px) clamp(22px, 2.4vw, 36px) clamp(28px, 2.8vw, 40px); }
-  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; }
-  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0; margin: 0; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(252,250,241,.55); border-bottom: 1px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  /* The two readings are a pair of tabs on a shared rule, the same grammar
+     as the market selector below: the selected one carries the rule. */
+  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(252,250,241,.18); }
+  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(252,250,241,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
   .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
   .aw-flow { margin-top: clamp(22px, 2.4vw, 32px); }
   .aw-inv { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.24); }
   .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
-  .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.6); }
+  .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
   .aw-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); }
   .aw-stage { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 12px + 1.6vw, 40px); line-height: 1; letter-spacing: -0.018em; color: var(--cream); }
   /* The line is the argument: four segments that stop short, or four that
@@ -113,34 +119,39 @@
   .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 25%; }
   .aw-line i:nth-child(3) { left: 50%; } .aw-line i:nth-child(4) { left: 75%; }
   .aw-field[data-flow="with"] .aw-line i { width: 25%; background: var(--cream); }
-  .aw-ribbon { min-height: 26px; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; justify-content: space-between; opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-field[data-flow="with"] .aw-ribbon { opacity: 1; }
+  /* Each state has its own caption. The two share one grid cell, so the
+     field keeps its height and only the words change. */
+  .aw-ribbons { display: grid; margin-top: 14px; }
+  .aw-ribbon { grid-area: 1 / 1; min-height: 26px; display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; justify-content: space-between; opacity: 0; visibility: hidden; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 360ms; }
+  .aw-field[data-flow="with"] .aw-ribbon--with, .aw-field[data-flow="without"] .aw-ribbon--without { opacity: 1; visibility: visible; transition-delay: 0s, 0s; }
   .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
-  .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.66); }
-  .aw-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(14px, 1.6vw, 20px); column-gap: clamp(16px, 2vw, 28px); }
-  .aw-spec { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.6); }
+  .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
+  .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
+  .aw-specs-k { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.3; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
+  .aw-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; column-gap: clamp(16px, 2vw, 28px); }
+  .aw-spec { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
   /* Below 760px the same four phases read down a spine. */
   .aw-spine { display: none; }
   @media (max-width: 760px) {
     .aw-flow { display: none; }
-    .aw-spine { display: block; margin-top: 20px; }
-    .aw-inv { flex-direction: column; gap: 6px; align-items: flex-start; }
-    .aw-sp-track { position: relative; margin-top: 22px; padding-left: 30px; }
+    .aw-spine { display: block; margin-top: 16px; }
+    .aw-inv { flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; }
+    .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
     .aw-sp-rail::before { content: ""; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: rgba(252,250,241,.16); }
     .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 16%; background: rgba(142,122,156,.92); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
     .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 25%; }
     .aw-sp-rail i:nth-child(3) { top: 50%; } .aw-sp-rail i:nth-child(4) { top: 75%; }
     .aw-field[data-flow="with"] .aw-sp-rail i { height: 25%; background: var(--cream); }
-    .aw-sp-rows { display: grid; grid-template-rows: repeat(4, minmax(62px, auto)); }
-    .aw-sp-row { display: flex; flex-direction: column; gap: 6px; }
+    .aw-sp-rows { display: grid; grid-template-rows: repeat(4, minmax(54px, auto)); }
+    .aw-sp-row { display: flex; flex-direction: column; gap: 4px; }
     .aw-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 5vw, 23px); line-height: 1.05; letter-spacing: -0.018em; color: var(--cream); }
-    .aw-sp-s { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.6); }
-    .aw-sp-ribbon { min-height: 44px; margin-top: 18px; padding-left: 30px; display: flex; flex-direction: column; gap: 5px; opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-    .aw-field[data-flow="with"] .aw-sp-ribbon { opacity: 1; }
-    .aw-field { padding: 20px 18px 24px; }
+    .aw-sp-s { font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.74); }
+    .aw-sp-ribbon { margin-top: 14px; padding-left: 30px; }
+    .aw-sp-ribbon .aw-ribbon { flex-direction: column; gap: 4px; min-height: 0; }
+    .aw-field { margin-top: 26px; padding: 16px 18px 22px; }
     .aw-switch { gap: 18px; }
-    .aw-sw { font-size: 15px; padding: 4px 0; }
+    .aw-sw { font-size: 15px; padding: 4px 0 10px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .aw-sw, .aw-line i, .aw-line::before, .aw-ribbon, .aw-sp-rail i, .aw-sp-rail::before, .aw-sp-ribbon { transition: none; }
@@ -180,9 +191,12 @@
      and position are unchanged. */
   .ab-grp--core { color: #F7F3EC; text-shadow: 0 1px 3px rgba(31,18,38,.55), 0 0 5px rgba(31,18,38,.92), 0 0 2px rgba(31,18,38,.95); }
   .ab-grp--sel { color: var(--ink); text-shadow: 0 1px 3px rgba(252,250,241,.75); }
-  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); } }
-  @media (max-width: 480px) { .ab-grp { font-size: 11px; } }
-  @media (max-width: 380px) { .ab-grp { font-size: 10.5px; } }
+  /* Phones: the map runs edge to edge so its labels keep a readable size;
+     the legend and note below it stay on the gutter. Label positions are
+     percentages of the frame, so the geography and placement are unchanged. */
+  @media (max-width: 620px) { .ab-grp { left: var(--xt); top: var(--yt); } .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
+  @media (max-width: 480px) { .ab-grp { font-size: 12.5px; } }
+  @media (max-width: 380px) { .ab-grp { font-size: 12px; } }
 
   .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
   .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
@@ -221,10 +235,6 @@
     .am-look-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
   }
-  /* Two links close the page now, one for investors and one for the people
-     who bring us opportunities. The row grammar is unchanged. */
-  .enq-ctas { display: grid; justify-items: start; gap: 0; }
-  @media (min-width: 761px) { .enq-ctas { justify-items: end; } }
   .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   @media (min-width: 901px) {
     .am-panel--snapshot .am-grid { align-items: stretch; }
@@ -271,11 +281,18 @@
   /* --- 4 · Long-term capital -------------------------------------------
      Four investor types, read as four columns of plain type. No rails, no
      numerals, no rules: the distinction between them is what they say. */
-  .ac-grid { margin-top: clamp(32px, 3.4vw, 48px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
-  @media (max-width: 1024px) { .ac-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(26px, 3vw, 40px); } }
-  @media (max-width: 560px) { .ac-grid { grid-template-columns: minmax(0, 1fr); } }
-  .ac-grid { list-style: none; padding: 0; }
-  .ac-item { min-width: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 21px); line-height: 1.2; letter-spacing: -0.008em; color: var(--ink); }
+  .ac.ab-sec { padding-bottom: clamp(48px, 4.8vw, 72px); }
+  .ac-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+  .ac-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 36px); }
+  .ac-item { min-width: 0; padding: clamp(10px, 1vw, 13px) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.3; letter-spacing: -0.006em; color: var(--ink); }
+  .ac-item:nth-child(n+3) { border-bottom: 1px solid var(--rule); }
+  @media (max-width: 760px) {
+    .ac.ab-sec { padding-bottom: 44px; }
+    .ac-row { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .ac-grid { grid-template-columns: minmax(0, 1fr); }
+    .ac-item:nth-child(n+3) { border-bottom: 0; }
+    .ac-item:last-child { border-bottom: 1px solid var(--rule); }
+  }
 
   </style>
 </head>
@@ -293,7 +310,7 @@
   </div>
   <div class="ab-scrim"></div>
   <div class="inner">
-    <h1>Built Around the Investor.</h1>
+    <h1>Built Around the Investor</h1>
     <p class="sub">European real estate approached from the investor’s mandate, not the transaction.</p>
   </div>
 </section>
@@ -302,7 +319,7 @@
 <section class="ab-sec aw" data-screen-label="02 About — why Reiwa exists" aria-labelledby="aw-title">
   <div class="shell">
     <div class="ab-head">
-      <h2 class="h-h2" id="aw-title">Cross-border ownership needs continuity.</h2>
+      <h2 class="h-h2" id="aw-title">Cross-Border Ownership Needs Continuity</h2>
       <p class="h-body ab-lede">Acquiring an overseas asset is only one part of the investment. What follows needs consistent oversight, and reassessment as conditions change, through execution, ownership and exit.</p>
     </div>
     <div class="aw-field" data-flow="with" data-continuity>
@@ -328,10 +345,17 @@
         <i></i>
         <i></i>
         </div>
-        <div class="aw-ribbon">
-          <span class="aw-ribbon-n">Reiwa Capital</span>
-          <span class="aw-ribbon-note">One investor-side view throughout</span>
+        <div class="aw-ribbons">
+          <div class="aw-ribbon aw-ribbon--with">
+            <span class="aw-ribbon-n">Reiwa Capital</span>
+            <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
+          </div>
+          <div class="aw-ribbon aw-ribbon--without">
+            <span class="aw-ribbon-n">No single oversight mandate</span>
+            <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
+          </div>
         </div>
+        <span class="aw-specs-k">Specialists appointed at each stage</span>
         <div class="aw-specs">
         <span class="aw-spec">Broker / Legal</span>
         <span class="aw-spec">Property Management</span>
@@ -359,9 +383,15 @@
             <div class="aw-sp-row"><span class="aw-sp-n">Exit</span><span class="aw-sp-s">Agent / Legal</span></div>
           </div>
         </div>
-        <div class="aw-sp-ribbon">
-          <span class="aw-ribbon-n">Reiwa Capital</span>
-          <span class="aw-ribbon-note">One investor-side view throughout</span>
+        <div class="aw-sp-ribbon aw-ribbons">
+          <div class="aw-ribbon aw-ribbon--with">
+            <span class="aw-ribbon-n">Reiwa Capital</span>
+            <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
+          </div>
+          <div class="aw-ribbon aw-ribbon--without">
+            <span class="aw-ribbon-n">No single oversight mandate</span>
+            <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
+          </div>
         </div>
       </div>
     </div>
@@ -372,7 +402,7 @@
 <section class="ab-sec am" data-screen-label="03 About — focus markets" aria-labelledby="am-title">
   <div class="shell">
     <div class="ab-head">
-      <h2 class="h-h2" id="am-title">Focus Markets.</h2>
+      <h2 class="h-h2" id="am-title">Focus Markets</h2>
       <p class="h-body ab-lede">Two markets, and within each a deliberately narrow focus.</p>
     </div>
     <div class="am-tabs" role="tablist" aria-label="Focus market">
@@ -400,16 +430,16 @@
             <img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 42vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk">
           </figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">London combines deep capital markets, broad occupier demand and a mature financing and advisory network. Even within established locations, performance varies materially by street, building quality, tenure and lease profile.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">The depth of demand and breadth of potential buyers can support resilient income and credible exit options. The market’s complexity also creates opportunities where vacancy, pricing or asset management issues can be clearly understood and addressed.</p></div>
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Deep capital markets, a broad occupier base and a mature financing and advisory network. Performance varies materially by street, building quality, tenure and lease profile.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Breadth of occupier demand supports rental income, and depth of buyers supports the exit. The variation from asset to asset is what rewards investor-side selection.</p></div>
           </div>
         </div>
       </div>
       <div class="am-look">
         <h3 class="am-k">What We Look For</h3>
         <ul class="am-look-list">
-          <li>Prime central and established commercial locations with evidenced occupier demand</li>
-          <li>Durable income or a specific and controllable route to improvement</li>
+          <li>Prime central or established commercial locations with evidenced occupier demand</li>
+          <li>Durable income, or a specific and controllable route to improvement</li>
           <li>Realistic capital requirements and more than one credible exit route</li>
         </ul>
       </div>
@@ -436,8 +466,8 @@
             <img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 92vw, 42vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light">
           </figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Amsterdam is compact, supply constrained and shaped by strict planning and sustainability requirements. High-quality property in established central and business locations remains scarce.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Scarcity and durable occupier demand can support well-located assets over long holding periods. Regulation, title, permitted use and building condition also create meaningful differences between superficially similar opportunities.</p></div>
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Compact and supply constrained, shaped by strict planning and sustainability requirements. High-quality property in established central and business locations remains scarce.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Scarcity and durable occupier demand suit long holding periods. Differences in title, permitted use and condition between similar buildings reward diligence before commitment.</p></div>
           </div>
         </div>
       </div>
@@ -446,7 +476,7 @@
         <ul class="am-look-list">
           <li>Established central and business locations with clear occupational demand</li>
           <li>Clear permitted use and manageable technical and sustainability requirements</li>
-          <li>Durable income or a credible route through leasing, repositioning or operational improvement</li>
+          <li>Durable income, or a credible route through leasing, repositioning or operational improvement</li>
         </ul>
       </div>
     </div>
@@ -456,31 +486,31 @@
 <!-- ================================================================ 4 · WHO WE WORK WITH -->
 <section class="ab-sec ac" data-screen-label="04 About — who we work with" aria-labelledby="ac-title">
   <div class="shell">
-    <div class="ab-head">
-      <h2 class="h-h2" id="ac-title">Built for Long-Term Capital.</h2>
+    <div class="ac-row">
+      <div class="ab-head">
+        <h2 class="h-h2" id="ac-title">Built for Long-Term Capital</h2>
+        <p class="h-body ab-lede">Each engagement begins from a mandate agreed with the investor.</p>
+      </div>
+      <ul class="ac-grid">
+        <li class="ac-item">Japanese Corporates</li>
+        <li class="ac-item">Family Offices</li>
+        <li class="ac-item">Institutional Capital</li>
+        <li class="ac-item">Private Investors</li>
+      </ul>
     </div>
-    <ul class="ac-grid">
-      <li class="ac-item">Japanese Corporates</li>
-      <li class="ac-item">Family Offices</li>
-      <li class="ac-item">Institutional Capital</li>
-      <li class="ac-item">Private Investors</li>
-    </ul>
   </div>
 </section>
 
 
-<!-- ================================================================ 5 · ENQUIRY -->
-<section class="enq" data-screen-label="05 About — enquiry" aria-labelledby="enq-title">
+<!-- ================================================================ 5 · CONTACT -->
+<section class="enq" data-screen-label="05 About — contact" aria-labelledby="enq-title">
   <div class="shell">
     <div class="enq-row">
       <div>
-        <h2 class="enq-h" id="enq-title">Discussing a Mandate</h2>
-        <p class="enq-d">Reiwa Capital begins each investor engagement from a mandate agreed with the investor. We also welcome early conversations with owners, brokers and advisers regarding selected opportunities in London and Amsterdam.</p>
+        <h2 class="enq-h" id="enq-title">Contact</h2>
+        <p class="enq-d">We welcome enquiries from investors, and from property owners, brokers and advisers with relevant opportunities in London and Amsterdam.</p>
       </div>
-      <div class="enq-ctas">
-        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investor enquiries: contact Reiwa Capital">Investor enquiries<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-        <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investment%20opportunity" aria-label="Submit an opportunity to Reiwa Capital">Submit an opportunity<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-      </div>
+      <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>

@@ -80,7 +80,7 @@
   /* Frame and foot offset, as on About and Approach: --head-h is the token
      the shared head rule reads, so the negative offset under the
      transparent header and the flex-end alignment stay untouched. */
-  body[data-page="focus"] .page-head { --head-h: clamp(316px, 23.5vw, 366px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
   body[data-page="focus"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   /* Local contrast only: above 40% the picture is untouched and the ramp
      under the copy is lengthened rather than deepened. */
@@ -89,13 +89,14 @@
       linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
       url("../assets/imagery/focus-hero-blur.webp");
   }
-  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 35vw, 330px); } }
+  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
   @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }
-  .if-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(25px, 17px + 1.6vw, 42px); line-height: 1.34; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 12em; text-wrap: balance; }
-  .if-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  /* Internal-page hero pattern, as set on About. */
+  .if-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 12em; text-wrap: balance; }
+  .if-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .if-hero h1 { font-size: clamp(25px, 6.8vw, 31px); max-width: 11em; }
-    .if-hero .sub { max-width: 20em; }
+    .if-hero h1 { font-size: clamp(26px, 7.2vw, 33px); max-width: 11em; }
+    .if-hero .sub { margin-top: 10px; max-width: 22em; }
   }
 
   /* --- Section scaffold --------------------------------------------------
@@ -118,7 +119,7 @@
      separated by their own ground, not by a hairline. */
   .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
-  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(44px, 4.4vw, 70px); }
+  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
   .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
@@ -298,8 +299,11 @@
   .fx-view-in { padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
   .fx-view-in p { margin: 0; max-width: 46em; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.75; letter-spacing: -0.012em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .fx-lever-row { gap: 10px 20px; }
-    .fx-lever::before { left: -10px; }
+    .fx-lever-row { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
+    .fx-lever-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .fx-lever { padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+    .fx-lever:first-child { border-top: 0; padding-top: 2px; }
+    .fx-lever::before { display: none; }
     .fx-levers > .shell { padding-bottom: clamp(26px, 3vw, 34px); }
     .fx-view > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
   }
@@ -347,9 +351,10 @@
      columns are deliberately unequal; stretching them drew three-quarters of
      a column of empty rule under the shortest. */
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
-  .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
-  .dl-p span { display: block; flex: 1 1 auto; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.55vw, 21px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-n { display: block; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.55vw, 21px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-x { display: block; font-family: var(--jp); font-size: clamp(13.5px, 12.5px + 0.25vw, 15px); line-height: 1.8; color: rgba(252,250,241,.74); max-width: 20em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
     .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
@@ -377,18 +382,18 @@
 <!-- Hero -->
 <section class="page-head if-hero" data-screen-label="01 投資方針 — hero">
   <div class="inner">
-    <h1>投資対象を、厳選する。</h1>
-    <p class="sub">持続的な収益と、自ら管理できる改善余地が、長期保有を支える既存資産。</p>
+    <h1>投資対象を、厳選する</h1>
+    <p class="sub">長期保有を支える、ロンドンと<span class="jt">アムステルダム</span>の既存都市型<span class="jt">資産。</span></p>
   </div>
 </section>
 
 <!-- One investment focus field -->
 <section class="if-sec fx-sec" data-screen-label="02 投資方針 — 投資対象の全体像" aria-labelledby="fx-title" data-focusfield>
   <div class="shell fx-head">
-    <h2 class="fx-h2" id="fx-title">確かな<span class="jt">ファンダメンタルズ。</span>明確な<span class="jt">潜在力。</span></h2>
+    <h2 class="fx-h2" id="fx-title">確かな<span class="jt">ファンダメンタルズ、</span>明確な潜在力</h2>
     <div class="fx-param">
       <span class="fx-param-k">投資対象の範囲</span>
-      <p class="fx-param-v">主にロンドンおよびアムステルダムの都市型資産を対象とし、既存建物、裏付けのある需要、そして具体的で管理可能な改善に基づく事業計画を重視します。いずれも投資家と合意した<span class="jt">マンデート</span>に照らして検証し、その承認を得たうえで進めます。</p>
+      <p class="fx-param-v">既存建物、裏付けのある<span class="jt">テナント</span>需要、そして具体的で管理可能な改善に基づく事業計画を重視します。いずれも投資家と合意した<span class="jt">マンデート</span>に照らして検証し、その承認を得たうえで進めます。</p>
     </div>
   </div>
 
@@ -582,9 +587,9 @@
       </div>
     </div>
     <div class="hs-tests">
-        <span class="hs-test">守るに値する性格</span>
+        <span class="hs-test">建物の性格</span>
         <span class="hs-test">立地に根ざした需要</span>
-        <span class="hs-test">建物と市場が支えうる運営モデル</span>
+        <span class="hs-test">適した運営<span class="jt">モデル</span></span>
     </div>
   </div>
 </section>
@@ -595,10 +600,10 @@
     <h2 class="dl-h2" id="dl-title">私たちが線を引く地点</h2>
     <p class="dl-lede">価格を検討する前に適用します</p>
     <div class="dl-grid">
-      <div class="dl-p"><span>需要を裏付けられない</span></div>
-      <div class="dl-p"><span>改善の源泉が不明確</span></div>
-      <div class="dl-p"><span>実行リスクが機会を上回る</span></div>
-      <div class="dl-p"><span>出口が限られすぎた買い手層に依存する</span></div>
+      <div class="dl-p"><span class="dl-n">裏付けのない需要</span><span class="dl-x">実際の入居ではなく、予測に依存する<span class="jt">テナント</span>需要</span></div>
+      <div class="dl-p"><span class="dl-n">改善の源泉が不明確</span><span class="dl-x">具体的で費用を見通せる打ち手を欠く事業計画</span></div>
+      <div class="dl-p"><span class="dl-n">実行<span class="jt">リスク</span>が機会を上回る</span><span class="dl-x">投資家が統制も価格反映もできない許認可、工事、<span class="jt">リーシング</span></span></div>
+      <div class="dl-p"><span class="dl-n">出口が狭すぎる</span><span class="dl-x">単一の買い手層や市場環境に依存する売却</span></div>
     </div>
   </div>
 </section>
@@ -609,10 +614,10 @@
   <div class="shell">
     <div class="enq-row">
       <div>
-        <h2 class="enq-h" id="enq-title"><span class="jt">マンデート</span>のご相談</h2>
-        <p class="enq-d">Reiwa Capitalは、投資家と合意した<span class="jt">マンデート</span>を起点に、各案件を進めます。日本の事業会社、機関投資家、<span class="jt">プライベート</span>投資家からのお問い合わせ<span class="jt">を承ります。</span></p>
+        <h2 class="enq-h" id="enq-title">お問い合わせ</h2>
+        <p class="enq-d">投資家の皆様、ならびにロンドン・<span class="jt">アムステルダム</span>の案件をお持ちの物件所有者、仲介会社、<span class="jt">アドバイザー</span>からのご連絡を<span class="jt">歓迎します。</span></p>
       </div>
-      <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="投資に関するお問い合わせ">投資に関するお問い合わせ<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>

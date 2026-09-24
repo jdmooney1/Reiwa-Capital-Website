@@ -532,16 +532,17 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
   height: auto;
   max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(44px, 4.6vw, 70px) var(--gutter);
+  padding: clamp(30px, 3vw, 46px) var(--gutter);
 }
 .nn-text { display: block; min-width: 0; }
 .nextnav--band .nn-text { justify-self: end; }
 .nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: clamp(12px, 1.4vw, 18px); }
-/* Capped at 46px: at the old 58px ceiling this onward-navigation affordance
-   was set larger than the H1 of the page it sits under. */
-.nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(32px, 20px + 1.8vw, 46px); line-height: 1.04; letter-spacing: -0.02em; color: var(--ink); }
-.nn-lead { display: block; margin-top: clamp(12px, 1.4vw, 18px); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 19px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
-.nextnav--band .nn-arrow { display: block; width: 44px; height: 24px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
+/* An onward link, not a second headline. At 46px it competed with the H1 of
+   the page above it and the band ran to 228px; it now closes the page in
+   about two thirds of that. */
+.nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 17px + 1.05vw, 32px); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
+.nn-lead { display: block; margin-top: clamp(8px, 0.9vw, 12px); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 19px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+.nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
 .nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(8px); }
 .nextnav--band .nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
 @media (max-width: 768px) {

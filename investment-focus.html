@@ -60,7 +60,7 @@
   /* Frame and foot offset, as on About and Approach: --head-h is the token
      the shared head rule reads, so the negative offset under the
      transparent header and the flex-end alignment stay untouched. */
-  body[data-page="focus"] .page-head { --head-h: clamp(316px, 23.5vw, 366px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
   body[data-page="focus"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   /* Local contrast only: above 40% the picture is untouched and the ramp
      under the copy is lengthened rather than deepened. */
@@ -69,13 +69,16 @@
       linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
       url("assets/imagery/focus-hero-blur.webp");
   }
-  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 35vw, 330px); } }
+  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
   @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }
-  .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(31px, 21px + 2vw, 54px); line-height: 1.04; letter-spacing: -0.022em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 14ch; text-wrap: balance; }
-  .if-hero .sub { margin: clamp(14px, 1.6vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  /* Internal-page hero pattern, as set on About: the headline at roughly
+     one and a half times the first section heading, the supporting
+     sentence held close beneath it. */
+  .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 22px + 2.4vw, 60px); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 14ch; text-wrap: balance; }
+  .if-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .if-hero h1 { font-size: clamp(30px, 8vw, 36px); max-width: 12ch; }
-    .if-hero .sub { max-width: 34ch; }
+    .if-hero h1 { font-size: clamp(32px, 8.6vw, 38px); max-width: 12ch; }
+    .if-hero .sub { margin-top: 10px; max-width: 34ch; }
   }
 
   /* --- Section scaffold --------------------------------------------------
@@ -98,7 +101,7 @@
      separated by their own ground, not by a hairline. */
   .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
-  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(44px, 4.4vw, 70px); }
+  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
   .fx-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.5vw, 38px); line-height: 1.1; letter-spacing: -0.014em; color: var(--ink); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
@@ -278,8 +281,11 @@
   .fx-view-in { padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
   .fx-view-in p { margin: 0; max-width: 68ch; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.35; letter-spacing: -0.012em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .fx-lever-row { gap: 10px 20px; }
-    .fx-lever::before { left: -10px; }
+    .fx-lever-row { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
+    .fx-lever-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .fx-lever { padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+    .fx-lever:first-child { border-top: 0; padding-top: 2px; }
+    .fx-lever::before { display: none; }
     .fx-levers > .shell { padding-bottom: clamp(26px, 3vw, 34px); }
     .fx-view > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
   }
@@ -327,9 +333,10 @@
      columns are deliberately unequal; stretching them drew three-quarters of
      a column of empty rule under the shortest. */
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
-  .dl-p { display: flex; align-items: flex-start; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
-  .dl-p span { display: block; flex: 1 1 auto; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.85vw, 26px); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .dl-n { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.85vw, 26px); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .dl-x { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13px + 0.25vw, 15.5px); line-height: 1.5; color: rgba(252,250,241,.74); max-width: 30ch; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
     .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
@@ -356,18 +363,18 @@
 <!-- Hero -->
 <section class="page-head if-hero" data-screen-label="01 Investment Focus — hero">
   <div class="inner">
-    <h1>Selective<br>by Design.</h1>
-    <p class="sub">Existing assets where durable income and controllable improvement support long-term ownership.</p>
+    <h1>Selective<br>by Design</h1>
+    <p class="sub">Existing urban assets in London and Amsterdam, selected to support long-term ownership.</p>
   </div>
 </section>
 
 <!-- One investment focus field -->
 <section class="if-sec fx-sec" data-screen-label="02 Investment Focus — investment focus field" aria-labelledby="fx-title" data-focusfield>
   <div class="shell fx-head">
-    <h2 class="fx-h2" id="fx-title">Durable Fundamentals. Defined Potential.</h2>
+    <h2 class="fx-h2" id="fx-title">Durable Fundamentals, Defined Potential</h2>
     <div class="fx-param">
       <span class="fx-param-k">Investment Parameters</span>
-      <p class="fx-param-v">Primarily urban assets in London and Amsterdam, with an emphasis on existing buildings, defensible demand and business plans driven by specific, controllable improvements. Each is assessed against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
+      <p class="fx-param-v">An emphasis on existing buildings, defensible occupational demand and business plans driven by specific, controllable improvements. Each opportunity is assessed against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
     </div>
   </div>
 
@@ -395,7 +402,7 @@
               <span class="fx-scrim" aria-hidden="true"></span>
               <button class="fx-imgbtn" type="button" data-focus="0" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return To Overview</button>
+              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
               <div class="fx-cap">
                 <h3 class="fx-name">Income</h3>
                 <p class="fx-body">Durable income with a clear basis in location, asset quality and occupational demand</p>
@@ -442,13 +449,13 @@
               <span class="fx-scrim" aria-hidden="true"></span>
               <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return To Overview</button>
+              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
               <div class="fx-cap">
                 <h3 class="fx-name">Repositioning</h3>
                 <span class="fx-stagetitle fx-swap" data-swap>
-                  <span data-on>Identify The Constraint</span>
-                  <span>Shape The Intervention</span>
-                  <span>Strengthen The Asset</span>
+                  <span data-on>Identify the Constraint</span>
+                  <span>Shape the Intervention</span>
+                  <span>Strengthen the Asset</span>
                 </span>
               </div>
             </div>
@@ -505,9 +512,9 @@
           <img src="assets/imagery/focus-repositioning-1100.webp" alt="" width="1100" height="734" loading="lazy" decoding="async">
           <span class="fx-mscrim" aria-hidden="true"></span>
           <span class="fx-mname fx-swap" data-swap>
-            <span data-on>Identify The Constraint</span>
-            <span>Shape The Intervention</span>
-            <span>Strengthen The Asset</span>
+            <span data-on>Identify the Constraint</span>
+            <span>Shape the Intervention</span>
+            <span>Strengthen the Asset</span>
           </span>
         </div>
         <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
@@ -527,7 +534,7 @@
   <div class="fx-levers">
     <div class="shell">
       <div class="fx-lever-row">
-        <span class="fx-lever-k">Potential Sources Of Improvement</span>
+        <span class="fx-lever-k">Potential Sources of Improvement</span>
         <div class="fx-lever-list"><span class="fx-lever">Leasing and vacancy</span>
         <span class="fx-lever">Specification and physical condition</span>
         <span class="fx-lever">Use, layout and positioning</span>
@@ -561,9 +568,9 @@
       </div>
     </div>
     <div class="hs-tests">
-        <span class="hs-test">Character Worth Preserving</span>
-        <span class="hs-test">Demand Rooted In Place</span>
-        <span class="hs-test">An Operating Model Suited To The Building And Its Market</span>
+        <span class="hs-test">Building Character</span>
+        <span class="hs-test">Demand Rooted in Place</span>
+        <span class="hs-test">A Suitable Operating Model</span>
     </div>
   </div>
 </section>
@@ -571,27 +578,27 @@
 <!-- Where we draw the line -->
 <section class="if-sec dl-sec" data-screen-label="04 Investment Focus — where we draw the line" aria-labelledby="dl-title">
   <div class="shell">
-    <h2 class="dl-h2" id="dl-title">Where We Draw The Line</h2>
+    <h2 class="dl-h2" id="dl-title">Where We Draw the Line</h2>
     <p class="dl-lede">Applied before pricing, not after</p>
     <div class="dl-grid">
-      <div class="dl-p"><span>Demand Cannot Be Evidenced</span></div>
-      <div class="dl-p"><span>The Source Of Improvement Is Unclear</span></div>
-      <div class="dl-p"><span>Execution Risk Overwhelms The Opportunity</span></div>
-      <div class="dl-p"><span>The Exit Depends On Too Narrow A Buyer Pool</span></div>
+      <div class="dl-p"><span class="dl-n">Unevidenced Demand</span><span class="dl-x">Occupier demand resting on forecast rather than actual occupation</span></div>
+      <div class="dl-p"><span class="dl-n">No Clear Source of Improvement</span><span class="dl-x">A business plan without a specific, costed lever</span></div>
+      <div class="dl-p"><span class="dl-n">Execution Risk Outweighs the Opportunity</span><span class="dl-x">Consents, works or leasing the investor cannot control or price</span></div>
+      <div class="dl-p"><span class="dl-n">Too Narrow an Exit</span><span class="dl-x">Realisation that depends on a single buyer type or market condition</span></div>
     </div>
   </div>
 </section>
 
 
-<!-- ================================================================ 5 · ENQUIRY -->
-<section class="enq" data-screen-label="05 Investment Focus — enquiry" aria-labelledby="enq-title">
+<!-- ================================================================ 5 · CONTACT -->
+<section class="enq" data-screen-label="05 Investment Focus — contact" aria-labelledby="enq-title">
   <div class="shell">
     <div class="enq-row">
       <div>
-        <h2 class="enq-h" id="enq-title">Discussing a Mandate</h2>
-        <p class="enq-d">Reiwa Capital begins each engagement from a mandate agreed with the investor. Enquiries are welcome from Japanese corporate, institutional and private investors.</p>
+        <h2 class="enq-h" id="enq-title">Contact</h2>
+        <p class="enq-d">We welcome enquiries from investors, and from property owners, brokers and advisers with relevant opportunities in London and Amsterdam.</p>
       </div>
-      <a class="enq-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investor enquiries: contact Reiwa Capital">Investor enquiries<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>

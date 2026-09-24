@@ -88,8 +88,8 @@
      quiet and small; the value is read at body size, not promoted. */
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
   .co-table > div { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
-  .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.6; letter-spacing: 0.015em; color: var(--ink-4, #928799); margin: 0; }
-  .co-table dd { margin: 0; max-width: 54ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
+  .co-table dd { margin: 0; max-width: 54ch; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.5; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -108,62 +108,35 @@
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 15px + 0.4vw, 20px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
   .co-tier-d { margin: 0; max-width: 58ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  /* Sits in the value column under the tiers, so it reads as a note on the
-     operating model rather than a paragraph floating at the page margin. */
-  /* max-width and font-size are re-declared because the shared `p, .p` base
-     rule carries both; without them the note keeps --measure and --text-base,
-     which caps this grid at 533px and puts its 20ch track out of step with
-     the tier rows above. font-size: inherit matches the rows' context so the
-     note's label column lines up with theirs exactly. */
-  .co-model-note { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); max-width: none; font-size: inherit; margin: 0; padding: clamp(15px, 1.5vw, 19px) 0 0; }
-  .co-model-note > span { grid-column: 2; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
   @media (max-width: 760px) {
     .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
-    .co-model-note { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .co-model-note > span { grid-column: 1; }
   }
 
   /* --- 5 · Contact ------------------------------------------------------
-     The section closes the sheet in the same idiom: the label, the two
-     general routes as rows, then the three enquiry routes side by side under
-     one rule. No boxes and no columns of their own — the page has used the
-     same grid four times and ends on it. */
+     The section closes the sheet in the same idiom: the label, one sentence
+     naming who is welcome to write, then the two general routes as rows.
+     The general address is the route; no per-audience links. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
+  .co-aud { margin: 0 0 clamp(18px, 2vw, 26px); max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   .co-general { margin: 0; }
   .co-gen-row { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
-  .co-general dt { letter-spacing: 0.015em; color: var(--ink-4, #928799); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
+  .co-general dt { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
   .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
   .co-general a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; overflow-wrap: normal; word-break: normal; color: var(--ink); border-bottom: 1px solid var(--rule-strong); transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .co-general a:hover { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
   .co-general a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-color: transparent; }
 
-  .co-cols { margin-top: clamp(30px, 3vw, 44px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(22px, 2.6vw, 44px); padding-top: clamp(15px, 1.5vw, 19px); border-top: 1px solid var(--rule-strong); }
-  .co-col { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; }
-  .co-col h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.18; letter-spacing: -0.012em; color: var(--ink); }
-  .co-col p { margin: 8px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Placement only: the treatment itself lives in editorial.css. */
-  .co-cta { justify-self: start; align-self: start; margin-top: clamp(14px, 1.6vw, 20px); }
   .co-sec.co-contact { padding-bottom: clamp(44px, 4.2vw, 60px); }
-  @media (max-width: 900px) {
-    .co-cols { grid-template-columns: 1fr; grid-template-rows: none; column-gap: 0; padding-top: 0; border-top: 0; margin-top: clamp(22px, 2.4vw, 30px); }
-    .co-col { display: block; grid-row: auto; padding: 18px 0 20px; border-top: 1px solid var(--rule); }
-    .co-col p { max-width: none; }
-  }
   @media (max-width: 760px) {
     .co-gen-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 14px 0 12px; }
-    .co-cta { padding: 11px 0 10px; min-height: 44px; }
   }
 
   /* Company has no NEXT band — the contact section closes the page and the
      footer follows. The band rules that lived here are gone with it. */
 
-  /* Mobile 8: the contact routes and the general email reach a comfortable
-     target. Air only — no button, no fill, no border. */
-  @media (max-width: 760px) {
-    .co-cta { padding: 11px 0 10px; min-height: 44px; }
-  }
   </style>
 </head>
 <body data-page="company" data-ja-url="/ja/company.html">
@@ -200,11 +173,10 @@
       <h2 class="co-label" id="cm-label">Responsibilities</h2>
       <div class="co-model">
         <ol class="co-tiers">
-          <li><span class="co-tier-n">Japanese investor</span><p class="co-tier-d">Investment objectives, requirements and decision-making context. Material investment decisions are made by the investor.</p></li>
-          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">Mandate design, sourcing and underwriting, transaction and financing coordination, ownership-period monitoring and investor reporting, and refinancing and exit planning, in support of the investor’s decisions.</p></li>
-          <li><span class="co-tier-n">London / Amsterdam execution network</span><p class="co-tier-d">Local legal, tax, valuation, technical, financing, leasing, property and operating specialists appointed according to the requirements of the investment.</p></li>
+          <li><span class="co-tier-n">Japanese investor</span><p class="co-tier-d">Sets the investment objectives and requirements, and makes each material investment decision.</p></li>
+          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">Mandate design, sourcing and underwriting, transaction and financing coordination, ownership-period monitoring, investor reporting and exit planning, in support of the investor’s decisions.</p></li>
+          <li><span class="co-tier-n">Appointed specialists</span><p class="co-tier-d">Legal, tax, accounting, valuation, technical, financing, leasing, property and operating specialists in London and Amsterdam, separately appointed according to the requirements of each investment.</p></li>
         </ol>
-        <p class="co-model-note"><span>Legal, tax, accounting, valuation and technical services are provided by separately appointed specialists.</span></p>
       </div>
     </div>
   </div>
@@ -216,6 +188,7 @@
     <div class="co-row">
       <div class="co-contact-left">
         <h2 class="co-label" id="cc-label">Contact</h2>
+        <p class="co-aud">We welcome enquiries from investors, from property owners and agents with opportunities in London and Amsterdam, and from lenders, advisers and operators.</p>
         <dl class="co-general">
           <div class="co-gen-row">
             <dt>General enquiries</dt>
@@ -226,25 +199,6 @@
             <dd><a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener noreferrer" aria-label="Reiwa Capital on LinkedIn, opens in a new tab">Reiwa Capital</a></dd>
           </div>
         </dl>
-      </div>
-      <div>
-        <div class="co-cols">
-          <div class="co-col">
-            <h3>Investors</h3>
-            <p>For investment mandates and European real estate requirements.</p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=Investor%20enquiry" aria-label="Investment mandates: contact Reiwa Capital">Contact<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-          <div class="co-col">
-            <h3>Opportunities</h3>
-            <p>For selected investment opportunities in London and Amsterdam.</p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=Investment%20opportunity" aria-label="Investment opportunities: contact Reiwa Capital">Contact<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-          <div class="co-col">
-            <h3>Partners</h3>
-            <p>For lenders, advisers, operators and other potential partners.</p>
-            <a class="co-cta" href="mailto:info@reiwa-capital.com?subject=Partnership%20enquiry" aria-label="Partnerships: contact Reiwa Capital">Contact<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-          </div>
-        </div>
       </div>
     </div>
   </div>
