@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=86">
+<link rel="stylesheet" href="../editorial.css?v=87">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -128,16 +128,17 @@
   .aw-inv { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.24); }
   .aw-inv-n { font-family: var(--jp); font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
   .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
-  .aw-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 38px); }
+  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(16px, 2vw, 28px); margin-top: clamp(26px, 2.8vw, 38px); }
   .aw-stage { font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 12px + 1.4vw, 34px); line-height: 1.3; letter-spacing: 0.01em; color: var(--cream); }
+  .aw-stage { display: flex; flex-direction: column; gap: 7px; }
+  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: 13px; line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
   /* The line is the argument: four segments that stop short, or four that
      meet. Only the width and the colour change between states. */
   .aw-line { position: relative; height: 3px; margin-top: clamp(22px, 2.4vw, 32px); }
   .aw-line::before { content: ""; position: absolute; left: 0; right: 0; top: 1px; height: 1px; background: rgba(252,250,241,.16); }
-  .aw-line i { position: absolute; top: 0; height: 3px; width: 16%; background: rgba(142,122,156,.92); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 25%; }
-  .aw-line i:nth-child(3) { left: 50%; } .aw-line i:nth-child(4) { left: 75%; }
-  .aw-field[data-flow="with"] .aw-line i { width: 25%; background: var(--cream); }
+  .aw-line i { position: absolute; top: 0; height: 3px; width: 22%; background: rgba(142,122,156,.92); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 33.333%; } .aw-line i:nth-child(3) { left: 66.667%; }
+  .aw-field[data-flow="with"] .aw-line i { width: 33.334%; background: var(--cream); }
   /* Each state has its own caption. The two share one grid cell, so the
      field keeps its height and only the words change. */
   .aw-ribbons { display: grid; margin-top: 14px; }
@@ -147,7 +148,7 @@
   .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
   .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
   .aw-specs-k { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: var(--jp); font-size: 12.5px; line-height: 1.3; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
-  .aw-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; column-gap: clamp(16px, 2vw, 28px); }
+  .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: clamp(16px, 2vw, 28px); }
   .aw-spec { font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
   /* Below 760px the same four phases read down a spine. */
   .aw-spine { display: none; }
@@ -158,13 +159,13 @@
     .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
     .aw-sp-rail::before { content: ""; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: rgba(252,250,241,.16); }
-    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 16%; background: rgba(142,122,156,.92); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-    .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 25%; }
-    .aw-sp-rail i:nth-child(3) { top: 50%; } .aw-sp-rail i:nth-child(4) { top: 75%; }
-    .aw-field[data-flow="with"] .aw-sp-rail i { height: 25%; background: var(--cream); }
-    .aw-sp-rows { display: grid; grid-template-rows: repeat(4, minmax(54px, auto)); }
+    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 22%; background: rgba(142,122,156,.92); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+    .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 33.333%; } .aw-sp-rail i:nth-child(3) { top: 66.667%; }
+    .aw-field[data-flow="with"] .aw-sp-rail i { height: 33.334%; background: var(--cream); }
+    .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(72px, auto)); }
     .aw-sp-row { display: flex; flex-direction: column; gap: 4px; }
     .aw-sp-n { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 4.6vw, 22px); line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); }
+    .aw-sp-st { font-family: var(--jp); font-weight: 400; font-size: 13px; line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
     .aw-sp-s { font-family: var(--jp); font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.74); }
     .aw-sp-ribbon { margin-top: 14px; padding-left: 30px; }
     .aw-sp-ribbon .aw-ribbon { flex-direction: column; gap: 4px; min-height: 0; }
@@ -176,16 +177,27 @@
     .aw-sw, .aw-line i, .aw-line::before, .aw-ribbon, .aw-sp-rail i, .aw-sp-rail::before, .aw-sp-ribbon { transition: none; }
   }
   /* --- 3 · 注力市場: the signature section ------------------------------ */
-  .am-tabs { display: flex; gap: 0; margin-top: clamp(36px, 4vw, 56px); border-bottom: 1px solid var(--rule-strong); }
-  .am-tab { position: relative; appearance: none; background: none; border: 0; margin: 0 clamp(28px, 3vw, 44px) 0 0; padding: 0 0 14px; min-height: 44px; cursor: pointer; font-family: var(--jp); font-size: clamp(18px, 15px + 0.65vw, 23px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
-  .am-tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 240ms var(--ease-out); }
-  .am-tab[aria-selected="true"] { color: var(--ink); }
-  .am-tab[aria-selected="true"]::after { transform: scaleX(1); }
-  @media (hover: hover) { .am-tab:not([aria-selected="true"]):hover { color: var(--ink-2); } }
-  .am-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  .am-panel[hidden] { display: none; }
-  .am-panel { animation: am-fade 200ms var(--ease-out); }
-  @keyframes am-fade { from { opacity: 0; } to { opacity: 1; } }
+  /* 二つの市場、二つのセクション。いずれも全幅で、デスクトップでは少なくとも
+     一画面分の深さを持つ：写真の帯、セクション見出しと同じ大きさの市場名、
+     一行の位置づけ、そして地図と三つの本文ブロック。ロンドンはクリーム地、
+     アムステルダムは投資アプローチの「投資家の統制」帯と同じ濃い紙色に置き、
+     配置は左右を反転させる。 */
+  .am-intro.ab-sec { padding-bottom: clamp(28px, 3vw, 44px); }
+  .am-market { position: relative; }
+  .am-market--london { background: var(--cream); }
+  .am-market--amsterdam { background: var(--paper-soft); }
+  .am-strip { height: 320px; overflow: hidden; background: var(--ink); }
+  .am-strip img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
+  .am-market--amsterdam .am-strip img { object-position: 50% 42%; }
+  .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
+  .am-city { margin: 0; }
+  .am-pos { margin-top: clamp(10px, 1.1vw, 14px); max-width: 33em; }
+  @media (min-width: 1024px) {
+    .am-market { min-height: 100vh; display: flex; flex-direction: column; }
+    .am-market > .shell { flex: 1 0 auto; }
+    .am-market--amsterdam .am-mapwrap { order: 2; }
+  }
+  @media (max-width: 760px) { .am-strip { height: 200px; } }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
   .am-map { position: relative; aspect-ratio: 0.95; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
@@ -218,55 +230,55 @@
   .sw-prim  { background: #2F1F3A; opacity: 0.94; border: 1px solid #2F1F3A; }
   .sw-broad { background: #E6D9E4; opacity: 0.9; border: 1px solid #8E7A9C; }
 
-  .am-figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
-  .am-figure img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .am-sum { margin: clamp(18px, 2vw, 24px) 0 0; max-width: 46ch; }
-  .am-panel--snapshot .am-sum { font-size: 15px; line-height: 1.6; }
+  .am-market .am-sum { font-size: 15px; line-height: 1.6; }
   /* Market snapshot shell. Map and side column at 53/47: the map, its legend
      and its note on the left; the photograph and the sentence on the right.
      Above the stack point the photograph takes up the slack so the two
      columns end level, and the sentence sits under it. Below the stack point
      the panel is linear and the photograph returns to its letterbox. */
-  .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
-  .am-panel--snapshot .am-legend { margin-top: 14px; }
-  .am-panel--snapshot .am-note { margin-top: 8px; }
+  .am-market .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
+  .am-market .am-legend { margin-top: 14px; }
+  .am-market .am-note { margin-top: 8px; }
   /* Three blocks of market content, same voice as the rest of the page: a
-     quiet label, then the prose. Characteristics and Why sit with the
-     photograph in the side column; What We Look For spans the section, so
-     the three things read across rather than down. */
+     quiet label, then the prose. Characteristics, Why and What We Look For
+     stack in the side column beside the map, so the column runs to the
+     map's depth and the three things read down. */
   .am-k { margin: 0 0 6px; font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
   .am-p { margin: 0; font-size: 15px; line-height: 1.85; max-width: 32em; }
+  /* 承認済みの注力エリアを文字でも示し、地図を読まずに把握できるようにする。
+     色見本は凡例の色を繰り返す。 */
+  .am-areas { margin: 0; display: grid; gap: 7px; }
+  .am-areas > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; font-family: var(--jp); font-size: 13.5px; line-height: 1.7; }
+  .am-areas dt { display: flex; align-items: center; color: var(--ink-3); }
+  .am-areas dd { margin: 0; color: var(--ink); font-weight: 500; }
+  .am-areas .sw { width: 11px; height: 11px; flex: none; margin-right: 8px; }
+  .am-areas-sum { display: none; margin: 0; font-family: var(--jp); font-size: 14px; line-height: 1.85; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
+  @media (max-width: 1024px) { .am-areas { display: none; } .am-areas-sum { display: block; } }
   .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: clamp(18px, 2vw, 24px); }
   .am-block { padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
-  .am-look { margin-top: clamp(26px, 2.8vw, 38px); padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
-  .am-look-list { list-style: none; margin: clamp(12px, 1.4vw, 16px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+  .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
+  .am-look-list { list-style: none; margin: clamp(12px, 1.4vw, 16px) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
   .am-look-list li { font-family: var(--jp); font-size: 15px; line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
-  @media (max-width: 900px) {
-    .am-look-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
-  }
+  .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
   /* Two links close the page now, one for investors and one for the people
      who bring us opportunities. The row grammar is unchanged. */
-  .am-panel--snapshot .am-figure { aspect-ratio: 2.1 / 1; }
   @media (min-width: 901px) {
-    .am-panel--snapshot .am-grid { align-items: stretch; }
-    .am-panel--snapshot .am-side { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
-    .am-panel--snapshot .am-figure { aspect-ratio: auto; }
+    .am-market .am-grid { align-items: stretch; }
   }
-  @media (max-width: 900px) { .am-panel--snapshot .am-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .am-market .am-grid { grid-template-columns: 1fr; } }
   /* Between the Home stack point and the old stack point the two zones still
      hold for the snapshot; the map takes the wide framing, not the tall one. */
   @media (min-width: 901px) and (max-width: 1024px) {
-    .am-panel--snapshot .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); gap: 32px; }
-    .am-panel--snapshot .am-map { aspect-ratio: 0.95; }
-    .am-panel--snapshot .am-img--wide { display: block; }
-    .am-panel--snapshot .am-img--tall { display: none; }
+    .am-market .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); gap: 32px; }
+    .am-market .am-map { aspect-ratio: 0.95; }
+    .am-market .am-img--wide { display: block; }
+    .am-market .am-img--tall { display: none; }
   }
   /* Amsterdam: the same shell, its own camera. The wide map frame is 1.2
      (964 x 803.6 units); the photograph sits on the facades, not the water. */
-  @media (min-width: 901px) { .am-panel--snapshot[data-market="amsterdam"] .am-map { aspect-ratio: 1.2; } }
-  .am-panel--snapshot[data-market="amsterdam"] .am-figure img { object-position: 50% 28%; }
-  @media (prefers-reduced-motion: reduce) { .am-panel, .ab-area, .am-tab, .am-tab::after { animation: none; transition: none; } }
+  @media (min-width: 901px) { .am-market--amsterdam .am-map { aspect-ratio: 1.2; } }
+  @media (prefers-reduced-motion: reduce) { .ab-area { animation: none; transition: none; } }
   @media (max-width: 1024px) {
     .am-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
     .am-map { aspect-ratio: 0.80; }
@@ -274,7 +286,6 @@
     .am-img--tall { display: block; }
   }
   @media (max-width: 760px) {
-    .am-tabs { margin-top: 28px; }
     .am-grid { margin-top: 24px; gap: 24px; }
   }
   @media (max-width: 480px) {
@@ -318,7 +329,7 @@
      splits but introduced new emergency breaks at 320px. Browsers without
      auto-phrase fall back to the current behaviour, so nothing regresses. */
   .h-body, .ab-grp, .aw-spec, .aw-inv-note, .aw-stage, .aw-sp-n, .aw-sp-s,
-  .am-tab, .am-name, .am-focus, .ac-item, .ab-lede, .sub,
+  .am-name, .am-focus, .ac-item, .ab-lede, .sub, .am-pos,
   .am-look-list li, .am-k, .aw-ribbon-n, .aw-ribbon-note, .aw-specs-k {
     word-break: auto-phrase;
   }
@@ -368,13 +379,11 @@
           <span class="aw-inv-note">マンデートと意思決定を保持</span>
         </div>
         <div class="aw-stages">
-        <span class="aw-stage">取得</span>
-        <span class="aw-stage">保有</span>
-        <span class="aw-stage">借換え</span>
-        <span class="aw-stage">売却</span>
+        <span class="aw-stage">形成<small class="aw-stage-s"><span class="jt">マンデート</span>・評価</small></span>
+        <span class="aw-stage">実行<small class="aw-stage-s">組成・取得</small></span>
+        <span class="aw-stage">保有期間<small class="aw-stage-s">保有・売却</small></span>
         </div>
         <div class="aw-line" aria-hidden="true">
-        <i></i>
         <i></i>
         <i></i>
         <i></i>
@@ -391,10 +400,9 @@
         </div>
         <span class="aw-specs-k">各段階で選任される専門家</span>
         <div class="aw-specs">
-        <span class="aw-spec">仲介・法務</span>
-        <span class="aw-spec">プロパティ<wbr><span class="jt">マネジメント</span></span>
-        <span class="aw-spec">貸し手・鑑定</span>
-        <span class="aw-spec">仲介・法務</span>
+        <span class="aw-spec">鑑定・法務</span>
+        <span class="aw-spec">法務・貸し手・技術</span>
+        <span class="aw-spec">プロパティ<wbr><span class="jt">マネジメント</span>・仲介</span>
         </div>
       </div>
 
@@ -408,13 +416,11 @@
             <i></i>
             <i></i>
             <i></i>
-            <i></i>
           </div>
           <div class="aw-sp-rows">
-            <div class="aw-sp-row"><span class="aw-sp-n">取得</span><span class="aw-sp-s">仲介・法務</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">保有</span><span class="aw-sp-s">プロパティ<wbr><span class="jt">マネジメント</span></span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">借換え</span><span class="aw-sp-s">貸し手・鑑定</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">売却</span><span class="aw-sp-s">仲介・法務</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">形成</span><span class="aw-sp-st"><span class="jt">マンデート</span>・評価</span><span class="aw-sp-s">鑑定・法務</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">実行</span><span class="aw-sp-st">組成・取得</span><span class="aw-sp-s">法務・貸し手・技術</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">保有期間</span><span class="aw-sp-st">保有・売却</span><span class="aw-sp-s">プロパティ<wbr><span class="jt">マネジメント</span>・仲介</span></div>
           </div>
         </div>
         <div class="aw-sp-ribbon aw-ribbons">
@@ -433,17 +439,20 @@
 </section>
 
 <!-- ================================================================ 3 · 注力市場 -->
-<section class="ab-sec am" data-screen-label="03 Reiwaについて — 注力市場" aria-labelledby="am-title">
+<section class="ab-sec am am-intro" data-screen-label="03 Reiwaについて — 注力市場" aria-labelledby="am-title">
   <div class="shell">
     <div class="ab-head">
       <h2 class="h-h2" id="am-title"><span class="jt">注力市場</span></h2>
       <p class="h-body ab-lede">二つの市場。いずれも、対象は意図的に絞り込んでいます。</p>
     </div>
-    <div class="am-tabs" role="tablist" aria-label="注力市場">
-      <button class="am-tab" type="button" role="tab" id="am-tab-london" data-market="london" aria-selected="true" aria-controls="am-panel-london">ロンドン</button>
-      <button class="am-tab" type="button" role="tab" id="am-tab-amsterdam" data-market="amsterdam" aria-selected="false" aria-controls="am-panel-amsterdam" tabindex="-1">アムステルダム</button>
-    </div>
-    <div class="am-panel am-panel--snapshot is-on" role="tabpanel" id="am-panel-london" aria-labelledby="am-tab-london" data-market="london">
+  </div>
+</section>
+
+<section class="am-market am-market--london" id="london" data-screen-label="03a Reiwaについて — ロンドン" aria-labelledby="am-london-title">
+  <div class="am-strip"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="100vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
+  <div class="shell">
+    <h2 class="h-h2 am-city" id="am-london-title">ロンドン</h2>
+    <p class="h-body am-pos">収益型と再生型の双方に機会があります</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -461,25 +470,33 @@
           <p class="am-note">注力<span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
         <div class="am-side">
-          <figure class="am-figure">
-            <img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 92vw, 42vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
-          </figure>
+          <dl class="am-areas">
+            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>中核注力エリア</dt><dd>ウェストエンド</dd></div>
+            <div><dt><span class="sw sw-broad" aria-hidden="true"></span>選択的な注力エリア</dt><dd>シティ・オブ・ロンドン、ミッドタウン</dd></div>
+          </dl>
+          <p class="am-areas-sum"><span class="jt">ウェストエンド</span>が中核注力<span class="jt">エリア、</span><span class="jt">シティ・オブ・ロンドン</span>と<span class="jt">ミッドタウン</span>が選択的な注力<span class="jt">エリアです。</span></p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p">厚みのある投資市場、幅広い<span class="jt">テナント</span>層、成熟した金融・専門家<span class="jt">ネットワーク</span>を備えた市場です。通り、建物品質、権利形態、賃貸借条件<span class="jt">によって</span>投資成果に大きな差が生じます。</p></div>
             <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">幅広い<span class="jt">テナント</span>需要が賃料収入を、厚い買い手層が売却を支えます。物件ごとの差が大きいからこそ、投資家側の選別が成果を左右します。</p></div>
           </div>
+          <div class="am-look">
+            <h3 class="am-k">対象とする機会</h3>
+            <ul class="am-look-list">
+              <li><span class="jt">テナント</span>需要が確認できる都心部および確立された商業<span class="jt">エリア</span></li>
+              <li>安定収益、または具体的かつ管理可能な改善余地</li>
+              <li>現実的な資本支出と複数の売却選択肢</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="am-look">
-        <h3 class="am-k">対象とする機会</h3>
-        <ul class="am-look-list">
-          <li><span class="jt">テナント</span>需要が確認できる都心部および確立された商業<span class="jt">エリア</span></li>
-          <li>安定収益、または具体的かつ管理可能な改善余地</li>
-          <li>現実的な資本支出と複数の売却選択肢</li>
-        </ul>
-      </div>
-    </div>
-    <div class="am-panel am-panel--snapshot" role="tabpanel" id="am-panel-amsterdam" aria-labelledby="am-tab-amsterdam" data-market="amsterdam" hidden>
+  </div>
+</section>
+
+<section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b Reiwaについて — アムステルダム" aria-labelledby="am-amsterdam-title">
+  <div class="am-strip"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="100vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
+  <div class="shell">
+    <h2 class="h-h2 am-city" id="am-amsterdam-title">アムステルダム</h2>
+    <p class="h-body am-pos">厳格な都市計画が、立地と品質の高い物件を支えます</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -498,24 +515,24 @@
         </div>
     
         <div class="am-side">
-          <figure class="am-figure">
-            <img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 92vw, 42vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み">
-          </figure>
+          <dl class="am-areas">
+            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>中核注力エリア</dt><dd>カナルベルト、アウド・ザウト、ザイダス</dd></div>
+          </dl>
+          <p class="am-areas-sum"><span class="jt">カナルベルト、</span><span class="jt">アウド・ザウト、</span><span class="jt">ザイダス</span>が中核注力<span class="jt">エリアです。</span></p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p"><span class="jt">コンパクト</span>で供給制約が強く、厳格な都市計画や環境要件の影響を受ける市場です。確立された中心部および業務地区では、質の高い物件が限られています。</p></div>
             <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">希少性と底堅い<span class="jt">テナント</span>需要は、長期保有に適しています。類似する建物の間にある権利、許可用途、建物状態の差が、投資判断前の精査の価値を高めます。</p></div>
           </div>
+          <div class="am-look">
+            <h3 class="am-k">対象とする機会</h3>
+            <ul class="am-look-list">
+              <li>明確な<span class="jt">テナント</span>需要を持つ、確立された中心部および業務地区</li>
+              <li>明確な許可用途と管理可能な技術・環境要件</li>
+              <li>安定収益、または<span class="jt">リーシング、</span>再生、運営改善<span class="jt">による</span>明確な改善余地</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="am-look">
-        <h3 class="am-k">対象とする機会</h3>
-        <ul class="am-look-list">
-          <li>明確な<span class="jt">テナント</span>需要を持つ、確立された中心部および業務地区</li>
-          <li>明確な許可用途と管理可能な技術・環境要件</li>
-          <li>安定収益、または<span class="jt">リーシング、</span>再生、運営改善<span class="jt">による</span>明確な改善余地</li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -544,7 +561,8 @@
     <div class="enq-row">
       <div>
         <h2 class="enq-h" id="enq-title">お問い合わせ</h2>
-        <p class="enq-d">投資家の皆様、ならびにロンドン・<span class="jt">アムステルダム</span>の案件をお持ちの物件所有者、仲介会社、<span class="jt">アドバイザー</span>からのご連絡を<span class="jt">歓迎します。</span></p>
+        <p class="enq-d">投資家の皆様：<span class="jt">ロンドン</span>または<span class="jt">アムステルダム</span>での投資を検討する日本の事業会社、<span class="jt">ファミリーオフィス、</span>機関投資家、個人投資家からのご相談を<span class="jt">歓迎します。</span></p>
+        <p class="enq-d">市場関係者：関連する案件をお持ちの物件所有者、仲介会社、<span class="jt">レンダー、</span><span class="jt">アドバイザー</span>からのご連絡も<span class="jt">歓迎します。</span></p>
       </div>
       <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
@@ -554,42 +572,6 @@
 </main>
 
 <div data-shell="footer"></div>
-<script>
-/* Focus-market selector — ロンドン by default. Switching updates the map,
-   the photograph and all four information blocks together. ARIA tabs with
-   a roving tabindex; both panels are in the DOM without JS. */
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.am-tab'));
-  var panels = Array.prototype.slice.call(document.querySelectorAll('.am-panel'));
-  if (!tabs.length) return;
-  function select(key, focus) {
-    tabs.forEach(function (t) {
-      var on = t.dataset.market === key;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.setAttribute('tabindex', on ? '0' : '-1');
-      if (on && focus) t.focus();
-    });
-    panels.forEach(function (p) {
-      var on = p.dataset.market === key;
-      p.classList.toggle('is-on', on);
-      if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
-    });
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t.dataset.market); });
-    t.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
-      else if (e.key === 'Home') n = 0;
-      else if (e.key === 'End') n = tabs.length - 1;
-      if (n === null) return;
-      e.preventDefault();
-      select(tabs[n].dataset.market, true);
-    });
-  });
-})();
-</script>
 
 <script>
 /* About — the continuity switch. One control, two readings of the same four
@@ -608,7 +590,7 @@
   });
 })();
 </script>
-<script src="../shell.js?v=76"></script>
+<script src="../shell.js?v=77"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

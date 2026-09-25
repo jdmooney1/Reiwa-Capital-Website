@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=23">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=86">
+<link rel="stylesheet" href="editorial.css?v=87">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -43,7 +43,7 @@
      lazy is what stops that half being fetched at all. -->
 <link rel="preload" as="image" href="assets/imagery/focus-hero-blur.webp">
 <link rel="preload" as="image" href="assets/imagery/focus-income-balanced.webp" media="(min-width: 761px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/imagery/focus-repositioning-panorama.webp" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/imagery/focus-repositioning-panorama-900.webp" imagesrcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" imagesizes="45vw" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/imagery/focus-income-master-1100.webp" media="(max-width: 760px)" fetchpriority="high">
 <style>
   /* =====================================================================
@@ -144,8 +144,8 @@
   /* Scrims stay local to the caption — deep where the type sits, clear of the
      photograph elsewhere. Tuned against the Japanese setting, whose thinner,
      denser strokes need more ground beneath them than the Latin one does. */
-  .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 68%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.74) 26%, rgba(28,14,35,.38) 60%, rgba(28,14,35,0) 100%); }
-  .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.94) 0%, rgba(28,14,35,.78) 26%, rgba(28,14,35,.42) 60%, rgba(28,14,35,0) 100%); }
+  .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
+  .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
   .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
   .fx-name { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 42ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
@@ -177,7 +177,7 @@
   .fx-open { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: clamp(510px, 37.5vw, 620px); }
   .fx-openimg { position: relative; flex: 0 0 auto; height: clamp(252px, 23vw, 322px); overflow: hidden; background: #DCD6CC; }
   .fx-panel--inc .fx-openimg img { object-position: 50% 64%; }
-  .fx-panel--rep .fx-openimg img { object-position: 50% 58%; }
+  .fx-panel--rep .fx-openimg img { object-position: 50% 46%; }
   .fx-imgbtn { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; z-index: 4; background: transparent; outline-offset: -4px; }
   /* Stops in pixels, not percentages: the caption occupies a known band above
      the image's bottom edge, and the Income photograph is bright stucco and
@@ -186,6 +186,10 @@
      what keeps this local — the right of the frame stays the photograph. */
   .fx-openimg .fx-scrim { top: 0; height: auto; background: linear-gradient(to top, rgba(31,18,40,.95) 0px, rgba(31,18,40,.92) 60px, rgba(31,18,40,.88) 155px, rgba(31,18,40,.56) 235px, rgba(31,18,40,.14) 295px, rgba(31,18,40,0) 340px); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); }
   .fx-openimg .fx-cap { gap: 11px; }
+  /* Repositioning carries no type on its photograph: the name, the stage
+     controls and the stage content all sit on the cream band beneath it. The
+     only overlay left is the small corner ground under Return to Overview. */
+  .fx-panel--rep .fx-backscrim { height: 150px; background: linear-gradient(to bottom, rgba(31,18,40,.78) 0px, rgba(31,18,40,.5) 60px, rgba(31,18,40,.16) 115px, rgba(31,18,40,0) 150px); }
   /* Kept below the section h2 it now sits under in the outline. */
   .fx-open .fx-name { font-size: clamp(26px, 17px + 1.1vw, 34px); }
   .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
@@ -206,11 +210,15 @@
   .fx-swap { display: grid; }
   .fx-swap > * { grid-area: 1 / 1; visibility: hidden; margin: 0; }
   .fx-swap > [data-on] { visibility: visible; }
-  .fx-stagetitle > span { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(19px, 14px + 0.55vw, 25px); line-height: 1.16; letter-spacing: -0.016em; color: var(--cream); }
-  .fx-stagecopy > p { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 13.5px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 56ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  /* The stage heading sits in the band with its explanation, below the
+     strategy name (34px) and above body copy: the third level of the panel. */
+  .fx-band--rep .fx-name { color: var(--ink); font-size: clamp(22px, 15px + 0.8vw, 28px); }
+  .fx-band--rep .fx-stages { margin-top: 16px; padding-top: 0; }
+  .fx-band--rep .fx-stagecopy { margin-top: clamp(18px, 1.8vw, 24px); }
+  .fx-stagehead { margin: 0 0 10px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 15px + 0.6vw, 26px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); }
+  .fx-stagecopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 13.5px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 56ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-stagecopy:focus { outline: none; }
   .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(14px, 1.6vw, 24px); margin-top: clamp(20px, 2vw, 28px); }
-  .fx-band--rep .fx-stages { margin-top: auto; padding-top: clamp(20px, 2vw, 28px); }
   .fx-stage { appearance: none; background: none; border: 0; border-top: 2px solid var(--rule-strong); margin: 0; padding: 12px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 12.6px + 0.25vw, 16px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-selected="true"] { border-top-color: var(--ink); font-weight: 500; color: var(--ink); }
   @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
@@ -242,14 +250,16 @@
   .fx-tabpanel[hidden] { display: none; }
   .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
   .fx-mimg img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; display: block; }
-  #fx-panel-repositioning .fx-mimg img { object-position: 50% 56%; }
-  .fx-mscrim { position: absolute; left: 0; right: 0; bottom: 0; height: 56%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.62) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  /* Below the section h2 (26px at 390, 26px at 320): a stage is the third
-     level of the hierarchy and must not outrank the section it sits in. */
-  .fx-mname { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px; pointer-events: none; font-size: 23px; }
-  .fx-mname > span { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: inherit; line-height: 1.1; letter-spacing: -0.018em; color: var(--cream); }
+  /* Repositioning on a phone: stage controls, then the photograph without
+     type over it, then the stage heading and its explanation. The frame is
+     shallower than Income's so the controls stay in the first view; the crop
+     keeps the facades and trims sky and water. */
+  #fx-panel-repositioning .fx-mtabs { margin-top: 0; }
+  #fx-panel-repositioning .fx-mimg { height: clamp(200px, 60vw, 250px); margin-top: 20px; }
+  #fx-panel-repositioning .fx-mimg img { object-position: 50% 46%; }
+  #fx-panel-repositioning .fx-stagehead { margin: 0 0 8px; font-size: 21px; }
   .fx-mbody, .fx-mcopy { margin: 18px 0 0; }
-  .fx-mbody, .fx-mcopy > p { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .fx-mbody, .fx-mcopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-mcopy:focus { outline: none; }
   .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
   .fx-mband-col { display: flex; flex-direction: column; gap: 8px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
@@ -258,7 +268,7 @@
   .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
   @media (max-width: 360px) {
     .fx-mimg { height: 300px; }
-    .fx-mname { font-size: 21px; }
+    #fx-panel-repositioning .fx-stagehead { font-size: 19px; }
     .fx-tab { font-size: 15px; }
     .fx-mtab { font-size: 13.5px; }
     .fx-mtabs { gap: 0 8px; }
@@ -299,7 +309,10 @@
   .hs-title { margin: 3px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 17px + 0.9vw, 28px); line-height: 1.2; letter-spacing: -0.014em; color: var(--ink); }
   .hs-state { margin: 2px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 38ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 104ch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
-  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.35vw, 19px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
+  .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.35vw, 19px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  /* Body copy under each test, in the voice of the Home page's investor-side columns. */
+  .hs-test-d { margin: 10px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 1024px) {
     .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
     .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
@@ -371,7 +384,7 @@
     <h2 class="fx-h2" id="fx-title">Durable Fundamentals, Defined Potential</h2>
     <div class="fx-param">
       <span class="fx-param-k">Investment Parameters</span>
-      <p class="fx-param-v">An emphasis on existing buildings, defensible occupational demand and business plans driven by specific, controllable improvements. Each opportunity is assessed against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
+      <p class="fx-param-v">An emphasis on existing buildings and defensible occupational demand, and for repositioning, business plans driven by specific, controllable improvements. Each opportunity is assessed against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
     </div>
   </div>
 
@@ -389,7 +402,7 @@
             <span class="fx-edge" aria-hidden="true"></span>
             <div class="fx-cap">
               <h3 class="fx-name">Income</h3>
-              <p class="fx-body">Durable income with a clear basis in location, asset quality and occupational demand</p>
+              <p class="fx-body">Durable income with a clear basis in location, asset quality and occupational demand.</p>
               <span class="fx-cue" aria-hidden="true">Explore Income <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
@@ -402,7 +415,6 @@
               <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
               <div class="fx-cap">
                 <h3 class="fx-name">Income</h3>
-                <p class="fx-body">Durable income with a clear basis in location, asset quality and occupational demand</p>
               </div>
             </div>
             <div class="fx-band">
@@ -430,42 +442,43 @@
           <div class="fx-closed">
             <button class="fx-shut" type="button" data-focus="1" aria-pressed="false" aria-label="Explore Repositioning"></button>
             <span class="fx-photo" aria-hidden="true">
-              <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+              <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
             </span>
             <span class="fx-scrim" aria-hidden="true"></span>
             <span class="fx-edge" aria-hidden="true"></span>
             <div class="fx-cap">
               <h3 class="fx-name">Repositioning</h3>
-              <p class="fx-body">Architectural quality with a defined, costed route to stronger income</p>
+              <p class="fx-body">Assets where targeted capital and active oversight can materially improve income or value.</p>
               <span class="fx-cue" aria-hidden="true">Explore Repositioning <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
           <div class="fx-open" hidden>
             <div class="fx-openimg">
-              <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
-              <span class="fx-scrim" aria-hidden="true"></span>
+              <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
               <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
               <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
-              <div class="fx-cap">
-                <h3 class="fx-name">Repositioning</h3>
-                <span class="fx-stagetitle fx-swap" data-swap>
-                  <span data-on>Identify the Constraint</span>
-                  <span>Shape the Intervention</span>
-                  <span>Strengthen the Asset</span>
-                </span>
-              </div>
             </div>
             <div class="fx-band fx-band--rep">
-              <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
-                <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies. The entry basis is set by what the constraint justifies, not by what the plan hopes to achieve</p>
-                <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme. Each item is costed, consented and sequenced before commitment</p>
-                <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open. Improvement is evidenced in income, occupancy and valuation before the exit is considered</p>
-              </div>
+              <h3 class="fx-name">Repositioning</h3>
               <div class="fx-stages" role="tablist" aria-label="Repositioning">
                 <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
                 <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="1">Shape</button>
                 <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="2">Strengthen</button>
+              </div>
+              <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
+                <div data-on>
+                  <h4 class="fx-stagehead">Identify the Constraint</h4>
+                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance.</p>
+                </div>
+                <div>
+                  <h4 class="fx-stagehead">Define the Improvement Plan</h4>
+                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions and delivery timetable.</p>
+                </div>
+                <div>
+                  <h4 class="fx-stagehead">Test the Investment Effect</h4>
+                  <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -485,7 +498,7 @@
         <div class="fx-mimg">
           <img src="assets/imagery/focus-income-master-1100.webp" alt="" width="1100" height="733" loading="lazy" decoding="async">
         </div>
-        <p class="fx-mbody">Durable income with a clear basis in location, asset quality and occupational demand</p>
+        <p class="fx-mbody">Durable income with a clear basis in location, asset quality and occupational demand.</p>
         <div class="fx-mband">
           <div class="fx-mband-col">
             <span class="fx-band-k">What we look for</span>
@@ -505,24 +518,27 @@
       </div>
 
       <div class="fx-tabpanel" id="fx-panel-repositioning" role="tabpanel" aria-labelledby="fx-tab-repositioning" tabindex="-1" hidden>
-        <div class="fx-mimg">
-          <img src="assets/imagery/focus-repositioning-1100.webp" alt="" width="1100" height="734" loading="lazy" decoding="async">
-          <span class="fx-mscrim" aria-hidden="true"></span>
-          <span class="fx-mname fx-swap" data-swap>
-            <span data-on>Identify the Constraint</span>
-            <span>Shape the Intervention</span>
-            <span>Strengthen the Asset</span>
-          </span>
-        </div>
-        <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
-          <p data-on>Establish which constraint is suppressing the asset, and the entry basis that constraint justifies. The entry basis is set by what the constraint justifies, not by what the plan hopes to achieve</p>
-          <p>Scope the physical, leasing and operational work required, its cost, its consents and its programme. Each item is costed, consented and sequenced before commitment</p>
-          <p>Test the stabilised income against evidenced lettings, and the exit routes execution would open. Improvement is evidenced in income, occupancy and valuation before the exit is considered</p>
-        </div>
         <div class="fx-mtabs" role="tablist" aria-label="Repositioning">
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">Shape</button>
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">Strengthen</button>
+        </div>
+        <div class="fx-mimg">
+          <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+        </div>
+        <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
+          <div data-on>
+            <h4 class="fx-stagehead">Identify the Constraint</h4>
+            <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance.</p>
+          </div>
+          <div>
+            <h4 class="fx-stagehead">Define the Improvement Plan</h4>
+            <p>Assess the works, leasing and operational changes required, together with their costs, permissions and delivery timetable.</p>
+          </div>
+          <div>
+            <h4 class="fx-stagehead">Test the Investment Effect</h4>
+            <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -558,9 +574,9 @@
       </div>
     </div>
     <div class="hs-tests">
-        <span class="hs-test">Building Character</span>
-        <span class="hs-test">Demand Rooted in Place</span>
-        <span class="hs-test">A Suitable Operating Model</span>
+      <div class="hs-test"><h3 class="hs-test-n">Building Character</h3><p class="hs-test-d">Existing buildings with architectural or locational distinctiveness that an operator cannot replicate elsewhere.</p></div>
+      <div class="hs-test"><h3 class="hs-test-n">Demand Rooted in Place</h3><p class="hs-test-d">Guest or occupier demand tied to the location itself, not dependent on a single brand, event or channel.</p></div>
+      <div class="hs-test"><h3 class="hs-test-n">A Suitable Operating Model</h3><p class="hs-test-d">A lease, management agreement or operating structure that matches the investor’s appetite for operational exposure.</p></div>
     </div>
   </div>
 </section>
@@ -572,7 +588,7 @@
     <h2 class="dl-h2" id="dl-title">Where We Draw the Line</h2>
     <div class="dl-grid">
       <div class="dl-p"><span class="dl-n">Unevidenced Demand</span><span class="dl-x">Occupier demand resting on forecast rather than actual occupation</span></div>
-      <div class="dl-p"><span class="dl-n">No Clear Source of Improvement</span><span class="dl-x">A business plan without a specific, costed lever</span></div>
+      <div class="dl-p"><span class="dl-n">Repositioning Without a Costed Plan</span><span class="dl-x">A repositioning case that lacks a specific, costed source of improvement</span></div>
       <div class="dl-p"><span class="dl-n">Execution Risk Outweighs the Opportunity</span><span class="dl-x">Consents, works or leasing the investor cannot control or price</span></div>
       <div class="dl-p"><span class="dl-n">Too Narrow an Exit</span><span class="dl-x">Realisation that depends on a single buyer type or market condition</span></div>
     </div>
@@ -586,7 +602,8 @@
     <div class="enq-row">
       <div>
         <h2 class="enq-h" id="enq-title">Contact</h2>
-        <p class="enq-d">We welcome enquiries from investors, and from property owners, brokers and advisers with relevant opportunities in London and Amsterdam.</p>
+        <p class="enq-d">Investors: we welcome enquiries from Japanese corporates, family offices, institutions and private investors considering London or Amsterdam.</p>
+        <p class="enq-d">Market: owners, brokers, lenders and advisers with relevant opportunities are welcome to make contact.</p>
       </div>
       <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
@@ -779,7 +796,7 @@
   showMobileSelector();
 })();
 </script>
-<script src="shell.js?v=76"></script>
+<script src="shell.js?v=77"></script>
 <script src="i18n.js?v=2"></script>
 <script src="craft.js?v=17"></script>
 </body>

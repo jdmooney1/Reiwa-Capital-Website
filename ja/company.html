@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>事業概要 | Reiwa Capital</title>
-<meta name="description" content="Reiwa Capitalの基本情報、役割分担、お問い合わせ先。東京を拠点に、日本の投資家側に立って欧州不動産投資を支援します。">
+<meta name="description" content="Reiwa Capitalの会社概要、独立性、エンゲージメントの構成、お問い合わせ先。東京を拠点に、日本の投資家側に立って欧州不動産投資を支援します。">
 <link rel="canonical" href="https://reiwa-capital.com/ja/company.html">
 <link rel="alternate" hreflang="en" href="https://reiwa-capital.com/company.html">
 <link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/company.html">
@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=86">
+<link rel="stylesheet" href="../editorial.css?v=87">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -78,11 +78,8 @@
   .co-sheet { max-width: none; }
   .co-open h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(24px, 18px + 1.4vw, 39px); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 22em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   .co-open .sub { margin: clamp(14px, 1.5vw, 20px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .co-profile { min-width: 0; margin-top: clamp(32px, 3.4vw, 48px); }
-  .co-profile .co-label { margin-bottom: clamp(10px, 1.1vw, 14px); }
   @media (max-width: 760px) {
     .co-open .inner { padding-top: 34px; padding-bottom: 20px; }
-    .co-profile { margin-top: 26px; }
   }
 
   /* --- Section scaffold ------------------------------------------------
@@ -100,6 +97,16 @@
      strategy pages use, so Company stays the quietest page on the site. */
   .co-label { display: block; font-family: var(--font-jp-serif); font-size: clamp(17px, 14px + 0.7vw, 22px); font-weight: 500; letter-spacing: 0.01em; line-height: 1.5; text-transform: none; color: var(--ink); margin: 0 0 clamp(16px, 1.8vw, 24px); padding-top: 0; }
   @media (max-width: 760px) { .co-sec { padding-top: 34px; } }
+  /* Short statements under a section heading, read at body size. */
+  .co-copy { margin: 0; max-width: 40em; font-family: var(--jp); font-size: 15.5px; line-height: 1.9; color: var(--ink); text-wrap: pretty; }
+  /* Entity rows: a rule above the list and a hairline under every row. */
+  .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
+  .co-table > div { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
+  .co-table dt { font-family: var(--jp); font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
+  .co-table dd { margin: 0; max-width: 40em; font-family: var(--jp); font-weight: 500; font-size: 15.5px; line-height: 1.85; color: var(--ink); }
+  @media (max-width: 760px) { .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; } }
+  /* The same rows without a label column, for plain statements. */
+  .co-tiers.co-tiers--plain > li { grid-template-columns: minmax(0, 1fr); }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
@@ -111,12 +118,7 @@
      break at the ・, and プロパティ／マネジメント stay separate spans so a
      break between the two words remains possible. */
 
-  .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
-  .co-table > div { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
-  .co-table dt { font-family: var(--jp); font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; max-width: 40em; font-family: var(--jp); font-weight: 500; font-size: 15.5px; line-height: 1.85; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
 
   /* --- 3 · Activities ---------------------------------------------------
@@ -144,7 +146,6 @@
      same grid four times and ends on it. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
-  .co-aud { margin: 0 0 clamp(18px, 2vw, 26px); max-width: 38em; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-general { margin: 0; }
   .co-gen-row { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
@@ -179,48 +180,72 @@
 <main id="main" tabindex="-1">
 
 <!-- Opening — cream, no art, shorter than the other pages -->
-<section class="page-head co-open" data-screen-label="01 事業概要 — opening and 基本情報">
+<section class="page-head co-open" data-screen-label="01 事業概要 — opening">
   <div class="inner">
     <div class="co-sheet">
         <h1>事業概要</h1>
-      <section class="co-profile" aria-labelledby="cp-label">
-        <h2 class="co-label" id="cp-label">基本情報</h2>
-      <dl class="co-table">
-        <div><dt>名称</dt><dd>Reiwa Capital</dd></div>
-        <div><dt>拠点</dt><dd>東京、日本</dd></div>
-        <div><dt>対象市場</dt><dd>英国、オランダ</dd></div>
-        <div><dt>対象投資家</dt><dd>日本の事業会社、機関投資家、<span class="jt">プライベート</span>投資家</dd></div>
-        <div><dt>事業内容</dt><dd>日本の投資家側に立った欧州不動産投資の<span class="jt">アドバイザリー、</span>および保有期間中の<span class="jt">モニタリング</span>と投資家向け<span class="jt">レポーティング</span></dd></div>
-      </dl>
-      </section>
+        <!-- TODO JA copy: intro line (EN: Reiwa Capital is an independent, investor-side adviser on UK and Dutch real estate for Japanese investors. It operates from Tokyo with execution in London and Amsterdam.) -->
+        <p class="sub">東京を拠点に、日本の投資家側に立って<span class="jt">欧州不動産投資を支援します。</span></p>
     </div>
   </div>
 </section>
 
-
-<!-- Responsibilities -->
-<section class="co-sec co-om" data-screen-label="04 事業概要 — responsibilities" aria-labelledby="cm-label">
+<!-- 会社概要 -->
+<section class="co-sec" data-screen-label="02 事業概要 — 会社概要" aria-labelledby="ce-label">
   <div class="shell">
     <div class="co-row">
-      <h2 class="co-label" id="cm-label">役割分担</h2>
-      <div class="co-model">
-        <ol class="co-tiers">
-          <li><span class="co-tier-n">日本の投資家</span><p class="co-tier-d">投資目的と投資基準を定め、重要な投資判断を行います。</p></li>
-          <li><span class="co-tier-n">Reiwa Capital</span><p class="co-tier-d">投資<span class="jt">マンデート</span>の設計、投資機会の発掘と投資分析、取得および資金調達の調整、保有期間中の<span class="jt">モニタリング、</span>投資家向け<span class="jt">レポーティング、</span>出口戦略の策定を通じて、投資家の意思決定を支援します。</p></li>
-          <li><span class="co-tier-n">選任される専門家</span><p class="co-tier-d">法務、税務、会計、鑑定評価、技術、<span class="jt">ファイナンス、</span><span class="jt">リーシング、</span>建物管理・運営の各分野のロンドン・<span class="jt">アムステルダム</span>の専門家を、各投資の必要に応じて別途<span class="jt">選任します。</span></p></li>
-        </ol>
-      </div>
+      <h2 class="co-label" id="ce-label">会社概要</h2>
+      <!-- TODO legal review: 登記上の名称、登記地、法人番号を確認のうえ行を追加 -->
+      <dl class="co-table">
+        <div><dt>拠点</dt><dd>東京</dd></div>
+        <div><dt>対象市場</dt><dd>ロンドン、<span class="jt">アムステルダム</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 独立性 -->
+<section class="co-sec" data-screen-label="03 事業概要 — 独立性" aria-labelledby="cn-label">
+  <div class="shell">
+    <div class="co-row">
+      <h2 class="co-label" id="cn-label">独立性</h2>
+      <p class="co-copy">Reiwa Capitalは、投資家と合意した<span class="jt">マンデート</span>に基づき、<span class="jt">投資家のためにのみ行動します。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 行わない業務 -->
+<section class="co-sec" data-screen-label="04 事業概要 — 行わない業務" aria-labelledby="cx-label">
+  <div class="shell">
+    <div class="co-row">
+      <h2 class="co-label" id="cx-label">行わない業務</h2>
+      <!-- TODO legal review: 日本・英国・オランダの規制上の位置づけに沿った表現であることを確認 -->
+      <ul class="co-tiers co-tiers--plain">
+        <li><p class="co-tier-d">顧客資産の保管および運用は<span class="jt">行いません。</span></p></li>
+        <li><p class="co-tier-d">集団投資<span class="jt">スキーム</span>その他の投資商品の提供、勧誘および運用は<span class="jt">行いません。</span></p></li>
+        <li><p class="co-tier-d">法務、税務および鑑定評価に関する助言は<span class="jt">行いません。</span>これらは個別に選任された、各分野の認可を受けた専門家が<span class="jt">担当します。</span></p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- エンゲージメントの構成 -->
+<section class="co-sec" data-screen-label="05 事業概要 — エンゲージメントの構成" aria-labelledby="cs-label">
+  <div class="shell">
+    <div class="co-row">
+      <h2 class="co-label" id="cs-label"><span class="jt">エンゲージメント</span>の構成</h2>
+      <p class="co-copy">各<span class="jt">エンゲージメント</span>は、投資家と合意した書面による<span class="jt">マンデート</span>から<span class="jt">始まります。</span><span class="jt">マンデート</span>には、投資目的、対象市場、要求<span class="jt">リターン、</span>制約条件、および投資家が留保する意思決定事項を<span class="jt">定めます。</span>Reiwa Capitalは投資家の既存の助言者と連携し、日本語と英語で報告を<span class="jt">行います。</span></p>
     </div>
   </div>
 </section>
 
 <!-- お問い合わせ -->
-<section class="co-sec co-contact" id="contact" data-screen-label="05 事業概要 — contact" aria-labelledby="cc-label">
+<section class="co-sec co-contact" id="contact" data-screen-label="06 事業概要 — contact" aria-labelledby="cc-label">
   <div class="shell">
     <div class="co-row">
       <div class="co-contact-left">
         <h2 class="co-label" id="cc-label">お問い合わせ</h2>
-        <p class="co-aud">投資家の皆様、ロンドン・<span class="jt">アムステルダム</span>の案件をお持ちの物件所有者や仲介会社、ならびに<span class="jt">レンダー、</span><span class="jt">アドバイザー、</span><span class="jt">オペレーター</span>の皆様からのご連絡を<span class="jt">歓迎します。</span></p>
+        <!-- TODO JA copy: split the rows by audience as on the English page (investors / owners, brokers, lenders and advisers) -->
         <dl class="co-general">
           <div class="co-gen-row">
             <dt>一般のお問い合わせ</dt>
@@ -239,7 +264,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=76"></script>
+<script src="../shell.js?v=77"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

@@ -598,6 +598,15 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
 }
 /* Right-hand side: Privacy alone. One link, no list. */
 .ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
+/* Three small links and the copyright no longer fit one 62px row on a
+   phone: let the baseline row wrap, with the emblem on its own line. */
+@media (max-width: 480px) {
+  .footer-quiet .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; row-gap: 6px; height: auto; padding-top: 14px; padding-bottom: 18px; }
+  /* The emblem stays a positioned box (its focus halo is an absolutely
+     placed pseudo-element) but gives up its centring offsets. */
+  .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; margin: 0 0 4px; }
+  .footer-quiet .ff-right { justify-content: center; flex-wrap: wrap; }
+}
 .ff-link {
   font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
   color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
@@ -1150,6 +1159,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
 .enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
 .enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.enq-d + .enq-d { margin-top: 6px; }
 /* The enquiry treatment, defined once. Company's three routes and the
    enquiry row that closes About, Approach and Investment Focus are the same
    gesture — air, a label, an arrow, no button — and were carried by two

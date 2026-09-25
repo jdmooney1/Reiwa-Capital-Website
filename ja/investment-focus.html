@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=86">
+<link rel="stylesheet" href="../editorial.css?v=87">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -43,7 +43,7 @@
      lazy is what stops that half being fetched at all. -->
 <link rel="preload" as="image" href="../assets/imagery/focus-hero-blur.webp">
 <link rel="preload" as="image" href="../assets/imagery/focus-income-balanced.webp" media="(min-width: 761px)" fetchpriority="high">
-<link rel="preload" as="image" href="../assets/imagery/focus-repositioning-panorama.webp" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="../assets/imagery/focus-repositioning-panorama-900.webp" imagesrcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" imagesizes="45vw" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="../assets/imagery/focus-income-master-1100.webp" media="(max-width: 760px)" fetchpriority="high">
 <style>
   /* =====================================================================
@@ -162,8 +162,8 @@
   /* Scrims stay local to the caption — deep where the type sits, clear of the
      photograph elsewhere. Tuned against the Japanese setting, whose thinner,
      denser strokes need more ground beneath them than the Latin one does. */
-  .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 68%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.74) 26%, rgba(28,14,35,.38) 60%, rgba(28,14,35,0) 100%); }
-  .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.94) 0%, rgba(28,14,35,.78) 26%, rgba(28,14,35,.42) 60%, rgba(28,14,35,0) 100%); }
+  .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
+  .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
   .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
   .fx-name { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--cream); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
@@ -195,7 +195,7 @@
   .fx-open { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: clamp(510px, 37.5vw, 620px); }
   .fx-openimg { position: relative; flex: 0 0 auto; height: clamp(252px, 23vw, 322px); overflow: hidden; background: #DCD6CC; }
   .fx-panel--inc .fx-openimg img { object-position: 50% 64%; }
-  .fx-panel--rep .fx-openimg img { object-position: 50% 58%; }
+  .fx-panel--rep .fx-openimg img { object-position: 50% 46%; }
   .fx-imgbtn { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; z-index: 4; background: transparent; outline-offset: -4px; }
   /* Stops in pixels, not percentages: the caption occupies a known band above
      the image's bottom edge, and the Income photograph is bright stucco and
@@ -204,6 +204,9 @@
      what keeps this local — the right of the frame stays the photograph. */
   .fx-openimg .fx-scrim { top: 0; height: auto; background: linear-gradient(to top, rgba(31,18,40,.95) 0px, rgba(31,18,40,.92) 60px, rgba(31,18,40,.88) 155px, rgba(31,18,40,.56) 235px, rgba(31,18,40,.14) 295px, rgba(31,18,40,0) 340px); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); }
   .fx-openimg .fx-cap { gap: 11px; }
+  /* 再生型の写真には文字を載せない。名称、段階の操作、段階の内容はすべて
+     写真の下のクリーム地に置く。残る重ねはボタン背後の小さな角の下地のみ。 */
+  .fx-panel--rep .fx-backscrim { height: 150px; background: linear-gradient(to bottom, rgba(31,18,40,.78) 0px, rgba(31,18,40,.5) 60px, rgba(31,18,40,.16) 115px, rgba(31,18,40,0) 150px); }
   /* Kept below the section h2 it now sits under in the outline. */
   .fx-open .fx-name { font-size: clamp(21px, 14px + 0.85vw, 28px); }
   .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
@@ -224,11 +227,15 @@
   .fx-swap { display: grid; }
   .fx-swap > * { grid-area: 1 / 1; visibility: hidden; margin: 0; }
   .fx-swap > [data-on] { visibility: visible; }
-  .fx-stagetitle > span { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.5vw, 21px); line-height: 1.4; letter-spacing: -0.016em; color: var(--cream); }
-  .fx-stagecopy > p { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-2); max-width: 40em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  /* 段階の見出しは写真ではなく帯の中に置き、戦略名（28px）の下、本文の上に
+     位置づける。 */
+  .fx-band--rep .fx-name { color: var(--ink); font-size: clamp(19px, 13px + 0.7vw, 24px); }
+  .fx-band--rep .fx-stages { margin-top: 16px; padding-top: 0; }
+  .fx-band--rep .fx-stagecopy { margin-top: clamp(18px, 1.8vw, 24px); }
+  .fx-stagehead { margin: 0 0 10px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(17px, 13px + 0.5vw, 22px); line-height: 1.4; letter-spacing: -0.016em; color: var(--ink); }
+  .fx-stagecopy p { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-2); max-width: 40em; word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   .fx-stagecopy:focus { outline: none; }
   .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(14px, 1.6vw, 24px); margin-top: clamp(20px, 2vw, 28px); }
-  .fx-band--rep .fx-stages { margin-top: auto; padding-top: clamp(20px, 2vw, 28px); }
   .fx-stage { appearance: none; background: none; border: 0; border-top: 2px solid var(--rule-strong); margin: 0; padding: 12px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: var(--jp); font-weight: 400; font-size: clamp(13px, 12px + 0.2vw, 14.5px); line-height: 1.5; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-selected="true"] { border-top-color: var(--ink); font-weight: 500; color: var(--ink); }
   @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
@@ -260,14 +267,16 @@
   .fx-tabpanel[hidden] { display: none; }
   .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
   .fx-mimg img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; display: block; }
-  #fx-panel-repositioning .fx-mimg img { object-position: 50% 56%; }
-  .fx-mscrim { position: absolute; left: 0; right: 0; bottom: 0; height: 56%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
-  /* Below the section h2 (22px at 390 and at 320): a stage is the third level
-     of the hierarchy and must not outrank the section it sits in. */
-  .fx-mname { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px; pointer-events: none; font-size: 20px; }
-  .fx-mname > span { font-family: var(--font-jp-serif); font-weight: 500; font-size: inherit; line-height: 1.4; letter-spacing: -0.018em; color: var(--cream); }
+  /* 再生型（スマートフォン）：段階の操作、文字を載せない写真、段階の見出しと
+     説明の順。写真は収益型より浅くして操作が最初の画面に収まるようにし、
+     トリミングは建物の正面を残して空と水面を削る。 */
+  #fx-panel-repositioning .fx-mtabs { margin-top: 0; }
+  #fx-panel-repositioning .fx-mimg { height: clamp(200px, 60vw, 250px); margin-top: 20px; }
+  #fx-panel-repositioning .fx-mimg img { object-position: 50% 46%; }
+  #fx-panel-repositioning .fx-stagehead { margin: 0 0 8px; font-size: 18px; }
   .fx-mbody, .fx-mcopy { margin: 18px 0 0; }
-  .fx-mbody, .fx-mcopy > p { font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-mbody, .fx-mcopy p { font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .fx-mcopy p { word-break: normal; word-break: auto-phrase; overflow-wrap: normal; }
   .fx-mcopy:focus { outline: none; }
   .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
   .fx-mband-col { display: flex; flex-direction: column; gap: 8px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
@@ -276,7 +285,7 @@
   .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
   @media (max-width: 360px) {
     .fx-mimg { height: 300px; }
-    .fx-mname { font-size: 18px; }
+    #fx-panel-repositioning .fx-stagehead { font-size: 17px; }
     .fx-tab { font-size: 14px; }
     .fx-mtab { font-size: 12.5px; }
     .fx-mtabs { gap: 0 8px; }
@@ -317,7 +326,9 @@
   .hs-title { margin: 3px 0 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
   .hs-state { margin: 2px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.95; color: var(--ink-2); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
-  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
+  .hs-test-n { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .hs-test-d { margin: 10px 0 0; max-width: 22em; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
     .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
@@ -351,7 +362,7 @@
   .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   .dl-n { display: block; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.55vw, 21px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .dl-x { display: block; font-family: var(--jp); font-size: clamp(13.5px, 12.5px + 0.25vw, 15px); line-height: 1.8; color: rgba(252,250,241,.74); max-width: 20em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-x { display: block; font-family: var(--jp); font-size: clamp(13.5px, 12.5px + 0.25vw, 15px); line-height: 1.8; color: rgba(252,250,241,.74); max-width: 20em; word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
     .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
@@ -390,7 +401,7 @@
     <h2 class="fx-h2" id="fx-title">確かな<span class="jt">ファンダメンタルズ、</span>明確な潜在力</h2>
     <div class="fx-param">
       <span class="fx-param-k">投資対象の範囲</span>
-      <p class="fx-param-v">既存建物、裏付けのある<span class="jt">テナント</span>需要、そして具体的で管理可能な改善に基づく事業計画を重視します。いずれも投資家と合意した<span class="jt">マンデート</span>に照らして検証し、その承認を得たうえで進めます。</p>
+      <p class="fx-param-v">既存建物と裏付けのある<span class="jt">テナント</span>需要を<span class="jt">重視し、</span>再生型では、具体的で管理可能な改善に基づく事業計画を求めます。いずれも投資家と合意した<span class="jt">マンデート</span>に照らして検証し、その承認を得たうえで進めます。</p>
     </div>
   </div>
 
@@ -408,7 +419,7 @@
             <span class="fx-edge" aria-hidden="true"></span>
             <div class="fx-cap">
               <h3 class="fx-name">収益型</h3>
-              <p class="fx-body">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</p>
+              <p class="fx-body">立地、資産品質、<span class="jt">テナント</span>需要に明確な裏付けを持つ<span class="jt">持続的な収益。</span></p>
               <span class="fx-cue" aria-hidden="true">収益型を見る <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
@@ -421,7 +432,6 @@
               <button class="fx-back" type="button" data-collapse aria-label="収益型と再生型の一覧に戻る">一覧に戻る</button>
               <div class="fx-cap">
                 <h3 class="fx-name">収益型</h3>
-                <p class="fx-body">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</p>
               </div>
             </div>
             <div class="fx-band">
@@ -449,42 +459,43 @@
           <div class="fx-closed">
             <button class="fx-shut" type="button" data-focus="1" aria-pressed="false" aria-label="再生型を見る"></button>
             <span class="fx-photo" aria-hidden="true">
-              <img src="../assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+              <img src="../assets/imagery/focus-repositioning-panorama-900.webp" srcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
             </span>
             <span class="fx-scrim" aria-hidden="true"></span>
             <span class="fx-edge" aria-hidden="true"></span>
             <div class="fx-cap">
               <h3 class="fx-name">再生型</h3>
-              <p class="fx-body">建築的な品質と、収益の改善に向けた具体的で費用を見通せる道筋</p>
+              <p class="fx-body">的確な資本投下と能動的な<span class="jt">監督により、</span>収益または価値を実質的に高められる資産。</p>
               <span class="fx-cue" aria-hidden="true">再生型を見る <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
           <div class="fx-open" hidden>
             <div class="fx-openimg">
-              <img src="../assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
-              <span class="fx-scrim" aria-hidden="true"></span>
+              <img src="../assets/imagery/focus-repositioning-panorama-900.webp" srcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
               <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="収益型と再生型の一覧に戻る"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
               <button class="fx-back" type="button" data-collapse aria-label="収益型と再生型の一覧に戻る">一覧に戻る</button>
-              <div class="fx-cap">
-                <h3 class="fx-name">再生型</h3>
-                <span class="fx-stagetitle fx-swap" data-swap>
-                  <span data-on>制約を見極める</span>
-                  <span>打ち手を組み立てる</span>
-                  <span>資産を強くする</span>
-                </span>
-              </div>
             </div>
             <div class="fx-band fx-band--rep">
-              <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
-                <p data-on>資産を抑えている制約を特定し、その制約が正当化する取得価格の水準を見極める。取得価格の水準は、計画の期待ではなく、制約が正当化する範囲で定める</p>
-                <p>建物改修・<span class="jt">リーシング</span>・運営上の施策と、その費用、必要な許認可、実行<span class="jt">スケジュール</span>を精査する。各項目は、<span class="jt">コミット</span>前に費用を見積もり、許認可を確認し、順序を定める</p>
-                <p>安定後の収益を実際の成約事例に照らして検証し、実行後に開ける出口の選択肢を確認する。改善は、出口を検討する前に、収益、稼働率、評価額で裏付ける</p>
-              </div>
+              <h3 class="fx-name">再生型</h3>
               <div class="fx-stages" role="tablist" aria-label="再生型">
                 <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">見極める</button>
                 <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="1">組み立てる</button>
                 <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="2">強くする</button>
+              </div>
+              <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
+                <div data-on>
+                  <h4 class="fx-stagehead">制約を見極める</h4>
+                  <p>空室、間取り、仕様、許可用途、運営実績のうち、収益や価値を抑えている要因を<span class="jt">特定します。</span></p>
+                </div>
+                <div>
+                  <h4 class="fx-stagehead">改善計画を定める</h4>
+                  <p>必要な工事、<span class="jt">リーシング</span>、運営上の変更を、その費用、許認可、実施<span class="jt">スケジュール</span>とあわせて<span class="jt">評価します。</span></p>
+                </div>
+                <div>
+                  <h4 class="fx-stagehead">投資効果を検証する</h4>
+                  <p><span class="jt">リーシング</span>の見通し、持続的な収益、出口の選択肢への影響を、投資判断の前提に照らして<span class="jt">検証します。</span></p>
+                </div>
               </div>
             </div>
           </div>
@@ -504,7 +515,7 @@
         <div class="fx-mimg">
           <img src="../assets/imagery/focus-income-master-1100.webp" alt="" width="1100" height="733" loading="lazy" decoding="async">
         </div>
-        <p class="fx-mbody">立地、資産品質、テナント需要に明確な裏付けを持つ持続的な収益</p>
+        <p class="fx-mbody">立地、資産品質、<span class="jt">テナント</span>需要に明確な裏付けを持つ<span class="jt">持続的な収益。</span></p>
         <div class="fx-mband">
           <div class="fx-mband-col">
             <span class="fx-band-k">私たちが求めるもの</span>
@@ -524,24 +535,27 @@
       </div>
 
       <div class="fx-tabpanel" id="fx-panel-repositioning" role="tabpanel" aria-labelledby="fx-tab-repositioning" tabindex="-1" hidden>
-        <div class="fx-mimg">
-          <img src="../assets/imagery/focus-repositioning-1100.webp" alt="" width="1100" height="734" loading="lazy" decoding="async">
-          <span class="fx-mscrim" aria-hidden="true"></span>
-          <span class="fx-mname fx-swap" data-swap>
-            <span data-on>制約を見極める</span>
-            <span>打ち手を組み立てる</span>
-            <span>資産を強くする</span>
-          </span>
-        </div>
-        <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
-          <p data-on>資産を抑えている制約を特定し、その制約が正当化する取得価格の水準を見極める。取得価格の水準は、計画の期待ではなく、制約が正当化する範囲で定める</p>
-          <p>建物改修・<span class="jt">リーシング</span>・運営上の施策と、その費用、必要な許認可、実行<span class="jt">スケジュール</span>を精査する。各項目は、<span class="jt">コミット</span>前に費用を見積もり、許認可を確認し、順序を定める</p>
-          <p>安定後の収益を実際の成約事例に照らして検証し、実行後に開ける出口の選択肢を確認する。改善は、出口を検討する前に、収益、稼働率、評価額で裏付ける</p>
-        </div>
         <div class="fx-mtabs" role="tablist" aria-label="再生型">
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">見極める</button>
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">組み立てる</button>
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">強くする</button>
+        </div>
+        <div class="fx-mimg">
+          <img src="../assets/imagery/focus-repositioning-panorama-900.webp" srcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+        </div>
+        <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
+          <div data-on>
+            <h4 class="fx-stagehead">制約を見極める</h4>
+            <p>空室、間取り、仕様、許可用途、運営実績のうち、収益や価値を抑えている要因を<span class="jt">特定します。</span></p>
+          </div>
+          <div>
+            <h4 class="fx-stagehead">改善計画を定める</h4>
+            <p>必要な工事、<span class="jt">リーシング</span>、運営上の変更を、その費用、許認可、実施<span class="jt">スケジュール</span>とあわせて<span class="jt">評価します。</span></p>
+          </div>
+          <div>
+            <h4 class="fx-stagehead">投資効果を検証する</h4>
+            <p><span class="jt">リーシング</span>の見通し、持続的な収益、出口の選択肢への影響を、投資判断の前提に照らして<span class="jt">検証します。</span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -577,21 +591,21 @@
       </div>
     </div>
     <div class="hs-tests">
-        <span class="hs-test">建物の性格</span>
-        <span class="hs-test">立地に根ざした需要</span>
-        <span class="hs-test">適した運営<span class="jt">モデル</span></span>
+      <div class="hs-test"><h3 class="hs-test-n">建物の性格</h3><p class="hs-test-d">他所では再現できない建築的・立地的な特徴を持つ<span class="jt">既存建物。</span></p></div>
+      <div class="hs-test"><h3 class="hs-test-n">立地に根ざした需要</h3><p class="hs-test-d">特定の<span class="jt">ブランド、</span><span class="jt">イベント、</span>販売<span class="jt">チャネル</span>に依存せず、立地そのものに結びついた<span class="jt">需要。</span></p></div>
+      <div class="hs-test"><h3 class="hs-test-n">適した運営<span class="jt">モデル</span></h3><p class="hs-test-d">投資家の運営<span class="jt">リスク</span>許容度に合致した賃貸借、運営委託または運営<span class="jt">ストラクチャー。</span></p></div>
     </div>
   </div>
 </section>
 
 <!-- Where we draw the line -->
-<section class="if-sec dl-sec" data-screen-label="04 投資方針 — 私たちが線を引く地点" aria-labelledby="dl-title">
+<section class="if-sec dl-sec" data-screen-label="04 投資方針 — 投資対象から除外する条件" aria-labelledby="dl-title">
   <div class="shell">
     <span class="dl-kicker">下方<span class="jt">リスク</span>を特定し、価格に反映する</span>
-    <h2 class="dl-h2" id="dl-title">私たちが線を引く地点</h2>
+    <h2 class="dl-h2" id="dl-title">投資対象から除外する条件</h2>
     <div class="dl-grid">
       <div class="dl-p"><span class="dl-n">裏付けのない需要</span><span class="dl-x">実際の入居ではなく、予測に依存する<span class="jt">テナント</span>需要</span></div>
-      <div class="dl-p"><span class="dl-n">改善の源泉が不明確</span><span class="dl-x">具体的で費用を見通せる打ち手を欠く事業計画</span></div>
+      <div class="dl-p"><span class="dl-n">改善計画を欠く再生型案件</span><span class="dl-x">具体的で費用を見通せる改善の打ち手を欠く、再生型の事業計画</span></div>
       <div class="dl-p"><span class="dl-n">実行<span class="jt">リスク</span>が機会を上回る</span><span class="dl-x">投資家が統制も価格反映もできない許認可、工事、<span class="jt">リーシング</span></span></div>
       <div class="dl-p"><span class="dl-n">出口が狭すぎる</span><span class="dl-x">単一の買い手層や市場環境に依存する売却</span></div>
     </div>
@@ -605,7 +619,8 @@
     <div class="enq-row">
       <div>
         <h2 class="enq-h" id="enq-title">お問い合わせ</h2>
-        <p class="enq-d">投資家の皆様、ならびにロンドン・<span class="jt">アムステルダム</span>の案件をお持ちの物件所有者、仲介会社、<span class="jt">アドバイザー</span>からのご連絡を<span class="jt">歓迎します。</span></p>
+        <p class="enq-d">投資家の皆様：<span class="jt">ロンドン</span>または<span class="jt">アムステルダム</span>での投資を検討する日本の事業会社、<span class="jt">ファミリーオフィス、</span>機関投資家、個人投資家からのご相談を<span class="jt">歓迎します。</span></p>
+        <p class="enq-d">市場関係者：関連する案件をお持ちの物件所有者、仲介会社、<span class="jt">レンダー、</span><span class="jt">アドバイザー</span>からのご連絡も<span class="jt">歓迎します。</span></p>
       </div>
       <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
@@ -798,7 +813,7 @@
   showMobileSelector();
 })();
 </script>
-<script src="../shell.js?v=76"></script>
+<script src="../shell.js?v=77"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

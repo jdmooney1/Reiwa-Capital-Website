@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=86">
+<link rel="stylesheet" href="../editorial.css?v=87">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -71,7 +71,8 @@
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
-  .home-hero .loc { display: block; margin-top: clamp(18px, 1.8vw, 24px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
+  .home-hero .loc .sep { margin: 0 clamp(6px, 0.8vw, 12px); color: rgba(255,255,255,0.5); }
+  .home-hero .loc { display: block; text-align: left; margin-top: clamp(18px, 1.8vw, 24px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized so 欧州不動産を、 holds one line and the
      second clause takes at most two — measured, not guessed. The hero keeps
      the tighter gutter the English hero uses to buy that room. */
@@ -79,7 +80,7 @@
     .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
     .home-hero h1 { font-size: clamp(27px, 8vw, 34px); line-height: 1.34; letter-spacing: 0.004em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
-    .home-hero .loc { margin-top: 28px; }
+    .home-hero .loc { margin-top: 28px; text-align: center; }
   }
   @media (max-width: 340px) {
     .home-hero h1 { font-size: 25px; }
@@ -99,6 +100,7 @@
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(21px, 15px + 0.8vw, 27px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
+  .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-d { margin: 10px auto 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 20em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
   .hi-ops-foot { text-align: center; }
   .hi-ops-link { margin-top: clamp(20px, 2.2vw, 30px); }
@@ -115,26 +117,12 @@
   .hm { padding: 0 0 clamp(88px, 8vw, 120px); }
   .hm .shell { padding-top: clamp(64px, 6.2vw, 92px); }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
-  .hm-tabs { display: flex; gap: clamp(22px, 2.4vw, 36px); margin: 0; padding: 0; }
-  .hm-tab { position: relative; appearance: none; background: none; border: 0; margin: 0; padding: 8px 0 9px; min-height: 40px; cursor: pointer; font-family: var(--jp); font-size: clamp(14.5px, 13.6px + 0.2vw, 15.5px); font-weight: 400; letter-spacing: 0.004em; color: var(--ink-3); transition: color 200ms var(--ease-out); touch-action: manipulation; }
-  .hm-tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left center; transition: transform 240ms var(--ease-out); }
-  .hm-tab[aria-selected="true"] { color: var(--ink); font-weight: 500; }
-  .hm-tab[aria-selected="true"]::after { transform: scaleX(1); }
-  @media (hover: hover) { .hm-tab:not([aria-selected="true"]):hover { color: var(--ink-2); } }
-  .hm-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-  .hm-stage { display: grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
+  .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
 
-  /* Photograph + copy for the selected market. Both panels exist in the
-     DOM; JS shows one at a time with a short fade. No JS: both stack. */
-  .hm-photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
-  .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: var(--img-grade); opacity: 0; transition: opacity 200ms var(--ease-out); }
-  .hm-photo img.is-on { opacity: 1; }
-  .js .hm-panel { display: none; }
-  .js .hm-panel.is-on { display: block; animation: hm-fade 200ms var(--ease-out); }
-  .hm-panel + .hm-panel { margin-top: 24px; }
-  .js .hm-panel + .hm-panel { margin-top: 0; }
-  @keyframes hm-fade { from { opacity: 0; } to { opacity: 1; } }
+  .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
+  .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
+  .hm-col .hm-city { margin-top: clamp(18px, 1.9vw, 24px); }
   .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.85vw, 26px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 28em; }
   /* The photograph runs about 230px deeper than three lines of caption at
@@ -145,17 +133,22 @@
   .hm-facts li { padding: clamp(9px, 1vw, 12px) 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 14.5px; line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
   .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
   @media (max-width: 900px) { .hm-facts { max-width: none; } }
-  @media (prefers-reduced-motion: reduce) {
-    .hm-photo img, .hm-tab, .hm-tab::after { transition: none; }
-    .js .hm-panel.is-on { animation: none; }
+  /* 二つの市場を組み合わせる意味：見出しと三つの要点を、Reiwaについての
+     ページの一覧と同じ罫線と段組みの型で置く。 */
+  .hm-plus { margin-top: clamp(36px, 4vw, 56px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule-strong); }
+  .hm-plus-k { margin: 0; font-family: var(--jp); font-weight: 400; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+  .hm-plus-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 40px); }
+  .hm-plus-list li { padding: 12px 0 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 14.5px; line-height: 1.8; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
+  @media (max-width: 900px) {
+    .hm-plus-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .hm-plus-list li { padding: 10px 0; }
+    .hm-plus-list li:last-child { border-bottom: 1px solid var(--rule); }
   }
-  @media (max-width: 900px) { .hm-stage { grid-template-columns: 1fr; gap: 24px; } }
   @media (max-width: 760px) {
     .hm { padding: 0 0 64px; }
     .hm .shell { padding-top: 48px; }
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .hm-tabs { gap: 26px; }
-    .hm-stage { margin-top: 22px; gap: 24px; }
+    .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 22px; gap: 40px; }
     /* Mobile composition: on a phone the homepage otherwise runs more than two
        thousand pixels of stacked text before the first photograph. The market
        photograph and the two focus fields leave the gutter and run edge to
@@ -163,7 +156,7 @@
        the argument changes, and keeps the focus imagery at a scale worth
        looking at rather than turning it into a pair of thumbnails. */
     .hm-photo, .hf-grid { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
-    .hm-photo { aspect-ratio: 5 / 4; }
+    .hm-photo { aspect-ratio: 1537 / 659; }
     .hf-item { aspect-ratio: 4 / 5; }
     .hf-cap { padding: clamp(20px, 5vw, 28px) var(--gutter); }
   }
@@ -180,7 +173,7 @@
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
   /* subgrid so every paragraph starts on one line, whatever its heading does:
      two of the four headings wrap, and without this the column feet stagger. */
-  .hp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
+  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
   .hp-item > div { display: contents; }
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
@@ -214,7 +207,7 @@
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1vw, 16px); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
-  .hf-scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.92) 0%, rgba(28,14,35,.74) 28%, rgba(28,14,35,.36) 62%, rgba(28,14,35,0) 100%); }
+  .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
   .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
@@ -273,7 +266,7 @@
   <div class="inner">
     <h1>欧州不動産を、<br>日本の投資家のために</h1>
     <p class="sub">Reiwa Capitalは、日本の投資家側に立って、英国・オランダを中心とする欧州不動産投資を支援します。</p>
-    <span class="loc">東京拠点、ロンドンと<span class="jt">アムステルダム</span>に特化</span>
+    <span class="loc">東京<span class="sep" aria-hidden="true">・</span>ロンドン<span class="sep" aria-hidden="true">・</span><span class="jt">アムステルダム</span></span>
   </div>
 </section>
 
@@ -281,22 +274,25 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title">取得から保有、出口まで。</h2>
+      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の不動産について、<span class="jt">マンデート</span>から出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
     </div>
     <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
       <li class="hi-op">
-        <span class="hi-op-k"><b>01</b>形成</span>
-        <span class="hi-op-v">投資分析</span>
+        <span class="hi-op-k"><b>01</b></span>
+        <span class="hi-op-v">形成</span>
+        <span class="hi-op-s"><span class="jt">マンデート</span>・評価</span>
         <p class="hi-op-d">資本を投じる前に、各案件を投資家の<span class="jt">マンデート</span>に照らして検証します</p>
       </li>
       <li class="hi-op">
-        <span class="hi-op-k"><b>02</b>実行</span>
-        <span class="hi-op-v">組成</span>
+        <span class="hi-op-k"><b>02</b></span>
+        <span class="hi-op-v">実行</span>
+        <span class="hi-op-s">組成・取得</span>
         <p class="hi-op-d">保有・調達・税務の<span class="jt">ストラクチャー</span>を整え、一つの計画のもとで<span class="jt">デューデリジェンス</span>と契約を完了します</p>
       </li>
       <li class="hi-op">
-        <span class="hi-op-k"><b>03</b>保有期間</span>
-        <span class="hi-op-v"><span class="jt">モニタリング</span></span>
+        <span class="hi-op-k"><b>03</b></span>
+        <span class="hi-op-v">保有期間</span>
+        <span class="hi-op-s">保有・売却</span>
         <p class="hi-op-d">投資判断の前提に照らして実績を監督し、借換えと売却の判断を投資家に諮ります</p>
       </li>
     </ol>
@@ -309,36 +305,36 @@
   <div class="shell">
     <div class="hm-head">
       <h2 class="h-h2" id="hm-title">二つの市場</h2>
-      <div class="hm-tabs" role="tablist" aria-label="市場">
-        <button class="hm-tab" type="button" role="tab" id="hm-tab-uk" data-market="uk" aria-selected="true" aria-controls="hm-panel-uk">ロンドン</button>
-        <button class="hm-tab" type="button" role="tab" id="hm-tab-nl" data-market="nl" aria-selected="false" aria-controls="hm-panel-nl" tabindex="-1">アムステルダム</button>
+    </div>
+    <div class="hm-cols">
+      <div class="hm-col">
+        <div class="hm-photo"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
+          <h3 class="hm-city">ロンドン</h3>
+        <p class="h-body hm-copy">収益型と再生型の双方に機会があります</p>
+        <ul class="hm-facts">
+          <li>幅広い<span class="jt">テナント</span>需要</li>
+          <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
+          <li>売却時の買い手層の厚み</li>
+        </ul>
+      </div>
+      <div class="hm-col">
+        <div class="hm-photo"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
+          <h3 class="hm-city">アムステルダム</h3>
+        <p class="h-body hm-copy">厳格な都市計画が、立地と品質の高い物件を支えます</p>
+        <ul class="hm-facts">
+          <li>供給が限られた<span class="jt">コンパクト</span>な市場</li>
+          <li>堅調な<span class="jt">テナント</span>需要</li>
+          <li>機関投資家層の厚み</li>
+        </ul>
       </div>
     </div>
-    <div class="hm-stage" data-active="uk">
-      <div class="hm-photo">
-        <img class="is-on" data-market="uk" src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 55vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン">
-        <img data-market="nl" src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 55vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み">
-      </div>
-      <div class="hm-panels">
-        <div class="hm-panel is-on" role="tabpanel" id="hm-panel-uk" aria-labelledby="hm-tab-uk" data-market="uk">
-          <h3 class="hm-city">ロンドン</h3>
-          <p class="h-body hm-copy">収益型と再生型の双方に機会があります</p>
-          <ul class="hm-facts">
-            <li>幅広い<span class="jt">テナント</span>需要</li>
-            <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
-            <li>売却時の買い手層の厚み</li>
-          </ul>
-        </div>
-        <div class="hm-panel" role="tabpanel" id="hm-panel-nl" aria-labelledby="hm-tab-nl" data-market="nl">
-          <h3 class="hm-city">アムステルダム</h3>
-          <p class="h-body hm-copy">厳格な都市計画が、立地と品質の高い物件を支えます</p>
-          <ul class="hm-facts">
-            <li>供給が限られた<span class="jt">コンパクト</span>な市場</li>
-            <li>堅調な<span class="jt">テナント</span>需要</li>
-            <li>機関投資家層の厚み</li>
-          </ul>
-        </div>
-      </div>
+    <div class="hm-plus">
+      <h3 class="hm-plus-k">二つの市場を組み合わせる理由</h3>
+      <ul class="hm-plus-list">
+        <li>流動性と透明性の高い二市場、<span class="jt">ポンド</span>と<span class="jt">ユーロ</span></li>
+        <li>補い合う性格：<span class="jt">ロンドン</span>の厚み、<span class="jt">アムステルダム</span>の希少性</li>
+        <li><span class="jt">マンデート</span>から出口まで、一つの監督の枠組み</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -354,8 +350,6 @@
       </div>
       <div class="hp-item"><div><h3>現地との連携</h3><p class="h-body">案件ごとに必要な専門家を起用し、取引を進める側ではなく、投資家の側に立って取りまとめます。</p></div>
       </div>
-      <div class="hp-item"><div><h3>保有期間を通じた一貫性</h3><p class="h-body">保有期間中は、取得時に定めた投資の前提に照らして実績を確認します。</p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -368,16 +362,16 @@
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
-        <img src="../assets/imagery/bg-income-800.webp" srcset="../assets/imagery/bg-income-800.webp 800w, ../assets/imagery/bg-income-980.webp 980w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="980" height="1225" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観">
+        <img src="../assets/imagery/focus-income-balanced.webp" width="760" height="994" loading="lazy" decoding="async" alt="ロンドンのテラスハウスのレンガと石の外観">
         <span class="hf-scrim" aria-hidden="true"></span>
         <span class="hf-cap">
           <h3>収益型</h3>
-          <p>確かな立地と底堅いテナント需要に支えられた、継続的なキャッシュフロー。</p>
+          <p>立地、資産品質、<span class="jt">テナント</span>需要に明確な裏付けを持つ<span class="jt">持続的な収益。</span></p>
           <span class="hf-cue">収益型を見る <span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
         </span>
       </a>
       <a class="hf-item" href="investment-focus.html#repositioning">
-        <img src="../assets/imagery/bg-repositioning-800.webp" srcset="../assets/imagery/bg-repositioning-800.webp 800w, ../assets/imagery/bg-repositioning-1535.webp 1535w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物">
+        <img src="../assets/imagery/focus-repositioning-panorama-900.webp" srcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1535" height="1024" loading="lazy" decoding="async" alt="夕暮れのアムステルダムの運河沿いに並ぶ建物">
         <span class="hf-scrim" aria-hidden="true"></span>
         <span class="hf-cap">
           <h3>再生型</h3>
@@ -396,45 +390,8 @@
 </main>
 
 <div data-shell="footer"></div>
-<script>
-/* Markets selector — ロンドン by default; アムステルダム swaps the map
-   emphasis, the photograph and the copy. Tabs follow the ARIA tabs pattern
-   with a roving tabindex and arrow-key movement. Everything is in the DOM
-   without JS; this only chooses which market is shown. */
-(function () {
-  var stage = document.querySelector('.hm-stage');
-  if (!stage) return;
-  document.documentElement.classList.add('js');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.hm-tab'));
-  var targets = Array.prototype.slice.call(stage.querySelectorAll('[data-market]'));
-  function select(key, focus) {
-    stage.setAttribute('data-active', key);
-    tabs.forEach(function (t) {
-      var on = t.dataset.market === key;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.setAttribute('tabindex', on ? '0' : '-1');
-      if (on && focus) t.focus();
-    });
-    targets.forEach(function (el) { el.classList.toggle('is-on', el.dataset.market === key); });
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t.dataset.market); });
-    t.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
-      else if (e.key === 'Home') n = 0;
-      else if (e.key === 'End') n = tabs.length - 1;
-      if (n === null) return;
-      e.preventDefault();
-      select(tabs[n].dataset.market, true);
-    });
-  });
-  select('uk');
-})();
-</script>
 
-<script src="../shell.js?v=76"></script>
+<script src="../shell.js?v=77"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

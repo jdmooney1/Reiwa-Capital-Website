@@ -34,7 +34,7 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            lead: 'Why Reiwa exists and where we focus',              ariaEn: 'Next: About' },
+    home:     { to: 'about',            tEn: 'About',            lead: 'Ownership model, focus markets and who we work for', ariaEn: 'Next: About' },
     about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership', ariaEn: 'Next: Approach' },
     approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention',               ariaEn: 'Next: Investment Focus' },
     focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details',              ariaEn: 'Next: Company' }
@@ -47,7 +47,7 @@
      ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
      事業概要 closes the loop rather than pointing onward. */
   const FLOW_JA = {
-    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: 'Reiwaが果たす役割と、注力する市場',        aria: '次へ：Reiwaについて' },
+    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: '保有の枠組み、注力市場、対象とする投資家',  aria: '次へ：Reiwaについて' },
     about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ', aria: '次へ：投資アプローチ' },
     approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか',                aria: '次へ：投資方針' },
     focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先',            aria: '次へ：事業概要' },
@@ -251,7 +251,13 @@
   function swapLanguage(next) {
     if (next === lang()) return;
     const crossUrl = document.body.dataset[next + 'Url'];
-    if (crossUrl) window.location.href = crossUrl;
+    if (!crossUrl) return;
+    /* Both languages share their section ids, so a fragment that names a
+       section on this page names the same section on its counterpart.
+       It travels with the reader; anything else is dropped. */
+    const hash = window.location.hash;
+    const keep = hash && hash !== '#main' && document.getElementById(hash.slice(1)) ? hash : '';
+    window.location.href = crossUrl + keep;
   }
   window.addEventListener('languagechange', syncLangButtons);
 
@@ -261,6 +267,7 @@
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const onPrivacy = document.body.dataset.page === 'privacy';
+    const onDisclaimer = document.body.dataset.page === 'disclaimer';
 
     let nextNav = '';
     if (locale === 'ja') {
@@ -298,6 +305,8 @@
 
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : '/privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
+    const disclaimerHref = locale === 'ja' ? '/ja/disclaimer.html' : '/disclaimer.html';
+    const disclaimerLabel = locale === 'ja' ? '<span>免責事項</span>' : '<span data-en="Disclaimer" data-ja="免責事項">Disclaimer</span>';
 
     /* One contact route from every page, including the pages that close on
        their own argument rather than on the contact section. It points at
@@ -311,7 +320,7 @@
     const homeAria = locale === 'ja' ? 'Reiwa Capital — ホーム' : 'Reiwa Capital — Home';
 
     /* One quiet cream footer in both languages — copyright left, the cream
-       emblem mathematically centred, Contact and Privacy right. No navigation
+       emblem mathematically centred, Contact, Privacy and Disclaimer right. No navigation
        list, no location line, no socials. The onward journey lives in the NEXT
        block above it, where the site still has one. */
     const footer = `
@@ -322,6 +331,7 @@
           <div class="ff-right">
             <a class="ff-link ff-contact" href="${contactHref}">${contactLabel}</a>
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
+            <a class="ff-link ff-disclaimer" href="${disclaimerHref}"${onDisclaimer ? ' aria-current="page"' : ''}>${disclaimerLabel}</a>
           </div>
         </div>
       </footer>`;
