@@ -54,7 +54,7 @@
   .home-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(37px, 25px + 2.7vw, 64px); line-height: 1.05; letter-spacing: -0.022em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 21ch; text-wrap: balance; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14.5px + 0.35vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 44ch; }
   .home-hero .loc .sep { margin: 0 clamp(12px, 1.3vw, 20px); color: rgba(255,255,255,0.5); }
-  .home-hero .loc { display: block; text-align: left; margin-top: clamp(18px, 1.8vw, 24px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
+  .home-hero .loc { display: block; text-align: center; margin-top: clamp(18px, 1.8vw, 24px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized to the widest it can be while keeping
      "European Real Estate." whole on one line — measured, not guessed. The
      hero shares the body gutter so its left edge lines up with the header and
@@ -63,7 +63,7 @@
     .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
     .home-hero h1 { font-size: 38px; line-height: 1.04; letter-spacing: -0.03em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 32ch; }
-    .home-hero .loc { margin-top: 28px; text-align: center; }
+    .home-hero .loc { margin-top: 28px; }
     .home-hero .loc .sep { margin: 0 10px; }
   }
   @media (max-width: 340px) {
@@ -133,14 +133,7 @@
   @media (max-width: 900px) { .hm-facts { max-width: none; } }
   /* What the two markets add together: a kicker and three points under the
      stage, on the same rule-and-column pattern as the About page's list. */
-  .hm-plus { margin-top: clamp(36px, 4vw, 56px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule-strong); }
-  .hm-plus-k { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
-  .hm-plus-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 40px); }
-  .hm-plus-list li { padding: 12px 0 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 900px) {
-    .hm-plus-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .hm-plus-list li { padding: 10px 0; }
-    .hm-plus-list li:last-child { border-bottom: 1px solid var(--rule); }
   }
   @media (max-width: 900px) {
   }
@@ -318,14 +311,6 @@
           <li>Institutional buyer base</li>
         </ul>
       </div>
-    </div>
-    <div class="hm-plus">
-      <h3 class="hm-plus-k">Why Both Markets</h3>
-      <ul class="hm-plus-list">
-        <li>Liquid, transparent markets in sterling and euro</li>
-        <li>Complementary profiles: London breadth, Amsterdam scarcity</li>
-        <li>One oversight framework from mandate to exit</li>
-      </ul>
     </div>
   </div>
 </section>
