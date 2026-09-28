@@ -4,12 +4,20 @@
 
 The site sets Japanese display headings in Shippori Mincho Medium. The full
 Japanese face is ~1.4MB per weight, so only the glyphs the site actually uses
-are shipped, plus the whole kana range, ASCII and Japanese punctuation, so
-ordinary copy edits do not fall outside the subset.
+are shipped.
 
-Anything outside it still renders: browsers fall back per glyph, so an unknown
-kanji is drawn by the next family in --font-jp-serif rather than as tofu. It
-will look different, though, so run this after changing Japanese heading copy:
+The glyph list is derived from the RENDERED pages, not from the markup. The
+serif stack is applied by page CSS to h4 and to spans as well as to h1-h3, so
+scraping tags misses glyphs - that is how 43 kanji, including every character
+of the headings 収益型 and 再生型, ended up outside the subset and painting in
+a fallback face. tools/ja-display-glyphs.txt holds the derived list; regenerate
+it by loading all 16 pages, opening every panel, tab and disclosure, and
+collecting the own-text of every element whose computed font-family contains
+"Shippori".
+
+Nothing outside the list is shipped, so a Japanese copy edit that introduces a
+new kanji will fall back until this is re-run. --check exists to catch exactly
+that; run it after changing Japanese display copy:
 
     python3 tools/subset-ja-serif.py            # regenerate
     python3 tools/subset-ja-serif.py --check    # fail if a glyph is missing
@@ -25,25 +33,14 @@ PKG = '@fontsource/shippori-mincho@5.3.0'
 WEIGHT = '500'
 OUT = os.path.join(ROOT, 'assets/fonts/ShipporiMincho-Medium.subset.woff2')
 
-# Elements the stylesheet renders in the display serif on Japanese pages.
-DISPLAY = re.compile(r'<(h1|h2|h3)\b[^>]*>(.*?)</\1>|<([a-z]+)\b[^>]*class="[^"]*\bjp-display\b[^"]*"[^>]*>(.*?)</\3>', re.S)
-
-KANA = ''.join(chr(c) for c in list(range(0x3041, 0x3097)) + list(range(0x309B, 0x30FF)))
-ASCII = ''.join(chr(c) for c in range(0x20, 0x7F))
-PUNCT = '、。・「」『』（）〈〉《》【】〔〕—…‥ー〜％＆／：；！？，．０１２３４５６７８９〇々'
+# Derived from the rendered pages, not from the markup. See the module docstring.
+GLYPHS = os.path.join(ROOT, 'tools/ja-display-glyphs.txt')
 
 
 def used_chars():
-    chars = set()
-    for f in sorted(glob.glob(os.path.join(ROOT, 'ja/**/*.html'), recursive=True)):
-        s = io.open(f, encoding='utf-8').read()
-        body = s[s.index('<body'):] if '<body' in s else s
-        for m in DISPLAY.finditer(body):
-            t = m.group(2) or m.group(4) or ''
-            t = re.sub(r'<[^>]+>', '', t)
-            t = re.sub(r'&[a-z]+;|&#\d+;', '', t)
-            chars |= set(t.strip())
-    return chars
+    if not os.path.exists(GLYPHS):
+        sys.exit('missing %s - regenerate it from the rendered pages first' % GLYPHS)
+    return {c for c in io.open(GLYPHS, encoding='utf-8').read() if c.strip()}
 
 
 def source_font(tmp):
@@ -61,7 +58,7 @@ def main():
                     help='report glyphs the shipped subset is missing, and exit non-zero')
     args = ap.parse_args()
 
-    wanted = used_chars() | set(KANA) | set(ASCII) | set(PUNCT)
+    wanted = used_chars()
 
     if args.check:
         from fontTools.ttLib import TTFont

@@ -1240,7 +1240,12 @@ html[lang="ja"] .enq-cta { line-height: var(--lh-base); }
    closes it — the markup says so with .jt. It was declared on three of the
    five Japanese pages and used on five, which left the spans on Home and
    Investment Focus doing nothing. Declared once, here. */
-html[lang="ja"] .jt { white-space: nowrap; }
+/* .jt only protects a line break, so it must not change the face. Without
+   the inherit, :lang(ja) in colors_and_type.css matches the span directly
+   and sets the gothic stack on it, so every protected token inside a
+   Mincho heading was painting in gothic while the rest of the heading was
+   in Mincho. */
+html[lang="ja"] .jt { white-space: nowrap; font-family: inherit; }
 
 /* =====================================================================
    REDUCED MOTION — a floor under the per-component rules above. Those
