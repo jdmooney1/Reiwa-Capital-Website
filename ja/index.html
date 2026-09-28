@@ -108,8 +108,15 @@
     .hi { padding: 60px 0 52px; }
     .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: 18px 0; }
     .hi-op { padding-top: 14px; }
+    /* The three blocks read as a list at this width, so the group aligns to
+       the same left edge as everything else in the shell. */
+    .hi-op-k { justify-content: flex-start; text-align: left; }
+    .hi-op-v, .hi-op-s { text-align: left; }
     .hi-op-v { font-size: 21px; }
-    .hi-op-d { max-width: none; }
+    /* Full width here ran to ~95 characters at the top of the range, so the
+       block keeps the site's body measure rather than the column's width. */
+    .hi-op-d { max-width: var(--measure-body); margin-left: 0; margin-right: 0; text-align: left; }
+    .hi-ops-foot { text-align: left; }
     .hi-ops-link { margin-top: 18px; }
   }
 
