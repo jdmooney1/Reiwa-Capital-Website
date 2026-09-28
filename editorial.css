@@ -78,7 +78,7 @@ body { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior
 /* The bar is the header whenever JS is off, so it takes the header's layer.
    Without it the bar paints under the first section's full-bleed image on
    every page that opens with one, and none of its links can be clicked. */
-.noscript-bar { position: relative; z-index: 100; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 16px var(--gutter); background: var(--paper-warm); border-bottom: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); }
+.noscript-bar { position: relative; z-index: 100; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 16px var(--gutter); background: var(--paper-warm); border-bottom: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); color: var(--ink); }
 .noscript-bar strong { font-weight: 500; }
 .noscript-bar nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
 .noscript-bar a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
@@ -215,7 +215,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   min-height: 32px;
   padding: 5px 0;
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(13px, 0.3vw + 11.7px, 14.5px);
+  font-size: var(--type-caption);
   font-weight: 400;
   letter-spacing: 0.004em;
   line-height: 1.2;
@@ -304,7 +304,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   align-items: center;
   min-height: 48px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: var(--type-body);
   line-height: 1.2;
   color: var(--ink-2);
   text-decoration: none;
@@ -373,7 +373,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .lang-switch [data-lang] {
   font: inherit;
   font-family: 'DM Sans', sans-serif;
-  font-size: 12.5px;
+  font-size: var(--type-micro);
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -473,7 +473,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 }
 .nn-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(22px, 1vw + 12px, 28px);
+  font-size: var(--type-h3);
   line-height: 1.08;
   letter-spacing: -0.012em;
   font-weight: 500;
@@ -484,7 +484,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
    size: the size that used to live on this rule was written for the compact
    Japanese NEXT block that no longer exists, and its specificity was beating
    the band rule below — a 25% EN/JA gap nobody chose. */
-html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-height: 1.32; letter-spacing: 0.01em; }
+html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0.01em; }
 .nn-title-row { grid-column: 2; justify-self: end; display: flex; align-items: baseline; gap: 8px; }
 .nn-arrow { display: inline-block; flex: none; transition: transform 200ms var(--ease-out); }
 /* Arrow moves; the title never does. One text-link language site-wide. */
@@ -499,12 +499,12 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
 /* The section label is a quiet line of ordinary sentence case, not a tracked
    uppercase rule. Uppercase tracking reads as a legacy corporate device and
    competes with the heading beneath it for the same attention. */
-.h-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0; }
-.h-h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.4vw, 38px); line-height: 1.15; letter-spacing: -0.014em; color: var(--ink); margin: 0; text-wrap: pretty; }
-.h-body { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15.2px + 0.25vw, 17.5px); line-height: 1.6; color: var(--ink-2); margin: 0; }
+.h-eyebrow { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin: 0; }
+.h-h2 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.15; letter-spacing: -0.014em; color: var(--ink); margin: 0; text-wrap: pretty; }
+.h-body { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body); line-height: 1.6; color: var(--ink-2); margin: 0; }
 /* The Index — a numeral led by a small filled sumire square. The one
    brand mark that runs through the numbered sections. */
-.h-num { display: inline-flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.h-num { display: inline-flex; align-items: center; gap: 9px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); font-weight: 500; letter-spacing: 0.06em; line-height: 1; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .h-num::before { content: ""; display: inline-block; width: 4px; height: 4px; background: var(--reiwa-node, #5E3D78); flex: none; }
 /* Design lab · one arrowhead drawing everywhere: 1.4 stroke, round cap,
    round join. Sizes, positions and hover motion are unchanged. */
@@ -539,18 +539,18 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
 }
 .nn-text { display: block; min-width: 0; }
 .nextnav--band .nn-text { justify-self: end; }
-.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: clamp(12px, 1.4vw, 18px); }
+.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: clamp(12px, 1.4vw, 18px); }
 /* An onward link, not a second headline. At 46px it competed with the H1 of
    the page above it and the band ran to 228px; it now closes the page in
    about two thirds of that. */
-.nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 17px + 1.05vw, 32px); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
-.nn-lead { display: block; margin-top: clamp(8px, 0.9vw, 12px); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 19px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+.nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
+.nn-lead { display: block; margin-top: clamp(8px, 0.9vw, 12px); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
 .nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
 .nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(8px); }
 .nextnav--band .nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
 @media (max-width: 768px) {
   .nextnav--band .nn-inner { grid-template-columns: 1fr; padding: 52px var(--gutter) 56px; row-gap: 0; }
-  .nextnav--band .nn-title { font-size: clamp(32px, 7.5vw, 40px); }
+  .nextnav--band .nn-title { font-size: var(--type-h2); }
   /* Design lab · single column keeps the right edge: the arrow takes its own
      row beneath the text rather than returning to the left margin. */
   .nextnav--band .nn-arrow { grid-column: 1; justify-self: end; margin: 26px 0 0; width: 40px; height: 22px; }
@@ -570,7 +570,7 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
   align-items: center;
   justify-content: space-between;
 }
-.ff-copy { font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,0.78); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ff-copy { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,0.78); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
@@ -590,14 +590,14 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
    centred between the copyright and Privacy. LinkedIn is gone. */
 .footer-quiet .footer-inner { height: 72px; position: relative; }
 .footer-quiet .ff-symbol { height: 22px; }
-.footer-quiet .ff-copy { color: rgba(252, 250, 241, 0.60); font-size: 12px; }
-.footer-quiet .ff-link { color: rgba(252, 250, 241, 0.60); font-size: 12px; }
+.footer-quiet .ff-copy { color: rgba(252, 250, 241, 0.60); font-size: var(--type-micro); }
+.footer-quiet .ff-link { color: rgba(252, 250, 241, 0.60); font-size: var(--type-micro); }
 .footer-quiet .ff-link:hover,
 .footer-quiet .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .footer-quiet :focus-visible { outline-color: var(--paper-warm); }
 @media (max-width: 768px) {
   .footer-quiet .footer-inner { height: 62px; }
-  .footer-quiet .ff-copy, .footer-quiet .ff-link { font-size: 11.5px; }
+  .footer-quiet .ff-copy, .footer-quiet .ff-link { font-size: var(--type-micro); }
 }
 /* Right-hand side: Privacy alone. One link, no list. */
 .ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
@@ -611,14 +611,14 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
   .footer-quiet .ff-right { justify-content: center; flex-wrap: wrap; }
 }
 .ff-link {
-  font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
+  font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
   color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
   display: inline-flex; align-items: center; min-height: 44px; margin: -16px 0;
   transition: color 220ms var(--ease-out);
 }
 .ff-link:hover, .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .ff-jalinks { max-width: var(--container); margin: 0 auto; padding: 22px var(--gutter) 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
-.ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 400; letter-spacing: 0.01em; color: rgba(252,250,241,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
+.ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; letter-spacing: 0.01em; color: rgba(252,250,241,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
 .ff-jalinks a:hover { color: var(--paper-warm); }
 @media (max-width: 768px) { .ff-jalinks { padding-top: 18px; gap: 8px 16px; } }
 /* Touch: give the small footer links a comfortable target without changing
@@ -636,15 +636,15 @@ html[lang="ja"] .nn-title { font-size: clamp(28px, 1.9vw + 18px, 46px); line-hei
     padding: 32px var(--gutter);
   }
   .nn-title {
-    font-size: clamp(32px, 3.6vw + 20px, 40px);
+    font-size: var(--type-h2);
     line-height: 1.12;
     text-wrap: balance;
   }
-  html[lang="ja"] .nn-title { font-size: clamp(27px, 3vw + 16px, 34px); line-height: 1.4; }
+  html[lang="ja"] .nn-title { font-size: var(--type-h2); line-height: 1.4; }
   .nn-title-row { grid-column: 1; }
   .nn-link:focus-visible { outline-offset: -4px; }
   .footer-inner { height: 72px; }
-  .ff-copy, .ff-link { font-size: 11.5px; }
+  .ff-copy, .ff-link { font-size: var(--type-micro); }
   .ff-symbol { height: 21px; }
 }
 @media (max-width: 340px) {
@@ -1160,15 +1160,15 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
    ===================================================================== */
 .enq { padding: 0 0 clamp(56px, 5.6vw, 84px); }
 .enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
-.enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(18px, 15px + 0.5vw, 22px); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
-.enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 14px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
+.enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 .enq-d + .enq-d { margin-top: 6px; }
 /* The enquiry treatment, defined once. Company's three routes and the
    enquiry row that closes About, Approach and Investment Focus are the same
    gesture — air, a label, an arrow, no button — and were carried by two
    near-identical rule sets. Company keeps only its own placement. */
 .co-cta,
-.enq-cta { display: inline-flex; align-items: baseline; gap: 12px; white-space: nowrap; padding: 11px 0 10px; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; color: var(--ink); transition: color 200ms var(--ease-out); }
+.enq-cta { display: inline-flex; align-items: baseline; gap: 12px; white-space: nowrap; padding: 11px 0 10px; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); color: var(--ink); transition: color 200ms var(--ease-out); }
 .co-cta .h-arrow,
 .enq-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
 @media (hover: hover) {
