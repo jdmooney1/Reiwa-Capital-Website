@@ -10,7 +10,7 @@
   --paper-soft:   #F7F2E8;            /* very faint cream */
   --ink:          var(--plum);        /* Sumire purple — primary text (→ canonical) */
   --ink-2:        #4F4458;
-  --ink-3:        #6E637A;            /* lifted to ≥4.5:1 on cream (was #807388) */
+  --ink-3:        #63596E;            /* ≥4.5:1 on cream, paper-soft and both pale hero grounds (was #6E637A, before that #807388) */
   --ink-4:        #928799;            /* lifted for separators/placeholders (was #B0A8B7) */
   --rule:         var(--hairline);                 /* base divider (→ canonical) */
   --rule-soft:    rgba(39, 20, 48, 0.06);          /* retained: fainter-than-hairline variant */
@@ -331,14 +331,14 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .nav-bar.nav-menu-open .nav-rule::after { background: var(--rule); }
 /* Over the dark home hero the whole row inverts, matching the white
    lockup swap craft.js performs on the same class. */
-.nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.78); }
+.nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.86); }
 .nav-bar.nav-over-hero .nav-links a[aria-current="page"] { color: #fff; }
 @media (hover: hover) { .nav-bar.nav-over-hero .nav-links a:hover { color: #fff; } }
 .nav-bar.nav-over-hero .nav-links a:focus-visible { outline-color: #fff; }
 .nav-bar.nav-over-hero .nt-bar { background: #fff; }
 .nav-bar.nav-over-hero .nav-toggle:focus-visible { outline-color: #fff; }
 .nav-bar.nav-over-hero .nav-rule::after { background: rgba(255, 255, 255, 0.22); }
-.nav-bar.nav-over-hero .lang-switch [data-lang] { color: rgba(255, 255, 255, 0.62); }
+.nav-bar.nav-over-hero .lang-switch [data-lang] { color: rgba(255, 255, 255, 0.90); }
 .nav-bar.nav-over-hero .lang-switch [data-lang].is-active { color: #fff; }
 @media (hover: hover) { .nav-bar.nav-over-hero .lang-switch [data-lang]:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
 .nav-bar.nav-over-hero .lang-switch [data-lang]:focus-visible { outline-color: #fff; }
@@ -381,7 +381,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   align-items: center;
   justify-content: center;
   min-height: 40px;
-  min-width: 34px;
+  min-width: 44px;   /* AA target size; the label is unchanged */
   padding: 0 6px;
   margin: 0;
   background: transparent;
@@ -610,6 +610,10 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; margin: 0 0 4px; }
   .footer-quiet .ff-right { justify-content: center; flex-wrap: wrap; }
 }
+/* The footer links measure 41px across, just under the target floor, so
+   they carry the same invisible overlay the nav controls use. */
+.ff-link { position: relative; }
+.ff-link::before { content: ""; position: absolute; left: -3px; right: -3px; top: 50%; transform: translateY(-50%); height: 44px; }
 .ff-link {
   font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
   color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
@@ -1123,6 +1127,10 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
   height: 44px;
   min-height: 100%;
 }
+/* The emblem is a 21px glyph, so the shared -6px overlay only reaches 33px.
+   It sits alone in the middle of the footer bar now that Contact and
+   Disclaimer have gone, so there is room to take it to the 44px floor. */
+.ff-brand::before { left: -12px; right: -12px; }
 .skip-link { min-height: 44px; }
 
 /* The footer gained a Contact route. In Japanese both labels are long
@@ -1221,3 +1229,20 @@ html[lang="ja"] .enq-cta { line-height: var(--lh-base); }
    five Japanese pages and used on five, which left the spans on Home and
    Investment Focus doing nothing. Declared once, here. */
 html[lang="ja"] .jt { white-space: nowrap; }
+
+/* =====================================================================
+   REDUCED MOTION — a floor under the per-component rules above. Those
+   cover the reveals and the parallax; this catches the colour and
+   background transitions they leave behind, so nothing animates for a
+   reader who has asked for stillness. Nothing in the site listens for
+   transitionend or animationend, so collapsing the durations changes no
+   behaviour - only the time it takes to reach the same state.
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
