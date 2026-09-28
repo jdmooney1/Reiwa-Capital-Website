@@ -161,7 +161,11 @@ p { text-wrap: pretty; }
    layout identical to the one the measurement produces, so nothing moves.
    Measured, not assumed: 69px above the nav break, 65px at or below it. */
 :root { --nav-h: 69px; }
-@media (max-width: 1100px) { :root { --nav-h: 65px; } }
+/* The true rendered height below 1100px, measured. craft.js corrects this
+   token to the real value once the header exists; when the static value
+   disagreed, the empty-nav reservation was 4px too tall and <main> jumped
+   up by that much as the header appeared - the whole of the site's CLS. */
+@media (max-width: 1100px) { :root { --nav-h: 61px; } }
 /* …and the wrapper holds that height open until the shell fills it, so the
    first layout already has the header's box in it and <main> does not drop
    by 69px the moment the script runs. :empty stops matching as soon as the
@@ -821,6 +825,14 @@ body[data-page="about"] .page-head {
   background-image:
     linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
     url("assets/imagery/about-hero-blur.webp");
+  /* Same frame in AVIF where the browser takes it. The hero also has an
+     <img>, and if only one of the two moved to AVIF the page fetched both
+     formats instead of one. A browser without image-set() keeps the webp
+     declaration above, and its <img> falls back to webp too. */
+  background-image:
+    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
+    image-set(url("assets/imagery/about-hero-blur.avif") type("image/avif"),
+              url("assets/imagery/about-hero-blur.webp") type("image/webp"));
 }
 body[data-page="approach"] .page-head {
   background-image:
