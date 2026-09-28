@@ -99,7 +99,7 @@
   .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(21px, 15px + 0.8vw, 27px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
   .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-d { margin: 10px auto 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 20em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
   .hi-ops-foot { text-align: center; }
@@ -116,7 +116,7 @@
     .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s::before { content: "・"; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; font-size: var(--type-h3); }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
     /* Full width here ran to ~95 characters at the top of the range, so the
        block keeps the site's body measure rather than the column's width. */
     .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }

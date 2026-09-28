@@ -91,7 +91,7 @@
   .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 17px + 1vw, 32px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
   /* The two stages inside each phase, as a small label under the phase name. */
   .hi-op-s { display: block; margin-top: 7px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-sep { margin: 0 4px; }
@@ -110,7 +110,7 @@
     .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s::before { content: "·"; margin: 0 4px; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; font-size: var(--type-h3); }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
     /* Full width here ran to ~95 characters at the top of the range, so the
        block keeps the site's body measure rather than the column's width. */
     .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
