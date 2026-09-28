@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=23">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=89">
+<link rel="stylesheet" href="editorial.css?v=90">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -79,7 +79,7 @@
 
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
   .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
-  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: 1060px; text-wrap: pretty; }
+  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
      replace restated the four principles in the aubergine field below. */
   /* Three strands under the statement: the verbs read as one sequence on
@@ -212,7 +212,7 @@
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
   .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 40ch; }
   .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }

@@ -1161,7 +1161,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .enq { padding: 0 0 clamp(56px, 5.6vw, 84px); }
 .enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
 .enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
-.enq-d { margin: 9px 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+.enq-d { margin: 9px 0 0; max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 .enq-d + .enq-d { margin-top: 6px; }
 /* The enquiry treatment, defined once. Company's three routes and the
    enquiry row that closes About, Approach and Investment Focus are the same
