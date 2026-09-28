@@ -30,7 +30,8 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=24">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=96">
+<link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../editorial.css?v=98">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -41,7 +42,7 @@
      desktop never requests the mobile one. The images themselves stay
      loading="lazy": the layout display:none's the half it is not using, and
      lazy is what stops that half being fetched at all. -->
-<link rel="preload" as="image" href="../assets/imagery/focus-hero-blur.webp">
+<link rel="preload" as="image" imagesrcset="../assets/imagery/focus-hero-blur.avif" type="image/avif">
 <link rel="preload" as="image" href="../assets/imagery/focus-income-balanced.webp" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="../assets/imagery/focus-repositioning-panorama-900.webp" imagesrcset="../assets/imagery/focus-repositioning-panorama-900.webp 900w, ../assets/imagery/focus-repositioning-panorama.webp 1535w" imagesizes="45vw" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="../assets/imagery/focus-income-master-1100.webp" media="(max-width: 760px)" fetchpriority="high">
@@ -88,6 +89,13 @@
     background-image:
       linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
       url("../assets/imagery/focus-hero-blur.webp");
+    /* Same frame in AVIF where the browser takes it. A browser that does
+       not parse image-set() drops this declaration and keeps the webp one
+       above, so nothing is lost. */
+    background-image:
+      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      image-set(url("../assets/imagery/focus-hero-blur.avif") type("image/avif"),
+                url("../assets/imagery/focus-hero-blur.webp") type("image/webp"));
   }
   @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
   @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }

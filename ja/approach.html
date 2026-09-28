@@ -30,13 +30,14 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=24">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../editorial.css?v=96">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<link rel="preload" as="image" href="../assets/imagery/approach-hero-blur.webp" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="../assets/imagery/approach-hero-blur.avif" type="image/avif" fetchpriority="high">
 <style>
   /* =====================================================================
      投資アプローチ — the Japanese composition of the approved English
@@ -78,6 +79,13 @@
     background-image:
       linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
       url("../assets/imagery/approach-hero-blur.webp");
+    /* Same frame in AVIF where the browser takes it. A browser that does
+       not parse image-set() drops this declaration and keeps the webp one
+       above, so nothing is lost. */
+    background-image:
+      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      image-set(url("../assets/imagery/approach-hero-blur.avif") type("image/avif"),
+                url("../assets/imagery/approach-hero-blur.webp") type("image/webp"));
   }
   /* Internal-page hero pattern, as set on About. */
   .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
