@@ -213,7 +213,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   display: inline-flex;
   align-items: center;
   min-height: 32px;
-  padding: 5px 0;
+  padding: var(--space-1) 0;
   font-family: 'DM Sans', sans-serif;
   font-size: var(--type-caption);
   font-weight: 400;
@@ -313,7 +313,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .nav-drawer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 @media (max-width: 1100px) {
-  .nav-inner { padding-top: 10px; padding-bottom: 10px; }
+  .nav-inner { padding-top: var(--space-2); padding-bottom: var(--space-2); }
   .nav-links { display: none; }
   .nav-toggle { display: block; }
   .nav-drawer { display: block; }
@@ -553,7 +553,7 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   .nextnav--band .nn-title { font-size: var(--type-h2); }
   /* Design lab · single column keeps the right edge: the arrow takes its own
      row beneath the text rather than returning to the left margin. */
-  .nextnav--band .nn-arrow { grid-column: 1; justify-self: end; margin: 26px 0 0; width: 40px; height: 22px; }
+  .nextnav--band .nn-arrow { grid-column: 1; justify-self: end; margin: var(--space-5) 0 0; width: 40px; height: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .nextnav--band .nn-link, .nextnav--band .nn-arrow { transition: none; } }
 
@@ -613,14 +613,14 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 .ff-link {
   font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
   color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
-  display: inline-flex; align-items: center; min-height: 44px; margin: -16px 0;
+  display: inline-flex; align-items: center; min-height: 44px; margin: calc(var(--space-4) * -1) 0;
   transition: color 220ms var(--ease-out);
 }
 .ff-link:hover, .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .ff-jalinks { max-width: var(--container); margin: 0 auto; padding: 22px var(--gutter) 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
 .ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; letter-spacing: 0.01em; color: rgba(252,250,241,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
 .ff-jalinks a:hover { color: var(--paper-warm); }
-@media (max-width: 768px) { .ff-jalinks { padding-top: 18px; gap: 8px 16px; } }
+@media (max-width: 768px) { .ff-jalinks { padding-top: var(--space-4); gap: var(--space-2) var(--space-4); } }
 /* Touch: give the small footer links a comfortable target without changing
    their type size or the footer's height. */
 @media (hover: none) {
@@ -694,7 +694,7 @@ main { flex: 1 0 auto; }
   font-weight: 500;
   color: var(--ink);
   border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 2px;
+  padding-bottom: var(--space-1);
   transition: border-color var(--dur-2) var(--ease-out);
 }
 .link:hover { border-color: var(--ink); }
@@ -830,7 +830,7 @@ body[data-page="focus"] .page-head {
 }
 .page-head .ja {
   display: inline-block;
-  margin-top: 28px;
+  margin-top: var(--space-5);
   font-family: var(--font-jp);
   font-size: var(--type-label);
   font-weight: 500;
@@ -866,8 +866,8 @@ html.bg-fade.bg-loaded body[data-page="focus"] .page-head::before { opacity: 0; 
 }
 .ed-row > :first-child { grid-column: span 3; }
 .ed-row > :last-child { grid-column: span 9; }
-.ed-row + .ed-row { margin-top: 80px; }
-.ed-row .eyebrow { padding-top: 6px; display: block; }
+.ed-row + .ed-row { margin-top: var(--space-8); }
+.ed-row .eyebrow { padding-top: var(--space-1); display: block; }
 .ed-row h2 {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
@@ -904,7 +904,7 @@ html.bg-fade.bg-loaded body[data-page="focus"] .page-head::before { opacity: 0; 
 
 @media (max-width: 1024px) {
   .ed-row { grid-template-columns: 1fr; gap: 16px; }
-  .ed-row + .ed-row { margin-top: 56px; }
+  .ed-row + .ed-row { margin-top: var(--space-7); }
 }
 
 /* Reveal class retained for markup compatibility; content always visible */
@@ -979,9 +979,9 @@ select:focus-visible,
   /* Shared page head — about + sectors had no mobile override and kept the
      full desktop padding. Bring the headline up and let it breathe less. */
   .page-head .inner { padding: 72px var(--gutter) 44px; }
-  .page-head .marker { margin-bottom: 44px; }
+  .page-head .marker { margin-bottom: var(--space-7); }
   .page-head h1 { max-width: 16ch; }
-  .page-head .ja { margin-top: 22px; }
+  .page-head .ja { margin-top: var(--space-5); }
 
   /* Headings break by balance at narrow widths so a lone orphan word never
      drops to its own line; long-form body keeps text-wrap: pretty. This is
@@ -1006,7 +1006,7 @@ select:focus-visible,
   top: 12px;
   left: 12px;
   z-index: 200;
-  padding: 12px 18px;
+  padding: var(--space-3) var(--space-4);
   background: var(--ink);
   color: var(--paper-warm);
   font-family: 'DM Sans', sans-serif;
@@ -1140,8 +1140,8 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
     justify-items: center;
     align-content: center;
     row-gap: 2px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
   }
   /* relative, not static: the emblem's 44px touch overlay is ::before with
      left/right -6px, so it must keep anchoring to the emblem itself. Against
@@ -1162,7 +1162,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
 .enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
 .enq-d { margin: 9px 0 0; max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
-.enq-d + .enq-d { margin-top: 6px; }
+.enq-d + .enq-d { margin-top: var(--space-1); }
 /* The enquiry treatment, defined once. Company's three routes and the
    enquiry row that closes About, Approach and Investment Focus are the same
    gesture — air, a label, an arrow, no button — and were carried by two
