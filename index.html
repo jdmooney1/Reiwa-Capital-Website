@@ -101,15 +101,18 @@
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
     .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: 18px 0; }
-    .hi-op { padding-top: 14px; }
-    /* The three blocks read as a list at this width, so the group aligns to
-       the same left edge as everything else in the shell. */
-    .hi-op-k { justify-content: flex-start; text-align: left; }
-    .hi-op-v, .hi-op-s { text-align: left; }
-    .hi-op-v { font-size: 24px; }
+    /* Four type levels compress to three: the number and the sub-label pair
+       into one kicker above the name. CSS only - the DOM order stays
+       k, v, s, d and grid places them, so no markup moves and no text
+       changes. The separator is a pseudo-element for the same reason. */
+    .hi-op { padding-top: 14px; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
+    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
+    .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
+    .hi-op-s::before { content: "·"; margin: 0 4px; }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; text-align: left; font-size: var(--type-h3); }
     /* Full width here ran to ~95 characters at the top of the range, so the
        block keeps the site's body measure rather than the column's width. */
-    .hi-op-d { max-width: var(--measure-body); margin-left: 0; margin-right: 0; text-align: left; }
+    .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin-left: 0; margin-right: 0; text-align: left; }
     .hi-ops-foot { text-align: left; }
     .hi-ops-link { margin-top: 18px; }
   }
