@@ -154,19 +154,6 @@
      is a local-only fallback — nothing is downloaded for it. */
   --font-jp-serif: 'DM Sans', 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'Noto Serif JP', serif;
 
-  /* Scale — restrained, slightly classical ratio */
-  --text-xs:   11px;   /* labels, legal, tiny caps */
-  --text-sm:   13px;   /* secondary, captions */
-  --text-base: 15px;   /* body */
-  --text-md:   17px;   /* emphasised body */
-  --text-lg:   20px;
-  --text-xl:   24px;
-  --text-2xl:  32px;
-  --text-3xl:  42px;
-  --text-4xl:  56px;
-  --text-5xl:  72px;
-  --text-6xl:  96px;
-  --text-display: 128px;
 
   /* ----------------------------------------------------- ROLE TYPE SCALE
      8 tiers on a ~1.25 ratio. Every heading/body role maps to ONE tier.
@@ -345,9 +332,9 @@
    Use these classes (or inherit in elements) rather than raw variables.
    ====================================================================== */
 
-body, .body {
+body {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--type-body);
   line-height: var(--lh-base);
   font-weight: 400;
   color: var(--fg-1);
@@ -360,103 +347,57 @@ body, .body {
 
 /* Display — for hero statements and section openers. DM Sans 400; any stray
    em/i is forced upright so italics never appear. */
-.display, h1.display {
-  font-family: var(--font-display);
-  font-size: var(--text-6xl);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  font-weight: 400;
-  color: var(--fg-1);
-}
-.display em, .display i { font-style: normal; }
 
 /* Headings */
-h1, .h1 {
+h1 {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
+  font-size: var(--type-page-title);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
   font-weight: 400;
   color: var(--fg-1);
 }
-h2, .h2 {
+h2 {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
+  font-size: var(--type-h2);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
   font-weight: 400;
   color: var(--fg-1);
 }
-h3, .h3 {
+h3 {
   font-family: var(--font-sans);
-  font-size: var(--text-xl);
+  font-size: var(--type-h3);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
   font-weight: 500;
   color: var(--fg-1);
 }
-h4, .h4 {
+h4 {
   font-family: var(--font-sans);
-  font-size: var(--text-md);
+  font-size: var(--type-body-l);
   line-height: var(--lh-snug);
   font-weight: 500;
   color: var(--fg-1);
 }
 
-p, .p {
+p {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--type-body);
   line-height: var(--lh-loose);
   color: var(--fg-2);
   max-width: var(--measure);
 }
 
-.lede {
-  font-family: var(--font-sans);
-  font-size: var(--text-lg);
-  line-height: var(--lh-base);
-  color: var(--fg-1);
-  font-weight: 400;
-  max-width: 54ch;
-}
-
-small, .caption {
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  line-height: var(--lh-base);
-  color: var(--fg-3);
-}
 
 
-code, .mono {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  color: var(--fg-1);
-}
+
 
 /* Numeric — tabular for tables, charts */
-.numeric {
-  font-family: var(--font-sans);
-  font-variant-numeric: tabular-nums lining-nums;
-  letter-spacing: -0.01em;
-}
 
 /* Giant number — hero figure ("€2.4B AUM", "42 assets") */
-.figure {
-  font-family: var(--font-display);
-  font-size: var(--text-5xl);
-  line-height: 1;
-  letter-spacing: var(--ls-tight);
-  font-weight: 400;
-  color: var(--fg-1);
-  font-variant-numeric: lining-nums;
-}
 
 /* Japanese support class */
-.ja {
-  font-family: var(--font-jp);
-  letter-spacing: 0.04em;
-}
 
 /* Horizontal rule — hairline, full width */
 hr, .rule {
