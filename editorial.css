@@ -75,7 +75,10 @@ body { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior
    is not the approved footer, so the "no navigation list in the footer"
    rule is untouched — it just guarantees every page keeps working without
    JS: identity, all five pages + Privacy, email, LinkedIn. */
-.noscript-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 16px var(--gutter); background: var(--paper-warm); border-bottom: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); }
+/* The bar is the header whenever JS is off, so it takes the header's layer.
+   Without it the bar paints under the first section's full-bleed image on
+   every page that opens with one, and none of its links can be clicked. */
+.noscript-bar { position: relative; z-index: 100; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 16px var(--gutter); background: var(--paper-warm); border-bottom: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); }
 .noscript-bar strong { font-weight: 500; }
 .noscript-bar nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
 .noscript-bar a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
@@ -335,16 +338,16 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .nav-bar.nav-over-hero .nt-bar { background: #fff; }
 .nav-bar.nav-over-hero .nav-toggle:focus-visible { outline-color: #fff; }
 .nav-bar.nav-over-hero .nav-rule::after { background: rgba(255, 255, 255, 0.22); }
-.nav-bar.nav-over-hero .lang-switch button { color: rgba(255, 255, 255, 0.62); }
-.nav-bar.nav-over-hero .lang-switch button.is-active { color: #fff; }
-@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch button:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
-.nav-bar.nav-over-hero .lang-switch button:focus-visible { outline-color: #fff; }
+.nav-bar.nav-over-hero .lang-switch [data-lang] { color: rgba(255, 255, 255, 0.62); }
+.nav-bar.nav-over-hero .lang-switch [data-lang].is-active { color: #fff; }
+@media (hover: hover) { .nav-bar.nav-over-hero .lang-switch [data-lang]:not(.is-active):hover { color: rgba(255, 255, 255, 0.86); } }
+.nav-bar.nav-over-hero .lang-switch [data-lang]:focus-visible { outline-color: #fff; }
 .nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
 /* Once the menu is open the panel is the ground, so the row reads on cream
    again even while the bar is still nominally over the hero. */
 .nav-bar.nav-over-hero.nav-menu-open .nt-bar { background: var(--ink); }
-.nav-bar.nav-over-hero.nav-menu-open .lang-switch button { color: var(--ink-3); }
-.nav-bar.nav-over-hero.nav-menu-open .lang-switch button.is-active { color: var(--ink); }
+.nav-bar.nav-over-hero.nav-menu-open .lang-switch [data-lang] { color: var(--ink-3); }
+.nav-bar.nav-over-hero.nav-menu-open .lang-switch [data-lang].is-active { color: var(--ink); }
 .nav-bar.nav-over-hero.nav-menu-open .lang-switch .ls-sep { background: var(--rule-strong); }
 
 /* The logo sits over the headline: the whole row steps back rather than
@@ -367,7 +370,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   align-items: center;
   gap: 2px;
 }
-.lang-switch button {
+.lang-switch [data-lang] {
   font: inherit;
   font-family: 'DM Sans', sans-serif;
   font-size: 12.5px;
@@ -389,9 +392,9 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   touch-action: manipulation;
   transition: color 200ms var(--ease-out);
 }
-.lang-switch button.is-active { color: var(--ink); font-weight: 500; cursor: default; }
-@media (hover: hover) { .lang-switch button:not(.is-active):hover { color: var(--ink-2); } }
-.lang-switch button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lang-switch [data-lang].is-active { color: var(--ink); font-weight: 500; cursor: default; }
+@media (hover: hover) { .lang-switch [data-lang]:not(.is-active):hover { color: var(--ink-2); } }
+.lang-switch [data-lang]:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .lang-switch .ls-sep {
   display: block;
   width: 1px;
@@ -399,7 +402,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   background: var(--rule-strong);
   opacity: 0.9;
 }
-@media (prefers-reduced-motion: reduce) { .lang-switch button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .lang-switch [data-lang] { transition: none; } }
 
 /* =====================================================================
    FOOTER — the final moment. A deep sumire banner carries the mark in
@@ -1062,8 +1065,8 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
    of half the gap to the next control, so neighbouring targets never
    overlap.
    ===================================================================== */
-.nav-links a, .lang-switch button, .nav-logo { position: relative; touch-action: manipulation; }
-.lang-switch button::before,
+.nav-links a, .lang-switch [data-lang], .nav-logo { position: relative; touch-action: manipulation; }
+.lang-switch [data-lang]::before,
 .nav-logo::before {
   content: "";
   position: absolute;
@@ -1072,7 +1075,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
   height: 44px;
   min-height: 100%;
 }
-.lang-switch button::before { left: -2px; right: -2px; }
+.lang-switch [data-lang]::before { left: -2px; right: -2px; }
 /* The footer symbol repeats the header logo, so its reach stops at its own
    edges rather than crossing the privacy link beside it. */
 .nav-logo::before { left: 0; right: 0; }

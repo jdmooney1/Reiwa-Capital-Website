@@ -64,6 +64,22 @@
     return document.documentElement.getAttribute('lang') || 'en';
   }
 
+  /* EN / JA is a navigation between two trees of files, so the inactive
+     language is a real link. Its href is the counterpart URL the page
+     declares on <body>, which makes the path between the trees crawlable
+     and keeps it working with JS off. The active language stays a button
+     that goes nowhere and carries aria-pressed. A page that declares no
+     counterpart keeps a plain button, because there is nowhere to send the
+     reader and a link to nothing is worse than a control that does not act. */
+  function langControls() {
+    const l = lang();
+    const cross = document.body.dataset[(l === 'ja' ? 'en' : 'ja') + 'Url'] || '';
+    const one = (code, label, text) => (code !== l && cross)
+      ? `<a href="${cross}" hreflang="${code}" data-lang="${code}" aria-label="${label}">${text}</a>`
+      : `<button type="button" data-lang="${code}" aria-label="${label}">${text}</button>`;
+    return `${one('en', 'English', 'EN')}<span class="ls-sep" aria-hidden="true"></span>${one('ja', '日本語', 'JA')}`;
+  }
+
   function renderNav() {
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
     if (locale === 'ja') renderNavJa(); else renderNavEn();
@@ -107,9 +123,7 @@
           <ul class="nav-links">${links}</ul>
           <div class="nav-right">
             <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
-              <button type="button" data-lang="en" aria-label="English">EN</button>
-              <span class="ls-sep" aria-hidden="true"></span>
-              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
+              ${langControls()}
             </div>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="rc-nav" aria-label="Menu" data-aria-en="Menu" data-aria-ja="メニュー">
               <span class="nt-bar" aria-hidden="true"></span>
@@ -161,9 +175,7 @@
           <ul class="nav-links">${links}</ul>
           <div class="nav-right">
             <div class="lang-switch" role="group" aria-label="言語">
-              <button type="button" data-lang="en" aria-label="English">EN</button>
-              <span class="ls-sep" aria-hidden="true"></span>
-              <button type="button" data-lang="ja" aria-label="日本語">JA</button>
+              ${langControls()}
             </div>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="rc-nav" aria-label="メニュー">
               <span class="nt-bar" aria-hidden="true"></span>
@@ -187,7 +199,15 @@
      the nav needs is the language switch. */
   function wireNav(host) {
     host.querySelectorAll('[data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => swapLanguage(btn.dataset.lang));
+      btn.addEventListener('click', (e) => {
+        /* A modified click belongs to the browser, so the link can still open
+           the other language in a new tab. Every other click goes through
+           swapLanguage(), which is the only path that carries a section
+           fragment across. */
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        swapLanguage(btn.dataset.lang);
+      });
     });
 
     /* Below 1100px the four destinations move into a disclosure panel under
@@ -239,7 +259,10 @@
     document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
       const active = btn.dataset.lang === l;
       btn.classList.toggle('is-active', active);
-      btn.setAttribute('aria-pressed', String(active));
+      /* aria-pressed describes a toggle button. The inactive language is a
+         link, and a link is not pressed or unpressed. */
+      if (btn.tagName === 'BUTTON') btn.setAttribute('aria-pressed', String(active));
+      else btn.removeAttribute('aria-pressed');
     });
   }
 
