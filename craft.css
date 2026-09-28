@@ -35,9 +35,13 @@
    introducing a visible header block or a hard edge. Both languages now
    run the same flat bar over the same hero, so both take the wash. */
 .nav-bar.nav-over-hero {
+  /* Held at strength through the band the labels sit in, rather than
+     fading from the top edge: at 58% the old ramp was down to 0.22 and
+     the switcher measured 1.7:1 over bright sky. 0.56 is the measured
+     minimum that clears 4.5:1 on the lightest grounds sampled. */
   background: linear-gradient(180deg,
-              rgba(16, 11, 20, 0.46) 0%,
-              rgba(16, 11, 20, 0.22) 58%,
+              rgba(16, 11, 20, 0.56) 0%,
+              rgba(16, 11, 20, 0.56) 74%,
               rgba(16, 11, 20, 0) 100%);
 }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }

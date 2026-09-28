@@ -30,9 +30,9 @@
 <link rel="stylesheet" href="../assets/colors_and_type.css?v=24">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=92">
+<link rel="stylesheet" href="../editorial.css?v=96">
 <link rel="stylesheet" href="../brand.css?v=7">
-<link rel="stylesheet" href="../craft.css?v=25">
+<link rel="stylesheet" href="../craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/approach.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -209,7 +209,7 @@
   .tw-mark { display: block; width: 48px; height: auto; }
   .tw-list { margin: 0; display: grid; }
   .tw-item { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px clamp(20px, 2.4vw, 44px); padding: clamp(16px, 1.6vw, 22px) 0; border-top: 1px solid var(--rule); }
-  .tw-sel { appearance: none; background: none; border: 0; margin: 0; padding: 0; min-height: 28px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; text-align: left; font: inherit; color: inherit; outline-offset: 4px; }
+  .tw-sel { appearance: none; background: none; border: 0; margin: 0; padding: 0; min-height: 44px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; text-align: left; font: inherit; color: inherit; outline-offset: 4px; }
   .tw-sel:focus-visible { outline: 2px solid var(--ink); }
   .tw-n { flex: none; box-sizing: border-box; min-width: 30px; margin-top: 0.35em; padding: 2px 6px 1px; border: 1px solid var(--rule-strong); border-radius: 2px; text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12px; line-height: 1.4; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--ink-3); transition: background-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item.is-preview .tw-n { border-color: var(--ink-2); color: var(--ink); }
@@ -297,7 +297,7 @@
 </head>
 <body data-page="approach" data-locale="ja" data-en-url="/approach.html">
 
-<noscript><div class="noscript-bar"><strong><a href="/ja/" aria-label="Reiwa Capital — ホーム">Reiwa Capital</a></strong><nav aria-label="メイン"><a href="about.html">Reiwaについて</a><a href="approach.html">投資アプローチ</a><a href="investment-focus.html">投資方針</a><a href="company.html">事業概要</a><a href="privacy.html">プライバシーポリシー</a><a href="/approach.html" hreflang="en" aria-label="English">EN</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener">LinkedIn</a></span></div></noscript>
+<noscript><div class="noscript-bar"><strong><a href="/ja/" aria-label="Reiwa Capital — ホーム"><span lang="en">Reiwa Capital</span></a></strong><nav aria-label="メイン"><a href="about.html">Reiwaについて</a><a href="approach.html">投資アプローチ</a><a href="investment-focus.html">投資方針</a><a href="company.html">事業概要</a><a href="privacy.html">プライバシーポリシー</a><a href="/approach.html" hreflang="en" aria-label="English">EN</a></nav><span><a href="mailto:info@reiwa-capital.com">info@reiwa-capital.com</a> &middot; <a href="https://www.linkedin.com/company/reiwa-cap/" target="_blank" rel="noopener"><span lang="en">LinkedIn</span></a></span></div></noscript>
 <script>window.__resources={logoBlack:'../assets/logos/lockup-purple.svg',logoWhite:'../assets/logos/lockup-white.svg',symbolPurple:'../assets/logos/symbol-purple.svg',symbolCream:'../assets/logos/symbol-cream.svg'};</script>
 <div data-shell="nav"></div>
 
@@ -374,7 +374,7 @@
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">保有期間中も、実績と環境の変化に照らして投資判断の前提を検証します</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">資産の監督、報告、意思決定の支援</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd>借換え、重要な資本的支出、承認済み事業計画の変更</dd></dl>
-          <div class="lf-blk lf-blk--own"><span class="lf-k">主な業務</span><ul class="lf-own"><li><span class="lf-own-n">モニタリング</span><span class="lf-own-b">承認済みの事業計画に対する賃料、稼働率、賃貸借の変動、NOI、<span class="jt">キャッシュフロー</span></span></li><li><span class="lf-own-n">対処</span><span class="lf-own-b">予算との乖離、リーシングの判断、資本的支出、借換えを含む資金調達、新たな<span class="jt">リスク</span></span></li><li><span class="lf-own-n">報告</span><span class="lf-own-b">実績、評価額、市場の変化、提言、投資家の承認用資料</span></li></ul></div>
+          <div class="lf-blk lf-blk--own"><span class="lf-k">主な業務</span><ul class="lf-own"><li><span class="lf-own-n">モニタリング</span><span class="lf-own-b">承認済みの事業計画に対する賃料、稼働率、賃貸借の変動、<span lang="en">NOI</span>、<span class="jt">キャッシュフロー</span></span></li><li><span class="lf-own-n">対処</span><span class="lf-own-b">予算との乖離、リーシングの判断、資本的支出、借換えを含む資金調達、新たな<span class="jt">リスク</span></span></li><li><span class="lf-own-n">報告</span><span class="lf-own-b">実績、評価額、市場の変化、提言、投資家の承認用資料</span></li></ul></div>
         </article>
         <article class="lf-panel" id="lf-p-5" data-panel="5" aria-labelledby="lf-h-5">
           <h4 class="lf-pan-h" id="lf-h-5"><b>6</b><span>売却</span></h4>
@@ -466,7 +466,7 @@
     <h2 class="ap-h2" id="ic-title">投資家の統制と、調整された実行</h2>
     <dl class="ic-roles">
       <div class="ic-role"><dt>投資家</dt><dd><span class="jt">マンデート</span>を定め、取得・資金調達・重要な資本的支出・売却を承認します。</dd></div>
-      <div class="ic-role"><dt>Reiwa Capital</dt><dd>投資家に助言し、投資家側の視点を一つに保ちながら、各投資に必要な業務を調整します。</dd></div>
+      <div class="ic-role"><dt><span lang="en">Reiwa Capital</span></dt><dd>投資家に助言し、投資家側の視点を一つに保ちながら、各投資に必要な業務を調整します。</dd></div>
       <div class="ic-role"><dt>選任される専門家</dt><dd>法務、税務、鑑定評価、技術、<span class="jt">プロパティマネジメント</span>の業務は、別途選任された専門家が担います。</dd></div>
     </dl>
   </div>
@@ -586,7 +586,7 @@
   paint();
 })();
 </script>
-<script src="../shell.js?v=77"></script>
+<script src="../shell.js?v=78"></script>
 <script src="../craft.js?v=17"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
      (/ja/company.html#contact), not a nav item. Only used when
      <body data-locale="ja">. */
   const NAV_JA = [
-    { href: '/ja/about.html',            label: 'Reiwaについて', key: 'about' },
+    { href: '/ja/about.html',            label: '<span lang="en">Reiwa</span>について', key: 'about' },
     { href: '/ja/approach.html',         label: '投資アプローチ', key: 'approach' },
     { href: '/ja/investment-focus.html', label: '投資方針',      key: 'focus' },
     { href: '/ja/company.html',          label: '事業概要',      key: 'company' },
@@ -47,7 +47,7 @@
      ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
      事業概要 closes the loop rather than pointing onward. */
   const FLOW_JA = {
-    home:     { to: '/ja/about.html',            t: 'Reiwaについて',  lead: '保有の枠組み、注力市場、対象とする投資家',  aria: '次へ：Reiwaについて' },
+    home:     { to: '/ja/about.html',            t: '<span lang="en">Reiwa</span>について',  lead: '保有の枠組み、注力市場、対象とする投資家',  aria: '次へ：Reiwaについて' },
     about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ', aria: '次へ：投資アプローチ' },
     approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか',                aria: '次へ：投資方針' },
     focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先',            aria: '次へ：事業概要' },
@@ -340,7 +340,7 @@
     const footer = `
       <footer class="footer footer-quiet">
         <div class="footer-inner">
-          <span class="ff-copy">© ${new Date().getFullYear()} Reiwa&nbsp;Capital</span>
+          <span class="ff-copy">© ${new Date().getFullYear()} <span lang="en">Reiwa&nbsp;Capital</span></span>
           <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
           <div class="ff-right">
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
