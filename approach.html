@@ -157,20 +157,14 @@
   .lf-groups { display: grid; }
   .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
   .lf-pan-h { margin: 0; }
-  @media (min-width: 1024px) {
-    .lf-over { display: none; }
-    .lf-groups { gap: clamp(30px, 3vw, 44px); }
-    .lf-group + .lf-group .lf-gh { padding-top: 0; }
-    .lf-panel + .lf-panel { margin-top: clamp(22px, 2.2vw, 30px); padding-top: clamp(22px, 2.2vw, 30px); border-top: 1px solid rgba(252,250,241,.14); }
-    .lf-pan-h span { font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: -0.014em; line-height: 1.18; font-size: clamp(19px, 15px + 0.5vw, 23px); }
-  }
-  @media (max-width: 1023px) {
-    .lf-over { display: flex; gap: clamp(22px, 3vw, 36px); overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scroll-snap-type: x proximity; padding-bottom: 2px; }
-    .lf-grp { flex: 0 0 auto; display: grid; grid-template-columns: repeat(2, minmax(104px, max-content)); column-gap: clamp(14px, 2vw, 22px); scroll-snap-align: start; border-bottom: 0; }
-    .lf-tab { width: auto; white-space: nowrap; }
-    .lf-field[data-lf="tabs"] .lf-gh { display: none; }
-    .lf-panel[hidden] { display: none; }
-  }
+  /* Every stage is in the page at every width, in order, under its phase
+     heading. The tab strip is never rendered, so nothing scrolls sideways
+     and nothing claims to be a tablist. */
+  .lf-over { display: none; }
+  .lf-groups { gap: clamp(30px, 3vw, 44px); }
+  .lf-group + .lf-group .lf-gh { padding-top: 0; }
+  .lf-panel + .lf-panel { margin-top: clamp(22px, 2.2vw, 30px); padding-top: clamp(22px, 2.2vw, 30px); border-top: 1px solid rgba(252,250,241,.14); }
+  .lf-pan-h span { font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: -0.014em; line-height: 1.18; font-size: clamp(19px, 15px + 0.5vw, 23px); }
 
   /* --- 3 · Five tests ---------------------------------------------------
      Five questions, permanently visible, in the same key/value grammar as
@@ -454,7 +448,7 @@
   var field  = lf.querySelector('.lf-field');
   var tabs   = [].slice.call(lf.querySelectorAll('.lf-tab'));
   var panels = [].slice.call(lf.querySelectorAll('.lf-panel'));
-  var mq = window.matchMedia('(max-width: 1023px)');
+  var mq = { matches: false, addEventListener: function () {}, addListener: function () {} };
   var bound = false, handlers = [];
 
   function select(i, focus) {
