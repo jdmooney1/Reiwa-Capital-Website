@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="日本の投資家側に立った、欧州不動産のアドバイザリーと保有期間中のモニタリング。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capitalは、日本の投資家側に立って、ロンドン・アムステルダムを中心とする欧州不動産投資を支援します。","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=23">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=24">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=88">
+<link rel="stylesheet" href="../editorial.css?v=92">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -88,18 +88,20 @@
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
   .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
-  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: 1060px; }
+  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
   /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
   /* 三つの機能を、三本の筋として並べる。それぞれに六段階の期間と、
      投資アプローチのページから引いた一文を添える。 */
   .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
-  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: center; }
-  .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
+  /* Body copy is never centred, so the block reads from one left edge and
+     the marker sits on that edge rather than in the middle of it. */
+  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: left; }
+  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(21px, 15px + 0.8vw, 27px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
   .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-d { margin: 10px auto 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 20em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
   .hi-ops-foot { text-align: center; }
@@ -116,7 +118,7 @@
     .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s::before { content: "・"; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; font-size: var(--type-h3); }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
     /* Full width here ran to ~95 characters at the top of the range, so the
        block keeps the site's body measure rather than the column's width. */
     .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
@@ -212,7 +214,7 @@
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
   .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hf-cue { font-family: var(--jp); font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }

@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Investor-side support for Japanese investors acquiring and owning European real estate, with a focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=23">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=24">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=88">
+<link rel="stylesheet" href="editorial.css?v=92">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=25">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -79,7 +79,7 @@
 
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
   .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
-  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: 1060px; text-wrap: pretty; }
+  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
      replace restated the four principles in the aubergine field below. */
   /* Three strands under the statement: the verbs read as one sequence on
@@ -87,11 +87,13 @@
      and a single line drawn from the Approach page. A short bar marks the
      start of each strand, so the three read left to right as one line. */
   .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
-  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: center; }
-  .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
+  /* Body copy is never centred, so the block reads from one left edge and
+     the marker sits on that edge rather than in the middle of it. */
+  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: left; }
+  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 17px + 1vw, 32px); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
   /* The two stages inside each phase, as a small label under the phase name. */
   .hi-op-s { display: block; margin-top: 7px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-sep { margin: 0 4px; }
@@ -110,7 +112,7 @@
     .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s::before { content: "·"; margin: 0 4px; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; font-size: var(--type-h3); }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
     /* Full width here ran to ~95 characters at the top of the range, so the
        block keeps the site's body measure rather than the column's width. */
     .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
@@ -212,7 +214,7 @@
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
   .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 40ch; }
   .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
