@@ -167,9 +167,6 @@
   .am-market { position: relative; }
   .am-market--london { background: var(--cream); }
   .am-market--amsterdam { background: var(--paper-soft); }
-  .am-strip { height: 320px; overflow: hidden; background: var(--ink); }
-  .am-strip img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
-  .am-market--amsterdam .am-strip img { object-position: 50% 42%; }
   .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
   .am-city { margin: 0; }
   .am-pos { margin-top: clamp(10px, 1.1vw, 14px); max-width: 50ch; }
@@ -178,7 +175,6 @@
     .am-market > .shell { flex: 1 0 auto; }
     .am-market--amsterdam .am-mapwrap { order: 2; }
   }
-  @media (max-width: 760px) { .am-strip { height: 200px; } }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
 
@@ -413,7 +409,6 @@
 </section>
 
 <section class="am-market am-market--london" id="london" data-screen-label="03a About — London" aria-labelledby="am-london-title">
-  <div class="am-strip"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="100vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
   <div class="shell">
     <h2 class="h-h2 am-city" id="am-london-title">London</h2>
     <p class="h-body am-pos">Opportunities across income and repositioning strategies</p>
@@ -456,7 +451,6 @@
 </section>
 
 <section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b About — Amsterdam" aria-labelledby="am-amsterdam-title">
-  <div class="am-strip"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="100vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></div>
   <div class="shell">
     <h2 class="h-h2 am-city" id="am-amsterdam-title">Amsterdam</h2>
     <p class="h-body am-pos">Planning discipline rewards well-located, high-quality assets</p>
@@ -517,19 +511,6 @@
 </section>
 
 
-<!-- ================================================================ 5 · CONTACT -->
-<section class="enq" data-screen-label="05 About — contact" aria-labelledby="enq-title">
-  <div class="shell">
-    <div class="enq-row">
-      <div>
-        <h2 class="enq-h" id="enq-title">Contact</h2>
-        <p class="enq-d">Investors: we welcome enquiries from Japanese corporates, family offices, institutions and private investors considering London or Amsterdam.</p>
-        <p class="enq-d">Market: owners, brokers, lenders and advisers with relevant opportunities are welcome to make contact.</p>
-      </div>
-      <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-    </div>
-  </div>
-</section>
 
 </main>
 

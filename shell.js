@@ -290,7 +290,6 @@
     const locale = document.body.dataset.locale === 'ja' ? 'ja' : 'en';
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const onPrivacy = document.body.dataset.page === 'privacy';
-    const onDisclaimer = document.body.dataset.page === 'disclaimer';
 
     let nextNav = '';
     if (locale === 'ja') {
@@ -328,22 +327,14 @@
 
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : '/privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
-    const disclaimerHref = locale === 'ja' ? '/ja/disclaimer.html' : '/disclaimer.html';
-    const disclaimerLabel = locale === 'ja' ? '<span>免責事項</span>' : '<span data-en="Disclaimer" data-ja="免責事項">Disclaimer</span>';
 
-    /* One contact route from every page, including the pages that close on
-       their own argument rather than on the contact section. It points at
-       the Company contact block, where the three enquiry routes already
-       live, so the footer carries a way through rather than a second CTA. */
-    const contactHref = locale === 'ja' ? '/ja/company.html#contact' : '/company.html#contact';
-    const contactLabel = locale === 'ja' ? '<span>お問い合わせ</span>' : '<span data-en="Contact" data-ja="お問い合わせ">Contact</span>';
 
     const homeHref = locale === 'ja' ? '/ja/' : '/';
     const symbolSrc = '/assets/logos/symbol-cream.svg';
     const homeAria = locale === 'ja' ? 'Reiwa Capital — ホーム' : 'Reiwa Capital — Home';
 
     /* One quiet cream footer in both languages — copyright left, the cream
-       emblem mathematically centred, Contact, Privacy and Disclaimer right. No navigation
+       emblem mathematically centred, Privacy right. No navigation
        list, no location line, no socials. The onward journey lives in the NEXT
        block above it, where the site still has one. */
     const footer = `
@@ -352,9 +343,7 @@
           <span class="ff-copy">© ${new Date().getFullYear()} Reiwa&nbsp;Capital</span>
           <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
           <div class="ff-right">
-            <a class="ff-link ff-contact" href="${contactHref}">${contactLabel}</a>
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
-            <a class="ff-link ff-disclaimer" href="${disclaimerHref}"${onDisclaimer ? ' aria-current="page"' : ''}>${disclaimerLabel}</a>
           </div>
         </div>
       </footer>`;

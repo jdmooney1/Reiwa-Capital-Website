@@ -72,7 +72,7 @@
   .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
   .home-hero .loc .sep { margin: 0 clamp(6px, 0.8vw, 12px); color: rgba(255,255,255,0.5); }
-  .home-hero .loc { display: block; text-align: left; margin-top: clamp(18px, 1.8vw, 24px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
+  .home-hero .loc { display: block; text-align: center; margin-top: clamp(18px, 1.8vw, 24px); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized so 欧州不動産を、 holds one line and the
      second clause takes at most two — measured, not guessed. The hero keeps
      the tighter gutter the English hero uses to buy that room. */
@@ -80,7 +80,7 @@
     .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
     .home-hero h1 { font-size: clamp(27px, 8vw, 34px); line-height: 1.34; letter-spacing: 0.004em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
-    .home-hero .loc { margin-top: 28px; text-align: center; }
+    .home-hero .loc { margin-top: 28px; }
   }
   @media (max-width: 340px) {
     .home-hero h1 { font-size: 25px; }
@@ -135,14 +135,7 @@
   @media (max-width: 900px) { .hm-facts { max-width: none; } }
   /* 二つの市場を組み合わせる意味：見出しと三つの要点を、Reiwaについての
      ページの一覧と同じ罫線と段組みの型で置く。 */
-  .hm-plus { margin-top: clamp(36px, 4vw, 56px); padding-top: clamp(18px, 2vw, 24px); border-top: 1px solid var(--rule-strong); }
-  .hm-plus-k { margin: 0; font-family: var(--jp); font-weight: 400; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
-  .hm-plus-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 40px); }
-  .hm-plus-list li { padding: 12px 0 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 14.5px; line-height: 1.8; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   @media (max-width: 900px) {
-    .hm-plus-list { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .hm-plus-list li { padding: 10px 0; }
-    .hm-plus-list li:last-child { border-bottom: 1px solid var(--rule); }
   }
   @media (max-width: 760px) {
     .hm { padding: 0 0 64px; }
@@ -327,14 +320,6 @@
           <li>機関投資家層の厚み</li>
         </ul>
       </div>
-    </div>
-    <div class="hm-plus">
-      <h3 class="hm-plus-k">二つの市場を組み合わせる理由</h3>
-      <ul class="hm-plus-list">
-        <li>流動性と透明性の高い二市場、<span class="jt">ポンド</span>と<span class="jt">ユーロ</span></li>
-        <li>補い合う性格：<span class="jt">ロンドン</span>の厚み、<span class="jt">アムステルダム</span>の希少性</li>
-        <li><span class="jt">マンデート</span>から出口まで、一つの監督の枠組み</li>
-      </ul>
     </div>
   </div>
 </section>
