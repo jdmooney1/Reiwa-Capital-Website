@@ -140,10 +140,12 @@
 
   /* ---------------------------------------------------------------- TYPE */
 
-  --font-display: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* serif retired — aliased to DM Sans (consistency pass) */
+  /* The Latin stack. There is one: --font-display, --font-serif and
+     --font-mono were kept as aliases of it through the consistency pass and
+     held the identical family list, which made the type system look like it
+     offered four choices when it offered one. Headings now name this token
+     directly. */
   --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* mono retired — aliased to DM Sans (consistency pass) */
   /* The one Japanese stack. DM Sans carries the Latin and the numerals; the
      platform Japanese sans carries kana and kanji. Every Japanese rule on the
      site resolves to this variable — nothing redeclares the families. */
@@ -358,7 +360,7 @@ body {
 
 /* Headings */
 h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--type-page-title);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
@@ -366,7 +368,7 @@ h1 {
   color: var(--fg-1);
 }
 h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--type-h2);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
