@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=26">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=99">
+<link rel="stylesheet" href="editorial.css?v=100">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -72,7 +72,7 @@
      section heading, and the supporting sentence held close beneath it so
      the two read as one group against the picture. */
   .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 22px + 2.4vw, 60px); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
-  .ab-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
     .ab-hero h1 { font-size: clamp(32px, 8.6vw, 38px); max-width: 13ch; }
@@ -88,7 +88,7 @@
   .ab-sec { padding: 0 0 clamp(56px, 5.4vw, 84px); }
   .ab-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .ab-head { max-width: var(--measure-statement); }
-  .ab-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 50ch; text-wrap: balance; }
+  .ab-lede { margin-top: var(--fluid-2xs); max-width: 50ch; text-wrap: balance; }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · Why Reiwa exists: the continuity switch --------------------------
@@ -97,7 +97,7 @@
      party. With Reiwa Capital it is one unbroken line and one investor-side
      view. One control, two states — the page says nothing a reader has to
      take on trust; it shows the difference. */
-  .aw-field { margin-top: clamp(30px, 3.4vw, 46px); background: var(--ink); padding: clamp(22px, 2.2vw, 32px) clamp(22px, 2.4vw, 36px) clamp(28px, 2.8vw, 40px); }
+  .aw-field { margin-top: var(--fluid-l); background: var(--ink); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
   /* The two readings are a pair of tabs on a shared rule, the same grammar
      as the market selector below: the selected one carries the rule. */
   .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(252,250,241,.18); }
@@ -105,17 +105,17 @@
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
   .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
-  .aw-flow { margin-top: clamp(22px, 2.4vw, 32px); }
+  .aw-flow { margin-top: var(--fluid-s); }
   .aw-inv { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.24); }
   .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
   .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
-  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(16px, 2vw, 28px); margin-top: clamp(26px, 2.8vw, 38px); }
+  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--fluid-xs); margin-top: clamp(26px, 2.8vw, 38px); }
   .aw-stage { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 12px + 1.6vw, 40px); line-height: 1; letter-spacing: -0.018em; color: var(--cream); }
   .aw-stage { display: flex; flex-direction: column; gap: 7px; }
   .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 13px; line-height: 1.4; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
   /* The line is the argument: four segments that stop short, or four that
      meet. Only the width and the colour change between states. */
-  .aw-line { position: relative; height: 3px; margin-top: clamp(22px, 2.4vw, 32px); }
+  .aw-line { position: relative; height: 3px; margin-top: var(--fluid-s); }
   .aw-line::before { content: ""; position: absolute; left: 0; right: 0; top: 1px; height: 1px; background: rgba(252,250,241,.16); }
   .aw-line i { position: absolute; top: 0; height: 3px; width: 22%; background: rgba(142,122,156,.92); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 33.333%; } .aw-line i:nth-child(3) { left: 66.667%; }
@@ -128,8 +128,8 @@
   .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
   .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
-  .aw-specs-k { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.3; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
-  .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: clamp(16px, 2vw, 28px); }
+  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.3; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
+  .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: var(--fluid-xs); }
   .aw-spec { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
   /* Below 760px the same four phases read down a spine. */
   .aw-spine { display: none; }
@@ -163,13 +163,13 @@
      size, one positioning line, then the map beside the three text blocks.
      London sits on the cream; Amsterdam on the deeper paper of the Investor
      Control band on Approach; the layout mirrors between them. */
-  .am-intro.ab-sec { padding-bottom: clamp(28px, 3vw, 44px); }
+  .am-intro.ab-sec { padding-bottom: var(--fluid-m); }
   .am-market { position: relative; }
   .am-market--london { background: var(--cream); }
   .am-market--amsterdam { background: var(--paper-soft); }
   .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
   .am-city { margin: 0; }
-  .am-pos { margin-top: clamp(10px, 1.1vw, 14px); max-width: 50ch; }
+  .am-pos { margin-top: var(--fluid-2xs); max-width: 50ch; }
   @media (min-width: 1024px) {
     .am-market { min-height: 100vh; display: flex; flex-direction: column; }
     .am-market > .shell { flex: 1 0 auto; }
@@ -202,7 +202,7 @@
   @media (max-width: 480px) { .ab-grp { font-size: 12.5px; } }
   @media (max-width: 380px) { .ab-grp { font-size: 12px; } }
 
-  .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px clamp(20px, 2.4vw, 32px); margin: 16px 0 0; padding: 0; }
+  .am-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px var(--fluid-s); margin: 16px 0 0; padding: 0; }
   .am-note { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.45; color: var(--ink-3); max-width: 46ch; }
   /* The label may contain inline spans (Japanese keeps katakana runs whole),
      and a flex gap would space every one of them. The swatch carries the
@@ -212,14 +212,14 @@
   .sw-prim  { background: #2F1F3A; opacity: 0.94; border: 1px solid #2F1F3A; }
   .sw-broad { background: #E6D9E4; opacity: 0.9; border: 1px solid #8E7A9C; }
 
-  .am-sum { margin: clamp(18px, 2vw, 24px) 0 0; max-width: 46ch; }
+  .am-sum { margin: var(--fluid-xs) 0 0; max-width: 46ch; }
   .am-market .am-sum { font-size: 15px; line-height: 1.6; }
   /* Market snapshot shell. Map and side column at 53/47: the map, its legend
      and its note on the left; the photograph and the sentence on the right.
      Above the stack point the photograph takes up the slack so the two
      columns end level, and the sentence sits under it. Below the stack point
      the panel is linear and the photograph returns to its letterbox. */
-  .am-market .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: clamp(24px, 2.4vw, 32px); }
+  .am-market .am-grid { grid-template-columns: minmax(0, 53fr) minmax(0, 47fr); margin-top: var(--fluid-s); }
   .am-market .am-legend { margin-top: 14px; }
   .am-market .am-note { margin-top: 8px; }
   /* Three blocks of market content, same voice as the rest of the page: a
@@ -239,10 +239,10 @@
      rows would repeat it: the same geography is given as one sentence. */
   .am-areas-sum { display: none; margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 1024px) { .am-areas { display: none; } .am-areas-sum { display: block; } }
-  .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: clamp(18px, 2vw, 24px); }
-  .am-block { padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
-  .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: clamp(12px, 1.3vw, 15px); border-top: 1px solid var(--rule); }
-  .am-look-list { list-style: none; margin: clamp(12px, 1.4vw, 16px) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: var(--fluid-xs); }
+  .am-block { padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
+  .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
+  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
   .am-look-list li { font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
   @media (min-width: 901px) {
@@ -288,8 +288,8 @@
      numerals, no rules: the distinction between them is what they say. */
   .ac.ab-sec { padding-bottom: clamp(48px, 4.8vw, 72px); }
   .ac-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
-  .ac-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(20px, 2.4vw, 36px); }
-  .ac-item { min-width: 0; padding: clamp(10px, 1vw, 13px) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.3; letter-spacing: -0.006em; color: var(--ink); }
+  .ac-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--fluid-s); }
+  .ac-item { min-width: 0; padding: var(--fluid-2xs) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.3; letter-spacing: -0.006em; color: var(--ink); }
   .ac-item:nth-child(n+3) { border-bottom: 1px solid var(--rule); }
   @media (max-width: 760px) {
     .ac.ab-sec { padding-bottom: 44px; }

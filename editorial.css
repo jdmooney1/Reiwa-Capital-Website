@@ -21,6 +21,19 @@
   --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
   --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
 
+  /* ── Fluid spacing — six steps, each one interpolating between two rungs
+     of the 8-scale above. Before these, 141 different clamp() expressions
+     were hand-written across the pages for the same handful of jobs; these
+     six carry 224 of those uses, every one of them landing within 4px of
+     what it replaced at every width from 320 to 2560. Genuine one-offs keep
+     their own clamp and are listed in docs/spacing-one-offs.md. ────────── */
+  --fluid-2xs: clamp(var(--space-2), 1.2vw, var(--space-3));  /*  8 → 16 */
+  --fluid-xs:  clamp(var(--space-3), 1.8vw, var(--space-4));  /* 16 → 24 */
+  --fluid-s:   clamp(var(--space-4), 2.5vw, var(--space-5));  /* 24 → 32 */
+  --fluid-m:   clamp(var(--space-4), 2.8vw, var(--space-6));  /* 24 → 48 */
+  --fluid-l:   clamp(var(--space-5), 3.2vw, var(--space-6));  /* 32 → 48 */
+  --fluid-xl:  clamp(var(--space-6), 4.2vw, var(--space-7));  /* 48 → 64 */
+
   /* ── Vertical rhythm — ONE section token, used by every page band. ─ */
   --section:       clamp(80px, 6vw, 96px);
   --section-tight: clamp(60px, 5vw, 88px);
@@ -539,16 +552,16 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   height: auto;
   max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(30px, 3vw, 46px) var(--gutter);
+  padding: var(--fluid-l) var(--gutter);
 }
 .nn-text { display: block; min-width: 0; }
 .nextnav--band .nn-text { justify-self: end; }
-.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: clamp(12px, 1.4vw, 18px); }
+.nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: var(--fluid-2xs); }
 /* An onward link, not a second headline. At 46px it competed with the H1 of
    the page above it and the band ran to 228px; it now closes the page in
    about two thirds of that. */
 .nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
-.nn-lead { display: block; margin-top: clamp(8px, 0.9vw, 12px); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+.nn-lead { display: block; margin-top: var(--fluid-2xs); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
 .nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
 .nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(8px); }
 .nextnav--band .nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
@@ -604,7 +617,7 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   .footer-quiet .ff-copy, .footer-quiet .ff-link { font-size: var(--type-micro); }
 }
 /* Right-hand side: Privacy alone. One link, no list. */
-.ff-right { display: flex; align-items: center; gap: clamp(18px, 2vw, 28px); }
+.ff-right { display: flex; align-items: center; gap: var(--fluid-xs); }
 /* Three small links and the copyright no longer fit one 62px row on a
    phone: let the baseline row wrap, with the emblem on its own line. */
 @media (max-width: 480px) {
@@ -791,7 +804,7 @@ body[data-page="focus"]    .page-head { --head-h: clamp(296px, 21.5vw, 340px); }
 body[data-page="about"] .page-head .inner,
 body[data-page="approach"] .page-head .inner,
 body[data-page="focus"] .page-head .inner {
-  padding: calc(var(--nav-h, 74px) + 28px) var(--gutter) clamp(34px, 3vw, 46px);
+  padding: calc(var(--nav-h, 74px) + 28px) var(--gutter) var(--fluid-l);
 }
 @media (max-width: 1100px) {
   body[data-page="about"] .page-head .inner,
@@ -1179,7 +1192,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
    panel, because a panel here would read as a sales banner.
    ===================================================================== */
 .enq { padding: 0 0 clamp(56px, 5.6vw, 84px); }
-.enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: clamp(20px, 2vw, 26px); border-top: 1px solid var(--rule-strong); }
+.enq-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(24px, 3vw, 56px); align-items: end; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); }
 .enq-h { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-statement); line-height: 1.2; letter-spacing: -0.012em; color: var(--ink); }
 .enq-d { margin: 9px 0 0; max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 .enq-d + .enq-d { margin-top: var(--space-1); }

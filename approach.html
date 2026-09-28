@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=26">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=99">
+<link rel="stylesheet" href="editorial.css?v=100">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -73,7 +73,7 @@
      one and a half times the first section heading, the supporting
      sentence held close beneath it. */
   .ap-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 22px + 2.4vw, 60px); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; word-break: normal; text-wrap: balance; }
-  .ap-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; text-wrap: pretty; }
+  .ap-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ap-hero h1 { font-size: clamp(32px, 8.6vw, 38px); max-width: 13ch; }
     .ap-hero .sub { margin-top: 10px; max-width: 34ch; }
@@ -88,11 +88,11 @@
   /* .shell sets the gutter with a shorthand; this rule's own shorthand
      was overriding it with 0, so the section heading sat 96px left of
      every other heading on the site. */
-  .ap-intro { padding: clamp(48px, 5vw, 72px) var(--gutter) clamp(22px, 2.2vw, 32px); }
+  .ap-intro { padding: clamp(48px, 5vw, 72px) var(--gutter) var(--fluid-s); }
   /* Section headings at the shared .h-h2 scale, so the page title above
      them is unmistakably the largest thing on the page. */
   .ap-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(26px, 18px + 1.4vw, 38px); line-height: 1.15; letter-spacing: -0.014em; color: var(--ink); max-width: none; text-wrap: balance; }
-  .ap-lede { margin: clamp(12px, 1.3vw, 18px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; text-wrap: balance; }
+  .ap-lede { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 50ch; text-wrap: balance; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18ch; } }
 
   @media (max-width: 1024px) { body[data-page="approach"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
@@ -104,10 +104,10 @@
      The overview is the same size whichever stage is open, so the sequence
      scans in one pass and the detail always sits in the same place. Every
      stage carries an approval, so none is marked out from the others. */
-  .lf-wrap { padding: 0 0 clamp(8px, 1vw, 14px); }
-  .lf-field { background: var(--ink); padding: clamp(24px, 2.4vw, 36px) clamp(26px, 2.8vw, 44px) clamp(26px, 2.8vw, 40px); }
+  .lf-wrap { padding: 0 0 var(--fluid-2xs); }
+  .lf-field { background: var(--ink); padding: var(--fluid-s) var(--fluid-m) clamp(26px, 2.8vw, 40px); }
   .lf-over { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(22px, 2.6vw, 40px); border-bottom: 1px solid rgba(252,250,241,.22); }
-  .lf-grp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(12px, 1.4vw, 20px); align-content: start; }
+  .lf-grp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fluid-2xs); align-content: start; }
   .lf-period { grid-column: 1 / -1; display: block; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; color: rgba(252,250,241,.66); }
   /* A stage is a tab: number over name, the selected one carrying the rule
      the overview sits on. Colour, weight and the rule change; nothing moves. */
@@ -121,7 +121,7 @@
   @media (hover: hover) { .lf-tab:hover .lf-n { color: var(--cream); } }
   /* The detail panel: purpose, output, approval and, for ownership, the
      principal activities, each under its own label on the same two columns. */
-  .lf-panel { padding-top: clamp(20px, 2.2vw, 30px); display: flex; flex-direction: column; gap: 12px; }
+  .lf-panel { padding-top: var(--fluid-s); display: flex; flex-direction: column; gap: 12px; }
   .lf-panel[hidden] { display: none; }
   .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.62); }
   .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(252,250,241,.62); }
@@ -137,7 +137,7 @@
   .lf-own li { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
   .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.76); }
   .lf-own-b { max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  .lf-cont { display: block; margin-top: clamp(18px, 2vw, 26px); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.66); max-width: 52ch; }
+  .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.66); max-width: 52ch; }
   @media (min-width: 901px) {
     .lf-blk, .lf-ap { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
     .lf-blk--own { align-items: start; }
@@ -168,9 +168,9 @@
      heading. The tab strip is never rendered, so nothing scrolls sideways
      and nothing claims to be a tablist. */
   .lf-over { display: none; }
-  .lf-groups { gap: clamp(30px, 3vw, 44px); }
+  .lf-groups { gap: var(--fluid-l); }
   .lf-group + .lf-group .lf-gh { padding-top: 0; }
-  .lf-panel + .lf-panel { margin-top: clamp(22px, 2.2vw, 30px); padding-top: clamp(22px, 2.2vw, 30px); border-top: 1px solid rgba(252,250,241,.14); }
+  .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
   .lf-pan-h span { font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: -0.014em; line-height: 1.18; font-size: clamp(19px, 15px + 0.5vw, 23px); }
 
   /* --- 3 · Five tests ---------------------------------------------------
@@ -179,12 +179,12 @@
      rather than five, so the checklist scans and the detail is one press
      away. */
   .tw-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(40px, 4vw, 60px); }
-  .tw-head { display: flex; flex-direction: column; gap: clamp(8px, 1vw, 12px); max-width: 62ch; }
+  .tw-head { display: flex; flex-direction: column; gap: var(--fluid-2xs); max-width: 62ch; }
   .tw-head .ap-lede { max-width: 58ch; }
   /* The ring is a supporting mark on the left; the five tests read in full
      on the right as a definition list. Nothing is hidden behind a control:
      hovering or tapping a row lights its segment, and that is all. */
-  .tw-grid { margin-top: clamp(28px, 3vw, 44px); display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
+  .tw-grid { margin-top: var(--fluid-m); display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
   .tw-ring { width: 100%; max-width: 240px; position: sticky; top: calc(var(--anchor-h, 96px) + 8px); }
   .tw-circle { position: relative; width: 100%; max-width: 240px; aspect-ratio: 1; margin: 0 auto; }
   .tw-circle svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
@@ -202,7 +202,7 @@
   .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64%; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: 0.01em; font-size: 12px; line-height: 1.3; color: var(--ink-3); }
   .tw-mark { display: block; width: 48px; height: auto; }
   .tw-list { margin: 0; display: grid; }
-  .tw-item { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px clamp(20px, 2.4vw, 44px); padding: clamp(16px, 1.6vw, 22px) 0; border-top: 1px solid var(--rule); }
+  .tw-item { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px clamp(20px, 2.4vw, 44px); padding: var(--fluid-xs) 0; border-top: 1px solid var(--rule); }
   .tw-sel { appearance: none; background: none; border: 0; margin: 0; padding: 0; min-height: 44px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; text-align: left; font: inherit; color: inherit; outline-offset: 4px; }
   .tw-sel:focus-visible { outline: 2px solid var(--ink); }
   .tw-n { flex: none; box-sizing: border-box; min-width: 30px; margin-top: 0.2em; padding: 2px 6px 1px; border: 1px solid var(--rule-strong); border-radius: 2px; text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12px; line-height: 1.4; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--ink-3); transition: background-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
@@ -216,7 +216,7 @@
   .tw-det-list li { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-3); text-wrap: pretty; }
   .tw-item.is-on dt { font-weight: 500; }
   .tw-item.is-preview dt { color: var(--reiwa-node, #5E3D78); }
-  @media (max-width: 1100px) { .tw-grid { grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 3vw, 44px); } .tw-ring, .tw-circle { max-width: 200px; } }
+  @media (max-width: 1100px) { .tw-grid { grid-template-columns: 200px minmax(0, 1fr); gap: var(--fluid-m); } .tw-ring, .tw-circle { max-width: 200px; } }
   @media (max-width: 760px) {
     .tw-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .tw-ring { position: static; max-width: 200px; margin: 0 auto; }
@@ -237,7 +237,7 @@
      at 1920. The source is the full frame of the same photograph — same
      980px width, but 1225px tall rather than a 524px slice, so the band is
      chosen here by object-position instead of being baked into the file. */
-  .ap-pause { padding: clamp(12px, 1.6vw, 28px) 0; }
+  .ap-pause { padding: var(--fluid-xs) 0; }
   .ap-pause-frame { width: 100%; height: clamp(170px, 12vw, 210px); overflow: hidden; background: #EDE7DC; }
   .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
   @media (max-width: 1024px) { .ap-pause-frame { height: clamp(165px, 16vw, 195px); } }
@@ -253,8 +253,8 @@
   /* --- 5 · Investor control ---------------------------------------------
      One statement, one party per sentence: who decides, who coordinates,
      and who gives the professional advice. */
-  .ic-sec { background: var(--paper-soft); padding: clamp(34px, 3.4vw, 48px) 0; }
-  .ic-roles { margin: clamp(22px, 2.4vw, 32px) 0 0; display: grid; }
+  .ic-sec { background: var(--paper-soft); padding: var(--fluid-l) 0; }
+  .ic-roles { margin: var(--fluid-s) 0 0; display: grid; }
   .ic-role { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: clamp(13px, 1.4vw, 17px) 0; border-top: 1px solid var(--rule); }
   .ic-role:last-child { border-bottom: 1px solid var(--rule); }
   .ic-role dt { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.4vw, 19px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
