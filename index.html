@@ -87,8 +87,10 @@
      and a single line drawn from the Approach page. A short bar marks the
      start of each strand, so the three read left to right as one line. */
   .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
-  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: center; }
-  .hi-op::before { content: ""; position: absolute; left: 50%; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); transform: translateX(-50%); }
+  /* Body copy is never centred, so the block reads from one left edge and
+     the marker sits on that edge rather than in the middle of it. */
+  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: left; }
+  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
