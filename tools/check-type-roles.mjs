@@ -58,20 +58,25 @@ const ROLES = {
     token: '--type-h3',
     // subsection headings, card titles and item titles
     selectors: [
-      '.hm-city', '.hp-item h3', '.hf-cap h3', '.hi-op-v',
-      '.am-city', '.aw-stage',
-      '.lf-pan-h',
+      '.hm-city', '.hi-role-n', '.hp-principle h3', '.hf-cap h3',
+      '.am-city', '.aw-stage', '.aw-sp-n',
+      '.lf-n', '.lf-pan-h',
       '.tw-item dt',
-      '.fx-name', '.fx-stagehead', '.hs-title', '.hs-test-n', '.dl-n',
+      '.fx-name', '.fx-stagehead', '.hs-title', '.dl-n',
       '.co-tier-n',
     ],
+  },
+  // A step below a subsection title: the tests under Selective Hospitality.
+  item: {
+    token: '--type-body-l',
+    selectors: ['.hs-test-n'],
   },
   label: {
     token: '--type-caption',
     selectors: [
-      '.hi-op-k', '.hf-spec-k',
-      '.am-k', '.aw-stage-s', '.aw-specs-k',
-      '.lf-gh', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
+      '.hi-span-k', '.hf-spec-k',
+      '.am-k', '.aw-stage-s', '.aw-sp-st', '.aw-lane-s',
+      '.lf-period', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
       '.fx-param-k', '.fx-band-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
     ],
   },
