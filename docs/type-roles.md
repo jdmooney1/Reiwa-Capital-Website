@@ -6,7 +6,8 @@ One semantic role, one token, everywhere. `tools/check-type-roles.mjs` enforces 
 
 | Role | Token (`assets/colors_and_type.css`) | 1440 | 1024 | 768 | 390 / 320 |
 |---|---|---|---|---|---|
-| Page H1 | `--type-page-title` | 48 | 42.34 | 38.75 | 36 |
+| Page H1 (all pages except Home) | `--type-page-title` | 48 | 42.34 | 38.75 | 36 |
+| Home hero H1 (the one exception) | `--type-display` from 761px, `--type-page-title` below | 66 | 58.6 | 52.4 | 36 |
 | Top-level section heading (h2) | `--type-h2` | 33.16 | 27.34 | 24 | 24 |
 | Subsection heading, card title, item title (h3) | `--type-h3` | 24 | 21.5 | 20 | 20 |
 | Label / key / kicker / numeral | `--type-caption` | 13 | 12.1 | 12 | 12 |
@@ -23,13 +24,13 @@ claims, so a new heading has to be given a role.
 
 | Role | Element | Was | Now |
 |---|---|---|---|
-| h1 | Home | 63.88 (60) | 48 |
+| h1 | Home | 63.88 (60) | 66 (761px and up); 36 on phones |
 | h1 | About, Approach, Investment Focus | 56.56 (45.36) | 48 |
 | h1 | Company | 44 (38.16) | 48 |
 | h2 | Home statement `.hi-statement` | 42.48 (40) | 33.16 |
 | h2 | Approach `.ap-h2`, Focus `.fx-h2`, `.dl-h2` | 38 (32 / 31) | 33.16 |
 | h2 | `.h-h2` (Home, About) | 33.16 | 33.16 |
-| h2 | Focus `.hs-title` | 28 (23) | 33.16 |
+| h3 | Focus `.hs-title` (retagged h2 to h3) | 28 (23) | 24 |
 | h2 | Company `.co-label` | 26 (22) | 33.16 |
 | h2 | Enquiry `.enq-h` | 22 | 33.16 |
 | h3 | About phase names `.aw-stage` | 35.04 (32.16) | 24 |
@@ -45,28 +46,23 @@ claims, so a new heading has to be given a role.
 | h3 | Home `.hp-item h3` | 21 | 24 |
 | h3 | Company `.co-tier-n` | 20 | 24 |
 | h3 | Focus `.hs-test-n` | 19 | 24 |
-| h3 | Approach phase headings `.lf-gh` (Formation / Execution / Ownership) | 14, 66% cream | 24, full cream |
+| label | Approach phase headings `.lf-gh` (Formation / Execution / Ownership) | 14, 66% cream | 13, full cream |
 | label | `.hi-op-k`, `.hf-spec-k`, `.aw-specs-k`, `.fx-*-k`, `.hs-kicker`, `.dl-kicker` | 12.5 | 13 |
 | label | `.lf-k`, `.lf-own-n`, `.lf-ap dt`, `.lf-pan-h` numerals | 12 | 13 |
 | label | `.am-k`, `.aw-stage-s` | 13 | 13 |
 
-## Judgement calls to review
+## Decisions (reviewed)
 
-- **The Home hero H1 drops from 64px to 48px.** That is the largest visible change and it
-  is a direct consequence of "every H1 the same token". If Home should stay bigger,
-  the honest options are a `--type-display` exception for the Home H1 only (one line in
-  `index.html` and `ja/index.html`), or raising the shared H1 token, which enlarges all
-  five titles.
-- **Enquiry "Contact" (`.enq-h`) is an h2, so it is now section-sized (33px).** Before it
-  was 22px, so the closing call to action was quieter than the sections above it.
-- **`.hs-title` ("Selective Hospitality") is an h2 and is now the same size as its
-  siblings**, although the page describes it as a subordinate specialist application.
-  Retagging it h3 would make it 24px.
-- **Approach phase headings and stage names are now equal (24px, full cream).** The user
-  brief allowed inverted or equal; the size step to the stage numerals and the Purpose /
-  Output rows carries the nesting.
-- **About's `London` and `Amsterdam` became h3** (they were h2 siblings of "Focus Markets"),
-  which also fixes the outline. A new `.h-h3` atom sits next to `.h-h2` in `editorial.css`.
+- **Home hero H1 is the one exception.** It uses `--type-display` from 761px up (66px at 1440, 64px before
+  the role work). Phones stay on `--type-page-title` (36px, the old 36-38px): the display token's 44px floor
+  wraps the English headline to five lines at 320-360px and splits the Japanese one mid-phrase. The Japanese
+  Home H1 also gets `keep-all` and a `<wbr>` so phones break as 日本の投資家の / ために.
+- **Enquiry "Contact" (`.enq-h`) stays an h2 at `--type-h2` (33px).**
+- **"Selective Hospitality" is an h3 at `--type-h3` (24px).** Its three test titles (`.hs-test-n`) are also h3
+  at 24px, so parent and children now share a size. Not changed; flagged for follow-up.
+- **Approach phase headings are labels** on `--type-caption` in full cream, above stage names on `--type-h3`.
+- **About's `London` and `Amsterdam` are h3** (they were h2 siblings of "Focus Markets"), with a new `.h-h3`
+  atom next to `.h-h2` in `editorial.css`.
 
 ## The "6.4px stage numerals"
 
