@@ -380,6 +380,13 @@
      no explanatory copy: the refusals are the argument. */
   .dl-sec { background: var(--ink); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: var(--fluid-xl); border-top: 0; }
+  /* Contact: the shared .enq block, placed on this page's rhythm. It follows a
+     full-bleed band, so it takes a full section gap above (the shared rule
+     assumes an ivory neighbour and gives none), and the address sits under
+     the copy it belongs to instead of at the far edge of the row. */
+  .enq { padding-top: clamp(72px, 7vw, 104px); }
+  .enq-row { grid-template-columns: minmax(0, 1fr); row-gap: var(--fluid-xs); align-items: start; }
+  .enq-cta { justify-self: start; font-size: var(--type-body); }
   .dl-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .dl-kicker { display: block; margin: 0 0 var(--fluid-2xs); font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
   .dl-lede { margin: var(--fluid-2xs) 0 clamp(4px, 0.6vw, 8px); font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
@@ -664,6 +671,20 @@
   </div>
 </section>
 
+
+<!-- ================================================================ 5 · お問い合わせ -->
+<section class="enq" data-screen-label="05 投資方針 — お問い合わせ" aria-labelledby="enq-title">
+  <div class="shell">
+    <div class="enq-row">
+      <div>
+        <h2 class="enq-h" id="enq-title">お問い合わせ</h2>
+        <p class="enq-d">投資家の皆様：<span class="jt">ロンドン</span>または<span class="jt">アムステルダム</span>での投資を検討する日本の事業会社、<span class="jt">ファミリーオフィス、</span>機関投資家、個人投資家からのご相談を<span class="jt">歓迎します。</span></p>
+        <p class="enq-d">市場関係者：関連する案件をお持ちの物件所有者、仲介会社、<span class="jt">レンダー、</span><span class="jt">アドバイザー</span>からのご連絡も<span class="jt">歓迎します。</span></p>
+      </div>
+      <a class="enq-cta" href="mailto:info@reiwa-capital.com">info@reiwa-capital.com<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
 
 </main>
 
