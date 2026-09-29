@@ -91,11 +91,11 @@
   /* Internal-page hero pattern (About sets it; Approach and Investment
      Focus follow): the headline at roughly one and a half times the first
      section heading, the supporting sentence held close beneath it. */
-  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
+  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
   .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
-    .ab-hero h1 { font-size: clamp(26px, 7.2vw, 33px); max-width: 12em; }
+    .ab-hero h1 { max-width: 12em; }
     .ab-hero .sub { margin-top: 10px; max-width: 20em; }
   }
 
