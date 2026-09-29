@@ -7,6 +7,51 @@
 (function () {
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- 0. Katakana no-break protection (Japanese pages) --------
+     Japanese has no inter-word space, so a line can break between any two
+     katakana letters and split a loanword (リーシン / グ). Chromium hides
+     this with word-break: auto-phrase; Safari and Firefox do not have it,
+     and on iPhones that is most of the audience. So every run of three or
+     more katakana is wrapped in .jt, the same no-break span the markup
+     already uses by hand. Done here, from the character range, so new copy
+     is protected without anyone remembering to tag it.
+
+     U+30A0–U+30FF is the whole katakana block: letters, the long-vowel
+     mark ー and the middle dot ・. Runs already inside a .jt are left alone,
+     so the hand-placed spans are never double-wrapped. Runs before the first
+     paint (boot fires on DOMContentLoaded, after shell.js has mounted the
+     header and footer), so nothing reflows on screen. Text is untouched:
+     only spans are added, textContent stays byte-identical. */
+  function initKatakanaProtect() {
+    if (!/^ja(\b|-)/i.test(document.documentElement.lang || '')) return;
+    var HAS = /[゠-ヿ]{3,}/;
+    var SKIP = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|TITLE|CODE|PRE)$/;
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        var el = n.parentElement;
+        if (!el || SKIP.test(el.nodeName) || el.closest('.jt')) return NodeFilter.FILTER_REJECT;
+        return HAS.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);   // collect first: splitting mutates the tree
+    nodes.forEach(function (node) {
+      var text = node.nodeValue, re = /[゠-ヿ]{3,}/g, last = 0, m;
+      var frag = document.createDocumentFragment();
+      while ((m = re.exec(text))) {
+        if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+        var span = document.createElement('span');
+        span.className = 'jt';
+        span.setAttribute('data-jt', 'auto');        // generated here, not hand-placed
+        span.textContent = m[0];
+        frag.appendChild(span);
+        last = m.index + m[0].length;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
   /* ---------- 1. Hero — one simple restrained fade-up ----------------- */
   function initHero() {
     var hero = document.querySelector('.home-hero');
@@ -197,6 +242,7 @@
 
   /* ---------- boot --------------------------------------------------- */
   function boot() {
+    initKatakanaProtect();
     initHero();
     initHeaderState();
     initImageFades();
