@@ -211,7 +211,12 @@
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
+  /* Caption wash: sits behind the text block only (it rides the caption's own box, so it
+     follows the text at every width and language), deepest where the type is, fully clear
+     48px above it. Same construction as the nav wash in craft.css. */
+  .hf-cap { isolation: isolate; }
+  .hf-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hf-cue { font-family: var(--jp); font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
@@ -277,7 +282,7 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
+      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
     </div>
     <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
       <li class="hi-op">

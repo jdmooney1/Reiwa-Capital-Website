@@ -37,7 +37,7 @@
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/privacy.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';document.documentElement.classList.add('has-js');})();</script>
 <style>
-  .legal-shell{max-width:800px;margin:0 auto;padding:0 var(--gutter);box-sizing:border-box}
+  .legal-shell{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);box-sizing:border-box}
   .legal-head{padding:var(--head-top) 0 clamp(28px,3vw,36px)}
   .legal-head h1{font-family:'DM Sans',sans-serif;font-weight:400;font-size:clamp(28px,22px + 1.4vw,40px);line-height:1.12;letter-spacing:-0.01em;color:var(--ink);margin:0}
   .legal-lede{font-size:var(--type-body-l);line-height:var(--type-body-l-lh);color:var(--ink-2);max-width:var(--measure);margin:16px 0 0}
