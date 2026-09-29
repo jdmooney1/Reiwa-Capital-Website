@@ -22,6 +22,7 @@ const GROUPS = [
   ['Home: Built from the Investor Side', '/', '/ja/', '.hp .hp-item', 3],
   ['Home: investor-side roles', '/', '/ja/', '.hi-role', 3],
   ['Home: stage periods', '/', '/ja/', '.hi-phase', 3],
+  ['Home: six stages', '/', '/ja/', '.hi-stage', 6],
   ['Company: responsibilities tiers', '/company.html', '/ja/company.html', '.co-tiers > li', 3],
 ];
 const STANDARD = [1440, 1024, 768, 430, 390, 360, 320];
