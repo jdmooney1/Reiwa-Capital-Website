@@ -120,57 +120,75 @@
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
   .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
-  .aw-flow { margin-top: var(--fluid-s); }
-  .aw-inv { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.24); }
-  .aw-inv-n { font-family: var(--jp); font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
-  .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
-  .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--fluid-xs); margin-top: clamp(26px, 2.8vw, 38px); }
-  .aw-stage { font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--cream); }
-  .aw-stage { display: flex; flex-direction: column; gap: 7px; }
-  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
-  /* The line is the argument: four segments that stop short, or four that
-     meet. Only the width and the colour change between states. */
-  .aw-line { position: relative; height: 3px; margin-top: var(--fluid-s); }
-  .aw-line::before { content: ""; position: absolute; left: 0; right: 0; top: 1px; height: 1px; background: rgba(252,250,241,.16); }
-  .aw-line i { position: absolute; top: 0; height: 3px; width: 22%; background: rgba(142,122,156,.92); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-line i:nth-child(1) { left: 0; } .aw-line i:nth-child(2) { left: 33.333%; } .aw-line i:nth-child(3) { left: 66.667%; }
-  .aw-field[data-flow="with"] .aw-line i { width: 33.334%; background: var(--cream); }
+  .aw-flow { margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
+  /* Three lanes across the same three periods. The investor's line never
+     breaks. Oversight is the line that either runs through every period or
+     stops short of each one. The specialists are a separate row of their own
+     appointments, one per period, in every state. */
+  .aw-row { display: grid; grid-template-columns: var(--aw-k) minmax(0, 1fr); column-gap: var(--aw-gap); }
+  .aw-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
+  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.22); }
+  .aw-stage { display: flex; flex-direction: column; gap: 7px; font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
+  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
+  .aw-lane { margin-top: clamp(22px, 2.4vw, 32px); align-items: start; }
+  .aw-lane-k { display: flex; flex-direction: column; gap: 3px; }
+  .aw-lane-n { font-family: var(--jp); font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
+  .aw-lane-s { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: rgba(252,250,241,.72); }
+  .aw-bar { height: 3px; margin-top: 12px; background: var(--cream); }
+  .aw-bar--rc { margin-top: 16px; background: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
+  .aw-bar--rc i { display: block; height: 3px; width: 70%; background: rgba(142,122,156,.55); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-field[data-flow="with"] .aw-bar--rc i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
+  .aw-field[data-flow="with"] .aw-bar--rc i:last-child { width: 100%; }
+  .aw-note { margin: 0; font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); }
   /* Each state has its own caption. The two share one grid cell, so the
      field keeps its height and only the words change. */
-  .aw-ribbons { display: grid; margin-top: 14px; }
-  .aw-ribbon { grid-area: 1 / 1; min-height: 26px; display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; justify-content: space-between; opacity: 0; visibility: hidden; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 360ms; }
+  .aw-ribbons { display: grid; }
+  .aw-ribbon { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 3px; opacity: 0; visibility: hidden; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 360ms; }
   .aw-field[data-flow="with"] .aw-ribbon--with, .aw-field[data-flow="without"] .aw-ribbon--without { opacity: 1; visibility: visible; transition-delay: 0s, 0s; }
   .aw-ribbon-n { font-family: var(--jp); font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
+  .aw-ribbon--with .aw-ribbon-n { color: var(--aw-rc); }
   .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
-  .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
-  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: var(--jp); font-size: var(--type-caption); line-height: 1.3; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
-  .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: var(--fluid-xs); }
-  .aw-spec { font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
-  /* Below 760px the same four phases read down a spine. */
+  .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); max-width: 62ch; text-wrap: pretty; }
+  .aw-lane--spec { margin-top: 16px; }
+  .aw-specs { align-self: start; }
+  .aw-spec { position: relative; }
+  /* With oversight, a short tie runs from the line to each appointment: the
+     work is coordinated from the investor's side. Without it there is none. */
+  .aw-spec::before { content: ""; position: absolute; left: 22px; top: -16px; width: 1px; height: 16px; background: var(--aw-rc); opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
+  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(252,250,241,.30); font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.86); }
+  .aw-specs-k { display: none; }
+  /* Below 900px the same three periods read down a spine. The Japanese
+     specialist chips carry an unbroken katakana word and need the wider
+     switch point; the English page keeps 760px. */
   .aw-spine { display: none; }
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
     .aw-flow { display: none; }
-    .aw-spine { display: block; margin-top: 16px; }
-    .aw-inv { flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; }
+    .aw-spine { display: block; margin-top: 16px; --aw-rc: #B8A3CC; }
+    .aw-inv { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; border-bottom: 3px solid var(--cream); }
+    .aw-inv-n { font-family: var(--jp); font-size: 17px; line-height: 1.3; color: var(--cream); }
+    .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); }
+    .aw-sp-ribbon { margin-top: 16px; }
     .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-    .aw-sp-rail::before { content: ""; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: rgba(252,250,241,.16); }
-    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 22%; background: rgba(142,122,156,.92); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 24%; background: rgba(142,122,156,.55); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
     .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 33.333%; } .aw-sp-rail i:nth-child(3) { top: 66.667%; }
-    .aw-field[data-flow="with"] .aw-sp-rail i { height: 33.334%; background: var(--cream); }
-    .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(72px, auto)); }
-    .aw-sp-row { display: flex; flex-direction: column; gap: 4px; }
-    .aw-sp-n { font-family: var(--jp); font-weight: 500; font-size: clamp(18px, 4.6vw, 22px); line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); }
-    .aw-sp-st { font-family: var(--jp); font-weight: 400; font-size: 13px; line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
-    .aw-sp-s { font-family: var(--jp); font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.74); }
-    .aw-sp-ribbon { margin-top: 14px; padding-left: 30px; }
-    .aw-sp-ribbon .aw-ribbon { flex-direction: column; gap: 4px; min-height: 0; }
+    .aw-field[data-flow="with"] .aw-sp-rail i { height: 33.334%; background: var(--aw-rc); }
+    .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(96px, auto)); }
+    .aw-sp-row { display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; }
+    .aw-sp-n { font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
+    .aw-sp-st { font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
+    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(252,250,241,.30); font-family: var(--jp); font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.86); }
+    .aw-sp-s b { font-weight: 400; color: rgba(252,250,241,.62); margin-right: 6px; }
     .aw-field { margin-top: 26px; padding: 16px 18px 22px; }
     .aw-switch { gap: 18px; }
     .aw-sw { font-size: 15px; padding: 4px 0 10px; }
   }
+  @media (max-width: 400px) {
+    .aw-sp-s b { display: block; margin: 0 0 2px; }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .aw-sw, .aw-line i, .aw-line::before, .aw-ribbon, .aw-sp-rail i, .aw-sp-rail::before, .aw-sp-ribbon { transition: none; }
+    .aw-sw, .aw-bar--rc i, .aw-ribbon, .aw-sp-rail i, .aw-spec::before { transition: none; }
   }
   /* --- 3 · 注力市場: the signature section ------------------------------ */
   /* 二つの市場、二つのセクション。いずれも全幅で、デスクトップでは少なくとも
@@ -359,35 +377,41 @@
       </div>
 
       <div class="aw-flow">
-        <div class="aw-inv">
-          <span class="aw-inv-n">投資家</span>
-          <span class="aw-inv-note">マンデートと意思決定を保持</span>
-        </div>
-        <div class="aw-stages">
-        <span class="aw-stage">形成<small class="aw-stage-s"><span class="jt">マンデート</span>・評価</small></span>
-        <span class="aw-stage">実行<small class="aw-stage-s">組成・取得</small></span>
-        <span class="aw-stage">保有期間<small class="aw-stage-s">保有・売却</small></span>
-        </div>
-        <div class="aw-line" aria-hidden="true">
-        <i></i>
-        <i></i>
-        <i></i>
-        </div>
-        <div class="aw-ribbons">
-          <div class="aw-ribbon aw-ribbon--with">
-            <span class="aw-ribbon-n"><span lang="en">Reiwa Capital</span></span>
-            <span class="aw-ribbon-note">各段階における投資家側の助言と<span class="jt">モニタリング</span></span>
-          </div>
-          <div class="aw-ribbon aw-ribbon--without">
-            <span class="aw-ribbon-n">継続的な調整役が不在</span>
-            <span class="aw-ribbon-note">各専門家は自らの段階を担い、全体を通して投資家の視点を保持する役割は誰にもありません</span>
+        <div class="aw-row aw-row--head">
+          <span></span>
+          <div class="aw-cols">
+            <span class="aw-stage">形成<small class="aw-stage-s"><span class="jt">マンデート</span>・評価</small></span>
+            <span class="aw-stage">実行<small class="aw-stage-s">組成・取得</small></span>
+            <span class="aw-stage">保有期間<small class="aw-stage-s">保有・売却</small></span>
           </div>
         </div>
-        <span class="aw-specs-k">各段階で選任される専門家</span>
-        <div class="aw-specs">
-        <span class="aw-spec">鑑定・法務</span>
-        <span class="aw-spec">法務・貸し手・技術</span>
-        <span class="aw-spec">プロパティ<wbr><span class="jt">マネジメント</span>・仲介</span>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">投資家</span></div>
+          <div><p class="aw-note">マンデートと意思決定を保持</p><div class="aw-bar" aria-hidden="true"></div></div>
+        </div>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">監督</span></div>
+          <div>
+            <div class="aw-ribbons">
+              <div class="aw-ribbon aw-ribbon--with">
+                <span class="aw-ribbon-n"><span lang="en">Reiwa Capital</span></span>
+                <span class="aw-ribbon-note">各段階における投資家側の助言と<span class="jt">モニタリング</span></span>
+              </div>
+              <div class="aw-ribbon aw-ribbon--without">
+                <span class="aw-ribbon-n">継続的な調整役が不在</span>
+                <span class="aw-ribbon-note">各専門家は自らの段階を担い、全体を通して投資家の視点を保持する役割は誰にもありません</span>
+              </div>
+            </div>
+            <div class="aw-bar aw-bar--rc" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="aw-row aw-lane aw-lane--spec">
+          <div class="aw-lane-k"><span class="aw-lane-n">専門家</span><span class="aw-lane-s">各段階で選任</span></div>
+          <div class="aw-specs aw-cols">
+            <span class="aw-spec">鑑定・法務</span>
+            <span class="aw-spec">法務・貸し手・技術</span>
+            <span class="aw-spec"><span class="jt">プロパティマネジメント</span>・<wbr>仲介</span>
+          </div>
         </div>
       </div>
 
@@ -396,6 +420,17 @@
           <span class="aw-inv-n">投資家</span>
           <span class="aw-inv-note">マンデートと意思決定を保持</span>
         </div>
+        <div class="aw-sp-ribbon aw-ribbons">
+                        <div class="aw-ribbon aw-ribbon--with">
+                <span class="aw-ribbon-n"><span lang="en">Reiwa Capital</span></span>
+                <span class="aw-ribbon-note">各段階における投資家側の助言と<span class="jt">モニタリング</span></span>
+              </div>
+              <div class="aw-ribbon aw-ribbon--without">
+                <span class="aw-ribbon-n">継続的な調整役が不在</span>
+                <span class="aw-ribbon-note">各専門家は自らの段階を担い、全体を通して投資家の視点を保持する役割は誰にもありません</span>
+              </div>
+            
+        </div>
         <div class="aw-sp-track">
           <div class="aw-sp-rail" aria-hidden="true">
             <i></i>
@@ -403,19 +438,9 @@
             <i></i>
           </div>
           <div class="aw-sp-rows">
-            <div class="aw-sp-row"><span class="aw-sp-n">形成</span><span class="aw-sp-st"><span class="jt">マンデート</span>・評価</span><span class="aw-sp-s">鑑定・法務</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">実行</span><span class="aw-sp-st">組成・取得</span><span class="aw-sp-s">法務・貸し手・技術</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">保有期間</span><span class="aw-sp-st">保有・売却</span><span class="aw-sp-s">プロパティ<wbr><span class="jt">マネジメント</span>・仲介</span></div>
-          </div>
-        </div>
-        <div class="aw-sp-ribbon aw-ribbons">
-          <div class="aw-ribbon aw-ribbon--with">
-            <span class="aw-ribbon-n"><span lang="en">Reiwa Capital</span></span>
-            <span class="aw-ribbon-note">各段階における投資家側の助言と<span class="jt">モニタリング</span></span>
-          </div>
-          <div class="aw-ribbon aw-ribbon--without">
-            <span class="aw-ribbon-n">継続的な調整役が不在</span>
-            <span class="aw-ribbon-note">各専門家は自らの段階を担い、全体を通して投資家の視点を保持する役割は誰にもありません</span>
+            <div class="aw-sp-row"><span class="aw-sp-n">形成</span><span class="aw-sp-st"><span class="jt">マンデート</span>・評価</span><span class="aw-sp-s"><b>専門家</b>鑑定・法務</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">実行</span><span class="aw-sp-st">組成・取得</span><span class="aw-sp-s"><b>専門家</b>法務・貸し手・技術</span></div>
+            <div class="aw-sp-row"><span class="aw-sp-n">保有期間</span><span class="aw-sp-st">保有・売却</span><span class="aw-sp-s"><b>専門家</b><span class="jt">プロパティマネジメント</span>・<wbr>仲介</span></div>
           </div>
         </div>
       </div>
