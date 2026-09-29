@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Investor-side support for Japanese investors acquiring and owning European real estate, with a focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=25">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=27">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=99">
+<link rel="stylesheet" href="editorial.css?v=100">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -53,8 +53,8 @@
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(37px, 25px + 2.7vw, 64px); line-height: 1.05; letter-spacing: -0.022em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 21ch; text-wrap: balance; }
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14.5px + 0.35vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 44ch; }
-  .home-hero .loc .sep { margin: 0 clamp(12px, 1.3vw, 20px); color: rgba(255,255,255,0.5); }
-  .home-hero .loc { display: block; text-align: center; margin-top: clamp(18px, 1.8vw, 24px); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
+  .home-hero .loc .sep { margin: 0 var(--fluid-2xs); color: rgba(255,255,255,0.5); }
+  .home-hero .loc { display: block; text-align: center; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
   /* Phones: the headline is sized to the widest it can be while keeping
      "European Real Estate." whole on one line — measured, not guessed. The
      hero shares the body gutter so its left edge lines up with the header and
@@ -78,7 +78,7 @@
   @media (max-width: 430px) { .hi-statement { font-size: 24px; } }
 
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
-  .hi { padding: clamp(56px, 5.4vw, 80px) 0 clamp(44px, 4.2vw, 62px); }
+  .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
   .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(27px, 18px + 1.7vw, 43px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
      replace restated the four principles in the aubergine field below. */
@@ -86,10 +86,10 @@
      one rule, each with the period of the six-stage process it belongs to
      and a single line drawn from the Approach page. A short bar marks the
      start of each strand, so the three read left to right as one line. */
-  .hi-ops { list-style: none; margin: clamp(30px, 3.2vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); }
+  .hi-ops { list-style: none; margin: var(--fluid-l) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   /* Body copy is never centred, so the block reads from one left edge and
      the marker sits on that edge rather than in the middle of it. */
-  .hi-op { position: relative; padding-top: clamp(16px, 1.6vw, 20px); border-top: 1px solid var(--rule-strong); text-align: left; }
+  .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
   .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
   .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
@@ -99,7 +99,7 @@
   .hi-op-sep { margin: 0 4px; }
   .hi-op-d { margin: 10px auto 0; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 30ch; text-wrap: pretty; }
   .hi-ops-foot { text-align: center; }
-  .hi-ops-link { margin-top: clamp(20px, 2.2vw, 30px); }
+  .hi-ops-link { margin-top: var(--fluid-s); }
   @media (max-width: 760px) {
     .hi { padding: 60px 0 52px; }
     .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: var(--space-6) 0; }
@@ -133,15 +133,15 @@
 
   .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
-  .hm-col .hm-city { margin-top: clamp(18px, 1.9vw, 24px); }
+  .hm-col .hm-city { margin-top: var(--fluid-xs); }
   .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 18px + 0.9vw, 28px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 44ch; }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
      the sentence are set out under it: one lead, then the three facts that
      sentence was enumerating. No claim is added. */
-  .hm-facts { list-style: none; margin: clamp(18px, 1.9vw, 24px) 0 0; padding: 0; display: grid; max-width: 44ch; }
-  .hm-facts li { padding: clamp(9px, 1vw, 12px) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
+  .hm-facts { list-style: none; margin: var(--fluid-xs) 0 0; padding: 0; display: grid; max-width: 44ch; }
+  .hm-facts li { padding: var(--fluid-2xs) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
   .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
   @media (max-width: 900px) { .hm-facts { max-width: none; } }
   /* What the two markets add together: a kicker and three points under the
@@ -164,7 +164,7 @@
     .hm-photo, .hf-grid { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
     .hm-photo { aspect-ratio: 1537 / 659; }
     .hf-item { aspect-ratio: 4 / 5; }
-    .hf-cap { padding: clamp(20px, 5vw, 28px) var(--gutter); }
+    .hf-cap { padding: var(--fluid-s) var(--gutter); }
   }
 
   /* --- 4 · Built from the investor side -------------------------------- */
@@ -181,12 +181,12 @@
      two of the four headings wrap, and without this the column feet stagger. */
   .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
   .hp-item > div { display: contents; }
-  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 14px + 0.5vw, 21px); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-item p { margin: clamp(10px, 1.1vw, 14px) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
+  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
   @media (max-width: 1100px) {
-    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: clamp(30px, 3.4vw, 44px); }
+    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
     .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
   }
   @media (max-width: 760px) {
@@ -210,11 +210,11 @@
      hierarchy the inner page states. */
   .hf { padding: 0 0 clamp(72px, 7vw, 104px); }
   .hf .shell { padding-top: clamp(80px, 7.6vw, 112px); }
-  .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1vw, 16px); margin-top: clamp(36px, 4vw, 56px); }
+  .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-2xs); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
-  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: clamp(8px, 0.9vw, 12px); }
+  .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
   .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 40ch; }
   .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
@@ -228,7 +228,7 @@
   }
   .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   /* The specialist application: named, reachable, and plainly subordinate. */
-  .hf-spec { max-width: none; margin-top: clamp(18px, 1.8vw, 24px); padding-top: clamp(16px, 1.6vw, 22px); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px clamp(14px, 1.6vw, 22px); }
+  .hf-spec { max-width: none; margin-top: var(--fluid-xs); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px var(--fluid-xs); }
   .hf-spec-k { font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
   .hf-spec a { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .hf-spec a .hf-cue-a { color: var(--ink-3); }

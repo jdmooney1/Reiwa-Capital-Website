@@ -140,10 +140,12 @@
 
   /* ---------------------------------------------------------------- TYPE */
 
-  --font-display: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* serif retired — aliased to DM Sans (consistency pass) */
+  /* The Latin stack. There is one: --font-display, --font-serif and
+     --font-mono were kept as aliases of it through the consistency pass and
+     held the identical family list, which made the type system look like it
+     offered four choices when it offered one. Headings now name this token
+     directly. */
   --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* mono retired — aliased to DM Sans (consistency pass) */
   /* The one Japanese stack. DM Sans carries the Latin and the numerals; the
      platform Japanese sans carries kana and kanji. Every Japanese rule on the
      site resolves to this variable — nothing redeclares the families. */
@@ -207,6 +209,14 @@
      container primary page frame (editorial.css, 1280px) */
   --measure-body:      620px;
   --measure-statement: 820px;
+  /* Font-relative measure. The three widths above are absolute, so a block set
+     in 15.5px copy and one set in 18px copy both stop at the same pixel and
+     therefore at a different character count. --measure-ch is stated in `ch`,
+     so it scales with each block's own type and every block it caps lands on
+     the same reading length (≤75 characters at 1440, calibrated by measuring
+     the longest rendered line of each). Used where the cap governs running
+     copy rather than a page frame. */
+  --measure-ch:        49ch;
 
   /* Line heights */
   /* Container — one frame for the whole site. Actual responsive value set
@@ -350,7 +360,7 @@ body {
 
 /* Headings */
 h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--type-page-title);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
@@ -358,7 +368,7 @@ h1 {
   color: var(--fg-1);
 }
 h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: var(--type-h2);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
@@ -458,6 +468,10 @@ html[lang="ja"] {
   --measure:      42em;   /* long-form body        (was 66ch ≈ 36 JA chars) */
   --measure-lead: 24em;   /* lead / intro lines    (was 38ch ≈ 21 JA chars) */
   --measure-body: 40em;   /* market-page body      (was 660px, fixed px)    */
+  --measure-ch:   40em;   /* font-relative measure — Japanese is monospaced at
+                             1em per character, so `ch` buys nothing; this
+                             restates the same width the em measures use, and
+                             Japanese line lengths are unchanged.              */
 }
 html[lang="ja"] .wwd-desc,
 html[lang="ja"] .hww-node p     { max-width: 26em; }

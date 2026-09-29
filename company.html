@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Company profile, responsibilities and contact for Reiwa Capital: Tokyo-based, investor-side European real estate advisory for Japanese investors.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=25">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=27">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=99">
+<link rel="stylesheet" href="editorial.css?v=100">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -52,16 +52,16 @@
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
   /* The nav sits in flow above this head, so the padding does not add the
      nav height again the way the art-directed heads do. */
-  .co-open .inner { padding: clamp(48px, 4.4vw, 68px) var(--gutter) clamp(20px, 2vw, 28px); }
+  .co-open .inner { padding: var(--fluid-xl) var(--gutter) var(--fluid-xs); }
   /* The page used an 880px measure while every other page runs on the site
      container's 1048px content column, so the measure visibly changed on
      navigation. The shell now sets the width; long prose keeps its own cap
      below, rather than being stretched to the full column. */
   .co-sheet { max-width: none; }
   .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(29px, 22px + 1.55vw, 44px); line-height: 1.14; letter-spacing: -0.018em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 30ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
-  .co-open .sub { margin: clamp(14px, 1.5vw, 20px) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .co-profile { min-width: 0; margin-top: clamp(32px, 3.4vw, 48px); }
-  .co-profile .co-label { margin-bottom: clamp(10px, 1.1vw, 14px); }
+  .co-open .sub { margin: var(--fluid-xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-profile { min-width: 0; margin-top: var(--fluid-l); }
+  .co-profile .co-label { margin-bottom: var(--fluid-2xs); }
   @media (max-width: 760px) {
     .co-open .inner { padding-top: 34px; padding-bottom: 20px; }
     .co-profile { margin-top: 26px; }
@@ -75,21 +75,21 @@
      carries a hairline on every row, and more of them would make it read
      more like a table, not less. */
   .co-sec { padding: clamp(40px, 4.2vw, 62px) 0 0; border-top: 0; }
-  .co-sec:last-of-type { padding-bottom: clamp(44px, 4.2vw, 60px); }
+  .co-sec:last-of-type { padding-bottom: var(--fluid-xl); }
   .co-row { display: block; max-width: none; }
   /* A section heading, not an eyebrow: it has to outrank the 22px <h3>s in
      the contact block it sits above. Still well below the 38-46px the
      strategy pages use, so Company stays the quietest page on the site. */
-  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 16px + 0.85vw, 26px); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 clamp(16px, 1.8vw, 24px); padding-top: 0; }
+  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 16px + 0.85vw, 26px); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 var(--fluid-xs); padding-top: 0; }
   @media (max-width: 760px) { .co-sec { padding-top: 34px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
      A rule above the list and a hairline under every row. The label stays
      quiet and small; the value is read at body size, not promoted. */
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
-  .co-table > div { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .co-table > div { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: var(--fluid-m); padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); align-items: baseline; }
   .co-table dt { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
-  .co-table dd { margin: 0; max-width: 54ch; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.5; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-table dd { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.5; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -105,9 +105,9 @@
      the rows match every other list on the page. */
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(16px, 1.6vw, 21px); border-bottom: 1px solid var(--rule); }
+  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 15px + 0.4vw, 20px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
-  .co-tier-d { margin: 0; max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .co-tier-d { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
   }
@@ -118,9 +118,9 @@
      The general address is the route; no per-audience links. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
-  .co-aud { margin: 0 0 clamp(18px, 2vw, 26px); max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  .co-aud { margin: 0 0 var(--fluid-xs); max-width: var(--measure-body); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   .co-general { margin: 0; }
-  .co-gen-row { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: clamp(24px, 2.6vw, 48px); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 clamp(12px, 1.2vw, 15px); border-bottom: 1px solid var(--rule); }
+  .co-gen-row { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-2xs); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
   .co-general dt { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
   .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; letter-spacing: 0; color: var(--ink); }
@@ -129,7 +129,7 @@
   .co-general a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-color: transparent; }
 
   /* Placement only: the treatment itself lives in editorial.css. */
-  .co-sec.co-contact { padding-bottom: clamp(44px, 4.2vw, 60px); }
+  .co-sec.co-contact { padding-bottom: var(--fluid-xl); }
   @media (max-width: 760px) {
     .co-gen-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 14px 0 12px; }
   }

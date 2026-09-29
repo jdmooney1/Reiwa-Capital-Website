@@ -27,11 +27,11 @@
 <meta name="twitter:description" content="二つの市場、二つの中核戦略と一つの選択的な応用領域、そしてすべての案件に共通する五つの視点。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capitalは、日本の投資家側に立って、ロンドン・アムステルダムを中心とする欧州不動産投資を支援します。","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=25">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=27">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=99">
+<link rel="stylesheet" href="../editorial.css?v=100">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=26">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -101,7 +101,7 @@
   @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }
   /* Internal-page hero pattern, as set on About. */
   .if-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 12em; text-wrap: balance; }
-  .if-hero .sub { margin: clamp(10px, 1vw, 14px) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .if-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .if-hero h1 { font-size: clamp(26px, 7.2vw, 33px); max-width: 11em; }
     .if-hero .sub { margin-top: 10px; max-width: 22em; }
@@ -114,7 +114,7 @@
   .if-sec { padding: 0 0 clamp(56px, 5vw, 78px); }
   .if-sec > .shell { padding-top: clamp(48px, 5vw, 72px); }
   .if-head { max-width: var(--measure-statement); }
-  .if-lede { margin-top: clamp(11px, 1.2vw, 16px); max-width: 33em; }
+  .if-lede { margin-top: var(--fluid-2xs); max-width: 33em; }
   @media (max-width: 760px) { .if-sec { padding-bottom: 48px; } .if-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · The investment focus field ------------------------------------
@@ -131,18 +131,18 @@
   .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
-  .fx-param { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; margin-top: clamp(30px, 3.2vw, 46px); padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); }
+  .fx-param { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: var(--fluid-m); align-items: start; margin-top: var(--fluid-l); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); }
   .fx-param-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; letter-spacing: 0.005em; color: var(--ink-3); }
   .fx-param-v { margin: 0; font-family: var(--jp); font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.85; color: var(--ink-2); max-width: 52em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 900px) {
-    .fx-param { grid-template-columns: minmax(0, 1fr); gap: clamp(9px, 1vw, 12px); }
+    .fx-param { grid-template-columns: minmax(0, 1fr); gap: var(--fluid-2xs); }
     .fx-h2 { max-width: none; }
   }
 
   /* The component itself. A floor height for the balanced state; an open
      panel then grows to fit its own content, and align-items: stretch carries
      that height across to the closed one, so nothing is ever clipped. */
-  .fx-fieldwrap > .shell { padding-top: clamp(27px, 2.9vw, 42px); padding-bottom: clamp(24px, 2.6vw, 36px); }
+  .fx-fieldwrap > .shell { padding-top: clamp(27px, 2.9vw, 42px); padding-bottom: var(--fluid-s); }
   .fx-field { display: flex; align-items: stretch; gap: 2px; min-height: clamp(510px, 37.5vw, 620px); background: rgba(28,14,35,.14); }
   .fx-panel { position: relative; flex: 1.5 1 0; min-width: 0; overflow: hidden; background: #DCD6CC; transition: flex-grow 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   /* Selected is unmistakable without a button or a raised card: a cream
@@ -218,11 +218,11 @@
   /* Kept below the section h2 it now sits under in the outline. */
   .fx-open .fx-name { font-size: clamp(21px, 14px + 0.85vw, 28px); }
   .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
-  .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px clamp(20px, 2.2vw, 30px); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px var(--fluid-s); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   @media (hover: hover) { .fx-back:hover { color: rgba(252,250,241,.78); } }
-  .fx-band { flex: 1 0 auto; background: #F5F0E6; padding: clamp(22px, 2.2vw, 30px); display: flex; flex-direction: column; }
+  .fx-band { flex: 1 0 auto; background: #F5F0E6; padding: var(--fluid-s); display: flex; flex-direction: column; }
   .fx-band-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
-  .fx-band-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; padding: 0 clamp(18px, 2vw, 28px); }
+  .fx-band-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; padding: 0 var(--fluid-xs); }
   .fx-band-col + .fx-band-col { border-left: 1px solid var(--rule-strong); }
   .fx-band-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
   .fx-band-i { font-family: var(--jp); font-size: 12.5px; line-height: 1.8; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
@@ -239,11 +239,11 @@
      位置づける。 */
   .fx-band--rep .fx-name { color: var(--ink); font-size: clamp(19px, 13px + 0.7vw, 24px); }
   .fx-band--rep .fx-stages { margin-top: 16px; padding-top: 0; }
-  .fx-band--rep .fx-stagecopy { margin-top: clamp(18px, 1.8vw, 24px); }
+  .fx-band--rep .fx-stagecopy { margin-top: var(--fluid-xs); }
   .fx-stagehead { margin: 0 0 10px; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(17px, 13px + 0.5vw, 22px); line-height: 1.4; letter-spacing: -0.016em; color: var(--ink); }
   .fx-stagecopy p { font-family: var(--jp); font-size: 14px; line-height: 1.9; color: var(--ink-2); max-width: 40em; word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   .fx-stagecopy:focus { outline: none; }
-  .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(14px, 1.6vw, 24px); margin-top: clamp(20px, 2vw, 28px); }
+  .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-xs); margin-top: var(--fluid-xs); }
   .fx-stage { appearance: none; background: none; border: 0; border-top: 2px solid var(--rule-strong); margin: 0; padding: 12px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: var(--jp); font-weight: 400; font-size: clamp(13px, 12px + 0.2vw, 14.5px); line-height: 1.5; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-selected="true"] { border-top-color: var(--ink); font-weight: 500; color: var(--ink); }
   @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
@@ -251,18 +251,18 @@
 
   @media (max-width: 1024px) {
     .fx-field, .fx-open { min-height: clamp(488px, 54vw, 580px); }
-    .fx-cap { padding: clamp(24px, 2.6vw, 30px); }
+    .fx-cap { padding: var(--fluid-s); }
     .fx-openimg { height: clamp(226px, 25vw, 268px); }
     .fx-openimg .fx-scrim { -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); }
     .fx-band { padding: clamp(18px, 2.2vw, 24px); }
-    .fx-band-col { gap: 9px; padding: 0 clamp(16px, 2vw, 22px); }
-    .fx-back { padding: 12px clamp(16px, 2vw, 22px); }
+    .fx-band-col { gap: 9px; padding: 0 var(--fluid-xs); }
+    .fx-back { padding: 12px var(--fluid-xs); }
     .fx-backscrim { width: min(74%, 300px); height: 170px; }
   }
 
   /* --- Mobile: one two-option selector, one large image ------------------ */
   .fx-mob { display: none; scroll-margin-top: var(--anchor-h, 96px); }
-  .fx-mob > .shell { padding-top: clamp(24px, 2.8vw, 32px); padding-bottom: clamp(22px, 2.6vw, 30px); }
+  .fx-mob > .shell { padding-top: var(--fluid-s); padding-bottom: var(--fluid-s); }
   @media (max-width: 760px) {
     .fx-fieldwrap { display: none; }
     .fx-mob { display: block; }
@@ -307,7 +307,7 @@
      from every row at every width, with no per-breakpoint exceptions. (The
      old :first-of-type rule never matched anything: .fx-lever-k is the first
      <span> in the row, so it, not the first lever, held that slot.) */
-  .fx-lever-row { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: clamp(28px, 3vw, 52px); align-items: start; padding-top: clamp(15px, 1.5vw, 20px); border-top: 1px solid var(--rule-strong); overflow: hidden; }
+  .fx-lever-row { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: var(--fluid-m); align-items: start; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); overflow: hidden; }
   .fx-lever-list { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 26px; min-width: 0; }
   .fx-lever-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
   .fx-lever { position: relative; font-family: var(--jp); font-size: 12.5px; line-height: 1.45; color: var(--ink); word-break: keep-all; line-break: strict; }
@@ -318,7 +318,7 @@
     .fx-lever { padding: 9px 0; border-top: 1px solid var(--rule); font-size: 14px; }
     .fx-lever:first-child { border-top: 0; padding-top: 2px; }
     .fx-lever::before { display: none; }
-    .fx-levers > .shell { padding-bottom: clamp(44px, 4.4vw, 64px); }
+    .fx-levers > .shell { padding-bottom: var(--fluid-xl); }
   }
 
   /* --- 3 · Selective hospitality: a specialist application ---------------
@@ -329,21 +329,21 @@
   .hs-grid { display: grid; grid-template-columns: minmax(0, 69fr) minmax(0, 31fr); align-items: end; }
   .hs-media { height: clamp(274px, 22.5vw, 356px); overflow: hidden; background: #E4DDD2; }
   .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
-  .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: clamp(26px, 2.4vw, 34px); display: flex; flex-direction: column; gap: 10px; }
+  .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: var(--fluid-s); display: flex; flex-direction: column; gap: 10px; }
   .hs-kicker { display: block; padding-bottom: 11px; border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hs-title { margin: 3px 0 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
   .hs-state { margin: 2px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.95; color: var(--ink-2); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .hs-tests { margin-top: clamp(28px, 3vw, 44px); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 52px); }
+  .hs-tests { margin-top: var(--fluid-m); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
   .hs-test-n { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(14.5px, 13px + 0.25vw, 16.5px); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .hs-test-d { margin: 10px 0 0; max-width: 22em; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .hs-grid { grid-template-columns: minmax(0, 64fr) minmax(0, 36fr); }
     .hs-panel { margin-left: calc(-1 * clamp(28px, 4vw, 52px)); margin-bottom: clamp(18px, 2.4vw, 30px); padding: clamp(20px, 2.4vw, 26px); }
-    .hs-tests { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px) clamp(20px, 3vw, 40px); }
+    .hs-tests { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-xs) clamp(20px, 3vw, 40px); }
   }
   @media (max-width: 760px) {
-    .hs-sec > .shell { padding-top: clamp(34px, 3.4vw, 44px); padding-bottom: clamp(35px, 3.5vw, 47px); }
+    .hs-sec > .shell { padding-top: var(--fluid-l); padding-bottom: var(--fluid-l); }
     /* align-items:end is a grid cross-axis rule; in a column flex box it
        would shrink the photograph to its content width. */
     .hs-grid { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
@@ -359,26 +359,26 @@
      Four typographic principles on the purple ground. No numbers, no icons,
      no explanatory copy: the refusals are the argument. */
   .dl-sec { background: var(--ink); }
-  .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: clamp(44px, 4.4vw, 64px); border-top: 0; }
+  .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: var(--fluid-xl); border-top: 0; }
   .dl-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .dl-kicker { display: block; margin: 0 0 clamp(12px, 1.2vw, 16px); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
-  .dl-lede { margin: clamp(11px, 1.2vw, 15px) 0 clamp(4px, 0.6vw, 8px); font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  .dl-kicker { display: block; margin: 0 0 var(--fluid-2xs); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
+  .dl-lede { margin: var(--fluid-2xs) 0 clamp(4px, 0.6vw, 8px); font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   /* align-items: start, so each rule stops where its own refusal stops. The
      columns are deliberately unequal; stretching them drew three-quarters of
      a column of empty rule under the shortest. */
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
-  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) clamp(12px, 1.3vw, 20px) clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) var(--fluid-2xs) var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   .dl-n { display: block; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 12px + 0.55vw, 21px); line-height: 1.5; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .dl-x { display: block; font-family: var(--jp); font-size: clamp(13.5px, 12.5px + 0.25vw, 15px); line-height: 1.8; color: rgba(252,250,241,.74); max-width: 20em; word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
-    .dl-p:nth-child(4n+1) { padding-left: clamp(20px, 2.2vw, 34px); border-left: 1px solid rgba(252,250,241,.30); }
+    .dl-p:nth-child(4n+1) { padding-left: var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
     .dl-p:nth-child(2n+1) { padding-left: 0; border-left: 0; }
   }
   @media (max-width: 760px) {
     .dl-sec > .shell { padding-top: clamp(37px, 3.7vw, 48px); padding-bottom: clamp(36px, 3.6vw, 47px); }
-    .dl-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: clamp(22px, 2.6vw, 30px); }
+    .dl-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: var(--fluid-s); }
     .dl-p, .dl-p:nth-child(4n+1), .dl-p:nth-child(2n+1) { padding: 18px 0 20px; border-left: 0; border-top: 1px solid rgba(252,250,241,.30); }
   }
 
