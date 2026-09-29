@@ -29,21 +29,40 @@
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
 }
-/* The nav labels sit in the band where the hero's own scrim is weakest,
-   over the palest part of the photograph. A soft top-down wash, fully
-   transparent by the bar's lower edge, gives them a base without
-   introducing a visible header block or a hard edge. Both languages now
-   run the same flat bar over the same hero, so both take the wash. */
-.nav-bar.nav-over-hero {
-  /* Held at strength through the band the labels sit in, rather than
-     fading from the top edge: at 58% the old ramp was down to 0.22 and
-     the switcher measured 1.7:1 over bright sky. 0.56 is the measured
-     minimum that clears 4.5:1 on the lightest grounds sampled. */
+/* The nav labels sit over the palest part of the photograph (the sky), where
+   white text needs a base to reach 4.5:1. That base is a wash, but it must
+   read as the photograph darkening toward the top, not as a header block:
+   no flat band, no edge. So the darkness is held only through the row the
+   labels sit in (0.58, the measured minimum that clears 4.5:1 on the lightest
+   ground at every width) and then eased out over 320px in many small steps.
+   It is a pseudo-element, not the bar's own background, because the bar is
+   61px tall and a background cannot fade past its own edge.
+   Behind the content (z-index -1) and inert; off while the menu is open,
+   since a negative-z child would otherwise paint over the bar's cream. */
+.nav-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 320px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 240ms var(--ease-out, ease);
   background: linear-gradient(180deg,
-              rgba(16, 11, 20, 0.56) 0%,
-              rgba(16, 11, 20, 0.56) 74%,
-              rgba(16, 11, 20, 0) 100%);
+              rgba(16, 11, 20, 0.580) 0px,
+              rgba(16, 11, 20, 0.580) 44px,
+              rgba(16, 11, 20, 0.564) 84px,
+              rgba(16, 11, 20, 0.472) 122px,
+              rgba(16, 11, 20, 0.340) 160px,
+              rgba(16, 11, 20, 0.198) 198px,
+              rgba(16, 11, 20, 0.090) 236px,
+              rgba(16, 11, 20, 0.027) 274px,
+              rgba(16, 11, 20, 0) 320px);
 }
+.nav-bar.nav-over-hero::before { opacity: 1; }
+.nav-bar.nav-menu-open::before { opacity: 0; }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }
 /* .lang-switch (English) inverts in editorial.css alongside .nav-links. */
 .nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
@@ -76,6 +95,12 @@
 }
 .nav-bar.nav-over-hero .nav-logo .logo-dark  { opacity: 0; }
 .nav-bar.nav-over-hero .nav-logo .logo-light { opacity: 1; }
+/* Menu open: the panel is the ground, so the row reads on cream and the
+   logo must go back to its dark variant with the other controls (see the
+   .nav-menu-open rules in editorial.css). Until the wash stopped painting a
+   grey block behind this row the white logo happened to stay visible. */
+.nav-bar.nav-over-hero.nav-menu-open .nav-logo .logo-dark  { opacity: 1; }
+.nav-bar.nav-over-hero.nav-menu-open .nav-logo .logo-light { opacity: 0; }
 .nav-logo .logo-dark { transition: opacity var(--dur-3) var(--ease-out); }
 
 /* Conditional logo protection — while craft.js measures the hero heading
