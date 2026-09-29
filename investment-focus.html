@@ -205,11 +205,36 @@
   .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px var(--fluid-s); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   @media (hover: hover) { .fx-back:hover { color: rgba(252,250,241,.78); } }
   .fx-band { flex: 1 0 auto; background: #F5F0E6; padding: var(--fluid-s); display: flex; flex-direction: column; }
-  .fx-band-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
-  .fx-band-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; padding: 0 var(--fluid-xs); }
-  .fx-band-col + .fx-band-col { border-left: 1px solid var(--rule-strong); }
   .fx-band-k { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-3); }
-  .fx-band-i { font-family: 'DM Sans', sans-serif; font-size: clamp(13.5px, 12.6px + 0.2vw, 15px); line-height: 1.45; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  /* Supporting criteria. Two lists, one shown at a time: what is looked for,
+     and where the downside sits. The panels share one grid cell, so the band
+     keeps the height of the longer and nothing below it moves. Without script
+     both lists are drawn in turn, each under its own label. */
+  .fx-pair { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .fx-pair-tabs { display: none; }
+  html.has-js .fx-pair-tabs { display: flex; gap: clamp(20px, 2.6vw, 34px); border-bottom: 1px solid var(--rule-strong); }
+  .fx-pair-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 6px 0 11px; min-height: 44px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-pair-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
+  .fx-pair-tab--down[aria-selected="true"] { border-bottom-color: var(--reiwa-node, #5E3D78); }
+  .fx-pair-tab:focus-visible { outline: 2px solid var(--ink); }
+  @media (hover: hover) { .fx-pair-tab:hover { color: var(--ink); } }
+  .fx-pair-stack { display: grid; }
+  .fx-pair-panel { grid-area: 1 / 1; min-width: 0; }
+  html:not(.has-js) .fx-pair-panel + .fx-pair-panel { margin-top: 20px; }
+  html.has-js .fx-pair-panel { visibility: hidden; opacity: 0; transition: opacity 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 240ms; }
+  html.has-js .fx-pair-panel.is-on { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
+  html:not(.has-js) .fx-pair-panel { grid-area: auto; }
+  html.has-js .fx-pair-k { display: none; }
+  .fx-pair-k { margin-bottom: 8px; }
+  .fx-pair-list { list-style: none; margin: 0; padding: 0; counter-reset: pair; }
+  .fx-pair-list li { counter-increment: pair; display: grid; grid-template-columns: 2em minmax(0, 1fr); padding: 11px 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.5; color: var(--ink); text-wrap: pretty;  }
+  .fx-pair-list li::before { content: counter(pair); font-variant-numeric: tabular-nums; font-size: var(--type-caption); line-height: 1.9; color: var(--ink-3); }
+  .fx-pair-list li:last-child { border-bottom: 1px solid var(--rule); }
+  /* Repositioning camera: only the image moves, inside its own frame. */
+  [data-cam] { overflow: hidden; }
+  [data-cam] img { transform-origin: 0 0; will-change: transform; transition: transform 1400ms cubic-bezier(.22, 1, .36, 1); }
+  .fx-illus { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.45; color: var(--ink-3); max-width: 62ch; }
+  @media (prefers-reduced-motion: reduce) { .fx-pair-panel, .fx-pair-tab, [data-cam] img { transition: none; } }
 
   /* Repositioning: the three readings the mobile view already carried, brought
      up to desktop. One photograph, one title in a fixed place, one paragraph
@@ -239,7 +264,6 @@
     .fx-openimg { height: clamp(226px, 25vw, 268px); }
     .fx-openimg .fx-scrim { -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); }
     .fx-band { padding: clamp(18px, 2.2vw, 24px); }
-    .fx-band-col { gap: 9px; padding: 0 var(--fluid-xs); }
     .fx-back { padding: 12px var(--fluid-xs); }
     .fx-backscrim { width: min(74%, 300px); height: 170px; }
   }
@@ -271,7 +295,6 @@
   .fx-mbody, .fx-mcopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-mcopy:focus { outline: none; }
   .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
-  .fx-mband-col { display: flex; flex-direction: column; gap: 8px; padding-top: 13px; border-top: 1px solid var(--rule-strong); }
   .fx-mtabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; margin-top: 22px; }
   .fx-mtab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
   .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
@@ -311,7 +334,7 @@
   .hs-sec { background: var(--paper-soft); }
   .hs-sec > .shell { padding-top: clamp(37px, 3.7vw, 52px); padding-bottom: clamp(37px, 3.7vw, 54px); border-top: 0; }
   .hs-grid { display: grid; grid-template-columns: minmax(0, 69fr) minmax(0, 31fr); align-items: end; }
-  .hs-media { height: clamp(274px, 22.5vw, 356px); overflow: hidden; background: #E4DDD2; }
+  .hs-media { height: clamp(230px, 18vw, 272px); overflow: hidden; background: #E4DDD2; }
   .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
   .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: var(--fluid-s); display: flex; flex-direction: column; gap: 10px; }
   .hs-kicker { display: block; padding-bottom: 11px; border-bottom: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
@@ -319,7 +342,7 @@
   .hs-state { margin: 2px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 38ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .hs-tests { margin-top: var(--fluid-m); max-width: 104ch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
-  .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-body-l); font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Body copy under each test, in the voice of the Home page's investor-side columns. */
   .hs-test-d { margin: 10px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 1024px) {
@@ -332,13 +355,13 @@
     /* align-items:end is a grid cross-axis rule; in a column flex box it
        would shrink the photograph to its content width. */
     .hs-grid { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
-    .hs-media { height: 274px; }
+    .hs-media { height: 220px; }
     .hs-media img { object-position: 50% 52%; }
     .hs-panel { margin: 0; padding: 0; background: none; }
     .hs-tests { margin-top: 22px; display: flex; flex-direction: column; max-width: none; }
     .hs-test { padding: 13px 0; }
   }
-  @media (max-width: 390px) { .hs-media { height: 238px; } }
+  @media (max-width: 390px) { .hs-media { height: 200px; } }
 
   /* --- 4 · Where we draw the line ----------------------------------------
      Four typographic principles on the purple ground. No numbers, no icons,
@@ -427,20 +450,30 @@
               </div>
             </div>
             <div class="fx-band">
-              <div class="fx-band-grid">
-                <div class="fx-band-col">
-                  <span class="fx-band-k">What we look for</span>
-                  <span class="fx-band-i">Income evidenced by occupation, not by forecast</span>
-                  <span class="fx-band-i">Lease terms, expiry profile and tenant covenant</span>
-                  <span class="fx-band-i">Recurring and near-term capital requirements identified before pricing</span>
-                  <span class="fx-band-i">Refinancing capacity and buyer depth at exit</span>
+              <div class="fx-pair" data-pair>
+                <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
+                  <button class="fx-pair-tab" type="button" role="tab" id="fx-dp-t0" aria-controls="fx-dp-p0" aria-selected="true" tabindex="0">What we look for</button>
+                  <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-dp-t1" aria-controls="fx-dp-p1" aria-selected="false" tabindex="-1">Where the downside sits</button>
                 </div>
-                <div class="fx-band-col">
-                  <span class="fx-band-k">Where the downside sits</span>
-                  <span class="fx-band-i">Reletting cost, void period and landlord obligations at expiry</span>
-                  <span class="fx-band-i">Cash flow if reletting takes longer than underwritten</span>
-                  <span class="fx-band-i">Capital expenditure arriving earlier or larger than assumed</span>
-                  <span class="fx-band-i">Buyer depth at exit for an asset of this size and profile</span>
+                <div class="fx-pair-stack">
+                  <div class="fx-pair-panel is-on" role="tabpanel" id="fx-dp-p0" aria-labelledby="fx-dp-t0">
+                    <span class="fx-band-k fx-pair-k">What we look for</span>
+                    <ol class="fx-pair-list">
+                    <li>Income evidenced by occupation, not by forecast</li>
+                    <li>Lease terms, expiry profile and tenant covenant</li>
+                    <li>Recurring and near-term capital requirements identified before pricing</li>
+                    <li>Refinancing capacity and buyer depth at exit</li>
+                    </ol>
+                  </div>
+                  <div class="fx-pair-panel" role="tabpanel" id="fx-dp-p1" aria-labelledby="fx-dp-t1">
+                    <span class="fx-band-k fx-pair-k">Where the downside sits</span>
+                    <ol class="fx-pair-list">
+                    <li>Reletting cost, void period and landlord obligations at expiry</li>
+                    <li>Cash flow if reletting takes longer than underwritten</li>
+                    <li>Capital expenditure arriving earlier or larger than assumed</li>
+                    <li>Buyer depth at exit for an asset of this size and profile</li>
+                    </ol>
+                  </div>
                 </div>
               </div>
             </div>
@@ -462,8 +495,8 @@
             </div>
           </div>
           <div class="fx-open" hidden>
-            <div class="fx-openimg">
-              <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+            <div class="fx-openimg" data-cam>
+              <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
               <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
               <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
@@ -489,6 +522,7 @@
                   <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
                 </div>
               </div>
+              <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
             </div>
           </div>
         </div>
@@ -509,19 +543,31 @@
         </div>
         <p class="fx-mbody">Durable income with a clear basis in location, asset quality and occupational demand.</p>
         <div class="fx-mband">
-          <div class="fx-mband-col">
-            <span class="fx-band-k">What we look for</span>
-            <span class="fx-band-i">Income evidenced by occupation, not by forecast</span>
-            <span class="fx-band-i">Lease terms, expiry profile and tenant covenant</span>
-            <span class="fx-band-i">Recurring and near-term capital requirements identified before pricing</span>
-            <span class="fx-band-i">Refinancing capacity and buyer depth at exit</span>
-          </div>
-          <div class="fx-mband-col">
-            <span class="fx-band-k">Where the downside sits</span>
-            <span class="fx-band-i">Reletting cost, void period and landlord obligations at expiry</span>
-            <span class="fx-band-i">Cash flow if reletting takes longer than underwritten</span>
-            <span class="fx-band-i">Capital expenditure arriving earlier or larger than assumed</span>
-            <span class="fx-band-i">Buyer depth at exit for an asset of this size and profile</span>
+          <div class="fx-pair" data-pair>
+            <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
+              <button class="fx-pair-tab" type="button" role="tab" id="fx-mp-t0" aria-controls="fx-mp-p0" aria-selected="true" tabindex="0">What we look for</button>
+              <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-mp-t1" aria-controls="fx-mp-p1" aria-selected="false" tabindex="-1">Where the downside sits</button>
+            </div>
+            <div class="fx-pair-stack">
+              <div class="fx-pair-panel is-on" role="tabpanel" id="fx-mp-p0" aria-labelledby="fx-mp-t0">
+                <span class="fx-band-k fx-pair-k">What we look for</span>
+                <ol class="fx-pair-list">
+                <li>Income evidenced by occupation, not by forecast</li>
+                <li>Lease terms, expiry profile and tenant covenant</li>
+                <li>Recurring and near-term capital requirements identified before pricing</li>
+                <li>Refinancing capacity and buyer depth at exit</li>
+                </ol>
+              </div>
+              <div class="fx-pair-panel" role="tabpanel" id="fx-mp-p1" aria-labelledby="fx-mp-t1">
+                <span class="fx-band-k fx-pair-k">Where the downside sits</span>
+                <ol class="fx-pair-list">
+                <li>Reletting cost, void period and landlord obligations at expiry</li>
+                <li>Cash flow if reletting takes longer than underwritten</li>
+                <li>Capital expenditure arriving earlier or larger than assumed</li>
+                <li>Buyer depth at exit for an asset of this size and profile</li>
+                </ol>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -532,8 +578,8 @@
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">Shape</button>
           <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">Strengthen</button>
         </div>
-        <div class="fx-mimg">
-          <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
+        <div class="fx-mimg" data-cam>
+          <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
         </div>
         <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
           <div data-on>
@@ -549,6 +595,7 @@
             <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
           </div>
         </div>
+        <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
       </div>
     </div>
   </div>
@@ -647,6 +694,57 @@
   var mpanels  = [].slice.call(root.querySelectorAll('.fx-tabpanel'));
   var swaps    = [].slice.call(root.querySelectorAll('[data-swap]'));
 
+
+  /* Repositioning camera. The panorama is illustrative and does not change;
+     the frame moves across it as the explanation does: Identify looks at the
+     street level, Shape at the upper facades and roofline, Strengthen draws
+     back to the whole terrace. The move is a slow ease (about 1.4s), capped so
+     it never enlarges the photograph beyond its own pixels on this screen
+     (1535px wide), and it is not made at all under reduced motion, where the
+     whole view stays and only the words change. */
+  var camBoxes = [].slice.call(root.querySelectorAll('[data-cam]'));
+  var CAM = [{ x: 0.30, y: 0.61, z: 1.6 }, { x: 0.63, y: 0.40, z: 1.55 }, { x: 0.5, y: 0.5, z: 1 }];
+  var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var camLive = [];
+  function camFrame(box, m) {
+    var img = box.querySelector('img');
+    if (!img) return;
+    var W = box.clientWidth, H = box.clientHeight;
+    if (!W || !H || !img.naturalWidth) return;
+    var nw = img.naturalWidth, nh = img.naturalHeight;
+    var s0 = Math.max(W / nw, H / nh), dw = nw * s0, dh = nh * s0;
+    var pos = getComputedStyle(img).objectPosition.split(' ');
+    var px = parseFloat(pos[0]) / 100, py = parseFloat(pos[1]) / 100;
+    var ox = (W - dw) * px, oy = (H - dh) * py;
+    var c = CAM[m] || CAM[2], dpr = window.devicePixelRatio || 1;
+    var z = Math.max(1, Math.min(c.z, 1 / (s0 * dpr)));
+    if (z < 1.02) { img.style.transform = 'translate3d(0,0,0) scale(1)'; return; }
+    var tx = W / 2 - z * (ox + c.x * dw), ty = H / 2 - z * (oy + c.y * dh);
+    tx = Math.min(0, Math.max(W - z * W, tx));
+    ty = Math.min(0, Math.max(H - z * H, ty));
+    img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + z.toFixed(3) + ')';
+  }
+  function camera() {
+    camBoxes.forEach(function (box, k) {
+      var img = box.querySelector('img');
+      var visible = box.offsetParent !== null;
+      if (!img) return;
+      if (!visible || reduceMq.matches) { img.style.transform = ''; camLive[k] = false; return; }
+      if (!camLive[k]) {
+        /* Opening: start from the whole view, then move to the current stage. */
+        img.style.transition = 'none'; img.style.transform = 'translate3d(0,0,0) scale(1)';
+        void box.offsetWidth; img.style.transition = '';
+        camLive[k] = true;
+        requestAnimationFrame(function () { camFrame(box, moment); });
+      } else camFrame(box, moment);
+    });
+  }
+  camBoxes.forEach(function (box) {
+    var img = box.querySelector('img');
+    if (img && !img.complete) img.addEventListener('load', function () { camera(); });
+  });
+  if (reduceMq.addEventListener) reduceMq.addEventListener('change', camera);
+
   var narrow = function () { return window.matchMedia('(max-width: 760px)').matches; };
   var shown  = function (el) { return !!(el && el.offsetParent !== null); };
 
@@ -716,6 +814,7 @@
         }
       }
     });
+    camera();
   }
 
   /* Expanding hides the control that was activated and collapsing hides the
@@ -803,6 +902,42 @@
 
   paint();
   showMobileSelector();
+})();
+</script>
+<script>
+/* Supporting criteria (Income): two readings of the same asset, one shown at a
+   time. "What we look for" opens; "Where the downside sits" is one press
+   away. Both lists are in the page whatever is shown, and without script both
+   are drawn one after the other. */
+(function () {
+  [].forEach.call(document.querySelectorAll('[data-pair]'), function (pair) {
+    var tabs = [].slice.call(pair.querySelectorAll('.fx-pair-tab'));
+    var panels = [].slice.call(pair.querySelectorAll('.fx-pair-panel'));
+    if (!tabs.length || tabs.length !== panels.length) return;
+    function pick(i, focus) {
+      tabs.forEach(function (t, j) {
+        var on = i === j;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus({ preventScroll: true });
+      });
+      panels.forEach(function (p, j) { p.classList.toggle('is-on', j === i); });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') n = 0;
+        else if (e.key === 'End') n = tabs.length - 1;
+        if (n === null) return;
+        e.preventDefault();
+        pick(n, true);
+      });
+    });
+    pick(0);
+  });
 })();
 </script>
 <script src="shell.js?v=78"></script>
