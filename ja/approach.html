@@ -167,20 +167,56 @@
     .lf-field { padding: clamp(22px, 3.4vw, 30px) var(--gutter) clamp(26px, 3.4vw, 36px); }
   }
   @media (prefers-reduced-motion: reduce) { .lf-tab, .lf-i, .lf-n { transition: none; } }
-  /* Desktop: every stage in the page, in order, under its phase divider;
-     the strip is not rendered and nothing is bound. Phones and tablets:
-     one stage at a time under a strip that scrolls sideways. */
-  .lf-groups { display: grid; }
-  .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: var(--type-caption-lh); letter-spacing: var(--type-caption-ls); color: var(--cream); }
-  .lf-pan-h { margin: 0; }
-  /* Every stage is in the page at every width, in order, under its phase
-     heading. The tab strip is never rendered, so nothing scrolls sideways
-     and nothing claims to be a tablist. */
+  /* The strip is drawn only when script can drive it; without script all six
+     stages stay in the page, in order, each under its period. */
   .lf-over { display: none; }
-  .lf-groups { gap: var(--fluid-l); }
-  .lf-group + .lf-group .lf-gh { padding-top: 0; }
-  .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
-  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: var(--type-h3); }
+  html.has-js .lf-over { display: grid; }
+  .lf-tab { padding: 14px 0 12px; }
+  .lf-n { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; }
+  .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; }
+  .lf-period { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.02em; color: var(--cream); }
+  .lf-panels { padding-top: var(--fluid-s); }
+  .lf-panel { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: var(--fluid-xs) clamp(28px, 4vw, 64px); align-items: start; padding: 0; }
+  html.has-js .lf-panel + .lf-panel { margin-top: 0; padding-top: 0; border-top: 0; }
+  html:not(.has-js) .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
+  .lf-panel[hidden] { display: none; }
+  .lf-pan-head { display: flex; flex-direction: column; gap: 8px; }
+  .lf-pan-per { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.72); }
+  html.has-js .lf-pan-per { display: none; }
+  /* With the strip drawn, the selected tab is the visible title; the heading stays for the outline and for screen readers. */
+  html.has-js .lf-pan-head { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  html.has-js .lf-panel { grid-template-columns: minmax(0, 1fr); }
+  .lf-pan-h { margin: 0; display: flex; align-items: baseline; gap: 10px; }
+  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: var(--type-h3); color: var(--cream); }
+  .lf-pan-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .lf-k { font-family: var(--jp); }
+  .lf-p, .lf-ap dd, .lf-own-b { font-family: var(--jp); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
+  /* The investor's approval is the gate at the end of each stage, so it is
+     the one row with its own ground. */
+  .lf-ap { padding: 14px 16px 15px; background: rgba(252,250,241,.07); border-top: 0; border-left: 2px solid #B8A3CC; }
+  .lf-ap dt { color: #B8A3CC; }
+  @media (max-width: 900px) {
+    .lf-panel { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  }
+  @media (min-width: 901px) {
+    .lf-blk, .lf-ap { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); }
+    .lf-ap { align-items: baseline; }
+    .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 1100px) and (min-width: 901px) { .lf-own { grid-template-columns: minmax(0, 1fr); } .lf-own li { border-top: 1px solid rgba(252,250,241,.26); padding-top: 11px; } }
+  /* Phones: the three periods become three rows, the period name at the left
+     and its two stages beside it, so all six names show without scrolling. */
+  @media (max-width: 760px) {
+    .lf-over { grid-template-columns: minmax(0, 1fr); gap: 0; border-bottom: 0; }
+    html.has-js .lf-grp { grid-template-columns: 4.5em repeat(2, minmax(0, 1fr)); align-items: end; column-gap: var(--space-3); border-bottom: 1px solid rgba(252,250,241,.22); }
+    .lf-period { grid-column: auto; align-self: center; padding: 0; border-bottom: 0; color: rgba(252,250,241,.72); }
+    .lf-tab { padding: 10px 0 9px; }
+    .lf-panels { padding-top: 18px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .lf-panel:not([hidden]) { animation: lf-in 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+    @keyframes lf-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  }
 
   /* --- 3 · Five tests ---------------------------------------------------
      Five questions, permanently visible, in the same key/value grammar as
@@ -193,22 +229,22 @@
   /* The ring is a supporting mark on the left; the five tests read in full
      on the right as a definition list. Nothing is hidden behind a control:
      hovering or tapping a row lights its segment, and that is all. */
-  .tw-grid { margin-top: var(--fluid-m); display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
-  .tw-ring { width: 100%; max-width: 240px; position: sticky; top: calc(var(--anchor-h, 96px) + 8px); }
-  .tw-circle { position: relative; width: 100%; max-width: 240px; aspect-ratio: 1; margin: 0 auto; }
+  .tw-grid { margin-top: var(--fluid-m); display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: start; }
+  .tw-ring { width: 100%; max-width: 280px; padding-left: 20px; box-sizing: border-box; position: sticky; top: calc(var(--anchor-h, 96px) + 8px); }
+  .tw-circle { position: relative; width: 100%; max-width: 260px; aspect-ratio: 1; margin: 0 auto; }
   .tw-circle svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
-  .tw-arc { fill: none; stroke: #B7AC9C; stroke-width: 2.5; stroke-dasharray: 44.27 207.06; stroke-linecap: butt; transition: stroke 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), stroke-width 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-arc { fill: none; stroke: #A79B88; stroke-width: 2.5; stroke-dasharray: 44.27 207.06; stroke-linecap: butt; transition: stroke 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), stroke-width 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-arc.is-preview { stroke: var(--ink-2); stroke-width: 3.5; }
   .tw-arc.is-on { stroke: var(--ink); stroke-width: 5; }
-  .tw-tie { stroke: #B7AC9C; stroke-width: 1; transition: stroke 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-tie { stroke: #A79B88; stroke-width: 1; transition: stroke 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-tie.is-preview { stroke: var(--ink-2); }
   .tw-tie.is-on { stroke: var(--ink); stroke-width: 1.6; }
   /* The numerals on the ring and the numerals on the rows are the same
      five marks: what is chosen below is lit above. */
-  .tw-num { font-family: 'DM Sans', sans-serif; font-size: 6.4px; font-weight: 400; font-variant-numeric: tabular-nums; fill: var(--ink-3); transition: fill 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-num { font-family: 'DM Sans', sans-serif; font-size: 5.8px; font-weight: 400; font-variant-numeric: tabular-nums; fill: var(--ink-2); cursor: pointer; pointer-events: auto; transition: fill 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-num.is-preview { fill: var(--ink-2); }
   .tw-num.is-on { fill: var(--ink); font-weight: 500; }
-  .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64%; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: var(--jp); font-weight: 500; letter-spacing: 0.04em; font-size: 12px; line-height: 1.3; color: var(--ink-3); }
+  .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64%; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: var(--jp); font-weight: 500; letter-spacing: 0.04em; font-size: 13px; line-height: 1.3; color: var(--ink-3); }
   .tw-mark { display: block; width: 48px; height: auto; }
   .tw-list { margin: 0; display: grid; }
   .tw-item { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px clamp(20px, 2.4vw, 44px); padding: var(--fluid-xs) 0; border-top: 1px solid var(--rule); }
@@ -222,14 +258,14 @@
   .tw-item dd { margin: 0; min-width: 0; }
   .tw-q { margin: 0; font-family: var(--jp); font-size: 15px; line-height: 1.85; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
   .tw-det-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
-  .tw-det-list li { font-family: var(--jp); font-size: 14px; line-height: 1.8; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-3); text-wrap: pretty; }
+  .tw-det-list li { font-family: var(--jp); font-size: 14px; line-height: 1.8; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-2); text-wrap: pretty; }
   .tw-item.is-on dt { font-weight: 500; }
   .tw-item.is-preview dt { color: var(--reiwa-node, #5E3D78); }
-  @media (max-width: 1100px) { .tw-grid { grid-template-columns: 200px minmax(0, 1fr); gap: var(--fluid-m); } .tw-ring, .tw-circle { max-width: 200px; } }
+  @media (max-width: 1100px) { .tw-grid { grid-template-columns: 220px minmax(0, 1fr); gap: var(--fluid-m); } .tw-ring { max-width: 220px; padding-left: 16px; } .tw-circle { max-width: 204px; } .tw-num { font-size: 6.6px; } }
   @media (max-width: 760px) {
     .tw-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-    .tw-ring { position: static; max-width: 200px; margin: 0 auto; }
-    .tw-circle { max-width: 200px; }
+    .tw-ring { position: static; max-width: 220px; padding-left: 0; margin: 0 auto; }
+    .tw-circle { max-width: 204px; }
     .tw-core { font-size: 11px; gap: 6px; }
     .tw-mark { width: 40px; }
     .tw-item { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 14px 0 16px; }
@@ -339,53 +375,57 @@
             <button class="lf-tab" type="button" role="tab" id="lf-t-5" data-stage="5" aria-selected="false" aria-controls="lf-p-5" aria-describedby="lf-per-2" tabindex="-1"><span class="lf-i" aria-hidden="true">6</span><span class="lf-n">売却</span></button>
           </div>
         </div>
-        <div class="lf-groups">
-        <section class="lf-group" aria-labelledby="lf-g-0">
-          <h3 class="lf-gh" id="lf-g-0">形成</h3>
-        <article class="lf-panel" id="lf-p-0" data-panel="0" aria-labelledby="lf-h-0">
-          <h4 class="lf-pan-h" id="lf-h-0"><b>1</b><span><span class="jt">マンデート</span></span></h4>
+        <div class="lf-panels">
+        <article class="lf-panel" id="lf-p-0" role="tabpanel" data-panel="0" aria-labelledby="lf-t-0">
+          <header class="lf-pan-head"><span class="lf-pan-per">形成</span><h3 class="lf-pan-h" id="lf-h-0"><b>1</b><span><span class="jt">マンデート</span></span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">投資家の目的を、明確な取得<span class="jt">マンデート</span>として整理します</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">投資<span class="jt">マンデート</span></p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd><span class="jt">マンデート</span>と意思決定の枠組み</dd></dl>
+          </div>
         </article>
-        <article class="lf-panel" id="lf-p-1" data-panel="1" aria-labelledby="lf-h-1">
-          <h4 class="lf-pan-h" id="lf-h-1"><b>2</b><span>評価</span></h4>
+        <article class="lf-panel" id="lf-p-1" role="tabpanel" data-panel="1" aria-labelledby="lf-t-1">
+          <header class="lf-pan-head"><span class="lf-pan-per">形成</span><h3 class="lf-pan-h" id="lf-h-1"><b>2</b><span>評価</span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">詳細な投資分析に値する案件かを見極めます</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">投資メモランダム</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd>重要案件の詳細検討への移行</dd></dl>
+          </div>
         </article>
-        </section>
-        <section class="lf-group" aria-labelledby="lf-g-1">
-          <h3 class="lf-gh" id="lf-g-1">実行</h3>
-        <article class="lf-panel" id="lf-p-2" data-panel="2" aria-labelledby="lf-h-2">
-          <h4 class="lf-pan-h" id="lf-h-2"><b>3</b><span>組成</span></h4>
+        <article class="lf-panel" id="lf-p-2" role="tabpanel" data-panel="2" aria-labelledby="lf-t-2">
+          <header class="lf-pan-head"><span class="lf-pan-per">実行</span><h3 class="lf-pan-h" id="lf-h-2"><b>3</b><span>組成</span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">コミット前に、保有・調達・税務の<span class="jt">ストラクチャー</span>をまとめます</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out"><span class="jt">ストラクチャー</span>と実行計画</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd><span class="jt">ストラクチャー</span>と合意条件</dd></dl>
+          </div>
         </article>
-        <article class="lf-panel" id="lf-p-3" data-panel="3" aria-labelledby="lf-h-3">
-          <h4 class="lf-pan-h" id="lf-h-3"><b>4</b><span>取得</span></h4>
+        <article class="lf-panel" id="lf-p-3" role="tabpanel" data-panel="3" aria-labelledby="lf-t-3">
+          <header class="lf-pan-head"><span class="lf-pan-per">実行</span><h3 class="lf-pan-h" id="lf-h-3"><b>4</b><span>取得</span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">一つの計画のもとで、<span class="jt">デューデリジェンス</span>・調達・契約を完了します</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">取得判断資料</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd>取得に<span class="jt">コミット</span>する前の最終投資判断</dd></dl>
+          </div>
         </article>
-        </section>
-        <section class="lf-group" aria-labelledby="lf-g-2">
-          <h3 class="lf-gh" id="lf-g-2">保有期間</h3>
-        <article class="lf-panel" id="lf-p-4" data-panel="4" aria-labelledby="lf-h-4">
-          <h4 class="lf-pan-h" id="lf-h-4"><b>5</b><span>保有</span></h4>
+        <article class="lf-panel" id="lf-p-4" role="tabpanel" data-panel="4" aria-labelledby="lf-t-4">
+          <header class="lf-pan-head"><span class="lf-pan-per">保有期間</span><h3 class="lf-pan-h" id="lf-h-4"><b>5</b><span>保有</span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">保有期間中も、実績と環境の変化に照らして投資判断の前提を検証します</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">資産の監督、報告、意思決定の支援</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd>借換え、重要な資本的支出、承認済み事業計画の変更</dd></dl>
           <div class="lf-blk lf-blk--own"><span class="lf-k">主な業務</span><ul class="lf-own"><li><span class="lf-own-n">モニタリング</span><span class="lf-own-b">承認済みの事業計画に対する賃料、稼働率、賃貸借の変動、<span lang="en">NOI</span>、<span class="jt">キャッシュフロー</span></span></li><li><span class="lf-own-n">対処</span><span class="lf-own-b">予算との乖離、リーシングの判断、資本的支出、借換えを含む資金調達、新たな<span class="jt">リスク</span></span></li><li><span class="lf-own-n">報告</span><span class="lf-own-b">実績、評価額、市場の変化、提言、投資家の承認用資料</span></li></ul></div>
+          </div>
         </article>
-        <article class="lf-panel" id="lf-p-5" data-panel="5" aria-labelledby="lf-h-5">
-          <h4 class="lf-pan-h" id="lf-h-5"><b>6</b><span>売却</span></h4>
+        <article class="lf-panel" id="lf-p-5" role="tabpanel" data-panel="5" aria-labelledby="lf-t-5">
+          <header class="lf-pan-head"><span class="lf-pan-per">保有期間</span><h3 class="lf-pan-h" id="lf-h-5"><b>6</b><span>売却</span></h3></header>
+          <div class="lf-pan-body">
           <div class="lf-blk"><span class="lf-k">目的</span><p class="lf-p">借換え・一部回収・売却を<span class="jt">マンデート</span>に照らして評価します</p></div>
           <div class="lf-blk"><span class="lf-k">成果物</span><p class="lf-p lf-p--out">売却に関する提案と実行計画</p></div>
           <dl class="lf-ap"><dt>投資家の承認</dt><dd>時期・価格・売却条件</dd></dl>
+          </div>
         </article>
-        </section>
+        </div>
         </div>
       </div>
     </div>
@@ -482,18 +522,18 @@
 <div data-shell="footer"></div>
 
 <script>
-/* Approach — the investment lifecycle. On desktop all six stages are in the
-   page and nothing is bound. Below 1024px the strip becomes a tab list over
-   one stage at a time, opening on Mandate; listeners exist only while that
-   layout is in force and are removed when it is not. */
+/* Approach: the investment lifecycle. The six stages sit in one strip, in
+   their three periods, and one stage's detail is shown at a time under it,
+   opening on Mandate. Click, tap, Enter or Space selects; the arrow keys,
+   Home and End move between stages. Without JavaScript the strip is not
+   drawn and all six stages are in the page, in order. */
 (function () {
   var lf = document.querySelector('[data-lifecycle]');
   if (!lf) return;
-  var field  = lf.querySelector('.lf-field');
   var tabs   = [].slice.call(lf.querySelectorAll('.lf-tab'));
   var panels = [].slice.call(lf.querySelectorAll('.lf-panel'));
-  var mq = { matches: false, addEventListener: function () {}, addListener: function () {} };
-  var bound = false, handlers = [];
+  if (!tabs.length || tabs.length !== panels.length) return;
+  lf.setAttribute('data-lf', 'tabs');
 
   function select(i, focus) {
     tabs.forEach(function (t) {
@@ -501,44 +541,23 @@
       t.setAttribute('aria-selected', on ? 'true' : 'false');
       t.tabIndex = on ? 0 : -1;
       if (on && focus) t.focus({ preventScroll: true });
-      if (on && t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     });
     panels.forEach(function (p) { p.hidden = +p.dataset.panel !== i; });
   }
-  function bind() {
-    if (bound) return;
-    bound = true;
-    field.setAttribute('data-lf', 'tabs');
-    tabs.forEach(function (t, idx) {
-      var click = function () { select(+t.dataset.stage); };
-      var key = function (e) {
-        var n = null;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (idx + 1) % tabs.length;
-        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (idx - 1 + tabs.length) % tabs.length;
-        else if (e.key === 'Home') n = 0;
-        else if (e.key === 'End') n = tabs.length - 1;
-        if (n === null) return;
-        e.preventDefault();
-        select(+tabs[n].dataset.stage, true);
-      };
-      t.addEventListener('click', click);
-      t.addEventListener('keydown', key);
-      handlers.push([t, 'click', click], [t, 'keydown', key]);
+  tabs.forEach(function (t, idx) {
+    t.addEventListener('click', function () { select(+t.dataset.stage); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (idx + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (idx - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n === null) return;
+      e.preventDefault();
+      select(+tabs[n].dataset.stage, true);
     });
-    select(0);
-  }
-  function unbind() {
-    if (!bound) return;
-    bound = false;
-    handlers.forEach(function (h) { h[0].removeEventListener(h[1], h[2]); });
-    handlers = [];
-    field.removeAttribute('data-lf');
-    panels.forEach(function (p) { p.hidden = false; });
-    tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); t.tabIndex = -1; });
-  }
-  function apply() { if (mq.matches) bind(); else unbind(); }
-  apply();
-  if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  });
+  select(0);
 })();
 </script>
 <script>
@@ -568,6 +587,10 @@
       a.classList.toggle('is-preview', i === show && i !== sel);
     });
   }
+  /* The ring is a second way to pick a test: its numbers select too. */
+  [].slice.call(tw.querySelectorAll('.tw-num')).forEach(function (n) {
+    n.addEventListener('click', function () { sel = +n.dataset.seg; preview = null; paint(); });
+  });
   items.forEach(function (it) {
     var i = +it.dataset.test;
     it.addEventListener('mouseenter', function () { preview = i; paint(); });
