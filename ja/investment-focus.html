@@ -173,6 +173,8 @@
   .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
   .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
+  /* Caption wash: behind the closed-panel text block only (see .hf-cap on Home). */
+  .fx-closed .fx-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .fx-name { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 13px + 0.7vw, 24px); line-height: 1.4; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { margin: 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.9; color: var(--cream); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .fx-cue { margin-top: 2px; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
