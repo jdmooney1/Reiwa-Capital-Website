@@ -60,7 +60,7 @@ const ROLES = {
     selectors: [
       '.hm-city', '.hp-item h3', '.hf-cap h3', '.hi-op-v',
       '.am-city', '.aw-stage',
-      '.lf-gh', '.lf-pan-h',
+      '.lf-pan-h',
       '.tw-item dt',
       '.fx-name', '.fx-stagehead', '.hs-title', '.hs-test-n', '.dl-n',
       '.co-tier-n',
@@ -71,7 +71,7 @@ const ROLES = {
     selectors: [
       '.hi-op-k', '.hf-spec-k',
       '.am-k', '.aw-stage-s', '.aw-specs-k',
-      '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
+      '.lf-gh', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
       '.fx-param-k', '.fx-band-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
     ],
   },
