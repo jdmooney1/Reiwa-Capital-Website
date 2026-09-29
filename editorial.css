@@ -621,7 +621,7 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 /* Three small links and the copyright no longer fit one 62px row on a
    phone: let the baseline row wrap, with the emblem on its own line. */
 @media (max-width: 480px) {
-  .footer-quiet .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; row-gap: 6px; height: auto; padding-top: 14px; padding-bottom: 18px; }
+  .footer-quiet .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; row-gap: var(--space-3); height: auto; padding-top: 14px; padding-bottom: 18px; }
   /* The emblem stays a positioned box (its focus halo is an absolutely
      placed pseudo-element) but gives up its centring offsets. */
   .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; margin: 0 0 4px; }
@@ -1172,7 +1172,7 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
     grid-template-columns: 1fr;
     justify-items: center;
     align-content: center;
-    row-gap: 2px;
+    row-gap: var(--space-3);
     padding-top: var(--space-3);
     padding-bottom: var(--space-3);
   }
