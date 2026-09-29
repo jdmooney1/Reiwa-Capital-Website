@@ -114,6 +114,33 @@
     var PAD_IN = 10, PAD_OUT = 16; // protection zone (~8–12px around the logo) + wider exit band so the boundary never flickers
     var ticking = false;
 
+    /* The hairline under the floating bar would otherwise slice through the
+       hero heading as the page scrolls. Rather than move the rule, it fades:
+       fully drawn at rest, gone by the time it would reach the heading. The
+       distance is measured live (heading top minus the rule's own line), so it
+       holds at every width, in both languages, on every hero page. Layout
+       offsets are used for the heading so its entrance transform can't skew
+       the reading. Settled (solid) bars always show the rule. */
+    var ruleEl = bar.querySelector('.nav-rule');
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var RULE_FADE_MAX = 96, RULE_CLEAR = 8;
+    function layoutTop(el) {
+      var y = 0;
+      for (; el; el = el.offsetParent) y += el.offsetTop;
+      return y;
+    }
+    function updateRuleFade(floating, h1) {
+      if (!ruleEl) return;
+      var o = 1;
+      if (floating && h1) {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var ruleY = ruleEl.getBoundingClientRect().bottom;
+        var range = Math.max(1, Math.min(layoutTop(h1) - ruleY - RULE_CLEAR, RULE_FADE_MAX));
+        o = rm.matches ? (y >= range ? 0 : 1) : 1 - Math.min(1, Math.max(0, y / range));
+      }
+      bar.style.setProperty('--rule-o', o < 0.01 ? '0' : o > 0.99 ? '1' : o.toFixed(3));
+    }
+
     function updateHeaderState() {
       ticking = false;
       // Actual rendered header height (not an approximate constant) — used
@@ -154,6 +181,7 @@
       var floating = bar.classList.contains('nav-over-hero') || bar.classList.contains('nav-over-head');
       var logo = bar.querySelector('.nav-logo');
       var h1 = document.querySelector('.home-hero h1, .page-head h1');
+      updateRuleFade(floating, h1);
       if (floating && logo && h1) {
         /* The whole bar is measured, not the logo alone, so the link row and
            the language switch dip out together with it. */
