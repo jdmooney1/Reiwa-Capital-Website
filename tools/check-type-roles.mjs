@@ -39,7 +39,16 @@ const VERBOSE = !!process.env.VERBOSE;
 const ROLES = {
   h1: {
     token: '--type-page-title',
-    selectors: ['h1'],
+    selectors: ['body:not([data-page="home"]) h1'],
+  },
+  // The one exception: the Home hero uses --type-display from 761px up. Below
+  // that, 44px would wrap the headline to five lines at 320-360px, so phones
+  // stay on --type-page-title like every other H1.
+  display: {
+    token: '--type-display',
+    phoneToken: '--type-page-title',
+    phoneBelow: 761,
+    selectors: ['body[data-page="home"] h1'],
   },
   h2: {
     token: '--type-h2',
@@ -69,7 +78,7 @@ const ROLES = {
 };
 
 /* Runs in the page. */
-function inPage(roles) {
+function inPage([roles, vw]) {
   const px = (v) => Math.round(parseFloat(v) * 100) / 100;
   const tokenPx = (token) => {
     const p = document.createElement('span');
@@ -93,7 +102,7 @@ function inPage(roles) {
   const label = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 34);
   const rows = [], assigned = new Set(), unassigned = [];
   for (const [role, def] of Object.entries(roles)) {
-    const expected = tokenPx(def.token);
+    const expected = tokenPx(def.phoneToken && vw < def.phoneBelow ? def.phoneToken : def.token);
     for (const sel of def.selectors) {
       document.querySelectorAll(sel).forEach((el) => {
         if (!visible(el)) return;
@@ -130,7 +139,7 @@ for (const lang of LANGS) for (const page of PAGES) for (const w of WIDTHS) {
       if (!ok) continue;
       await p.waitForTimeout(700);
     }
-    const r = await p.evaluate(inPage, ROLES);
+    const r = await p.evaluate(inPage, [ROLES, w]);
     const where = `${lang}/${page}@${w}${st !== null ? ` [panel ${st} open]` : ''}`;
     if (st === null && r.h1s !== 1) { failures++; console.log(`FAIL ${where}: expected one h1, found ${r.h1s}`); }
     for (const x of r.rows) {

@@ -65,7 +65,8 @@
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
-  .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
+  .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; word-break: keep-all; line-break: strict; }
+  @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
   .home-hero .loc .sep { margin: 0 clamp(6px, 0.8vw, 12px); color: rgba(255,255,255,0.5); }
   .home-hero .loc { display: block; text-align: center; margin-top: var(--fluid-xs); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
@@ -266,7 +267,7 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1>欧州不動産を、<br>日本の投資家のために</h1>
+    <h1>欧州不動産を、<br>日本の投資家の<wbr>ために</h1>
     <p class="sub"><span lang="en">Reiwa Capital</span>は、日本の投資家側に立って、<span class="jt">ロンドン</span>・<span class="jt">アムステルダム</span>を中心とする欧州不動産投資を<span class="jt">支援します。</span></p>
     <span class="loc">東京<span class="sep" aria-hidden="true">・</span>ロンドン<span class="sep" aria-hidden="true">・</span><span class="jt">アムステルダム</span></span>
   </div>

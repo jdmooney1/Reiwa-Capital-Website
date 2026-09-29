@@ -52,6 +52,7 @@
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.05; letter-spacing: -0.022em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 21ch; text-wrap: balance; }
+  @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14.5px + 0.35vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 44ch; }
   .home-hero .loc .sep { margin: 0 var(--fluid-2xs); color: rgba(255,255,255,0.5); }
   .home-hero .loc { display: block; text-align: center; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
