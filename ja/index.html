@@ -176,16 +176,26 @@
      a page of a document rather than a panel of cards. */
   .hp { background: var(--ink); padding: var(--hsec) 0; }
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
-  /* 原則はひとつ。投資家の判断と現地での実行は、冒頭の文言のすぐ下の構図で
-     示すようになったため、この帯では繰り返さない。ここで加えるのは、議論
-     全体が拠って立つ原則である。 */
-  .hp-principle { margin-top: clamp(36px, 4vw, 56px); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.30); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--fluid-xs) var(--fluid-m); align-items: baseline; }
-  .hp-principle h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
-  .hp-principle p { margin: 0; max-width: 28em; font-family: var(--jp); font-size: var(--type-statement); line-height: 1.85; color: rgba(252,250,241,.86); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  /* サブグリッド：見出しが折り返しても、各段落が同じ行から始まる。 */
+  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
+  .hp-item > div { display: contents; }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item:first-child { padding-left: 0; border-left: 0; }
+  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
+  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
+  @media (max-width: 1100px) {
+    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
+    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  }
   @media (max-width: 760px) {
     .hp { padding: 56px 0; }
-    .hp-principle { grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
-    .hp-principle p { max-width: none; }
+    .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
+    .hp-item { display: block; grid-row: auto; }
+    /* One column: every principle carries the same hairline. The 1100px rule
+       strips it from the odd items, and that selector is more specific, so
+       both parities are restated here. */
+    .hp-item, .hp-item:nth-child(odd), .hp-item:nth-child(even) { padding: 0 0 0 18px; border-left: 1px solid rgba(252,250,241,.30); }
+    .hp-item p { max-width: none; }
   }
 
   /* --- 5 · 投資方針 ----------------------------------------------------- */
@@ -334,9 +344,13 @@
 <section class="hp" data-screen-label="04 ホーム — 投資家側" aria-labelledby="hp-title">
   <div class="shell">
     <h2 class="h-h2" id="hp-title">投資家の判断を起点に</h2>
-    <div class="hp-principle">
-      <h3>不動産の基礎力を最優先</h3>
-      <p>投資の妥当性は、税務や<span class="jt">ストラクチャー</span>、金融技術に依存せず、それ自体で成立する必要があります。</p>
+    <div class="hp-grid">
+      <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p></div>
+      </div>
+      <div class="hp-item"><div><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、税務や<span class="jt">ストラクチャー</span>、金融技術に依存せず、それ自体で成立する必要があります。</p></div>
+      </div>
+      <div class="hp-item"><div><h3>現地との連携</h3><p class="h-body">案件ごとに必要な専門家を起用し、取引を進める側ではなく、投資家の側に立って取りまとめます。</p></div>
+      </div>
     </div>
   </div>
 </section>

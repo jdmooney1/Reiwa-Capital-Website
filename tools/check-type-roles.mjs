@@ -58,7 +58,7 @@ const ROLES = {
     token: '--type-h3',
     // subsection headings, card titles and item titles
     selectors: [
-      '.hm-city', '.hi-role-n', '.hp-principle h3', '.hf-cap h3',
+      '.hm-city', '.hi-role-n', '.hp-item h3', '.hf-cap h3',
       '.am-city', '.aw-stage', '.aw-sp-n',
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
