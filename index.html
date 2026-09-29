@@ -36,7 +36,7 @@
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<link rel="preload" as="image" imagesrcset="assets/imagery/home-hero-soft.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="assets/imagery/home-hero-soft.avif 1300w, assets/imagery/home-hero-soft-2000.avif 2000w" imagesizes="100vw" type="image/avif" fetchpriority="high">
 <style>
   /* =====================================================================
      HOME — page-level composition. Shared tokens and shell come from
@@ -46,7 +46,7 @@
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
   .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
   .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #100b14; }
-  .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
+  .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
   /* One bottom-up scrim, enough to carry white type over the pale lower
      facade and no more. The header wash for the nav lives in craft.css. */
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
@@ -281,7 +281,7 @@
 <!-- ================================================================ 1 · HERO -->
 <section class="home-hero" data-screen-label="01 Home — hero">
   <div class="hero-media r-frame r-frame-lg on-dark">
-    <picture><source type="image/avif" srcset="assets/imagery/home-hero-soft.avif"><img class="hero-img" src="assets/imagery/home-hero-soft.webp" width="1300" height="1950" alt="" fetchpriority="high" decoding="async"></picture>
+    <picture><source type="image/avif" srcset="assets/imagery/home-hero-soft.avif 1300w, assets/imagery/home-hero-soft-2000.avif 2000w" sizes="100vw"><img class="hero-img" src="assets/imagery/home-hero-soft.webp" srcset="assets/imagery/home-hero-soft.webp 1300w, assets/imagery/home-hero-soft-2000.webp 2000w" sizes="100vw" width="1300" height="1950" alt="" fetchpriority="high" decoding="async"></picture>
   </div>
   <div class="scrim"></div>
   <div class="inner">

@@ -37,7 +37,7 @@
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
 (function(){var K='reiwa.lang';var EN='/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}location.replace(EN);return;}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='ja';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<link rel="preload" as="image" imagesrcset="../assets/imagery/home-hero-soft.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="../assets/imagery/home-hero-soft.avif 1300w, ../assets/imagery/home-hero-soft-2000.avif 2000w" imagesizes="100vw" type="image/avif" fetchpriority="high">
 <style>
   /* =====================================================================
      ホーム — the Japanese composition of the approved English Home. Same
@@ -62,7 +62,7 @@
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
   .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
   .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #100b14; }
-  .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
+  .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; word-break: keep-all; line-break: strict; }
@@ -283,7 +283,7 @@
 <!-- ================================================================ 1 · HERO -->
 <section class="home-hero" data-screen-label="01 ホーム — hero">
   <div class="hero-media r-frame r-frame-lg on-dark">
-    <picture><source type="image/avif" srcset="../assets/imagery/home-hero-soft.avif"><img class="hero-img" src="../assets/imagery/home-hero-soft.webp" width="1300" height="1950" alt="" fetchpriority="high" decoding="async"></picture>
+    <picture><source type="image/avif" srcset="../assets/imagery/home-hero-soft.avif 1300w, ../assets/imagery/home-hero-soft-2000.avif 2000w" sizes="100vw"><img class="hero-img" src="../assets/imagery/home-hero-soft.webp" srcset="../assets/imagery/home-hero-soft.webp 1300w, ../assets/imagery/home-hero-soft-2000.webp 2000w" sizes="100vw" width="1300" height="1950" alt="" fetchpriority="high" decoding="async"></picture>
   </div>
   <div class="scrim"></div>
   <div class="inner">
