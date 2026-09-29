@@ -134,7 +134,7 @@
   .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
-  .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 18px + 0.9vw, 28px); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
+  .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 44ch; }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
@@ -183,7 +183,7 @@
   .hp-item > div { display: contents; }
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
-  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 14px + 0.5vw, 21px); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
+  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
   .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
   @media (max-width: 1100px) {
     .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
@@ -215,7 +215,7 @@
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
-  .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
+  .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 40ch; }
   .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
   .hf-cue-a { display: inline-block; transition: transform 220ms var(--ease-out); }

@@ -154,7 +154,7 @@
   .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
   .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
-  .fx-name { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
+  .fx-name { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 42ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-cue { margin-top: 2px; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-cue-a { display: inline-block; transition: transform 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
@@ -198,7 +198,7 @@
      only overlay left is the small corner ground under Return to Overview. */
   .fx-panel--rep .fx-backscrim { height: 150px; background: linear-gradient(to bottom, rgba(31,18,40,.78) 0px, rgba(31,18,40,.5) 60px, rgba(31,18,40,.16) 115px, rgba(31,18,40,0) 150px); }
   /* Kept below the section h2 it now sits under in the outline. */
-  .fx-open .fx-name { font-size: clamp(26px, 17px + 1.1vw, 34px); }
+  .fx-open .fx-name { font-size: var(--type-h3); }
   .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
   .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px var(--fluid-s); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   @media (hover: hover) { .fx-back:hover { color: rgba(252,250,241,.78); } }
@@ -219,10 +219,10 @@
   .fx-swap > [data-on] { visibility: visible; }
   /* The stage heading sits in the band with its explanation, below the
      strategy name (34px) and above body copy: the third level of the panel. */
-  .fx-band--rep .fx-name { color: var(--ink); font-size: clamp(22px, 15px + 0.8vw, 28px); }
+  .fx-band--rep .fx-name { color: var(--ink); font-size: var(--type-h3); }
   .fx-band--rep .fx-stages { margin-top: 16px; padding-top: 0; }
   .fx-band--rep .fx-stagecopy { margin-top: var(--fluid-xs); }
-  .fx-stagehead { margin: 0 0 10px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 15px + 0.6vw, 26px); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); }
+  .fx-stagehead { margin: 0 0 10px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); }
   .fx-stagecopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 13.5px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 56ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-stagecopy:focus { outline: none; }
   .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-xs); margin-top: var(--fluid-xs); }
@@ -264,7 +264,7 @@
   #fx-panel-repositioning .fx-mtabs { margin-top: 0; }
   #fx-panel-repositioning .fx-mimg { height: clamp(200px, 60vw, 250px); margin-top: 20px; }
   #fx-panel-repositioning .fx-mimg img { object-position: 50% 46%; }
-  #fx-panel-repositioning .fx-stagehead { margin: 0 0 8px; font-size: 21px; }
+  #fx-panel-repositioning .fx-stagehead { margin: 0 0 8px; font-size: var(--type-h3); }
   .fx-mbody, .fx-mcopy { margin: 18px 0 0; }
   .fx-mbody, .fx-mcopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .fx-mcopy:focus { outline: none; }
@@ -275,7 +275,7 @@
   .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
   @media (max-width: 360px) {
     .fx-mimg { height: 300px; }
-    #fx-panel-repositioning .fx-stagehead { font-size: 19px; }
+    
     .fx-tab { font-size: 15px; }
     .fx-mtab { font-size: 13.5px; }
     .fx-mtabs { gap: 0 8px; }
@@ -317,7 +317,7 @@
   .hs-state { margin: 2px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 38ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .hs-tests { margin-top: var(--fluid-m); max-width: 104ch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
-  .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14px + 0.35vw, 19px); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Body copy under each test, in the voice of the Home page's investor-side columns. */
   .hs-test-d { margin: 10px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 1024px) {
@@ -352,7 +352,7 @@
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
   .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) var(--fluid-2xs) var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
-  .dl-n { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(20px, 14px + 0.85vw, 26px); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .dl-n { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   .dl-x { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13px + 0.25vw, 15.5px); line-height: 1.5; color: rgba(252,250,241,.74); max-width: 30ch; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }

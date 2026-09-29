@@ -134,7 +134,7 @@
   .lf-panel[hidden] { display: none; }
   .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.62); }
   .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(252,250,241,.62); }
-  .lf-pan-h span { font-size: 14px; color: var(--cream); }
+  .lf-pan-h span { font-size: var(--type-h3); color: var(--cream); }
   .lf-k { display: block; font-family: var(--jp); font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.66); }
   .lf-blk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.9); max-width: 52ch; text-wrap: pretty; }
@@ -171,7 +171,7 @@
      the strip is not rendered and nothing is bound. Phones and tablets:
      one stage at a time under a strip that scrolls sideways. */
   .lf-groups { display: grid; }
-  .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
+  .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
   .lf-pan-h { margin: 0; }
   /* Every stage is in the page at every width, in order, under its phase
      heading. The tab strip is never rendered, so nothing scrolls sideways
@@ -180,7 +180,7 @@
   .lf-groups { gap: var(--fluid-l); }
   .lf-group + .lf-group .lf-gh { padding-top: 0; }
   .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
-  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: clamp(19px, 15px + 0.5vw, 23px); }
+  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: var(--type-h3); }
 
   /* --- 3 · Five tests ---------------------------------------------------
      Five questions, permanently visible, in the same key/value grammar as
@@ -218,7 +218,7 @@
   .tw-item.is-preview .tw-n { border-color: var(--ink-2); color: var(--ink); }
   .tw-item.is-on .tw-n { background: var(--ink); border-color: var(--ink); color: var(--cream); font-weight: 500; }
   .tw-item:last-child { border-bottom: 1px solid var(--rule); }
-  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(17px, 14px + 0.4vw, 20px); line-height: 1.4; letter-spacing: 0.004em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item dd { margin: 0; min-width: 0; }
   .tw-q { margin: 0; font-family: var(--jp); font-size: 15px; line-height: 1.85; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
   .tw-det-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
