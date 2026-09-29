@@ -68,6 +68,7 @@
      facts on a single rule-topped list. The title is set one step above the
      section headings and well below the other pages' display scale, because
      this page is a reference rather than an argument. No hero. */
+  body[data-page="company"] { --co-k: clamp(190px, 21vw, 260px); }
   body[data-page="company"] .page-head { min-height: 0; display: block; background: var(--paper-warm); border-bottom: 0; }
   /* The nav sits in flow above this head, so the padding does not add the
      nav height again the way the art-directed heads do. */
@@ -79,7 +80,7 @@
   .co-sheet { max-width: none; }
   .co-open h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 22em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   .co-open .sub { margin: var(--fluid-xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  .co-profile { min-width: 0; margin-top: var(--fluid-l); }
+  .co-profile { min-width: 0; margin-top: clamp(40px, 4.4vw, 64px); }
   .co-profile .co-label { margin-bottom: var(--fluid-2xs); }
   @media (max-width: 760px) {
     .co-open .inner { padding-top: 34px; padding-bottom: 20px; }
@@ -93,7 +94,7 @@
      and a real heading rather than another band rule — the page already
      carries a hairline on every row, and more of them would make it read
      more like a table, not less. */
-  .co-sec { padding: clamp(40px, 4.2vw, 62px) 0 0; border-top: 0; }
+  .co-sec { padding: clamp(56px, 6vw, 88px) 0 0; border-top: 0; }
   .co-sec:last-of-type { padding-bottom: var(--fluid-xl); }
   .co-row { display: block; max-width: none; }
   /* A section heading, not an eyebrow: it has to outrank the 19px <h3>s in
@@ -113,8 +114,8 @@
      break between the two words remains possible. */
 
   .co-table { margin: 0; border-top: 1px solid var(--rule-strong); }
-  .co-table > div { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: var(--fluid-m); padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); align-items: baseline; }
-  .co-table dt { font-family: var(--jp); font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
+  .co-table > div { display: grid; grid-template-columns: minmax(0, var(--co-k)) minmax(0, 1fr); gap: var(--fluid-m); padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .co-table dt { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.6; letter-spacing: 0.01em; color: var(--ink-3); margin: 0; }
   .co-table dd { margin: 0; max-width: 40em; font-family: var(--jp); font-weight: 500; font-size: 15.5px; line-height: 1.85; color: var(--ink); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-table > div { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }
@@ -131,7 +132,7 @@
      the rows match every other list on the page. */
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
-  .co-tiers > li { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); }
+  .co-tiers > li { display: grid; grid-template-columns: minmax(0, var(--co-k)) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); }
   .co-tier-n { font-family: var(--jp); font-weight: 400; font-size: var(--type-h3); line-height: 1.5; letter-spacing: 0.005em; color: var(--ink); }
   .co-tier-d { margin: 0; max-width: 40em; font-family: var(--jp); font-size: 15.5px; line-height: 1.9; color: var(--ink); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
@@ -147,15 +148,23 @@
   .co-contact-left { min-width: 0; }
   .co-aud { margin: 0 0 var(--fluid-xs); max-width: 38em; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-general { margin: 0; }
-  .co-gen-row { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-2xs); border-bottom: 1px solid var(--rule); }
+  .co-gen-row { display: grid; grid-template-columns: minmax(0, var(--co-k)) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-2xs); border-bottom: 1px solid var(--rule); }
   .co-gen-row:first-child { border-top: 1px solid var(--rule-strong); }
-  .co-general dt { font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
+  .co-general dt { font-family: var(--jp); font-size: var(--type-caption); font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--ink-3); margin: 0; white-space: nowrap; }
   .co-general dd { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.9; letter-spacing: 0; color: var(--ink); }
   .co-general a { display: inline-flex; align-items: center; min-height: 44px; white-space: nowrap; overflow-wrap: normal; word-break: normal; color: var(--ink); border-bottom: 1px solid var(--rule-strong); transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .co-general a:hover { border-color: var(--ink); color: var(--reiwa-node, #5E3D78); }
   .co-general a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-color: transparent; }
 
-  .co-sec.co-contact { padding-bottom: var(--fluid-xl); }
+  .co-sec.co-contact { margin-top: clamp(56px, 6vw, 88px); padding: clamp(48px, 5vw, 72px) 0 clamp(56px, 6vw, 88px); background: var(--paper-soft); }
+  .co-general dd { font-size: var(--type-statement); }
+  .co-general a::after { content: "\2192"; margin-left: 12px; color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
+  .co-general a[target="_blank"]::after { content: "\2197"; }
+  .co-general a:hover::after { color: var(--reiwa-node, #5E3D78); transform: translateX(3px); }
+  .co-general a[target="_blank"]:hover::after { transform: translate(2px, -2px); }
+  .co-general a { border-bottom-color: transparent; }
+  .co-general a:hover { border-bottom-color: transparent; }
+  .co-general a:focus-visible { border-bottom-color: transparent; }
   @media (max-width: 760px) {
     .co-gen-row { grid-template-columns: minmax(0, 1fr); gap: 3px; padding: 14px 0 12px; }
   }
