@@ -214,7 +214,7 @@
      third strategy is a specialist application rather than a third equal
      strategy, so it sits under the fields as one quiet line — which is the
      hierarchy the inner page states. */
-  .hf { padding: var(--hsec) 0; }
+  .hf { padding: var(--hsec) 0 clamp(48px, 4.6vw, 68px); }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-2xs); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
@@ -238,13 +238,21 @@
   }
   .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   /* The specialist application: named, reachable, and plainly subordinate. */
-  .hf-spec { max-width: none; margin-top: var(--fluid-xs); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px var(--fluid-xs); }
+  /* The specialist application: one bordered strip on the paper-soft ground
+     the site uses for its secondary bands, a small crop of the Selective
+     Hospitality photograph, the label and the name. One target, one arrow.
+     Deliberately a fraction of the height of the two fields above it. */
+  .hf-spec { margin-top: var(--fluid-xs); }
+  .hf-spec-a { display: flex; align-items: center; gap: var(--fluid-xs); padding: 10px var(--fluid-xs) 10px 10px; background: var(--paper-soft); border: 1px solid var(--rule); color: var(--ink); text-decoration: none; transition: border-color 200ms var(--ease-out); }
+  .hf-spec-img { flex: none; width: 112px; height: 74px; object-fit: cover; display: block; filter: var(--img-grade); }
+  .hf-spec-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
   .hf-spec-k { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
-  .hf-spec a { font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
-  .hf-spec a .hf-cue-a { color: var(--ink-3); }
-  @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
-  .hf-spec a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a { transition: none; } }
+  .hf-spec-n { font-family: var(--jp); font-size: var(--type-body-l); line-height: 1.35; color: var(--ink); }
+  .hf-spec-a::after { content: "\2192"; flex: none; margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 18px; line-height: 1; color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
+  @media (hover: hover) { .hf-spec-a:hover { border-color: var(--ink-3); } .hf-spec-a:hover::after { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+  .hf-spec-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (max-width: 480px) { .hf-spec-img { width: 88px; height: 64px; } }
+  @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a, .hf-spec-a, .hf-spec-a::after { transition: none; } }
   @media (max-width: 900px) {
     .hf-grid { grid-template-columns: 1fr; gap: 12px; }
     .hf-item { aspect-ratio: 16 / 11; }
@@ -252,7 +260,7 @@
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
-    .hf { padding: 60px 0 64px; }
+    .hf { padding: 60px 0 48px; }
     .hf-grid { margin-top: 32px; }
   }
 
@@ -399,10 +407,12 @@
         </span>
       </a>
     </div>
-    <p class="hf-spec">
-      <span class="hf-spec-k">選択的な応用領域</span>
-      <a href="investment-focus.html#hospitality">選択的な<span class="jt">ホスピタリティ</span> <span class="hf-cue-a" aria-hidden="true">&rarr;</span></a>
-    </p>
+    <div class="hf-spec">
+      <a class="hf-spec-a" href="investment-focus.html#hospitality">
+        <img class="hf-spec-img" src="../assets/imagery/bg-hospitality-thumb-240.webp" alt="" width="240" height="160" loading="lazy" decoding="async">
+        <span class="hf-spec-txt"><span class="hf-spec-k">選択的な応用領域</span><span class="hf-spec-n">選択的な<span class="jt">ホスピタリティ</span></span></span>
+      </a>
+    </div>
   </div>
 </section>
 
