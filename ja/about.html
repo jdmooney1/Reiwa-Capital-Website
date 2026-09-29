@@ -243,16 +243,9 @@
      map's depth and the three things read down. */
   .am-k { margin: 0 0 6px; font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
   .am-p { margin: 0; font-size: 15px; line-height: 1.85; max-width: 32em; }
-  /* 承認済みの注力エリアを文字でも示し、地図を読まずに把握できるようにする。
-     色見本は凡例の色を繰り返す。 */
-  .am-areas { margin: 0; display: grid; gap: 7px; }
-  .am-areas > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; font-family: var(--jp); font-size: 13.5px; line-height: 1.7; }
-  .am-areas dt { display: flex; align-items: center; color: var(--ink-3); }
-  .am-areas dd { margin: 0; color: var(--ink); font-weight: 500; }
-  .am-areas .sw { width: 11px; height: 11px; flex: none; margin-right: 8px; }
-  .am-areas-sum { display: none; margin: 0; font-family: var(--jp); font-size: 14px; line-height: 1.85; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; text-wrap: pretty; }
-  @media (max-width: 1024px) { .am-areas { display: none; } .am-areas-sum { display: block; } }
   .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: var(--fluid-xs); }
+  /* With the areas list gone, the first block opens the column: its rule lines up with the map's top edge. */
+  @media (min-width: 901px) { .am-side > .am-blocks:first-child { margin-top: 0; } }
   .am-block { padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
   .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
   .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -466,11 +459,6 @@
           <p class="am-note"><span class="jt">エリア</span>は目安であり、境界は概略です。</p>
         </div>
         <div class="am-side">
-          <dl class="am-areas">
-            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>中核</dt><dd>ウェストエンド</dd></div>
-            <div><dt><span class="sw sw-broad" aria-hidden="true"></span>選択的</dt><dd>シティ・オブ・ロンドン、ミッドタウン</dd></div>
-          </dl>
-          <p class="am-areas-sum">中核：<span class="jt">ウェストエンド</span>／選択的：<span class="jt">シティ・オブ・ロンドン</span>、<span class="jt">ミッドタウン</span></p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p">厚みのある投資市場、幅広い<span class="jt">テナント</span>需要、成熟した金融・専門家<span class="jt">ネットワーク</span>を備えています。</p></div>
             <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">需要が収益を、買い手層が売却を支え、物件ごとの差が選別を活かします。</p></div>
@@ -510,10 +498,6 @@
         </div>
     
         <div class="am-side">
-          <dl class="am-areas">
-            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>中核</dt><dd>カナルベルト、アウド・ザウト、ザイダス</dd></div>
-          </dl>
-          <p class="am-areas-sum">中核：<span class="jt">カナルベルト</span>、<span class="jt">アウド・ザウト</span>、<span class="jt">ザイダス</span></p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p"><span class="jt">コンパクト</span>で供給が限られ、都市計画と環境要件が厳格な市場です。</p></div>
             <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">希少性は長期保有に適し、類似物件間の差が精査の価値を高めます。</p></div>

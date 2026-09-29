@@ -228,18 +228,9 @@
      map's depth and the three things read down. */
   .am-k { margin: 0 0 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
   .am-p { margin: 0; font-size: 15px; line-height: 1.6; max-width: 48ch; }
-  /* The approved focus areas as text, so the panel can be scanned without
-     reading the map; the swatches repeat the legend's colours. */
-  .am-areas { margin: 0; display: grid; gap: 7px; }
-  .am-areas > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.5; }
-  .am-areas dt { display: flex; align-items: center; color: var(--ink-3); }
-  .am-areas dd { margin: 0; color: var(--ink); font-weight: 500; }
-  .am-areas .sw { width: 11px; height: 11px; flex: none; margin-right: 8px; }
-  /* On phones the map's legend sits just above this column, so the swatched
-     rows would repeat it: the same geography is given as one sentence. */
-  .am-areas-sum { display: none; margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
-  @media (max-width: 1024px) { .am-areas { display: none; } .am-areas-sum { display: block; } }
   .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: var(--fluid-xs); }
+  /* With the areas list gone, the first block opens the column: its rule lines up with the map's top edge. */
+  @media (min-width: 901px) { .am-side > .am-blocks:first-child { margin-top: 0; } }
   .am-block { padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
   .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
   .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -428,11 +419,6 @@
           <p class="am-note">Areas are indicative; boundaries are approximate.</p>
         </div>
         <div class="am-side">
-          <dl class="am-areas">
-            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>Core</dt><dd>West End</dd></div>
-            <div><dt><span class="sw sw-broad" aria-hidden="true"></span>Selective</dt><dd>City of London, Midtown</dd></div>
-          </dl>
-          <p class="am-areas-sum">Core: West End. Selective: City of London, Midtown.</p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Deep capital markets, broad occupier demand, mature financing and advisory networks.</p></div>
             <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Demand supports income, buyer depth supports exit; variation between assets rewards selection.</p></div>
@@ -471,10 +457,6 @@
         </div>
     
         <div class="am-side">
-          <dl class="am-areas">
-            <div><dt><span class="sw sw-prim" aria-hidden="true"></span>Core</dt><dd>Canal Belt, Oud-Zuid, Zuidas</dd></div>
-          </dl>
-          <p class="am-areas-sum">Core: Canal Belt, Oud-Zuid, Zuidas.</p>
           <div class="am-blocks">
             <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Compact and supply constrained, with strict planning and sustainability requirements.</p></div>
             <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Scarcity suits long holds; differences between similar buildings reward diligence.</p></div>
