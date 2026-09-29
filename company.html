@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=27">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=100">
+<link rel="stylesheet" href="editorial.css?v=103">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -58,7 +58,7 @@
      navigation. The shell now sets the width; long prose keeps its own cap
      below, rather than being stretched to the full column. */
   .co-sheet { max-width: none; }
-  .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(29px, 22px + 1.55vw, 44px); line-height: 1.14; letter-spacing: -0.018em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 30ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .co-open h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.14; letter-spacing: -0.018em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 30ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   .co-open .sub { margin: var(--fluid-xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .co-profile { min-width: 0; margin-top: var(--fluid-l); }
   .co-profile .co-label { margin-bottom: var(--fluid-2xs); }
@@ -80,7 +80,7 @@
   /* A section heading, not an eyebrow: it has to outrank the 22px <h3>s in
      the contact block it sits above. Still well below the 38-46px the
      strategy pages use, so Company stays the quietest page on the site. */
-  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(20px, 16px + 0.85vw, 26px); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 var(--fluid-xs); padding-top: 0; }
+  .co-label { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-h2); font-weight: 400; letter-spacing: -0.014em; line-height: 1.2; text-transform: none; color: var(--ink); margin: 0 0 var(--fluid-xs); padding-top: 0; }
   @media (max-width: 760px) { .co-sec { padding-top: 34px; } }
 
   /* --- 2 · Company facts: aligned rows, no cards ------------------------
@@ -106,7 +106,7 @@
   .co-model { display: block; }
   .co-tiers { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
   .co-tiers > li { display: grid; grid-template-columns: minmax(0, 19ch) minmax(0, 1fr); gap: var(--fluid-m); align-items: baseline; padding: clamp(15px, 1.5vw, 19px) 0 var(--fluid-xs); border-bottom: 1px solid var(--rule); }
-  .co-tier-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(17px, 15px + 0.4vw, 20px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+  .co-tier-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
   .co-tier-d { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .co-tiers > li { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 15px 0 17px; }

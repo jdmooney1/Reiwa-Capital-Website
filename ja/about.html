@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=100">
+<link rel="stylesheet" href="../editorial.css?v=103">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -57,12 +57,7 @@
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
   .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  @media (max-width: 400px) {
-    /* Japanese has no inter-word space to absorb a short last line: at the
-       shared 26px floor an 11-character clause orphans one character. */
-    .h-h2 { font-size: 21px; }
-  }
+  .h-h2, .h-h3 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -91,11 +86,11 @@
   /* Internal-page hero pattern (About sets it; Approach and Investment
      Focus follow): the headline at roughly one and a half times the first
      section heading, the supporting sentence held close beneath it. */
-  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
+  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
   .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
-    .ab-hero h1 { font-size: clamp(26px, 7.2vw, 33px); max-width: 12em; }
+    .ab-hero h1 { max-width: 12em; }
     .ab-hero .sub { margin-top: 10px; max-width: 20em; }
   }
 
@@ -130,9 +125,9 @@
   .aw-inv-n { font-family: var(--jp); font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
   .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
   .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--fluid-xs); margin-top: clamp(26px, 2.8vw, 38px); }
-  .aw-stage { font-family: var(--jp); font-weight: 500; font-size: clamp(22px, 12px + 1.4vw, 34px); line-height: 1.3; letter-spacing: 0.01em; color: var(--cream); }
+  .aw-stage { font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--cream); }
   .aw-stage { display: flex; flex-direction: column; gap: 7px; }
-  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: 13px; line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
+  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
   /* The line is the argument: four segments that stop short, or four that
      meet. Only the width and the colour change between states. */
   .aw-line { position: relative; height: 3px; margin-top: var(--fluid-s); }
@@ -148,7 +143,7 @@
   .aw-ribbon-n { font-family: var(--jp); font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
   .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
-  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: var(--jp); font-size: 12.5px; line-height: 1.3; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
+  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: var(--jp); font-size: var(--type-caption); line-height: 1.3; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
   .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: var(--fluid-xs); }
   .aw-spec { font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
   /* Below 760px the same four phases read down a spine. */
@@ -241,7 +236,7 @@
      quiet label, then the prose. Characteristics, Why and What We Look For
      stack in the side column beside the map, so the column runs to the
      map's depth and the three things read down. */
-  .am-k { margin: 0 0 6px; font-family: var(--jp); font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
+  .am-k { margin: 0 0 6px; font-family: var(--jp); font-size: var(--type-caption); font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
   .am-p { margin: 0; font-size: 15px; line-height: 1.85; max-width: 32em; }
   /* 承認済みの注力エリアを文字でも示し、地図を読まずに把握できるようにする。
      色見本は凡例の色を繰り返す。 */
@@ -447,7 +442,7 @@
 
 <section class="am-market am-market--london" id="london" data-screen-label="03a Reiwaについて — ロンドン" aria-labelledby="am-london-title">
   <div class="shell">
-    <h2 class="h-h2 am-city" id="am-london-title">ロンドン</h2>
+    <h3 class="h-h3 am-city" id="am-london-title">ロンドン</h3>
     <p class="h-body am-pos">収益型と再生型の双方に機会があります</p>
       <div class="am-grid">
         <div class="am-mapwrap">
@@ -490,7 +485,7 @@
 
 <section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b Reiwaについて — アムステルダム" aria-labelledby="am-amsterdam-title">
   <div class="shell">
-    <h2 class="h-h2 am-city" id="am-amsterdam-title">アムステルダム</h2>
+    <h3 class="h-h3 am-city" id="am-amsterdam-title">アムステルダム</h3>
     <p class="h-body am-pos">厳格な都市計画が、立地と品質の高い物件を支えます</p>
       <div class="am-grid">
         <div class="am-mapwrap">

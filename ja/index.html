@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=100">
+<link rel="stylesheet" href="../editorial.css?v=103">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -57,11 +57,6 @@
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
   .h-eyebrow { font-family: var(--font-jp); font-size: 13px; line-height: 1.6; letter-spacing: 0; text-transform: none; }
   .h-h2 { font-family: var(--font-jp-serif); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  @media (max-width: 400px) {
-    /* Japanese has no inter-word space to absorb a short last line: at the
-       shared 26px floor an 11-character clause orphans one character. */
-    .h-h2 { font-size: 21px; }
-  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
@@ -70,7 +65,8 @@
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
-  .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(35px, 24px + 2.5vw, 60px); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; }
+  .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0.005em; color: #fff; margin: 0; max-width: 20em; word-break: keep-all; line-break: strict; }
+  @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
   .home-hero .loc .sep { margin: 0 clamp(6px, 0.8vw, 12px); color: rgba(255,255,255,0.5); }
   .home-hero .loc { display: block; text-align: center; margin-top: var(--fluid-xs); font-family: var(--jp); font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.5; text-transform: none; color: rgba(255,255,255,0.64); }
@@ -79,17 +75,17 @@
      the tighter gutter the English hero uses to buy that room. */
   @media (max-width: 760px) {
     .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
-    .home-hero h1 { font-size: clamp(27px, 8vw, 34px); line-height: 1.34; letter-spacing: 0.004em; max-width: none; }
+    .home-hero h1 { line-height: 1.34; letter-spacing: 0.004em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
     .home-hero .loc { margin-top: 28px; }
   }
   @media (max-width: 340px) {
-    .home-hero h1 { font-size: 25px; }
+    
   }
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
   .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
-  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: clamp(26px, 17px + 1.6vw, 40px); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
+  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
   /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
@@ -100,7 +96,7 @@
      the marker sits on that edge rather than in the middle of it. */
   .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
   .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
-  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
+  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
   .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-3); }
@@ -116,7 +112,7 @@
        changes. The separator is a pseudo-element for the same reason. */
     .hi-op::before { display: none; }
     .hi-op { padding-top: 14px; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
-    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
+    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; letter-spacing: var(--ls-caps); }
     .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
     .hi-op-s::before { content: "・"; }
     .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
@@ -137,7 +133,7 @@
   .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
-  .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: clamp(21px, 17px + 0.85vw, 26px); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
+  .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
   .hm-copy { margin-top: 12px; max-width: 28em; }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
@@ -184,7 +180,7 @@
   .hp-item > div { display: contents; }
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
-  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(16px, 14px + 0.4vw, 20px); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
+  .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
   .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
   @media (max-width: 1100px) {
     .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
@@ -216,7 +212,7 @@
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; max-width: var(--measure-body); padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
-  .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 0.9vw, 30px); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
+  .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hf-cue { font-family: var(--jp); font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
   .hf-cue-a { display: inline-block; transition: transform 220ms var(--ease-out); }
@@ -230,7 +226,7 @@
   .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   /* The specialist application: named, reachable, and plainly subordinate. */
   .hf-spec { max-width: none; margin-top: var(--fluid-xs); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px var(--fluid-xs); }
-  .hf-spec-k { font-family: var(--jp); font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+  .hf-spec-k { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
   .hf-spec a { font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .hf-spec a .hf-cue-a { color: var(--ink-3); }
   @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
@@ -271,7 +267,7 @@
   </div>
   <div class="scrim"></div>
   <div class="inner">
-    <h1>欧州不動産を、<br>日本の投資家のために</h1>
+    <h1>欧州不動産を、<br>日本の投資家の<wbr>ために</h1>
     <p class="sub"><span lang="en">Reiwa Capital</span>は、日本の投資家側に立って、<span class="jt">ロンドン</span>・<span class="jt">アムステルダム</span>を中心とする欧州不動産投資を<span class="jt">支援します。</span></p>
     <span class="loc">東京<span class="sep" aria-hidden="true">・</span>ロンドン<span class="sep" aria-hidden="true">・</span><span class="jt">アムステルダム</span></span>
   </div>
@@ -281,7 +277,7 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の不動産について、<span class="jt">マンデート</span>から出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
+      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
     </div>
     <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
       <li class="hi-op">

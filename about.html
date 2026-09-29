@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=27">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=100">
+<link rel="stylesheet" href="editorial.css?v=103">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -71,11 +71,11 @@
      Focus follow): the headline at roughly one and a half times the first
      section heading, and the supporting sentence held close beneath it so
      the two read as one group against the picture. */
-  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(34px, 22px + 2.4vw, 60px); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
+  .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
   .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
-    .ab-hero h1 { font-size: clamp(32px, 8.6vw, 38px); max-width: 13ch; }
+    .ab-hero h1 { max-width: 13ch; }
     .ab-hero .sub { margin-top: 10px; max-width: 34ch; }
   }
 
@@ -110,9 +110,9 @@
   .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
   .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.74); }
   .aw-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--fluid-xs); margin-top: clamp(26px, 2.8vw, 38px); }
-  .aw-stage { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(24px, 12px + 1.6vw, 40px); line-height: 1; letter-spacing: -0.018em; color: var(--cream); }
+  .aw-stage { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1; letter-spacing: -0.018em; color: var(--cream); }
   .aw-stage { display: flex; flex-direction: column; gap: 7px; }
-  .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 13px; line-height: 1.4; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
+  .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(252,250,241,.7); }
   /* The line is the argument: four segments that stop short, or four that
      meet. Only the width and the colour change between states. */
   .aw-line { position: relative; height: 3px; margin-top: var(--fluid-s); }
@@ -128,7 +128,7 @@
   .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
   .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); text-wrap: pretty; }
-  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.3; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
+  .aw-specs-k { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.3; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
   .aw-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; column-gap: var(--fluid-xs); }
   .aw-spec { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.74); }
   /* Below 760px the same four phases read down a spine. */
@@ -226,7 +226,7 @@
      quiet label, then the prose. Characteristics, Why and What We Look For
      stack in the side column beside the map, so the column runs to the
      map's depth and the three things read down. */
-  .am-k { margin: 0 0 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
+  .am-k { margin: 0 0 6px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
   .am-p { margin: 0; font-size: 15px; line-height: 1.6; max-width: 48ch; }
   /* The approved focus areas as text, so the panel can be scanned without
      reading the map; the swatches repeat the legend's colours. */
@@ -410,7 +410,7 @@
 
 <section class="am-market am-market--london" id="london" data-screen-label="03a About — London" aria-labelledby="am-london-title">
   <div class="shell">
-    <h2 class="h-h2 am-city" id="am-london-title">London</h2>
+    <h3 class="h-h3 am-city" id="am-london-title">London</h3>
     <p class="h-body am-pos">Opportunities across income and repositioning strategies</p>
       <div class="am-grid">
         <div class="am-mapwrap">
@@ -452,7 +452,7 @@
 
 <section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b About — Amsterdam" aria-labelledby="am-amsterdam-title">
   <div class="shell">
-    <h2 class="h-h2 am-city" id="am-amsterdam-title">Amsterdam</h2>
+    <h3 class="h-h3 am-city" id="am-amsterdam-title">Amsterdam</h3>
     <p class="h-body am-pos">Planning discipline rewards well-located, high-quality assets</p>
       <div class="am-grid">
         <div class="am-mapwrap">

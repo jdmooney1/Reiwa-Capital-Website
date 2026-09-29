@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=100">
+<link rel="stylesheet" href="../editorial.css?v=103">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -57,11 +57,6 @@
      meaning on kana or kanji, and letterspacing them reads as broken. */
   .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
   .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  @media (max-width: 400px) {
-    /* Japanese has no inter-word space to absorb a short last line: at the
-       shared 26px floor an 11-character clause orphans one character. */
-    .h-h2 { font-size: 21px; }
-  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -88,10 +83,10 @@
                 url("../assets/imagery/approach-hero-blur.webp") type("image/webp"));
   }
   /* Internal-page hero pattern, as set on About. */
-  .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(27px, 18px + 1.9vw, 48px); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
+  .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
   .ap-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); max-width: 32em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
-    .ap-hero h1 { font-size: clamp(26px, 7.2vw, 33px); max-width: 12em; }
+    .ap-hero h1 { max-width: 12em; }
     .ap-hero .sub { margin-top: 10px; max-width: 22em; }
   }
 
@@ -105,7 +100,7 @@
      was overriding it with 0, so the section heading sat 96px left of
      every other heading on the site. */
   .ap-intro { padding: clamp(48px, 5vw, 72px) var(--gutter) var(--fluid-s); }
-  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 32px); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
+  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
   .ap-lede { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18em; } }
 
@@ -137,19 +132,19 @@
      principal activities, each under its own label on the same two columns. */
   .lf-panel { padding-top: var(--fluid-s); display: flex; flex-direction: column; gap: 12px; }
   .lf-panel[hidden] { display: none; }
-  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.62); }
+  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.62); }
   .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(252,250,241,.62); }
-  .lf-pan-h span { font-size: 14px; color: var(--cream); }
-  .lf-k { display: block; font-family: var(--jp); font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.66); }
+  .lf-pan-h span { font-size: var(--type-h3); color: var(--cream); }
+  .lf-k { display: block; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.66); }
   .lf-blk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.9); max-width: 52ch; text-wrap: pretty; }
   .lf-p--out { font-weight: 500; color: var(--cream); }
   .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(252,250,241,.34); }
-  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.5; color: rgba(252,250,241,.66); }
+  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: rgba(252,250,241,.66); }
   .lf-ap dd { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
   .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(252,250,241,.26); display: grid; gap: 14px; }
   .lf-own li { min-width: 0; max-width: var(--measure-body); display: flex; flex-direction: column; gap: 4px; }
-  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.76); }
+  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.76); }
   .lf-own-b { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
   .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.66); max-width: 52ch; }
   @media (min-width: 901px) {
@@ -176,7 +171,7 @@
      the strip is not rendered and nothing is bound. Phones and tablets:
      one stage at a time under a strip that scrolls sideways. */
   .lf-groups { display: grid; }
-  .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.66); }
+  .lf-gh { margin: 0; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: var(--type-caption-lh); letter-spacing: var(--type-caption-ls); color: var(--cream); }
   .lf-pan-h { margin: 0; }
   /* Every stage is in the page at every width, in order, under its phase
      heading. The tab strip is never rendered, so nothing scrolls sideways
@@ -185,7 +180,7 @@
   .lf-groups { gap: var(--fluid-l); }
   .lf-group + .lf-group .lf-gh { padding-top: 0; }
   .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
-  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: clamp(19px, 15px + 0.5vw, 23px); }
+  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: var(--type-h3); }
 
   /* --- 3 · Five tests ---------------------------------------------------
      Five questions, permanently visible, in the same key/value grammar as
@@ -223,7 +218,7 @@
   .tw-item.is-preview .tw-n { border-color: var(--ink-2); color: var(--ink); }
   .tw-item.is-on .tw-n { background: var(--ink); border-color: var(--ink); color: var(--cream); font-weight: 500; }
   .tw-item:last-child { border-bottom: 1px solid var(--rule); }
-  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(17px, 14px + 0.4vw, 20px); line-height: 1.4; letter-spacing: 0.004em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item dd { margin: 0; min-width: 0; }
   .tw-q { margin: 0; font-family: var(--jp); font-size: 15px; line-height: 1.85; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
   .tw-det-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
