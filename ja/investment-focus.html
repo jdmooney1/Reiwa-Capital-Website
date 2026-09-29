@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=100">
+<link rel="stylesheet" href="../editorial.css?v=103">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=27">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -67,11 +67,6 @@
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
   .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
   .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  @media (max-width: 400px) {
-    /* Japanese has no inter-word space to absorb a short last line: at the
-       shared 26px floor an 11-character clause orphans one character. */
-    .h-h2 { font-size: 21px; }
-  }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -128,7 +123,7 @@
   .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
   .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
-  .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
+  .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.44; letter-spacing: 0.01em; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
   .fx-param { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: var(--fluid-m); align-items: start; margin-top: var(--fluid-l); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); }
@@ -331,7 +326,7 @@
   .hs-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; display: block; }
   .hs-panel { position: relative; z-index: 2; margin-left: calc(-1 * clamp(48px, 4.6vw, 76px)); margin-bottom: clamp(26px, 2.8vw, 42px); background: var(--cream); padding: var(--fluid-s); display: flex; flex-direction: column; gap: 10px; }
   .hs-kicker { display: block; padding-bottom: 11px; border-bottom: 1px solid var(--rule); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
-  .hs-title { margin: 3px 0 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(18px, 15px + 0.6vw, 23px); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
+  .hs-title { margin: 3px 0 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.55; letter-spacing: -0.014em; color: var(--ink); }
   .hs-state { margin: 2px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.95; color: var(--ink-2); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .hs-tests { margin-top: var(--fluid-m); max-width: 70em; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
@@ -360,7 +355,7 @@
      no explanatory copy: the refusals are the argument. */
   .dl-sec { background: var(--ink); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: var(--fluid-xl); border-top: 0; }
-  .dl-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: clamp(22px, 16px + 1.2vw, 31px); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .dl-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.44; letter-spacing: 0.01em; color: var(--cream); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .dl-kicker { display: block; margin: 0 0 var(--fluid-2xs); font-family: var(--jp); font-size: 12.5px; line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
   .dl-lede { margin: var(--fluid-2xs) 0 clamp(4px, 0.6vw, 8px); font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: rgba(252,250,241,.74); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   /* align-items: start, so each rule stops where its own refusal stops. The
@@ -610,7 +605,7 @@
 <section class="if-sec dl-sec" data-screen-label="04 投資方針 — 投資対象から除外する条件" aria-labelledby="dl-title">
   <div class="shell">
     <span class="dl-kicker">下方<span class="jt">リスク</span>を特定し、価格に反映する</span>
-    <h2 class="dl-h2" id="dl-title">投資対象から除外する条件</h2>
+    <h2 class="dl-h2" id="dl-title">投資対象から<wbr>除外する条件</h2>
     <div class="dl-grid">
       <div class="dl-p"><span class="dl-n">裏付けのない需要</span><span class="dl-x">実際の入居ではなく、予測に依存する<span class="jt">テナント</span>需要</span></div>
       <div class="dl-p"><span class="dl-n">改善計画を欠く再生型案件</span><span class="dl-x">具体的で費用を見通せる改善の打ち手を欠く、再生型の事業計画</span></div>
