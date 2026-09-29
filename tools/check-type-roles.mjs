@@ -62,7 +62,7 @@ const ROLES = {
       '.am-city', '.aw-stage',
       '.lf-gh', '.lf-pan-h',
       '.tw-item dt',
-      '.fx-name', '.fx-stagehead', '.hs-test-n', '.dl-n',
+      '.fx-name', '.fx-stagehead', '.hs-title', '.hs-test-n', '.dl-n',
       '.co-tier-n',
     ],
   },
