@@ -181,16 +181,27 @@
      a page of a document rather than a panel of cards. */
   .hp { background: var(--ink); padding: var(--hsec) 0; }
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
-  /* One principle. Investor control and local execution are now drawn in the
-     model directly under the opening statement, so this band no longer
-     restates them; what it adds is the rule the whole argument rests on. */
-  .hp-principle { margin-top: clamp(36px, 4vw, 56px); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.30); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--fluid-xs) var(--fluid-m); align-items: baseline; }
-  .hp-principle h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-principle p { margin: 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-statement); line-height: var(--type-statement-lh); color: rgba(252,250,241,.86); text-wrap: pretty; }
+  /* subgrid so every paragraph starts on one line, whatever its heading does:
+     two of the four headings wrap, and without this the column feet stagger. */
+  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
+  .hp-item > div { display: contents; }
+  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
+  .hp-item:first-child { padding-left: 0; border-left: 0; }
+  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
+  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
+  @media (max-width: 1100px) {
+    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
+    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  }
   @media (max-width: 760px) {
     .hp { padding: 56px 0; }
-    .hp-principle { grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
-    .hp-principle p { max-width: none; }
+    .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
+    .hp-item { display: block; grid-row: auto; }
+    /* One column: every principle carries the same hairline. The 1100px rule
+       strips it from the odd items, and that selector is more specific, so
+       both parities are restated here. */
+    .hp-item, .hp-item:nth-child(odd), .hp-item:nth-child(even) { padding: 0 0 0 18px; border-left: 1px solid rgba(252,250,241,.30); }
+    .hp-item p { max-width: none; }
   }
 
   /* --- 5 · Investment Focus preview ------------------------------------ */
@@ -330,9 +341,13 @@
 <section class="hp" data-screen-label="04 Home — investor side" aria-labelledby="hp-title">
   <div class="shell">
     <h2 class="h-h2" id="hp-title">Built from the Investor Side</h2>
-    <div class="hp-principle">
-      <h3>Asset Fundamentals First</h3>
-      <p>Investment merit must stand independently of tax, structuring or financial engineering.</p>
+    <div class="hp-grid">
+      <div class="hp-item"><div><h3>Investor Control</h3><p class="h-body">The investor retains approval over acquisition, financing, material expenditure and exit.</p></div>
+      </div>
+      <div class="hp-item"><div><h3>Asset Fundamentals First</h3><p class="h-body">Investment merit must stand independently of tax, structuring or financial engineering.</p></div>
+      </div>
+      <div class="hp-item"><div><h3>Local Execution</h3><p class="h-body">Specialists are appointed as required for each investment and coordinated from the investor’s side, not the transaction side.</p></div>
+      </div>
     </div>
   </div>
 </section>
