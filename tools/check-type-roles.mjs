@@ -63,7 +63,7 @@ const ROLES = {
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
       '.fx-name', '.fx-stagehead', '.hs-title', '.dl-n',
-      '.co-tier-n',
+      '.co-tier-n', '.hi-phase-n',
     ],
   },
   // A step below a subsection title: the tests under Selective Hospitality.
