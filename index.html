@@ -78,52 +78,57 @@
      longest display-size block at 390 and below. */
   @media (max-width: 430px) {  }
 
-  /* --- 2 · What Reiwa Capital is --------------------------------------- */
-  .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
-  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: pretty; }
-  /* The three functions, kept as one quiet operating line. The module they
-     replace restated the four principles in the aubergine field below. */
-  /* Three strands under the statement: the verbs read as one sequence on
-     one rule, each with the period of the six-stage process it belongs to
-     and a single line drawn from the Approach page. A short bar marks the
-     start of each strand, so the three read left to right as one line. */
-  .hi-ops { list-style: none; margin: var(--fluid-l) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
-  /* Body copy is never centred, so the block reads from one left edge and
-     the marker sits on that edge rather than in the middle of it. */
-  .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
-  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
-  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
-  .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
-  /* The two stages inside each phase, as a small label under the phase name. */
-  .hi-op-s { display: block; margin-top: 7px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
-  .hi-op-sep { margin: 0 4px; }
-  .hi-op-d { margin: 10px auto 0; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 30ch; text-wrap: pretty; }
-  .hi-ops-foot { text-align: center; }
-  .hi-ops-link { margin-top: var(--fluid-s); }
+  /* --- 0 · One vertical rhythm ------------------------------------------
+     Every band below the hero opens with the same space and light bands
+     close on nothing, so two neighbouring light sections are separated by
+     exactly one step instead of the sum of a bottom and a top. The dark band
+     carries the same step on both sides. */
+  .hi, .hm, .hp, .hf { --hsec: clamp(72px, 7vw, 104px); }
+
+  /* --- 2 · What Reiwa Capital is: the investor-side model ---------------
+     The statement, then who does what. Three parties on one line: the
+     investor who approves, Reiwa Capital which advises and oversees, and the
+     specialists appointed separately for each investment. The line ties
+     them; the markers say which is which (solid = decides, purple = Reiwa,
+     open = appointed). Under it the six stages, in their three periods,
+     are drawn once as the span the oversight covers. */
+  .hi { padding: var(--hsec) 0 0; }
+  .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: balance; }
+  .hi-model { list-style: none; margin: clamp(40px, 4.4vw, 64px) 0 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
+  .hi-model::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--rule-strong); }
+  .hi-role { position: relative; padding-top: var(--fluid-s); min-width: 0; }
+  .hi-role::before { content: ""; position: absolute; left: 0; top: 0; width: 13px; height: 13px; box-sizing: border-box; background: var(--paper-warm); }
+  .hi-role--inv::before { background: var(--ink); }
+  .hi-role--rc::before { background: var(--reiwa-node, #5E3D78); }
+  .hi-role--spec::before { border: 1.5px solid var(--ink-2); }
+  .hi-role-n { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.15; letter-spacing: -0.014em; color: var(--ink); }
+  .hi-role-v { margin: var(--space-2) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-body-l); line-height: 1.35; color: var(--ink); }
+  .hi-role--rc .hi-role-v { color: var(--reiwa-node, #5E3D78); }
+  .hi-role-d { margin: var(--space-2) 0 0; max-width: 32ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  /* The span: three periods drawn as three segments of one line. */
+  .hi-span { margin-top: clamp(48px, 5.2vw, 76px); }
+  .hi-span-k { display: block; margin: 0 0 var(--space-3); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-3); }
+  .hi-phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
+  .hi-phase { border-top: 3px solid var(--reiwa-node, #5E3D78); padding-top: var(--space-3); min-width: 0; }
+  .hi-phase b { display: block; font-weight: 400; font-size: var(--type-body-l); line-height: 1.3; color: var(--ink); }
+  .hi-phase > span { display: block; margin-top: 2px; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
+  .hi-ops-link { margin-top: var(--space-4); }
   @media (max-width: 760px) {
-    .hi { padding: 60px 0 52px; }
-    .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: var(--space-6) 0; }
-    /* Four type levels compress to three: the number and the sub-label pair
-       into one kicker above the name. CSS only - the DOM order stays
-       k, v, s, d and grid places them, so no markup moves and no text
-       changes. The separator is a pseudo-element for the same reason. */
-    .hi-op::before { display: none; }
-    .hi-op { padding-top: 14px; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
-    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; letter-spacing: var(--ls-caps); }
-    .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
-    .hi-op-s::before { content: "·"; margin: 0 4px; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
-    /* Full width here ran to ~95 characters at the top of the range, so the
-       block keeps the site's body measure rather than the column's width. */
-    .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
-    .hi-ops-foot { text-align: left; }
-    .hi-ops-link { margin-top: 18px; }
+    .hi { padding-top: 60px; }
+    .hi-model { grid-template-columns: minmax(0, 1fr); gap: var(--space-5) 0; margin-top: 32px; }
+    .hi-model::before { display: none; }
+    .hi-role { padding: 0 0 0 var(--space-5); }
+    .hi-role::before { top: 3px; }
+    .hi-role::after { content: ""; position: absolute; left: 6px; top: 19px; bottom: calc(var(--space-5) * -1 + 3px); width: 1px; background: var(--rule-strong); }
+    .hi-role:last-child::after { display: none; }
+    .hi-role-d { max-width: none; }
+    .hi-span { margin-top: 40px; }
+    .hi-phases { gap: 0 var(--space-3); }
+    .hi-phase b { font-size: var(--type-body); }
   }
 
   /* --- 3 · Markets ------------------------------------------------------ */
-  .hm { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .hm .shell { padding-top: clamp(64px, 6.2vw, 92px); }
+  .hm { padding: var(--hsec) 0; }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
 
   /* Spacing 3: the markets heading balances its two lines rather than leaving a tail. */
@@ -152,8 +157,7 @@
   @media (max-width: 900px) {
   }
   @media (max-width: 760px) {
-    .hm { padding: 0 0 64px; }
-    .hm .shell { padding-top: 48px; }
+    .hm { padding: 60px 0 64px; }
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 22px; gap: 40px; }
     /* Mobile composition: on a phone the homepage otherwise runs more than two
@@ -175,31 +179,18 @@
      and the four principles belong to the same argument. Full-bleed ground,
      light hairlines dividing the columns, nothing else: the section reads as
      a page of a document rather than a panel of cards. */
-  .hp { background: var(--ink); padding: 0 0 clamp(64px, 6.2vw, 92px); }
-  .hp .shell { padding-top: clamp(64px, 6.2vw, 92px); }
+  .hp { background: var(--ink); padding: var(--hsec) 0; }
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
-  /* subgrid so every paragraph starts on one line, whatever its heading does:
-     two of the four headings wrap, and without this the column feet stagger. */
-  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
-  .hp-item > div { display: contents; }
-  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
-  .hp-item:first-child { padding-left: 0; border-left: 0; }
-  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
-  @media (max-width: 1100px) {
-    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
-    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
-  }
+  /* One principle. Investor control and local execution are now drawn in the
+     model directly under the opening statement, so this band no longer
+     restates them; what it adds is the rule the whole argument rests on. */
+  .hp-principle { margin-top: clamp(36px, 4vw, 56px); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.30); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--fluid-xs) var(--fluid-m); align-items: baseline; }
+  .hp-principle h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
+  .hp-principle p { margin: 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-statement); line-height: var(--type-statement-lh); color: rgba(252,250,241,.86); text-wrap: pretty; }
   @media (max-width: 760px) {
-    .hp { padding: 0 0 56px; }
-    .hp .shell { padding-top: 56px; }
-    .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
-    .hp-item { display: block; grid-row: auto; }
-    /* One column: every principle carries the same hairline. The 1100px rule
-       strips it from the odd items, and that selector is more specific, so
-       both parities are restated here. */
-    .hp-item, .hp-item:nth-child(odd), .hp-item:nth-child(even) { padding: 0 0 0 18px; border-left: 1px solid rgba(252,250,241,.30); }
-    .hp-item p { max-width: none; }
+    .hp { padding: 56px 0; }
+    .hp-principle { grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
+    .hp-principle p { max-width: none; }
   }
 
   /* --- 5 · Investment Focus preview ------------------------------------ */
@@ -209,8 +200,7 @@
      third strategy is a specialist application rather than a third equal
      strategy, so it sits under the fields as one quiet line — which is the
      hierarchy the inner page states. */
-  .hf { padding: 0 0 clamp(72px, 7vw, 104px); }
-  .hf .shell { padding-top: clamp(80px, 7.6vw, 112px); }
+  .hf { padding: var(--hsec) 0; }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-2xs); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
@@ -248,8 +238,7 @@
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
-    .hf { padding: 0 0 64px; }
-    .hf .shell { padding-top: 60px; }
+    .hf { padding: 60px 0 64px; }
     .hf-grid { margin-top: 32px; }
   }
   </style>
@@ -276,30 +265,33 @@
 <!-- ================================================================ 2 · WHAT REIWA CAPITAL IS -->
 <section class="hi" data-screen-label="02 Home — what Reiwa is" aria-labelledby="hi-title">
   <div class="shell">
-    <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title">Investor-side advice and oversight on London and Amsterdam real estate, from mandate to exit.</h2>
-    </div>
-    <ol class="hi-ops" aria-label="What Reiwa Capital does">
-      <li class="hi-op">
-        <span class="hi-op-k"><b>01</b></span>
-        <span class="hi-op-v">Formation</span>
-        <span class="hi-op-s">Mandate <span class="hi-op-sep" aria-hidden="true">·</span> Assess</span>
-        <p class="hi-op-d">Each opportunity is tested against the investor’s mandate before any capital is committed</p>
+    <h2 class="hi-statement" id="hi-title">Investor-side advice and oversight on London and Amsterdam real estate, from mandate to exit.</h2>
+    <ol class="hi-model" aria-label="Who does what">
+      <li class="hi-role hi-role--inv">
+        <h3 class="hi-role-n">Investor</h3>
+        <p class="hi-role-v">Retains approval</p>
+        <p class="hi-role-d">Acquisition, financing, material expenditure and exit.</p>
       </li>
-      <li class="hi-op">
-        <span class="hi-op-k"><b>02</b></span>
-        <span class="hi-op-v">Execution</span>
-        <span class="hi-op-s">Structure <span class="hi-op-sep" aria-hidden="true">·</span> Acquire</span>
-        <p class="hi-op-d">Ownership, financing and tax structure are settled, then diligence and documentation completed under one plan</p>
+      <li class="hi-role hi-role--rc">
+        <h3 class="hi-role-n">Reiwa Capital</h3>
+        <p class="hi-role-v">Advises and oversees</p>
+        <p class="hi-role-d">One investor-side view from mandate to exit, coordinating the work each investment requires.</p>
       </li>
-      <li class="hi-op">
-        <span class="hi-op-k"><b>03</b></span>
-        <span class="hi-op-v">Ownership</span>
-        <span class="hi-op-s">Own <span class="hi-op-sep" aria-hidden="true">·</span> Exit</span>
-        <p class="hi-op-d">Performance is monitored against the investment case, and refinancing and exit decisions are brought to the investor</p>
+      <li class="hi-role hi-role--spec">
+        <h3 class="hi-role-n">Appointed specialists</h3>
+        <p class="hi-role-v">Carry out the work</p>
+        <p class="hi-role-d">Legal, tax, valuation, technical and property management, separately appointed for each investment and coordinated from the investor’s side, not the transaction side.</p>
       </li>
     </ol>
-    <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">See the six stages<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
+    <div class="hi-span">
+      <span class="hi-span-k">Six stages, three periods</span>
+      <ol class="hi-phases">
+        <li class="hi-phase"><b>Formation</b><span>Mandate <span aria-hidden="true">·</span> Assess</span></li>
+        <li class="hi-phase"><b>Execution</b><span>Structure <span aria-hidden="true">·</span> Acquire</span></li>
+        <li class="hi-phase"><b>Ownership</b><span>Own <span aria-hidden="true">·</span> Exit</span></li>
+      </ol>
+      <a class="enq-cta hi-ops-link" href="approach.html">See the six stages<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+    </div>
   </div>
 </section>
 
@@ -338,13 +330,9 @@
 <section class="hp" data-screen-label="04 Home — investor side" aria-labelledby="hp-title">
   <div class="shell">
     <h2 class="h-h2" id="hp-title">Built from the Investor Side</h2>
-    <div class="hp-grid">
-      <div class="hp-item"><div><h3>Investor Control</h3><p class="h-body">The investor retains approval over acquisition, financing, material expenditure and exit.</p></div>
-      </div>
-      <div class="hp-item"><div><h3>Asset Fundamentals First</h3><p class="h-body">Investment merit must stand independently of tax, structuring or financial engineering.</p></div>
-      </div>
-      <div class="hp-item"><div><h3>Local Execution</h3><p class="h-body">Specialists are appointed as required for each investment and coordinated from the investor’s side, not the transaction side.</p></div>
-      </div>
+    <div class="hp-principle">
+      <h3>Asset Fundamentals First</h3>
+      <p>Investment merit must stand independently of tax, structuring or financial engineering.</p>
     </div>
   </div>
 </section>
