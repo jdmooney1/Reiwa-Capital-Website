@@ -92,6 +92,7 @@
   /* --- 2 · 投資家の立場から -------------------------------------------- */
   .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
   .hi-statement { font-family: var(--jp); font-weight: 400; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
+  .hi-lede { margin: var(--fluid-xs) 0 0; max-width: var(--measure-statement); font-family: var(--jp); font-size: var(--type-body-l); line-height: 1.85; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
      下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
      ラベルなので、本文と同じゴシックに置く。 */
@@ -187,7 +188,7 @@
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
-  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
+  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 22em; color: rgba(252,250,241,.72); word-break: normal; word-break: auto-phrase; line-break: strict; }
   @media (max-width: 1100px) {
     .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
     .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
@@ -288,7 +289,8 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
+      <h2 class="hi-statement" id="hi-title"><span lang="en">Reiwa Capital</span>は、日本の投資家による<span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>不動産の発掘、評価、取得を支援し、<wbr>保有から売却に至るまで、<wbr>運営管理を監督します。</h2>
+      <p class="hi-lede">専門家と現地の<span class="jt">プロパティマネージャー</span>を取りまとめ、<wbr>投資判断、物件の実績、新たに生じるリスクを、<wbr>明確で一貫した視点に集約します。</p>
     </div>
     <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
       <li class="hi-op">
@@ -350,7 +352,7 @@
   <div class="shell">
     <h2 class="h-h2" id="hp-title">投資家の判断を起点に</h2>
     <div class="hp-grid">
-      <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p></div>
+      <div class="hp-item"><div><h3>費用と変更点の把握</h3><p class="h-body">専門家の助言、費用、変更点を承認済みの事業計画に照らして示し、取得から保有期間を通じて投資家が把握できるようにします。</p></div>
       </div>
       <div class="hp-item"><div><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、税務や<span class="jt">ストラクチャー</span>、金融技術に依存せず、それ自体で成立する必要があります。</p></div>
       </div>
