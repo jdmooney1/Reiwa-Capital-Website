@@ -540,7 +540,8 @@
 /* Approach — five tests on one ring. Every test and its detail is in the
    page. The numbered rows and the numbered segments are one set: choosing a
    row (click, tap, Enter or Space; arrows move between rows) lights its
-   segment, and Asset Fundamentals is chosen on arrival. Hover previews a
+   segment, and Asset Fundamentals is chosen on arrival until the reader
+   scrolls onto a test (see the reading line below). Hover previews a
    segment and nothing depends on it. */
 (function () {
   var tw = document.querySelector('[data-tests]');
@@ -585,7 +586,40 @@
       btns[n].focus();
     });
   });
+  /* The ring follows the test being read. The reading line sits 40% of the
+     way down the viewport: whichever row it crosses is the active test, so
+     the segment lit beside the list is the one in front of the reader, in
+     both scroll directions. Before the list reaches the line nothing is being
+     read and the arrival choice (Asset Fundamentals) is shown; past the end it
+     is the last test. A
+     row picked by click or keyboard stays lit until the line moves onto a
+     different row, then reading takes over again. No motion is added. */
+  var reading = null, queued = false;
+  function readingIndex() {
+    var line = window.innerHeight * 0.4;
+    if (items[0].getBoundingClientRect().top > line) return null;
+    if (items[items.length - 1].getBoundingClientRect().bottom <= line) return items.length - 1;
+    for (var i = 0; i < items.length; i++) {
+      var r = items[i].getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) return i;
+    }
+    return null;
+  }
+  function follow() {
+    queued = false;
+    var i = readingIndex();
+    if (i === null) i = 2;              /* above the list: the arrival choice */
+    if (i === reading) return;
+    reading = i; sel = i; preview = null; paint();
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(follow); } }
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  window.addEventListener('load', follow);
+  window.addEventListener('pageshow', queue);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(follow);
   paint();
+  follow();
 })();
 </script>
 <script src="../shell.js?v=78"></script>

@@ -44,12 +44,18 @@
      ===================================================================== */
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
-  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14; }
-  .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #100b14; }
+  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBACdASoQABgAPsFOoEqnpCMhsAgA8BgJQBOgZYJzoXqEBHoOcxgd/vySAAD+78Rum/fbciU5Va/uISbbV7E9DYm71EAV5DQCA9o1y+LGjE39XQsgdeZ4jI1X/6htgozQmVK/JlndT/M0vVCv1m7F0iIp+wtwAv1n1Eidfz0/XpfGsB/2kwtJBXLwHqorSd9O47ev1wA6PVmrZc/0sqgsXo3yJ3cdiyUFkgAA) center 42% / cover no-repeat; }
+  .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; }
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   /* One bottom-up scrim, enough to carry white type over the pale lower
      facade and no more. The header wash for the nav lives in craft.css. */
-  .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.88) 0%, rgba(16,11,20,0.58) 26%, rgba(16,11,20,0.22) 52%, rgba(16,11,20,0.04) 72%, rgba(16,11,20,0) 100%); }
+  .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.26) 0%, rgba(16,11,20,0) 38%); }
+  /* Local gradient: drawn behind the text block itself (its top edge a little
+     above the headline, its foot at the bottom of the hero), so the darkening
+     follows the type at every width and language rather than being a fixed
+     share of the hero's height. White type keeps better than 5:1 against what
+     is behind it; the rest of the photograph is left as it is. */
+  .home-hero .inner::before { content: ""; position: absolute; z-index: -1; pointer-events: none; left: 50%; width: 100vw; transform: translateX(-50%); top: calc(-1 * clamp(28px, 6vh, 64px)); bottom: 0; background: linear-gradient(0deg, rgba(16,11,20,0.72) 0%, rgba(16,11,20,0.58) 42%, rgba(16,11,20,0.30) 78%, rgba(16,11,20,0) 100%); }
   .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
   .home-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.05; letter-spacing: -0.022em; color: #fff; margin: 0; text-indent: var(--optical-cap); max-width: 21ch; text-wrap: balance; }
   @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
