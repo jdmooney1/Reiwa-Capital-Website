@@ -83,66 +83,49 @@
     
   }
 
-  /* --- 0 · 縦のリズムをひとつに ------------------------------------------
-     ヒーロー以下の各帯は同じ余白で始まり、明るい帯は下に余白を持たない。
-     隣り合う二つの帯の間隔は「下＋上」の和ではなく、ちょうど一段になる。
-     暗い帯は上下に同じ一段を持つ。 */
-  .hi, .hm, .hp, .hf { --hsec: clamp(72px, 7vw, 104px); }
-
-  /* --- 2 · 投資家の立場から：役割の構図 -----------------------------------
-     文言のすぐ下に、誰が何を担うかを一本の線に並べる。承認する投資家、
-     助言と監督を行うReiwa Capital、案件ごとに別途選任される専門家。
-     印が区別を示す（塗り＝判断、紫＝Reiwa、白抜き＝選任）。その下に、
-     六つの段階を三つの期間として一度だけ描く。 */
-  .hi { padding: var(--hsec) 0 0; }
+  /* --- 2 · 投資家の立場から -------------------------------------------- */
+  .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
   .hi-statement { font-family: var(--jp); font-weight: 400; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0.004em; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
-  .hi-model { list-style: none; margin: clamp(56px, 6vw, 88px) 0 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
-  .hi-model::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px; background: var(--rule-strong); }
-  .hi-role { position: relative; padding-top: var(--fluid-s); min-width: 0; }
-  .hi-role::before { content: ""; position: absolute; left: 0; top: 0; width: 13px; height: 13px; box-sizing: border-box; background: var(--paper-warm); }
-  .hi-role--inv::before { background: var(--ink); }
-  .hi-role--rc::before { background: var(--reiwa-node, #5E3D78); }
-  .hi-role--spec::before { border: 1.5px solid var(--ink-2); }
-  .hi-role-n { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0.01em; color: var(--ink); }
-  .hi-role-v { margin: var(--space-2) 0 0; font-family: var(--jp); font-weight: 500; font-size: var(--type-body-l); line-height: 1.6; color: var(--ink); }
-  .hi-role--rc .hi-role-v { color: var(--reiwa-node, #5E3D78); }
-  .hi-role-d { margin: var(--space-2) 0 0; max-width: 24em; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
-  /* The stages come first: six things in three periods. Each period is a
-     heavy top bar and a heading; its two stages are numbered chips in the
-     order they happen, the same bordered numeral the five tests use. */
-  .hi-span { margin-top: clamp(36px, 4vw, 56px); }
-  .hi-span-k { display: block; margin: 0 0 var(--space-3); font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
-  .hi-phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
-  .hi-phase { border-top: 4px solid var(--reiwa-node, #5E3D78); padding-top: var(--space-4); min-width: 0; }
-  .hi-phase-n { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0.01em; color: var(--ink); }
-  .hi-stages { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
-  .hi-stage { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; box-sizing: border-box; padding: 0 16px 0 10px; background: var(--paper-soft); border: 1px solid var(--rule-strong); font-family: var(--jp); font-size: var(--type-body); line-height: 1.3; color: var(--ink); }
-  .hi-sn { flex: none; box-sizing: border-box; min-width: 26px; padding: 2px 6px 1px; border: 1px solid var(--ink-2); border-radius: 2px; text-align: center; font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.5; color: var(--ink); }
-    /* Two chips of the longest labels need about 265px. Below ~940px the three
-     columns are narrower than that and the middle period broke onto two rows,
-     so the periods stack, as they do on phones. */
-  @media (max-width: 940px) { .hi-phases { grid-template-columns: minmax(0, 1fr); gap: var(--space-5) 0; } }
-.hi-ops-link { display: inline-flex; align-items: center; gap: 12px; margin-top: var(--space-5); min-height: 48px; box-sizing: border-box; padding: 0 22px; border: 1px solid var(--ink); font-family: var(--jp); font-size: var(--type-body); line-height: 1.3; color: var(--ink); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out); }
-  .hi-ops-link .h-arrow { transition: transform 200ms var(--ease-out); }
-  @media (hover: hover) { .hi-ops-link:hover { background: var(--ink); color: var(--cream); } .hi-ops-link:hover .h-arrow { transform: translateX(4px); } }
-  .hi-ops-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  @media (prefers-reduced-motion: reduce) { .hi-ops-link, .hi-ops-link .h-arrow { transition: none; } }
+  /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
+     下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
+     ラベルなので、本文と同じゴシックに置く。 */
+  /* 三つの機能を、三本の筋として並べる。それぞれに六段階の期間と、
+     投資アプローチのページから引いた一文を添える。 */
+  .hi-ops { list-style: none; margin: var(--fluid-l) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
+  /* Body copy is never centred, so the block reads from one left edge and
+     the marker sits on that edge rather than in the middle of it. */
+  .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
+  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
+  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
+  .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); }
+  .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-3); }
+  .hi-op-d { margin: 10px auto 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 20em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
+  .hi-ops-foot { text-align: center; }
+  .hi-ops-link { margin-top: var(--fluid-s); }
   @media (max-width: 760px) {
-    .hi { padding-top: 60px; }
-    .hi-model { grid-template-columns: minmax(0, 1fr); gap: var(--space-5) 0; margin-top: 32px; }
-    .hi-model::before { display: none; }
-    .hi-role { padding: 0 0 0 var(--space-5); }
-    .hi-role::before { top: 6px; }
-    .hi-role::after { content: ""; position: absolute; left: 6px; top: 22px; bottom: calc(var(--space-5) * -1 + 3px); width: 1px; background: var(--rule-strong); }
-    .hi-role:last-child::after { display: none; }
-    .hi-role-d { max-width: none; }
-    .hi-span { margin-top: 32px; }
-    .hi-phases { grid-template-columns: minmax(0, 1fr); gap: var(--space-5) 0; }
-    .hi-model { margin-top: 48px; }
+    .hi { padding: 60px 0 52px; }
+    .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: var(--space-6) 0; }
+    /* Four type levels compress to three: the number and the sub-label pair
+       into one kicker above the name. CSS only - the DOM order stays
+       k, v, s, d and grid places them, so no markup moves and no text
+       changes. The separator is a pseudo-element for the same reason. */
+    .hi-op::before { display: none; }
+    .hi-op { padding-top: 14px; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
+    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; letter-spacing: var(--ls-caps); }
+    .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: var(--ls-caps); }
+    .hi-op-s::before { content: "・"; }
+    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
+    /* Full width here ran to ~95 characters at the top of the range, so the
+       block keeps the site's body measure rather than the column's width. */
+    .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
+    .hi-ops-foot { text-align: left; }
+    .hi-ops-link { margin-top: 18px; }
   }
 
   /* --- 3 · 市場 --------------------------------------------------------- */
-  .hm { padding: var(--hsec) 0; }
+  .hm { padding: 0 0 clamp(88px, 8vw, 120px); }
+  .hm .shell { padding-top: clamp(64px, 6.2vw, 92px); }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
 
   .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
@@ -151,13 +134,7 @@
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
   .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0.004em; color: var(--ink); }
-  .hm-copy { margin-top: 12px; max-width: 28em; text-wrap: balance; }
-  /* Two columns (761px up): share rows, so the lists start on one line even
-     when one market's positioning sentence wraps and the other's does not. */
-  @media (min-width: 761px) {
-    .hm-cols { row-gap: 0; grid-template-rows: auto auto auto auto; }
-    .hm-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
-  }
+  .hm-copy { margin-top: 12px; max-width: 28em; }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
      the sentence are set out under it: one lead, then the three facts that
@@ -171,7 +148,8 @@
   @media (max-width: 900px) {
   }
   @media (max-width: 760px) {
-    .hm { padding: 60px 0 64px; }
+    .hm { padding: 0 0 64px; }
+    .hm .shell { padding-top: 48px; }
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 22px; gap: 40px; }
     /* Mobile composition: on a phone the homepage otherwise runs more than two
@@ -193,23 +171,24 @@
      and the four principles belong to the same argument. Full-bleed ground,
      light hairlines dividing the columns, nothing else: the section reads as
      a page of a document rather than a panel of cards. */
-  .hp { background: var(--ink); padding: var(--hsec) 0; }
+  .hp { background: var(--ink); padding: 0 0 clamp(64px, 6.2vw, 92px); }
+  .hp .shell { padding-top: clamp(64px, 6.2vw, 92px); }
   .hp .h-h2 { color: var(--cream); max-width: 22ch; }
-  /* サブグリッド：見出しが折り返しても、各段落が同じ行から始まる。 */
+  /* subgrid so every paragraph starts on one line, whatever its heading does:
+     two of the four headings wrap, and without this the column feet stagger. */
   .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
   .hp-item > div { display: contents; }
   .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--cream); }
   .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 22em; color: rgba(252,250,241,.72); }
-  /* Three columns down to the phone breakpoint. The two-column step that
-     used to sit here left a heading-to-paragraph gap the height of a row and
-     stranded the third item under the first (900-1100px). */
   @media (max-width: 1100px) {
-    .hp-item { padding-right: clamp(12px, 1.6vw, 20px); }
+    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
+    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
   }
   @media (max-width: 760px) {
-    .hp { padding: 56px 0; }
+    .hp { padding: 0 0 56px; }
+    .hp .shell { padding-top: 56px; }
     .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
     .hp-item { display: block; grid-row: auto; }
     /* One column: every principle carries the same hairline. The 1100px rule
@@ -226,7 +205,8 @@
      third strategy is a specialist application rather than a third equal
      strategy, so it sits under the fields as one quiet line — which is the
      hierarchy the inner page states. */
-  .hf { padding: var(--hsec) 0 clamp(48px, 4.6vw, 68px); }
+  .hf { padding: 0 0 clamp(72px, 7vw, 104px); }
+  .hf .shell { padding-top: clamp(80px, 7.6vw, 112px); }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-2xs); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
   .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
@@ -238,7 +218,7 @@
   .hf-cap { isolation: isolate; }
   .hf-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .hf-cap h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0.004em; color: var(--cream); }
-  .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
+  .hf-cap p { margin: 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.8; color: var(--cream); max-width: 26em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hf-cue { font-family: var(--jp); font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
   .hf-cue-a { display: inline-block; transition: transform 220ms var(--ease-out); }
   .hf-item[href*="income"]        { --hf-pos: 50% 84%; --hf-pos-m: 50% 80%; }
@@ -250,32 +230,22 @@
   }
   .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   /* The specialist application: named, reachable, and plainly subordinate. */
-  /* The specialist application: one bordered strip on the paper-soft ground
-     the site uses for its secondary bands, a small crop of the Selective
-     Hospitality photograph, the label and the name. One target, one arrow.
-     Deliberately a fraction of the height of the two fields above it. */
-  .hf-spec { margin-top: var(--fluid-xs); }
-  .hf-spec-a { display: flex; align-items: center; gap: var(--fluid-xs); padding: 10px var(--fluid-xs) 10px 10px; background: var(--paper-soft); border: 1px solid var(--rule); color: var(--ink); text-decoration: none; transition: border-color 200ms var(--ease-out); }
-  .hf-spec-img { flex: none; width: 112px; height: 74px; object-fit: cover; display: block; filter: var(--img-grade); }
-  .hf-spec-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .hf-spec { max-width: none; margin-top: var(--fluid-xs); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px var(--fluid-xs); }
   .hf-spec-k { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
-  .hf-spec-n { font-family: var(--jp); font-size: var(--type-body-l); line-height: 1.35; color: var(--ink); }
-  .hf-spec-a::after { content: "\2192"; flex: none; margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 18px; line-height: 1; color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
-  @media (hover: hover) { .hf-spec-a:hover { border-color: var(--ink-3); } .hf-spec-a:hover::after { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
-  .hf-spec-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  @media (max-width: 480px) { .hf-spec-img { width: 88px; height: 64px; } }
-  @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a, .hf-spec-a, .hf-spec-a::after { transition: none; } }
+  .hf-spec a { font-family: var(--jp); font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .hf-spec a .hf-cue-a { color: var(--ink-3); }
+  @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
+  .hf-spec a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a { transition: none; } }
   @media (max-width: 900px) {
     .hf-grid { grid-template-columns: 1fr; gap: 12px; }
-    /* Single column between 761 and 900px: a 2:1 field, not the phone's 16:11,
-       which made each card taller than a tablet screen. */
-    .hf-item { aspect-ratio: 2 / 1; }
+    .hf-item { aspect-ratio: 16 / 11; }
     .hf-item img { object-position: var(--hf-pos-m, var(--hf-pos, 50% 50%)); }
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
-    .hf-item { aspect-ratio: 16 / 11; }
-    .hf { padding: 60px 0 48px; }
+    .hf { padding: 0 0 64px; }
+    .hf .shell { padding-top: 60px; }
     .hf-grid { margin-top: 32px; }
   }
 
@@ -311,42 +281,30 @@
 <!-- ================================================================ 2 · REIWA CAPITALとは -->
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
-    <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
-    <div class="hi-span">
-      <span class="hi-span-k">六つの段階、三つの期間</span>
-      <ol class="hi-phases">
-        <li class="hi-phase">
-          <h3 class="hi-phase-n">形成</h3>
-          <ol class="hi-stages"><li class="hi-stage"><span class="hi-sn" aria-hidden="true">1</span><span class="jt">マンデート</span></li><li class="hi-stage"><span class="hi-sn" aria-hidden="true">2</span>評価</li></ol>
-        </li>
-        <li class="hi-phase">
-          <h3 class="hi-phase-n">実行</h3>
-          <ol class="hi-stages" start="3"><li class="hi-stage"><span class="hi-sn" aria-hidden="true">3</span>組成</li><li class="hi-stage"><span class="hi-sn" aria-hidden="true">4</span>取得</li></ol>
-        </li>
-        <li class="hi-phase">
-          <h3 class="hi-phase-n">保有期間</h3>
-          <ol class="hi-stages" start="5"><li class="hi-stage"><span class="hi-sn" aria-hidden="true">5</span>保有</li><li class="hi-stage"><span class="hi-sn" aria-hidden="true">6</span>売却</li></ol>
-        </li>
-      </ol>
-      <a class="hi-ops-link" href="approach.html">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+    <div class="hi-head">
+      <h2 class="hi-statement" id="hi-title"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>不動産について、<span class="jt">マンデート</span>から<wbr>出口まで、投資家側の助言と<span class="jt">監督を提供します。</span></h2>
     </div>
-    <ol class="hi-model" aria-label="役割の分担">
-      <li class="hi-role hi-role--inv">
-        <h3 class="hi-role-n">投資家</h3>
-        <p class="hi-role-v">承認する</p>
-        <p class="hi-role-d">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p>
+    <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
+      <li class="hi-op">
+        <span class="hi-op-k"><b>01</b></span>
+        <span class="hi-op-v">形成</span>
+        <span class="hi-op-s"><span class="jt">マンデート</span>・評価</span>
+        <p class="hi-op-d">資本を投じる前に、各案件を投資家の<span class="jt">マンデート</span>に照らして検証します</p>
       </li>
-      <li class="hi-role hi-role--rc">
-        <h3 class="hi-role-n"><span lang="en">Reiwa Capital</span></h3>
-        <p class="hi-role-v">助言し、監督する</p>
-        <p class="hi-role-d">出口まで投資家側の視点を一つに保ち、各投資に必要な業務を調整します。</p>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>02</b></span>
+        <span class="hi-op-v">実行</span>
+        <span class="hi-op-s">組成・取得</span>
+        <p class="hi-op-d">保有・調達・税務の<span class="jt">ストラクチャー</span>を整え、一つの計画のもとで<span class="jt">デューデリジェンス</span>と契約を完了します</p>
       </li>
-      <li class="hi-role hi-role--spec">
-        <h3 class="hi-role-n">選任される専門家</h3>
-        <p class="hi-role-v">業務を担う</p>
-        <p class="hi-role-d">法務、税務、鑑定評価、技術、<span class="jt">プロパティマネジメント</span>を、案件ごとに別途選任し、取引を進める側ではなく投資家の側に立って取りまとめます。</p>
+      <li class="hi-op">
+        <span class="hi-op-k"><b>03</b></span>
+        <span class="hi-op-v">保有期間</span>
+        <span class="hi-op-s">保有・売却</span>
+        <p class="hi-op-d">投資判断の前提に照らして実績を監督し、借換えと売却の判断を投資家に諮ります</p>
       </li>
     </ol>
+    <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
@@ -386,7 +344,7 @@
   <div class="shell">
     <h2 class="h-h2" id="hp-title">投資家の判断を起点に</h2>
     <div class="hp-grid">
-      <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">各判断は、提言と承認用の資料とともに投資家に提示され、投資家の承認があって初めて進められます。</p></div>
+      <div class="hp-item"><div><h3>投資家の意思決定</h3><p class="h-body">取得、資金調達、重要な資本的支出、売却について、投資家が承認します。</p></div>
       </div>
       <div class="hp-item"><div><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、税務や<span class="jt">ストラクチャー</span>、金融技術に依存せず、それ自体で成立する必要があります。</p></div>
       </div>
@@ -422,12 +380,10 @@
         </span>
       </a>
     </div>
-    <div class="hf-spec">
-      <a class="hf-spec-a" href="investment-focus.html#hospitality">
-        <img class="hf-spec-img" src="../assets/imagery/bg-hospitality-thumb-240.webp" alt="" width="240" height="160" loading="lazy" decoding="async">
-        <span class="hf-spec-txt"><span class="hf-spec-k">選択的な応用領域</span><span class="hf-spec-n">選択的な<span class="jt">ホスピタリティ</span></span></span>
-      </a>
-    </div>
+    <p class="hf-spec">
+      <span class="hf-spec-k">選択的な応用領域</span>
+      <a href="investment-focus.html#hospitality">選択的な<span class="jt">ホスピタリティ</span> <span class="hf-cue-a" aria-hidden="true">&rarr;</span></a>
+    </p>
   </div>
 </section>
 
