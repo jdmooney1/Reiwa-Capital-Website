@@ -154,7 +154,13 @@
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
   .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
-  .hm-copy { margin-top: 12px; max-width: 44ch; }
+  .hm-copy { margin-top: 12px; max-width: 44ch; text-wrap: balance; }
+  /* Two columns (761px up): share rows, so the lists start on one line even
+     when one market's positioning sentence wraps and the other's does not. */
+  @media (min-width: 761px) {
+    .hm-cols { row-gap: 0; grid-template-rows: auto auto auto auto; }
+    .hm-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+  }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
      the sentence are set out under it: one lead, then the three facts that
