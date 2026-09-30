@@ -171,8 +171,9 @@
     .aw-sw, .aw-bar--rc i, .aw-ribbon, .aw-sp-rail i, .aw-spec::before { transition: none; }
   }
   /* --- 3 · Focus markets: the signature section ------------------------ */
-  /* Two markets, two sections. Each is full width and, on desktop, at
-     least a viewport deep: a photograph strip, the market name at section
+  /* Two markets, two sections. Each is full width and as deep as its
+     content (no viewport-height minimum, which left a blank band under the
+     map on tall screens): a photograph strip, the market name at section
      size, one positioning line, then the map beside the three text blocks.
      London sits on the cream; Amsterdam on the deeper paper of the Investor
      Control band on Approach; the layout mirrors between them. */
@@ -184,8 +185,6 @@
   .am-city { margin: 0; }
   .am-pos { margin-top: var(--fluid-2xs); max-width: 50ch; }
   @media (min-width: 1024px) {
-    .am-market { min-height: 100vh; display: flex; flex-direction: column; }
-    .am-market > .shell { flex: 1 0 auto; }
     .am-market--amsterdam .am-mapwrap { order: 2; }
   }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
