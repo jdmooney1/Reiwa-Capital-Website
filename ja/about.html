@@ -27,11 +27,11 @@
 <meta name="twitter:description" content="欧州不動産を、取引そのものではなく、投資家の目的と意思決定を起点に考えます。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capitalは、日本の投資家側に立って、ロンドン・アムステルダムを中心とする欧州不動産投資を支援します。","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=27">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=29">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=104">
+<link rel="stylesheet" href="../editorial.css?v=125">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -56,8 +56,8 @@
   }
   .nav-links a, .ff-copy, .ff-link, .skip-link,
   .nn-kicker, .nn-title, .nn-lead { font-family: var(--jp); }
-  .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2, .h-h3 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0; text-transform: none; }
+  .h-h2, .h-h3 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -73,20 +73,20 @@
      settles the picture into the cream. The ramp is the local contrast the
      type needs; nothing is drawn behind it. */
   .ab-hero .ab-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, var(--cream) 100%); }
+    background: linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, var(--cream) 100%); }
   /* The frame and the foot offset. editorial.css already bottom-aligns this
      head and pulls it under the transparent header; what it needed was a
      taller frame and a copy block sitting at a fixed proportion of it,
      rather than wherever the natural height happened to leave it. --head-h
      is the token that rule reads, so the negative offset and the flex-end
      alignment keep working untouched. Matching specificity, later file. */
-  body[data-page="about"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="about"] .page-head { --head-h: clamp(276px, 20vw, 308px); }
   body[data-page="about"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   .ab-hero .inner { position: relative; z-index: 2; }
   /* Internal-page hero pattern (About sets it; Approach and Investment
      Focus follow): the headline at roughly one and a half times the first
      section heading, the supporting sentence held close beneath it. */
-  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
+  .ab-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; text-wrap: balance; }
   .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); max-width: 33em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
@@ -94,8 +94,8 @@
     .ab-hero .sub { margin-top: 10px; max-width: 20em; }
   }
 
-  @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
-  @media (max-width: 400px)  { body[data-page="about"] .page-head { --head-h: 272px; } }
+  @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(252px, 30vw, 288px); } }
+  @media (max-width: 400px)  { body[data-page="about"] .page-head { --head-h: 240px; } }
 
   /* --- Section scaffold --------------------------------------------------
      Sections are separated by their own ground and by space, not by a rule
@@ -112,13 +112,13 @@
      party. With Reiwa Capital it is one unbroken line and one investor-side
      view. One control, two states — the page says nothing a reader has to
      take on trust; it shows the difference. */
-  .aw-field { margin-top: var(--fluid-l); background: var(--ink); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
+  .aw-field { margin-top: var(--fluid-l); background: var(--plum); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
   /* The two readings are a pair of tabs on a shared rule, the same grammar
      as the market selector below: the selected one carries the rule. */
-  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(252,250,241,.18); }
-  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: var(--jp); font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(252,250,241,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(247, 243, 234,.18); }
+  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: var(--jp); font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(247, 243, 234,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
-  .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+  .aw-sw:focus-visible { outline: 2px solid var(--on-plum); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
   .aw-flow { margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
   /* Three lanes across the same three periods. The investor's line never
@@ -127,19 +127,19 @@
      appointments, one per period, in every state. */
   .aw-row { display: grid; grid-template-columns: var(--aw-k) minmax(0, 1fr); column-gap: var(--aw-gap); }
   .aw-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
-  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.22); }
-  .aw-stage { display: flex; flex-direction: column; gap: 7px; font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
+  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(247, 243, 234,.22); }
+  .aw-stage { display: flex; flex-direction: column; gap: 7px; font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: 0; color: var(--cream); }
+  .aw-stage-s { display: block; font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: rgba(247, 243, 234,.72); }
   .aw-lane { margin-top: clamp(22px, 2.4vw, 32px); align-items: start; }
   .aw-lane-k { display: flex; flex-direction: column; gap: 3px; }
   .aw-lane-n { font-family: var(--jp); font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
-  .aw-lane-s { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: rgba(252,250,241,.72); }
+  .aw-lane-s { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: rgba(247, 243, 234,.72); }
   .aw-bar { height: 3px; margin-top: 12px; background: var(--cream); }
   .aw-bar--rc { margin-top: 16px; background: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
   .aw-bar--rc i { display: block; height: 3px; width: 70%; background: rgba(142,122,156,.55); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-field[data-flow="with"] .aw-bar--rc i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
   .aw-field[data-flow="with"] .aw-bar--rc i:last-child { width: 100%; }
-  .aw-note { margin: 0; font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); }
+  .aw-note { margin: 0; font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(247, 243, 234,.78); }
   /* Each state has its own caption. The two share one grid cell, so the
      field keeps its height and only the words change. */
   .aw-ribbons { display: grid; }
@@ -147,8 +147,8 @@
   .aw-field[data-flow="with"] .aw-ribbon--with, .aw-field[data-flow="without"] .aw-ribbon--without { opacity: 1; visibility: visible; transition-delay: 0s, 0s; }
   .aw-ribbon-n { font-family: var(--jp); font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon--with .aw-ribbon-n { color: var(--aw-rc); }
-  .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
-  .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); max-width: 62ch; text-wrap: pretty; }
+  .aw-ribbon--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
+  .aw-ribbon-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(247, 243, 234,.78); max-width: 62ch; text-wrap: pretty; }
   .aw-lane--spec { margin-top: 16px; }
   .aw-specs { align-self: start; }
   .aw-spec { position: relative; }
@@ -156,8 +156,28 @@
      work is coordinated from the investor's side. Without it there is none. */
   .aw-spec::before { content: ""; position: absolute; left: 22px; top: -16px; width: 1px; height: 16px; background: var(--aw-rc); opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
-  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(252,250,241,.30); font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.86); }
+  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(247, 243, 234,.30); font-family: var(--jp); font-size: 14px; line-height: 1.45; color: rgba(247, 243, 234,.86); }
   .aw-specs-k { display: none; }
+  /* At 1024px and wider both readings are shown together: one shared
+     header, the investor line, the oversight line with and without a
+     coordinating layer, and the specialists. Below 1024 the switch above
+     chooses one reading at a time. */
+  .aw-pair { display: none; margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
+  .aw-cmp { display: grid; gap: 20px; }
+  .aw-cmp-item .aw-ribbon { display: flex; flex-direction: column; gap: 3px; opacity: 1; visibility: visible; transition: none; }
+  .aw-cmp-item .aw-bar--rc { margin-top: 10px; }
+  .aw-cmp-item--with .aw-ribbon-n { color: var(--aw-rc); }
+  .aw-cmp-item--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
+  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i { width: 70%; background: rgba(142,122,156,.55); }
+  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i:last-child { width: 70%; }
+  .aw-bar--joined i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
+  .aw-bar--joined i:last-child { width: 100%; }
+  .aw-pair .aw-spec::before { opacity: 1; }
+  .aw-close { margin: var(--fluid-xs) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
+  @media (min-width: 1024px) {
+    .aw-switch, .aw-flow { display: none; }
+    .aw-pair { display: block; }
+  }
   /* Below 900px the same three periods read down a spine. The Japanese
      specialist chips carry an unbroken katakana word and need the wider
      switch point; the English page keeps 760px. */
@@ -167,7 +187,7 @@
     .aw-spine { display: block; margin-top: 16px; --aw-rc: #B8A3CC; }
     .aw-inv { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; border-bottom: 3px solid var(--cream); }
     .aw-inv-n { font-family: var(--jp); font-size: 17px; line-height: 1.3; color: var(--cream); }
-    .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(252,250,241,.78); }
+    .aw-inv-note { font-family: var(--jp); font-size: 14px; line-height: 1.5; color: rgba(247, 243, 234,.78); }
     .aw-sp-ribbon { margin-top: 16px; }
     .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
@@ -176,10 +196,10 @@
     .aw-field[data-flow="with"] .aw-sp-rail i { height: 33.334%; background: var(--aw-rc); }
     .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(96px, auto)); }
     .aw-sp-row { display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; }
-    .aw-sp-n { font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-    .aw-sp-st { font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
-    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(252,250,241,.30); font-family: var(--jp); font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.86); }
-    .aw-sp-s b { font-weight: 400; color: rgba(252,250,241,.62); margin-right: 6px; }
+    .aw-sp-n { font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.2; letter-spacing: 0; color: var(--cream); }
+    .aw-sp-st { font-family: var(--jp); font-weight: 400; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: rgba(247, 243, 234,.72); }
+    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(247, 243, 234,.30); font-family: var(--jp); font-size: 13.5px; line-height: 1.4; color: rgba(247, 243, 234,.86); }
+    .aw-sp-s b { font-weight: 400; color: rgba(247, 243, 234,.62); margin-right: 6px; }
     .aw-field { margin-top: 26px; padding: 16px 18px 22px; }
     .aw-switch { gap: 18px; }
     .aw-sw { font-size: 15px; padding: 4px 0 10px; }
@@ -202,10 +222,6 @@
   .am-market--amsterdam { background: var(--paper-soft); }
   .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
   .am-city { margin: 0; }
-  .am-pos { margin-top: var(--fluid-2xs); max-width: 33em; }
-  @media (min-width: 1024px) {
-    .am-market--amsterdam .am-mapwrap { order: 2; }
-  }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
   .am-map { position: relative; aspect-ratio: 0.95; background: var(--paper-soft); border: 1px solid var(--rule-strong); overflow: hidden; }
@@ -251,15 +267,22 @@
      stack in the side column beside the map, so the column runs to the
      map's depth and the three things read down. */
   .am-k { margin: 0 0 6px; font-family: var(--jp); font-size: var(--type-caption); font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
-  .am-p { margin: 0; font-size: 15px; line-height: 1.85; max-width: 32em; }
+  .am-p { margin: 0; font-size: var(--type-body); max-width: 36em; text-wrap: pretty; }
   .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: var(--fluid-xs); }
   /* With the areas list gone, the first block opens the column: its rule lines up with the map's top edge. */
   @media (min-width: 901px) { .am-side > .am-blocks:first-child { margin-top: 0; } }
   .am-block { padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
-  .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
-  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .am-look-list li { font-family: var(--jp); font-size: 15px; line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
-  .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+  .am-look { margin-top: var(--fluid-m); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
+  .am-photo { margin: 0 0 var(--fluid-xs); aspect-ratio: 7 / 3; overflow: hidden; background: var(--plum); }
+  .am-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
+  .am-market--amsterdam .am-photo img { object-position: 50% 60%; }
+  @media (max-width: 760px) { .am-photo { aspect-ratio: 3 / 1; } .am-market--london .am-photo img { object-position: 50% 42%; } }
+  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
+  .am-look-list li { font-family: var(--jp); font-size: var(--type-body); line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
+  @media (max-width: 760px) {
+    .am-look-list { grid-template-columns: minmax(0, 1fr); }
+    .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+  }
   /* Two links close the page now, one for investors and one for the people
      who bring us opportunities. The row grammar is unchanged. */
   @media (min-width: 901px) {
@@ -328,7 +351,7 @@
      splits but introduced new emergency breaks at 320px. Browsers without
      auto-phrase fall back to the current behaviour, so nothing regresses. */
   .h-body, .ab-grp, .aw-spec, .aw-inv-note, .aw-stage, .aw-sp-n, .aw-sp-s,
-  .am-name, .am-focus, .ac-item, .ab-lede, .sub, .am-pos,
+  .am-name, .am-focus, .ac-item, .ab-lede, .sub,
   .am-look-list li, .am-k, .aw-ribbon-n, .aw-ribbon-note, .aw-specs-k {
     word-break: auto-phrase;
   }
@@ -411,6 +434,44 @@
         </div>
       </div>
 
+      <div class="aw-pair">
+        <div class="aw-row aw-row--head">
+          <span></span>
+          <div class="aw-cols">
+            <span class="aw-stage">形成<small class="aw-stage-s"><span class="jt">マンデート</span>・評価</small></span>
+            <span class="aw-stage">実行<small class="aw-stage-s">組成・取得</small></span>
+            <span class="aw-stage">保有期間<small class="aw-stage-s">保有・売却</small></span>
+          </div>
+        </div>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">投資家</span></div>
+          <div><p class="aw-note">マンデートと意思決定を保持</p><div class="aw-bar" aria-hidden="true"></div></div>
+        </div>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">監督</span></div>
+          <div>
+            <div class="aw-cmp">
+              <div class="aw-cmp-item aw-cmp-item--without"><div class="aw-ribbon">
+                <span class="aw-ribbon-n">継続的な調整役が不在</span>
+                <span class="aw-ribbon-note">各専門家は自らの段階を担い、全体を通して投資家の視点を保持する役割は誰にもありません</span>
+              </div><div class="aw-bar aw-bar--rc" aria-hidden="true"><i></i><i></i><i></i></div></div>
+              <div class="aw-cmp-item aw-cmp-item--with"><div class="aw-ribbon">
+                <span class="aw-ribbon-n"><span lang="en">Reiwa Capital</span></span>
+                <span class="aw-ribbon-note">各段階における投資家側の助言と<span class="jt">モニタリング</span></span>
+              </div><div class="aw-bar aw-bar--rc aw-bar--joined" aria-hidden="true"><i></i><i></i><i></i></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="aw-row aw-lane aw-lane--spec">
+          <div class="aw-lane-k"><span class="aw-lane-n">専門家</span><span class="aw-lane-s">各段階で選任</span></div>
+          <div class="aw-specs aw-cols">
+            <span class="aw-spec">鑑定・法務</span>
+            <span class="aw-spec">法務・貸し手・技術</span>
+            <span class="aw-spec"><span class="jt">プロパティマネジメント</span>・<wbr>仲介</span>
+          </div>
+        </div>
+      </div>
+
       <div class="aw-spine">
         <div class="aw-inv">
           <span class="aw-inv-n">投資家</span>
@@ -441,11 +502,12 @@
         </div>
       </div>
     </div>
+    <p class="h-body aw-close">投資家がマンデートと重要な判断を保持し、<span lang="en">Reiwa Capital</span>が各業務を通じて一貫した視点を維持します。</p>
   </div>
 </section>
 
 <!-- ================================================================ 3 · 注力市場 -->
-<section class="ab-sec am am-intro" data-screen-label="03 Reiwaについて — 注力市場" aria-labelledby="am-title">
+<section class="ab-sec am am-intro" id="markets" data-screen-label="03 Reiwaについて — 注力市場" aria-labelledby="am-title">
   <div class="shell">
     <div class="ab-head">
       <h2 class="h-h2" id="am-title"><span class="jt">注力市場</span></h2>
@@ -457,7 +519,6 @@
 <section class="am-market am-market--london" id="london" data-screen-label="03a Reiwaについて — ロンドン" aria-labelledby="am-london-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-london-title">ロンドン</h3>
-    <p class="h-body am-pos">収益型と再生型の双方に機会があります</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -474,27 +535,27 @@
           </ul>
         </div>
         <div class="am-side">
+          <figure class="am-photo"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 100vw, 44vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p">厚みのある投資市場、幅広い<span class="jt">テナント</span>需要、成熟した金融・専門家<span class="jt">ネットワーク</span>を備えています。</p></div>
-            <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">幅広い需要と成熟した金融ネットワークのもとでは、判断の重みは物件とその事業計画に置かれます。投資家が資本を投じる前に、その両方と出口を検証します。</p></div>
+            <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p">資本市場に厚みがあり、金融・専門家の<span class="jt">ネットワーク</span>も成熟しています。<span class="jt">セントラル・ロンドン</span>は、特性の異なる複数の<span class="jt">サブマーケット</span>で構成されています。立地、建物の品質、<span class="jt">テナント</span>需要を個別に検証します。</p></div>
+            <div class="am-block"><h3 class="am-k">注力する理由</h3><p class="h-body am-p">判断の重みは、市場そのものよりも物件とその事業計画に置かれます。<span lang="en">Reiwa Capital</span>は、投資家が資本を投じる前に、その両方と出口を評価します。</p></div>
           </div>
-          <div class="am-look">
-            <h3 class="am-k">対象とする機会</h3>
+        </div>
+      </div>
+      <div class="am-look">
+            <h3 class="am-k">私たちが重視する点</h3>
             <ul class="am-look-list">
               <li>需要が確認できる都心の優良立地</li>
               <li>安定収益、または管理可能な改善余地</li>
               <li>現実的な資本支出と複数の売却選択肢</li>
             </ul>
           </div>
-        </div>
-      </div>
   </div>
 </section>
 
 <section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b Reiwaについて — アムステルダム" aria-labelledby="am-amsterdam-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-amsterdam-title">アムステルダム</h3>
-    <p class="h-body am-pos">厳格な都市計画が、立地と品質の高い物件を支えます</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -512,20 +573,21 @@
         </div>
     
         <div class="am-side">
+          <figure class="am-photo"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 100vw, 44vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p"><span class="jt">コンパクト</span>で供給が限られ、都市計画と環境要件が厳格な市場です。</p></div>
-            <div class="am-block"><h3 class="am-k">注目する理由</h3><p class="h-body am-p">厳格な都市計画と環境要件のため、許可用途と技術的な状態が判断を左右します。選任された専門家が購入前に両方を確認し、保有期間中はその状況と必要な資本を<span class="jt">モニタリング</span>します。</p></div>
+            <div class="am-block"><h3 class="am-k">市場の特徴</h3><p class="h-body am-p"><span class="jt">コンパクト</span>で供給が限られ、都市計画と環境要件が厳格な市場です。<span class="jt">テナント</span>需要があり、買い手には機関投資家も含まれます。</p></div>
+            <div class="am-block"><h3 class="am-k">注力する理由</h3><p class="h-body am-p">厳格な規制のもと、許可用途と技術的な状態が判断を左右します。選任された専門家が購入前に両方を確認し、<span lang="en">Reiwa Capital</span>は保有期間中、その状況と必要となり得る資本を<span class="jt">モニタリング</span>します。</p></div>
           </div>
-          <div class="am-look">
-            <h3 class="am-k">対象とする機会</h3>
+        </div>
+      </div>
+      <div class="am-look">
+            <h3 class="am-k">私たちが重視する点</h3>
             <ul class="am-look-list">
               <li>需要が明確な、確立された中心部の立地</li>
               <li>明確な許可用途と管理可能な技術要件</li>
               <li>安定収益、または<span class="jt">リーシング</span>や再生による改善余地</li>
             </ul>
           </div>
-        </div>
-      </div>
   </div>
 </section>
 
@@ -570,7 +632,7 @@
   });
 })();
 </script>
-<script src="../shell.js?v=78"></script>
+<script src="../shell.js?v=79"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>

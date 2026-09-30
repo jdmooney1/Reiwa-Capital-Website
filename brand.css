@@ -24,7 +24,7 @@
 html, body { background: var(--paper-warm); }
 
 /* Nav picks up the warm ground instead of cool white */
-.nav-bar { background: rgba(252, 250, 241, 0.80); }
+.nav-bar { background: rgba(247, 243, 234, 0.80); }
 
 /* Inner-page heads sit on warm beige */
 .page-head { background: var(--paper-warm); }
@@ -56,7 +56,7 @@ html, body { background: var(--paper-warm); }
 }
 /* On dark grounds the brackets go warm-white */
 .r-frame.on-dark::before,
-.r-frame.on-dark::after { border-color: rgba(252, 250, 241, 0.55); }
+.r-frame.on-dark::after { border-color: rgba(247, 243, 234, 0.55); }
 
 /* Larger, more architectural brackets for hero-scale imagery */
 .r-frame-lg::before,

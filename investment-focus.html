@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Two core strategies in London and Amsterdam, income and repositioning, with selective hospitality as a specialist application, and where we draw the line.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=27">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=104">
+<link rel="stylesheet" href="editorial.css?v=125">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -60,29 +60,29 @@
   /* Frame and foot offset, as on About and Approach: --head-h is the token
      the shared head rule reads, so the negative offset under the
      transparent header and the flex-end alignment stay untouched. */
-  body[data-page="focus"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="focus"] .page-head { --head-h: clamp(276px, 20vw, 308px); }
   body[data-page="focus"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   /* Local contrast only: above 40% the picture is untouched and the ramp
      under the copy is lengthened rather than deepened. */
   body[data-page="focus"] .page-head {
     background-image:
-      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, #F7F3EA 100%),
       url("assets/imagery/focus-hero-blur.webp");
     /* Same frame in AVIF where the browser takes it. A browser that does
        not parse image-set() drops this declaration and keeps the webp one
        above, so nothing is lost. */
     background-image:
-      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, #F7F3EA 100%),
       image-set(url("assets/imagery/focus-hero-blur.avif") type("image/avif"),
                 url("assets/imagery/focus-hero-blur.webp") type("image/webp"));
   }
-  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
-  @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 272px; } }
+  @media (max-width: 1024px) { body[data-page="focus"] .page-head { --head-h: clamp(252px, 30vw, 288px); } }
+  @media (max-width: 400px)  { body[data-page="focus"] .page-head { --head-h: 240px; } }
   /* Internal-page hero pattern, as set on About: the headline at roughly
      one and a half times the first section heading, the supporting
      sentence held close beneath it. */
   .if-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 14ch; text-wrap: balance; }
-  .if-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .if-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 560px; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .if-hero h1 { max-width: 12ch; }
     .if-hero .sub { margin-top: 10px; max-width: 34ch; }
@@ -113,6 +113,12 @@
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
   .fx-param { display: grid; grid-template-columns: minmax(0, 17ch) minmax(0, 1fr); gap: var(--fluid-m); align-items: start; margin-top: var(--fluid-l); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); }
+  .fx-param-v { display: grid; gap: var(--space-2-5); }
+  .fx-param-v p { margin: 0; }
+  .fx-param-h { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .fx-stagehead { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .fx-back:hover .ret-arrow { transform: translateX(calc(var(--arrow-shift) * -1)); }
+  .dl-n { text-wrap: balance; }
   .fx-param-k { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.45; letter-spacing: 0.005em; color: var(--ink-3); }
   .fx-param-v { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 12.5px + 0.35vw, 16px); line-height: 1.62; color: var(--ink-2); max-width: var(--measure-ch); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 900px) {
@@ -129,9 +135,9 @@
   /* Selected is unmistakable without a button or a raised card: a cream
      hairline, the name at full strength, and the unselected picture a
      step back. Both panels are identical until one is chosen. */
-  .fx-field[data-open] .fx-panel:has(.fx-open:not([hidden])) { box-shadow: inset 0 0 0 1px rgba(252,250,241,.66); }
+  .fx-field[data-open] .fx-panel:has(.fx-open:not([hidden])) { box-shadow: inset 0 0 0 1px rgba(247, 243, 234,.66); }
   .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-photo img { filter: saturate(.86) brightness(.94); transition: filter 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-name { color: rgba(252,250,241,.82); }
+  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-name { color: rgba(247, 243, 234,.82); }
   .fx-field[data-open="0"] .fx-panel--inc, .fx-field[data-open="1"] .fx-panel--rep { flex-grow: 1.62; }
   .fx-field[data-open="0"] .fx-panel--rep, .fx-field[data-open="1"] .fx-panel--inc { flex-grow: 1; }
 
@@ -158,27 +164,27 @@
   .fx-closed .fx-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .fx-name { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .fx-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 42ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .fx-cue { margin-top: 2px; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-cue { margin-top: 2px; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(247, 243, 234,.82); transition: color 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-cue-a { display: inline-block; transition: transform 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
 
   /* Hover and focus. A hairline just inside the panel edge, a cue brought up
      to full cream and a four-pixel nudge on its arrow: enough to read as
      interactive, short of reading as a button. Keyboard focus is deliberately
      the stronger of the two — a 2px cream rule that hover never draws. */
-  .fx-edge { position: absolute; inset: 0; z-index: 2; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(252,250,241,.72); background: linear-gradient(to top, rgba(28,14,35,.22) 0%, rgba(28,14,35,.08) 52%, rgba(28,14,35,.02) 100%); opacity: 0; transition: opacity 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .fx-edge { position: absolute; inset: 0; z-index: 2; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(247, 243, 234,.72); background: linear-gradient(to top, rgba(28,14,35,.22) 0%, rgba(28,14,35,.08) 52%, rgba(28,14,35,.02) 100%); opacity: 0; transition: opacity 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   @media (hover: hover) {
     .fx-shut:hover ~ .fx-edge { opacity: 1; }
     .fx-shut:hover ~ .fx-cap .fx-cue { color: var(--cream); }
-    .fx-shut:hover ~ .fx-cap .fx-cue-a { transform: translateX(4px); }
+    .fx-shut:hover ~ .fx-cap .fx-cue-a { transform: translateX(var(--arrow-shift)); }
   }
   .fx-shut:focus-visible ~ .fx-cap .fx-cue { color: var(--cream); }
-  .fx-shut:focus-visible ~ .fx-cap .fx-cue-a { transform: translateX(4px); }
+  .fx-shut:focus-visible ~ .fx-cap .fx-cue-a { transform: translateX(var(--arrow-shift)); }
   /* The shared button:focus-visible rule in editorial.css carries
      outline-offset: 3px, which .fx-panel's overflow: hidden clips away
      entirely — the ring computed but never painted. Both properties have to
      be set together here, inside the panel edge. */
-  .fx-shut:focus-visible, .fx-imgbtn:focus-visible { outline: 2px solid var(--cream); outline-offset: -4px; }
-  .fx-back:focus-visible { outline: 2px solid var(--cream); outline-offset: -3px; }
+  .fx-shut:focus-visible, .fx-imgbtn:focus-visible { outline: 2px solid var(--on-plum); outline-offset: -6px; box-shadow: inset 0 0 0 4px var(--plum); } /* two-tone: legible over light or dark photography */
+  .fx-back:focus-visible { outline: 2px solid var(--on-plum); outline-offset: -3px; }
 
   /* Expanded state. Both panels now share one grammar: photograph above,
      ivory band below. The band sizes to its own content and the panel grows
@@ -203,8 +209,9 @@
   .fx-open .fx-name { font-size: var(--type-h3); }
   .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
   .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px var(--fluid-s); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  @media (hover: hover) { .fx-back:hover { color: rgba(252,250,241,.78); } }
+  @media (hover: hover) { .fx-back:hover { color: rgba(247, 243, 234,.78); } }
   .fx-band { flex: 1 0 auto; background: #F5F0E6; padding: var(--fluid-s); display: flex; flex-direction: column; }
+  .fx-band-desc { margin: 0 0 var(--fluid-xs); font-size: var(--type-body); line-height: var(--type-body-lh); color: var(--ink-2); max-width: 56ch; text-wrap: pretty; }
   .fx-band-k { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-3); }
   /* Supporting criteria. Two lists, one shown at a time: what is looked for,
      and where the downside sits. The panels share one grid cell, so the band
@@ -216,7 +223,7 @@
   .fx-pair-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 6px 0 11px; min-height: 44px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-pair-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
   .fx-pair-tab--down[aria-selected="true"] { border-bottom-color: var(--reiwa-node, #5E3D78); }
-  .fx-pair-tab:focus-visible { outline: 2px solid var(--ink); }
+  .fx-pair-tab:focus-visible { outline: 2px solid var(--focus); }
   @media (hover: hover) { .fx-pair-tab:hover { color: var(--ink); } }
   .fx-pair-stack { display: grid; }
   .fx-pair-panel { grid-area: 1 / 1; min-width: 0; }
@@ -256,7 +263,7 @@
   .fx-stage { appearance: none; background: none; border: 0; border-top: 2px solid var(--rule-strong); margin: 0; padding: 12px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 12.6px + 0.25vw, 16px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-stage[aria-selected="true"] { border-top-color: var(--ink); font-weight: 500; color: var(--ink); }
   @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
-  .fx-stage:focus-visible { outline: 2px solid var(--ink); }
+  .fx-stage:focus-visible { outline: 2px solid var(--focus); }
 
   @media (max-width: 1024px) {
     .fx-field, .fx-open { min-height: clamp(488px, 54vw, 580px); }
@@ -277,8 +284,9 @@
   }
   .fx-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 10px; }
   .fx-tab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16.5px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
-  .fx-tab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
-  .fx-tab:focus-visible, .fx-mtab:focus-visible { outline: 2px solid var(--ink); }
+  .fx-tab[aria-selected="true"] { border-top: 2px solid var(--ink); padding-top: 10px; font-weight: 500; color: var(--ink); }
+  @media (hover: hover) { .fx-tab:not([aria-selected="true"]):hover, .fx-mtab:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
+  .fx-tab:focus-visible, .fx-mtab:focus-visible { outline: 2px solid var(--focus); }
   .fx-tabpanel { margin-top: 22px; }
   .fx-tabpanel[hidden] { display: none; }
   .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
@@ -297,7 +305,7 @@
   .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
   .fx-mtabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; margin-top: 22px; }
   .fx-mtab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
-  .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); font-weight: 500; color: var(--ink); }
+  .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); padding-top: 10px; font-weight: 500; color: var(--ink); }
   @media (max-width: 360px) {
     .fx-mimg { height: 300px; }
     
@@ -366,28 +374,28 @@
   /* --- 4 · Where we draw the line ----------------------------------------
      Four typographic principles on the purple ground. No numbers, no icons,
      no explanatory copy: the refusals are the argument. */
-  .dl-sec { background: var(--ink); }
+  .dl-sec { background: var(--plum); }
   .dl-sec > .shell { padding-top: clamp(48px, 4.8vw, 70px); padding-bottom: var(--fluid-xl); border-top: 0; }
   .dl-h2 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); }
-  .dl-kicker { display: block; margin: 0 0 var(--fluid-2xs); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.66); }
-  .dl-lede { margin: var(--fluid-2xs) 0 clamp(4px, 0.6vw, 8px); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.74); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
+  .dl-kicker { display: block; margin: 0 0 var(--fluid-2xs); font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: rgba(247, 243, 234,.66); }
+  .dl-lede { margin: var(--fluid-2xs) 0 clamp(4px, 0.6vw, 8px); font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(247, 243, 234,.74); max-width: 50ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
   /* align-items: start, so each rule stops where its own refusal stops. The
      columns are deliberately unequal; stretching them drew three-quarters of
      a column of empty rule under the shortest. */
   .dl-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(26px, 3vw, 40px); align-items: stretch; }
-  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) var(--fluid-2xs) var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
+  .dl-p { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 clamp(18px, 2vw, 30px) var(--fluid-2xs) var(--fluid-s); border-left: 1px solid rgba(247, 243, 234,.30); }
   .dl-p:nth-child(4n+1) { padding-left: 0; border-left: 0; }
   .dl-n { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.014em; color: var(--cream); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: balance; }
-  .dl-x { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13px + 0.25vw, 15.5px); line-height: 1.5; color: rgba(252,250,241,.74); max-width: 30ch; text-wrap: pretty; }
+  .dl-x { display: block; font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 13px + 0.25vw, 15.5px); line-height: 1.5; color: rgba(247, 243, 234,.74); max-width: 30ch; text-wrap: pretty; }
   @media (max-width: 1024px) {
     .dl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 36px) 0; }
-    .dl-p:nth-child(4n+1) { padding-left: var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
+    .dl-p:nth-child(4n+1) { padding-left: var(--fluid-s); border-left: 1px solid rgba(247, 243, 234,.30); }
     .dl-p:nth-child(2n+1) { padding-left: 0; border-left: 0; }
   }
   @media (max-width: 760px) {
     .dl-sec > .shell { padding-top: clamp(37px, 3.7vw, 48px); padding-bottom: clamp(36px, 3.6vw, 47px); }
     .dl-grid { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: var(--fluid-s); }
-    .dl-p, .dl-p:nth-child(4n+1), .dl-p:nth-child(2n+1) { padding: 18px 0 20px; border-left: 0; border-top: 1px solid rgba(252,250,241,.30); }
+    .dl-p, .dl-p:nth-child(4n+1), .dl-p:nth-child(2n+1) { padding: 18px 0 20px; border-left: 0; border-top: 1px solid rgba(247, 243, 234,.30); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -416,7 +424,10 @@
     <h2 class="fx-h2" id="fx-title">Durable Fundamentals, Defined Potential</h2>
     <div class="fx-param">
       <span class="fx-param-k">Investment Parameters</span>
-      <p class="fx-param-v">An emphasis on existing buildings and defensible occupational demand, and for repositioning, business plans driven by specific, controllable improvements. Each opportunity is assessed against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
+      <div class="fx-param-v">
+        <p><b class="fx-param-h">Mandate requirements</b>Each opportunity is assessed individually against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
+        <p><b class="fx-param-h">General preferences</b>Existing buildings and defensible occupational demand. For repositioning, business plans driven by specific, controllable improvements.</p>
+      </div>
     </div>
   </div>
 
@@ -444,20 +455,21 @@
               <span class="fx-scrim" aria-hidden="true"></span>
               <button class="fx-imgbtn" type="button" data-focus="0" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
+              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning"><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
               <div class="fx-cap">
                 <h3 class="fx-name">Income</h3>
               </div>
             </div>
             <div class="fx-band">
+              <p class="fx-band-desc">Durable income with a clear basis in location, asset quality and occupational demand.</p>
               <div class="fx-pair" data-pair>
                 <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
-                  <button class="fx-pair-tab" type="button" role="tab" id="fx-dp-t0" aria-controls="fx-dp-p0" aria-selected="true" tabindex="0">What we look for</button>
-                  <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-dp-t1" aria-controls="fx-dp-p1" aria-selected="false" tabindex="-1">Where the downside sits</button>
+                  <button class="fx-pair-tab" type="button" role="tab" id="fx-dp-t0" aria-controls="fx-dp-p0" aria-selected="true" tabindex="0">What We Look For</button>
+                  <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-dp-t1" aria-controls="fx-dp-p1" aria-selected="false" tabindex="-1">Where the Downside Sits</button>
                 </div>
                 <div class="fx-pair-stack">
                   <div class="fx-pair-panel is-on" role="tabpanel" id="fx-dp-p0" aria-labelledby="fx-dp-t0">
-                    <span class="fx-band-k fx-pair-k">What we look for</span>
+                    <span class="fx-band-k fx-pair-k">What We Look For</span>
                     <ol class="fx-pair-list">
                     <li>Income evidenced by occupation, not by forecast</li>
                     <li>Lease terms, expiry profile and tenant covenant</li>
@@ -466,10 +478,10 @@
                     </ol>
                   </div>
                   <div class="fx-pair-panel" role="tabpanel" id="fx-dp-p1" aria-labelledby="fx-dp-t1">
-                    <span class="fx-band-k fx-pair-k">Where the downside sits</span>
+                    <span class="fx-band-k fx-pair-k">Where the Downside Sits</span>
                     <ol class="fx-pair-list">
                     <li>Reletting cost, void period and landlord obligations at expiry</li>
-                    <li>Cash flow if reletting takes longer than underwritten</li>
+                    <li>Cash flow if reletting takes longer than assumed</li>
                     <li>Capital expenditure arriving earlier or larger than assumed</li>
                     <li>Buyer depth at exit for an asset of this size and profile</li>
                     </ol>
@@ -499,27 +511,27 @@
               <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
               <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
               <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning">Return to Overview</button>
+              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning"><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
             </div>
             <div class="fx-band fx-band--rep">
               <h3 class="fx-name">Repositioning</h3>
               <div class="fx-stages" role="tablist" aria-label="Repositioning">
-                <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
-                <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="1">Shape</button>
-                <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="2">Strengthen</button>
+                <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">Identify the Opportunity</button>
+                <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="1">Shape the Strategy</button>
+                <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="2">Strengthen the Asset</button>
               </div>
               <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
                 <div data-on>
-                  <h4 class="fx-stagehead">Identify the Constraint</h4>
-                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance.</p>
+                  <h4 class="fx-stagehead">Identify the Opportunity</h4>
+                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance. Reiwa assesses whether the constraint can be resolved, and whether the resulting improvement would be material against the investor’s mandate before any capital is committed.</p>
                 </div>
                 <div>
-                  <h4 class="fx-stagehead">Define the Improvement Plan</h4>
-                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions and delivery timetable.</p>
+                  <h4 class="fx-stagehead">Shape the Strategy</h4>
+                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions, delivery timetable and the risks each carries. Appointed specialists prepare and price the plan, and Reiwa coordinates their input into a single business plan for the investor to approve.</p>
                 </div>
                 <div>
-                  <h4 class="fx-stagehead">Test the Investment Effect</h4>
-                  <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
+                  <h4 class="fx-stagehead">Strengthen the Asset</h4>
+                  <p>Strengthen the asset through works and operational change delivered by appointed contractors, letting agents and property managers. Reiwa monitors progress and cost against the approved plan, and reviews the effect on letting prospects, income and exit options against the investment case.</p>
                 </div>
               </div>
               <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
@@ -545,12 +557,12 @@
         <div class="fx-mband">
           <div class="fx-pair" data-pair>
             <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
-              <button class="fx-pair-tab" type="button" role="tab" id="fx-mp-t0" aria-controls="fx-mp-p0" aria-selected="true" tabindex="0">What we look for</button>
-              <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-mp-t1" aria-controls="fx-mp-p1" aria-selected="false" tabindex="-1">Where the downside sits</button>
+              <button class="fx-pair-tab" type="button" role="tab" id="fx-mp-t0" aria-controls="fx-mp-p0" aria-selected="true" tabindex="0">What We Look For</button>
+              <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-mp-t1" aria-controls="fx-mp-p1" aria-selected="false" tabindex="-1">Where the Downside Sits</button>
             </div>
             <div class="fx-pair-stack">
               <div class="fx-pair-panel is-on" role="tabpanel" id="fx-mp-p0" aria-labelledby="fx-mp-t0">
-                <span class="fx-band-k fx-pair-k">What we look for</span>
+                <span class="fx-band-k fx-pair-k">What We Look For</span>
                 <ol class="fx-pair-list">
                 <li>Income evidenced by occupation, not by forecast</li>
                 <li>Lease terms, expiry profile and tenant covenant</li>
@@ -559,10 +571,10 @@
                 </ol>
               </div>
               <div class="fx-pair-panel" role="tabpanel" id="fx-mp-p1" aria-labelledby="fx-mp-t1">
-                <span class="fx-band-k fx-pair-k">Where the downside sits</span>
+                <span class="fx-band-k fx-pair-k">Where the Downside Sits</span>
                 <ol class="fx-pair-list">
                 <li>Reletting cost, void period and landlord obligations at expiry</li>
-                <li>Cash flow if reletting takes longer than underwritten</li>
+                <li>Cash flow if reletting takes longer than assumed</li>
                 <li>Capital expenditure arriving earlier or larger than assumed</li>
                 <li>Buyer depth at exit for an asset of this size and profile</li>
                 </ol>
@@ -574,25 +586,25 @@
 
       <div class="fx-tabpanel" id="fx-panel-repositioning" role="tabpanel" aria-labelledby="fx-tab-repositioning" tabindex="-1" hidden>
         <div class="fx-mtabs" role="tablist" aria-label="Repositioning">
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">Identify</button>
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">Shape</button>
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">Strengthen</button>
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">Identify the Opportunity</button>
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">Shape the Strategy</button>
+          <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">Strengthen the Asset</button>
         </div>
         <div class="fx-mimg" data-cam>
           <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
         </div>
         <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
           <div data-on>
-            <h4 class="fx-stagehead">Identify the Constraint</h4>
-            <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance.</p>
+            <h4 class="fx-stagehead">Identify the Opportunity</h4>
+                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance. Reiwa assesses whether the constraint can be resolved, and whether the resulting improvement would be material against the investor’s mandate before any capital is committed.</p>
           </div>
           <div>
-            <h4 class="fx-stagehead">Define the Improvement Plan</h4>
-            <p>Assess the works, leasing and operational changes required, together with their costs, permissions and delivery timetable.</p>
+            <h4 class="fx-stagehead">Shape the Strategy</h4>
+                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions, delivery timetable and the risks each carries. Appointed specialists prepare and price the plan, and Reiwa coordinates their input into a single business plan for the investor to approve.</p>
           </div>
           <div>
-            <h4 class="fx-stagehead">Test the Investment Effect</h4>
-            <p>Review the effect on letting prospects, sustainable income and exit options against the investment case.</p>
+            <h4 class="fx-stagehead">Strengthen the Asset</h4>
+                  <p>Strengthen the asset through works and operational change delivered by appointed contractors, letting agents and property managers. Reiwa monitors progress and cost against the approved plan, and reviews the effect on letting prospects, income and exit options against the investment case.</p>
           </div>
         </div>
         <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
@@ -624,9 +636,9 @@
         <img src="assets/imagery/bg-hospitality-952.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 760px) 92vw, 62vw" width="952" height="1269" alt="" loading="lazy" decoding="async">
       </div>
       <div class="hs-panel">
-        <span class="hs-kicker">A Specialist Application</span>
+        <span class="hs-kicker">A Selective Application</span>
         <h3 class="hs-title" id="hs-title">Selective Hospitality</h3>
-        <p class="hs-state">Distinctive properties where the real estate, local demand and operating proposition reinforce one another</p>
+        <p class="hs-state">Operating requirements, local demand and the suitability of the building are considered together as part of the investment assessment.</p>
       </div>
     </div>
     <div class="hs-tests">
@@ -640,13 +652,13 @@
 <!-- Where we draw the line -->
 <section class="if-sec dl-sec" data-screen-label="04 Investment Focus — where we draw the line" aria-labelledby="dl-title">
   <div class="shell">
-    <span class="dl-kicker">Downside must be identified and priced</span>
+    <span class="dl-kicker">Applied before pricing, not after</span>
     <h2 class="dl-h2" id="dl-title">Where We Draw the Line</h2>
     <div class="dl-grid">
-      <div class="dl-p"><span class="dl-n">Unevidenced Demand</span><span class="dl-x">Occupier demand resting on forecast rather than actual occupation</span></div>
-      <div class="dl-p"><span class="dl-n">Repositioning Without a Costed Plan</span><span class="dl-x">A repositioning case that lacks a specific, costed source of improvement</span></div>
-      <div class="dl-p"><span class="dl-n">Execution Risk Outweighs the Opportunity</span><span class="dl-x">Consents, works or leasing the investor cannot control or price</span></div>
-      <div class="dl-p"><span class="dl-n">Too Narrow an Exit</span><span class="dl-x">Realisation that depends on a single buyer type or market condition</span></div>
+      <div class="dl-p"><span class="dl-n">Demand Cannot Be Evidenced</span><span class="dl-x">Occupier demand resting on forecast rather than actual occupation</span></div>
+      <div class="dl-p"><span class="dl-n">The Source of Improvement Is Unclear</span><span class="dl-x">A repositioning case that lacks a specific, costed source of improvement</span></div>
+      <div class="dl-p"><span class="dl-n">Execution Risk Overwhelms the Opportunity</span><span class="dl-x">Consents, works or leasing the investor cannot control or price</span></div>
+      <div class="dl-p"><span class="dl-n">The Exit Depends on Too Narrow a Buyer Pool</span><span class="dl-x">Realisation that depends on a single buyer type or market condition</span></div>
     </div>
   </div>
 </section>
@@ -926,7 +938,7 @@
   });
 })();
 </script>
-<script src="shell.js?v=78"></script>
+<script src="shell.js?v=79"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>

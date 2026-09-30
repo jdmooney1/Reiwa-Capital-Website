@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Investor-side support for Japanese investors acquiring and owning European real estate, with a focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=27">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=104">
+<link rel="stylesheet" href="editorial.css?v=125">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -44,7 +44,7 @@
      ===================================================================== */
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
-  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBACdASoQABgAPsFOoEqnpCMhsAgA8BgJQBOgZYJzoXqEBHoOcxgd/vySAAD+78Rum/fbciU5Va/uISbbV7E9DYm71EAV5DQCA9o1y+LGjE39XQsgdeZ4jI1X/6htgozQmVK/JlndT/M0vVCv1m7F0iIp+wtwAv1n1Eidfz0/XpfGsB/2kwtJBXLwHqorSd9O47ev1wA6PVmrZc/0sqgsXo3yJ3cdiyUFkgAA) center 42% / cover no-repeat; }
+  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 750px; display: flex; align-items: flex-end; overflow: hidden; background: #100b14 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBACdASoQABgAPsFOoEqnpCMhsAgA8BgJQBOgZYJzoXqEBHoOcxgd/vySAAD+78Rum/fbciU5Va/uISbbV7E9DYm71EAV5DQCA9o1y+LGjE39XQsgdeZ4jI1X/6htgozQmVK/JlndT/M0vVCv1m7F0iIp+wtwAv1n1Eidfz0/XpfGsB/2kwtJBXLwHqorSd9O47ev1wA6PVmrZc/0sqgsXo3yJ3cdiyUFkgAA) center 42% / cover no-repeat; }
   .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; }
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   /* One bottom-up scrim, enough to carry white type over the pale lower
@@ -61,13 +61,14 @@
   @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(16px, 14.5px + 0.35vw, 19px); line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 44ch; }
   .home-hero .loc .sep { margin: 0 var(--fluid-2xs); color: rgba(255,255,255,0.5); }
-  .home-hero .loc { display: block; text-align: center; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; color: rgba(255,255,255,0.64); }
+  .home-hero .loc { display: block; text-align: left; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 0.02em; line-height: 1.6; text-transform: none; color: rgba(255,255,255,0.84); }
   /* Phones: the headline is sized to the widest it can be while keeping
      "European Real Estate." whole on one line — measured, not guessed. The
      hero shares the body gutter so its left edge lines up with the header and
      every section below it; the headline was re-measured and still fits. */
   @media (max-width: 760px) {
     .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
+    .home-hero { min-height: 700px; }
     .home-hero h1 { line-height: 1.04; letter-spacing: -0.03em; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 32ch; }
     .home-hero .loc { margin-top: 28px; }
@@ -85,7 +86,7 @@
   @media (max-width: 430px) {  }
 
   /* --- 2 · What Reiwa Capital is --------------------------------------- */
-  .hi { padding: clamp(56px, 5.4vw, 80px) 0 var(--fluid-xl); }
+  .hi { padding: var(--section-tight) 0 var(--section-tight); }
   .hi-statement { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); margin: 0; max-width: var(--measure-statement); text-wrap: pretty; }
   .hi-lede { margin: var(--fluid-xs) 0 0; max-width: var(--measure-statement); font-family: 'DM Sans', sans-serif; font-size: var(--type-body-l); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   /* The three functions, kept as one quiet operating line. The module they
@@ -98,18 +99,17 @@
   /* Body copy is never centred, so the block reads from one left edge and
      the marker sits on that edge rather than in the middle of it. */
   .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
-  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--ink); }
-  .hi-op-k { display: flex; justify-content: center; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
+  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--plum); }
+  .hi-op-k { display: flex; justify-content: flex-start; gap: 10px; align-items: baseline; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .hi-op-k b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .hi-op-v { display: block; margin-top: 8px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.1; letter-spacing: -0.018em; color: var(--ink); }
   /* The two stages inside each phase, as a small label under the phase name. */
   .hi-op-s { display: block; margin-top: 7px; font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1.4; letter-spacing: 0.04em; color: var(--ink-3); }
   .hi-op-sep { margin: 0 4px; }
-  .hi-op-d { margin: 10px auto 0; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 30ch; text-wrap: pretty; }
-  .hi-ops-foot { text-align: center; }
+  .hi-op-d { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); max-width: 36ch; text-wrap: pretty; }
+  .hi-ops-foot { text-align: left; }
   .hi-ops-link { margin-top: var(--fluid-s); }
   @media (max-width: 760px) {
-    .hi { padding: 60px 0 52px; }
     .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: var(--space-6) 0; }
     /* Four type levels compress to three: the number and the sub-label pair
        into one kicker above the name. CSS only - the DOM order stays
@@ -129,8 +129,8 @@
   }
 
   /* --- 3 · Markets ------------------------------------------------------ */
-  .hm { padding: 0 0 clamp(88px, 8vw, 120px); }
-  .hm .shell { padding-top: clamp(64px, 6.2vw, 92px); }
+  .hm { padding: 0 0 var(--section-major); }
+  .hm .shell { padding-top: 0; }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
 
   /* Spacing 3: the markets heading balances its two lines rather than leaving a tail. */
@@ -139,7 +139,7 @@
      line and three facts. Stacked on a phone, London first. */
   .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
 
-  .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); }
+  .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--plum); }
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
   .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
@@ -148,6 +148,10 @@
      1440. Rather than pad the column, the characteristics already carried in
      the sentence are set out under it: one lead, then the three facts that
      sentence was enumerating. No claim is added. */
+  .hm-col { display: flex; flex-direction: column; }
+  .hm-col .hm-facts { margin-top: auto; }
+  .hm-col .hm-copy { margin-bottom: var(--fluid-xs); }
+  .hm-foot { margin-top: var(--fluid-m); }
   .hm-facts { list-style: none; margin: var(--fluid-xs) 0 0; padding: 0; display: grid; max-width: 44ch; }
   .hm-facts li { padding: var(--fluid-2xs) 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
   .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
@@ -159,8 +163,6 @@
   @media (max-width: 900px) {
   }
   @media (max-width: 760px) {
-    .hm { padding: 0 0 64px; }
-    .hm .shell { padding-top: 48px; }
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 22px; gap: 40px; }
     /* Mobile composition: on a phone the homepage otherwise runs more than two
@@ -182,31 +184,20 @@
      and the four principles belong to the same argument. Full-bleed ground,
      light hairlines dividing the columns, nothing else: the section reads as
      a page of a document rather than a panel of cards. */
-  .hp { background: var(--ink); padding: 0 0 clamp(64px, 6.2vw, 92px); }
-  .hp .shell { padding-top: clamp(64px, 6.2vw, 92px); }
-  .hp .h-h2 { color: var(--cream); max-width: 22ch; }
+  .hp { background: var(--plum); padding: var(--section) 0; }
+  .hp .shell { padding-top: 0; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--fluid-l); align-items: start; }
+  .hp .h-h2 { color: var(--cream); max-width: 12ch; margin: 0; }
   /* subgrid so every paragraph starts on one line, whatever its heading does:
      two of the four headings wrap, and without this the column feet stagger. */
-  .hp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: clamp(40px, 4.4vw, 64px); align-items: stretch; }
-  .hp-item > div { display: contents; }
-  .hp-item { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; padding-bottom: clamp(4px, 0.6vw, 8px); padding: 0 clamp(18px, 2vw, 30px) 0 var(--fluid-s); border-left: 1px solid rgba(252,250,241,.30); }
-  .hp-item:first-child { padding-left: 0; border-left: 0; }
-  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
-  @media (max-width: 1100px) {
-    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
-    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
-  }
-  @media (max-width: 760px) {
-    .hp { padding: 0 0 56px; }
-    .hp .shell { padding-top: 56px; }
-    .hp-grid { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 30px; row-gap: 26px; }
-    .hp-item { display: block; grid-row: auto; }
-    /* One column: every principle carries the same hairline. The 1100px rule
-       strips it from the odd items, and that selector is more specific, so
-       both parities are restated here. */
-    .hp-item, .hp-item:nth-child(odd), .hp-item:nth-child(even) { padding: 0 0 0 18px; border-left: 1px solid rgba(252,250,241,.30); }
-    .hp-item p { max-width: none; }
+  .hp-grid { display: block; margin: 0; padding: 0; }
+  .hp-item { padding: var(--space-4) 0; border-top: 1px solid var(--hairline-light); }
+  .hp-item:first-child { padding-top: 0; border-top: 0; }
+  .hp-item:last-child { padding-bottom: 0; }
+  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
+  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 46ch; color: rgba(247, 243, 234,.72); text-wrap: pretty; }
+  @media (max-width: 900px) {
+    .hp .shell { grid-template-columns: minmax(0, 1fr); row-gap: var(--fluid-m); }
+    .hp .h-h2 { max-width: none; }
   }
 
   /* --- 5 · Investment Focus preview ------------------------------------ */
@@ -216,11 +207,11 @@
      third strategy is a specialist application rather than a third equal
      strategy, so it sits under the fields as one quiet line — which is the
      hierarchy the inner page states. */
-  .hf { padding: 0 0 clamp(72px, 7vw, 104px); }
-  .hf .shell { padding-top: clamp(80px, 7.6vw, 112px); }
+  .hf { padding: 0 0 var(--space-6); }
+  .hf .shell { padding-top: var(--section); }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--fluid-2xs); margin-top: clamp(36px, 4vw, 56px); }
   .hf-item { position: relative; display: block; text-decoration: none; color: inherit; overflow: hidden; background: #DCD6CC; aspect-ratio: 1 / 1; }
-  .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); transition: transform 600ms var(--ease-out); }
+  .hf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--hf-pos, 50% 50%); display: block; filter: var(--img-grade); }
   .hf-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 62%; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .hf-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 2.6vw, 38px); display: grid; gap: var(--fluid-2xs); }
   /* Caption wash: sits behind the text block only (it rides the caption's own box, so it
@@ -230,23 +221,22 @@
   .hf-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .hf-cap h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
   .hf-cap p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 40ch; }
-  .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,.82); transition: color 220ms var(--ease-out); }
+  .hf-cue { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(247, 243, 234,.82); transition: color 220ms var(--ease-out); }
   .hf-cue-a { display: inline-block; transition: transform 220ms var(--ease-out); }
   .hf-item[href*="income"]        { --hf-pos: 50% 84%; --hf-pos-m: 50% 80%; }
   .hf-item[href*="repositioning"] { --hf-pos: 42% 56%; --hf-pos-m: 38% 70%; }
   @media (hover: hover) {
-    .hf-item:hover img { transform: scale(1.02); }
     .hf-item:hover .hf-cue { color: var(--cream); }
-    .hf-item:hover .hf-cue-a { transform: translateX(4px); }
+    .hf-item:hover .hf-cue-a { transform: translateX(var(--arrow-shift)); }
   }
-  .hf-item:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .hf-item:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
   /* The specialist application: named, reachable, and plainly subordinate. */
   .hf-spec { max-width: none; margin-top: var(--fluid-xs); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px var(--fluid-xs); }
   .hf-spec-k { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
   .hf-spec a { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .hf-spec a .hf-cue-a { color: var(--ink-3); }
-  @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); } }
-  .hf-spec a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (hover: hover) { .hf-spec a:hover { color: var(--reiwa-node, #5E3D78); } .hf-spec a:hover .hf-cue-a { transform: translateX(var(--arrow-shift)); color: var(--reiwa-node, #5E3D78); } }
+  .hf-spec a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a { transition: none; } }
   @media (max-width: 900px) {
     .hf-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -255,8 +245,6 @@
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
-    .hf { padding: 0 0 64px; }
-    .hf .shell { padding-top: 60px; }
     .hf-grid { margin-top: 32px; }
   }
   </style>
@@ -276,7 +264,7 @@
   <div class="scrim"></div>
   <div class="inner">
     <h1>European<br>Real Estate.<br>Structured for <br>Japanese Capital.</h1>
-    <span class="loc">Tokyo<span class="sep" aria-hidden="true">·</span>London<span class="sep" aria-hidden="true">·</span>Amsterdam</span>
+    <span class="loc">Tokyo based<span class="sep" aria-hidden="true">·</span>Focused on London and Amsterdam</span>
   </div>
 </section>
 
@@ -284,27 +272,26 @@
 <section class="hi" data-screen-label="02 Home — what Reiwa is" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title">Reiwa Capital supports Japanese investors in sourcing, assessing and acquiring real estate in London and Amsterdam, with oversight of ongoing management through ownership and exit.</h2>
-      <p class="hi-lede">We coordinate specialist advisers and local property managers, bringing investment decisions, asset performance and emerging risks into a clear, consistent view.</p>
+      <h2 class="hi-statement" id="hi-title">Reiwa Capital supports Japanese investors in sourcing, assessing and acquiring selected real estate in London and Amsterdam, with investor-side oversight through ownership and exit.</h2>
     </div>
     <ol class="hi-ops" aria-label="What Reiwa Capital does">
       <li class="hi-op">
         <span class="hi-op-k"><b>01</b></span>
         <span class="hi-op-v">Formation</span>
         <span class="hi-op-s">Mandate <span class="hi-op-sep" aria-hidden="true">·</span> Assess</span>
-        <p class="hi-op-d">Each opportunity is tested against the investor’s mandate before any capital is committed</p>
+        <p class="hi-op-d">Each opportunity is tested against the mandate before capital is committed</p>
       </li>
       <li class="hi-op">
         <span class="hi-op-k"><b>02</b></span>
         <span class="hi-op-v">Execution</span>
         <span class="hi-op-s">Structure <span class="hi-op-sep" aria-hidden="true">·</span> Acquire</span>
-        <p class="hi-op-d">Ownership, financing and tax structure are settled, then diligence and documentation completed under one plan</p>
+        <p class="hi-op-d">Structure and financing are settled, then diligence and documentation completed</p>
       </li>
       <li class="hi-op">
         <span class="hi-op-k"><b>03</b></span>
         <span class="hi-op-v">Ownership</span>
         <span class="hi-op-s">Own <span class="hi-op-sep" aria-hidden="true">·</span> Exit</span>
-        <p class="hi-op-d">Performance is monitored against the investment case, and refinancing and exit decisions are brought to the investor</p>
+        <p class="hi-op-d">Performance is monitored; refinancing and exit decisions are brought to the investor</p>
       </li>
     </ol>
     <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">See the six stages<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
@@ -321,7 +308,7 @@
       <div class="hm-col">
         <div class="hm-photo"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
           <h3 class="hm-city">London</h3>
-        <p class="h-body hm-copy">Opportunities across income and repositioning strategies</p>
+        <p class="h-body hm-copy">London offers deep capital markets, broad occupier demand and mature financing and advisory networks. With demand and financing well established, the weight falls on the asset and its business plan. Reiwa assesses both, and the exit route, before an investor commits.</p>
         <ul class="hm-facts">
           <li>Breadth of occupier demand</li>
           <li>Highly differentiated micro-markets</li>
@@ -331,14 +318,15 @@
       <div class="hm-col">
         <div class="hm-photo"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></div>
           <h3 class="hm-city">Amsterdam</h3>
-        <p class="h-body hm-copy">Planning discipline rewards well-located, high-quality assets</p>
+        <p class="h-body hm-copy">Amsterdam is compact and supply constrained, with strict planning and sustainability requirements. Permitted use and technical condition therefore become decisive. Appointed specialists review both before purchase, and Reiwa monitors them, and the capital they may require, through ownership, reporting to the investor.</p>
         <ul class="hm-facts">
           <li>Compact and supply-constrained</li>
-          <li>Strong occupier demand</li>
-          <li>Institutional buyer base</li>
+          <li>Established occupier demand</li>
+          <li>Includes institutional buyers</li>
         </ul>
       </div>
     </div>
+    <div class="hm-foot"><a class="enq-cta" href="about.html#markets">See both markets in detail<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
@@ -384,7 +372,7 @@
       </a>
     </div>
     <p class="hf-spec">
-      <span class="hf-spec-k">A Specialist Application</span>
+      <span class="hf-spec-k">A Selective Application</span>
       <a href="investment-focus.html#hospitality">Selective Hospitality <span class="hf-cue-a" aria-hidden="true">&rarr;</span></a>
     </p>
   </div>
@@ -393,7 +381,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="shell.js?v=78"></script>
+<script src="shell.js?v=79"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>

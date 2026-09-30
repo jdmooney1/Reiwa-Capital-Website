@@ -7,19 +7,20 @@
 :root {
   --paper:        #FFFFFF;            /* base */
   --paper-warm:   var(--cream);      /* warm white cream (→ canonical) */
-  --paper-soft:   #F7F2E8;            /* very faint cream */
-  --ink:          var(--plum);        /* Sumire purple — primary text (→ canonical) */
+  --paper-soft:   var(--ivory-2);     /* secondary ivory (→ canonical) */
+  --ink:          var(--text);        /* primary TEXT (#2A202B). Grounds and fills use --plum, never --ink. */
   --ink-2:        #4F4458;
-  --ink-3:        #63596E;            /* ≥4.5:1 on cream, paper-soft and both pale hero grounds (was #6E637A, before that #807388) */
+  --ink-3:        var(--muted);       /* muted text (→ canonical) */
   --ink-4:        #928799;            /* lifted for separators/placeholders (was #B0A8B7) */
   --rule:         var(--hairline);                 /* base divider (→ canonical) */
-  --rule-soft:    rgba(39, 20, 48, 0.06);          /* retained: fainter-than-hairline variant */
-  --rule-strong:  rgba(39, 20, 48, 0.22);          /* retained: emphasis rule / link underlines */
+  --rule-soft:    rgba(40, 19, 47, 0.06);          /* retained: fainter-than-hairline variant */
+  --rule-strong:  rgba(40, 19, 47, 0.22);          /* retained: emphasis rule / link underlines */
   --rule-inverse: var(--hairline-light);           /* on-plum divider (→ canonical) */
 
   /* ── Spacing — ONE 8-based scale. Nothing lives outside it. ───────── */
   --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
   --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
+  --space-2-5: 12px; --space-7-5: 80px; --space-9: 128px;  /* half-steps: the full ladder is 8 12 16 24 32 48 64 80 96 128 (4 = hairline gap only) */
 
   /* ── Fluid spacing — six steps, each one interpolating between two rungs
      of the 8-scale above. Before these, 141 different clamp() expressions
@@ -35,8 +36,9 @@
   --fluid-xl:  clamp(var(--space-6), 4.2vw, var(--space-7));  /* 48 → 64 */
 
   /* ── Vertical rhythm — ONE section token, used by every page band. ─ */
-  --section:       clamp(80px, 6vw, 96px);
-  --section-tight: clamp(60px, 5vw, 88px);
+  --section:       var(--space-8);     /* 96 desktop · 80 tablet · 64 mobile */
+  --section-tight: var(--space-7-5);   /* 80 · 64 · 48 - supporting bands */
+  --section-major: var(--space-9);     /* 128 · 96 · 80 - major page transitions */
   /* Legacy aliases kept so existing references resolve to the one scale. */
   --sp-section:    var(--section);
   --sp-closing:    var(--section);
@@ -66,8 +68,10 @@
   /* ── Container — ONE frame for the whole product (site + portal). Page
      margin scales in three bands — desktop 72–96 · tablet 32–40 ·
      mobile 20–24 — via the media queries just below this block. ─────── */
-  --container: 1240px;
-  --gutter:    clamp(72px, 5.8vw + 13px, 96px);
+  --content-max: 1048px;                                        /* principal content width */
+  --gutter-max:  96px;
+  --container: calc(var(--content-max) + 2 * var(--gutter-max)); /* 1240 */
+  --gutter:    clamp(48px, calc(11.57vw - 70.6px), var(--gutter-max)); /* 48 at 1025 → 96 at 1440 */
 
   /* ── Image ratios — the only crops imagery may take. ───────────── */
   --ratio-portrait:  4 / 5;
@@ -77,8 +81,8 @@
   /* Breakpoints (CSS vars can't be used in @media; for reference only):
      desktop→tablet 1024 · tablet→mobile 760 · small 420 */
 }
-@media (max-width: 1024px) { :root { --gutter: clamp(32px, 3vw + 9px, 40px); } }
-@media (max-width: 760px)  { :root { --gutter: clamp(20px, 1vw + 16px, 24px); --section: clamp(64px, 10vw, 96px); } }
+@media (max-width: 1024px) { :root { --gutter: 32px; --section: var(--space-7-5); --section-tight: var(--space-7); --section-major: var(--space-8); } }
+@media (max-width: 760px)  { :root { --gutter: 20px; --section: var(--space-7); --section-tight: var(--space-6); --section-major: var(--space-7-5); } }
 
 html { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
 body { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
@@ -193,14 +197,14 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(252, 250, 241, 0.97);
+  background: rgba(247, 243, 234, 0.97);
   border-bottom: 0;
   transition: background 240ms var(--ease-out);
 }
 .nav-inner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 14px var(--gutter);
+  padding: var(--space-2-5) var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -208,7 +212,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   position: relative;
 }
 .nav-logo { display: inline-flex; align-items: center; flex: none; }
-.nav-logo img { height: 30px; max-width: 210px; width: auto; display: block; }
+.nav-logo img { height: 28px; max-width: 196px; width: auto; display: block; }
 
 /* The destinations sit on the centre of the bar, not in the flex flow, so
    the row reads lockup · destinations · language rather than a left-packed
@@ -229,8 +233,8 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: var(--space-1) 0;
+  min-height: 44px;
+  padding: 0;
   font-family: 'DM Sans', sans-serif;
   font-size: var(--type-caption);
   font-weight: 400;
@@ -244,20 +248,23 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .nav-links a::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: 0;
+  left: 0; right: 0; bottom: 9px;
   height: 1px;
   background: currentColor;
+  opacity: 0.45;
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 240ms var(--ease-out);
+  transition: transform var(--dur-hover) var(--ease-out);
 }
 @media (hover: hover) {
   .nav-links a:hover { color: var(--ink); }
   .nav-links a:hover::after { transform: scaleX(1); }
 }
+/* Current page: full-strength 2px bar, so it reads apart from the 1px hover
+   line and does not rely on colour alone. */
 .nav-links a[aria-current="page"] { color: var(--ink); }
-.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
-.nav-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 1px; }
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); height: 2px; opacity: 1; }
+.nav-links a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 1px; }
 
 .nav-right { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; flex: none; }
 
@@ -295,16 +302,16 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   position: relative;
   cursor: pointer;
   touch-action: manipulation;
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
-.nav-toggle:focus-visible { outline: 2px solid var(--ink); }
+.nav-toggle:focus-visible { outline: 2px solid var(--focus); }
 .nt-bar {
   position: absolute;
   left: 11px;
   top: 50%;
   width: 22px;
   height: 1.25px;
-  background: var(--ink);
+  background: var(--plum);
   transition: transform 240ms var(--ease-out), background 240ms var(--ease-out);
 }
 .nt-bar:nth-child(1) { transform: translateY(calc(-50% - 3.5px)); }
@@ -331,8 +338,8 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   color: var(--ink-2);
   text-decoration: none;
 }
-.nav-drawer a[aria-current="page"] { color: var(--ink); }
-.nav-drawer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.nav-drawer a[aria-current="page"] { color: var(--ink); font-weight: 500; box-shadow: inset 2px 0 0 var(--focus); padding-left: var(--space-2-5); }
+.nav-drawer a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 @media (max-width: 1100px) {
   .nav-inner { padding-top: var(--space-2); padding-bottom: var(--space-2); }
@@ -343,14 +350,15 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   /* The open panel supplies its own ground, so the bar settles with it. */
   .nav-bar.nav-menu-open { background: var(--paper-warm); }
 }
-@media (max-width: 760px) { .nav-logo img { height: 25px; max-width: 160px; } }
-@media (max-width: 380px) { .nav-logo img { height: 22px; max-width: 132px; } }
+@media (max-width: 760px) { .nav-logo img { height: 24px; max-width: 168px; } }
 
 /* ---- Floating over a hero ----------------------------------------- */
-.nav-bar.nav-over-hero, .nav-bar.nav-over-head { background: rgba(252, 250, 241, 0); }
+.nav-bar.nav-over-hero, .nav-bar.nav-over-head { background: rgba(247, 243, 234, 0); }
 .nav-bar.nav-over-hero .nav-rule::after,
 .nav-bar.nav-over-head .nav-rule::after { background: rgba(39, 20, 48, 0.10); }
 .nav-bar.nav-menu-open .nav-rule::after { background: var(--rule); }
+/* Over a tinted page-head atmosphere the quiet language option steps up to ink-2 for AA. */
+.nav-bar.nav-over-head .lang-switch [data-lang]:not(.is-active) { color: var(--ink-2); }
 /* Over the dark home hero the whole row inverts, matching the white
    lockup swap craft.js performs on the same class. */
 .nav-bar.nav-over-hero .nav-links a { color: rgba(255, 255, 255, 0.86); }
@@ -367,7 +375,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 .nav-bar.nav-over-hero .lang-switch .ls-sep { background: rgba(255, 255, 255, 0.34); }
 /* Once the menu is open the panel is the ground, so the row reads on cream
    again even while the bar is still nominally over the hero. */
-.nav-bar.nav-over-hero.nav-menu-open .nt-bar { background: var(--ink); }
+.nav-bar.nav-over-hero.nav-menu-open .nt-bar { background: var(--plum); }
 .nav-bar.nav-over-hero.nav-menu-open .lang-switch [data-lang] { color: var(--ink-3); }
 .nav-bar.nav-over-hero.nav-menu-open .lang-switch [data-lang].is-active { color: var(--ink); }
 .nav-bar.nav-over-hero.nav-menu-open .lang-switch .ls-sep { background: var(--rule-strong); }
@@ -402,7 +410,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 44px;
   min-width: 44px;   /* AA target size; the label is unchanged */
   padding: 0 6px;
   margin: 0;
@@ -416,7 +424,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
 }
 .lang-switch [data-lang].is-active { color: var(--ink); font-weight: 500; cursor: default; }
 @media (hover: hover) { .lang-switch [data-lang]:not(.is-active):hover { color: var(--ink-2); } }
-.lang-switch [data-lang]:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lang-switch [data-lang]:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .lang-switch .ls-sep {
   display: block;
   width: 1px;
@@ -432,7 +440,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
    Content is visible by default — never gated on an animation.
    ===================================================================== */
 .footer {
-  background: var(--ink);
+  background: var(--plum);
   color: var(--paper-warm);
   margin-top: 0;
   border-top: 0;
@@ -500,7 +508,7 @@ html.has-js [data-shell="nav"]:empty { display: block; min-height: var(--nav-h);
   letter-spacing: var(--ls-tight);
   font-weight: 500;
   color: var(--ink);
-  transition: transform 280ms var(--ease-out);
+  transition: transform var(--dur-hover) var(--ease-out);
 }
 /* Japanese keeps its own leading and tracking here, but no longer its own
    size: the size that used to live on this rule was written for the compact
@@ -510,8 +518,8 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 .nn-title-row { grid-column: 2; justify-self: end; display: flex; align-items: baseline; gap: 8px; }
 .nn-arrow { display: inline-block; flex: none; transition: transform 200ms var(--ease-out); }
 /* Arrow moves; the title never does. One text-link language site-wide. */
-.nn-link:hover .nn-arrow, .nn-link:focus-visible .nn-arrow { transform: translateX(4px); }
-.nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
+.nn-link:hover .nn-arrow, .nn-link:focus-visible .nn-arrow { transform: translateX(var(--arrow-shift)); }
+.nn-link:focus-visible { outline: 2px solid var(--focus); outline-offset: -8px; }
 @media (prefers-reduced-motion: reduce) { .nn-arrow, .nn-link { transition: none; } }
 
 /* =====================================================================
@@ -544,7 +552,7 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
    --------------------------------------------------------------------- */
 .nextnav--band { background: var(--paper-warm); border-top: 1px solid var(--rule); }
 .nextnav--band::before { content: none; }
-.nextnav--band .nn-link { height: auto; display: block; background: transparent; text-decoration: none; transition: background 260ms var(--ease-out); }
+.nextnav--band .nn-link { height: auto; display: block; background: transparent; text-decoration: none; transition: background var(--dur-hover) var(--ease-out); }
 .nextnav--band .nn-link:hover, .nextnav--band .nn-link:focus-visible { background: var(--paper-soft); }
 .nextnav--band .nn-inner {
   display: grid;
@@ -569,8 +577,8 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 .nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
 .nn-lead { display: block; margin-top: var(--fluid-2xs); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
 .nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
-.nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(8px); }
-.nextnav--band .nn-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -8px; }
+.nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(var(--arrow-shift)); }
+.nextnav--band .nn-link:focus-visible { outline: 2px solid var(--focus); outline-offset: -8px; }
 @media (max-width: 768px) {
   .nextnav--band .nn-inner { grid-template-columns: 1fr; padding: 52px var(--gutter) 56px; row-gap: 0; }
   .nextnav--band .nn-title { font-size: var(--type-h2); }
@@ -593,7 +601,7 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   align-items: center;
   justify-content: space-between;
 }
-.ff-copy { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em; color: rgba(252,250,241,0.78); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ff-copy { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em; color: rgba(247, 243, 234,0.78); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ff-brand { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; text-decoration: none; z-index: 1; }
 .ff-symbol { display: block; height: 26px; width: auto; opacity: 0.92; transition: opacity 220ms var(--ease-out); }
 .ff-brand:hover .ff-symbol { opacity: 1; }
@@ -605,21 +613,21 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
    utility type, with one faint hairline marking the join. The Japanese
    footer keeps the treatment it shipped with until its own phase. */
 .footer.footer-quiet {
-  background: #1C0E23;
-  color: var(--paper-warm);
-  border-top: 1px solid rgba(252, 250, 241, 0.13);
+  background: var(--plum);
+  color: var(--on-plum);
+  border-top: 1px solid var(--hairline-light);
 }
 /* Design lab · the cream emblem returns to the quiet footer, mathematically
    centred between the copyright and Privacy. LinkedIn is gone. */
 .footer-quiet .footer-inner { height: 72px; position: relative; }
 .footer-quiet .ff-symbol { height: 22px; }
-.footer-quiet .ff-copy { color: rgba(252, 250, 241, 0.60); font-size: var(--type-micro); }
-.footer-quiet .ff-link { color: rgba(252, 250, 241, 0.60); font-size: var(--type-micro); }
+.footer-quiet .ff-copy { color: rgba(247, 243, 234, 0.72); font-size: var(--type-micro); }
+.footer-quiet .ff-link { color: rgba(247, 243, 234, 0.72); font-size: var(--type-micro); }
 .footer-quiet .ff-link:hover,
 .footer-quiet .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .footer-quiet :focus-visible { outline-color: var(--paper-warm); }
 @media (max-width: 768px) {
-  .footer-quiet .footer-inner { height: 62px; }
+  .footer-quiet .footer-inner { height: 64px; }
   .footer-quiet .ff-copy, .footer-quiet .ff-link { font-size: var(--type-micro); }
 }
 /* Right-hand side: Privacy alone. One link, no list. */
@@ -639,13 +647,13 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 .ff-link::before { content: ""; position: absolute; left: -3px; right: -3px; top: 50%; transform: translateY(-50%); height: 44px; }
 .ff-link {
   font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
-  color: rgba(252,250,241,0.78); text-decoration: none; white-space: nowrap;
+  color: rgba(247, 243, 234,0.78); text-decoration: none; white-space: nowrap;
   display: inline-flex; align-items: center; min-height: 44px; margin: calc(var(--space-4) * -1) 0;
   transition: color 220ms var(--ease-out);
 }
 .ff-link:hover, .ff-link[aria-current="page"] { color: var(--paper-warm); }
 .ff-jalinks { max-width: var(--container); margin: 0 auto; padding: 22px var(--gutter) 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; }
-.ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; letter-spacing: 0.01em; color: rgba(252,250,241,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
+.ff-jalinks a { font-family: 'DM Sans', sans-serif; font-size: var(--type-micro); font-weight: 400; letter-spacing: 0.01em; color: rgba(247, 243, 234,0.72); text-decoration: none; transition: color 220ms var(--ease-out); }
 .ff-jalinks a:hover { color: var(--paper-warm); }
 @media (max-width: 768px) { .ff-jalinks { padding-top: var(--space-4); gap: var(--space-2) var(--space-4); } }
 /* Touch: give the small footer links a comfortable target without changing
@@ -670,12 +678,9 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   html[lang="ja"] .nn-title { font-size: var(--type-h2); line-height: 1.4; }
   .nn-title-row { grid-column: 1; }
   .nn-link:focus-visible { outline-offset: -4px; }
-  .footer-inner { height: 72px; }
+  .footer-inner { height: 64px; }
   .ff-copy, .ff-link { font-size: var(--type-micro); }
-  .ff-symbol { height: 21px; }
-}
-@media (max-width: 340px) {
-  .footer-inner { padding: 0 16px; }
+  .ff-symbol { height: 22px; }
 }
 
 /* =====================================================================
@@ -713,18 +718,22 @@ main { flex: 1 0 auto; }
 }
 
 /* =====================================================================
-   LINK — ONE tertiary link treatment. A quiet 2px underline in
-   rule-strong that wipes to ink on hover.
+   LINK — ONE inline-link treatment. Ink text with a 1px underline in the
+   accent (#806C84), which darkens to purple on hover and focus. The
+   underline is text-decoration, so it wraps correctly across lines and
+   is present in every state - hover never adds the only cue.
    ===================================================================== */
 .link {
-  font-size: var(--type-caption);
+  font-size: inherit;
   font-weight: 500;
   color: var(--ink);
-  border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: var(--space-1);
-  transition: border-color var(--dur-2) var(--ease-out);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--focus);
+  text-underline-offset: 0.24em;
+  transition: color var(--dur-hover) var(--ease-out), text-decoration-color var(--dur-hover) var(--ease-out);
 }
-.link:hover { border-color: var(--ink); }
+.link:hover { color: var(--plum); text-decoration-color: var(--plum); }
 
 /* =====================================================================
    PAGE HEAD (inner pages — restrained, paper, hairline only)
@@ -842,25 +851,25 @@ body[data-page="focus"] .page-head { background-position: 52% 44%; }
 }
 body[data-page="about"] .page-head {
   background-image:
-    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
+    linear-gradient(180deg, rgba(247, 243, 234,0.30) 0%, rgba(247, 243, 234,0.10) 22%, rgba(247, 243, 234,0.12) 44%, rgba(247, 243, 234,0.72) 78%, #F7F3EA 100%),
     url("assets/imagery/about-hero-blur.webp");
   /* Same frame in AVIF where the browser takes it. The hero also has an
      <img>, and if only one of the two moved to AVIF the page fetched both
      formats instead of one. A browser without image-set() keeps the webp
      declaration above, and its <img> falls back to webp too. */
   background-image:
-    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
+    linear-gradient(180deg, rgba(247, 243, 234,0.30) 0%, rgba(247, 243, 234,0.10) 22%, rgba(247, 243, 234,0.12) 44%, rgba(247, 243, 234,0.72) 78%, #F7F3EA 100%),
     image-set(url("assets/imagery/about-hero-blur.avif") type("image/avif"),
               url("assets/imagery/about-hero-blur.webp") type("image/webp"));
 }
 body[data-page="approach"] .page-head {
   background-image:
-    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
+    linear-gradient(180deg, rgba(247, 243, 234,0.30) 0%, rgba(247, 243, 234,0.10) 22%, rgba(247, 243, 234,0.12) 44%, rgba(247, 243, 234,0.72) 78%, #F7F3EA 100%),
     url("assets/imagery/approach-hero-blur.webp");
 }
 body[data-page="focus"] .page-head {
   background-image:
-    linear-gradient(180deg, rgba(252,250,241,0.30) 0%, rgba(252,250,241,0.10) 22%, rgba(252,250,241,0.12) 44%, rgba(252,250,241,0.72) 78%, #FCFAF1 100%),
+    linear-gradient(180deg, rgba(247, 243, 234,0.30) 0%, rgba(247, 243, 234,0.10) 22%, rgba(247, 243, 234,0.12) 44%, rgba(247, 243, 234,0.72) 78%, #F7F3EA 100%),
     url("assets/imagery/focus-hero-blur.webp");
 }
 .page-head .ja {
@@ -955,7 +964,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--sumire-purple);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
   border-radius: 1px;
 }
@@ -1042,7 +1051,7 @@ select:focus-visible,
   left: 12px;
   z-index: 200;
   padding: var(--space-3) var(--space-4);
-  background: var(--ink);
+  background: var(--plum);
   color: var(--paper-warm);
   font-family: 'DM Sans', sans-serif;
   font-size: var(--type-caption);
@@ -1055,8 +1064,8 @@ select:focus-visible,
 }
 .skip-link:focus {
   transform: translateY(0);
-  outline: 2px solid var(--paper-warm);
-  outline-offset: 2px;
+  outline: 2px solid var(--on-plum);
+  outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
 
@@ -1212,10 +1221,10 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .enq-cta .h-arrow { color: var(--ink-3); transition: transform 200ms var(--ease-out), color 200ms var(--ease-out); }
 @media (hover: hover) {
   .co-cta:hover, .enq-cta:hover { color: var(--reiwa-node, #5E3D78); }
-  .co-cta:hover .h-arrow, .enq-cta:hover .h-arrow { transform: translateX(4px); color: var(--reiwa-node, #5E3D78); }
+  .co-cta:hover .h-arrow, .enq-cta:hover .h-arrow { transform: translateX(var(--arrow-shift)); color: var(--reiwa-node, #5E3D78); }
 }
 .co-cta:focus-visible,
-.enq-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.enq-cta:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .co-cta, .co-cta .h-arrow, .enq-cta, .enq-cta .h-arrow { transition: none; } }
 @media (max-width: 760px) {
   .enq-row { grid-template-columns: 1fr; row-gap: 2px; align-items: start; }
@@ -1281,4 +1290,17 @@ html[lang="ja"] .jt { white-space: nowrap; font-family: inherit; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* =====================================================================
+   SHARED INTERACTION LAYER — one arrow language.
+   Forward arrow (→) and return arrow (←) are the same glyph family, set on
+   the label's optical centre, travelling at most --arrow-shift (3px) on
+   hover or focus. Under reduced motion the arrow keeps its place: state is
+   still shown by colour and underline, never by movement.
+   ===================================================================== */
+.h-arrow, .hf-cue-a, .fx-cue-a { display: inline-block; line-height: 1; position: relative; top: 0.04em; }
+.ret-arrow { display: inline-block; line-height: 1; position: relative; top: 0.04em; margin-right: var(--space-2); transition: transform var(--dur-hover) var(--ease-out); }
+@media (prefers-reduced-motion: reduce) {
+  .h-arrow, .hf-cue-a, .fx-cue-a, .nn-arrow, .ret-arrow { transform: none !important; }
 }

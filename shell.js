@@ -327,6 +327,8 @@
 
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : '/privacy.html';
     const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
+    const contactHref  = locale === 'ja' ? '/ja/company.html#contact' : '/company.html#contact';
+    const contactLabel = locale === 'ja' ? '<span>お問い合わせ</span>' : '<span data-en="Contact" data-ja="お問い合わせ">Contact</span>';
 
 
     const homeHref = locale === 'ja' ? '/ja/' : '/';
@@ -343,6 +345,7 @@
           <span class="ff-copy">© ${new Date().getFullYear()} <span lang="en">Reiwa&nbsp;Capital</span></span>
           <a class="ff-brand" href="${homeHref}" aria-label="${homeAria}"><img class="ff-symbol" src="${symbolSrc}" alt="" width="26" height="26"></a>
           <div class="ff-right">
+            <a class="ff-link ff-contact" href="${contactHref}">${contactLabel}</a>
             <a class="ff-link ff-privacy" href="${privacyHref}"${onPrivacy ? ' aria-current="page"' : ''}>${privacyLabel}</a>
           </div>
         </div>

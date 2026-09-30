@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="Continuity for Japanese investors across the acquisition and ownership of European real estate, with a deliberately narrow focus on London and Amsterdam.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="assets/colors_and_type.css?v=27">
+<link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=104">
+<link rel="stylesheet" href="editorial.css?v=125">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -57,14 +57,14 @@
      settles the picture into the cream. The ramp is the local contrast the
      type needs; nothing is drawn behind it. */
   .ab-hero .ab-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, var(--cream) 100%); }
+    background: linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, var(--cream) 100%); }
   /* The frame and the foot offset. editorial.css already bottom-aligns this
      head and pulls it under the transparent header; what it needed was a
      taller frame and a copy block sitting at a fixed proportion of it,
      rather than wherever the natural height happened to leave it. --head-h
      is the token that rule reads, so the negative offset and the flex-end
      alignment keep working untouched. Matching specificity, later file. */
-  body[data-page="about"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="about"] .page-head { --head-h: clamp(276px, 20vw, 308px); }
   body[data-page="about"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   .ab-hero .inner { position: relative; z-index: 2; }
   /* Internal-page hero pattern (About sets it; Approach and Investment
@@ -72,15 +72,15 @@
      section heading, and the supporting sentence held close beneath it so
      the two read as one group against the picture. */
   .ab-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; text-wrap: balance; }
-  .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 46ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .ab-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 560px; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ab-hero .ab-media img { object-position: 30% 100%; }
     .ab-hero h1 { max-width: 13ch; }
     .ab-hero .sub { margin-top: 10px; max-width: 34ch; }
   }
 
-  @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
-  @media (max-width: 400px)  { body[data-page="about"] .page-head { --head-h: 272px; } }
+  @media (max-width: 1024px) { body[data-page="about"] .page-head { --head-h: clamp(252px, 30vw, 288px); } }
+  @media (max-width: 400px)  { body[data-page="about"] .page-head { --head-h: 240px; } }
 
   /* --- Section scaffold --------------------------------------------------
      Sections are separated by their own ground and by space, not by a rule
@@ -97,13 +97,13 @@
      party. With Reiwa Capital it is one unbroken line and one investor-side
      view. One control, two states — the page says nothing a reader has to
      take on trust; it shows the difference. */
-  .aw-field { margin-top: var(--fluid-l); background: var(--ink); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
+  .aw-field { margin-top: var(--fluid-l); background: var(--plum); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
   /* The two readings are a pair of tabs on a shared rule, the same grammar
      as the market selector below: the selected one carries the rule. */
-  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(252,250,241,.18); }
-  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(252,250,241,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(247, 243, 234,.18); }
+  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(247, 243, 234,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
-  .aw-sw:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+  .aw-sw:focus-visible { outline: 2px solid var(--on-plum); outline-offset: 3px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
   .aw-flow { margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
   /* Three lanes across the same three periods. The investor's line never
@@ -112,19 +112,19 @@
      appointments, one per period, in every state. */
   .aw-row { display: grid; grid-template-columns: var(--aw-k) minmax(0, 1fr); column-gap: var(--aw-gap); }
   .aw-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
-  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(252,250,241,.22); }
+  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(247, 243, 234,.22); }
   .aw-stage { display: flex; flex-direction: column; gap: 7px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-  .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
+  .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(247, 243, 234,.72); }
   .aw-lane { margin-top: clamp(22px, 2.4vw, 32px); align-items: start; }
   .aw-lane-k { display: flex; flex-direction: column; gap: 3px; }
   .aw-lane-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
-  .aw-lane-s { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.72); }
+  .aw-lane-s { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.72); }
   .aw-bar { height: 3px; margin-top: 12px; background: var(--cream); }
   .aw-bar--rc { margin-top: 16px; background: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
   .aw-bar--rc i { display: block; height: 3px; width: 70%; background: rgba(142,122,156,.55); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-field[data-flow="with"] .aw-bar--rc i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
   .aw-field[data-flow="with"] .aw-bar--rc i:last-child { width: 100%; }
-  .aw-note { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); }
+  .aw-note { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); }
   /* Each state has its own caption. The two share one grid cell, so the
      field keeps its height and only the words change. */
   .aw-ribbons { display: grid; }
@@ -132,8 +132,8 @@
   .aw-field[data-flow="with"] .aw-ribbon--with, .aw-field[data-flow="without"] .aw-ribbon--without { opacity: 1; visibility: visible; transition-delay: 0s, 0s; }
   .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
   .aw-ribbon--with .aw-ribbon-n { color: var(--aw-rc); }
-  .aw-ribbon--without .aw-ribbon-n { color: rgba(252,250,241,.8); }
-  .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); max-width: 62ch; text-wrap: pretty; }
+  .aw-ribbon--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
+  .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); max-width: 62ch; text-wrap: pretty; }
   .aw-lane--spec { margin-top: 16px; }
   .aw-specs { align-self: start; }
   .aw-spec { position: relative; }
@@ -141,8 +141,28 @@
      work is coordinated from the investor's side. Without it there is none. */
   .aw-spec::before { content: ""; position: absolute; left: 22px; top: -16px; width: 1px; height: 16px; background: var(--aw-rc); opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
-  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(252,250,241,.30); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(252,250,241,.86); }
+  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(247, 243, 234,.30); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(247, 243, 234,.86); }
   .aw-specs-k { display: none; }
+  /* At 1024px and wider both readings are shown together: one shared
+     header, the investor line, the oversight line with and without a
+     coordinating layer, and the specialists. Below 1024 the switch above
+     chooses one reading at a time. */
+  .aw-pair { display: none; margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
+  .aw-cmp { display: grid; gap: 20px; }
+  .aw-cmp-item .aw-ribbon { display: flex; flex-direction: column; gap: 3px; opacity: 1; visibility: visible; transition: none; }
+  .aw-cmp-item .aw-bar--rc { margin-top: 10px; }
+  .aw-cmp-item--with .aw-ribbon-n { color: var(--aw-rc); }
+  .aw-cmp-item--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
+  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i { width: 70%; background: rgba(142,122,156,.55); }
+  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i:last-child { width: 70%; }
+  .aw-bar--joined i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
+  .aw-bar--joined i:last-child { width: 100%; }
+  .aw-pair .aw-spec::before { opacity: 1; }
+  .aw-close { margin: var(--fluid-xs) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
+  @media (min-width: 1024px) {
+    .aw-switch, .aw-flow { display: none; }
+    .aw-pair { display: block; }
+  }
   /* Below 760px the same three periods read down a spine. */
   .aw-spine { display: none; }
   @media (max-width: 760px) {
@@ -150,7 +170,7 @@
     .aw-spine { display: block; margin-top: 16px; --aw-rc: #B8A3CC; }
     .aw-inv { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; border-bottom: 3px solid var(--cream); }
     .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.3; color: var(--cream); }
-    .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(252,250,241,.78); }
+    .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); }
     .aw-sp-ribbon { margin-top: 16px; }
     .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
     .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
@@ -160,9 +180,9 @@
     .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(96px, auto)); }
     .aw-sp-row { display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; }
     .aw-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-    .aw-sp-st { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(252,250,241,.72); }
-    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(252,250,241,.30); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(252,250,241,.86); }
-    .aw-sp-s b { font-weight: 400; color: rgba(252,250,241,.62); margin-right: 6px; }
+    .aw-sp-st { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(247, 243, 234,.72); }
+    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(247, 243, 234,.30); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(247, 243, 234,.86); }
+    .aw-sp-s b { font-weight: 400; color: rgba(247, 243, 234,.62); margin-right: 6px; }
     .aw-field { margin-top: 26px; padding: 16px 18px 22px; }
     .aw-switch { gap: 18px; }
     .aw-sw { font-size: 15px; padding: 4px 0 10px; }
@@ -183,10 +203,6 @@
   .am-market--amsterdam { background: var(--paper-soft); }
   .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
   .am-city { margin: 0; }
-  .am-pos { margin-top: var(--fluid-2xs); max-width: 50ch; }
-  @media (min-width: 1024px) {
-    .am-market--amsterdam .am-mapwrap { order: 2; }
-  }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
 
@@ -237,15 +253,22 @@
      stack in the side column beside the map, so the column runs to the
      map's depth and the three things read down. */
   .am-k { margin: 0 0 6px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); font-weight: 400; letter-spacing: 0; line-height: 1.2; color: var(--ink-3); }
-  .am-p { margin: 0; font-size: 15px; line-height: 1.6; max-width: 48ch; }
+  .am-p { margin: 0; font-size: var(--type-body); max-width: 56ch; text-wrap: pretty; }
   .am-blocks { display: grid; gap: clamp(14px, 1.6vw, 18px); margin-top: var(--fluid-xs); }
   /* With the areas list gone, the first block opens the column: its rule lines up with the map's top edge. */
   @media (min-width: 901px) { .am-side > .am-blocks:first-child { margin-top: 0; } }
   .am-block { padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
-  .am-look { margin-top: clamp(14px, 1.6vw, 18px); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
-  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .am-look-list li { font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
-  .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+  .am-look { margin-top: var(--fluid-m); padding-top: var(--fluid-2xs); border-top: 1px solid var(--rule); }
+  .am-photo { margin: 0 0 var(--fluid-xs); aspect-ratio: 7 / 3; overflow: hidden; background: var(--plum); }
+  .am-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
+  .am-market--amsterdam .am-photo img { object-position: 50% 60%; }
+  @media (max-width: 760px) { .am-photo { aspect-ratio: 3 / 1; } .am-market--london .am-photo img { object-position: 50% 42%; } }
+  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
+  .am-look-list li { font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  @media (max-width: 760px) {
+    .am-look-list { grid-template-columns: minmax(0, 1fr); }
+    .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+  }
   @media (min-width: 901px) {
     .am-market .am-grid { align-items: stretch; }
   }
@@ -373,6 +396,44 @@
         </div>
       </div>
 
+      <div class="aw-pair">
+        <div class="aw-row aw-row--head">
+          <span></span>
+          <div class="aw-cols">
+            <span class="aw-stage">Formation<small class="aw-stage-s">Mandate <span aria-hidden="true">·</span> Assess</small></span>
+            <span class="aw-stage">Execution<small class="aw-stage-s">Structure <span aria-hidden="true">·</span> Acquire</small></span>
+            <span class="aw-stage">Ownership<small class="aw-stage-s">Own <span aria-hidden="true">·</span> Exit</small></span>
+          </div>
+        </div>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">Investor</span></div>
+          <div><p class="aw-note">Mandate and decisions retained</p><div class="aw-bar" aria-hidden="true"></div></div>
+        </div>
+        <div class="aw-row aw-lane">
+          <div class="aw-lane-k"><span class="aw-lane-n">Oversight</span></div>
+          <div>
+            <div class="aw-cmp">
+              <div class="aw-cmp-item aw-cmp-item--without"><div class="aw-ribbon">
+                <span class="aw-ribbon-n">No single oversight mandate</span>
+                <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
+              </div><div class="aw-bar aw-bar--rc" aria-hidden="true"><i></i><i></i><i></i></div></div>
+              <div class="aw-cmp-item aw-cmp-item--with"><div class="aw-ribbon">
+                <span class="aw-ribbon-n">Reiwa Capital</span>
+                <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
+              </div><div class="aw-bar aw-bar--rc aw-bar--joined" aria-hidden="true"><i></i><i></i><i></i></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="aw-row aw-lane aw-lane--spec">
+          <div class="aw-lane-k"><span class="aw-lane-n">Specialists</span><span class="aw-lane-s">Appointed at each stage</span></div>
+          <div class="aw-specs aw-cols">
+            <span class="aw-spec">Valuer / Legal</span>
+            <span class="aw-spec">Legal / Lender / Technical</span>
+            <span class="aw-spec">Property Management / Agent</span>
+          </div>
+        </div>
+      </div>
+
       <div class="aw-spine">
         <div class="aw-inv">
           <span class="aw-inv-n">Investor</span>
@@ -403,11 +464,12 @@
         </div>
       </div>
     </div>
+    <p class="h-body aw-close">The investor retains the mandate and material decisions. Reiwa maintains continuity across the workstreams.</p>
   </div>
 </section>
 
 <!-- ================================================================ 3 · FOCUS MARKETS -->
-<section class="ab-sec am am-intro" data-screen-label="03 About — focus markets" aria-labelledby="am-title">
+<section class="ab-sec am am-intro" id="markets" data-screen-label="03 About — focus markets" aria-labelledby="am-title">
   <div class="shell">
     <div class="ab-head">
       <h2 class="h-h2" id="am-title">Focus Markets</h2>
@@ -419,7 +481,6 @@
 <section class="am-market am-market--london" id="london" data-screen-label="03a About — London" aria-labelledby="am-london-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-london-title">London</h3>
-    <p class="h-body am-pos">Opportunities across income and repositioning strategies</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -435,11 +496,14 @@
           </ul>
         </div>
         <div class="am-side">
+          <figure class="am-photo"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 100vw, 44vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Deep capital markets, broad occupier demand, mature financing and advisory networks.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Broad demand and mature financing networks put the weight on the asset and its business plan. We underwrite both, and the exit, before an investor commits.</p></div>
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Deep capital markets and mature financing and advisory networks. Central London comprises distinct submarkets. We assess each opportunity at the level of location, building quality and occupier demand.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">The decision rests on the asset and its business plan more than on the market. Reiwa assesses both, and the exit route, before an investor commits.</p></div>
           </div>
-          <div class="am-look">
+        </div>
+      </div>
+      <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
               <li>Prime central locations with evidenced demand</li>
@@ -447,15 +511,12 @@
               <li>Realistic capital needs and more than one exit route</li>
             </ul>
           </div>
-        </div>
-      </div>
   </div>
 </section>
 
 <section class="am-market am-market--amsterdam" id="amsterdam" data-screen-label="03b About — Amsterdam" aria-labelledby="am-amsterdam-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-amsterdam-title">Amsterdam</h3>
-    <p class="h-body am-pos">Planning discipline rewards well-located, high-quality assets</p>
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
@@ -472,11 +533,14 @@
         </div>
     
         <div class="am-side">
+          <figure class="am-photo"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 100vw, 44vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Compact and supply constrained, with strict planning and sustainability requirements.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Strict planning and sustainability rules make permitted use and technical condition decisive. Appointed advisers review both before purchase; we monitor them, and the capital they need, through ownership.</p></div>
+            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Compact and supply constrained, with strict planning and sustainability requirements. The market has established occupier demand and includes institutional buyers.</p></div>
+            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Strict rules make permitted use and technical condition decisive. Appointed specialists review both before purchase, and Reiwa monitors them, and the capital they may require, through ownership.</p></div>
           </div>
-          <div class="am-look">
+        </div>
+      </div>
+      <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
               <li>Established central locations with clear demand</li>
@@ -484,8 +548,6 @@
               <li>Durable income, or a route through leasing or repositioning</li>
             </ul>
           </div>
-        </div>
-      </div>
   </div>
 </section>
 
@@ -529,7 +591,7 @@
   });
 })();
 </script>
-<script src="shell.js?v=78"></script>
+<script src="shell.js?v=79"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>
