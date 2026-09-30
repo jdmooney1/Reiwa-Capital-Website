@@ -261,11 +261,14 @@
   @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a, .hf-spec-a, .hf-spec-a::after { transition: none; } }
   @media (max-width: 900px) {
     .hf-grid { grid-template-columns: 1fr; gap: 12px; }
-    .hf-item { aspect-ratio: 16 / 11; }
+    /* Single column between 761 and 900px: a 2:1 field, not the phone's 16:11,
+       which made each card taller than a tablet screen. */
+    .hf-item { aspect-ratio: 2 / 1; }
     .hf-item img { object-position: var(--hf-pos-m, var(--hf-pos, 50% 50%)); }
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
+    .hf-item { aspect-ratio: 16 / 11; }
     .hf { padding: 60px 0 48px; }
     .hf-grid { margin-top: 32px; }
   }
