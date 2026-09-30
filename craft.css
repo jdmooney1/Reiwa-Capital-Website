@@ -30,16 +30,35 @@
           backdrop-filter: none;
 }
 /* The nav labels sit in the band where the hero's own scrim is weakest,
-   over the palest part of the photograph. A soft top-down wash, fully
-   transparent by the bar's lower edge, gives them a base without
-   introducing a visible header block or a hard edge. Both languages now
-   run the same flat bar over the same hero, so both take the wash. */
-.nav-bar.nav-over-hero {
+   over the palest part of the photograph (the sky, on phones and tablets).
+   A soft top-down wash gives them a base without a visible header block or
+   a hard edge. It is drawn on the bar's pseudo-element so it can run past
+   the bar's lower edge: the fade is longer and gentler, and it is strong
+   enough at the top for the white mark, hamburger and language switch to
+   hold 3:1 (graphics) and 4.5:1 (text) against the pixels behind them, at
+   every width. The bar itself stays transparent. Both languages share it. */
+.nav-bar.nav-over-hero { background: none; }
+.nav-bar.nav-over-hero::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: calc(100% + 56px);
+  z-index: -1;
+  pointer-events: none;
   background: linear-gradient(180deg,
-              rgba(16, 11, 20, 0.46) 0%,
-              rgba(16, 11, 20, 0.22) 58%,
+              rgba(16, 11, 20, 0.66) 0%,
+              rgba(16, 11, 20, 0.56) 42%,
+              rgba(16, 11, 20, 0.28) 74%,
               rgba(16, 11, 20, 0) 100%);
 }
+/* With the menu open the panel is the ground: the bar goes back to cream,
+   the wash goes, and the dark lockup replaces the white one so the row
+   reads on cream (the rules for the dark icon and language labels already
+   assume this). */
+.nav-bar.nav-over-hero.nav-menu-open { background: var(--paper-warm); }
+.nav-bar.nav-over-hero.nav-menu-open::before { display: none; }
+.nav-bar.nav-over-hero.nav-menu-open .nav-logo .logo-dark  { opacity: 1; }
+.nav-bar.nav-over-hero.nav-menu-open .nav-logo .logo-light { opacity: 0; }
 .nav-bar.nav-over-hero .nav-toggle { color: #fff; }
 /* .lang-switch (English) inverts in editorial.css alongside .nav-links. */
 .nav-bar.nav-over-hero .nav-toggle .bar { background: #fff; }
