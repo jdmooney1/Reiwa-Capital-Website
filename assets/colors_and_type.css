@@ -50,12 +50,17 @@
      motion. Everything below threads back to these, so later prompts edit
      these variables and not scattered instances. (Consolidation pass.)
      ===================================================================== */
-  --plum:            #271430;                  /* primary ink + dark grounds */
-  --cream:           #FCFAF1;                  /* primary warm ground        */
+  --plum:            #28132F;                  /* primary purple: dark grounds, filled buttons */
+  --text:            #2A202B;                  /* primary text on ivory (headings + body)      */
+  --cream:           #F7F3EA;                  /* main ivory ground                            */
+  --ivory-2:         #EFE9DE;                  /* secondary ivory: alternate bands, soft cards */
+  --on-plum:         #F7F2EA;                  /* text on primary purple                       */
+  --muted:           #6C656B;                  /* muted text. Brief target #746D73 is 4.16:1 on secondary ivory (fails AA); this is 4.7:1 there, 5.1:1 on main ivory */
+  --focus:           #806C84;                  /* focus ring + selected accent (UI, never body text) */
   --grey-warm:       #BCB5B7;                  /* muted warm grey            */
   --grey-deep:       #918790;                  /* deeper muted grey          */
-  --hairline:        rgba(39, 20, 48, 0.12);   /* 1px rule on light grounds  */
-  --hairline-light:  rgba(252, 250, 241, 0.16);/* 1px rule on plum grounds   */
+  --hairline:        #D8D0C5;                  /* 1px rule on ivory grounds  */
+  --hairline-light:  rgba(247, 243, 234, 0.16);/* 1px rule on plum grounds   */
 
   --ease:            cubic-bezier(0.22, 1, 0.36, 1);
   --dur-micro:       0.3s;
@@ -78,7 +83,7 @@
   --brand-aubergine-deep: #110A1A;
   --brand-aubergine-soft: #3A2149;
   --brand-cream: var(--cream);
-  --brand-cream-deep: #F5F0E1;
+  --brand-cream-deep: var(--ivory-2);
 
   /* Warm greys — calm, paper-based neutrals (NOT cool blue-grey) */
   --warm-100: #FBFAF6;
@@ -100,13 +105,13 @@
   --accent-slate:    #4B4856;  /* neutral slate — chart 5th series */
 
   /* Foreground tokens */
-  --fg-1: var(--brand-aubergine);    /* primary text on light bg */
+  --fg-1: var(--text);               /* primary text on light bg */
   --fg-2: var(--warm-700);           /* secondary text, labels */
   --fg-3: var(--warm-600);           /* tertiary / metadata */
   --fg-4: var(--warm-500);           /* muted / disabled */
-  --fg-inverse: var(--brand-cream);  /* text on dark aubergine ground */
-  --fg-inverse-2: rgba(252, 250, 241, 0.70);
-  --fg-inverse-3: rgba(252, 250, 241, 0.48);
+  --fg-inverse: var(--on-plum);      /* text on dark aubergine ground */
+  --fg-inverse-2: rgba(247, 243, 234, 0.70);
+  --fg-inverse-3: rgba(247, 243, 234, 0.48);
 
   /* Eyebrow / section-label accent — muted aubergine, deliberately not pure grey */
   --eyebrow-ink: #6E5A78;
@@ -114,7 +119,7 @@
   /* Background tokens */
   --bg-canvas: var(--brand-cream);          /* primary document ground */
   --bg-paper: #FFFFFF;                      /* cards, tables on canvas */
-  --bg-muted: var(--warm-200);              /* subtle sections */
+  --bg-muted: var(--ivory-2);               /* subtle sections */
   --bg-deep: var(--brand-aubergine);        /* inverse sections, footer, hero */
   --bg-deep-soft: var(--brand-aubergine-soft);
 
@@ -164,22 +169,22 @@
   /* ONE global type scale — 7 responsive tiers (desktop / tablet / mobile).
      Every role maps to a tier; clamps land on the named values at ~1280 /
      ~1024 / ≤430. No page defines its own sizes. */
-  --type-display:     clamp(44px, 34px + 2.4vw, 66px);    /* Home display     76→64 on desktop, reduces below */
+  --type-display:     clamp(42px, calc(6.47vw - 7.2px), 64px);   /* Home hero   42 ≤760 → 64 ≥1100 */
   --type-display-lh:  1.05;  --type-display-ls:  -0.02em;
-  --type-page-title:  clamp(36px, 28px + 1.4vw, 48px);      /* Internal page title  56→48 on desktop */
+  --type-page-title:  clamp(34px, calc(4.12vw + 2.7px), 48px);   /* Internal hero  34 ≤760 → 48 ≥1100 (Japanese: 32, below) */
   --type-page-title-lh: 1.1; --type-page-title-ls: -0.015em;
-  --type-h2:          clamp(24px, 13px + 1.4vw, 34px);    /* Section heading  34→28 on desktop */
+  --type-h2:          clamp(27px, calc(2.06vw + 11.4px), 34px);  /* Section heading  27 ≤760 → 34 ≥1100 */
   --type-h2-lh:       1.12;  --type-h2-ls:       -0.01em;
   /* Card / subsection title — its own tier, distinct from the lead paragraph below. */
-  --type-h3:          clamp(20px, 2.1vw, 24px);  /* Card title      24 / 22 / 20 */
+  --type-h3:          clamp(20px, calc(0.59vw + 15.5px), 22px);  /* Subsection  20 ≤760 → 22 ≥1100 */
   --type-h3-lh:       1.2;   --type-h3-ls:       -0.005em;
-  --type-statement:   clamp(18px, 15px + 0.5vw, 22px);    /* Lead paragraph  20→22 on desktop */
-  --type-statement-lh:1.45;  --type-statement-ls:0;
-  --type-body-l:      clamp(16px, 14.5px + 0.25vw, 18px); /* Body            17→18 on desktop */
-  --type-body-l-lh:   1.6;   --type-body-l-ls:   0;
-  --type-body:        clamp(16px, 12px + 0.4vw, 17px);    /* Body (dense/supporting)  ~17 on desktop */
-  --type-body-lh:     1.6;   --type-body-ls:     0;
-  --type-caption:     clamp(12px, 8px + 0.4vw, 13px);    /* Metadata / label   12–13 */
+  --type-statement:   clamp(18px, calc(0.88vw + 11.3px), 21px);  /* Large introductory copy  18 ≤760 → 21 ≥1100 */
+  --type-statement-lh:1.4;  --type-statement-ls:0;
+  --type-body-l:      clamp(17px, calc(0.29vw + 14.8px), 18px);  /* Intermediate body  17 → 18 */
+  --type-body-l-lh:   1.65;  --type-body-l-ls:   0;
+  --type-body:        clamp(16px, calc(0.15vw + 14.9px), 16.5px); /* Body  16 → 16.5 */
+  --type-body-lh:     1.65;  --type-body-ls:     0;
+  --type-caption:     14px;                              /* Supporting copy and captions */
   --type-caption-lh:  1.4;   --type-caption-ls:  0;
   --type-label:       clamp(12px, 8px + 0.4vw, 13px);
   --type-label-lh:    1;     --type-label-ls:    0.14em;
@@ -221,13 +226,10 @@
   /* Line heights */
   /* Container — one frame for the whole site. Actual responsive value set
      in editorial.css (desktop 72–96 · tablet 32–40 · mobile 20–24). */
-  --container: 1280px;
-  --gutter:    clamp(72px, 5.8vw + 13px, 96px);
-
   --lh-tight: 1.05;
   --lh-snug:  1.2;
   --lh-base:  1.45;
-  --lh-loose: 1.6;
+  --lh-loose: 1.65;
 
   /* Letter spacing */
   --ls-tighter: -0.03em;
@@ -237,16 +239,7 @@
   --ls-caps:    0.14em;   /* eyebrow caps */
 
   /* ---------------------------------------------------------------- SPACE */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 96px;
-  --space-10: 128px;
+  /* Spacing scale lives in editorial.css (one scale: 8 12 16 24 32 48 64 80 96 128). */
 
   /* Radii — minimal; architectural feel, not friendly/rounded */
   --radius-none: 0;
@@ -280,8 +273,8 @@
      so every existing reference across the site lands on the one system and
      future edits change a token, never an instance. */
   --dur-fast:    180ms;   /* fast interaction — toggle press, tiny fades      */
-  --dur-hover:   280ms;   /* standard hover — colour / border / arrow nudge   */
-  --dur-section: 260ms;   /* content crossfade — header solidify, logo swap, drawer */
+  --dur-hover:   220ms;   /* standard hover — colour / border / arrow nudge   */
+  --dur-section: 240ms;   /* content crossfade — header solidify, logo swap, drawer */
   --dur-panel:   380ms;   /* one-time reveal — stage/chapter entries, [data-reveal] */
   /* Scroll reveals sit in their own band (450–650ms) — longer than a panel
      crossfade, shorter than the hero settle. One token, used by the
@@ -302,6 +295,7 @@
   --dur-med:       var(--dur-panel);
   --dur-slow:      var(--dur-panel);
   --dur-deliberate:var(--dur-hero);
+  --arrow-shift:   3px;    /* forward/return arrow travel on hover, everywhere */
   --stagger:       70ms;
   --reveal-y:      12px;
 
@@ -331,7 +325,7 @@
    transition on the site shortens from this one override. */
 @media (max-width: 760px) {
   :root {
-    --dur-section: 340ms;
+    --dur-section: 240ms;
     --dur-panel:   440ms;
     --dur-reveal:  560ms;
   }
@@ -447,10 +441,16 @@ hr, .rule {
   text-spacing-trim: trim-start;
 }
 html[lang="ja"] {
-  --type-statement-lh: 1.55;
-  --type-body-l-lh:    1.7;
-  --type-body-lh:      1.7;
-  --type-caption-lh:   1.5;
+  /* Japanese: taller leading, no English tracking, 32px mobile page title. */
+  --type-statement-lh: 1.75;
+  --type-body-l-lh:    1.8;
+  --type-body-lh:      1.8;
+  --type-caption-lh:   1.7;
+  --lh-loose:          1.8;
+  --type-page-title:   clamp(32px, calc(4.71vw - 3.8px), 48px);
+  --type-display-ls: 0; --type-page-title-ls: 0; --type-h2-ls: 0; --type-h3-ls: 0;
+  --type-statement-ls: 0; --type-body-l-ls: 0; --type-body-ls: 0; --type-caption-ls: 0;
+  --ls-tighter: 0; --ls-tight: 0; --ls-wide: 0;
 }
 
 /* =====================================================================

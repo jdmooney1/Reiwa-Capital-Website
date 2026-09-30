@@ -27,11 +27,11 @@
 <meta name="twitter:description" content="六段階の投資プロセス、投資判断を支える五つの検証、そして投資家に留保される判断。重要な投資判断は、投資家が行います。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capitalは、日本の投資家側に立って、ロンドン・アムステルダムを中心とする欧州不動産投資を支援します。","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=27">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=29">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=104">
+<link rel="stylesheet" href="../editorial.css?v=125">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -55,8 +55,8 @@
 
   /* Shared heading atoms, set for Japanese. Tracked uppercase has no
      meaning on kana or kanji, and letterspacing them reads as broken. */
-  .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0.06em; text-transform: none; }
-  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0.004em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .h-eyebrow { font-family: var(--jp); font-size: 12.5px; letter-spacing: 0; text-transform: none; }
+  .h-h2 { font-family: var(--jp); line-height: 1.42; letter-spacing: 0; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero ---------------------------------------------------------
@@ -66,24 +66,24 @@
   /* The frame and the foot offset. editorial.css already bottom-aligns this
      head; what it needed was a taller frame and a copy block at a fixed
      proportion of it. Matching specificity, later file. */
-  body[data-page="approach"] .page-head { --head-h: clamp(320px, 24vw, 372px); }
+  body[data-page="approach"] .page-head { --head-h: clamp(276px, 20vw, 308px); }
   body[data-page="approach"] .page-head .inner { padding-bottom: clamp(40px, 3.4vw, 52px); }
   /* Local contrast only: the picture above 40% is untouched, and the ramp
      that carries the title is lengthened rather than deepened. */
   body[data-page="approach"] .page-head {
     background-image:
-      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, #F7F3EA 100%),
       url("../assets/imagery/approach-hero-blur.webp");
     /* Same frame in AVIF where the browser takes it. A browser that does
        not parse image-set() drops this declaration and keeps the webp one
        above, so nothing is lost. */
     background-image:
-      linear-gradient(180deg, rgba(252,250,241,0.26) 0%, rgba(252,250,241,0.06) 18%, rgba(252,250,241,0.06) 40%, rgba(252,250,241,0.34) 56%, rgba(252,250,241,0.74) 76%, rgba(252,250,241,0.94) 90%, #FCFAF1 100%),
+      linear-gradient(180deg, rgba(247, 243, 234,0.26) 0%, rgba(247, 243, 234,0.06) 18%, rgba(247, 243, 234,0.06) 40%, rgba(247, 243, 234,0.34) 56%, rgba(247, 243, 234,0.74) 76%, rgba(247, 243, 234,0.94) 90%, #F7F3EA 100%),
       image-set(url("../assets/imagery/approach-hero-blur.avif") type("image/avif"),
                 url("../assets/imagery/approach-hero-blur.webp") type("image/webp"));
   }
   /* Internal-page hero pattern, as set on About. */
-  .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
+  .ap-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.3; letter-spacing: 0; color: var(--ink); margin: 0; text-indent: 0; max-width: 16em; word-break: keep-all; text-wrap: balance; }
   .ap-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); max-width: 32em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ap-hero h1 { max-width: 12em; }
@@ -100,12 +100,12 @@
      was overriding it with 0, so the section heading sat 96px left of
      every other heading on the site. */
   .ap-intro { padding: clamp(48px, 5vw, 72px) var(--gutter) var(--fluid-s); }
-  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0.01em; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
+  .ap-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0; color: var(--ink); max-width: none; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: balance; }
   .ap-lede { margin: var(--fluid-2xs) 0 0; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.95; color: var(--ink-2); max-width: 33em; text-wrap: pretty; }
   @media (max-width: 900px) { .ap-h2 { max-width: 18em; } }
 
-  @media (max-width: 1024px) { body[data-page="approach"] .page-head { --head-h: clamp(286px, 36vw, 330px); } }
-  @media (max-width: 400px)  { body[data-page="approach"] .page-head { --head-h: 272px; } }
+  @media (max-width: 1024px) { body[data-page="approach"] .page-head { --head-h: clamp(252px, 30vw, 288px); } }
+  @media (max-width: 400px)  { body[data-page="approach"] .page-head { --head-h: 240px; } }
 
   /* --- 2 · Investment lifecycle -----------------------------------------
      Six stages under three periods on one dark field: a compact overview
@@ -114,45 +114,45 @@
      scans in one pass and the detail always sits in the same place. Every
      stage carries an approval, so none is marked out from the others. */
   .lf-wrap { padding: 0 0 var(--fluid-2xs); }
-  .lf-field { background: var(--ink); padding: var(--fluid-s) var(--fluid-m) clamp(26px, 2.8vw, 40px); }
-  .lf-over { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(22px, 2.6vw, 40px); border-bottom: 1px solid rgba(252,250,241,.22); }
+  .lf-field { background: var(--plum); padding: var(--fluid-s) var(--fluid-m) clamp(26px, 2.8vw, 40px); }
+  .lf-over { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(22px, 2.6vw, 40px); border-bottom: 1px solid rgba(247, 243, 234,.22); }
   .lf-grp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fluid-2xs); align-content: start; }
-  .lf-period { grid-column: 1 / -1; display: block; padding: 0 0 8px; border-bottom: 1px solid rgba(252,250,241,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; color: rgba(252,250,241,.66); }
+  .lf-period { grid-column: 1 / -1; display: block; padding: 0 0 8px; border-bottom: 1px solid rgba(247, 243, 234,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; color: rgba(247, 243, 234,.66); }
   /* A stage is a tab: number over name, the selected one carrying the rule
      the overview sits on. Colour, weight and the rule change; nothing moves. */
-  .lf-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 14px 0 12px; min-height: 48px; width: 100%; cursor: pointer; display: grid; gap: 3px; align-content: start; text-align: left; outline-offset: 2px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-tab:focus-visible { outline: 2px solid var(--cream); }
+  .lf-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 14px 0 12px; min-height: 48px; width: 100%; cursor: pointer; display: grid; gap: 3px; align-content: start; text-align: left; outline-offset: 3px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-tab:focus-visible { outline: 2px solid var(--on-plum); }
   .lf-tab[aria-selected="true"] { border-bottom-color: var(--cream); }
-  .lf-i { font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.4; color: rgba(252,250,241,.48); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-tab[aria-selected="true"] .lf-i { color: rgba(252,250,241,.82); }
-  .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(252,250,241,.7); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-i { font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.4; color: rgba(247, 243, 234,.48); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-tab[aria-selected="true"] .lf-i { color: rgba(247, 243, 234,.82); }
+  .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(247, 243, 234,.7); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; color: var(--cream); }
   @media (hover: hover) { .lf-tab:hover .lf-n { color: var(--cream); } }
   /* The detail panel: purpose, output, approval and, for ownership, the
      principal activities, each under its own label on the same two columns. */
   .lf-panel { padding-top: var(--fluid-s); display: flex; flex-direction: column; gap: 12px; }
   .lf-panel[hidden] { display: none; }
-  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.62); }
-  .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(252,250,241,.62); }
+  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.62); }
+  .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(247, 243, 234,.62); }
   .lf-pan-h span { font-size: var(--type-h3); color: var(--cream); }
-  .lf-k { display: block; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.66); }
+  .lf-k { display: block; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.66); }
   .lf-blk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(252,250,241,.9); max-width: 52ch; text-wrap: pretty; }
+  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(247, 243, 234,.9); max-width: 52ch; text-wrap: pretty; }
   .lf-p--out { font-weight: 500; color: var(--cream); }
-  .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(252,250,241,.34); }
-  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: rgba(252,250,241,.66); }
+  .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(247, 243, 234,.34); }
+  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: rgba(247, 243, 234,.66); }
   .lf-ap dd { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(252,250,241,.26); display: grid; gap: 14px; }
+  .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(247, 243, 234,.26); display: grid; gap: 14px; }
   .lf-own li { min-width: 0; max-width: var(--measure-body); display: flex; flex-direction: column; gap: 4px; }
-  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(252,250,241,.76); }
+  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.76); }
   .lf-own-b { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(252,250,241,.66); max-width: 52ch; }
+  .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(247, 243, 234,.66); max-width: 52ch; }
   @media (min-width: 901px) {
     .lf-blk, .lf-ap { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
     .lf-blk--own { align-items: start; }
     .lf-blk--own .lf-own { grid-column: 2; }
     .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px clamp(20px, 2vw, 30px); }
-    .lf-own li { padding-top: 11px; border-top: 1px solid rgba(252,250,241,.26); }
+    .lf-own li { padding-top: 11px; border-top: 1px solid rgba(247, 243, 234,.26); }
   }
   /* Below the stack point the three periods stack, two stages to a row, so
      all six names sit in one screen above the panel. */
@@ -172,28 +172,28 @@
   .lf-over { display: none; }
   html.has-js .lf-over { display: grid; }
   .lf-tab { padding: 14px 0 12px; }
-  .lf-n { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; }
+  .lf-n { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0; }
   .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; }
-  .lf-period { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.02em; color: var(--cream); }
+  .lf-period { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: var(--cream); }
   .lf-panels { padding-top: var(--fluid-s); }
   .lf-panel { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: var(--fluid-xs) clamp(28px, 4vw, 64px); align-items: start; padding: 0; }
   html.has-js .lf-panel + .lf-panel { margin-top: 0; padding-top: 0; border-top: 0; }
-  html:not(.has-js) .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(252,250,241,.14); }
+  html:not(.has-js) .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(247, 243, 234,.14); }
   .lf-panel[hidden] { display: none; }
   .lf-pan-head { display: flex; flex-direction: column; gap: 8px; }
-  .lf-pan-per { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: rgba(252,250,241,.72); }
+  .lf-pan-per { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0; color: rgba(247, 243, 234,.72); }
   html.has-js .lf-pan-per { display: none; }
   /* With the strip drawn, the selected tab is the visible title; the heading stays for the outline and for screen readers. */
   html.has-js .lf-pan-head { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   html.has-js .lf-panel { grid-template-columns: minmax(0, 1fr); }
   .lf-pan-h { margin: 0; display: flex; align-items: baseline; gap: 10px; }
-  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0.004em; line-height: 1.4; font-size: var(--type-h3); color: var(--cream); }
+  .lf-pan-h span { font-family: var(--font-jp-serif); font-weight: 500; letter-spacing: 0; line-height: 1.4; font-size: var(--type-h3); color: var(--cream); }
   .lf-pan-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
   .lf-k { font-family: var(--jp); }
   .lf-p, .lf-ap dd, .lf-own-b { font-family: var(--jp); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; }
   /* The investor's approval is the gate at the end of each stage, so it is
      the one row with its own ground. */
-  .lf-ap { padding: 14px 16px 15px; background: rgba(252,250,241,.07); border-top: 0; border-left: 2px solid #B8A3CC; }
+  .lf-ap { padding: 14px 16px 15px; background: rgba(247, 243, 234,.07); border-top: 0; border-left: 2px solid #B8A3CC; }
   .lf-ap dt { color: #B8A3CC; }
   @media (max-width: 900px) {
     .lf-panel { grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -203,13 +203,13 @@
     .lf-ap { align-items: baseline; }
     .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
-  @media (max-width: 1100px) and (min-width: 901px) { .lf-own { grid-template-columns: minmax(0, 1fr); } .lf-own li { border-top: 1px solid rgba(252,250,241,.26); padding-top: 11px; } }
+  @media (max-width: 1100px) and (min-width: 901px) { .lf-own { grid-template-columns: minmax(0, 1fr); } .lf-own li { border-top: 1px solid rgba(247, 243, 234,.26); padding-top: 11px; } }
   /* Phones: the three periods become three rows, the period name at the left
      and its two stages beside it, so all six names show without scrolling. */
   @media (max-width: 760px) {
     .lf-over { grid-template-columns: minmax(0, 1fr); gap: 0; border-bottom: 0; }
-    html.has-js .lf-grp { grid-template-columns: 4.5em repeat(2, minmax(0, 1fr)); align-items: end; column-gap: var(--space-3); border-bottom: 1px solid rgba(252,250,241,.22); }
-    .lf-period { grid-column: auto; align-self: center; padding: 0; border-bottom: 0; color: rgba(252,250,241,.72); }
+    html.has-js .lf-grp { grid-template-columns: 4.5em repeat(2, minmax(0, 1fr)); align-items: end; column-gap: var(--space-3); border-bottom: 1px solid rgba(247, 243, 234,.22); }
+    .lf-period { grid-column: auto; align-self: center; padding: 0; border-bottom: 0; color: rgba(247, 243, 234,.72); }
     .lf-tab { padding: 10px 0 9px; }
     .lf-panels { padding-top: 18px; }
   }
@@ -223,6 +223,20 @@
      the stages above. The considerations behind them sit in one disclosure
      rather than five, so the checklist scans and the detail is one press
      away. */
+  /* From 1024px the stage panels share one grid cell, so the detail area keeps the height of the tallest stage
+     and the page below never moves when the selection changes. The height is the tallest panel's natural height
+     (no fixed px), content sits at the top of the cell, and unselected panels are visibility:hidden. Below 1024px
+     each panel keeps its own natural height. */
+  @media (min-width: 1024px) {
+    html.has-js .lf-panels { display: grid; align-items: start; }
+    html.has-js .lf-panels > .lf-panel { grid-area: 1 / 1; align-content: start; align-self: start; }
+    html.has-js .lf-panels > .lf-panel[hidden] { display: grid; visibility: hidden; }
+  }
+  .lf-decision { margin: var(--fluid-xs) 0 0; max-width: 62ch; font-family: var(--jp); font-size: var(--type-body); line-height: var(--type-body-lh); color: var(--ink-2); text-wrap: pretty; }
+  @media (max-width: 760px) { .lf-decision { padding: 0 var(--gutter); max-width: none; } }
+  .tw-hint { margin: var(--space-2) 0 0; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
+  /* On a phone the circle gives way to the list: every test is named, its question shown, and the active one marked by its filled number. */
+  @media (max-width: 768px) { .tw-ring { display: none; } }
   .tw-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(40px, 4vw, 60px); }
   .tw-head { display: flex; flex-direction: column; gap: var(--fluid-2xs); max-width: 62ch; }
   .tw-head .ap-lede { max-width: 58ch; }
@@ -244,17 +258,17 @@
   .tw-num { font-family: 'DM Sans', sans-serif; font-size: 5.8px; font-weight: 400; font-variant-numeric: tabular-nums; fill: var(--ink-2); cursor: pointer; pointer-events: auto; transition: fill 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-num.is-preview { fill: var(--ink-2); }
   .tw-num.is-on { fill: var(--ink); font-weight: 500; }
-  .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64%; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: var(--jp); font-weight: 500; letter-spacing: 0.04em; font-size: 13px; line-height: 1.3; color: var(--ink-3); }
+  .tw-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64%; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: var(--jp); font-weight: 500; letter-spacing: 0; font-size: 13px; line-height: 1.3; color: var(--ink-3); }
   .tw-mark { display: block; width: 48px; height: auto; }
   .tw-list { margin: 0; display: grid; }
   .tw-item { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 6px clamp(20px, 2.4vw, 44px); padding: var(--fluid-xs) 0; border-top: 1px solid var(--rule); }
-  .tw-sel { appearance: none; background: none; border: 0; margin: 0; padding: 0; min-height: 44px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; text-align: left; font: inherit; color: inherit; outline-offset: 4px; }
-  .tw-sel:focus-visible { outline: 2px solid var(--ink); }
+  .tw-sel { appearance: none; background: none; border: 0; margin: 0; padding: 0; min-height: 44px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; text-align: left; font: inherit; color: inherit; outline-offset: 3px; }
+  .tw-sel:focus-visible { outline: 2px solid var(--focus); }
   .tw-n { flex: none; box-sizing: border-box; min-width: 30px; margin-top: 0.35em; padding: 2px 6px 1px; border: 1px solid var(--rule-strong); border-radius: 2px; text-align: center; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12px; line-height: 1.4; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--ink-3); transition: background-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item.is-preview .tw-n { border-color: var(--ink-2); color: var(--ink); }
-  .tw-item.is-on .tw-n { background: var(--ink); border-color: var(--ink); color: var(--cream); font-weight: 500; }
+  .tw-item.is-on .tw-n { background: var(--plum); border-color: var(--ink); color: var(--cream); font-weight: 500; }
   .tw-item:last-child { border-bottom: 1px solid var(--rule); }
-  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0.004em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .tw-item dt { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item dd { margin: 0; min-width: 0; }
   .tw-q { margin: 0; font-family: var(--jp); font-size: 15px; line-height: 1.85; word-break: normal; word-break: auto-phrase; line-break: strict; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
   .tw-det-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
@@ -417,10 +431,10 @@
         </article>
         </div>
         </div>
+      <p class="lf-decision">取得、保有、借換え、売却を通じて、重要な判断は投資家に留保されます。</p>
       </div>
     </div>
-  </div>
-</section>
+  </div></section>
 
 <!-- Five tests -->
 <section class="ap-sec tw-sec" data-screen-label="03 投資アプローチ — 五つの検証" aria-labelledby="tw-title">
@@ -428,6 +442,7 @@
     <div class="tw-head">
       <h2 class="ap-h2" id="tw-title">五つの検証、一つの投資判断</h2>
       <p class="ap-lede">順序ではなく、同時に検討します。どの一つも、<span class="jt">判断そのものに</span><span class="jt">代わるものではありません</span></p>
+      <p class="tw-hint">検証項目を選ぶと、円上で該当箇所が示されます。</p>
     </div>
     <div class="tw-grid" data-tests>
       <div class="tw-ring" aria-hidden="true">
@@ -460,7 +475,7 @@
       </div>
       <dl class="tw-list" aria-label="五つの検証">
         <div class="tw-item" data-test="0">
-          <dt><button class="tw-sel" type="button" data-test="0" aria-pressed="false"><span class="tw-n" aria-hidden="true">01</span><span class="tw-t"><span class="jt">マンデート</span>適合</span></button></dt>
+          <dt><button class="tw-sel" type="button" data-test="0" aria-pressed="true"><span class="tw-n" aria-hidden="true">01</span><span class="tw-t"><span class="jt">マンデート</span>適合</span></button></dt>
           <dd><p class="tw-q">その機会は、投資家の目的・制約・保有要件に適合しているか。</p><ul class="tw-det-list"><li>目的、保有期間、報告要件</li><li>通貨、<span class="jt">ストラクチャー</span>、税務上の制約</li></ul></dd>
         </div>
         <div class="tw-item" data-test="1">
@@ -468,7 +483,7 @@
           <dd><p class="tw-q">需要・流動性・規制は、想定する戦略を支えているか。</p><ul class="tw-det-list"><li>テナント需要と競合供給</li><li>同種資産における投資市場の厚み</li><li>都市計画、許認可、規制の方向性</li></ul></dd>
         </div>
         <div class="tw-item" data-test="2">
-          <dt><button class="tw-sel" type="button" data-test="2" aria-pressed="true"><span class="tw-n" aria-hidden="true">03</span><span class="tw-t">資産の基礎</span></button></dt>
+          <dt><button class="tw-sel" type="button" data-test="2" aria-pressed="false"><span class="tw-n" aria-hidden="true">03</span><span class="tw-t">資産の基礎</span></button></dt>
           <dd><p class="tw-q">建物・収益・必要資本は、十分に理解され説明可能か。</p><ul class="tw-det-list"><li>建物の状態、設備、法令適合</li><li>賃貸借の構造、テナント信用力、収益構成</li><li>保有期間に要する資本的支出</li></ul></dd>
         </div>
         <div class="tw-item" data-test="3">
@@ -540,7 +555,7 @@
 /* Approach — five tests on one ring. Every test and its detail is in the
    page. The numbered rows and the numbered segments are one set: choosing a
    row (click, tap, Enter or Space; arrows move between rows) lights its
-   segment, and Asset Fundamentals is chosen on arrival until the reader
+   segment, and the first test is chosen on arrival until the reader
    scrolls onto a test (see the reading line below). Hover previews a
    segment and nothing depends on it. */
 (function () {
@@ -549,7 +564,7 @@
   var items = [].slice.call(tw.querySelectorAll('.tw-item'));
   var btns  = [].slice.call(tw.querySelectorAll('.tw-sel'));
   var marks = [].slice.call(tw.querySelectorAll('.tw-arc, .tw-tie, .tw-num'));
-  var sel = 2, preview = null;
+  var sel = 0, preview = null;
   function paint() {
     var show = preview === null ? sel : preview;
     items.forEach(function (it) {
@@ -608,7 +623,7 @@
   function follow() {
     queued = false;
     var i = readingIndex();
-    if (i === null) i = 2;              /* above the list: the arrival choice */
+    if (i === null) i = 0;              /* above the list: the first test */
     if (i === reading) return;
     reading = i; sel = i; preview = null; paint();
   }
@@ -622,7 +637,7 @@
   follow();
 })();
 </script>
-<script src="../shell.js?v=78"></script>
+<script src="../shell.js?v=79"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>
