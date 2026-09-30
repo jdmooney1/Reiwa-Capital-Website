@@ -32,7 +32,7 @@
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="editorial.css?v=104">
 <link rel="stylesheet" href="brand.css?v=7">
-<link rel="stylesheet" href="craft.css?v=27">
+<link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
@@ -117,7 +117,11 @@
   .hi-stages { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .hi-stage { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; box-sizing: border-box; padding: 0 16px 0 10px; background: var(--paper-soft); border: 1px solid var(--rule-strong); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.3; color: var(--ink); }
   .hi-sn { flex: none; box-sizing: border-box; min-width: 26px; padding: 2px 6px 1px; border: 1px solid var(--ink-2); border-radius: 2px; text-align: center; font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.5; color: var(--ink); }
-  .hi-ops-link { display: inline-flex; align-items: center; gap: 12px; margin-top: var(--space-5); min-height: 48px; box-sizing: border-box; padding: 0 22px; border: 1px solid var(--ink); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.3; color: var(--ink); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out); }
+    /* Two chips of the longest labels need about 265px. Below ~940px the three
+     columns are narrower than that and the middle period broke onto two rows,
+     so the periods stack, as they do on phones. */
+  @media (max-width: 940px) { .hi-phases { grid-template-columns: minmax(0, 1fr); gap: var(--space-5) 0; } }
+.hi-ops-link { display: inline-flex; align-items: center; gap: 12px; margin-top: var(--space-5); min-height: 48px; box-sizing: border-box; padding: 0 22px; border: 1px solid var(--ink); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.3; color: var(--ink); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out); }
   .hi-ops-link .h-arrow { transition: transform 200ms var(--ease-out); }
   @media (hover: hover) { .hi-ops-link:hover { background: var(--ink); color: var(--cream); } .hi-ops-link:hover .h-arrow { transform: translateX(4px); } }
   .hi-ops-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
@@ -150,7 +154,13 @@
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
   .hm-col .hm-city { margin-top: var(--fluid-xs); }
   .hm-city { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); }
-  .hm-copy { margin-top: 12px; max-width: 44ch; }
+  .hm-copy { margin-top: 12px; max-width: 44ch; text-wrap: balance; }
+  /* Two columns (761px up): share rows, so the lists start on one line even
+     when one market's positioning sentence wraps and the other's does not. */
+  @media (min-width: 761px) {
+    .hm-cols { row-gap: 0; grid-template-rows: auto auto auto auto; }
+    .hm-col { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+  }
   /* The photograph runs about 230px deeper than three lines of caption at
      1440. Rather than pad the column, the characteristics already carried in
      the sentence are set out under it: one lead, then the three facts that
@@ -198,9 +208,11 @@
   .hp-item:first-child { padding-left: 0; border-left: 0; }
   .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
   .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 34ch; color: rgba(252,250,241,.72); text-wrap: pretty; }
+  /* Three columns down to the phone breakpoint. The two-column step that
+     used to sit here left a heading-to-paragraph gap the height of a row and
+     stranded the third item under the first (900-1100px). */
   @media (max-width: 1100px) {
-    .hp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto auto; row-gap: var(--fluid-l); }
-    .hp-item:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .hp-item { padding-right: clamp(12px, 1.6vw, 20px); }
   }
   @media (max-width: 760px) {
     .hp { padding: 56px 0; }
@@ -261,11 +273,14 @@
   @media (prefers-reduced-motion: reduce) { .hf-item img, .hf-cue, .hf-cue-a, .hf-spec-a, .hf-spec-a::after { transition: none; } }
   @media (max-width: 900px) {
     .hf-grid { grid-template-columns: 1fr; gap: 12px; }
-    .hf-item { aspect-ratio: 16 / 11; }
+    /* Single column between 761 and 900px: a 2:1 field, not the phone's 16:11,
+       which made each card taller than a tablet screen. */
+    .hf-item { aspect-ratio: 2 / 1; }
     .hf-item img { object-position: var(--hf-pos-m, var(--hf-pos, 50% 50%)); }
     .hf-cap p { max-width: none; }
   }
   @media (max-width: 760px) {
+    .hf-item { aspect-ratio: 16 / 11; }
     .hf { padding: 60px 0 48px; }
     .hf-grid { margin-top: 32px; }
   }
