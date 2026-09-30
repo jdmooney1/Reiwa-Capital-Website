@@ -191,8 +191,8 @@
     .aw-sw, .aw-bar--rc i, .aw-ribbon, .aw-sp-rail i, .aw-spec::before { transition: none; }
   }
   /* --- 3 · 注力市場: the signature section ------------------------------ */
-  /* 二つの市場、二つのセクション。いずれも全幅で、デスクトップでは少なくとも
-     一画面分の深さを持つ：写真の帯、セクション見出しと同じ大きさの市場名、
+  /* 二つの市場、二つのセクション。いずれも全幅で、深さは内容に応じる
+     （画面高の最小値は設けない。高い画面で地図の下に空白が生じたため）：写真の帯、セクション見出しと同じ大きさの市場名、
      一行の位置づけ、そして地図と三つの本文ブロック。ロンドンはクリーム地、
      アムステルダムは投資アプローチの「投資家の統制」帯と同じ濃い紙色に置き、
      配置は左右を反転させる。 */
@@ -204,8 +204,6 @@
   .am-city { margin: 0; }
   .am-pos { margin-top: var(--fluid-2xs); max-width: 33em; }
   @media (min-width: 1024px) {
-    .am-market { min-height: 100vh; display: flex; flex-direction: column; }
-    .am-market > .shell { flex: 1 0 auto; }
     .am-market--amsterdam .am-mapwrap { order: 2; }
   }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
