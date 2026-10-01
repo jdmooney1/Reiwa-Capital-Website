@@ -141,7 +141,7 @@
   .aw-field[data-flow="with"] .aw-msg--with, .aw-field[data-flow="without"] .aw-msg--without { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
   .aw-msg-t { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--aw-msg); line-height: 1.4; letter-spacing: 0; color: var(--cream); word-break: auto-phrase; line-break: strict; }
   .aw-msg-d { margin: 10px 0 0; max-width: 34em; font-family: var(--jp); font-size: clamp(15px, 14.4px + 0.15vw, 16.5px); line-height: 1.8; color: var(--aw-2); text-wrap: pretty; word-break: auto-phrase; line-break: strict; }
-  .aw-close { margin: var(--fluid-xs) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
+  .aw-close { margin: clamp(24px, 2.5vw, 36px) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
     .aw-field { margin-top: 26px; padding: 18px 18px 26px; }
     .aw-switch { flex-wrap: nowrap; gap: 16px; }
@@ -192,7 +192,22 @@
      一行の位置づけ、そして地図と三つの本文ブロック。ロンドンはクリーム地、
      アムステルダムは投資アプローチの「投資家の統制」帯と同じ濃い紙色に置き、
      配置は左右を反転させる。 */
-  .am-intro.ab-sec { padding-bottom: var(--fluid-m); }
+  /* One boundary between the continuity argument and Focus Markets. The two sections each carried their own
+     padding (the one above ended 56-84px below its closing sentence, the one below began 48-72px above its
+     heading), and the intro and the London market added another 40 + 60px between the intro line and the
+     London heading: padding does not collapse, so each pair stacked. The values below set the boundary once
+     and keep the intro, its line and the London heading as one group. */
+  .ab-sec.aw { padding-bottom: clamp(48px, 5vw, 72px); }
+  .am-intro.ab-sec { padding-bottom: 0; }
+  .am-intro > .shell { padding-top: clamp(28px, 2.8vw, 40px); }
+  .am-intro .ab-lede { margin-top: clamp(16px, 1.5vw, 22px); }
+  .am-market.am-market--london > .shell { padding-top: clamp(40px, 4.4vw, 64px); }
+  @media (max-width: 760px) {
+    .ab-sec.aw { padding-bottom: 40px; }
+    .am-intro > .shell { padding-top: 24px; }
+    .am-intro .ab-lede { margin-top: 16px; }
+    .am-market.am-market--london > .shell { padding-top: 44px; }
+  }
   .am-market { position: relative; }
   .am-market--london { background: var(--cream); }
   .am-market--amsterdam { background: var(--paper-soft); }
