@@ -36,15 +36,11 @@
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
 (function(){var K='reiwa.lang';var JA='/ja/investment-focus.html';var q=null;try{q=new URLSearchParams(location.search).get('lang');}catch(e){}if(q==='ja'){try{localStorage.setItem(K,'ja');}catch(e){}location.replace(JA);return;}if(q==='en'){try{localStorage.setItem(K,'en');}catch(e){}try{var w=new URL(location.href);w.searchParams.delete('lang');history.replaceState(null,'',w.pathname+w.search+w.hash);}catch(e){}}window.__reiwaLang='en';document.documentElement.classList.add('has-js');})();</script>
 <script>(function(){var K='reiwa.pagefx';var on=false;try{on=sessionStorage.getItem(K)==='1';}catch(e){}if(!on)return;try{sessionStorage.removeItem(K);}catch(e){}document.documentElement.classList.add('pt-enter');function run(){document.documentElement.classList.add('pt-run');setTimeout(function(){document.documentElement.classList.remove('pt-enter','pt-run');},300);}function go(){setTimeout(run,20);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
-<!-- The hero wash is decoration; the strategy photography is the page. Each
-     preload is media-gated, so a phone never requests the desktop pair and a
-     desktop never requests the mobile one. The images themselves stay
-     loading="lazy": the layout display:none's the half it is not using, and
-     lazy is what stops that half being fetched at all. -->
+<!-- The strategy photography is the page. The overview pair is preloaded on desktop; the detail photographs load
+     when a strategy is opened (they stay loading="lazy"). -->
 <link rel="preload" as="image" imagesrcset="assets/imagery/focus-hero-blur.avif" type="image/avif">
 <link rel="preload" as="image" href="assets/imagery/focus-income-balanced.webp" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/imagery/focus-repositioning-panorama-900.webp" imagesrcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" imagesizes="45vw" media="(min-width: 761px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/imagery/focus-income-master-1100.webp" media="(max-width: 760px)" fetchpriority="high">
 <style>
   /* =====================================================================
      INVESTMENT FOCUS — hero, then three signature visuals with the
@@ -131,58 +127,38 @@
   }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
-  .fx-stagehead { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-  .fx-back:hover .ret-arrow { transform: translateX(calc(var(--arrow-shift) * -1)); }
   .dl-n { text-wrap: balance; }
   @media (max-width: 900px) {
       .fx-h2 { max-width: none; }
   }
 
-  /* The component itself. A floor height for the balanced state; an open
-     panel then grows to fit its own content, and align-items: stretch carries
-     that height across to the closed one, so nothing is ever clipped. */
+  /* The component: two states. The overview is the two strategies as equal choices; choosing one replaces the
+     whole overview with that strategy's detail, a full-width editorial layout with a header (breadcrumb and
+     Return to Overview), the photograph on the left and the strategy on the right. Nothing of the other strategy
+     remains on screen. The two states cross-fade (opacity only) and swap instantly in layout. */
+  :root { --fx-det-title: clamp(28px, calc(1.2vw + 17px), 36px); }
   .fx-fieldwrap > .shell { padding-top: clamp(27px, 2.9vw, 42px); padding-bottom: var(--fluid-s); }
-  .fx-field { display: flex; align-items: stretch; gap: 2px; min-height: clamp(510px, 37.5vw, 620px); background: rgba(28,14,35,.14); }
-  .fx-panel { position: relative; flex: 1.5 1 0; min-width: 0; overflow: hidden; background: #DCD6CC; transition: flex-grow 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  /* Selected is unmistakable without a button or a raised card: a cream
-     hairline, the name at full strength, and the unselected picture a
-     step back. Both panels are identical until one is chosen. */
-  .fx-field[data-open] .fx-panel:has(.fx-open:not([hidden])) { box-shadow: inset 0 0 0 1px rgba(247, 243, 234,.66); }
-  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-photo img { filter: saturate(.86) brightness(.94); transition: filter 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .fx-field[data-open] .fx-panel:has(.fx-closed:not([hidden])) .fx-name { color: rgba(247, 243, 234,.82); }
-  .fx-field[data-open="0"] .fx-panel--inc, .fx-field[data-open="1"] .fx-panel--rep { flex-grow: 1.62; }
-  .fx-field[data-open="0"] .fx-panel--rep, .fx-field[data-open="1"] .fx-panel--inc { flex-grow: 1; }
+  .fx-field { position: relative; }
+  .fx-view { transition: opacity 180ms ease; }
+  .fx-view[hidden] { display: none; }
+  .fx-field.is-fading .fx-view { opacity: 0; }
 
-  /* Closed face. The hit target is a transparent layer over the photograph
-     rather than a <button> wrapped round it, so the strategy name can be a
-     real <h3>: headings are flow content and are invalid inside a button.
-     The button comes first in source order so ordinary sibling selectors can
-     drive the hover and focus states below. */
-  .fx-closed { position: absolute; inset: 0; }
-  .fx-closed[hidden], .fx-open[hidden] { display: none; }
+  /* --- Overview ------------------------------------------------------------ */
+  .fx-ov-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; background: rgba(28,14,35,.14); }
+  .fx-panel { position: relative; overflow: hidden; background: #DCD6CC; min-height: clamp(510px, 37.5vw, 620px); }
   .fx-shut { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; z-index: 4; display: block; background: transparent; outline-offset: -4px; }
   .fx-photo { position: absolute; inset: 0; display: block; z-index: 0; }
-  .fx-photo img, .fx-openimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fx-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .fx-panel--inc .fx-photo img { object-position: 68% 56%; }
   .fx-panel--rep .fx-photo img { object-position: 50% 56%; }
-
-  /* Scrims stay local to the caption — deep where the type sits, clear of the
-     photograph elsewhere. Tuned against the Japanese setting, whose thinner,
-     denser strokes need more ground beneath them than the Latin one does. */
   .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
-  .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; }
-  /* Caption wash: behind the closed-panel text block only (see .hf-cap on Home). */
-  .fx-closed .fx-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
+  .fx-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; pointer-events: none; padding: clamp(30px, 2.6vw, 44px); display: flex; flex-direction: column; gap: 9px; isolation: isolate; }
+  .fx-cap::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: calc(var(--space-7) * -1); pointer-events: none; background: linear-gradient(to bottom, rgba(28,14,35,0) 0, rgba(28,14,35,.36) 22px, rgba(28,14,35,.60) 48px, rgba(28,14,35,.64) 100%); }
   .fx-name { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.06; letter-spacing: -0.02em; color: var(--cream); }
-  .fx-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 42ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
+  .fx-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--cream); max-width: 42ch; text-wrap: pretty; }
   .fx-cue { margin-top: 2px; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: rgba(247, 243, 234,.82); transition: color 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .fx-cue-a { display: inline-block; transition: transform 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-
-  /* Hover and focus. A hairline just inside the panel edge, a cue brought up
-     to full cream and a four-pixel nudge on its arrow: enough to read as
-     interactive, short of reading as a button. Keyboard focus is deliberately
-     the stronger of the two — a 2px cream rule that hover never draws. */
   .fx-edge { position: absolute; inset: 0; z-index: 2; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(247, 243, 234,.72); background: linear-gradient(to top, rgba(28,14,35,.22) 0%, rgba(28,14,35,.08) 52%, rgba(28,14,35,.02) 100%); opacity: 0; transition: opacity 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   @media (hover: hover) {
     .fx-shut:hover ~ .fx-edge { opacity: 1; }
@@ -191,140 +167,100 @@
   }
   .fx-shut:focus-visible ~ .fx-cap .fx-cue { color: var(--cream); }
   .fx-shut:focus-visible ~ .fx-cap .fx-cue-a { transform: translateX(var(--arrow-shift)); }
-  /* The shared button:focus-visible rule in editorial.css carries
-     outline-offset: 3px, which .fx-panel's overflow: hidden clips away
-     entirely — the ring computed but never painted. Both properties have to
-     be set together here, inside the panel edge. */
-  .fx-shut:focus-visible, .fx-imgbtn:focus-visible { outline: 2px solid var(--on-plum); outline-offset: -6px; box-shadow: inset 0 0 0 4px var(--plum); } /* two-tone: legible over light or dark photography */
-  .fx-back:focus-visible { outline: 2px solid var(--on-plum); outline-offset: -3px; }
+  /* Both properties together: the panel's overflow clips an outset ring. */
+  .fx-shut:focus-visible { outline: 2px solid var(--on-plum); outline-offset: -6px; box-shadow: inset 0 0 0 4px var(--plum); }
 
-  /* Expanded state. Both panels now share one grammar: photograph above,
-     ivory band below. The band sizes to its own content and the panel grows
-     with it, which is what stops the Income criteria being clipped. */
-  .fx-open { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: clamp(510px, 37.5vw, 620px); }
-  .fx-openimg { position: relative; flex: 0 0 auto; height: clamp(252px, 23vw, 322px); overflow: hidden; background: #DCD6CC; }
-  .fx-panel--inc .fx-openimg img { object-position: 50% 64%; }
-  .fx-panel--rep .fx-openimg img { object-position: 50% 46%; }
-  .fx-imgbtn { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; z-index: 4; background: transparent; outline-offset: -4px; }
-  /* Stops in pixels, not percentages: the caption occupies a known band above
-     the image's bottom edge, and the Income photograph is bright stucco and
-     sky exactly there. Measured against the Japanese setting, whose thinner
-     strokes sit at the bottom of the contrast range. The horizontal mask is
-     what keeps this local — the right of the frame stays the photograph. */
-  .fx-openimg .fx-scrim { top: 0; height: auto; background: linear-gradient(to top, rgba(31,18,40,.95) 0px, rgba(31,18,40,.92) 60px, rgba(31,18,40,.88) 155px, rgba(31,18,40,.56) 235px, rgba(31,18,40,.14) 295px, rgba(31,18,40,0) 340px); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.97) 30%, rgba(0,0,0,.86) 52%, rgba(0,0,0,.58) 72%, rgba(0,0,0,.24) 88%, rgba(0,0,0,0) 100%); }
-  .fx-openimg .fx-cap { gap: 11px; }
-  /* Repositioning carries no type on its photograph: the name, the stage
-     controls and the stage content all sit on the cream band beneath it. The
-     only overlay left is the small corner ground under Return to Overview. */
-  .fx-panel--rep .fx-backscrim { height: 150px; background: linear-gradient(to bottom, rgba(31,18,40,.78) 0px, rgba(31,18,40,.5) 60px, rgba(31,18,40,.16) 115px, rgba(31,18,40,0) 150px); }
-  /* Kept below the section h2 it now sits under in the outline. */
-  .fx-open .fx-name { font-size: var(--type-h3); }
-  .fx-backscrim { position: absolute; top: 0; right: 0; width: min(58%, 340px); height: 190px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(31,18,40,.92) 0px, rgba(31,18,40,.74) 70px, rgba(31,18,40,.26) 140px, rgba(31,18,40,0) 190px); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, #000 0%, rgba(0,0,0,.96) 46%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.32) 88%, rgba(0,0,0,0) 100%); }
-  .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 14px var(--fluid-s); cursor: pointer; position: absolute; top: 0; right: 0; z-index: 5; min-height: 44px; display: flex; align-items: center; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); text-align: right; outline-offset: -3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  @media (hover: hover) { .fx-back:hover { color: rgba(247, 243, 234,.78); } }
-  .fx-band { flex: 1 0 auto; background: #F5F0E6; padding: var(--fluid-s); display: flex; flex-direction: column; }
-  .fx-band-desc { margin: 0 0 var(--fluid-xs); font-size: var(--type-body); line-height: var(--type-body-lh); color: var(--ink-2); max-width: 56ch; text-wrap: pretty; }
-  .fx-band-k { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-3); }
-  /* Supporting criteria. Two lists, one shown at a time: what is looked for,
-     and where the downside sits. The panels share one grid cell, so the band
-     keeps the height of the longer and nothing below it moves. Without script
-     both lists are drawn in turn, each under its own label. */
-  .fx-pair { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-  .fx-pair-tabs { display: none; }
-  html.has-js .fx-pair-tabs { display: flex; gap: clamp(20px, 2.6vw, 34px); border-bottom: 1px solid var(--rule-strong); }
-  .fx-pair-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 6px 0 11px; min-height: 44px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .fx-pair-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 500; }
-  .fx-pair-tab--down[aria-selected="true"] { border-bottom-color: var(--reiwa-node, #5E3D78); }
-  .fx-pair-tab:focus-visible { outline: 2px solid var(--focus); }
-  @media (hover: hover) { .fx-pair-tab:hover { color: var(--ink); } }
-  .fx-pair-stack { display: grid; }
-  .fx-pair-panel { grid-area: 1 / 1; min-width: 0; }
-  html:not(.has-js) .fx-pair-panel + .fx-pair-panel { margin-top: 20px; }
-  html.has-js .fx-pair-panel { visibility: hidden; opacity: 0; transition: opacity 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 240ms; }
-  html.has-js .fx-pair-panel.is-on { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
-  html:not(.has-js) .fx-pair-panel { grid-area: auto; }
-  html.has-js .fx-pair-k { display: none; }
-  .fx-pair-k { margin-bottom: 8px; }
-  .fx-pair-list { list-style: none; margin: 0; padding: 0; counter-reset: pair; }
-  .fx-pair-list li { counter-increment: pair; display: grid; grid-template-columns: 2em minmax(0, 1fr); padding: 11px 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.5; color: var(--ink); text-wrap: pretty;  }
-  .fx-pair-list li::before { content: counter(pair); font-variant-numeric: tabular-nums; font-size: var(--type-caption); line-height: 1.9; color: var(--ink-3); }
-  .fx-pair-list li:last-child { border-bottom: 1px solid var(--rule); }
-  /* Repositioning camera: only the image moves, inside its own frame. */
-  [data-cam] { overflow: hidden; }
-  [data-cam] img { transform-origin: 0 0; will-change: transform; transition: transform 1400ms cubic-bezier(.22, 1, .36, 1); }
-  .fx-illus { margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.45; color: var(--ink-3); max-width: 62ch; }
-  @media (prefers-reduced-motion: reduce) { .fx-pair-panel, .fx-pair-tab, [data-cam] img { transition: none; } }
+  /* --- Detail -------------------------------------------------------------- */
+  .fx-det { scroll-margin-top: var(--anchor-h, 96px); }
+  .fx-det-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--rule-strong); }
+  .fx-crumb { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: var(--ink-3); }
+  .fx-crumb [aria-current] { color: var(--ink); }
+  .fx-crumb-root { appearance: none; background: none; border: 0; margin: 0; padding: 12px 0; min-height: 44px; cursor: pointer; font: inherit; letter-spacing: inherit; color: inherit; text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 4px; }
+  @media (hover: hover) { .fx-crumb-root:hover { color: var(--ink); text-decoration-color: var(--ink); } }
+  .fx-back { appearance: none; background: none; border: 0; margin: 0; padding: 12px 0 12px 14px; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 16px); line-height: 1.3; color: var(--ink); }
+  .fx-back .ret-arrow { display: inline-block; transition: transform 220ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  @media (hover: hover) { .fx-back:hover .ret-arrow { transform: translateX(calc(var(--arrow-shift) * -1)); } }
+  .fx-back:focus-visible, .fx-crumb-root:focus-visible, .fx-stage:focus-visible, .fx-stagepanel:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .fx-det-title:focus { outline: none; }
+  .fx-det [lang="en"] { white-space: nowrap; }
+  .fx-det-grid { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); column-gap: clamp(32px, 4.4vw, 68px); margin-top: clamp(24px, 2.6vw, 36px); align-items: start; }
+  .fx-det-fig { margin: 0; }
+  .fx-det-img { aspect-ratio: 4 / 5; overflow: hidden; background: #DCD6CC; }
+  .fx-det-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.94) contrast(.98); }
+  .fx-det--inc .fx-det-img img { object-position: 62% 30%; }
+  .fx-det--rep .fx-det-img img { object-position: 64% 50%; filter: saturate(.92) contrast(.96) brightness(1.06); }
+  .fx-illus { margin: 10px 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0.01em; color: var(--ink-3); max-width: 62ch; }
+  .fx-det-main { min-width: 0; }
+  .fx-det-title { margin: -0.2em 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--fx-det-title); line-height: 1.1; letter-spacing: -0.016em; color: var(--ink); }
+  .fx-det-prop { margin: 14px 0 0; max-width: 52ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
 
-  /* Repositioning: the three readings the mobile view already carried, brought
-     up to desktop. One photograph, one title in a fixed place, one paragraph
-     in a fixed place, three plain controls. Stacking all three titles and all
-     three paragraphs and revealing one holds each box at the height of the
-     longest, so neither the title nor the controls move between stages. */
-  .fx-swap { display: grid; }
-  .fx-swap > * { grid-area: 1 / 1; visibility: hidden; margin: 0; }
+  /* One progression: a single hairline through three equally spaced numbered markers. The active stage has
+     the dark marker and the strong title; the others are quiet. It reads as a sequence, not a formula: nothing
+     says every asset takes every step. */
+  .fx-prog { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(26px, 2.8vw, 36px); }
+  .fx-prog::before { content: ""; position: absolute; left: 0; right: 0; top: 14px; height: 1px; background: var(--rule-strong); }
+  .fx-stage { appearance: none; background: none; border: 0; margin: 0; padding: 0 12px 6px 0; min-height: 44px; cursor: pointer; position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-align: left; font-family: 'DM Sans', sans-serif; color: var(--ink-3); }
+  .fx-stage-mk { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; border: 1px solid var(--ink-3); background: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 12.5px; line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink-2); transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+  .fx-stage-t { font-size: clamp(14px, 13px + 0.3vw, 16px); line-height: 1.3; font-weight: 400; max-width: 17ch; }
+  .fx-stage[aria-selected="true"] { color: var(--ink); }
+  .fx-stage[aria-selected="true"] .fx-stage-t { font-weight: 500; }
+  .fx-stage[aria-selected="true"] .fx-stage-mk { background: var(--plum); border-color: var(--plum); color: var(--cream); }
+  @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); } .fx-stage:not([aria-selected="true"]):hover .fx-stage-mk { border-color: var(--ink); } }
+
+  /* Stage content: one lead sentence, then what is assessed beside the decision it feeds. The three stages
+     stack in one cell and one is shown, so the panel keeps the height of the longest and nothing moves. */
+  .fx-swap { display: grid; margin-top: clamp(22px, 2.4vw, 30px); }
+  .fx-swap > * { grid-area: 1 / 1; visibility: hidden; }
   .fx-swap > [data-on] { visibility: visible; }
-  /* The stage heading sits in the band with its explanation, below the
-     strategy name (34px) and above body copy: the third level of the panel. */
-  .fx-band--rep .fx-name { color: var(--ink); font-size: var(--type-h3); }
-  .fx-band--rep .fx-stages { margin-top: 16px; padding-top: 0; }
-  .fx-band--rep .fx-stagecopy { margin-top: var(--fluid-xs); }
-  .fx-stagehead { margin: 0 0 10px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.16; letter-spacing: -0.016em; color: var(--ink); }
-  .fx-stagecopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(14.5px, 13.5px + 0.2vw, 16px); line-height: 1.55; color: var(--ink-2); max-width: 56ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .fx-stagecopy:focus { outline: none; }
-  .fx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-xs); margin-top: var(--fluid-xs); }
-  .fx-stage { appearance: none; background: none; border: 0; border-top: 2px solid var(--rule-strong); margin: 0; padding: 12px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(14px, 12.6px + 0.25vw, 16px); line-height: 1.3; color: var(--ink-3); outline-offset: 3px; transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .fx-stage[aria-selected="true"] { border-top-color: var(--ink); font-weight: 500; color: var(--ink); }
-  @media (hover: hover) { .fx-stage:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
-  .fx-stage:focus-visible { outline: 2px solid var(--focus); }
+  .fx-lead { margin: 0; max-width: 56ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink); text-wrap: pretty; }
+  .fx-cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(18px, 2vw, 26px); padding-top: 14px; border-top: 1px solid var(--rule-strong); }
+  .fx-det-prop + .fx-cols2 { margin-top: clamp(24px, 2.6vw, 34px); }
+  .fx-col { min-width: 0; padding-right: clamp(16px, 2.4vw, 32px); }
+  .fx-col + .fx-col { padding: 0 0 0 clamp(16px, 2.4vw, 32px); border-left: 1px solid var(--rule); }
+  .fx-k { margin: 0 0 8px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: var(--ink-3); }
+  .fx-list { list-style: none; margin: 0; padding: 0; }
+  .fx-list li { padding: 9px 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.2px + 0.2vw, 16.5px); line-height: 1.45; color: var(--ink); text-wrap: pretty; }
+  .fx-list li:first-child { border-top: 0; padding-top: 2px; }
+  .fx-dec { margin: 0; max-width: 38ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.2px + 0.2vw, 16.5px); line-height: 1.5; color: var(--ink); text-wrap: pretty; }
 
   @media (max-width: 1024px) {
-    .fx-field, .fx-open { min-height: clamp(488px, 54vw, 580px); }
+    .fx-panel { min-height: clamp(488px, 54vw, 580px); }
     .fx-cap { padding: var(--fluid-s); }
-    .fx-openimg { height: clamp(226px, 25vw, 268px); }
-    .fx-openimg .fx-scrim { -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to right, #000 0%, rgba(0,0,0,.98) 42%, rgba(0,0,0,.90) 66%, rgba(0,0,0,.62) 84%, rgba(0,0,0,0) 100%); }
-    .fx-band { padding: clamp(18px, 2.2vw, 24px); }
-    .fx-back { padding: 12px var(--fluid-xs); }
-    .fx-backscrim { width: min(74%, 300px); height: 170px; }
+  }
+  @media (max-width: 900px) and (min-width: 761px) {
+    .fx-cols2 { grid-template-columns: minmax(0, 1fr); }
+    .fx-col, .fx-col + .fx-col { padding: 0; border-left: 0; }
+    .fx-col + .fx-col { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); }
   }
 
-  /* --- Mobile: one two-option selector, one large image ------------------ */
-  .fx-mob { display: none; scroll-margin-top: var(--anchor-h, 96px); }
-  .fx-mob > .shell { padding-top: var(--fluid-s); padding-bottom: var(--fluid-s); }
+  /* --- Phone: the overview stacks two image cards; the detail runs breadcrumb and return, title and
+     proposition, photograph and caption, stage navigation, stage content. ------------------------------ */
   @media (max-width: 760px) {
-    .fx-fieldwrap { display: none; }
-    .fx-mob { display: block; }
+    .fx-ov-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; background: none; }
+    .fx-panel { min-height: 0; aspect-ratio: 16 / 11; }
+    .fx-cap p { max-width: none; }
+    .fx-det-top { flex-wrap: wrap; row-gap: 0; padding-bottom: 0; }
+    .fx-crumb { flex: 1 0 100%; flex-wrap: nowrap; white-space: nowrap; }
+    .fx-back { padding-left: 0; margin-left: 0; }
+    .fx-det-grid { display: flex; flex-direction: column; margin-top: 18px; }
+    .fx-det-main { display: contents; }
+    .fx-det-title { order: 1; margin-top: 0; }
+    .fx-det-prop { order: 1; margin-top: 10px; max-width: none; }
+    .fx-det-fig { order: 2; margin-top: 20px; }
+    .fx-det-img { aspect-ratio: 3 / 2; }
+    .fx-det--inc .fx-det-img img { object-position: 50% 52%; }
+    .fx-det--rep .fx-det-img img { object-position: 56% 48%; }
+    .fx-prog { order: 3; margin-top: 22px; }
+    .fx-swap { order: 4; margin-top: 20px; }
+    .fx-det--inc .fx-cols2 { order: 4; }
+    .fx-stage { gap: 8px; padding-right: 8px; }
+    .fx-stage-t { font-size: 14px; max-width: none; }
+    .fx-cols2 { grid-template-columns: minmax(0, 1fr); }
+    .fx-col, .fx-col + .fx-col { padding: 0; border-left: 0; }
+    .fx-col + .fx-col { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); }
+    .fx-lead, .fx-dec { max-width: none; }
   }
-  .fx-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 10px; }
-  .fx-tab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16.5px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
-  .fx-tab[aria-selected="true"] { border-top: 2px solid var(--ink); padding-top: 10px; font-weight: 500; color: var(--ink); }
-  @media (hover: hover) { .fx-tab:not([aria-selected="true"]):hover, .fx-mtab:not([aria-selected="true"]):hover { color: var(--ink); border-top-color: var(--ink-3); } }
-  .fx-tab:focus-visible, .fx-mtab:focus-visible { outline: 2px solid var(--focus); }
-  .fx-tabpanel { margin-top: 22px; }
-  .fx-tabpanel[hidden] { display: none; }
-  .fx-mimg { position: relative; width: 100%; height: 330px; overflow: hidden; background: #DCD6CC; }
-  .fx-mimg img { width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; display: block; }
-  /* Repositioning on a phone: stage controls, then the photograph without
-     type over it, then the stage heading and its explanation. The frame is
-     shallower than Income's so the controls stay in the first view; the crop
-     keeps the facades and trims sky and water. */
-  #fx-panel-repositioning .fx-mtabs { margin-top: 0; }
-  #fx-panel-repositioning .fx-mimg { height: clamp(200px, 60vw, 250px); margin-top: 20px; }
-  #fx-panel-repositioning .fx-mimg img { object-position: 50% 46%; }
-  #fx-panel-repositioning .fx-stagehead { margin: 0 0 8px; font-size: var(--type-h3); }
-  .fx-mbody, .fx-mcopy { margin: 18px 0 0; }
-  .fx-mbody, .fx-mcopy p { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14px + 0.25vw, 17px); line-height: 1.5; color: var(--ink-2); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
-  .fx-mcopy:focus { outline: none; }
-  .fx-mband { margin-top: 20px; background: #F5F0E6; padding: clamp(18px, 2.2vw, 24px); display: flex; flex-direction: column; gap: 20px; }
-  .fx-mtabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; margin-top: 22px; }
-  .fx-mtab { appearance: none; background: none; border: 0; border-top: 1px solid var(--rule-strong); margin: 0; padding: 11px 0 0; min-height: 46px; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.3; color: var(--ink-3); outline-offset: 3px; }
-  .fx-mtab[aria-selected="true"] { border-top: 2px solid var(--ink); padding-top: 10px; font-weight: 500; color: var(--ink); }
-  @media (max-width: 360px) {
-    .fx-mimg { height: 300px; }
-    
-    .fx-tab { font-size: 15px; }
-    .fx-mtab { font-size: 13.5px; }
-    .fx-mtabs { gap: 0 8px; }
-  }
+  @media (prefers-reduced-motion: reduce) { .fx-view, .fx-stage-mk, .fx-back .ret-arrow, .fx-cue-a, .fx-edge, .fx-cue { transition: none; } }
 
   /* --- Potential sources of improvement, then the view -------------------- */
   .fx-levers > .shell { padding-top: clamp(4px, .6vw, 8px); padding-bottom: clamp(51px, 5.1vw, 80px); }
@@ -449,11 +385,12 @@
 
   <div class="fx-fieldwrap">
     <div class="shell">
-      <div class="fx-field" role="group" aria-label="Investment focus: Income and Repositioning" data-field>
+      <div class="fx-field" role="group" aria-label="Investment focus: Income and Repositioning" data-field data-view="overview">
 
-        <div class="fx-panel fx-panel--inc" id="income">
-          <div class="fx-closed">
-            <button class="fx-shut" type="button" data-focus="0" aria-pressed="false" aria-label="Explore Income"></button>
+        <div class="fx-view fx-ov" data-view-pane="overview">
+          <div class="fx-ov-grid">
+          <div class="fx-panel fx-panel--inc">
+            <button class="fx-shut" type="button" data-focus="0" aria-label="Explore Income"></button>
             <span class="fx-photo" aria-hidden="true">
               <img src="assets/imagery/focus-income-balanced.webp" alt="" width="760" height="994" loading="lazy" decoding="async">
             </span>
@@ -465,52 +402,8 @@
               <span class="fx-cue" aria-hidden="true">Explore Income <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
-          <div class="fx-open" hidden>
-            <div class="fx-openimg">
-              <picture><source type="image/avif" srcset="assets/imagery/focus-income-master.avif"><img src="assets/imagery/focus-income-master.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"></picture>
-              <span class="fx-scrim" aria-hidden="true"></span>
-              <button class="fx-imgbtn" type="button" data-focus="0" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
-              <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning"><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
-              <div class="fx-cap">
-                <h3 class="fx-name">Income</h3>
-              </div>
-            </div>
-            <div class="fx-band">
-              <p class="fx-band-desc">Durable income with a clear basis in location, asset quality and occupational demand.</p>
-              <div class="fx-pair" data-pair>
-                <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
-                  <button class="fx-pair-tab" type="button" role="tab" id="fx-dp-t0" aria-controls="fx-dp-p0" aria-selected="true" tabindex="0">What We Look For</button>
-                  <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-dp-t1" aria-controls="fx-dp-p1" aria-selected="false" tabindex="-1">Where the Downside Sits</button>
-                </div>
-                <div class="fx-pair-stack">
-                  <div class="fx-pair-panel is-on" role="tabpanel" id="fx-dp-p0" aria-labelledby="fx-dp-t0">
-                    <span class="fx-band-k fx-pair-k">What We Look For</span>
-                    <ol class="fx-pair-list">
-                    <li>Income evidenced by occupation, not by forecast</li>
-                    <li>Lease terms, expiry profile and tenant covenant</li>
-                    <li>Recurring and near-term capital requirements identified before pricing</li>
-                    <li>Refinancing capacity and buyer depth at exit</li>
-                    </ol>
-                  </div>
-                  <div class="fx-pair-panel" role="tabpanel" id="fx-dp-p1" aria-labelledby="fx-dp-t1">
-                    <span class="fx-band-k fx-pair-k">Where the Downside Sits</span>
-                    <ol class="fx-pair-list">
-                    <li>Reletting cost, void period and landlord obligations at expiry</li>
-                    <li>Cash flow if reletting takes longer than assumed</li>
-                    <li>Capital expenditure arriving earlier or larger than assumed</li>
-                    <li>Buyer depth at exit for an asset of this size and profile</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="fx-panel fx-panel--rep" id="repositioning">
-          <div class="fx-closed">
-            <button class="fx-shut" type="button" data-focus="1" aria-pressed="false" aria-label="Explore Repositioning"></button>
+          <div class="fx-panel fx-panel--rep">
+            <button class="fx-shut" type="button" data-focus="1" aria-label="Explore Repositioning"></button>
             <span class="fx-photo" aria-hidden="true">
               <img src="assets/imagery/focus-repositioning-panorama-900.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 45vw" alt="" width="1535" height="1024" loading="lazy" decoding="async">
             </span>
@@ -522,108 +415,75 @@
               <span class="fx-cue" aria-hidden="true">Explore Repositioning <span class="fx-cue-a">&rarr;</span></span>
             </div>
           </div>
-          <div class="fx-open" hidden>
-            <div class="fx-openimg" data-cam>
-              <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
-              <button class="fx-imgbtn" type="button" data-focus="1" aria-pressed="true" aria-label="Return to overview of Income and Repositioning"></button>
-              <span class="fx-backscrim" aria-hidden="true"></span>
-              <button class="fx-back" type="button" data-collapse aria-label="Return to overview of Income and Repositioning"><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
-            </div>
-            <div class="fx-band fx-band--rep">
-              <h3 class="fx-name">Repositioning</h3>
-              <div class="fx-stages" role="tablist" aria-label="Repositioning">
-                <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-copy-d" aria-selected="true" tabindex="0" data-moment="0">Identify the Opportunity</button>
-                <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="1">Shape the Strategy</button>
-                <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-copy-d" aria-selected="false" tabindex="-1" data-moment="2">Strengthen the Asset</button>
-              </div>
-              <div class="fx-stagecopy fx-swap" id="fx-stage-copy-d" role="tabpanel" tabindex="-1" data-swap>
-                <div data-on>
-                  <h4 class="fx-stagehead">Identify the Opportunity</h4>
-                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance. Reiwa assesses whether the constraint can be resolved, and whether the resulting improvement would be material against the investor’s mandate before any capital is committed.</p>
-                </div>
-                <div>
-                  <h4 class="fx-stagehead">Shape the Strategy</h4>
-                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions, delivery timetable and the risks each carries. Appointed specialists prepare and price the plan, and Reiwa coordinates their input into a single business plan for the investor to approve.</p>
-                </div>
-                <div>
-                  <h4 class="fx-stagehead">Strengthen the Asset</h4>
-                  <p>Strengthen the asset through works and operational change delivered by appointed contractors, letting agents and property managers. Reiwa monitors progress and cost against the approved plan, and reviews the effect on letting prospects, income and exit options against the investment case.</p>
-                </div>
-              </div>
-              <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
-            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="fx-mob">
-    <div class="shell">
-      <div class="fx-tabs" role="tablist" aria-label="Investment focus: Income and Repositioning">
-        <button class="fx-tab" type="button" role="tab" id="fx-tab-income" aria-controls="fx-panel-income" aria-selected="true" tabindex="0" data-focus="0">Income</button>
-        <button class="fx-tab" type="button" role="tab" id="fx-tab-repositioning" aria-controls="fx-panel-repositioning" aria-selected="false" tabindex="-1" data-focus="1">Repositioning</button>
-      </div>
-
-      <div class="fx-tabpanel" id="fx-panel-income" role="tabpanel" aria-labelledby="fx-tab-income" tabindex="-1">
-        <div class="fx-mimg">
-          <img src="assets/imagery/focus-income-master-1100.webp" alt="" width="1100" height="733" loading="lazy" decoding="async">
-        </div>
-        <p class="fx-mbody">Durable income with a clear basis in location, asset quality and occupational demand.</p>
-        <div class="fx-mband">
-          <div class="fx-pair" data-pair>
-            <div class="fx-pair-tabs" role="tablist" aria-label="Income: what we look for, and where the downside sits">
-              <button class="fx-pair-tab" type="button" role="tab" id="fx-mp-t0" aria-controls="fx-mp-p0" aria-selected="true" tabindex="0">What We Look For</button>
-              <button class="fx-pair-tab fx-pair-tab--down" type="button" role="tab" id="fx-mp-t1" aria-controls="fx-mp-p1" aria-selected="false" tabindex="-1">Where the Downside Sits</button>
-            </div>
-            <div class="fx-pair-stack">
-              <div class="fx-pair-panel is-on" role="tabpanel" id="fx-mp-p0" aria-labelledby="fx-mp-t0">
-                <span class="fx-band-k fx-pair-k">What We Look For</span>
-                <ol class="fx-pair-list">
-                <li>Income evidenced by occupation, not by forecast</li>
-                <li>Lease terms, expiry profile and tenant covenant</li>
-                <li>Recurring and near-term capital requirements identified before pricing</li>
-                <li>Refinancing capacity and buyer depth at exit</li>
-                </ol>
-              </div>
-              <div class="fx-pair-panel" role="tabpanel" id="fx-mp-p1" aria-labelledby="fx-mp-t1">
-                <span class="fx-band-k fx-pair-k">Where the Downside Sits</span>
-                <ol class="fx-pair-list">
-                <li>Reletting cost, void period and landlord obligations at expiry</li>
-                <li>Cash flow if reletting takes longer than assumed</li>
-                <li>Capital expenditure arriving earlier or larger than assumed</li>
-                <li>Buyer depth at exit for an asset of this size and profile</li>
-                </ol>
+        <article class="fx-view fx-det fx-det--inc" id="income" data-view-pane="0" aria-labelledby="fx-t-inc" hidden>
+          <div class="fx-det-top">
+            <p class="fx-crumb"><button class="fx-crumb-root" type="button" data-collapse>Investment Focus</button><span class="fx-crumb-sep" aria-hidden="true">/</span><span aria-current="page">Income</span></p>
+            <button class="fx-back" type="button" data-collapse><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
+          </div>
+          <div class="fx-det-grid">
+            <figure class="fx-det-fig">
+              <div class="fx-det-img"><picture><source media="(max-width: 760px)" srcset="assets/imagery/focus-income-master-1100.webp"><img src="assets/imagery/focus-income-balanced.webp" alt="Brick and stone facade of a well-kept London terrace" width="760" height="994" loading="lazy" decoding="async"></picture></div>
+              <figcaption class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</figcaption>
+            </figure>
+            <div class="fx-det-main">
+              <h3 class="fx-det-title" id="fx-t-inc" tabindex="-1">Income</h3>
+              <p class="fx-det-prop">Durable income with a clear basis in location, asset quality and occupational demand.</p>
+              <div class="fx-cols2 fx-cols2--look">
+                <div class="fx-col"><p class="fx-k">What We Look For</p><ul class="fx-list"><li>Income evidenced by occupation, not by forecast</li><li>Lease terms, expiry profile and tenant covenant</li><li>Recurring and near-term capital requirements identified before pricing</li><li>Refinancing capacity and buyer depth at exit</li></ul></div>
+                <div class="fx-col"><p class="fx-k">Where the Downside Sits</p><ul class="fx-list"><li>Reletting cost, void period and landlord obligations at expiry</li><li>Cash flow if reletting takes longer than assumed</li><li>Capital expenditure arriving earlier or larger than assumed</li><li>Buyer depth at exit for an asset of this size and profile</li></ul></div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="fx-tabpanel" id="fx-panel-repositioning" role="tabpanel" aria-labelledby="fx-tab-repositioning" tabindex="-1" hidden>
-        <div class="fx-mtabs" role="tablist" aria-label="Repositioning">
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-0" aria-controls="fx-stage-copy" aria-selected="true" tabindex="0" data-moment="0">Identify the Opportunity</button>
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-1" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="1">Shape the Strategy</button>
-          <button class="fx-mtab" type="button" role="tab" id="fx-mt-2" aria-controls="fx-stage-copy" aria-selected="false" tabindex="-1" data-moment="2">Strengthen the Asset</button>
-        </div>
-        <div class="fx-mimg" data-cam>
-          <img src="assets/imagery/focus-repositioning-panorama.webp" alt="" width="1535" height="1024" loading="lazy" decoding="async">
-        </div>
-        <div class="fx-mcopy fx-swap" id="fx-stage-copy" role="tabpanel" tabindex="-1" data-swap>
-          <div data-on>
-            <h4 class="fx-stagehead">Identify the Opportunity</h4>
-                  <p>Identify what is limiting income or value: vacancy, layout, specification, permitted use or operating performance. Reiwa assesses whether the constraint can be resolved, and whether the resulting improvement would be material against the investor’s mandate before any capital is committed.</p>
+        <article class="fx-view fx-det fx-det--rep" id="repositioning" data-view-pane="1" aria-labelledby="fx-t-rep" hidden>
+          <div class="fx-det-top">
+            <p class="fx-crumb"><button class="fx-crumb-root" type="button" data-collapse>Investment Focus</button><span class="fx-crumb-sep" aria-hidden="true">/</span><span aria-current="page">Repositioning</span></p>
+            <button class="fx-back" type="button" data-collapse><span class="ret-arrow" aria-hidden="true">&larr;</span>Return to Overview</button>
           </div>
-          <div>
-            <h4 class="fx-stagehead">Shape the Strategy</h4>
-                  <p>Assess the works, leasing and operational changes required, together with their costs, permissions, delivery timetable and the risks each carries. Appointed specialists prepare and price the plan, and Reiwa coordinates their input into a single business plan for the investor to approve.</p>
+          <div class="fx-det-grid">
+            <figure class="fx-det-fig">
+              <div class="fx-det-img"><img src="assets/imagery/focus-repositioning-panorama.webp" srcset="assets/imagery/focus-repositioning-panorama-900.webp 900w, assets/imagery/focus-repositioning-panorama.webp 1535w" sizes="(max-width: 760px) 100vw, 40vw" alt="Canal houses along an Amsterdam canal in evening light" width="1535" height="1024" loading="lazy" decoding="async"></div>
+              <figcaption class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</figcaption>
+            </figure>
+            <div class="fx-det-main">
+              <h3 class="fx-det-title" id="fx-t-rep" tabindex="-1">Repositioning</h3>
+              <p class="fx-det-prop">Assets where targeted capital and active oversight can materially improve income or value.</p>
+              <div class="fx-prog" role="tablist" aria-label="Repositioning stages">
+                <button class="fx-stage" type="button" role="tab" id="fx-st-0" aria-controls="fx-stage-panel" aria-selected="true" tabindex="0" data-moment="0"><span class="fx-stage-mk" aria-hidden="true">01</span><span class="fx-stage-t">Identify the Opportunity</span></button>
+                <button class="fx-stage" type="button" role="tab" id="fx-st-1" aria-controls="fx-stage-panel" aria-selected="false" tabindex="-1" data-moment="1"><span class="fx-stage-mk" aria-hidden="true">02</span><span class="fx-stage-t">Shape the Strategy</span></button>
+                <button class="fx-stage" type="button" role="tab" id="fx-st-2" aria-controls="fx-stage-panel" aria-selected="false" tabindex="-1" data-moment="2"><span class="fx-stage-mk" aria-hidden="true">03</span><span class="fx-stage-t">Strengthen the Asset</span></button>
+              </div>
+              <div class="fx-swap fx-stagepanel" id="fx-stage-panel" role="tabpanel" aria-labelledby="fx-st-0" tabindex="-1" data-swap>
+                <div class="fx-sc" data-on>
+                  <p class="fx-lead">Identify the specific constraint limiting income or value.</p>
+                  <div class="fx-cols2">
+                    <div class="fx-col"><p class="fx-k">What we assess</p><ul class="fx-list"><li>Vacancy and leasing</li><li>Layout and specification</li><li>Permitted use</li><li>Operating performance</li></ul></div>
+                    <div class="fx-col"><p class="fx-k">Investment decision</p><p class="fx-dec">Can the constraint be resolved in a controlled way, and would the resulting improvement be material to the investor’s mandate?</p></div>
+                  </div>
+                </div>
+                <div class="fx-sc">
+                  <p class="fx-lead">Appointed specialists prepare and price the plan; Reiwa coordinates their input into one business plan for the investor to approve.</p>
+                  <div class="fx-cols2">
+                    <div class="fx-col"><p class="fx-k">What we assess</p><ul class="fx-list"><li>Works required</li><li>Leasing and operational changes</li><li>Costs and permissions</li><li>Delivery timetable and risks</li></ul></div>
+                    <div class="fx-col"><p class="fx-k">Investment decision</p><p class="fx-dec">Is the coordinated business plan, with its costs and risks, ready for the investor to approve?</p></div>
+                  </div>
+                </div>
+                <div class="fx-sc">
+                  <p class="fx-lead">Appointed contractors, letting agents and property managers deliver the works and operational change; Reiwa monitors progress and cost against the approved plan.</p>
+                  <div class="fx-cols2">
+                    <div class="fx-col"><p class="fx-k">What we assess</p><ul class="fx-list"><li>Progress against the approved plan</li><li>Cost against the approved plan</li><li>Effect on letting prospects</li><li>Effect on income and exit options</li></ul></div>
+                    <div class="fx-col"><p class="fx-k">Investment decision</p><p class="fx-dec">Do letting prospects, income and exit options still support the investment case?</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <h4 class="fx-stagehead">Strengthen the Asset</h4>
-                  <p>Strengthen the asset through works and operational change delivered by appointed contractors, letting agents and property managers. Reiwa monitors progress and cost against the approved plan, and reviews the effect on letting prospects, income and exit options against the investment case.</p>
-          </div>
-        </div>
-        <p class="fx-illus">Illustrative view only. Not a Reiwa Capital asset or transaction.</p>
+        </article>
+
       </div>
     </div>
   </div>
@@ -684,274 +544,135 @@
 
 <div data-shell="footer"></div>
 <script>
-/* Investment Focus — one field, two approaches.
-   Desktop: the two panels are expand/collapse buttons, not tabs; opening one
-   redistributes width, and the open panel grows to fit its own content so
-   nothing is clipped. Return To Overview and Escape both restore the balanced
-   state and hand focus back to the panel's own shutter.
-   Repositioning reads the same way on both: one photograph, one stage title
-   and one paragraph, each held at the height of the longest of the three so
-   the controls never move, and three plain tabs. The photograph does not
-   move between stages — it is the same asset seen three ways, not an
-   animation pretending the building is changing. */
+/* Investment Focus - Income and Repositioning, two states.
+   Overview: the two strategies as equal choices. Detail: the chosen strategy replaces the overview inside the
+   same component (a cross-fade on opacity only; layout swaps instantly). Opening pushes #income or
+   #repositioning so the browser Back button returns to the overview, and a link or reload on either hash
+   lands straight in the detail. Return to Overview, the breadcrumb root and Escape close it; focus goes to the
+   detail heading on open and back to the control that opened it on close, and the scroll position the reader
+   left is restored. Repositioning's three stages are a tablist; the photograph does not change between them. */
 (function () {
   var root = document.querySelector('[data-focusfield]');
   if (!root) return;
+  var field = root.querySelector('[data-field]');
+  if (!field) return;
+  var panes = {};
+  [].forEach.call(field.querySelectorAll('[data-view-pane]'), function (p) { panes[p.getAttribute('data-view-pane')] = p; });
+  var openers = [].slice.call(field.querySelectorAll('.fx-shut'));
+  var ids = ['income', 'repositioning'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var view = 'overview', opener = null, savedY = null, pushed = false, fadeT = 0;
 
-  var field    = root.querySelector('[data-field]');
-  var panels   = [].slice.call(root.querySelectorAll('.fx-panel'));
-  var focusBtn = [].slice.call(root.querySelectorAll('[data-focus]'));
-  var backBtn  = [].slice.call(root.querySelectorAll('[data-collapse]'));
-  var tabs     = [].slice.call(root.querySelectorAll('.fx-tab'));
-  var stages   = [].slice.call(root.querySelectorAll('.fx-stage'));
-  var mtabs    = [].slice.call(root.querySelectorAll('.fx-mtab'));
-  var mpanels  = [].slice.call(root.querySelectorAll('.fx-tabpanel'));
-  var swaps    = [].slice.call(root.querySelectorAll('[data-swap]'));
-
-
-  /* Repositioning camera. The panorama is illustrative and does not change;
-     the frame moves across it as the explanation does: Identify looks at the
-     street level, Shape at the upper facades and roofline, Strengthen draws
-     back to the whole terrace. The move is a slow ease (about 1.4s), capped so
-     it never enlarges the photograph beyond its own pixels on this screen
-     (1535px wide), and it is not made at all under reduced motion, where the
-     whole view stays and only the words change. */
-  var camBoxes = [].slice.call(root.querySelectorAll('[data-cam]'));
-  var CAM = [{ x: 0.30, y: 0.61, z: 1.6 }, { x: 0.63, y: 0.40, z: 1.55 }, { x: 0.5, y: 0.5, z: 1 }];
-  var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var camLive = [];
-  function camFrame(box, m) {
-    var img = box.querySelector('img');
-    if (!img) return;
-    var W = box.clientWidth, H = box.clientHeight;
-    if (!W || !H || !img.naturalWidth) return;
-    var nw = img.naturalWidth, nh = img.naturalHeight;
-    var s0 = Math.max(W / nw, H / nh), dw = nw * s0, dh = nh * s0;
-    var pos = getComputedStyle(img).objectPosition.split(' ');
-    var px = parseFloat(pos[0]) / 100, py = parseFloat(pos[1]) / 100;
-    var ox = (W - dw) * px, oy = (H - dh) * py;
-    var c = CAM[m] || CAM[2], dpr = window.devicePixelRatio || 1;
-    var z = Math.max(1, Math.min(c.z, 1 / (s0 * dpr)));
-    if (z < 1.02) { img.style.transform = 'translate3d(0,0,0) scale(1)'; return; }
-    var tx = W / 2 - z * (ox + c.x * dw), ty = H / 2 - z * (oy + c.y * dh);
-    tx = Math.min(0, Math.max(W - z * W, tx));
-    ty = Math.min(0, Math.max(H - z * H, ty));
-    img.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0) scale(' + z.toFixed(3) + ')';
-  }
-  function camera() {
-    camBoxes.forEach(function (box, k) {
-      var img = box.querySelector('img');
-      var visible = box.offsetParent !== null;
-      if (!img) return;
-      if (!visible || reduceMq.matches) { img.style.transform = ''; camLive[k] = false; return; }
-      if (!camLive[k]) {
-        /* Opening: start from the whole view, then move to the current stage. */
-        img.style.transition = 'none'; img.style.transform = 'translate3d(0,0,0) scale(1)';
-        void box.offsetWidth; img.style.transition = '';
-        camLive[k] = true;
-        requestAnimationFrame(function () { camFrame(box, moment); });
-      } else camFrame(box, moment);
-    });
-  }
-  camBoxes.forEach(function (box) {
-    var img = box.querySelector('img');
-    if (img && !img.complete) img.addEventListener('load', function () { camera(); });
-  });
-  if (reduceMq.addEventListener) reduceMq.addEventListener('change', camera);
-
-  var narrow = function () { return window.matchMedia('(max-width: 760px)').matches; };
-  var shown  = function (el) { return !!(el && el.offsetParent !== null); };
-
-  /* Desktop opens balanced; the mobile selector is always resolved, so it
-     starts on Income. */
-  var focus = narrow() ? 0 : null, moment = 0;
-
-  /* A link into a strategy (#income or #repositioning) selects that panel
-     before the first paint: on desktop the panel opens, on a phone the
-     selector lands on that tab. Desktop scroll position comes from the
-     shared :target scroll-margin, as for every other in-page anchor; the
-     phone selector is not the fragment's element, so it is brought under
-     the header here. */
-  function hashFocus() {
+  function fromHash() {
     var h = (location.hash || '').replace(/^#/, '');
-    return h === 'income' ? 0 : (h === 'repositioning' ? 1 : null);
+    var i = ids.indexOf(h);
+    return i < 0 ? 'overview' : String(i);
   }
-  function showMobileSelector() {
-    var mob = root.querySelector('.fx-mob');
-    if (narrow() && mob && hashFocus() !== null) mob.scrollIntoView({ block: 'start' });
+  function apply(next) {
+    view = next;
+    field.setAttribute('data-view', next === 'overview' ? 'overview' : ids[+next]);
+    Object.keys(panes).forEach(function (k) { panes[k].hidden = k !== next; });
   }
-  if (hashFocus() !== null) focus = hashFocus();
-
-  function paint() {
-    if (narrow() && focus === null) focus = 0;
-    if (field) field.setAttribute('data-open', focus === null ? '' : String(focus));
-
-    panels.forEach(function (p, i) {
-      var open = focus === i;
-      var closed = p.querySelector('.fx-closed'), body = p.querySelector('.fx-open');
-      if (closed) closed.hidden = open;
-      if (body) body.hidden = !open;
-      var sh = p.querySelector('.fx-shut');   if (sh) sh.setAttribute('aria-pressed', open ? 'true' : 'false');
-      var ib = p.querySelector('.fx-imgbtn'); if (ib) ib.setAttribute('aria-pressed', open ? 'true' : 'false');
-    });
-
-    tabs.forEach(function (t, i) {
-      var on = focus === i;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-      t.tabIndex = on ? 0 : -1;
-    });
-    mpanels.forEach(function (p, i) { p.hidden = focus !== i; });
-
-    [stages, mtabs].forEach(function (list) {
-      list.forEach(function (b) {
-        var on = +b.dataset.moment === moment;
-        b.setAttribute('aria-selected', on ? 'true' : 'false');
-        b.tabIndex = on ? 0 : -1;
-      });
-    });
-
-    /* One paragraph is revealed; the other two stay in flow but invisible, so
-       the box keeps the height of the longest and nothing below it shifts. */
-    swaps.forEach(function (s) {
-      [].slice.call(s.children).forEach(function (c, i) {
-        if (i === moment) c.setAttribute('data-on', ''); else c.removeAttribute('data-on');
-      });
-    });
-
-    /* Three tabs share one panel, so the panel names the tab now showing. */
-    [['fx-stage-copy-d', stages], ['fx-stage-copy', mtabs]].forEach(function (pair) {
-      var panel = document.getElementById(pair[0]);
-      if (!panel) return;
-      for (var i = 0; i < pair[1].length; i++) {
-        if (+pair[1][i].dataset.moment === moment && pair[1][i].id) {
-          panel.setAttribute('aria-labelledby', pair[1][i].id); break;
-        }
-      }
-    });
-    camera();
+  function swap(next, done) {
+    if (next === view) { if (done) done(); return; }
+    clearTimeout(fadeT);
+    if (reduce.matches) { apply(next); if (done) done(); return; }
+    field.classList.add('is-fading');
+    fadeT = setTimeout(function () {
+      apply(next);
+      void field.offsetWidth;
+      field.classList.remove('is-fading');
+      if (done) done();
+    }, 180);
   }
-
-  /* Expanding hides the control that was activated and collapsing hides the
-     .fx-back, so the browser would otherwise drop focus to <body> and a
-     keyboard user's next Tab would restart from the top of the document.
-     Hand focus to whatever replaces the control being hidden. */
-  function handFocus(el) {
-    if (!el || el.hidden) return;
-    var had = el.getAttribute('tabindex');
-    el.focus({ preventScroll: true });
-    if (had === null && document.activeElement !== el) { el.tabIndex = -1; el.focus({ preventScroll: true }); }
-  }
-
-  function setFocus(i) {
-    /* Desktop: activating the open panel again returns to the overview.
-       Mobile: the selector is a tablist, so it always resolves to one panel. */
-    focus = (!narrow() && focus === i) ? null : i;
-    paint();
-  }
-  function collapse(restoreFocus) {
-    if (narrow() || focus === null) return;
-    var i = focus;
-    focus = null;
-    paint();
-    if (restoreFocus) handFocus(panels[i] && panels[i].querySelector('.fx-shut'));
-  }
-  function setMoment(i) { moment = i; if (!narrow()) focus = 1; paint(); }
-
-  focusBtn.forEach(function (b) {
-    var i = +b.dataset.focus;
-    b.addEventListener('click', function () {
-      var was = focus;
-      setFocus(i);
-      if (focus === i) {
-        if (!shown(b)) handFocus(panels[i] && panels[i].querySelector('[data-collapse]'));
-      } else if (was === i) {
-        handFocus(panels[i] && panels[i].querySelector('.fx-shut'));
-      }
-    });
-  });
-  backBtn.forEach(function (b) { b.addEventListener('click', function () { collapse(true); }); });
-  [stages, mtabs].forEach(function (list) {
-    list.forEach(function (b) {
-      b.addEventListener('click', function () { setMoment(+b.dataset.moment); });
-    });
-  });
-
-  /* Arrow keys move selection inside the three tablists. The desktop panels
-     are expand/collapse buttons, where arrows mean nothing, so they are not
-     included. */
-  function arrows(list, set) {
-    list.forEach(function (b, i) {
-      b.addEventListener('keydown', function (e) {
-        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-        e.preventDefault();
-        var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
-        var j = (i + d + list.length) % list.length;
-        set(j);
-        list[j].focus();
-      });
-    });
-  }
-  arrows(tabs,   function (j) { focus = j; paint(); });
-  arrows(stages, function (j) { setMoment(j); });
-  arrows(mtabs,  function (j) { setMoment(j); });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    /* Only take focus back if it was inside the field to begin with. */
-    collapse(root.contains(document.activeElement));
-  });
-
-  window.addEventListener('hashchange', function () {
-    var i = hashFocus();
-    if (i !== null && focus !== i) setFocus(i);
-    showMobileSelector();
-  });
-  window.addEventListener('load', showMobileSelector);
-
-  var rt = 0;
-  window.addEventListener('resize', function () {
-    clearTimeout(rt);
-    rt = setTimeout(paint, 120);
-  });
-
-  paint();
-  showMobileSelector();
-})();
-</script>
-<script>
-/* Supporting criteria (Income): two readings of the same asset, one shown at a
-   time. "What we look for" opens; "Where the downside sits" is one press
-   away. Both lists are in the page whatever is shown, and without script both
-   are drawn one after the other. */
-(function () {
-  [].forEach.call(document.querySelectorAll('[data-pair]'), function (pair) {
-    var tabs = [].slice.call(pair.querySelectorAll('.fx-pair-tab'));
-    var panels = [].slice.call(pair.querySelectorAll('.fx-pair-panel'));
-    if (!tabs.length || tabs.length !== panels.length) return;
-    function pick(i, focus) {
-      tabs.forEach(function (t, j) {
-        var on = i === j;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.tabIndex = on ? 0 : -1;
-        if (on && focus) t.focus({ preventScroll: true });
-      });
-      panels.forEach(function (p, j) { p.classList.toggle('is-on', j === i); });
+  function openDetail(i, byUser, btn) {
+    var key = String(i);
+    if (view === key) return;
+    if (byUser) {
+      opener = btn || null;
+      savedY = window.pageYOffset;
+      try { history.pushState({ fx: i }, '', '#' + ids[i]); pushed = true; } catch (e) {}
     }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { pick(i); });
-      t.addEventListener('keydown', function (e) {
-        var n = null;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
-        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
-        else if (e.key === 'Home') n = 0;
-        else if (e.key === 'End') n = tabs.length - 1;
-        if (n === null) return;
-        e.preventDefault();
-        pick(n, true);
-      });
+    swap(key, function () {
+      if (!byUser) return;
+      var t = panes[key].querySelector('.fx-det-title');
+      if (t) t.focus({ preventScroll: true });
     });
-    pick(0);
+  }
+  function closeDetail() {
+    if (view === 'overview') return;
+    if (pushed && history.state && history.state.fx !== undefined) { history.back(); return; }
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    toOverview(true);
+  }
+  function toOverview(restore) {
+    swap('overview', function () {
+      if (restore && savedY !== null) { window.scrollTo(0, savedY); }
+      if (restore && opener) opener.focus({ preventScroll: true });
+      else if (restore) { var s = field.querySelector('.fx-shut'); if (s) s.focus({ preventScroll: true }); }
+    });
+  }
+  function sync(landing) {
+    var want = fromHash();
+    if (want === view) return;
+    if (want === 'overview') { toOverview(true); }
+    else {
+      swap(want, function () {
+        if (landing) { var p = panes[want]; if (p) p.scrollIntoView({ block: 'start' }); }
+      });
+    }
+  }
+
+  openers.forEach(function (b) {
+    b.addEventListener('click', function () { openDetail(+b.dataset.focus, true, b); });
   });
+  [].forEach.call(field.querySelectorAll('[data-collapse]'), function (b) {
+    b.addEventListener('click', closeDetail);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && view !== 'overview' && root.contains(document.activeElement)) closeDetail();
+  });
+  window.addEventListener('popstate', function () { sync(false); });
+  window.addEventListener('hashchange', function () { sync(true); });
+
+  /* Repositioning stages: roving tabindex, arrows, Home and End; one panel names the tab now showing. */
+  var stages = [].slice.call(field.querySelectorAll('.fx-stage'));
+  var sc = field.querySelector('.fx-swap');
+  function pick(i, focus) {
+    stages.forEach(function (b, j) {
+      var on = j === i;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      if (on && focus) b.focus({ preventScroll: true });
+    });
+    if (sc) {
+      [].forEach.call(sc.children, function (c, j) { if (j === i) c.setAttribute('data-on', ''); else c.removeAttribute('data-on'); });
+      var panel = document.getElementById('fx-stage-panel');
+      if (panel && stages[i]) panel.setAttribute('aria-labelledby', stages[i].id);
+    }
+  }
+  stages.forEach(function (b, i) {
+    b.addEventListener('click', function () { pick(i, false); });
+    b.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % stages.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + stages.length) % stages.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = stages.length - 1;
+      if (n === null) return;
+      e.preventDefault();
+      pick(n, true);
+    });
+  });
+
+  var start = fromHash();
+  if (start !== 'overview') {
+    apply(start);
+    window.addEventListener('load', function () {
+      var p = panes[start];
+      if (p && view === start) p.scrollIntoView({ block: 'start' });
+    });
+  }
 })();
 </script>
 <script src="shell.js?v=79"></script>
