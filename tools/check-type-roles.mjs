@@ -52,13 +52,13 @@ const ROLES = {
   },
   h2: {
     token: '--type-h2',
-    selectors: ['main h2:not(.hm-title)'],
+    selectors: ['main h2:not(.hm-title):not(.hp-title)'],
   },
   h3: {
     token: '--type-h3',
     // subsection headings, card titles and item titles
     selectors: [
-      '.hi-role-n', '.hp-item h3', '.hf-cap h3',
+      '.hi-role-n', '.hf-cap h3',
       '.am-city', '.aw-stage', '.aw-sp-n',
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
@@ -77,6 +77,17 @@ const ROLES = {
   marketCity: {
     token: '--hm-city',
     selectors: ['.hm-city'],
+  },
+  // Built from the Investor Side is a quiet band on secondary ivory, so its
+  // heading and principle titles have their own tokens (--hp-title, --hp-h3,
+  // defined beside the section in index.html and ja/index.html).
+  homeBandTitle: {
+    token: '--hp-title',
+    selectors: ['.hp-title'],
+  },
+  homeBandItem: {
+    token: '--hp-h3',
+    selectors: ['.hp-item h3'],
   },
   // A step below a subsection title: the tests under Selective Hospitality.
   item: {
