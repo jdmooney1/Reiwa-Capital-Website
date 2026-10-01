@@ -52,19 +52,31 @@ const ROLES = {
   },
   h2: {
     token: '--type-h2',
-    selectors: ['main h2'],
+    selectors: ['main h2:not(.hm-title)'],
   },
   h3: {
     token: '--type-h3',
     // subsection headings, card titles and item titles
     selectors: [
-      '.hm-city', '.hi-role-n', '.hp-item h3', '.hf-cap h3',
+      '.hi-role-n', '.hp-item h3', '.hf-cap h3',
       '.am-city', '.aw-stage', '.aw-sp-n',
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
       '.fx-name', '.fx-stagehead', '.hs-title', '.dl-n',
       '.co-tier-n', '.hi-phase-n',
     ],
+  },
+  // The Home Two Markets comparison is set a step quieter than the other
+  // section headings so it reads as one editorial row: its title and its
+  // two city names have their own tokens (--hm-title, --hm-city, defined
+  // beside the section in index.html and ja/index.html).
+  marketTitle: {
+    token: '--hm-title',
+    selectors: ['.hm-title'],
+  },
+  marketCity: {
+    token: '--hm-city',
+    selectors: ['.hm-city'],
   },
   // A step below a subsection title: the tests under Selective Hospitality.
   item: {

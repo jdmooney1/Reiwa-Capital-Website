@@ -131,44 +131,43 @@
   }
 
   /* --- 3 · 市場 --------------------------------------------------------- */
-  .hm { padding: 0 0 var(--section-major); }
+  /* One coordinated comparison, not two cards: both markets sit on a shared row grid (photograph, name,
+     description, three traits), so corresponding rows align however long either description runs. */
+  :root { --hm-title: clamp(30px, calc(1.4vw + 22px), 42px); --hm-city: clamp(24px, calc(0.5vw + 20px), 28px); }
+  .hm { --hm-gap: clamp(40px, 5.5vw, 80px); padding: 0 0 var(--section-major); }
   .hm .shell { padding-top: 0; }
-  .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
-
-  .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3.2vw, 56px); margin-top: clamp(32px, 3.5vw, 52px); align-items: start; }
-
-  .hm-photo { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--plum); }
+  .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
+  .hm-title { margin: 0; font-size: var(--hm-title); line-height: 1.3; letter-spacing: 0; text-wrap: balance; }
+  .hm-sub { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; margin: 10px 0 0; max-width: 32em; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
+  .hm-more { margin-bottom: 2px; flex: none; }
+  .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--hm-gap); margin-top: clamp(48px, 4.4vw, 64px); align-items: start; }
+  .hm-col { display: flex; flex-direction: column; min-width: 0; }
+  .hm-photo { position: relative; aspect-ratio: 2 / 1; overflow: hidden; background: var(--plum); }
   .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; filter: var(--img-grade); }
-  .hm-col .hm-city { margin-top: var(--fluid-xs); }
-  .hm-city { margin: 0; font-family: var(--jp); font-weight: 400; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0; color: var(--ink); }
-  .hm-copy { margin-top: 12px; max-width: 28em; }
-  /* The photograph runs about 230px deeper than three lines of caption at
-     1440. Rather than pad the column, the characteristics already carried in
-     the sentence are set out under it: one lead, then the three facts that
-     sentence was enumerating. No claim is added. */
-  .hm-col { display: flex; flex-direction: column; }
-  .hm-col .hm-facts { margin-top: auto; }
-  .hm-col .hm-copy { margin-bottom: var(--fluid-xs); }
-  .hm-foot { margin-top: var(--fluid-m); }
-  .hm-facts { list-style: none; margin: var(--fluid-xs) 0 0; padding: 0; display: grid; max-width: 28em; }
-  .hm-facts li { padding: var(--fluid-2xs) 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: 14.5px; line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
-  .hm-facts li:last-child { border-bottom: 1px solid var(--rule); }
-  @media (max-width: 900px) { .hm-facts { max-width: none; } }
-  /* 二つの市場を組み合わせる意味：見出しと三つの要点を、Reiwaについての
-     ページの一覧と同じ罫線と段組みの型で置く。 */
-  @media (max-width: 900px) {
+  .hm-city { margin: 20px 0 0; font-family: var(--jp); font-weight: 400; font-size: var(--hm-city); line-height: 1.3; letter-spacing: 0; color: var(--ink); }
+  .hm-copy { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; margin: 10px 0 0; max-width: 26em; font-size: var(--type-body-l); line-height: 1.8; color: var(--ink); text-wrap: pretty; }
+  .hm-facts { list-style: none; margin: 28px 0 0; padding: 0; }
+  .hm-facts li { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; padding: 14px 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: var(--type-body); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; }
+  .hm-facts li:first-child { border-top-color: var(--rule-strong); }
+  @media (min-width: 761px) {
+    @supports (grid-template-rows: subgrid) {
+      .hm-cols { grid-template-rows: repeat(6, auto); }
+      .hm-col { display: grid; grid-row: span 6; grid-template-rows: subgrid; }
+      .hm-facts { display: contents; }
+      .hm-facts li:first-child { margin-top: 28px; }
+    }
   }
   @media (max-width: 760px) {
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 22px; gap: 40px; }
-    /* Mobile composition: on a phone the homepage otherwise runs more than two
-       thousand pixels of stacked text before the first photograph. The market
-       photograph and the two focus fields leave the gutter and run edge to
-       edge, which gives the column a change of texture at the two points where
-       the argument changes, and keeps the focus imagery at a scale worth
-       looking at rather than turning it into a pair of thumbnails. */
+    .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
+    .hm-col + .hm-col { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--rule-strong); }
+    /* Mobile composition: the market photograph and the two focus fields leave the gutter and run edge to
+       edge, at a shallower crop. */
     .hm-photo, .hf-grid { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
-    .hm-photo { aspect-ratio: 1537 / 659; }
+    .hm-photo { aspect-ratio: 5 / 2; }
+    .hm-city { margin-top: 24px; }
+    .hm-facts { margin-top: 20px; }
+    .hm-facts li { padding: 12px 0; }
     .hf-item { aspect-ratio: 4 / 5; }
     .hf-cap { padding: var(--fluid-s) var(--gutter); }
   }
@@ -305,17 +304,21 @@
 </section>
 
 <!-- ================================================================ 3 · 市場 -->
-<section class="hm" data-screen-label="03 ホーム — 市場" aria-labelledby="hm-title">
+<section class="hm" data-screen-label="03 ホーム — markets" aria-labelledby="hm-title">
   <div class="shell">
     <div class="hm-head">
-      <h2 class="h-h2" id="hm-title">二つの市場</h2>
+      <div class="hm-head-text">
+        <h2 class="h-h2 hm-title" id="hm-title">二つの市場</h2>
+        <p class="hm-sub">ロンドンと<wbr>アムステルダム。<wbr>いずれも対象を<wbr>意図的に絞っています。</p>
+      </div>
+      <a class="enq-cta hm-more" href="about.html#markets">注力市場を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
     </div>
     <div class="hm-cols">
       <div class="hm-col">
         <div class="hm-photo"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
-          <h3 class="hm-city">ロンドン</h3>
-        <p class="h-body hm-copy">ロンドンは、資本市場に厚みがあり、<span class="jt">テナント</span>需要が幅広く、金融・専門家の<span class="jt">ネットワーク</span>も成熟しています。需要と資金調達の基盤が整っているため、判断の重みは物件と事業計画に置かれます。<span lang="en">Reiwa Capital</span>は、投資家が資本を投じる前に、その両方と出口を検証します。</p>
-        <ul class="hm-facts">
+        <h3 class="hm-city">ロンドン</h3>
+        <p class="h-body hm-copy">厚みのある資本市場、<wbr>幅広い<span class="jt">テナント</span>需要、<wbr>成熟した金融<span class="jt">ネットワーク</span>を<wbr>備えています。<wbr>資産、<wbr>事業計画、<wbr>売却の確実性を<wbr>個別に検証します。</p>
+        <ul class="hm-facts" role="list">
           <li>幅広い<span class="jt">テナント</span>需要</li>
           <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
           <li>売却時の買い手層の厚み</li>
@@ -323,16 +326,15 @@
       </div>
       <div class="hm-col">
         <div class="hm-photo"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (max-width: 900px) 92vw, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
-          <h3 class="hm-city">アムステルダム</h3>
-        <p class="h-body hm-copy">アムステルダムは、<span class="jt">コンパクト</span>で供給が限られ、都市計画と環境要件が厳格な市場です。そのため、許可用途と技術的な状態が判断を左右します。選任された専門家が購入前に両方を確認し、<span lang="en">Reiwa Capital</span>は保有期間中、その状況と必要となり得る資本を継続的に確認し、投資家に報告します。</p>
-        <ul class="hm-facts">
+        <h3 class="hm-city">アムステルダム</h3>
+        <p class="h-body hm-copy">供給が限られ、<wbr>都市計画と環境要件が<wbr>厳格な市場です。<wbr>許可用途、<wbr>建物の状態、<wbr>保有期間中に<wbr>必要となる資本を<wbr>重視します。</p>
+        <ul class="hm-facts" role="list">
           <li>供給が限られた<span class="jt">コンパクト</span>な市場</li>
           <li>確立した<span class="jt">テナント</span>需要</li>
           <li>機関投資家を含む買い手層</li>
         </ul>
       </div>
     </div>
-    <div class="hm-foot"><a class="enq-cta" href="about.html#markets">両市場の詳細を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
