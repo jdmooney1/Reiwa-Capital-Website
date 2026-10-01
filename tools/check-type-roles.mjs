@@ -59,7 +59,7 @@ const ROLES = {
     // subsection headings, card titles and item titles
     selectors: [
       '.hi-role-n', '.hf-cap h3',
-      '.am-city', '.aw-stage', '.aw-sp-n',
+      '.am-city', '.aw-st-n',
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
       '.fx-name', '.fx-stagehead', '.hs-title', '.dl-n',
@@ -108,6 +108,13 @@ const ROLES = {
     token: '--hf-feat-title',
     selectors: ['.hf-feature-title'],
   },
+  // The About continuity comparison states its reading in one line above the
+  // supporting sentence (--aw-msg, defined beside the panel in about.html and
+  // ja/about.html).
+  continuityMessage: {
+    token: '--aw-msg',
+    selectors: ['.aw-msg-t'],
+  },
   // A step below a subsection title: the tests under Selective Hospitality.
   item: {
     token: '--type-body-l',
@@ -117,7 +124,7 @@ const ROLES = {
     token: '--type-caption',
     selectors: [
       '.hi-span-k', '.hf-feature-k',
-      '.am-k', '.aw-stage-s', '.aw-sp-st', '.aw-lane-s',
+      '.am-k', '.aw-st-s',
       '.lf-period', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
       '.fx-param-k', '.fx-band-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
     ],
