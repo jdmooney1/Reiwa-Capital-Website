@@ -91,105 +91,85 @@
   .ab-lede { margin-top: var(--fluid-2xs); max-width: 50ch; text-wrap: balance; }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
-  /* --- 2 · Why Reiwa exists: the continuity switch --------------------------
-     The same four phases, read two ways. Without a coordinating layer the
-     line is four short segments that never meet, each held by a different
-     party. With Reiwa Capital it is one unbroken line and one investor-side
-     view. One control, two states — the page says nothing a reader has to
-     take on trust; it shows the difference. */
-  .aw-field { margin-top: var(--fluid-l); background: var(--plum); padding: var(--fluid-s) var(--fluid-s) clamp(28px, 2.8vw, 40px); }
-  /* The two readings are a pair of tabs on a shared rule, the same grammar
-     as the market selector below: the selected one carries the rule. */
-  .aw-switch { display: flex; gap: clamp(22px, 3vw, 40px); align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid rgba(247, 243, 234,.18); }
-  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: rgba(247, 243, 234,.64); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-sw[aria-pressed="true"] { color: var(--cream); border-bottom-color: var(--cream); }
-  .aw-sw:focus-visible { outline: 2px solid var(--on-plum); outline-offset: 3px; }
+  /* --- 2 · Why Reiwa exists: the continuity comparison --------------------------
+     One comparison, two states: fragmented, stage-by-stage oversight against one continuous investor-side
+     view. The three stages, the investor-authority line and the specialists are the same in both states;
+     only the line beneath the stages and the message below it change. Both messages share one grid cell,
+     so switching never moves the page. */
+  :root { --aw-msg: clamp(24px, calc(0.8vw + 17.5px), 29px); }
+  .aw-field { --aw-bg: #3A2443; --aw-2: #BFB4C7; --aw-dim: rgba(247, 243, 234, .4); --aw-gap: clamp(20px, 2.6vw, 36px);
+    margin-top: var(--fluid-l); background: var(--aw-bg); color: var(--cream); padding: clamp(28px, 3.4vw, 48px) clamp(20px, 4vw, 56px) clamp(30px, 3.2vw, 44px); }
+  /* Two states as a tab pair on a shared rule: the selected one carries the rule. */
+  .aw-switch { display: flex; gap: clamp(24px, 3vw, 40px); flex-wrap: wrap; border-bottom: 1px solid rgba(247, 243, 234, .18); }
+  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: var(--aw-2); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-sw[aria-selected="true"] { color: var(--cream); border-bottom-color: var(--cream); }
+  .aw-sw:focus-visible, .aw-panel:focus-visible { outline: 2px solid var(--on-plum); outline-offset: 4px; }
   @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
-  .aw-flow { margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
-  /* Three lanes across the same three periods. The investor's line never
-     breaks. Oversight is the line that either runs through every period or
-     stops short of each one. The specialists are a separate row of their own
-     appointments, one per period, in every state. */
-  .aw-row { display: grid; grid-template-columns: var(--aw-k) minmax(0, 1fr); column-gap: var(--aw-gap); }
-  .aw-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
-  .aw-row--head { align-items: end; padding-bottom: 14px; border-bottom: 1px solid rgba(247, 243, 234,.22); }
-  .aw-stage { display: flex; flex-direction: column; gap: 7px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-  .aw-stage-s { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(247, 243, 234,.72); }
-  .aw-lane { margin-top: clamp(22px, 2.4vw, 32px); align-items: start; }
-  .aw-lane-k { display: flex; flex-direction: column; gap: 3px; }
-  .aw-lane-n { font-family: 'DM Sans', sans-serif; font-size: clamp(17px, 15px + 0.4vw, 19px); line-height: 1.3; color: var(--cream); }
-  .aw-lane-s { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.72); }
-  .aw-bar { height: 3px; margin-top: 12px; background: var(--cream); }
-  .aw-bar--rc { margin-top: 16px; background: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--aw-gap); }
-  .aw-bar--rc i { display: block; height: 3px; width: 70%; background: rgba(142,122,156,.55); transition: width 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-field[data-flow="with"] .aw-bar--rc i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
-  .aw-field[data-flow="with"] .aw-bar--rc i:last-child { width: 100%; }
-  .aw-note { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); }
-  /* Each state has its own caption. The two share one grid cell, so the
-     field keeps its height and only the words change. */
-  .aw-ribbons { display: grid; }
-  .aw-ribbon { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 3px; opacity: 0; visibility: hidden; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 360ms; }
-  .aw-field[data-flow="with"] .aw-ribbon--with, .aw-field[data-flow="without"] .aw-ribbon--without { opacity: 1; visibility: visible; transition-delay: 0s, 0s; }
-  .aw-ribbon-n { font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.4vw, 18px); line-height: 1.3; color: var(--cream); }
-  .aw-ribbon--with .aw-ribbon-n { color: var(--aw-rc); }
-  .aw-ribbon--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
-  .aw-ribbon-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); max-width: 62ch; text-wrap: pretty; }
-  .aw-lane--spec { margin-top: 16px; }
-  .aw-specs { align-self: start; }
-  .aw-spec { position: relative; }
-  /* With oversight, a short tie runs from the line to each appointment: the
-     work is coordinated from the investor's side. Without it there is none. */
-  .aw-spec::before { content: ""; position: absolute; left: 22px; top: -16px; width: 1px; height: 16px; background: var(--aw-rc); opacity: 0; transition: opacity 360ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
-  .aw-spec { box-sizing: border-box; padding: 10px 14px; border: 1px solid rgba(247, 243, 234,.30); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.45; color: rgba(247, 243, 234,.86); }
-  .aw-specs-k { display: none; }
-  /* At 1024px and wider both readings are shown together: one shared
-     header, the investor line, the oversight line with and without a
-     coordinating layer, and the specialists. Below 1024 the switch above
-     chooses one reading at a time. */
-  .aw-pair { display: none; margin-top: var(--fluid-s); --aw-k: clamp(150px, 16vw, 210px); --aw-gap: var(--fluid-xs); --aw-rc: #B8A3CC; }
-  .aw-cmp { display: grid; gap: 20px; }
-  .aw-cmp-item .aw-ribbon { display: flex; flex-direction: column; gap: 3px; opacity: 1; visibility: visible; transition: none; }
-  .aw-cmp-item .aw-bar--rc { margin-top: 10px; }
-  .aw-cmp-item--with .aw-ribbon-n { color: var(--aw-rc); }
-  .aw-cmp-item--without .aw-ribbon-n { color: rgba(247, 243, 234,.8); }
-  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i { width: 70%; background: rgba(142,122,156,.55); }
-  .aw-field .aw-pair .aw-cmp-item--without .aw-bar--rc i:last-child { width: 70%; }
-  .aw-bar--joined i { width: calc(100% + var(--aw-gap)); background: var(--aw-rc); }
-  .aw-bar--joined i:last-child { width: 100%; }
-  .aw-pair .aw-spec::before { opacity: 1; }
+  .aw-panel { margin-top: 28px; }
+  .aw-auth { max-width: none; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 1px solid rgba(247, 243, 234, .34); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.45; color: var(--aw-2); }
+  .aw-rc { max-width: none; margin: 0 0 12px 26px; font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.4; color: var(--cream); visibility: hidden; }
+  .aw-field[data-flow="with"] .aw-rc { visibility: visible; }
+  .aw-sts { display: block; }
+  .aw-st { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 14px; align-content: start; padding: 0 0 26px 26px; }
+  .aw-st:last-child { padding-bottom: 0; }
+  .aw-st-n { grid-column: 1; grid-row: 1; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
+  .aw-st-s { grid-column: 1; grid-row: 2; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: var(--aw-2); }
+  .aw-spec { position: relative; grid-column: 2; grid-row: 1 / span 2; align-self: start; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.45; color: rgba(247, 243, 234, .88); }
+  /* On a phone the comparison line is the rail down the left of the stages: three separate segments
+     without coordination, one unbroken line with it. */
+  .aw-seg { position: absolute; left: 0; top: 6px; bottom: 14px; width: 2px; background: var(--aw-dim); transition: bottom 420ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 420ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .aw-st:last-child .aw-seg { bottom: 0; }
+  .aw-field[data-flow="with"] .aw-seg { bottom: -6px; background: var(--cream); }
+  .aw-field[data-flow="with"] .aw-st:last-child .aw-seg { bottom: 0; }
+  .aw-msgs { display: grid; margin-top: 32px; }
+  .aw-msg { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 320ms; }
+  .aw-field[data-flow="with"] .aw-msg--with, .aw-field[data-flow="without"] .aw-msg--without { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
+  .aw-msg-t { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--aw-msg); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
+  .aw-msg-d { margin: 10px 0 0; max-width: 56ch; font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 14.4px + 0.15vw, 16.5px); line-height: 1.5; color: var(--aw-2); text-wrap: pretty; }
   .aw-close { margin: var(--fluid-xs) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
-  @media (min-width: 1024px) {
-    .aw-switch, .aw-flow { display: none; }
-    .aw-pair { display: block; }
-  }
-  /* Below 760px the same three periods read down a spine. */
-  .aw-spine { display: none; }
   @media (max-width: 760px) {
-    .aw-flow { display: none; }
-    .aw-spine { display: block; margin-top: 16px; --aw-rc: #B8A3CC; }
-    .aw-inv { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; padding-bottom: 12px; border-bottom: 3px solid var(--cream); }
-    .aw-inv-n { font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.3; color: var(--cream); }
-    .aw-inv-note { font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.4; color: rgba(247, 243, 234,.78); }
-    .aw-sp-ribbon { margin-top: 16px; }
-    .aw-sp-track { position: relative; margin-top: 18px; padding-left: 30px; }
-    .aw-sp-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-    .aw-sp-rail i { position: absolute; left: 0; width: 3px; height: 24%; background: rgba(142,122,156,.55); transition: height 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 480ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-    .aw-sp-rail i:nth-child(1) { top: 0; } .aw-sp-rail i:nth-child(2) { top: 33.333%; } .aw-sp-rail i:nth-child(3) { top: 66.667%; }
-    .aw-field[data-flow="with"] .aw-sp-rail i { height: 33.334%; background: var(--aw-rc); }
-    .aw-sp-rows { display: grid; grid-template-rows: repeat(3, minmax(96px, auto)); }
-    .aw-sp-row { display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; }
-    .aw-sp-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
-    .aw-sp-st { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: rgba(247, 243, 234,.72); }
-    .aw-sp-s { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border: 1px solid rgba(247, 243, 234,.30); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.4; color: rgba(247, 243, 234,.86); }
-    .aw-sp-s b { font-weight: 400; color: rgba(247, 243, 234,.62); margin-right: 6px; }
-    .aw-field { margin-top: 26px; padding: 16px 18px 22px; }
-    .aw-switch { gap: 18px; }
-    .aw-sw { font-size: 15px; padding: 4px 0 10px; }
+    .aw-field { margin-top: 26px; padding: 18px 18px 26px; }
+    .aw-switch { flex-wrap: nowrap; gap: 16px; }
+    .aw-sw { flex: 1 1 0; min-width: 0; text-align: left; font-size: 15px; padding: 4px 0 10px; }
+    .aw-panel { margin-top: 22px; }
+    .aw-msgs { margin-top: 28px; }
+  }
+  @media (max-width: 380px) {
+    .aw-st { grid-template-columns: minmax(0, 1fr); }
+    .aw-spec { grid-column: 1; grid-row: 3; margin-top: 8px; }
+  }
+  /* From 761px the three stages sit side by side on shared rows (name, descriptor, authority line, label,
+     comparison line, specialists), so every column lines up whatever its text does. */
+  @media (min-width: 761px) {
+    @supports (grid-template-rows: subgrid) {
+      .aw-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(6, auto); column-gap: var(--aw-gap); margin-top: 28px; }
+      .aw-sts { display: contents; }
+      .aw-st { display: grid; grid-row: 1 / span 6; grid-template-columns: minmax(0, 1fr); grid-template-rows: subgrid; padding: 0; }
+      .aw-st:nth-child(1) { grid-column: 1; } .aw-st:nth-child(2) { grid-column: 2; } .aw-st:nth-child(3) { grid-column: 3; }
+      .aw-st-n { grid-column: 1; grid-row: 1; }
+      .aw-st-s { grid-column: 1; grid-row: 2; }
+      .aw-auth { grid-column: 1 / -1; grid-row: 3; margin: 22px 0 0; }
+      .aw-rc { grid-column: 1 / -1; grid-row: 4; margin: 16px 0 0; text-align: center; }
+      /* Without coordination each stage has its own short segment; with it the segments are joined across the
+         gutters into one line. The broken state is a scale of the same line, so the change is a transform and
+         never a reflow. */
+      .aw-seg { position: relative; grid-column: 1; grid-row: 5; align-self: start; height: 2px; width: 100%; margin-top: 8px; transform-origin: 0 50%; transform: scaleX(.72); transition: transform 420ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 420ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+      .aw-seg::after { content: ""; position: absolute; left: 100%; top: 0; width: var(--aw-gap); height: 100%; background: var(--cream); opacity: 0; transition: opacity 420ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+      .aw-st:last-child .aw-seg::after { display: none; }
+      .aw-field[data-flow="with"] .aw-seg { transform: none; }
+      .aw-field[data-flow="with"] .aw-seg::after { opacity: 1; }
+      .aw-spec { grid-column: 1; grid-row: 6; margin-top: 18px; }
+      /* With coordination a short tie runs from the line to each appointment: the work is coordinated from
+         the investor's side. */
+      .aw-spec::before { content: ""; position: absolute; left: 0; top: -18px; width: 1px; height: 12px; background: rgba(247, 243, 234, .55); opacity: 0; transition: opacity 320ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+      .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
+      .aw-msgs { grid-column: 1 / -1; grid-row: 7; margin-top: 36px; }
+    }
   }
   @media (prefers-reduced-motion: reduce) {
-    .aw-sw, .aw-bar--rc i, .aw-ribbon, .aw-sp-rail i, .aw-spec::before { transition: none; }
+    .aw-sw, .aw-seg, .aw-seg::after, .aw-msg, .aw-spec::before { transition: none; }
   }
+
   /* --- 3 · Focus markets: the signature section ------------------------ */
   /* Two markets, two sections. Each is full width and as deep as its
      content (no viewport-height minimum, which left a blank band under the
@@ -352,114 +332,41 @@
       <p class="h-body ab-lede">Acquiring an overseas asset is only one part of the investment. What follows needs consistent oversight, and reassessment as conditions change, through execution, ownership and exit.</p>
     </div>
     <div class="aw-field" data-flow="with" data-continuity>
-      <div class="aw-switch" role="group" aria-label="Lifecycle view">
-        <button class="aw-sw" type="button" data-flow-btn="without" aria-pressed="false">Without Coordination</button>
-        <button class="aw-sw" type="button" data-flow-btn="with" aria-pressed="true">With Reiwa Capital</button>
+      <div class="aw-switch" role="tablist" aria-label="Lifecycle view">
+        <button class="aw-sw" type="button" role="tab" id="aw-tab-without" aria-selected="false" aria-controls="aw-panel" tabindex="-1" data-flow-btn="without">Without Coordination</button>
+        <button class="aw-sw" type="button" role="tab" id="aw-tab-with" aria-selected="true" aria-controls="aw-panel" data-flow-btn="with">With Reiwa Capital</button>
       </div>
-
-      <div class="aw-flow">
-        <div class="aw-row aw-row--head">
-          <span></span>
-          <div class="aw-cols">
-            <span class="aw-stage">Formation<small class="aw-stage-s">Mandate <span aria-hidden="true">·</span> Assess</small></span>
-            <span class="aw-stage">Execution<small class="aw-stage-s">Structure <span aria-hidden="true">·</span> Acquire</small></span>
-            <span class="aw-stage">Ownership<small class="aw-stage-s">Own <span aria-hidden="true">·</span> Exit</small></span>
+      <div class="aw-panel" id="aw-panel" role="tabpanel" aria-labelledby="aw-tab-with" tabindex="0">
+        <p class="aw-auth">Investor mandate and material decisions retained</p>
+        <p class="aw-rc">Reiwa Capital</p>
+        <div class="aw-sts">
+        <div class="aw-st">
+          <span class="aw-st-n">Formation</span>
+          <span class="aw-st-s">Mandate <span aria-hidden="true">&middot;</span> Assess</span>
+          <i class="aw-seg" aria-hidden="true"></i>
+          <span class="aw-spec">Valuer <span aria-hidden="true">&middot;</span> Legal</span>
+        </div>
+        <div class="aw-st">
+          <span class="aw-st-n">Execution</span>
+          <span class="aw-st-s">Structure <span aria-hidden="true">&middot;</span> Acquire</span>
+          <i class="aw-seg" aria-hidden="true"></i>
+          <span class="aw-spec">Legal <span aria-hidden="true">&middot;</span> Lender <span aria-hidden="true">&middot;</span> Technical</span>
+        </div>
+        <div class="aw-st">
+          <span class="aw-st-n">Ownership</span>
+          <span class="aw-st-s">Own <span aria-hidden="true">&middot;</span> Exit</span>
+          <i class="aw-seg" aria-hidden="true"></i>
+          <span class="aw-spec">Property Manager <span aria-hidden="true">&middot;</span> Agent</span>
+        </div>
+        </div>
+        <div class="aw-msgs">
+          <div class="aw-msg aw-msg--without">
+            <p class="aw-msg-t">No single oversight mandate</p>
+            <p class="aw-msg-d">Each specialist covers its own stage; no one is mandated to maintain the investor&rsquo;s view throughout.</p>
           </div>
-        </div>
-        <div class="aw-row aw-lane">
-          <div class="aw-lane-k"><span class="aw-lane-n">Investor</span></div>
-          <div><p class="aw-note">Mandate and decisions retained</p><div class="aw-bar" aria-hidden="true"></div></div>
-        </div>
-        <div class="aw-row aw-lane">
-          <div class="aw-lane-k"><span class="aw-lane-n">Oversight</span></div>
-          <div>
-            <div class="aw-ribbons">
-              <div class="aw-ribbon aw-ribbon--with">
-                <span class="aw-ribbon-n">Reiwa Capital</span>
-                <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
-              </div>
-              <div class="aw-ribbon aw-ribbon--without">
-                <span class="aw-ribbon-n">No single oversight mandate</span>
-                <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
-              </div>
-            </div>
-            <div class="aw-bar aw-bar--rc" aria-hidden="true"><i></i><i></i><i></i></div>
-          </div>
-        </div>
-        <div class="aw-row aw-lane aw-lane--spec">
-          <div class="aw-lane-k"><span class="aw-lane-n">Specialists</span><span class="aw-lane-s">Appointed at each stage</span></div>
-          <div class="aw-specs aw-cols">
-            <span class="aw-spec">Valuer / Legal</span>
-            <span class="aw-spec">Legal / Lender / Technical</span>
-            <span class="aw-spec">Property Management / Agent</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="aw-pair">
-        <div class="aw-row aw-row--head">
-          <span></span>
-          <div class="aw-cols">
-            <span class="aw-stage">Formation<small class="aw-stage-s">Mandate <span aria-hidden="true">·</span> Assess</small></span>
-            <span class="aw-stage">Execution<small class="aw-stage-s">Structure <span aria-hidden="true">·</span> Acquire</small></span>
-            <span class="aw-stage">Ownership<small class="aw-stage-s">Own <span aria-hidden="true">·</span> Exit</small></span>
-          </div>
-        </div>
-        <div class="aw-row aw-lane">
-          <div class="aw-lane-k"><span class="aw-lane-n">Investor</span></div>
-          <div><p class="aw-note">Mandate and decisions retained</p><div class="aw-bar" aria-hidden="true"></div></div>
-        </div>
-        <div class="aw-row aw-lane">
-          <div class="aw-lane-k"><span class="aw-lane-n">Oversight</span></div>
-          <div>
-            <div class="aw-cmp">
-              <div class="aw-cmp-item aw-cmp-item--without"><div class="aw-ribbon">
-                <span class="aw-ribbon-n">No single oversight mandate</span>
-                <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
-              </div><div class="aw-bar aw-bar--rc" aria-hidden="true"><i></i><i></i><i></i></div></div>
-              <div class="aw-cmp-item aw-cmp-item--with"><div class="aw-ribbon">
-                <span class="aw-ribbon-n">Reiwa Capital</span>
-                <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
-              </div><div class="aw-bar aw-bar--rc aw-bar--joined" aria-hidden="true"><i></i><i></i><i></i></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="aw-row aw-lane aw-lane--spec">
-          <div class="aw-lane-k"><span class="aw-lane-n">Specialists</span><span class="aw-lane-s">Appointed at each stage</span></div>
-          <div class="aw-specs aw-cols">
-            <span class="aw-spec">Valuer / Legal</span>
-            <span class="aw-spec">Legal / Lender / Technical</span>
-            <span class="aw-spec">Property Management / Agent</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="aw-spine">
-        <div class="aw-inv">
-          <span class="aw-inv-n">Investor</span>
-          <span class="aw-inv-note">Mandate and decisions retained</span>
-        </div>
-        <div class="aw-sp-ribbon aw-ribbons">
-                        <div class="aw-ribbon aw-ribbon--with">
-                <span class="aw-ribbon-n">Reiwa Capital</span>
-                <span class="aw-ribbon-note">Investor-side advice and oversight at every stage</span>
-              </div>
-              <div class="aw-ribbon aw-ribbon--without">
-                <span class="aw-ribbon-n">No single oversight mandate</span>
-                <span class="aw-ribbon-note">Each specialist covers its own stage, and no one is mandated to hold the investor’s view throughout</span>
-              </div>
-            
-        </div>
-        <div class="aw-sp-track">
-          <div class="aw-sp-rail" aria-hidden="true">
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-          <div class="aw-sp-rows">
-            <div class="aw-sp-row"><span class="aw-sp-n">Formation</span><span class="aw-sp-st">Mandate <span aria-hidden="true">·</span> Assess</span><span class="aw-sp-s"><b>Specialists</b>Valuer / Legal</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">Execution</span><span class="aw-sp-st">Structure <span aria-hidden="true">·</span> Acquire</span><span class="aw-sp-s"><b>Specialists</b>Legal / Lender / Technical</span></div>
-            <div class="aw-sp-row"><span class="aw-sp-n">Ownership</span><span class="aw-sp-st">Own <span aria-hidden="true">·</span> Exit</span><span class="aw-sp-s"><b>Specialists</b>Property Management / Agent</span></div>
+          <div class="aw-msg aw-msg--with">
+            <p class="aw-msg-t">One continuous investor-side view</p>
+            <p class="aw-msg-d">Reiwa Capital coordinates the appointed specialists across execution and ownership.</p>
           </div>
         </div>
       </div>
@@ -575,18 +482,32 @@
 
 <div data-shell="footer"></div>
 <script>
-/* About — the continuity switch. One control, two readings of the same four
-   phases. The maps are static: the shaded areas and their labels are in the
-   artwork, and the alt text carries the same reading in words. */
+/* About - the continuity comparison. A two-tab control (ArrowLeft/ArrowRight, Home/End, click, touch) that
+   sets data-flow on the field; the CSS swaps the line and the message in place, so nothing reflows. */
 (function () {
   var field = document.querySelector('[data-continuity]');
   if (!field) return;
-  var sw = [].slice.call(field.querySelectorAll('[data-flow-btn]'));
-  sw.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.dataset.flowBtn;
-      field.setAttribute('data-flow', f);
-      sw.forEach(function (o) { o.setAttribute('aria-pressed', o.dataset.flowBtn === f ? 'true' : 'false'); });
+  var tabs = [].slice.call(field.querySelectorAll('[role="tab"]'));
+  var panel = field.querySelector('[role="tabpanel"]');
+  function select(tab, focus) {
+    field.setAttribute('data-flow', tab.dataset.flowBtn);
+    tabs.forEach(function (o) {
+      var on = o === tab;
+      o.setAttribute('aria-selected', on ? 'true' : 'false');
+      o.tabIndex = on ? 0 : -1;
+    });
+    panel.setAttribute('aria-labelledby', tab.id);
+    if (focus) tab.focus({ preventScroll: true });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') n = tabs[0];
+      else if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); select(n, true); }
     });
   });
 })();
