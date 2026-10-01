@@ -60,7 +60,8 @@
   .h-body { font-family: var(--jp); line-height: 1.85; }
 
   /* --- 1 · Hero: the whole first viewport, image-led ------------------ */
-  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 750px; display: flex; align-items: flex-end; overflow: hidden; background: #100b14 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBACdASoQABgAPsFOoEqnpCMhsAgA8BgJQBOgZYJzoXqEBHoOcxgd/vySAAD+78Rum/fbciU5Va/uISbbV7E9DYm71EAV5DQCA9o1y+LGjE39XQsgdeZ4jI1X/6htgozQmVK/JlndT/M0vVCv1m7F0iIp+wtwAv1n1Eidfz0/XpfGsB/2kwtJBXLwHqorSd9O47ev1wA6PVmrZc/0sqgsXo3yJ3cdiyUFkgAA) center 42% / cover no-repeat; }
+  .home-hero { position: relative; margin-top: calc(var(--nav-h, 68px) * -1); min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #100b14 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBACdASoQABgAPsFOoEqnpCMhsAgA8BgJQBOgZYJzoXqEBHoOcxgd/vySAAD+78Rum/fbciU5Va/uISbbV7E9DYm71EAV5DQCA9o1y+LGjE39XQsgdeZ4jI1X/6htgozQmVK/JlndT/M0vVCv1m7F0iIp+wtwAv1n1Eidfz0/XpfGsB/2kwtJBXLwHqorSd9O47ev1wA6PVmrZc/0sqgsXo3yJ3cdiyUFkgAA) center 42% / cover no-repeat; }
+  @supports (min-height: 100dvh) { .home-hero { min-height: 100dvh; } } /* svh is the stable floor; dvh follows the mobile browser toolbars where supported */
   .home-hero .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: transparent; }
   .home-hero .hero-media .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; transform: scale(1.04); }
   .home-hero .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(16,11,20,0.26) 0%, rgba(16,11,20,0) 38%); }
@@ -70,7 +71,7 @@
      share of the hero's height. White type keeps better than 5:1 against what
      is behind it; the rest of the photograph is left as it is. */
   .home-hero .inner::before { content: ""; position: absolute; z-index: -1; pointer-events: none; left: 50%; width: 100vw; transform: translateX(-50%); top: calc(-1 * clamp(28px, 6vh, 64px)); bottom: 0; background: linear-gradient(0deg, rgba(16,11,20,0.72) 0%, rgba(16,11,20,0.58) 42%, rgba(16,11,20,0.30) 78%, rgba(16,11,20,0) 100%); }
-  .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) clamp(64px, 8.5vh, 108px); }
+  .home-hero .inner { position: relative; z-index: 2; width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter) calc(clamp(64px, 8.5vh, 108px) + env(safe-area-inset-bottom, 0px)); }
   .home-hero h1 { font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-page-title); line-height: 1.32; letter-spacing: 0; color: #fff; margin: 0; max-width: 20em; word-break: keep-all; line-break: strict; }
   @media (min-width: 761px) { .home-hero h1 { font-size: var(--type-display); } } /* Home hero only: the one --type-display exception; phones stay on --type-page-title (44px would wrap the headline to five lines at 320-360) */
   .home-hero .sub { margin: clamp(18px, 2.2vw, 28px) 0 0; font-family: var(--jp); font-weight: 400; font-size: clamp(15.5px, 14.2px + 0.35vw, 18px); line-height: 1.8; color: rgba(255,255,255,0.84); max-width: 30em; }
@@ -80,8 +81,7 @@
      second clause takes at most two — measured, not guessed. The hero keeps
      the tighter gutter the English hero uses to buy that room. */
   @media (max-width: 760px) {
-    .home-hero .inner { padding-bottom: clamp(52px, 8vh, 72px); }
-    .home-hero { min-height: 700px; }
+    .home-hero .inner { padding-bottom: calc(clamp(52px, 8vh, 72px) + env(safe-area-inset-bottom, 0px)); }
     .home-hero h1 { line-height: 1.34; letter-spacing: 0; max-width: none; }
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
     .home-hero .loc { margin-top: 28px; }
