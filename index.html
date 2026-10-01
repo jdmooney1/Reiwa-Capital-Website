@@ -171,26 +171,27 @@
   }
 
   /* --- 4 · Built from the investor side -------------------------------- */
-  /* The one moment of weight on the homepage. The aubergine field is the
-     register this firm speaks in when it is being accountable — it carries
-     the approval gates on Approach and the exclusions on Investment Focus,
-     and the four principles belong to the same argument. Full-bleed ground,
-     light hairlines dividing the columns, nothing else: the section reads as
-     a page of a document rather than a panel of cards. */
-  .hp { background: var(--plum); padding: var(--section) 0; }
-  .hp .shell { padding-top: 0; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--fluid-l); align-items: start; }
-  .hp .h-h2 { color: var(--cream); max-width: 12ch; margin: 0; }
-  /* subgrid so every paragraph starts on one line, whatever its heading does:
-     two of the four headings wrap, and without this the column feet stagger. */
+  /* A quiet band, not a field of colour: secondary ivory sets the section apart from the ivory around it,
+     and the aubergine is kept for the heading, the principle titles and one short rule. The three
+     principles read as an editorial list, divided by neutral hairlines. Height follows the content. */
+  :root { --hp-title: clamp(30px, calc(1.4vw + 22px), 42px); --hp-h3: clamp(21px, calc(0.5vw + 17px), 24px); }
+  .hp { background: var(--ivory-2); padding: 88px 0; }
+  .hp .shell { padding-top: 0; padding-bottom: 0; display: grid; grid-template-columns: minmax(0, 31fr) minmax(0, 61fr); column-gap: 8%; align-items: start; }
+  /* The single identifying device: a short aubergine rule beside the heading. */
+  .hp-title { position: relative; margin: -1px 0 0; padding-left: 22px; max-width: 12ch; font-size: var(--hp-title); line-height: 1.1; letter-spacing: -0.016em; color: var(--plum); text-wrap: balance; }
+  .hp-title::before { content: ""; position: absolute; left: 0; top: 0.13em; width: 2px; height: 56px; background: var(--plum); }
   .hp-grid { display: block; margin: 0; padding: 0; }
-  .hp-item { padding: var(--space-4) 0; border-top: 1px solid var(--hairline-light); }
-  .hp-item:first-child { padding-top: 0; border-top: 0; }
-  .hp-item:last-child { padding-bottom: 0; }
-  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--cream); }
-  .hp-item p { margin: var(--fluid-2xs) 0 0; max-width: 46ch; color: rgba(247, 243, 234,.72); text-wrap: pretty; }
+  .hp-item { padding: 0; }
+  .hp-item + .hp-item { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+  .hp-item h3 { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--hp-h3); line-height: 1.25; letter-spacing: -0.01em; color: var(--plum); }
+  .hp-item p { margin: 8px 0 0; max-width: 680px; font-size: var(--type-body); line-height: 1.5; color: var(--ink); text-wrap: pretty; }
+  @media (max-width: 1100px) { .hp { padding: 80px 0; } }
   @media (max-width: 900px) {
-    .hp .shell { grid-template-columns: minmax(0, 1fr); row-gap: var(--fluid-m); }
-    .hp .h-h2 { max-width: none; }
+    .hp { padding: clamp(64px, 12vw, 80px) 0; }
+    .hp .shell { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
+    .hp-title { max-width: none; }
+    .hp-title::before { height: 48px; }
+    .hp-item + .hp-item { margin-top: 24px; padding-top: 24px; }
   }
 
   /* --- 5 · Investment Focus preview ------------------------------------ */
@@ -329,7 +330,7 @@
 <!-- ================================================================ 4 · BUILT FROM THE INVESTOR SIDE -->
 <section class="hp" data-screen-label="04 Home — investor side" aria-labelledby="hp-title">
   <div class="shell">
-    <h2 class="h-h2" id="hp-title">Built from the Investor Side</h2>
+    <h2 class="h-h2 hp-title" id="hp-title">Built from the Investor Side</h2>
     <div class="hp-grid">
       <div class="hp-item"><div><h3>Costs and Changes in View</h3><p class="h-body">Specialist advice, costs and changes are set against the approved business plan for the investor, from acquisition through ownership.</p></div>
       </div>
