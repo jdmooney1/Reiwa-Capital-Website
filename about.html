@@ -196,7 +196,7 @@
   .am-market { position: relative; }
   .am-market--london { background: var(--cream); }
   .am-market--amsterdam { background: var(--paper-soft); }
-  .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(56px, 5.4vw, 84px); }
+  .am-market > .shell { padding-top: clamp(40px, 4.2vw, 60px); padding-bottom: clamp(36px, 3.6vw, 52px); }
   .am-city { margin: 0; }
   .am-grid { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.98fr); gap: clamp(32px, 4vw, 56px); margin-top: clamp(32px, 3.5vw, 48px); align-items: start; }
   .am-mapwrap { display: flex; flex-direction: column; }
@@ -258,11 +258,26 @@
   .am-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .am-market--amsterdam .am-photo img { object-position: 50% 60%; }
   @media (max-width: 760px) { .am-photo { aspect-ratio: 3 / 1; } .am-market--london .am-photo img { object-position: 50% 42%; } }
-  .am-look-list { list-style: none; margin: var(--fluid-2xs) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
-  .am-look-list li { font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  /* What We Look For: three analytical modules on one row - a line symbol and the criterion - with
+     fine verticals between them on desktop. The same three-symbol grammar serves both markets: where the
+     investment is (a point and the demand around it), how controllable the case is (two aligned planes and one
+     adjustment), and how many ways out there are (one line, two endpoints). Drawn in plum at a hairline. */
+  .am-look-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; }
+  .am-look-list li { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 14px; padding: 0 clamp(16px, 2.8vw, 40px); border-left: 1px solid var(--rule); }
+  .am-look-list li:first-child { padding-left: 0; border-left: 0; }
+  .am-look-list li:last-child { padding-right: 0; }
+  .am-crit-k { display: flex; align-items: center; color: var(--plum); }
+  .am-sym { display: block; flex: none; width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+  .am-sym .dot { fill: currentColor; stroke: none; }
+  .am-crit-t { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
-    .am-look-list { grid-template-columns: minmax(0, 1fr); }
-    .am-look-list li + li { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); }
+    .am-look-list { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; margin-top: 12px; }
+    .am-look-list li { grid-row: auto; grid-template-rows: none; grid-template-columns: 28px minmax(0, 1fr); column-gap: 14px; row-gap: 0; align-items: start; padding: 10px 0; border-left: 0; }
+    .am-look-list li:first-child { padding-top: 4px; }
+    .am-look-list li + li { border-top: 1px solid var(--rule); }
+    .am-look-list li:last-child { padding-bottom: 0; }
+    .am-crit-k { align-items: flex-start; padding-top: 2px; }
+    .am-sym { width: 28px; height: 28px; }
   }
   @media (min-width: 901px) {
     .am-market .am-grid { align-items: stretch; }
@@ -428,9 +443,9 @@
       <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
-              <li>Prime central locations with evidenced demand</li>
-              <li>Durable income, or a controllable route to improvement</li>
-              <li>Realistic capital needs and more than one exit route</li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><circle class="dot" cx="18" cy="18" r="1.9"/><path d="M25.25 14.62A8 8 0 1 1 10.75 14.62"/><path d="M29.88 26.32A14.5 14.5 0 1 1 16.74 3.56"/></svg></span><span class="am-crit-t">Prime central locations with evidenced demand</span></li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 10.5H32"/><path d="M4 25.5H32"/><path d="M18 10.5V15.4"/><path d="M18 20.6V25.5"/><circle cx="18" cy="18" r="2.6"/></svg></span><span class="am-crit-t">Durable income, or a controllable route to improvement</span></li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 18H14.5"/><path d="M14.5 18L29.2 9"/><path d="M14.5 18L29.2 27"/><circle class="dot" cx="31" cy="8" r="1.9"/><circle class="dot" cx="31" cy="28" r="1.9"/></svg></span><span class="am-crit-t">Realistic capital needs and more than one exit route</span></li>
             </ul>
           </div>
   </div>
@@ -465,9 +480,9 @@
       <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
-              <li>Established central locations with clear demand</li>
-              <li>Clear permitted use, manageable technical requirements</li>
-              <li>Durable income, or a route through leasing or repositioning</li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><circle class="dot" cx="18" cy="18" r="1.9"/><path d="M25.25 14.62A8 8 0 1 1 10.75 14.62"/><path d="M29.88 26.32A14.5 14.5 0 1 1 16.74 3.56"/></svg></span><span class="am-crit-t">Established central locations with clear demand</span></li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 10.5H32"/><path d="M4 25.5H32"/><path d="M18 10.5V15.4"/><path d="M18 20.6V25.5"/><circle cx="18" cy="18" r="2.6"/></svg></span><span class="am-crit-t">Clear permitted use, manageable technical requirements</span></li>
+              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 18H14.5"/><path d="M14.5 18L29.2 9"/><path d="M14.5 18L29.2 27"/><circle class="dot" cx="31" cy="8" r="1.9"/><circle class="dot" cx="31" cy="28" r="1.9"/></svg></span><span class="am-crit-t">Durable income, or a route through leasing or repositioning</span></li>
             </ul>
           </div>
   </div>
