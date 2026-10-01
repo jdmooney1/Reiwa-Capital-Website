@@ -62,7 +62,7 @@ const ROLES = {
       '.am-city', '.aw-st-n',
       '.lf-n', '.lf-pan-h',
       '.tw-item dt',
-      '.fx-name', '.fx-stagehead', '.hs-title', '.dl-n',
+      '.fx-name', '.hs-title', '.dl-n',
       '.co-tier-n', '.hi-phase-n',
     ],
   },
@@ -77,6 +77,13 @@ const ROLES = {
   marketCity: {
     token: '--hm-city',
     selectors: ['.hm-city'],
+  },
+  // The Investment Focus strategy detail (Income / Repositioning) names the
+  // chosen strategy at --fx-det-title, defined beside the component in
+  // investment-focus.html and ja/investment-focus.html.
+  focusDetailTitle: {
+    token: '--fx-det-title',
+    selectors: ['.fx-det-title'],
   },
   // The Home introduction (headline and the three operating stages) sets its
   // own two sizes (--hi-title, --hi-stage, defined beside the section in
@@ -126,7 +133,7 @@ const ROLES = {
       '.hi-span-k', '.hf-feature-k',
       '.am-k', '.aw-st-s',
       '.lf-period', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
-      '.fx-param-k', '.fx-band-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
+      '.fx-param-k', '.fx-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
     ],
   },
 };
