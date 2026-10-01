@@ -89,6 +89,13 @@ const ROLES = {
     token: '--hp-h3',
     selectors: ['.hp-item h3'],
   },
+  // The Selective Hospitality row on Home sits between the subsection and
+  // section sizes (--hf-feat-title, defined beside the row in index.html and
+  // ja/index.html): quieter than the two core panels, clearly a heading.
+  homeFeatureTitle: {
+    token: '--hf-feat-title',
+    selectors: ['.hf-feature-title'],
+  },
   // A step below a subsection title: the tests under Selective Hospitality.
   item: {
     token: '--type-body-l',
@@ -97,7 +104,7 @@ const ROLES = {
   label: {
     token: '--type-caption',
     selectors: [
-      '.hi-span-k', '.hf-spec-k',
+      '.hi-span-k', '.hf-feature-k',
       '.am-k', '.aw-stage-s', '.aw-sp-st', '.aw-lane-s',
       '.lf-period', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
       '.fx-param-k', '.fx-band-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
