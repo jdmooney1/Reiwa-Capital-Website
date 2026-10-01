@@ -91,43 +91,51 @@
   }
 
   /* --- 2 · 投資家の立場から -------------------------------------------- */
-  .hi { padding: var(--section-tight) 0 var(--section-tight); }
-  .hi-statement { font-family: var(--jp); font-weight: 400; font-size: var(--type-h2); line-height: 1.42; letter-spacing: 0; color: var(--ink); margin: 0; max-width: var(--measure-statement); }
-  .hi-lede { margin: var(--fluid-xs) 0 0; max-width: var(--measure-statement); font-family: var(--jp); font-size: var(--type-body-l); line-height: 1.85; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  /* 三つの機能を、静かな一行として残す。置き換えた三列モジュールは、
-     下のアーバジン面にある四つの原則と内容が重複していた。見出しではなく
-     ラベルなので、本文と同じゴシックに置く。 */
-  /* 三つの機能を、三本の筋として並べる。それぞれに六段階の期間と、
-     投資アプローチのページから引いた一文を添える。 */
-  .hi-ops { list-style: none; margin: var(--fluid-l) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
-  /* Body copy is never centred, so the block reads from one left edge and
-     the marker sits on that edge rather than in the middle of it. */
-  .hi-op { position: relative; padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); text-align: left; }
-  .hi-op::before { content: ""; position: absolute; left: 0; top: -2px; width: clamp(28px, 3vw, 44px); height: 3px; background: var(--plum); }
-  .hi-op-k { display: flex; justify-content: flex-start; gap: 10px; align-items: baseline; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0; color: var(--ink-3); }
-  .hi-op-k b { font-family: 'DM Sans', sans-serif; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
-  .hi-op-v { display: block; margin-top: 8px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.3; letter-spacing: 0; color: var(--ink); }
-  .hi-op-s { display: block; margin-top: 7px; font-family: var(--jp); font-size: 12.5px; line-height: 1.5; letter-spacing: 0; color: var(--ink-3); }
-  .hi-op-d { margin: 10px 0 0; font-family: var(--jp); font-size: 14.5px; line-height: 1.85; color: var(--ink-2); max-width: 22em; word-break: normal; word-break: auto-phrase; text-wrap: pretty; }
-  .hi-ops-foot { text-align: left; }
-  .hi-ops-link { margin-top: var(--fluid-s); }
+  /* The proposition, then the operating model. Row one is a 12-column editorial grid: the headline on the
+     left, the supporting copy and its one link on the right. Row two is a single continuous rule over three
+     equal stages, divided by fine verticals, with name, descriptor and description on shared rows so the
+     three read across on common baselines. Type, rules and one purple link - no boxes, bars or icons. */
+  :root { --hi-title: clamp(28px, calc(0.9vw + 24.5px), 36px); --hi-stage: clamp(22px, calc(0.3vw + 20.5px), 25px); }
+  .hi { padding: 96px 0 88px; }
+  .hi-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(16px, 2.2vw, 28px); align-items: start; }
+  .hi-title { grid-column: 1 / span 6; max-width: 500px; margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--hi-title); line-height: 1.3; letter-spacing: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hi-intro { grid-column: 7 / span 6; padding-top: 10px; }
+  .hi-lede { margin: 0; max-width: 30em; font-family: var(--jp); font-size: 18px; line-height: 1.8; color: var(--ink); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hi-link { margin-top: 24px; font-size: clamp(15px, 14px + 0.25vw, 17px); }
+  .hi-seq { list-style: none; margin: 64px 0 0; padding: 36px 0 0; border-top: 1px solid var(--rule-strong); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hi-stage { display: flex; flex-direction: column; min-width: 0; padding: 0 clamp(20px, 2.6vw, 36px); border-left: 1px solid var(--hairline); }
+  .hi-stage:first-child { padding-left: 0; border-left: 0; }
+  .hi-stage:last-child { padding-right: 0; }
+  .hi-stage-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; color: var(--muted); }
+  .hi-stage-name { margin-top: 10px; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--hi-stage); line-height: 1.35; letter-spacing: 0; color: var(--ink); }
+  .hi-stage-k { margin-top: 8px; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: var(--muted); }
+  .hi-stage-sep { margin: 0 4px; }
+  .hi-stage-d { margin: 14px 0 0; max-width: 26em; font-family: var(--jp); font-size: clamp(15px, 14.4px + 0.15vw, 16.5px); line-height: 1.8; color: var(--ink); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  /* Shared rows: number, name, descriptor and description each sit on one line across all three stages. */
+  @media (min-width: 761px) {
+    @supports (grid-template-rows: subgrid) {
+      .hi-seq { grid-template-rows: repeat(4, auto); }
+      .hi-stage { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+    }
+  }
+  @media (max-width: 900px) {
+    .hi-title { grid-column: 1 / span 7; }
+    .hi-intro { grid-column: 1 / -1; padding-top: 0; margin-top: 28px; }
+  }
   @media (max-width: 760px) {
-    .hi-ops { margin-top: 28px; grid-template-columns: minmax(0, 1fr); gap: var(--space-6) 0; }
-    /* Four type levels compress to three: the number and the sub-label pair
-       into one kicker above the name. CSS only - the DOM order stays
-       k, v, s, d and grid places them, so no markup moves and no text
-       changes. The separator is a pseudo-element for the same reason. */
-    .hi-op::before { display: none; }
-    .hi-op { padding-top: 14px; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
-    .hi-op-k { grid-area: 1 / 1; justify-content: flex-start; text-align: left; letter-spacing: 0; }
-    .hi-op-s { grid-area: 1 / 2; margin-top: 0; text-align: left; font-size: var(--type-label); letter-spacing: 0; }
-    .hi-op-s::before { content: "・"; }
-    .hi-op-v { grid-area: 2 / 1 / 2 / -1; margin-top: var(--space-2); text-align: left; }
-    /* Full width here ran to ~95 characters at the top of the range, so the
-       block keeps the site's body measure rather than the column's width. */
-    .hi-op-d { grid-area: 3 / 1 / 3 / -1; max-width: var(--measure-body); margin: var(--space-2) 0 0; text-align: left; }
-    .hi-ops-foot { text-align: left; }
-    .hi-ops-link { margin-top: 18px; }
+    .hi { padding: 64px 0 64px; }
+    .hi-head { display: block; }
+    .hi-title { max-width: 18em; }
+    .hi-intro { margin-top: 24px; }
+    .hi-link { margin-top: 16px; }
+    /* One continuous vertical rule replaces the horizontal one; numbers, names and copy share two columns. */
+    .hi-seq { display: block; margin-top: 40px; padding: 0 0 0 22px; border-top: 0; border-left: 1px solid var(--rule-strong); }
+    .hi-stage { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); column-gap: 0; padding: 0; border-left: 0; }
+    .hi-stage + .hi-stage { margin-top: 32px; }
+    .hi-stage-n { grid-column: 1; grid-row: 1; align-self: baseline; }
+    .hi-stage-name { grid-column: 2; grid-row: 1; margin-top: 0; }
+    .hi-stage-k { grid-column: 2; grid-row: 2; }
+    .hi-stage-d { grid-column: 2; grid-row: 3; margin-top: 10px; max-width: none; }
   }
 
   /* --- 3 · 市場 --------------------------------------------------------- */
@@ -259,11 +267,7 @@
   }
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
-  .h-h2, .hi-statement, .ip-statement, .co-label { text-wrap: balance; }
-  /* The only break point is the <wbr> after the comma, so the heading splits
-     at its phrase join instead of inside 欧州. overflow-wrap is the safety
-     valve: enlarged text still reflows rather than overflowing. */
-  .hi-statement { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .h-h2, .ip-statement, .co-label { text-wrap: balance; }
   </style>
 </head>
 <body data-page="home" data-locale="ja" data-en-url="/" data-ja-url="/ja/">
@@ -291,29 +295,32 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-statement" id="hi-title"><span lang="en">Reiwa Capital</span>は、日本の投資家による<span class="jt">ロンドン</span>および<span class="jt">アムステルダム</span>の<wbr>不動産の発掘、評価、取得を支援し、<wbr>保有から売却まで投資家側の視点を維持します。</h2>
+      <h2 class="hi-title" id="hi-title"><span class="jt">ロンドン</span>と<wbr><span class="jt">アムステルダム</span>の<wbr>不動産を、<wbr>投資家の立場から。</h2>
+      <div class="hi-intro">
+        <p class="hi-lede"><span lang="en">Reiwa Capital</span>は、<wbr>日本の投資家による案件の発掘、<wbr>評価、<wbr>取得を支援し、<wbr>保有から売却まで<wbr>一貫した視点を維持します。</p>
+        <a class="enq-cta hi-link" href="approach.html#lf-title">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
     </div>
-    <ol class="hi-ops" aria-label="Reiwa Capitalの役割">
-      <li class="hi-op">
-        <span class="hi-op-k"><b>01</b></span>
-        <span class="hi-op-v">形成</span>
-        <span class="hi-op-s"><span class="jt">マンデート</span>・評価</span>
-        <p class="hi-op-d">資本を投じる前に、各案件を投資家の<span class="jt">マンデート</span>に照らして検証します</p>
+    <ol class="hi-seq" aria-label="Reiwa Capitalの役割">
+      <li class="hi-stage">
+        <span class="hi-stage-n">01</span>
+        <span class="hi-stage-name">形成</span>
+        <span class="hi-stage-k"><span class="jt">マンデート</span>・評価</span>
+        <p class="hi-stage-d">資本を投じる前に、<wbr><span class="jt">マンデート</span>を定め、<wbr>各案件を評価します。</p>
       </li>
-      <li class="hi-op">
-        <span class="hi-op-k"><b>02</b></span>
-        <span class="hi-op-v">実行</span>
-        <span class="hi-op-s">組成・取得</span>
-        <p class="hi-op-d">保有・調達・税務の<span class="jt">ストラクチャー</span>と調達を整え、精査と契約を完了します</p>
+      <li class="hi-stage">
+        <span class="hi-stage-n">02</span>
+        <span class="hi-stage-name">実行</span>
+        <span class="hi-stage-k">組成・取得</span>
+        <p class="hi-stage-d"><span class="jt">ストラクチャー</span>、<wbr>資金調達、<wbr>精査、<wbr>取得を調整します。</p>
       </li>
-      <li class="hi-op">
-        <span class="hi-op-k"><b>03</b></span>
-        <span class="hi-op-v">保有期間</span>
-        <span class="hi-op-s">保有・売却</span>
-        <p class="hi-op-d">投資判断の前提に照らして実績を監督し、借換えと売却の判断を投資家に諮ります</p>
+      <li class="hi-stage">
+        <span class="hi-stage-n">03</span>
+        <span class="hi-stage-name">保有期間</span>
+        <span class="hi-stage-k">保有・売却</span>
+        <p class="hi-stage-d">運用状況を確認し、<wbr>重要な判断を<wbr>投資家に諮ります。</p>
       </li>
     </ol>
-    <div class="hi-ops-foot"><a class="enq-cta hi-ops-link" href="approach.html">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a></div>
   </div>
 </section>
 
