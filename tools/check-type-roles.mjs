@@ -52,7 +52,7 @@ const ROLES = {
   },
   h2: {
     token: '--type-h2',
-    selectors: ['main h2:not(.hm-title):not(.hp-title)'],
+    selectors: ['main h2:not(.hm-title):not(.hp-title):not(.hi-title)'],
   },
   h3: {
     token: '--type-h3',
@@ -77,6 +77,18 @@ const ROLES = {
   marketCity: {
     token: '--hm-city',
     selectors: ['.hm-city'],
+  },
+  // The Home introduction (headline and the three operating stages) sets its
+  // own two sizes (--hi-title, --hi-stage, defined beside the section in
+  // index.html and ja/index.html): the headline is the page's second voice
+  // after the hero, and the stage names are a step above body copy.
+  homeIntroTitle: {
+    token: '--hi-title',
+    selectors: ['.hi-title'],
+  },
+  homeIntroStage: {
+    token: '--hi-stage',
+    selectors: ['.hi-stage-name'],
   },
   // Built from the Investor Side is a quiet band on secondary ivory, so its
   // heading and principle titles have their own tokens (--hp-title, --hp-h3,
