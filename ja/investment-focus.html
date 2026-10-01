@@ -122,22 +122,34 @@
      separated by their own ground, not by a hairline. */
   .if-sec.fx-sec, .if-sec.hs-sec, .if-sec.dl-sec { padding-bottom: 0; }
   .if-sec + .if-sec.hs-sec > .shell, .if-sec + .if-sec.dl-sec > .shell { border-top: 0; }
-  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
   .fx-h2 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h2); line-height: 1.44; letter-spacing: 0; color: var(--ink); max-width: min(100%, 56em); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: normal; }
+  /* The page's first section opens directly under the hero (the same 48-72px as every other inner page), eyebrow over
+     heading, then the two parameter groups side by side on one rule, each an index, a line symbol and a
+     heading over its sentence. Typography, rules and alignment: no cards. */
+  .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
+  .fx-eyebrow { margin: 0 0 12px; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0; color: var(--ink-3); }
+  .fx-param { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); }
+  .fx-param-i { min-width: 0; padding-right: clamp(24px, 4vw, 56px); }
+  .fx-param-i + .fx-param-i { padding: 0 0 0 clamp(24px, 4vw, 56px); border-left: 1px solid var(--rule); }
+  .fx-param-hd { display: flex; align-items: center; gap: 14px; }
+  .fx-param-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; color: var(--plum); }
+  .fx-param-sym { display: block; flex: none; width: 30px; height: 30px; fill: none; stroke: var(--plum); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+  .fx-param-sym .dot { fill: var(--plum); stroke: none; }
+  .fx-param-h { font-family: var(--jp); font-weight: 500; font-size: var(--type-body-l); line-height: 1.3; color: var(--ink); }
+  .fx-param-p { margin: 14px 0 0; max-width: 30em; font-family: var(--jp); font-size: clamp(15px, 14.2px + 0.2vw, 16.5px); line-height: 1.85; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  @media (max-width: 900px) {
+    .fx-param { grid-template-columns: minmax(0, 1fr); }
+    .fx-param-i { padding-right: 0; }
+    .fx-param-i + .fx-param-i { margin-top: 20px; padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+    .fx-param-p { margin-top: 10px; max-width: none; }
+  }
   /* One criteria grammar: a label in the left column, the content in the
      right, a rule of one weight above each. */
-  .fx-param { display: grid; grid-template-columns: minmax(0, 13em) minmax(0, 1fr); gap: var(--fluid-m); align-items: start; margin-top: var(--fluid-l); padding-top: var(--fluid-xs); border-top: 1px solid var(--rule-strong); }
-  .fx-param-v { display: grid; gap: var(--space-2-5); }
-  .fx-param-v p { margin: 0; }
-  .fx-param-h { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
   .fx-stagehead { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .fx-back:hover .ret-arrow { transform: translateX(calc(var(--arrow-shift) * -1)); }
   .dl-n { text-wrap: balance; }
-  .fx-param-k { font-family: var(--jp); font-size: var(--type-caption); line-height: 1.45; letter-spacing: 0; color: var(--ink-3); }
-  .fx-param-v { margin: 0; font-family: var(--jp); font-size: clamp(13px, 12px + 0.3vw, 15px); line-height: 1.85; color: var(--ink-2); max-width: 52em; word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   @media (max-width: 900px) {
-    .fx-param { grid-template-columns: minmax(0, 1fr); gap: var(--fluid-2xs); }
-    .fx-h2 { max-width: none; }
+      .fx-h2 { max-width: none; }
   }
 
   /* The component itself. A floor height for the balanced state; an open
@@ -434,12 +446,16 @@
 <!-- One investment focus field -->
 <section class="if-sec fx-sec" data-screen-label="02 投資方針 — 投資対象の全体像" aria-labelledby="fx-title" data-focusfield>
   <div class="shell fx-head">
+    <p class="fx-eyebrow">投資対象の範囲</p>
     <h2 class="fx-h2" id="fx-title">確かな<span class="jt">ファンダメンタルズ、</span>明確な潜在力</h2>
     <div class="fx-param">
-      <span class="fx-param-k">投資対象の範囲</span>
-      <div class="fx-param-v">
-        <p><b class="fx-param-h"><span class="jt">マンデート</span>上の要件</b>個々の案件を、投資家と合意した<span class="jt">マンデート</span>に照らして個別に評価し、投資家の承認を得たうえで進めます。</p>
-        <p><b class="fx-param-h">一般的な選好</b>既存建物と、裏付けのある<span class="jt">テナント</span>需要。再生型では、具体的で管理可能な改善に基づく事業計画。</p>
+      <div class="fx-param-i">
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">01</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect x="7" y="5" width="22" height="10"/><rect x="7" y="21" width="22" height="10"/><path d="M18 15V21"/><circle class="dot" cx="18" cy="18" r="1.5"/></svg><span class="fx-param-h"><span class="jt">マンデート</span>上の要件</span></div>
+        <p class="fx-param-p">個々の案件を、<wbr>投資家と合意した<span class="jt">マンデート</span>に<wbr>照らして<wbr>個別に評価し、<wbr>投資家の承認を<wbr>得たうえで<wbr>進めます。</p>
+      </div>
+      <div class="fx-param-i">
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">02</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 28H32"/><path d="M4 21.5H15.5L20.5 14H32"/><circle class="dot" cx="15.5" cy="21.5" r="1.7"/></svg><span class="fx-param-h">一般的な選好</span></div>
+        <p class="fx-param-p">既存建物と、<wbr>裏付けのある<span class="jt">テナント</span>需要。<wbr>再生型では、<wbr>具体的で<wbr>管理可能な<wbr>改善に基づく<wbr>事業計画。</p>
       </div>
     </div>
   </div>
