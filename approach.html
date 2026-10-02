@@ -26,7 +26,7 @@
 <meta name="twitter:title" content="Approach | Reiwa Capital">
 <meta name="twitter:description" content="A six-stage investment lifecycle with a defined output at each stage, the five tests behind every investment case, and the decisions reserved to the investor.">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital is an investor-side platform supporting Japanese investors across the acquisition and ownership of European real estate, with a focus on London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Reiwa Capital","url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capital provides investor-side support to Japanese investors assessing, acquiring and overseeing selected real estate in London and Amsterdam.","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
 <link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
@@ -73,7 +73,7 @@
      one and a half times the first section heading, the supporting
      sentence held close beneath it. */
   .ap-hero h1 { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-page-title); line-height: 1.02; letter-spacing: -0.024em; color: var(--ink); margin: 0; text-indent: var(--optical-cap); max-width: 16ch; word-break: normal; text-wrap: balance; }
-  .ap-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.5; color: var(--ink-2); max-width: 560px; text-wrap: pretty; }
+  .ap-hero .sub { margin: var(--fluid-2xs) 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink-2); max-width: 560px; text-wrap: pretty; }
   @media (max-width: 760px) {
     .ap-hero h1 { max-width: 13ch; }
     .ap-hero .sub { margin-top: 10px; max-width: 34ch; }
@@ -105,45 +105,45 @@
      scans in one pass and the detail always sits in the same place. Every
      stage carries an approval, so none is marked out from the others. */
   .lf-wrap { padding: 0 0 var(--fluid-2xs); }
-  .lf-field { background: var(--plum); padding: var(--fluid-s) var(--fluid-m) clamp(26px, 2.8vw, 40px); }
-  .lf-over { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(22px, 2.6vw, 40px); border-bottom: 1px solid rgba(247, 243, 234,.22); }
+  .lf-field { background: var(--surface-violet); padding: var(--fluid-s) var(--fluid-m) clamp(26px, 2.8vw, 40px); }
+  .lf-over { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(22px, 2.6vw, 40px); border-bottom: 1px solid var(--rule-violet); }
   .lf-grp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fluid-2xs); align-content: start; }
-  .lf-period { grid-column: 1 / -1; display: block; padding: 0 0 8px; border-bottom: 1px solid rgba(247, 243, 234,.26); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; color: rgba(247, 243, 234,.66); }
+  .lf-period { grid-column: 1 / -1; display: block; padding: 0 0 8px; border-bottom: 1px solid var(--rule-violet); font-family: 'DM Sans', sans-serif; font-size: clamp(12.5px, 12px + 0.2vw, 14px); line-height: 1.4; color: var(--ink-2); }
   /* A stage is a tab: number over name, the selected one carrying the rule
      the overview sits on. Colour, weight and the rule change; nothing moves. */
   .lf-tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin: 0 0 -1px; padding: 14px 0 12px; min-height: 48px; width: 100%; cursor: pointer; display: grid; gap: 3px; align-content: start; text-align: left; outline-offset: 3px; transition: border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-tab:focus-visible { outline: 2px solid var(--on-plum); }
-  .lf-tab[aria-selected="true"] { border-bottom-color: var(--cream); }
-  .lf-i { font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.4; color: rgba(247, 243, 234,.48); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-tab[aria-selected="true"] .lf-i { color: rgba(247, 243, 234,.82); }
-  .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: rgba(247, 243, 234,.7); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; color: var(--cream); }
-  @media (hover: hover) { .lf-tab:hover .lf-n { color: var(--cream); } }
+  .lf-tab:focus-visible { outline: 2px solid var(--focus); }
+  .lf-tab[aria-selected="true"] { border-bottom-color: var(--plum); }
+  .lf-i { font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; font-size: 12px; line-height: 1.4; color: var(--ink-3); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-tab[aria-selected="true"] .lf-i { color: var(--ink); }
+  .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(21px, 12px + 1.4vw, 26px); line-height: 1.18; letter-spacing: -0.015em; color: var(--ink-2); transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
+  .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; color: var(--ink); }
+  @media (hover: hover) { .lf-tab:hover .lf-n { color: var(--ink); } }
   /* The detail panel: purpose, output, approval and, for ownership, the
      principal activities, each under its own label on the same two columns. */
   .lf-panel { padding-top: var(--fluid-s); display: flex; flex-direction: column; gap: 12px; }
   .lf-panel[hidden] { display: none; }
-  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.62); }
-  .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: rgba(247, 243, 234,.62); }
-  .lf-pan-h span { font-size: var(--type-h3); color: var(--cream); }
-  .lf-k { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.66); }
+  .lf-pan-h { display: flex; align-items: baseline; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-2); }
+  .lf-pan-h b { font-weight: 400; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+  .lf-pan-h span { font-size: var(--type-h3); color: var(--ink); }
+  .lf-k { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-2); }
   .lf-blk { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: rgba(247, 243, 234,.9); max-width: 52ch; text-wrap: pretty; }
-  .lf-p--out { font-weight: 500; color: var(--cream); }
-  .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid rgba(247, 243, 234,.34); }
-  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: rgba(247, 243, 234,.66); }
-  .lf-ap dd { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: 15.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid rgba(247, 243, 234,.26); display: grid; gap: 14px; }
+  .lf-p { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 17.5px); line-height: 1.55; color: var(--ink); max-width: 52ch; text-wrap: pretty; }
+  .lf-p--out { font-weight: 500; color: var(--ink); }
+  .lf-ap { display: grid; gap: 3px; margin: 0; padding-top: 12px; border-top: 1px solid var(--rule-violet); }
+  .lf-ap dt { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: var(--ink-2); }
+  .lf-ap dd { margin: 0; max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: var(--type-body-s); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+  .lf-own { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--rule-violet); display: grid; gap: 14px; }
   .lf-own li { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: rgba(247, 243, 234,.76); }
-  .lf-own-b { max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--cream); text-wrap: pretty; }
-  .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: rgba(247, 243, 234,.66); max-width: 52ch; }
+  .lf-own-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--ink-2); }
+  .lf-own-b { max-width: var(--measure-ch); font-family: 'DM Sans', sans-serif; font-size: var(--type-body-s); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+  .lf-cont { display: block; margin-top: var(--fluid-xs); font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-2); max-width: 52ch; }
   @media (min-width: 901px) {
     .lf-blk, .lf-ap { grid-template-columns: minmax(0, 196px) minmax(0, 1fr); gap: 0 clamp(20px, 2.4vw, 40px); align-items: baseline; }
     .lf-blk--own { align-items: start; }
     .lf-blk--own .lf-own { grid-column: 2; }
     .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px clamp(20px, 2vw, 30px); }
-    .lf-own li { padding-top: 11px; border-top: 1px solid rgba(247, 243, 234,.26); }
+    .lf-own li { padding-top: 11px; border-top: 1px solid var(--rule-violet); }
   }
   /* Below the stack point the three periods stack, two stages to a row, so
      all six names sit in one screen above the panel. */
@@ -165,27 +165,28 @@
   .lf-tab { padding: 14px 0 12px; }
   .lf-n { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.18; letter-spacing: -0.014em; }
   .lf-tab[aria-selected="true"] .lf-n { font-weight: 500; }
-  .lf-period { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: var(--cream); }
+  .lf-period { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: var(--ink); }
   .lf-panels { padding-top: var(--fluid-s); }
   .lf-panel { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: var(--fluid-xs) clamp(28px, 4vw, 64px); align-items: start; padding: 0; }
   html.has-js .lf-panel + .lf-panel { margin-top: 0; padding-top: 0; border-top: 0; }
-  html:not(.has-js) .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid rgba(247, 243, 234,.14); }
+  html:not(.has-js) .lf-panel + .lf-panel { margin-top: var(--fluid-s); padding-top: var(--fluid-s); border-top: 1px solid var(--rule-violet); }
   .lf-panel[hidden] { display: none; }
   .lf-pan-head { display: flex; flex-direction: column; gap: 8px; }
-  .lf-pan-per { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: rgba(247, 243, 234,.72); }
+  .lf-pan-per { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.01em; color: var(--ink-2); }
   html.has-js .lf-pan-per { display: none; }
   /* With the strip drawn, the selected tab is the visible title; the heading stays for the outline and for screen readers. */
   html.has-js .lf-pan-head { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   html.has-js .lf-panel { grid-template-columns: minmax(0, 1fr); }
   .lf-pan-h { margin: 0; display: flex; align-items: baseline; gap: 10px; }
-  .lf-pan-h span { font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: -0.014em; line-height: 1.18; font-size: var(--type-h3); color: var(--cream); }
+  .lf-pan-h span { font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: -0.014em; line-height: 1.18; font-size: var(--type-h3); color: var(--ink); }
   .lf-pan-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
   .lf-k { font-family: 'DM Sans', sans-serif; }
   .lf-p { font-family: 'DM Sans', sans-serif; }
   /* The investor's approval is the gate at the end of each stage, so it is
      the one row with its own ground. */
-  .lf-ap { padding: 14px 16px 15px; background: rgba(247, 243, 234,.07); border-top: 0; border-left: 2px solid #B8A3CC; }
-  .lf-ap dt { color: #B8A3CC; }
+  .lf-ap { padding: 14px 16px 15px; background: var(--surface-plum); border-top: 0; border-left: 2px solid #B8A3CC; }
+  .lf-ap dt { color: #CDBBDD; }
+  .lf-ap dd { color: var(--on-plum); }
   @media (max-width: 900px) {
     .lf-panel { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   }
@@ -194,13 +195,13 @@
     .lf-ap { align-items: baseline; }
     .lf-own { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
-  @media (max-width: 1100px) and (min-width: 901px) { .lf-own { grid-template-columns: minmax(0, 1fr); } .lf-own li { border-top: 1px solid rgba(247, 243, 234,.26); padding-top: 11px; } }
+  @media (max-width: 1100px) and (min-width: 901px) { .lf-own { grid-template-columns: minmax(0, 1fr); } .lf-own li { border-top: 1px solid var(--rule-violet); padding-top: 11px; } }
   /* Phones: the three periods become three rows, the period name at the left
      and its two stages beside it, so all six names show without scrolling. */
   @media (max-width: 760px) {
     .lf-over { grid-template-columns: minmax(0, 1fr); gap: 0; border-bottom: 0; }
-    html.has-js .lf-grp { grid-template-columns: 4.5em repeat(2, minmax(0, 1fr)); align-items: end; column-gap: var(--space-3); border-bottom: 1px solid rgba(247, 243, 234,.22); }
-    .lf-period { grid-column: auto; align-self: center; padding: 0; border-bottom: 0; color: rgba(247, 243, 234,.72); }
+    html.has-js .lf-grp { grid-template-columns: 4.5em repeat(2, minmax(0, 1fr)); align-items: end; column-gap: var(--space-3); border-bottom: 1px solid var(--rule-violet); }
+    .lf-period { grid-column: auto; align-self: center; padding: 0; border-bottom: 0; color: var(--ink-2); }
     .lf-tab { padding: 10px 0 9px; }
     .lf-panels { padding-top: 18px; }
   }
@@ -225,7 +226,7 @@
   }
   .lf-decision { margin: var(--fluid-xs) 0 0; max-width: 62ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: var(--type-body-lh); color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) { .lf-decision { padding: 0 var(--gutter); max-width: none; } }
-  .tw-hint { margin: var(--space-2) 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.5; color: var(--ink-3); }
+  .tw-hint { margin: var(--space-2) 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.55; color: var(--ink-3); }
   /* On a phone the circle gives way to the list: every test is named, its question shown, and the active one marked by its filled number. */
   @media (max-width: 768px) { .tw-ring { display: none; } }
   .tw-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(40px, 4vw, 60px); }
@@ -261,7 +262,7 @@
   .tw-item:last-child { border-bottom: 1px solid var(--rule); }
   .tw-item dt { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.22; letter-spacing: -0.012em; color: var(--ink); transition: color 200ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
   .tw-item dd { margin: 0; min-width: 0; }
-  .tw-q { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(15.5px, 14.5px + 0.3vw, 17px); line-height: 1.55; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
+  .tw-q { margin: 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.5px + 0.3vw, 17px); line-height: 1.55; color: var(--ink-2); max-width: 52ch; text-wrap: pretty; }
   .tw-det-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; }
   .tw-det-list li { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   .tw-item.is-on dt { font-weight: 500; }
@@ -288,17 +289,17 @@
      980px width, but 1225px tall rather than a 524px slice, so the band is
      chosen here by object-position instead of being baked into the file. */
   .ap-pause { padding: var(--fluid-xs) 0; }
-  .ap-pause-frame { width: 100%; height: clamp(170px, 12vw, 210px); overflow: hidden; background: #EDE7DC; }
+  .ap-pause-frame { width: 100%; height: clamp(200px, 16vw, 250px); overflow: hidden; background: #EDE7DC; }
   .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
-  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(165px, 16vw, 195px); } }
+  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(190px, 22vw, 230px); } }
   /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
   @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
   @media (max-width: 760px) {
     .ap-pause { padding: 8px 0; }
-    .ap-pause-frame { width: 100%; height: 185px; }
+    .ap-pause-frame { width: 100%; height: 220px; }
     .ap-pause-frame img { object-position: 50% 84%; }
   }
-  @media (max-width: 480px) { .ap-pause-frame { height: 170px; } }
+  @media (max-width: 480px) { .ap-pause-frame { height: 200px; } }
 
 </style>
 </head>
@@ -313,7 +314,7 @@
 <section class="page-head ap-hero" data-screen-label="01 Approach — hero">
   <div class="inner">
     <h1>From Mandate to Exit</h1>
-    <p class="sub">How an engagement runs, and what the investor approves at each stage.</p>
+    <p class="sub">How an engagement runs and what the investor approves.</p>
   </div>
 </section>
 
@@ -346,7 +347,7 @@
         <article class="lf-panel" id="lf-p-0" role="tabpanel" data-panel="0" aria-labelledby="lf-t-0">
           <header class="lf-pan-head"><span class="lf-pan-per">Formation</span><h3 class="lf-pan-h" id="lf-h-0"><b>1</b><span>Mandate</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Translate the investor’s objectives into a clear acquisition mandate</p></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Turn the investor’s objectives into a clear mandate.</p></div>
           <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Investment Mandate</p></div>
           <dl class="lf-ap"><dt>Investor approval</dt><dd>Mandate and decision framework</dd></dl>
           </div>
@@ -354,15 +355,15 @@
         <article class="lf-panel" id="lf-p-1" role="tabpanel" data-panel="1" aria-labelledby="lf-t-1">
           <header class="lf-pan-head"><span class="lf-pan-per">Formation</span><h3 class="lf-pan-h" id="lf-h-1"><b>2</b><span>Assess</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Test whether an opportunity merits detailed assessment</p></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Screen opportunities against the mandate.</p></div>
           <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Investment Memorandum</p></div>
-          <dl class="lf-ap"><dt>Investor approval</dt><dd>Progression of material opportunities to detailed assessment</dd></dl>
+          <dl class="lf-ap"><dt>Investor approval</dt><dd>Progression to detailed assessment</dd></dl>
           </div>
         </article>
         <article class="lf-panel" id="lf-p-2" role="tabpanel" data-panel="2" aria-labelledby="lf-t-2">
           <header class="lf-pan-head"><span class="lf-pan-per">Execution</span><h3 class="lf-pan-h" id="lf-h-2"><b>3</b><span>Structure</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Coordinate the ownership, financing and tax structure before commitment</p></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Coordinate structure, financing and tax before commitment.</p></div>
           <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Structure and Execution Plan</p></div>
           <dl class="lf-ap"><dt>Investor approval</dt><dd>Structure and agreed terms</dd></dl>
           </div>
@@ -370,31 +371,31 @@
         <article class="lf-panel" id="lf-p-3" role="tabpanel" data-panel="3" aria-labelledby="lf-t-3">
           <header class="lf-pan-head"><span class="lf-pan-per">Execution</span><h3 class="lf-pan-h" id="lf-h-3"><b>4</b><span>Acquire</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Complete diligence, financing and documentation under one plan</p></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Complete diligence, financing and documentation to one plan.</p></div>
           <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Acquisition Decision Pack</p></div>
-          <dl class="lf-ap"><dt>Investor approval</dt><dd>Final investment decision, before committing to the acquisition</dd></dl>
+          <dl class="lf-ap"><dt>Investor approval</dt><dd>Final investment decision before commitment</dd></dl>
           </div>
         </article>
         <article class="lf-panel" id="lf-p-4" role="tabpanel" data-panel="4" aria-labelledby="lf-t-4">
           <header class="lf-pan-head"><span class="lf-pan-per">Ownership</span><h3 class="lf-pan-h" id="lf-h-4"><b>5</b><span>Own</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Review the investment case against performance and changing conditions</p></div>
-          <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Asset Oversight, Reporting and Decision Support</p></div>
-          <dl class="lf-ap"><dt>Investor approval</dt><dd>Refinancing, material capital expenditure and changes to the approved business plan</dd></dl>
-          <div class="lf-blk lf-blk--own"><span class="lf-k">Principal activities</span><ul class="lf-own"><li><span class="lf-own-n">Monitor</span><span class="lf-own-b">Rent, occupancy, lease events, NOI and cash flow against the approved business plan</span></li><li><span class="lf-own-n">Intervene</span><span class="lf-own-b">Budget variance, leasing decisions, capital expenditure, financing events and emerging risks</span></li><li><span class="lf-own-n">Report</span><span class="lf-own-b">Performance, valuation and market changes, with recommendations and materials for investor approval</span></li></ul></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Test the investment case against performance and conditions.</p></div>
+          <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Asset Monitoring, Reporting and Decision Support</p></div>
+          <dl class="lf-ap"><dt>Investor approval</dt><dd>Refinancing, material capital expenditure and plan changes</dd></dl>
+          <div class="lf-blk lf-blk--own"><span class="lf-k">Principal activities</span><ul class="lf-own"><li><span class="lf-own-n">Monitor</span><span class="lf-own-b">Rent, occupancy, lease events, NOI and cash flow against plan</span></li><li><span class="lf-own-n">Escalate</span><span class="lf-own-b">Budget variance, leasing, capital expenditure, financing and emerging risks</span></li><li><span class="lf-own-n">Report</span><span class="lf-own-b">Performance, valuation and market changes, with recommendations for investor approval</span></li></ul></div>
           </div>
         </article>
         <article class="lf-panel" id="lf-p-5" role="tabpanel" data-panel="5" aria-labelledby="lf-t-5">
           <header class="lf-pan-head"><span class="lf-pan-per">Ownership</span><h3 class="lf-pan-h" id="lf-h-5"><b>6</b><span>Exit</span></h3></header>
           <div class="lf-pan-body">
-          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Evaluate refinancing, partial realisation or sale against the mandate</p></div>
+          <div class="lf-blk"><span class="lf-k">Purpose</span><p class="lf-p">Weigh refinancing, partial realisation or sale against the mandate.</p></div>
           <div class="lf-blk"><span class="lf-k">Output</span><p class="lf-p lf-p--out">Exit Recommendation and Execution Plan</p></div>
           <dl class="lf-ap"><dt>Investor approval</dt><dd>Timing, pricing and disposal terms</dd></dl>
           </div>
         </article>
         </div>
         </div>
-      <p class="lf-decision">Material decisions remain with the investor throughout acquisition, ownership, refinancing and exit.</p>
+      <p class="lf-decision">Material decisions remain with the investor throughout.</p>
       </div>
     </div>
   </div></section>
@@ -404,8 +405,8 @@
   <div class="shell">
     <div class="tw-head">
       <h2 class="ap-h2" id="tw-title">Five Tests, One Investment Case</h2>
-      <p class="ap-lede">Weighed together, not in order. No single test substitutes for judgement</p>
-      <p class="tw-hint">Select a test to highlight it on the circle.</p>
+      <p class="ap-lede">No single test substitutes for judgement.</p>
+      <p class="tw-hint">Five tests considered together before an opportunity proceeds.</p>
     </div>
     <div class="tw-grid" data-tests>
       <div class="tw-ring" aria-hidden="true">
@@ -439,23 +440,23 @@
       <dl class="tw-list" aria-label="The five tests">
         <div class="tw-item" data-test="0">
           <dt><button class="tw-sel" type="button" data-test="0" aria-pressed="true"><span class="tw-n" aria-hidden="true">01</span><span class="tw-t">Mandate Fit</span></button></dt>
-          <dd><p class="tw-q">Does the opportunity meet the investor’s objectives, constraints and ownership requirements?</p><ul class="tw-det-list"><li>Objectives, hold horizon and reporting requirements</li><li>Currency, structure and tax constraints</li></ul></dd>
+          <dd><p class="tw-q">Does it meet the investor’s objectives, constraints and ownership requirements?</p><ul class="tw-det-list"><li>Objectives, hold horizon and reporting requirements</li><li>Currency, structure and tax constraints</li></ul></dd>
         </div>
         <div class="tw-item" data-test="1">
           <dt><button class="tw-sel" type="button" data-test="1" aria-pressed="false"><span class="tw-n" aria-hidden="true">02</span><span class="tw-t">Market Case</span></button></dt>
-          <dd><p class="tw-q">Do demand, liquidity and regulation support the proposed strategy?</p><ul class="tw-det-list"><li>Occupier demand and competing supply</li><li>Depth of the investment market at this profile</li><li>Planning, licensing and regulatory direction</li></ul></dd>
+          <dd><p class="tw-q">Do demand, liquidity and regulation support the strategy?</p><ul class="tw-det-list"><li>Occupier demand and competing supply</li><li>Market depth at this profile</li><li>Planning, licensing and regulatory direction</li></ul></dd>
         </div>
         <div class="tw-item" data-test="2">
           <dt><button class="tw-sel" type="button" data-test="2" aria-pressed="false"><span class="tw-n" aria-hidden="true">03</span><span class="tw-t">Asset Fundamentals</span></button></dt>
-          <dd><p class="tw-q">Are the building, income and capital requirements understood and defensible?</p><ul class="tw-det-list"><li>Building condition, services and compliance</li><li>Lease structure, covenant and income profile</li><li>Capital expenditure required during the hold</li></ul></dd>
+          <dd><p class="tw-q">Are building, income and capital needs understood and defensible?</p><ul class="tw-det-list"><li>Building condition, services and compliance</li><li>Lease structure, covenant and income</li><li>Capital expenditure during the hold</li></ul></dd>
         </div>
         <div class="tw-item" data-test="3">
           <dt><button class="tw-sel" type="button" data-test="3" aria-pressed="false"><span class="tw-n" aria-hidden="true">04</span><span class="tw-t">Pricing and Downside</span></button></dt>
-          <dd><p class="tw-q">Does the return remain acceptable without relying on favourable market movement?</p><ul class="tw-det-list"><li>Basis against replacement cost and long-run income</li><li>Sensitivity to exit yield and financing cost</li><li>What the case returns if conditions do not improve</li></ul></dd>
+          <dd><p class="tw-q">Is the return acceptable without favourable market movement?</p><ul class="tw-det-list"><li>Basis against replacement cost and long-run income</li><li>Exit yield and financing cost sensitivity</li><li>Return if conditions do not improve</li></ul></dd>
         </div>
         <div class="tw-item" data-test="4">
           <dt><button class="tw-sel" type="button" data-test="4" aria-pressed="false"><span class="tw-n" aria-hidden="true">05</span><span class="tw-t">Execution and Exit</span></button></dt>
-          <dd><p class="tw-q">Can the business plan be delivered, controlled and ultimately realised?</p><ul class="tw-det-list"><li>Local execution capability and accountability</li><li>Decisions reserved to the investor during ownership</li><li>Likely buyer profile at realisation</li></ul></dd>
+          <dd><p class="tw-q">Can the plan be delivered, controlled and realised?</p><ul class="tw-det-list"><li>Local execution and accountability</li><li>Decisions reserved to the investor</li><li>Likely buyer profile at realisation</li></ul></dd>
         </div>
       </dl>
     </div>

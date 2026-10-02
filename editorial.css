@@ -17,6 +17,15 @@
   --rule-strong:  rgba(40, 19, 47, 0.22);          /* retained: emphasis rule / link underlines */
   --rule-inverse: var(--hairline-light);           /* on-plum divider (→ canonical) */
 
+  /* ── Surfaces — four grounds, each with one job. Purple is not a default
+     background: it is reserved for Reiwa's coordinating role, investor
+     governance (approvals) and exclusions / key decisions. ─────────────── */
+  --surface-ivory:  var(--cream);      /* primary ground                                   */
+  --surface-stone:  var(--ivory-2);    /* warm ivory: alternate bands, supporting copy      */
+  --surface-violet: #ECE8EE;           /* pale violet-grey: working diagrams and inspectors */
+  --surface-plum:   var(--plum);       /* deep purple: coordination, approval, exclusions   */
+  --rule-violet:    rgba(40, 19, 47, 0.16);   /* hairline on the violet surface             */
+
   /* ── Spacing — ONE 8-based scale. Nothing lives outside it. ───────── */
   --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
   --space-5: 32px; --space-6: 48px; --space-7: 64px; --space-8: 96px;
@@ -38,7 +47,7 @@
   /* ── Vertical rhythm — ONE section token, used by every page band. ─ */
   --section:       var(--space-8);     /* 96 desktop · 80 tablet · 64 mobile */
   --section-tight: var(--space-7-5);   /* 80 · 64 · 48 - supporting bands */
-  --section-major: var(--space-9);     /* 128 · 96 · 80 - major page transitions */
+  --section-major: 112px;              /* 112 · 88 · 72 - major page transitions */
   /* Legacy aliases kept so existing references resolve to the one scale. */
   --sp-section:    var(--section);
   --sp-closing:    var(--section);
@@ -65,13 +74,14 @@
   --rail-gap: 64px;
   --grid-cols: 12;
 
-  /* ── Container — ONE frame for the whole product (site + portal). Page
-     margin scales in three bands — desktop 72–96 · tablet 32–40 ·
-     mobile 20–24 — via the media queries just below this block. ─────── */
-  --content-max: 1048px;                                        /* principal content width */
-  --gutter-max:  96px;
-  --container: calc(var(--content-max) + 2 * var(--gutter-max)); /* 1240 */
-  --gutter:    clamp(48px, calc(11.57vw - 70.6px), var(--gutter-max)); /* 48 at 1025 → 96 at 1440 */
+  /* ── Container — ONE frame for the whole product (site + portal).
+     Primary content 1160px; the page margin ("gutter") steps in three bands:
+     desktop 48 → 72 (reached at 1280) · tablet 32 → 40 · mobile 20 → 24.
+     Every page edge, bleed and band reads these three tokens, nothing else. */
+  --content-max: 1160px;                                        /* principal content width */
+  --gutter-max:  72px;
+  --container: calc(var(--content-max) + 2 * var(--gutter-max)); /* 1304 */
+  --gutter:    clamp(48px, calc(9.41vw - 48.4px), var(--gutter-max)); /* 48 at 1025 → 72 at 1280 */
 
   /* ── Image ratios — the only crops imagery may take. ───────────── */
   --ratio-portrait:  4 / 5;
@@ -81,8 +91,8 @@
   /* Breakpoints (CSS vars can't be used in @media; for reference only):
      desktop→tablet 1024 · tablet→mobile 760 · small 420 */
 }
-@media (max-width: 1024px) { :root { --gutter: 32px; --section: var(--space-7-5); --section-tight: var(--space-7); --section-major: var(--space-8); } }
-@media (max-width: 760px)  { :root { --gutter: 20px; --section: var(--space-7); --section-tight: var(--space-6); --section-major: var(--space-7-5); } }
+@media (max-width: 1024px) { :root { --gutter: clamp(32px, calc(3.04vw + 8.9px), 40px); --section: var(--space-7-5); --section-tight: var(--space-7); --section-major: 88px; } }
+@media (max-width: 760px)  { :root { --gutter: clamp(20px, calc(2.5vw + 10px), 24px); --section: var(--space-7); --section-tight: var(--space-6); --section-major: 72px; } }
 
 html { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
 body { background: var(--paper-warm); margin: 0; padding: 0; overscroll-behavior-y: none; }
@@ -558,33 +568,33 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   display: grid;
   /* Design lab · the text block is ranged right and the arrow follows it,
      so the band closes the page on the same edge the reader leaves on. */
-  grid-template-columns: auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 40px;
-  align-items: end;
-  justify-content: end;
-  text-align: right;
+  align-items: center;
+  justify-content: stretch;
+  text-align: left;
   height: auto;
   max-width: var(--container);
   margin: 0 auto;
   padding: var(--fluid-l) var(--gutter);
 }
 .nn-text { display: block; min-width: 0; }
-.nextnav--band .nn-text { justify-self: end; }
+.nextnav--band .nn-text { justify-self: start; }
 .nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: var(--fluid-2xs); }
 /* An onward link, not a second headline. At 46px it competed with the H1 of
    the page above it and the band ran to 228px; it now closes the page in
    about two thirds of that. */
 .nextnav--band .nn-title { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h2); line-height: 1.08; letter-spacing: -0.016em; color: var(--ink); }
 .nn-lead { display: block; margin-top: var(--fluid-2xs); font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-body-l); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
-.nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: end; margin-bottom: 10px; transition: transform 240ms var(--ease-out); }
-.nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(var(--arrow-shift)); }
+.nextnav--band .nn-arrow { display: block; width: 34px; height: 20px; color: var(--ink); align-self: center; margin-bottom: 0; transition: color var(--dur-hover) var(--ease-out); }
+.nextnav--band .nn-link:hover .nn-arrow, .nextnav--band .nn-link:focus-visible .nn-arrow { transform: translateX(var(--arrow-shift)); color: var(--reiwa-node, #5E3D78); }
 .nextnav--band .nn-link:focus-visible { outline: 2px solid var(--focus); outline-offset: -8px; }
 @media (max-width: 768px) {
-  .nextnav--band .nn-inner { grid-template-columns: 1fr; padding: 52px var(--gutter) 56px; row-gap: 0; }
+  /* Left-aligned on a phone as well: title and line read from the page edge,
+     the arrow sits at the trailing edge of the same row (44px target). */
+  .nextnav--band .nn-inner { grid-template-columns: minmax(0, 1fr) 44px; column-gap: var(--space-3); padding: 40px var(--gutter) 44px; row-gap: 0; }
   .nextnav--band .nn-title { font-size: var(--type-h2); }
-  /* Design lab · single column keeps the right edge: the arrow takes its own
-     row beneath the text rather than returning to the left margin. */
-  .nextnav--band .nn-arrow { grid-column: 1; justify-self: end; margin: var(--space-5) 0 0; width: 40px; height: 22px; }
+  .nextnav--band .nn-arrow { grid-column: 2; justify-self: end; margin: 0; width: 32px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .nextnav--band .nn-link, .nextnav--band .nn-arrow { transition: none; } }
 
