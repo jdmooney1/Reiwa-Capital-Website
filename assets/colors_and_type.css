@@ -63,8 +63,8 @@
   --hairline-light:  rgba(247, 243, 234, 0.16);/* 1px rule on plum grounds   */
 
   --ease:            cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-micro:       0.3s;
-  --dur-reveal:      0.9s;
+  --dur-micro:       0.2s;
+  --dur-reveal:      250ms;
 
   /* ------------------------------------------------------------------ COLORS */
 
@@ -184,14 +184,18 @@
   --type-body-l-lh:   1.65;  --type-body-l-ls:   0;
   --type-body:        clamp(16px, calc(0.15vw + 14.9px), 16.5px); /* Body  16 → 16.5 */
   --type-body-lh:     1.65;  --type-body-ls:     0;
+  /* Card, diagram and inspector copy: never below 16px, so supporting text stays legible
+     on a phone without becoming louder than the body column. */
+  --type-body-s:      16px;
+  --type-body-s-lh:   1.55;
   --type-caption:     14px;                              /* Supporting copy and captions */
   --type-caption-lh:  1.4;   --type-caption-ls:  0;
   --type-label:       clamp(12px, 8px + 0.4vw, 13px);
-  --type-label-lh:    1;     --type-label-ls:    0.14em;
+  --type-label-lh:    1;     --type-label-ls:    0.08em;
   --type-eyebrow:     clamp(12px, 8px + 0.4vw, 13px);
-  --type-eyebrow-lh:  1.4;   --type-eyebrow-ls:  0.14em;
+  --type-eyebrow-lh:  1.4;   --type-eyebrow-ls:  0.08em;
   --type-micro:       12px;
-  --type-micro-lh:    1;     --type-micro-ls:    0.14em;
+  --type-micro-lh:    1;     --type-micro-ls:    0.08em;
 
   /* Optical left-edge correction. Large caps in DM Sans carry a small left
      side-bearing, so a mathematically flush headline reads slightly indented
@@ -211,7 +215,7 @@
      its width picks one of these — never a bare px value at the instance.
      body      standard explanatory copy      ~580–680px
      statement wider positioning statements   ~760–850px
-     container primary page frame (editorial.css, 1280px) */
+     container primary page frame (editorial.css, 1304px incl. gutters; 1160px of content) */
   --measure-body:      620px;
   --measure-statement: 820px;
   /* Font-relative measure. The three widths above are absolute, so a block set
@@ -225,7 +229,7 @@
 
   /* Line heights */
   /* Container — one frame for the whole site. Actual responsive value set
-     in editorial.css (desktop 72–96 · tablet 32–40 · mobile 20–24). */
+     in editorial.css (desktop 48–72 · tablet 32–40 · mobile 20–24). */
   --lh-tight: 1.05;
   --lh-snug:  1.2;
   --lh-base:  1.45;
@@ -236,7 +240,7 @@
   --ls-tight:   -0.015em;
   --ls-normal:  0;
   --ls-wide:    0.04em;
-  --ls-caps:    0.14em;   /* eyebrow caps */
+  --ls-caps:    0.08em;   /* eyebrow caps - restrained; 0.14em read as decorative at 12-13px */
 
   /* ---------------------------------------------------------------- SPACE */
   /* Spacing scale lives in editorial.css (one scale: 8 12 16 24 32 48 64 80 96 128). */
@@ -275,11 +279,11 @@
   --dur-fast:    180ms;   /* fast interaction — toggle press, tiny fades      */
   --dur-hover:   220ms;   /* standard hover — colour / border / arrow nudge   */
   --dur-section: 240ms;   /* content crossfade — header solidify, logo swap, drawer */
-  --dur-panel:   380ms;   /* one-time reveal — stage/chapter entries, [data-reveal] */
+  --dur-panel:   240ms;   /* one-time reveal — stage/chapter entries, [data-reveal] */
   /* Scroll reveals sit in their own band (450–650ms) — longer than a panel
      crossfade, shorter than the hero settle. One token, used by the
      [data-reveal] rule in editorial.css and nothing else. */
-  --dur-reveal-scroll: 520ms;
+  --dur-reveal-scroll: 240ms;
 
   --dur-1: var(--dur-fast);
   --dur-2: var(--dur-hover);
@@ -295,9 +299,9 @@
   --dur-med:       var(--dur-panel);
   --dur-slow:      var(--dur-panel);
   --dur-deliberate:var(--dur-hero);
-  --arrow-shift:   3px;    /* forward/return arrow travel on hover, everywhere */
+  --arrow-shift:   0px;    /* no horizontal content movement: arrows change colour on hover, they do not travel */
   --stagger:       70ms;
-  --reveal-y:      12px;
+  --reveal-y:      8px;
 
   /* =====================================================================
      PHOTOGRAPHY — one curated collection. Every photograph on the
@@ -326,8 +330,8 @@
 @media (max-width: 760px) {
   :root {
     --dur-section: 240ms;
-    --dur-panel:   440ms;
-    --dur-reveal:  560ms;
+    --dur-panel:   240ms;
+    --dur-reveal:  250ms;
   }
 }
 

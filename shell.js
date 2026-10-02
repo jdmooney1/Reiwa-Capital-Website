@@ -34,9 +34,9 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            lead: 'Ownership model, focus markets and who we work for', ariaEn: 'Next: About' },
-    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an investment moves from mandate to ownership', ariaEn: 'Next: Approach' },
-    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Where we concentrate our attention',               ariaEn: 'Next: Investment Focus' },
+    home:     { to: 'about',            tEn: 'About',            lead: 'Why continuity matters, the two focus markets and who we work with', ariaEn: 'Next: About' },
+    about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an engagement runs, from mandate to exit', ariaEn: 'Next: Approach' },
+    approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Selection parameters, strategies and exclusions',               ariaEn: 'Next: Investment Focus' },
     focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details',              ariaEn: 'Next: Company' }
     /* Company has no entry, and so no band: it is the last page in the
        flow and the contact section closes it. The footer follows. */
@@ -47,9 +47,9 @@
      ホーム → Reiwaについて → 投資アプローチ → 投資方針 → 事業概要 → ホーム.
      事業概要 closes the loop rather than pointing onward. */
   const FLOW_JA = {
-    home:     { to: '/ja/about.html',            t: '<span lang="en">Reiwa</span>について',  lead: '保有の枠組み、注力市場、対象とする投資家',  aria: '次へ：Reiwaについて' },
-    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '投資方針の整理から、取得、保有までの流れ', aria: '次へ：投資アプローチ' },
-    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: 'どこに検討を集中させるか',                aria: '次へ：投資方針' },
+    home:     { to: '/ja/about.html',            t: '<span lang="en">Reiwa</span>について',  lead: '一貫した視点が重要な理由、注力市場、対象とする投資家',  aria: '次へ：Reiwaについて' },
+    about:    { to: '/ja/approach.html',         t: '投資アプローチ', lead: '案件の開始から出口までの進め方', aria: '次へ：投資アプローチ' },
+    approach: { to: '/ja/investment-focus.html', t: '投資方針',      lead: '選定基準、投資戦略、除外する条件',                aria: '次へ：投資方針' },
     focus:    { to: '/ja/company.html',          t: '事業概要',      lead: '事業の概要と、お問い合わせ先',            aria: '次へ：事業概要' },
     /* 事業概要 has no entry, and so no band: お問い合わせ closes the page. */
     /* Legacy Japanese pages, retained pending their own disposition: they
