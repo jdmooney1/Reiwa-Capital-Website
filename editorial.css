@@ -579,7 +579,9 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
   padding: var(--fluid-l) var(--gutter);
 }
 .nn-text { display: block; min-width: 0; }
-.nextnav--band .nn-text { justify-self: start; }
+.nextnav--band .nn-text { justify-self: end; text-align: right; }
+/* The next page is onward and to the right: the text sits against the arrow. */
+.nextnav--band .nn-lead { margin-left: auto; }
 .nn-kicker { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-eyebrow); font-weight: 400; letter-spacing: 0; line-height: 1.2; text-transform: none; color: var(--ink-3); margin-bottom: var(--fluid-2xs); }
 /* An onward link, not a second headline. At 46px it competed with the H1 of
    the page above it and the band ran to 228px; it now closes the page in
