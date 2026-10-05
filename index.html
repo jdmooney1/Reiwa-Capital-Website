@@ -143,7 +143,7 @@
      (photograph, name, description, three traits) so corresponding rows align however long either runs. */
   :root { --hm-title: clamp(30px, calc(1.4vw + 22px), 42px); --hm-city: clamp(24px, calc(0.5vw + 20px), 28px); }
   .hm { --hm-gap: clamp(24px, 3vw, 40px); padding: 0 0 var(--section); }
-  .hm .shell { padding-top: 0; }
+  .hm .shell { padding-top: var(--section); }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
   .hm-title { margin: 0; font-size: var(--hm-title); line-height: 1.08; letter-spacing: -0.016em; text-wrap: balance; }
   .hm-sub { margin: 12px 0 0; max-width: 46ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
@@ -204,8 +204,8 @@
   /* Income and Repositioning are the two core strategies: two photographs at one proportion with their
      copy set beneath on the page ground, so nothing important sits inside a photograph. Selective
      Hospitality follows as one quieter row, labelled as a selective application. */
-  .hf { padding: 0 0 var(--space-6); }
-  .hf .shell { padding-top: var(--section); }
+  .hf { padding: 0; }
+  .hf .shell { padding-top: 0; }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hm-gap, 32px); margin-top: clamp(32px, 3.6vw, 52px); --hm-gap: clamp(24px, 3vw, 40px); }
   .hf-item { display: block; text-decoration: none; color: inherit; min-width: 0; }
   .hf-media { display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: #DCD6CC; }
@@ -245,6 +245,28 @@
     .hf-feature { grid-template-columns: minmax(0, 1fr); margin-top: 44px; padding: 0 0 28px; border-top: 0; }
     .hf-feature-media { margin: 0 calc(var(--gutter) * -1) 20px; }
   }
+
+  /* --- 3 · Investment Focus: a one-line scope statement under the heading. */
+  .hf-sub { margin: 12px 0 0; max-width: 44em; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  .hf-feature-title { margin-top: 0; }
+
+  /* --- 6 · Contact invitation: a quiet close on the page ground, in the grid of the opening. */
+  .hc { padding: var(--section) 0; }
+  .hc .shell { padding-top: 0; padding-bottom: 0; }
+  .hc-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(16px, 2.2vw, 28px); align-items: end; }
+  .hc-text { grid-column: 1 / span 7; }
+  .hc-title { margin: 0; max-width: 18ch; font-size: var(--hm-title); line-height: 1.08; letter-spacing: -0.016em; text-wrap: balance; }
+  .hc-body { margin: 14px 0 0; max-width: 46ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
+  .hc-actions { grid-column: 8 / span 5; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hc-primary { font-size: clamp(16px, 15px + 0.25vw, 18px); font-weight: 500; color: var(--plum); }
+  .hc-secondary { display: inline-flex; align-items: center; min-height: 44px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; color: var(--muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: var(--rule-strong); transition: color 200ms var(--ease-out); }
+  @media (hover: hover) { .hc-secondary:hover { color: var(--reiwa-node, #5E3D78); } }
+  .hc-secondary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  @media (max-width: 900px) {
+    .hc-text, .hc-actions { grid-column: 1 / -1; }
+    .hc-actions { margin-top: 24px; }
+  }
+  @media (max-width: 760px) { .hc { padding: 56px 0; } }
   </style>
 </head>
 <body data-page="home" data-ja-url="/ja/">
@@ -270,87 +292,41 @@
 <section class="hi" data-screen-label="02 Home — what Reiwa is" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-title" id="hi-title">Investor-side support for London and Amsterdam real estate.</h2>
+      <h2 class="hi-title" id="hi-title">A cross-border platform for European real estate origination, structuring and oversight.</h2>
       <div class="hi-intro">
-        <p class="hi-lede">Reiwa Capital helps Japanese investors assess and acquire selected opportunities, coordinating local specialists and ownership monitoring through exit. Material decisions remain with the investor.</p>
-        <a class="enq-cta hi-link" href="approach.html#lf-title">See the six stages<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <p class="hi-lede">Reiwa Capital works with Japanese investors and capital partners on selected opportunities in London and Amsterdam. Our approach combines disciplined underwriting, local expertise and active asset management, with a clear ownership strategy from acquisition through to exit.</p>
+        <a class="enq-cta hi-link" href="approach.html#lf-title">Explore our approach<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
       </div>
     </div>
     <ol class="hi-seq" aria-label="What Reiwa Capital does">
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2"/><use href="#rp3"/><use href="#rp4"/><use href="#rp5"/></svg><span class="hi-stage-n">01</span></span>
-        <span class="hi-stage-name">Formation</span>
+        <span class="hi-stage-name">Sourcing and Assessment</span>
         <span class="hi-stage-k">Mandate <span class="hi-stage-sep" aria-hidden="true">&middot;</span> Assess</span>
-        <p class="hi-stage-d">Agree the mandate, then assess each opportunity before capital is committed.</p>
+        <p class="hi-stage-d">Define the investment mandate, source suitable opportunities and assess their investment case before proceeding.</p>
       </li>
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2"/><use href="#rp3"/><use href="#rp4" class="on"/><use href="#rp5" class="on"/></svg><span class="hi-stage-n">02</span></span>
-        <span class="hi-stage-name">Execution</span>
+        <span class="hi-stage-name">Acquisition and Structuring</span>
         <span class="hi-stage-k">Structure <span class="hi-stage-sep" aria-hidden="true">&middot;</span> Acquire</span>
-        <p class="hi-stage-d">Coordinate appointed specialists through structuring, financing, diligence and acquisition.</p>
+        <p class="hi-stage-d">Coordinate appointed specialists through ownership structuring, financing, due diligence and acquisition.</p>
       </li>
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2" class="on"/><use href="#rp3" class="on"/><use href="#rp4" class="on"/><use href="#rp5" class="on"/></svg><span class="hi-stage-n">03</span></span>
-        <span class="hi-stage-name">Ownership</span>
+        <span class="hi-stage-name">Ownership and Reporting</span>
         <span class="hi-stage-k">Own <span class="hi-stage-sep" aria-hidden="true">&middot;</span> Exit</span>
-        <p class="hi-stage-d">Monitor performance and bring material decisions to the investor, through to exit.</p>
+        <p class="hi-stage-d">Track performance against the investment plan, coordinate responses to leasing and capital expenditure issues, and report through to exit.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- ================================================================ 3 · MARKETS -->
-<section class="hm" data-screen-label="03 Home — markets" aria-labelledby="hm-title">
-  <div class="shell">
-    <div class="hm-head">
-      <div class="hm-head-text">
-        <h2 class="h-h2 hm-title" id="hm-title">Two Markets</h2>
-        <p class="hm-sub">London and Amsterdam, with a deliberately narrow focus.</p>
-      </div>
-      <a class="enq-cta hm-more" href="about.html#markets">Explore Focus Markets<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-    </div>
-    <div class="hm-cols">
-      <div class="hm-col">
-        <div class="hm-photo hm-photo--lon"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
-        <h3 class="hm-city">London</h3>
-        <p class="h-body hm-copy">Deep capital markets, broad occupier demand and mature financing networks. Opportunities are assessed at submarket and asset level, with exit conditions considered from the outset.</p>
-        <ul class="hm-facts" role="list">
-          <li>Breadth of occupier demand</li>
-          <li>Highly differentiated micro-markets</li>
-          <li>Depth of buyers at exit</li>
-        </ul>
-      </div>
-      <div class="hm-col">
-        <div class="hm-photo hm-photo--ams"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></div>
-        <h3 class="hm-city">Amsterdam</h3>
-        <p class="h-body hm-copy">A compact, supply-constrained market shaped by strict planning and sustainability requirements. Permitted use, technical condition and ownership capital needs are central to assessment.</p>
-        <ul class="hm-facts" role="list">
-          <li>Compact and supply-constrained</li>
-          <li>Established occupier demand</li>
-          <li>Includes institutional buyers</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================ 4 · BUILT FROM THE INVESTOR SIDE -->
-<section class="hp" data-screen-label="04 Home — investor side" aria-labelledby="hp-title">
-  <div class="shell">
-    <h2 class="h-h2 hp-title" id="hp-title">Built from the Investor Side</h2>
-    <ul class="hp-grid" role="list">
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Costs and Changes in View</h3><p class="h-body">Specialist advice, costs and changes are set against the approved business plan for the investor, from acquisition through ownership.</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Asset Fundamentals First</h3><p class="h-body">Investment merit must stand independently of tax, structuring or financial engineering.</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Coordinated Local Specialists</h3><p class="h-body">Specialists are appointed as required for each investment and coordinated from the investor’s side, not the transaction side.</p></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================================================================ 5 · INVESTMENT FOCUS -->
-<section class="hf" data-screen-label="05 Home — investment focus" aria-labelledby="hf-title">
+<!-- ================================================================ 3 · INVESTMENT FOCUS -->
+<section class="hf" data-screen-label="03 Home — investment focus" aria-labelledby="hf-title">
   <div class="shell">
     <div class="hf-head">
       <h2 class="h-h2" id="hf-title">Investment Focus</h2>
+      <p class="hf-sub">Income and repositioning opportunities across London and Amsterdam.</p>
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
@@ -373,7 +349,6 @@
     <a class="hf-feature" href="investment-focus.html#hospitality" aria-labelledby="hf-feat-cue" aria-describedby="hf-feat-desc">
       <div class="hf-feature-media"><img src="assets/imagery/bg-hospitality-800.webp" srcset="assets/imagery/bg-hospitality-800.webp 800w, assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 760px) 100vw, 36vw" width="952" height="1269" loading="lazy" decoding="async" alt="Illuminated corner of a hotel building at night, its carved stone facade lit between dark windows"></div>
       <div class="hf-feature-body">
-        <span class="hf-feature-k">A Selective Application</span>
         <h3 class="hf-feature-title">Selective Hospitality</h3>
         <p class="hf-feature-desc" id="hf-feat-desc">Distinctive properties where the real estate, local demand and operating proposition reinforce one another.</p>
         <span class="hf-feature-cue" id="hf-feat-cue">Explore Selective Hospitality<span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
@@ -382,10 +357,73 @@
   </div>
 </section>
 
+<!-- ================================================================ 4 · MARKETS -->
+<section class="hm" data-screen-label="04 Home — markets" aria-labelledby="hm-title">
+  <div class="shell">
+    <div class="hm-head">
+      <div class="hm-head-text">
+        <h2 class="h-h2 hm-title" id="hm-title">Two Markets</h2>
+        <p class="hm-sub">Our investment focus is London and Amsterdam.</p>
+      </div>
+      <a class="enq-cta hm-more" href="about.html#markets">Explore Focus Markets<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+    </div>
+    <div class="hm-cols">
+      <div class="hm-col">
+        <div class="hm-photo hm-photo--lon"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
+        <h3 class="hm-city">London</h3>
+        <p class="h-body hm-copy">Deep capital markets and mature financing and advisory networks, across distinct central submarkets.</p>
+        <ul class="hm-facts" role="list">
+          <li>Differences between the West End, City of London and Midtown</li>
+          <li>Occupier demand tested before capital is committed</li>
+          <li>Exit conditions, with more than one realistic route</li>
+        </ul>
+      </div>
+      <div class="hm-col">
+        <div class="hm-photo hm-photo--ams"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></div>
+        <h3 class="hm-city">Amsterdam</h3>
+        <p class="h-body hm-copy">Compact and supply-constrained, with strict planning and sustainability requirements, established occupier demand and institutional buyers.</p>
+        <ul class="hm-facts" role="list">
+          <li>Permitted use and planning position, confirmed before purchase</li>
+          <li>Technical condition and sustainability requirements</li>
+          <li>Capital required through ownership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 5 · BUILT FROM THE INVESTOR SIDE -->
+<section class="hp" data-screen-label="05 Home — investor side" aria-labelledby="hp-title">
+  <div class="shell">
+    <h2 class="h-h2 hp-title" id="hp-title">Built from the Investor Side</h2>
+    <ul class="hp-grid" role="list">
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Asset Fundamentals First</h3><p class="h-body">The investment case should hold without any tax or structuring benefit, so the decision rests on the real estate itself.</p></li>
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Performance Against Plan</h3><p class="h-body">Income, costs, capital expenditure and material changes are reported against the investment case, so investors can judge progress clearly.</p></li>
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>Coordinated Local Execution</h3><p class="h-body">Each specialist has defined responsibilities. Progress and decisions are coordinated across all of them, so the investor is not left to piece it together.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================ 6 · CONTACT INVITATION -->
+<section class="hc" data-screen-label="06 Home — contact" aria-labelledby="hc-title">
+  <div class="shell">
+    <div class="hc-row">
+      <div class="hc-text">
+        <h2 class="h-h2 hc-title" id="hc-title">Discuss an investment or partnership.</h2>
+        <p class="hc-body">For investment requirements in London and Amsterdam, or a conversation about working with Reiwa Capital.</p>
+      </div>
+      <div class="hc-actions">
+        <a class="enq-cta hc-primary" href="company.html#contact">Contact Reiwa Capital<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <a class="hc-secondary" href="about.html">About Reiwa Capital</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <div data-shell="footer"></div>
-<script src="shell.js?v=80"></script>
+<script src="shell.js?v=81"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>
