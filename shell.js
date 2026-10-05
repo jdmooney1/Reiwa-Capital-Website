@@ -34,7 +34,7 @@
      Company closes the loop back to Home. No page numbers: the site numbers
      sections within a page, never the pages themselves. */
   const FLOW = {
-    home:     { to: 'about',            tEn: 'About',            lead: 'Why continuity matters, the two focus markets and who we work with', ariaEn: 'Next: About' },
+    home:     { to: 'about',            tEn: 'About',            lead: 'Continuity, our two markets and who we serve', ariaEn: 'Next: About' },
     about:    { to: 'approach',         tEn: 'Approach',         lead: 'How an engagement runs, from mandate to exit', ariaEn: 'Next: Approach' },
     approach: { to: 'investment-focus', tEn: 'Investment Focus', lead: 'Selection parameters, strategies and exclusions',               ariaEn: 'Next: Investment Focus' },
     focus:    { to: 'company',          tEn: 'Company',          lead: 'Company profile and contact details',              ariaEn: 'Next: Company' }
