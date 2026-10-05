@@ -89,8 +89,10 @@
     .home-hero .sub { margin-top: 18px; max-width: 22em; }
     .home-hero .loc { margin-top: 28px; }
   }
-  @media (max-width: 340px) {
-    
+  /* Narrow phones: "日本の投資家のために" is ten full-width characters on one line and ran past the right edge at 320-359px;
+     the headline is sized to the room it has, so it stays on two lines and whole. */
+  @media (max-width: 359px) {
+    .home-hero h1 { font-size: calc((100vw - 40px) / 10.4); }
   }
 
   /* --- 2 · 投資家の立場から ---------------------------------------- */
@@ -146,13 +148,16 @@
     .hi-stage-name { margin-top: 0; }
     .hi-stage-d { margin-top: 10px; max-width: none; }
   }
+  @media (max-width: 360px) {
+    .hi-title { font-size: 24px; }
+  }
 
   /* --- 3 · 市場 ------------------------------------------------------ */
   /* The page's visual signature: both markets at one proportion, one gutter, one grade, on a shared row grid
      (photograph, name, description, three traits) so corresponding rows align however long either runs. */
   :root { --hm-title: clamp(30px, calc(1.4vw + 22px), 42px); --hm-city: clamp(24px, calc(0.5vw + 20px), 28px); }
   .hm { --hm-gap: clamp(24px, 3vw, 40px); padding: 0 0 var(--section); }
-  .hm .shell { padding-top: 0; }
+  .hm .shell { padding-top: var(--section); }
   .hm-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
   .hm-title { margin: 0; font-size: var(--hm-title); line-height: 1.3; letter-spacing: 0; text-wrap: balance; }
   .hm-sub { margin: 10px 0 0; max-width: 32em; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
@@ -213,8 +218,8 @@
   /* Income and Repositioning are the two core strategies: two photographs at one proportion with their
      copy set beneath on the page ground, so nothing important sits inside a photograph. Selective
      Hospitality follows as one quieter row, labelled as a selective application. */
-  .hf { padding: 0 0 var(--space-6); }
-  .hf .shell { padding-top: var(--section); }
+  .hf { padding: 0; }
+  .hf .shell { padding-top: 0; }
   .hf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--hm-gap, 32px); margin-top: clamp(32px, 3.6vw, 52px); --hm-gap: clamp(24px, 3vw, 40px); }
   .hf-item { display: block; text-decoration: none; color: inherit; min-width: 0; }
   .hf-media { display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: #DCD6CC; }
@@ -257,6 +262,29 @@
 
   /* Display headings balance their lines; body copy keeps natural Japanese wrapping. */
   .h-h2, .ip-statement, .co-label { text-wrap: balance; }
+
+  /* --- 3 · 投資方針: 見出しの下に対象範囲を一文で示す。 */
+  .hf-sub { margin: 10px 0 0; max-width: 32em; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hf-feature-title { margin-top: 0; }
+
+  /* --- 6 · お問い合わせ: ページ地色の上の控えめな締めくくり。冒頭と同じグリッド。 */
+  .hc { padding: var(--section) 0; }
+  .hc .shell { padding-top: 0; padding-bottom: 0; }
+  .hc-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(16px, 2.2vw, 28px); align-items: end; }
+  .hc-text { grid-column: 1 / span 7; }
+  .hc-title { margin: 0; max-width: 18em; font-size: var(--hm-title); line-height: 1.3; letter-spacing: 0; text-wrap: balance; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hc-body { margin: 14px 0 0; max-width: 32em; font-family: var(--jp); font-size: clamp(16px, 15px + 0.3vw, 18px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
+  .hc-actions { grid-column: 8 / span 5; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hc-body [lang="en"], .hc-primary [lang="en"], .hc-secondary [lang="en"] { white-space: nowrap; }
+  .hc-primary { font-family: var(--jp); font-size: clamp(16px, 15px + 0.25vw, 18px); font-weight: 500; color: var(--plum); }
+  .hc-secondary { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; color: var(--muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; text-decoration-color: var(--rule-strong); transition: color 200ms var(--ease-out); }
+  @media (hover: hover) { .hc-secondary:hover { color: var(--reiwa-node, #5E3D78); } }
+  .hc-secondary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  @media (max-width: 900px) {
+    .hc-text, .hc-actions { grid-column: 1 / -1; }
+    .hc-actions { margin-top: 24px; }
+  }
+  @media (max-width: 760px) { .hc { padding: 56px 0; } }
   </style>
 </head>
 <body data-page="home" data-locale="ja" data-en-url="/" data-ja-url="/ja/">
@@ -284,87 +312,41 @@
 <section class="hi" data-screen-label="02 ホーム — Reiwa Capitalとは" aria-labelledby="hi-title">
   <div class="shell">
     <div class="hi-head">
-      <h2 class="hi-title" id="hi-title"><span class="jt">ロンドン</span>・<span class="jt">アムステルダム</span>の<wbr>不動産を、<wbr>投資家側から<wbr>支援します。</h2>
+      <h2 class="hi-title" id="hi-title">欧州不動産の<wbr>案件発掘・<wbr><span class="jt">スキーム</span>構築・<wbr><span class="jt">モニタリング</span>を<wbr>担う、<wbr><span class="jt">クロスボーダー</span>の<wbr><span class="jt">プラットフォーム</span>。</h2>
       <div class="hi-intro">
-        <p class="hi-lede"><span lang="en">Reiwa Capital</span>は、<wbr>日本の投資家による<wbr>選定案件の評価と取得を支援し、<wbr>現地専門家の調整と<wbr>保有期間中の<wbr>モニタリングを、<wbr>出口まで<wbr>行います。<wbr>重要な判断は、<wbr>一貫して<wbr>投資家が<wbr>行います。</p>
-        <a class="enq-cta hi-link" href="approach.html#lf-title">六つの段階を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <p class="hi-lede"><span lang="en">Reiwa Capital</span>は、<wbr>日本の投資家および<wbr>資本パートナーとともに、<wbr><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>選定案件に<wbr>取り組みます。<wbr>規律ある<wbr>投資審査、<wbr>現地の専門性、<wbr>積極的な<wbr>資産管理を<wbr>組み合わせ、<wbr>取得から<wbr>出口まで、<wbr>明確な<wbr>保有戦略のもとで<wbr>進めます。</p>
+        <a class="enq-cta hi-link" href="approach.html#lf-title"><span>アプローチを見る</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
       </div>
     </div>
     <ol class="hi-seq" aria-label="Reiwa Capitalの役割">
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2"/><use href="#rp3"/><use href="#rp4"/><use href="#rp5"/></svg><span class="hi-stage-n">01</span></span>
-        <span class="hi-stage-name">形成</span>
+        <span class="hi-stage-name">案件発掘と評価</span>
         <span class="hi-stage-k"><span class="jt">マンデート</span>・評価</span>
-        <p class="hi-stage-d"><span class="jt">マンデート</span>を<wbr>投資家と定め、<wbr>資本を投じる前に<wbr>各案件を評価します。</p>
+        <p class="hi-stage-d">投資家と<span class="jt">マンデート</span>を定め、<wbr>適した案件を<wbr>発掘し、<wbr>投資の妥当性を<wbr>評価してから<wbr>次に進みます。</p>
       </li>
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2"/><use href="#rp3"/><use href="#rp4" class="on"/><use href="#rp5" class="on"/></svg><span class="hi-stage-n">02</span></span>
-        <span class="hi-stage-name">実行</span>
-        <span class="hi-stage-k">組成・取得</span>
-        <p class="hi-stage-d"><span class="jt">ストラクチャー</span>、<wbr>資金調達、<wbr><span class="jt">デューデリジェンス、</span><wbr>取得の各段階で、<wbr>選任された専門家の<wbr>対応を<wbr>調整します。</p>
+        <span class="hi-stage-name">取得と<span class="jt">スキーム</span>構築</span>
+        <span class="hi-stage-k"><span class="jt">スキーム</span>構築・取得</span>
+        <p class="hi-stage-d">選任した専門家を<wbr>調整し、<wbr>所有<span class="jt">スキーム</span>の構築、<wbr>資金調達、<wbr><span class="jt">デューデリジェンス、</span><wbr>取得を<wbr>進めます。</p>
       </li>
       <li class="hi-stage">
         <span class="hi-stage-mk" aria-hidden="true"><svg class="hi-mark" viewBox="0 0 747 800" focusable="false"><use href="#rp0" class="on"/><use href="#rp1" class="on"/><use href="#rp2" class="on"/><use href="#rp3" class="on"/><use href="#rp4" class="on"/><use href="#rp5" class="on"/></svg><span class="hi-stage-n">03</span></span>
-        <span class="hi-stage-name">保有期間</span>
+        <span class="hi-stage-name">保有管理と報告</span>
         <span class="hi-stage-k">保有・売却</span>
-        <p class="hi-stage-d">実績を<span class="jt">モニタリング</span>し、<wbr>出口まで、<wbr>重要な判断を<wbr>投資家に諮ります。</p>
+        <p class="hi-stage-d">投資計画に対する<wbr>実績を追跡し、<wbr>賃貸や<wbr>資本的支出に関する<wbr>課題への対応を<wbr>調整して、<wbr>出口まで<wbr>報告します。</p>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- ================================================================ 3 · 市場 -->
-<section class="hm" data-screen-label="03 ホーム — markets" aria-labelledby="hm-title">
-  <div class="shell">
-    <div class="hm-head">
-      <div class="hm-head-text">
-        <h2 class="h-h2 hm-title" id="hm-title">二つの市場</h2>
-        <p class="hm-sub">ロンドンと<wbr>アムステルダム。<wbr>いずれも対象を<wbr>意図的に絞っています。</p>
-      </div>
-      <a class="enq-cta hm-more" href="about.html#markets">注力市場を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
-    </div>
-    <div class="hm-cols">
-      <div class="hm-col">
-        <div class="hm-photo hm-photo--lon"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
-        <h3 class="hm-city">ロンドン</h3>
-        <p class="h-body hm-copy">厚みのある資本市場、<wbr>幅広い<span class="jt">テナント</span>需要、<wbr>成熟した金融<span class="jt">ネットワーク</span>を<wbr>備えています。<wbr>案件は<span class="jt">サブマーケット</span>と資産の<wbr>双方の水準で評価し、<wbr>出口の環境も<wbr>当初から<wbr>検討します。</p>
-        <ul class="hm-facts" role="list">
-          <li>幅広い<span class="jt">テナント</span>需要</li>
-          <li>細かく分かれた<span class="jt">ミクロ</span><span class="jt">マーケット</span></li>
-          <li>売却時の買い手層の厚み</li>
-        </ul>
-      </div>
-      <div class="hm-col">
-        <div class="hm-photo hm-photo--ams"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
-        <h3 class="hm-city">アムステルダム</h3>
-        <p class="h-body hm-copy">供給が限られ、<wbr>都市計画と環境要件が<wbr>厳格な市場です。<wbr>許可用途、<wbr>建物の状態、<wbr>保有期間中に<wbr>必要となる資本を<wbr>重視します。</p>
-        <ul class="hm-facts" role="list">
-          <li>供給が限られた<span class="jt">コンパクト</span>な市場</li>
-          <li>確立した<span class="jt">テナント</span>需要</li>
-          <li>機関投資家を含む買い手層</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================ 4 · 投資家の判断を起点に -->
-<section class="hp" data-screen-label="04 ホーム — 投資家側" aria-labelledby="hp-title">
-  <div class="shell">
-    <h2 class="h-h2 hp-title" id="hp-title">投資家の判断を<wbr>起点に</h2>
-    <ul class="hp-grid" role="list">
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>費用と変更点の把握</h3><p class="h-body">専門家の助言、<wbr>費用、<wbr>変更点を<wbr>承認済みの<wbr>事業計画に<wbr>照らして示し、<wbr>取得から<wbr>保有期間を通じて<wbr>投資家が<wbr>把握できるようにします。</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、<wbr>税務や<span class="jt">ストラクチャー</span>、<wbr>金融上の工夫に<wbr>依存せず、<wbr>それ自体で<wbr>成立する<wbr>必要があります。</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>現地専門家の調整</h3><p class="h-body">案件ごとに<wbr>必要な専門家を<wbr>選任し、<wbr>取引を<wbr>進める側ではなく、<wbr>投資家の側に<wbr>立って<wbr>調整します。</p></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================================================================ 5 · 投資方針 -->
-<section class="hf" data-screen-label="05 ホーム — 投資方針" aria-labelledby="hf-title">
+<!-- ================================================================ 3 · 投資方針 -->
+<section class="hf" data-screen-label="03 ホーム — 投資方針" aria-labelledby="hf-title">
   <div class="shell">
     <div class="hf-head">
       <h2 class="h-h2" id="hf-title">投資方針</h2>
+      <p class="hf-sub"><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>における、<wbr>収益型と再生型の<wbr>投資機会。</p>
     </div>
     <div class="hf-grid">
       <a class="hf-item" href="investment-focus.html#income">
@@ -387,12 +369,74 @@
     <a class="hf-feature" href="investment-focus.html#hospitality" aria-labelledby="hf-feat-cue" aria-describedby="hf-feat-desc">
       <div class="hf-feature-media"><img src="../assets/imagery/bg-hospitality-800.webp" srcset="../assets/imagery/bg-hospitality-800.webp 800w, ../assets/imagery/bg-hospitality-952.webp 952w" sizes="(max-width: 760px) 100vw, 36vw" width="952" height="1269" loading="lazy" decoding="async" alt="夜に照らされたホテルの建物の角。彫刻を施した石のファサードが暗い窓の間で浮かび上がっている"></div>
       <div class="hf-feature-body">
-        <span class="hf-feature-k">選択的な応用領域</span>
-        <h3 class="hf-feature-title">選択的な<span class="jt">ホスピタリティ</span></h3>
+        <h3 class="hf-feature-title">厳選ホテル・宿泊施設</h3>
         <p class="hf-feature-desc" id="hf-feat-desc">不動産そのもの、<wbr>地域の需要、<wbr>運営の考え方が<wbr>相互に支え合う、<wbr>特徴ある物件。</p>
-        <span class="hf-feature-cue" id="hf-feat-cue">選択的な<span class="jt">ホスピタリティ</span>を<wbr>見る<span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
+        <span class="hf-feature-cue" id="hf-feat-cue">厳選ホテル・宿泊施設を<wbr>見る<span class="hf-cue-a" aria-hidden="true">&rarr;</span></span>
       </div>
     </a>
+  </div>
+</section>
+
+<!-- ================================================================ 4 · 市場 -->
+<section class="hm" data-screen-label="04 ホーム — markets" aria-labelledby="hm-title">
+  <div class="shell">
+    <div class="hm-head">
+      <div class="hm-head-text">
+        <h2 class="h-h2 hm-title" id="hm-title">二つの市場</h2>
+        <p class="hm-sub">注力するのは、<wbr><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>です。</p>
+      </div>
+      <a class="enq-cta hm-more" href="about.html#markets">注力市場を見る<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+    </div>
+    <div class="hm-cols">
+      <div class="hm-col">
+        <div class="hm-photo hm-photo--lon"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
+        <h3 class="hm-city">ロンドン</h3>
+        <p class="h-body hm-copy">厚みのある資本市場と、<wbr>成熟した金融・助言の<span class="jt">ネットワーク</span>を<wbr>備え、<wbr>性格の異なる<wbr>中心部の<span class="jt">サブマーケット</span>で<wbr>構成されます。</p>
+        <ul class="hm-facts" role="list">
+          <li><span class="jt">ウェストエンド</span>、<wbr>シティ・オブ・ロンドン、<wbr><span class="jt">ミッドタウン</span>の違い</li>
+          <li>資本投下の前に<wbr>検証する<span class="jt">テナント</span>需要</li>
+          <li>出口環境と、<wbr>複数の現実的な出口手段</li>
+        </ul>
+      </div>
+      <div class="hm-col">
+        <div class="hm-photo hm-photo--ams"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
+        <h3 class="hm-city">アムステルダム</h3>
+        <p class="h-body hm-copy">供給が限られた<wbr><span class="jt">コンパクト</span>な市場で、<wbr>都市計画と<wbr>環境要件が厳格です。<wbr>確立した<span class="jt">テナント</span>需要と、<wbr>機関投資家を含む<wbr>買い手層があります。</p>
+        <ul class="hm-facts" role="list">
+          <li>許可用途と都市計画上の位置づけ（購入前に確認）</li>
+          <li>建物の技術的状態と環境要件</li>
+          <li>保有期間中に必要となる資本</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ 5 · 投資家の判断を起点に -->
+<section class="hp" data-screen-label="05 ホーム — 投資家側" aria-labelledby="hp-title">
+  <div class="shell">
+    <h2 class="h-h2 hp-title" id="hp-title">投資家の判断を<wbr>起点に</h2>
+    <ul class="hp-grid" role="list">
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、<wbr>税務や<span class="jt">スキーム</span>上の利点に<wbr>頼らず、<wbr>不動産そのものの価値で<wbr>成り立つ必要があります。</p></li>
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>計画に対する実績</h3><p class="h-body">収益、<wbr>費用、<wbr>資本的支出、<wbr>重要な変更を<wbr>投資計画に照らして示し、<wbr>投資家が<wbr>状況を<wbr>明確に判断できるようにします。</p></li>
+      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>連携のとれた現地実行</h3><p class="h-body">各専門家の責任範囲を<wbr>明確にし、<wbr>進捗と判断を<wbr>全体として<wbr>調整します。<wbr>投資家が<wbr>全体像を<wbr>自ら組み立てる<wbr>必要はありません。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================ 6 · お問い合わせ -->
+<section class="hc" data-screen-label="06 ホーム — お問い合わせ" aria-labelledby="hc-title">
+  <div class="shell">
+    <div class="hc-row">
+      <div class="hc-text">
+        <h2 class="h-h2 hc-title" id="hc-title">投資・提携について、<wbr>ご相談ください。</h2>
+        <p class="hc-body"><span class="jt">ロンドン</span>および<span class="jt">アムステルダム</span>での<wbr>投資ニーズ、<wbr>または<wbr><span lang="en">Reiwa Capital</span>との<wbr>協業に関する<wbr>ご相談をお受けします。</p>
+      </div>
+      <div class="hc-actions">
+        <a class="enq-cta hc-primary" href="company.html#contact"><span><span lang="en">Reiwa Capital</span>へのお問い合わせ</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <a class="hc-secondary" href="about.html"><span lang="en">Reiwa Capital</span>について</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -400,7 +444,7 @@
 
 <div data-shell="footer"></div>
 
-<script src="../shell.js?v=80"></script>
+<script src="../shell.js?v=81"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>
