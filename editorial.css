@@ -642,14 +642,16 @@ html[lang="ja"] .nn-title { font-size: var(--type-page-title); line-height: 1.32
 }
 /* Right-hand side: Privacy alone. One link, no list. */
 .ff-right { display: flex; align-items: center; gap: var(--fluid-xs); }
-/* Three small links and the copyright no longer fit one 62px row on a
-   phone: let the baseline row wrap, with the emblem on its own line. */
+/* Phones: the emblem sits on its own line at the top; below it the copyright
+   is on the left and Contact / Privacy on the right, one row where they fit
+   (wrapping to a second, right-aligned row only when the Japanese labels
+   cannot share a line with the copyright). */
 @media (max-width: 480px) {
-  .footer-quiet .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; row-gap: var(--space-3); height: auto; padding-top: 14px; padding-bottom: 18px; }
+  .footer-quiet .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; height: auto; padding-top: 14px; padding-bottom: 16px; row-gap: var(--space-3); column-gap: 16px; }
   /* The emblem stays a positioned box (its focus halo is an absolutely
      placed pseudo-element) but gives up its centring offsets. */
-  .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; margin: 0 0 4px; }
-  .footer-quiet .ff-right { justify-content: center; flex-wrap: wrap; }
+  .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; flex: 0 0 100%; justify-content: center; margin: 0 0 2px; }
+  .footer-quiet .ff-right { margin-left: auto; justify-content: flex-end; gap: 20px; }
 }
 /* The footer links measure 41px across, just under the target floor, so
    they carry the same invisible overlay the nav controls use. */
@@ -1184,28 +1186,12 @@ html.pt-enter.pt-run #main { opacity: 1; transform: none; transition: opacity 22
 .skip-link { min-height: 44px; }
 
 /* The footer gained a Contact route. In Japanese both labels are long
-   (お問い合わせ + プライバシーポリシー = 189px against a 288px row at 320),
-   so below 400 the bar reflows to two rows rather than overflowing: the
-   copyright and the centred emblem keep the first row, the two links take
-   the second. Type, colour and spacing scale are unchanged; only the row
-   count changes, and only where the single row can no longer hold. */
+   (お問い合わせ + プライバシーポリシー = 189px against a 288px row at 320), so
+   below 400 the links take their own right-aligned row under the copyright
+   when the two cannot share a line (see the phone rule above). */
 @media (max-width: 400px) {
-  .footer-quiet .footer-inner {
-    height: auto;
-    min-height: 62px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    align-content: center;
-    row-gap: var(--space-3);
-    padding-top: var(--space-3);
-    padding-bottom: var(--space-3);
-  }
-  /* relative, not static: the emblem's 44px touch overlay is ::before with
-     left/right -6px, so it must keep anchoring to the emblem itself. Against
-     a static emblem it would anchor to .footer-inner and spill 6px. */
-  .footer-quiet .ff-brand { position: relative; left: auto; top: auto; transform: none; order: -1; }
-  .footer-quiet .ff-right { justify-content: center; gap: 20px; }
+  .footer-quiet .footer-inner { min-height: 62px; }
+  .footer-quiet .ff-right { gap: 20px; }
 }
 
 /* =====================================================================

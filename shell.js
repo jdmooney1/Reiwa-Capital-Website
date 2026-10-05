@@ -326,7 +326,7 @@
     }
 
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : '/privacy.html';
-    const privacyLabel = locale === 'ja' ? '<span>プライバシーポリシー</span>' : '<span data-en="Privacy" data-ja="プライバシーポリシー">Privacy</span>';
+    const privacyLabel = locale === 'ja' ? '<span>プライバシー</span>' : '<span data-en="Privacy" data-ja="プライバシー">Privacy</span>';
     const contactHref  = locale === 'ja' ? '/ja/company.html#contact' : '/company.html#contact';
     const contactLabel = locale === 'ja' ? '<span>お問い合わせ</span>' : '<span data-en="Contact" data-ja="お問い合わせ">Contact</span>';
 
