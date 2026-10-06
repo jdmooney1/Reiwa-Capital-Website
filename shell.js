@@ -133,7 +133,10 @@
         </div>
         <div class="nav-rule" aria-hidden="true"></div>
         <div class="nav-drawer" id="rc-nav" hidden>
-          <ul>${links}</ul>
+          <ul>
+            <li><a href="/"${cur === 'home' ? ' aria-current="page"' : ''}><span data-en="Home" data-ja="ホーム">Home</span></a></li>
+            ${links}
+          </ul>
         </div>
       </nav>
     `;
@@ -185,7 +188,10 @@
         </div>
         <div class="nav-rule" aria-hidden="true"></div>
         <div class="nav-drawer" id="rc-nav" hidden>
-          <ul>${links}</ul>
+          <ul>
+            <li><a href="/ja/"${cur === 'home' ? ' aria-current="page"' : ''}><span>ホーム</span></a></li>
+            ${links}
+          </ul>
         </div>
       </nav>
     `;
@@ -230,6 +236,9 @@
       setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    /* The dimmed page under the panel is the drawer's own ::after, so a tap
+       on it lands on the drawer itself. */
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) close(); });
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return;
       if (toggle.getAttribute('aria-expanded') !== 'true') return;
