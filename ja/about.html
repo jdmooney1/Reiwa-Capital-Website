@@ -106,47 +106,43 @@
   .ab-lede { margin-top: var(--fluid-2xs); max-width: 33em; }
   @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
-  /* --- 2 · Why Reiwa exists: the continuity comparison --------------------------
-     One comparison, two states: fragmented, stage-by-stage oversight against one continuous investor-side
-     view. The three stages, the investor-authority line and the specialists are the same in both states;
-     only the line beneath the stages and the message below it change. Both messages share one grid cell,
-     so switching never moves the page. */
+  /* --- 2 · Why Reiwa exists: the continuity diagram --------------------------
+     One diagram, no controls. Three stages stand apart, each marked by a ring. The Reiwa emblem assembles
+     at the first stage and travels to the last as the reader scrolls, drawing one line behind it that
+     joins Formation, Execution and Ownership; each stage lights as the emblem reaches it and reaches down
+     to its specialists. The investor's mandate sits above, the specialists below, Reiwa between them.
+     Left to right on a wide layout, top to bottom on a narrow one. Every label stays on screen throughout.
+     Without script, or with reduced motion, the diagram is simply complete. */
   :root { --aw-msg: clamp(24px, calc(0.8vw + 17.5px), 29px); }
   .aw-field { --aw-bg: #3A2443; --aw-2: #BFB4C7; --aw-dim: rgba(247, 243, 234, .4); --aw-gap: clamp(20px, 2.6vw, 36px);
     margin-top: var(--fluid-l); background: var(--aw-bg); color: var(--cream); padding: clamp(28px, 3.4vw, 48px) clamp(20px, 4vw, 56px) clamp(30px, 3.2vw, 44px); }
-  /* Two states as a tab pair on a shared rule: the selected one carries the rule. */
-  .aw-switch { display: flex; gap: clamp(24px, 3vw, 40px); flex-wrap: wrap; border-bottom: 1px solid rgba(247, 243, 234, .18); }
-  .aw-sw { appearance: none; background: none; border: 0; padding: 6px 0 12px; margin: 0 0 -1px; cursor: pointer; min-height: 44px; font-family: var(--jp); font-size: clamp(16px, 14.5px + 0.4vw, 19px); line-height: 1.3; color: var(--aw-2); border-bottom: 2px solid transparent; transition: color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), border-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-sw[aria-selected="true"] { color: var(--cream); border-bottom-color: var(--cream); }
-  .aw-sw:focus-visible, .aw-panel:focus-visible { outline: 2px solid var(--on-plum); outline-offset: 4px; }
-  @media (hover: hover) { .aw-sw:hover { color: var(--cream); } }
-  .aw-panel { margin-top: 28px; }
-  .aw-auth { max-width: none; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 1px solid rgba(247, 243, 234, .34); font-family: var(--jp); font-size: 16px; line-height: 1.7; color: var(--aw-2); word-break: auto-phrase; line-break: strict; }
-  .aw-rc { max-width: none; margin: 0 0 12px 26px; font-family: var(--jp); font-size: 17px; line-height: 1.4; color: var(--cream); visibility: hidden; }
-  .aw-field[data-flow="with"] .aw-rc { visibility: visible; }
-  .aw-sts { display: block; }
+  .aw-field { --aw-axis: y; }
+  .aw-panel { position: relative; margin-top: 28px; }
+  .aw-auth { max-width: none; margin: 0 0 26px; font-family: var(--jp); font-size: 16px; line-height: 1.7; color: var(--aw-2); word-break: auto-phrase; line-break: strict; }
+  .aw-rc { max-width: none; margin: 0 0 12px 26px; font-family: var(--jp); font-size: 17px; line-height: 1.4; color: var(--cream); }
+  .aw-sts { position: relative; display: block; }
   .aw-st { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 14px; align-content: start; padding: 0 0 26px 26px; }
-  .aw-st:last-child { padding-bottom: 0; }
+  .aw-st:last-of-type { padding-bottom: 0; }
   .aw-st-n { grid-column: 1; grid-row: 1; font-family: var(--jp); font-weight: 500; font-size: var(--type-h3); line-height: 1.35; letter-spacing: 0; color: var(--cream); word-break: auto-phrase; line-break: strict; }
   .aw-st-s { grid-column: 1; grid-row: 2; margin-top: 4px; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: var(--aw-2); word-break: auto-phrase; line-break: strict; }
   .aw-spec { position: relative; grid-column: 2; grid-row: 1 / span 2; align-self: start; font-family: var(--jp); font-size: 15px; line-height: 1.6; color: rgba(247, 243, 234, .88); word-break: auto-phrase; line-break: strict; }
-  /* On a phone the comparison line is the rail down the left of the stages: three separate segments
-     without coordination, one unbroken line with it. */
-  .aw-seg { position: absolute; left: 0; top: 6px; bottom: 14px; width: 2px; background: var(--aw-dim); transition: bottom 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-  .aw-st:last-child .aw-seg { bottom: 0; }
-  .aw-field[data-flow="with"] .aw-seg { bottom: -6px; background: var(--cream); }
-  .aw-field[data-flow="with"] .aw-st:last-child .aw-seg { bottom: 0; }
+  /* Stage markers: a ring per stage, filled as the emblem reaches it. On a phone they sit on a rail down
+     the left; the line is one stretch per stage, joining each ring to the next. */
+  .aw-node { position: absolute; left: -5px; top: 7px; width: 12px; height: 12px; box-sizing: border-box; border: 1.5px solid rgba(247, 243, 234, .5); border-radius: 50%; background: var(--aw-bg); z-index: 1; }
+  .aw-node::before { content: ""; position: absolute; inset: -1.5px; border-radius: 50%; background: var(--cream); transform: scale(var(--aw-r, 1)); }
+  .aw-seg { position: absolute; left: 0; top: 13px; height: 100%; width: 2px; background: var(--cream); transform-origin: 50% 0; transform: scaleY(var(--aw-f, 1)); }
+  .aw-mark { position: absolute; left: 1px; top: 13px; width: 26px; height: 28px; z-index: 2; transform: translate(calc(-50% + var(--aw-dx, 0px)), calc(-50% + var(--aw-dy, 0px))); }
+  .aw-mark-t { display: none; }
+  .aw-emb { display: block; width: 100%; height: 100%; overflow: visible; }
+  .aw-emb use { --k: clamp(0, calc(var(--aw-a, 1) * 1.6 - var(--pi) * 0.12), 1); fill: var(--cream); opacity: var(--k); transform: translate(calc((1 - var(--k)) * var(--dx) * 1px), calc((1 - var(--k)) * var(--dy) * 1px)); }
   .aw-msgs { display: grid; margin-top: 32px; }
-  .aw-msg { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), visibility 0s linear 240ms; }
-  .aw-field[data-flow="with"] .aw-msg--with, .aw-field[data-flow="without"] .aw-msg--without { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
   .aw-msg-t { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--aw-msg); line-height: 1.4; letter-spacing: 0; color: var(--cream); word-break: auto-phrase; line-break: strict; }
   .aw-msg-d { margin: 10px 0 0; max-width: 34em; font-family: var(--jp); font-size: clamp(16px, 14.4px + 0.15vw, 16.5px); line-height: 1.8; color: var(--aw-2); text-wrap: pretty; word-break: auto-phrase; line-break: strict; }
   .aw-close { margin: clamp(24px, 2.5vw, 36px) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
     .aw-field { margin-top: 26px; padding: 18px 18px 26px; }
-    .aw-switch { flex-wrap: nowrap; gap: 16px; }
-    .aw-sw { flex: 1 1 0; min-width: 0; text-align: left; font-size: 15px; padding: 4px 0 10px; }
     .aw-panel { margin-top: 22px; }
+    .aw-auth { margin-bottom: 22px; }
     .aw-msgs { margin-top: 28px; }
   }
   /* The katakana specialist label is unbreakable, so it drops under its stage earlier than in English. */
@@ -154,36 +150,27 @@
     .aw-st { grid-template-columns: minmax(0, 1fr); }
     .aw-spec { grid-column: 1; grid-row: 3; margin-top: 8px; }
   }
-  /* From 761px the three stages sit side by side on shared rows (name, descriptor, authority line, label,
-     comparison line, specialists), so every column lines up whatever its text does. */
+  /* From 761px the stages sit side by side on shared rows (name, descriptor, track, specialists), so every
+     column lines up whatever its text does. The track row holds the rings, the line and the emblem. */
   @media (min-width: 761px) {
     @supports (grid-template-rows: subgrid) {
+      .aw-field { --aw-axis: x; }
       .aw-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(6, auto); column-gap: var(--aw-gap); margin-top: 28px; }
       .aw-sts { display: contents; }
-      .aw-st { display: grid; grid-row: 1 / span 6; grid-template-columns: minmax(0, 1fr); grid-template-rows: subgrid; padding: 0; }
-      .aw-st:nth-child(1) { grid-column: 1; } .aw-st:nth-child(2) { grid-column: 2; } .aw-st:nth-child(3) { grid-column: 3; }
+      .aw-st { display: grid; grid-row: 2 / span 4; grid-template-columns: minmax(0, 1fr); grid-template-rows: subgrid; padding: 0; }
+      .aw-st:nth-of-type(1) { grid-column: 1; } .aw-st:nth-of-type(2) { grid-column: 2; } .aw-st:nth-of-type(3) { grid-column: 3; }
+      .aw-auth { grid-column: 1 / -1; grid-row: 1; margin: 0 0 32px; }
+      .aw-rc { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
       .aw-st-n { grid-column: 1; grid-row: 1; }
-      .aw-st-s { grid-column: 1; grid-row: 2; }
-      .aw-auth { grid-column: 1 / -1; grid-row: 3; margin: 22px 0 0; }
-      .aw-rc { grid-column: 1 / -1; grid-row: 4; margin: 16px 0 0; text-align: center; }
-      /* Without coordination each stage has its own short segment; with it the segments are joined across the
-         gutters into one line. The broken state is a scale of the same line, so the change is a transform and
-         never a reflow. */
-      .aw-seg { position: relative; grid-column: 1; grid-row: 5; align-self: start; height: 2px; width: 100%; margin-top: 8px; transform-origin: 0 50%; transform: scaleX(.72); transition: transform 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)), background-color 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-      .aw-seg::after { content: ""; position: absolute; left: 100%; top: 0; width: var(--aw-gap); height: 100%; background: var(--cream); opacity: 0; transition: opacity 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-      .aw-st:last-child .aw-seg::after { display: none; }
-      .aw-field[data-flow="with"] .aw-seg { transform: none; }
-      .aw-field[data-flow="with"] .aw-seg::after { opacity: 1; }
-      .aw-spec { grid-column: 1; grid-row: 6; margin-top: 18px; }
-      /* With coordination a short tie runs from the line to each appointment: the work is coordinated from
-         the investor's side. */
-      .aw-spec::before { content: ""; position: absolute; left: 0; top: -18px; width: 1px; height: 12px; background: rgba(247, 243, 234, .55); opacity: 0; transition: opacity 240ms var(--ease-out, cubic-bezier(.25,.1,.25,1)); }
-      .aw-field[data-flow="with"] .aw-spec::before { opacity: 1; }
-      .aw-msgs { grid-column: 1 / -1; grid-row: 7; margin-top: 36px; }
+      .aw-st-s { grid-column: 1; grid-row: 2; margin-bottom: 8px; }
+      .aw-node { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin-top: 46px; }
+      .aw-node::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 39px; margin-left: -.5px; background: rgba(247, 243, 234, .55); transform-origin: 50% 0; transform: scaleY(var(--aw-u, 1)); }
+      .aw-seg { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 51px 0 0 6px; width: calc(100% + var(--aw-gap)); height: 2px; transform-origin: 0 50%; transform: scaleX(var(--aw-f, 1)); }
+      .aw-mark { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 30px 0 12px -15px; width: 42px; height: 45px; transform: translate(var(--aw-dx, 0px), 0); }
+      .aw-mark-t { display: block; position: absolute; left: 0; bottom: calc(100% + 6px); white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.2; color: var(--cream); opacity: var(--aw-a, 1); }
+      .aw-spec { grid-column: 1; grid-row: 4; margin-top: 10px; }
+      .aw-msgs { grid-column: 1 / -1; grid-row: 6; margin-top: 40px; }
     }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .aw-sw, .aw-seg, .aw-seg::after, .aw-msg, .aw-spec::before { transition: none; }
   }
 
   /* --- 3 · 注力市場: the signature section ------------------------------ */
@@ -393,39 +380,34 @@
       <h2 class="h-h2" id="aw-title">海外不動産の<wbr>保有には、<br>一貫した視点が必要です</h2>
       <p class="h-body ab-lede">海外資産の取得は、投資の始まりにすぎません。保有と出口には、一貫した投資家側の視点と、状況の変化に応じた再検証が必要です。</p>
     </div>
-    <div class="aw-field" data-flow="with" data-continuity>
-      <div class="aw-switch" role="tablist" aria-label="表示の切り替え">
-        <button class="aw-sw" type="button" role="tab" id="aw-tab-without" aria-selected="false" aria-controls="aw-panel" tabindex="-1" data-flow-btn="without">調整役が不在の場合</button>
-        <button class="aw-sw" type="button" role="tab" id="aw-tab-with" aria-selected="true" aria-controls="aw-panel" data-flow-btn="with"><span lang="en">Reiwa Capital</span>の場合</button>
-      </div>
-      <div class="aw-panel" id="aw-panel" role="tabpanel" aria-labelledby="aw-tab-with" tabindex="0">
+    <div class="aw-field" data-continuity>
+      <div class="aw-panel">
         <p class="aw-auth">マンデートと重要な判断は<wbr>投資家が保持</p>
         <p class="aw-rc"><span lang="en">Reiwa Capital</span></p>
         <div class="aw-sts">
         <div class="aw-st">
           <span class="aw-st-n">形成</span>
           <span class="aw-st-s"><span class="jt">マンデート</span>・評価</span>
+          <i class="aw-node" aria-hidden="true"></i>
           <i class="aw-seg" aria-hidden="true"></i>
           <span class="aw-spec">鑑定・法務</span>
         </div>
         <div class="aw-st">
           <span class="aw-st-n">実行</span>
           <span class="aw-st-s">組成・取得</span>
+          <i class="aw-node" aria-hidden="true"></i>
           <i class="aw-seg" aria-hidden="true"></i>
           <span class="aw-spec">法務・貸し手・技術</span>
         </div>
         <div class="aw-st">
           <span class="aw-st-n">保有期間</span>
           <span class="aw-st-s">保有・売却</span>
-          <i class="aw-seg" aria-hidden="true"></i>
+          <i class="aw-node" aria-hidden="true"></i>
+          <span class="aw-mark" aria-hidden="true"><svg class="aw-emb" viewBox="0 0 747 800" focusable="false"><use href="#rp0" style="--pi:0;--dx:-125;--dy:-176"/><use href="#rp1" style="--pi:1;--dx:125;--dy:-176"/><use href="#rp2" style="--pi:2;--dx:-125;--dy:176"/><use href="#rp3" style="--pi:3;--dx:125;--dy:177"/><use href="#rp4" style="--pi:4;--dx:178;--dy:0"/><use href="#rp5" style="--pi:5;--dx:-178;--dy:0"/></svg><span class="aw-mark-t"><span lang="en">Reiwa Capital</span></span></span>
           <span class="aw-spec"><span class="jt">プロパティマネジメント</span>・<wbr>仲介</span>
         </div>
         </div>
         <div class="aw-msgs">
-          <div class="aw-msg aw-msg--without">
-            <p class="aw-msg-t">投資家側の視点が<wbr>一貫しない場合</p>
-            <p class="aw-msg-d">各専門家は担当する段階を支援しますが、<wbr>投資家の視点を<wbr>全体を通じて維持する主体は<wbr>置かれません。</p>
-          </div>
           <div class="aw-msg aw-msg--with">
             <p class="aw-msg-t">投資家側の視点を<wbr>一貫して維持</p>
             <p class="aw-msg-d"><span lang="en">Reiwa Capital</span>が、<wbr>実行から保有まで、<wbr>起用された専門家を<wbr>投資家側から調整します。</p>
@@ -551,34 +533,114 @@
 <div data-shell="footer"></div>
 
 <script>
-/* About - the continuity comparison. A two-tab control (ArrowLeft/ArrowRight, Home/End, click, touch) that
-   sets data-flow on the field; the CSS swaps the line and the message in place, so nothing reflows. */
+/* About - the continuity diagram. The Reiwa emblem and the line behind it are placed by scroll position and
+   nothing else: one progress value (0 to 1) is read from where the first ring sits in the viewport, so the
+   emblem advances exactly as far as the page has moved, stops when scrolling stops and retraces on the way
+   back up. No timers, no easing in time, no pinned height. Wide layouts run left to right along the rings,
+   narrow ones top to bottom (the CSS says which, through --aw-axis). Reduced motion, or no script, leaves
+   the diagram complete. */
 (function () {
   var field = document.querySelector('[data-continuity]');
   if (!field) return;
-  var tabs = [].slice.call(field.querySelectorAll('[role="tab"]'));
-  var panel = field.querySelector('[role="tabpanel"]');
-  function select(tab, focus) {
-    field.setAttribute('data-flow', tab.dataset.flowBtn);
-    tabs.forEach(function (o) {
-      var on = o === tab;
-      o.setAttribute('aria-selected', on ? 'true' : 'false');
-      o.tabIndex = on ? 0 : -1;
-    });
-    panel.setAttribute('aria-labelledby', tab.id);
-    if (focus) tab.focus({ preventScroll: true });
+  var stages = [].slice.call(field.querySelectorAll('.aw-st'));
+  var nodes = stages.map(function (s) { return s.querySelector('.aw-node'); });
+  var mark = field.querySelector('.aw-mark');
+  if (!mark || stages.length < 2 || nodes.indexOf(null) !== -1) return;
+
+  var still = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var vh = 0, head = 0, axis = 'x', stops = [0, 0], total = 1, queued = false, last = -1;
+
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function centre(el) { var r = el.getBoundingClientRect(); return axis === 'y' ? r.top + r.height / 2 : r.left + r.width / 2; }
+
+  /* Distance of each ring from the first, along the drawing axis. Only differences matter, so it holds
+     at any scroll position. */
+  function measure() {
+    vh = window.innerHeight || document.documentElement.clientHeight;
+    var bar = document.querySelector('.nav-bar');
+    head = bar ? bar.getBoundingClientRect().height : 0;
+    axis = (getComputedStyle(field).getPropertyValue('--aw-axis') || 'x').trim();
+    var c0 = centre(nodes[0]);
+    stops = nodes.map(function (n) { return centre(n) - c0; });
+    total = Math.max(stops[stops.length - 1], 1);
   }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t, false); });
-    t.addEventListener('keydown', function (e) {
-      var n = null;
-      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === 'Home') n = tabs[0];
-      else if (e.key === 'End') n = tabs[tabs.length - 1];
-      if (n) { e.preventDefault(); select(n, true); }
+
+  /* Where the first ring is in the viewport -> how far along the emblem is. The range starts as the diagram
+     comes into the lower viewport (or, where the page opens with it already on screen, at the top of the
+     page, so the draw is never found half done) and finishes with the last stage still well inside the
+     viewport; the sticky header is kept clear of the finish. The narrow layout is drawn a little slower than
+     the page scrolls. */
+  function progress() {
+    var r = nodes[0].getBoundingClientRect();
+    var y = r.top + r.height / 2;
+    var doc = y + window.pageYOffset;
+    if (axis === 'y') {
+      var from = Math.min(vh * 0.88, doc);
+      var span = Math.max(total * 1.2 + vh * 0.08, vh * 0.5);
+      return clamp((from - y) / span);
+    }
+    var s = Math.min(vh * 0.92, doc);
+    var e = Math.max(vh * 0.30, head + vh * 0.16);
+    if (s - e < vh * 0.25) e = Math.max(s - vh * 0.25, head + vh * 0.12);
+    return clamp((s - y) / (s - e));
+  }
+
+  function paint() {
+    queued = false;
+    if (still && still.matches) return;
+    var p = progress();
+    if (Math.abs(p - last) < 0.0004) return;
+    last = p;
+    var s = p * total;
+    var a = clamp(p / 0.12);
+    var back = ((1 - p) * -total).toFixed(2) + 'px';
+    field.style.setProperty('--aw-p', p.toFixed(4));
+    field.style.setProperty('--aw-a', a.toFixed(3));
+    field.style.setProperty('--aw-dx', axis === 'x' ? back : '0px');
+    field.style.setProperty('--aw-dy', axis === 'y' ? back : '0px');
+    stages.forEach(function (st, i) {
+      var f = i < stops.length - 1 ? clamp((s - stops[i]) / (stops[i + 1] - stops[i])) : 1;
+      var r = i === 0 ? a : clamp((s - stops[i] + 12) / 12);
+      var u = clamp((s - stops[i] + total * 0.08) / (total * 0.08));
+      if (i === 0) u = Math.min(u, a);
+      st.style.setProperty('--aw-f', f.toFixed(4));
+      st.style.setProperty('--aw-r', r.toFixed(3));
+      st.style.setProperty('--aw-u', u.toFixed(3));
     });
-  });
+  }
+
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(paint);
+  }
+
+  function settle() {
+    if (still && still.matches) {
+      field.classList.remove('aw-live');
+      ['--aw-p', '--aw-a', '--aw-dx', '--aw-dy'].forEach(function (k) { field.style.removeProperty(k); });
+      stages.forEach(function (st) { ['--aw-f', '--aw-r', '--aw-u'].forEach(function (k) { st.style.removeProperty(k); }); });
+      last = -1;
+      return;
+    }
+    field.classList.add('aw-live');
+    measure();
+    last = -1;
+    paint();
+  }
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', settle);
+  window.addEventListener('orientationchange', function () { window.setTimeout(settle, 200); });
+  window.addEventListener('pageshow', settle);
+  window.addEventListener('load', settle);
+  if (still) {
+    if (still.addEventListener) still.addEventListener('change', settle);
+    else if (still.addListener) still.addListener(settle);
+  }
+  if (window.ResizeObserver) new ResizeObserver(settle).observe(field);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(settle);
+  settle();
 })();
 </script>
 <script src="../shell.js?v=84"></script>
