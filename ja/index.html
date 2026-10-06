@@ -164,13 +164,13 @@
   .hm-more { margin-bottom: 2px; flex: none; }
   .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--hm-gap); margin-top: clamp(40px, 4vw, 56px); align-items: start; }
   .hm-col { display: flex; flex-direction: column; min-width: 0; }
-  .hm-photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #DCD6CC; }
-  .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
-  /* One natural grade for both: the Amsterdam source carries about twice London's saturation, so it is
-     brought down to the same warmth; neither is darkened or sharpened. */
-  .hm-photo--lon img { filter: saturate(0.96) contrast(1.0); }
-  .hm-photo--ams img { filter: saturate(0.66) contrast(0.98) brightness(1.01); }
+  /* Country maps give geographic context only: one outline each, a lavender-grey fill and a hairline edge on
+     the page's ivory, with a single point at the focus city. Both sit in identical frames (same viewBox), each
+     fitted on its own so the UK fills its frame and the Netherlands is not enlarged to match it. */
+  .hm-map { margin: 0; }
+  .hm-map img { display: block; width: 100%; height: auto; }
   .hm-city { margin: 22px 0 0; font-family: var(--jp); font-weight: 400; font-size: var(--hm-city); line-height: 1.3; letter-spacing: 0; color: var(--ink); }
+  .hm-focus { margin: 8px 0 0; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.5; letter-spacing: 0; color: var(--ink-2); }
   .hm-copy { margin: 10px 0 0; max-width: 26em; font-size: var(--type-body-l); line-height: 1.8; color: var(--ink); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hm-facts { list-style: none; margin: 28px 0 0; padding: 0; }
   .hm-facts li { padding: 14px 0; border-top: 1px solid var(--rule); font-family: var(--jp); font-size: var(--type-body); line-height: 1.7; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
@@ -187,8 +187,8 @@
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
     .hm-col + .hm-col { margin-top: 40px; }
-    /* Mobile composition: each market photograph runs edge to edge, then its name, line and traits. */
-    .hm-photo { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    /* Stacked, the Netherlands frame drops the blank its outline does not use; the outline itself is untouched. */
+    .hm-map--nl img { aspect-ratio: 1000 / 640; object-fit: cover; }
     .hm-city { margin-top: 20px; }
     .hm-facts { margin-top: 20px; }
     .hm-facts li { padding: 12px 0; }
@@ -374,8 +374,11 @@
     </div>
     <div class="hm-cols">
       <div class="hm-col">
-        <div class="hm-photo hm-photo--lon"><img src="../assets/imagery/market-london-800.webp" srcset="../assets/imagery/market-london-800.webp 800w, ../assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="夕暮れのテムズ川沿いに広がるシティ・オブ・ロンドンのスカイライン"></div>
-        <h3 class="hm-city">ロンドン</h3>
+        <div class="hm-map"><img src="../assets/maps/country-uk.svg?v=1" width="1000" height="800" loading="lazy" decoding="async" alt="北アイルランドを含む英国の地図。ロンドンの位置を示しています。"></div>
+        <div class="hm-hd">
+          <h3 class="hm-city">英国</h3>
+          <p class="hm-focus">注力市場：<span class="jt">ロンドン</span></p>
+        </div>
         <p class="h-body hm-copy">厚みのある資本市場と、<wbr>成熟した金融・助言の<span class="jt">ネットワーク</span>を<wbr>備え、<wbr>性格の異なる<wbr>中心部の<span class="jt">サブマーケット</span>で<wbr>構成されます。</p>
         <ul class="hm-facts" role="list">
           <li><span class="jt">ウェストエンド</span>、<wbr>シティ・オブ・ロンドン、<wbr><span class="jt">ミッドタウン</span>の違い</li>
@@ -384,8 +387,11 @@
         </ul>
       </div>
       <div class="hm-col">
-        <div class="hm-photo hm-photo--ams"><img src="../assets/imagery/market-amsterdam-800.webp" srcset="../assets/imagery/market-amsterdam-800.webp 800w, ../assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="夕方の光に照らされたアムステルダムの運河沿いの家並み"></div>
-        <h3 class="hm-city">アムステルダム</h3>
+        <div class="hm-map hm-map--nl"><img src="../assets/maps/country-nl.svg?v=1" width="1000" height="800" loading="lazy" decoding="async" alt="欧州本土のオランダの地図。アムステルダムの位置を示しています。"></div>
+        <div class="hm-hd">
+          <h3 class="hm-city">オランダ</h3>
+          <p class="hm-focus">注力市場：<span class="jt">アムステルダム</span></p>
+        </div>
         <p class="h-body hm-copy">供給が限られた<wbr><span class="jt">コンパクト</span>な市場で、<wbr>都市計画と<wbr>環境要件が厳格です。<wbr>確立した<span class="jt">テナント</span>需要と、<wbr>機関投資家を含む<wbr>買い手層があります。</p>
         <ul class="hm-facts" role="list">
           <li>許可用途と都市計画上の位置づけ（購入前に確認）</li>

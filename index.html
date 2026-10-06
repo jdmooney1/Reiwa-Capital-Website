@@ -150,13 +150,13 @@
   .hm-more { margin-bottom: 2px; flex: none; }
   .hm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--hm-gap); margin-top: clamp(40px, 4vw, 56px); align-items: start; }
   .hm-col { display: flex; flex-direction: column; min-width: 0; }
-  .hm-photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #DCD6CC; }
-  .hm-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
-  /* One natural grade for both: the Amsterdam source carries about twice London's saturation, so it is
-     brought down to the same warmth; neither is darkened or sharpened. */
-  .hm-photo--lon img { filter: saturate(0.96) contrast(1.0); }
-  .hm-photo--ams img { filter: saturate(0.66) contrast(0.98) brightness(1.01); }
+  /* Country maps give geographic context only: one outline each, a lavender-grey fill and a hairline edge on
+     the page's ivory, with a single point at the focus city. Both sit in identical frames (same viewBox), each
+     fitted on its own so the UK fills its frame and the Netherlands is not enlarged to match it. */
+  .hm-map { margin: 0; }
+  .hm-map img { display: block; width: 100%; height: auto; }
   .hm-city { margin: 22px 0 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--hm-city); line-height: 1.1; letter-spacing: -0.012em; color: var(--ink); }
+  .hm-focus { margin: 6px 0 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: var(--ink-2); }
   .hm-copy { margin: 10px 0 0; max-width: 46ch; font-size: var(--type-body-l); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
   .hm-facts { list-style: none; margin: 28px 0 0; padding: 0; }
   .hm-facts li { padding: 14px 0; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
@@ -173,8 +173,8 @@
     .hm-head { flex-direction: column; align-items: flex-start; gap: 16px; }
     .hm-cols { grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
     .hm-col + .hm-col { margin-top: 40px; }
-    /* Mobile composition: each market photograph runs edge to edge, then its name, line and traits. */
-    .hm-photo { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    /* Stacked, the Netherlands frame drops the blank its outline does not use; the outline itself is untouched. */
+    .hm-map--nl img { aspect-ratio: 1000 / 640; object-fit: cover; }
     .hm-city { margin-top: 20px; }
     .hm-facts { margin-top: 20px; }
     .hm-facts li { padding: 12px 0; }
@@ -355,8 +355,11 @@
     </div>
     <div class="hm-cols">
       <div class="hm-col">
-        <div class="hm-photo hm-photo--lon"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></div>
-        <h3 class="hm-city">London</h3>
+        <div class="hm-map"><img src="assets/maps/country-uk.svg?v=1" width="1000" height="800" loading="lazy" decoding="async" alt="Map of the United Kingdom, including Northern Ireland. London is marked."></div>
+        <div class="hm-hd">
+          <h3 class="hm-city">United Kingdom</h3>
+          <p class="hm-focus">Investment focus: London</p>
+        </div>
         <p class="h-body hm-copy">Deep capital markets and mature financing and advisory networks, across distinct central submarkets.</p>
         <ul class="hm-facts" role="list">
           <li>Differences between the West End, City of London and Midtown</li>
@@ -365,8 +368,11 @@
         </ul>
       </div>
       <div class="hm-col">
-        <div class="hm-photo hm-photo--ams"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 760px) 100vw, (min-width: 1304px) 560px, 46vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></div>
-        <h3 class="hm-city">Amsterdam</h3>
+        <div class="hm-map hm-map--nl"><img src="assets/maps/country-nl.svg?v=1" width="1000" height="800" loading="lazy" decoding="async" alt="Map of the European Netherlands. Amsterdam is marked."></div>
+        <div class="hm-hd">
+          <h3 class="hm-city">The Netherlands</h3>
+          <p class="hm-focus">Investment focus: Amsterdam</p>
+        </div>
         <p class="h-body hm-copy">Compact and supply-constrained, with strict planning and sustainability requirements, established occupier demand and institutional buyers.</p>
         <ul class="hm-facts" role="list">
           <li>Permitted use and planning position, confirmed before purchase</li>
