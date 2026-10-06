@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=129">
+<link rel="stylesheet" href="../editorial.css?v=130">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -265,14 +265,14 @@
      each on a phone. Each criterion carries one drawing from the shared symbol set (.rc-sym, editorial.css). */
   .am-look-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .am-look-list li { padding: 0 clamp(16px, 2.8vw, 40px); border-left: 1px solid var(--rule); }
-  .am-look-list .rc-sym { --rc-sym: 56px; margin: 0 0 18px; }
+  .am-look-list .rc-sym { --rc-sym: 56px; --rc-pull: -0.14; margin: 0 0 18px; }
   .am-look-list li:first-child { padding-left: 0; border-left: 0; }
   .am-look-list li:last-child { padding-right: 0; }
   .am-crit-t { word-break: keep-all; line-break: strict; overflow-wrap: anywhere; display: block; font-family: var(--jp); font-size: var(--type-body); line-height: 1.8; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
     .am-look-list { grid-template-columns: minmax(0, 1fr); margin-top: 12px; }
     .am-look-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; align-items: start; padding: 14px 0; border-left: 0; }
-    .am-look-list .rc-sym { --rc-sym: 44px; margin: 0; }
+    .am-look-list .rc-sym { --rc-sym: 44px; --rc-pull: 0; margin: 0; }
     .am-look-list li:first-child { padding-top: 6px; }
     .am-look-list li + li { border-top: 1px solid var(--rule); }
     .am-look-list li:last-child { padding-bottom: 0; }
@@ -428,7 +428,7 @@
   </div>
 </section>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-site" viewBox="4 4 40 40"><rect vector-effect="non-scaling-stroke" x="5" y="5" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="28" y="5" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="5" y="28" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="28" y="28" width="15" height="15"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="21.25" y="21.25" width="5.5" height="5.5"/></symbol><symbol id="rcs-route" viewBox="4 4 40 40"><path d="M5 43H43" vector-effect="non-scaling-stroke"/><path d="M5 35H17V28H29V21H43" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="37.5" y="12.5" width="5.5" height="5.5"/></symbol><symbol id="rcs-exits" viewBox="4 4 40 40"><path d="M5 24H17.5" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="17.5" y="21.25" width="5.5" height="5.5"/><path d="M23 24L31 14H41" vector-effect="non-scaling-stroke"/><path d="M23 24L31 34H41" vector-effect="non-scaling-stroke"/><path d="M43 9V19" vector-effect="non-scaling-stroke"/><path d="M43 29V39" vector-effect="non-scaling-stroke"/></symbol><symbol id="rcs-use" viewBox="4 4 40 40"><path d="M5 5H43V31H31V43H5Z" vector-effect="non-scaling-stroke"/><rect vector-effect="non-scaling-stroke" x="11" y="11" width="15" height="15"/><path d="M18.5 11V26" vector-effect="non-scaling-stroke"/><path d="M11 18.5H26" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="28.25" y="28.25" width="5.5" height="5.5"/></symbol></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-site" viewBox="0 0 64 64"><path d="M32 10A22 22 0 1 0 54 32"/><circle cx="32" cy="32" r="11"/></symbol><symbol id="rcs-route" viewBox="0 0 64 64"><path d="M10 23H22C32 23 32 13 42 13H54"/><path d="M10 37H22C32 37 32 27 42 27H54"/><path d="M10 51H22C32 51 32 41 42 41H54"/></symbol><symbol id="rcs-exits" viewBox="0 0 64 64"><path d="M8 32H24L42 14H55"/><path d="M24 32L42 50H55"/><path d="M55 8V20M55 44V56"/></symbol><symbol id="rcs-use" viewBox="0 0 64 64"><path d="M8 52V44A12 12 0 0 1 32 44A12 12 0 0 1 56 44V52"/><path d="M32 44V52"/><path d="M20 28V24A12 12 0 0 1 44 24V28"/></symbol></defs></svg>
 <section class="am-market am-market--london" id="london" data-screen-label="03a Reiwaについて — ロンドン" aria-labelledby="am-london-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-london-title">ロンドン</h3>
@@ -460,9 +460,9 @@
       <div class="am-look">
             <h3 class="am-k">私たちが重視する点</h3>
             <ul class="am-look-list">
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">需要が確認できる<wbr>都心の優良立地</span></li>
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">安定収益、<wbr>または<wbr>管理可能な<wbr>改善余地</span></li>
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-exits"/></svg><span class="am-crit-t">現実的な資本支出と<wbr>複数の<wbr>売却選択肢</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">需要が確認できる<wbr>都心の優良立地</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">安定収益、<wbr>または<wbr>管理可能な<wbr>改善余地</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-exits"/></svg><span class="am-crit-t">現実的な資本支出と<wbr>複数の<wbr>売却選択肢</span></li>
             </ul>
           </div>
   </div>
@@ -500,9 +500,9 @@
       <div class="am-look">
             <h3 class="am-k">私たちが重視する点</h3>
             <ul class="am-look-list">
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">需要が明確な、<wbr>確立された<wbr>中心部の立地</span></li>
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-use"/></svg><span class="am-crit-t">明確な許可用途と<wbr>管理可能な<wbr>技術要件</span></li>
-              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">安定収益、<wbr>または<wbr><span class="jt">リーシング</span>や<wbr>再生による<wbr>改善余地</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">需要が明確な、<wbr>確立された<wbr>中心部の立地</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-use"/></svg><span class="am-crit-t">明確な許可用途と<wbr>管理可能な<wbr>技術要件</span></li>
+              <li><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">安定収益、<wbr>または<wbr><span class="jt">リーシング</span>や<wbr>再生による<wbr>改善余地</span></li>
             </ul>
           </div>
   </div>

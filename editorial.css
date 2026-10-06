@@ -1385,16 +1385,18 @@ html[lang="ja"] .nn-contact-t { font-family: var(--font-jp); line-height: 1.5; l
 html[lang="ja"] .footer-quiet .ff-link.ff-contact { font-size: var(--type-caption); }
 
 /* =====================================================================
-   SYMBOLS — one set of original architectural drawings, used by the About
-   criteria and the Investment Focus parameters. One stroke weight at every
-   size (non-scaling, set on each shape), square joins, ink-2 lines, and one
-   sumire node per drawing: the square node of the Reiwa identity, marking
-   the point the criterion turns on. The viewBox is cropped to the drawing,
-   so the line meets the text edge exactly. Size comes from --rc-sym.
+   SYMBOLS - one set of geometric drawings, used by the About criteria,
+   the Investment Focus parameters and hospitality criteria, and the Home
+   investor-side principles. Every drawing is built on a 64 x 64 grid and
+   drawn at one proportional stroke (2.6 units, so about 2.3px at 56px),
+   butt caps and mitred joins, in the deep plum. Size comes from --rc-sym.
+   Where a drawing sits directly above its text, --rc-pull (-0.14) moves it
+   left by the grid's own margin so the drawn line meets the text edge.
    ===================================================================== */
 .rc-sym {
-  --rc-node: var(--reiwa-node, #5E3D78);
   display: block; flex: none; overflow: visible;
   width: var(--rc-sym, 56px); height: var(--rc-sym, 56px);
-  fill: none; stroke: var(--ink-2); stroke-width: 1.3px; stroke-linejoin: miter; stroke-linecap: butt;
+  color: var(--plum);
+  translate: calc(var(--rc-sym, 56px) * var(--rc-pull, 0)) 0;
+  fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4;
 }
