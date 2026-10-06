@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=128">
+<link rel="stylesheet" href="editorial.css?v=129">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -251,26 +251,21 @@
   .am-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: var(--img-grade); }
   .am-market--amsterdam .am-photo img { object-position: 50% 60%; }
   @media (max-width: 760px) { .am-photo { aspect-ratio: 2 / 1; } .am-market--london .am-photo img { object-position: 50% 42%; } }
-  /* What We Look For: three analytical modules on one row - a line symbol and the criterion - with
-     fine verticals between them on desktop. The same three-symbol grammar serves both markets: where the
-     investment is (a point and the demand around it), how controllable the case is (two aligned planes and one
-     adjustment), and how many ways out there are (one line, two endpoints). Drawn in plum at a hairline. */
-  .am-look-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; }
-  .am-look-list li { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 14px; padding: 0 clamp(16px, 2.8vw, 40px); border-left: 1px solid var(--rule); }
+  /* What We Look For: three criteria on one row, with fine verticals between them on desktop; one rule between
+     each on a phone. Each criterion carries one drawing from the shared symbol set (.rc-sym, editorial.css). */
+  .am-look-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .am-look-list li { padding: 0 clamp(16px, 2.8vw, 40px); border-left: 1px solid var(--rule); }
+  .am-look-list .rc-sym { --rc-sym: 56px; margin: 0 0 18px; }
   .am-look-list li:first-child { padding-left: 0; border-left: 0; }
   .am-look-list li:last-child { padding-right: 0; }
-  .am-crit-k { display: flex; align-items: center; color: var(--plum); }
-  .am-sym { display: block; flex: none; width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
-  .am-sym .dot { fill: currentColor; stroke: none; }
   .am-crit-t { display: block; font-family: 'DM Sans', sans-serif; font-size: var(--type-body); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
-    .am-look-list { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; margin-top: 12px; }
-    .am-look-list li { grid-row: auto; grid-template-rows: none; grid-template-columns: 28px minmax(0, 1fr); column-gap: 14px; row-gap: 0; align-items: start; padding: 10px 0; border-left: 0; }
-    .am-look-list li:first-child { padding-top: 4px; }
+    .am-look-list { grid-template-columns: minmax(0, 1fr); margin-top: 12px; }
+    .am-look-list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; align-items: start; padding: 14px 0; border-left: 0; }
+    .am-look-list .rc-sym { --rc-sym: 44px; margin: 0; }
+    .am-look-list li:first-child { padding-top: 6px; }
     .am-look-list li + li { border-top: 1px solid var(--rule); }
     .am-look-list li:last-child { padding-bottom: 0; }
-    .am-crit-k { align-items: flex-start; padding-top: 2px; }
-    .am-sym { width: 28px; height: 28px; }
   }
   @media (min-width: 901px) {
     .am-market .am-grid { align-items: stretch; }
@@ -401,6 +396,7 @@
   </div>
 </section>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-site" viewBox="4 4 40 40"><rect vector-effect="non-scaling-stroke" x="5" y="5" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="28" y="5" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="5" y="28" width="15" height="15"/><rect vector-effect="non-scaling-stroke" x="28" y="28" width="15" height="15"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="21.25" y="21.25" width="5.5" height="5.5"/></symbol><symbol id="rcs-route" viewBox="4 4 40 40"><path d="M5 43H43" vector-effect="non-scaling-stroke"/><path d="M5 35H17V28H29V21H43" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="37.5" y="12.5" width="5.5" height="5.5"/></symbol><symbol id="rcs-exits" viewBox="4 4 40 40"><path d="M5 24H17.5" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="17.5" y="21.25" width="5.5" height="5.5"/><path d="M23 24L31 14H41" vector-effect="non-scaling-stroke"/><path d="M23 24L31 34H41" vector-effect="non-scaling-stroke"/><path d="M43 9V19" vector-effect="non-scaling-stroke"/><path d="M43 29V39" vector-effect="non-scaling-stroke"/></symbol><symbol id="rcs-use" viewBox="4 4 40 40"><path d="M5 5H43V31H31V43H5Z" vector-effect="non-scaling-stroke"/><rect vector-effect="non-scaling-stroke" x="11" y="11" width="15" height="15"/><path d="M18.5 11V26" vector-effect="non-scaling-stroke"/><path d="M11 18.5H26" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="28.25" y="28.25" width="5.5" height="5.5"/></symbol></defs></svg>
 <section class="am-market am-market--london" id="london" data-screen-label="03a About — London" aria-labelledby="am-london-title">
   <div class="shell">
     <h3 class="h-h3 am-city" id="am-london-title">London</h3>
@@ -431,9 +427,9 @@
       <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><circle class="dot" cx="18" cy="18" r="1.9"/><path d="M25.25 14.62A8 8 0 1 1 10.75 14.62"/><path d="M29.88 26.32A14.5 14.5 0 1 1 16.74 3.56"/></svg></span><span class="am-crit-t">Prime central locations with evidenced demand</span></li>
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 10.5H32"/><path d="M4 25.5H32"/><path d="M18 10.5V15.4"/><path d="M18 20.6V25.5"/><circle cx="18" cy="18" r="2.6"/></svg></span><span class="am-crit-t">Durable income, or a controllable route to improvement</span></li>
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 18H14.5"/><path d="M14.5 18L29.2 9"/><path d="M14.5 18L29.2 27"/><circle class="dot" cx="31" cy="8" r="1.9"/><circle class="dot" cx="31" cy="28" r="1.9"/></svg></span><span class="am-crit-t">Realistic capital needs and more than one exit route</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">Prime central locations with evidenced demand</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">Durable income, or a controllable route to improvement</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-exits"/></svg><span class="am-crit-t">Realistic capital needs and more than one exit route</span></li>
             </ul>
           </div>
   </div>
@@ -470,9 +466,9 @@
       <div class="am-look">
             <h3 class="am-k">What We Look For</h3>
             <ul class="am-look-list">
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><circle class="dot" cx="18" cy="18" r="1.9"/><path d="M25.25 14.62A8 8 0 1 1 10.75 14.62"/><path d="M29.88 26.32A14.5 14.5 0 1 1 16.74 3.56"/></svg></span><span class="am-crit-t">Established central locations with clear demand</span></li>
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 10.5H32"/><path d="M4 25.5H32"/><path d="M18 10.5V15.4"/><path d="M18 20.6V25.5"/><circle cx="18" cy="18" r="2.6"/></svg></span><span class="am-crit-t">Clear permitted use, manageable technical requirements</span></li>
-              <li><span class="am-crit-k" aria-hidden="true"><svg class="am-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 18H14.5"/><path d="M14.5 18L29.2 9"/><path d="M14.5 18L29.2 27"/><circle class="dot" cx="31" cy="8" r="1.9"/><circle class="dot" cx="31" cy="28" r="1.9"/></svg></span><span class="am-crit-t">Durable income, or a route through leasing or repositioning</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><span class="am-crit-t">Established central locations with clear demand</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-use"/></svg><span class="am-crit-t">Clear permitted use, manageable technical requirements</span></li>
+              <li><svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-route"/></svg><span class="am-crit-t">Durable income, or a route through leasing or repositioning</span></li>
             </ul>
           </div>
   </div>
@@ -607,7 +603,7 @@
   settle();
 })();
 </script>
-<script src="shell.js?v=84"></script>
+<script src="shell.js?v=85"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>

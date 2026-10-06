@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=128">
+<link rel="stylesheet" href="../editorial.css?v=129">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -106,7 +106,8 @@
   .hi-title { grid-column: 1 / span 7; max-width: 16em; margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--hi-title); line-height: 1.32; letter-spacing: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hi-intro { grid-column: 8 / span 5; padding-top: clamp(6px, 0.9vw, 12px); }
   .hi-lede { margin: 0; max-width: 28em; font-family: var(--jp); font-size: clamp(18px, 16.6px + 0.3vw, 20px); line-height: 1.85; color: var(--ink); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .hi-link { margin-top: 24px; font-size: clamp(15px, 14px + 0.25vw, 17px); }
+  .hi-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(20px, 2.4vw, 32px); margin-top: 24px; }
+  .hi-link { margin-top: 0; font-size: clamp(15px, 14px + 0.25vw, 17px); }
   .hi-seq { --hi-gap: clamp(28px, 3.4vw, 48px); list-style: none; margin: clamp(48px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--hi-gap); }
   .hi-stage { display: flex; flex-direction: column; min-width: 0; padding: 0; }
   .hi-stage-mk { display: flex; align-items: center; gap: 12px; height: 30px; }
@@ -135,7 +136,7 @@
   @media (max-width: 760px) {
     .hi { padding: 56px 0 56px; }
     .hi-title { max-width: 18em; }
-    .hi-link { margin-top: 16px; }
+    .hi-actions { margin-top: 20px; }
     /* A connected vertical sequence: one rail, the marker on it, the stage beside it. */
     .hi-seq { display: block; margin-top: 40px; }
     .hi-stage { position: relative; display: block; padding: 0 0 32px 48px; }
@@ -300,7 +301,10 @@
       <h2 class="hi-title" id="hi-title">欧州不動産の<wbr>案件発掘・<wbr><span class="jt">スキーム</span>構築・<wbr><span class="jt">モニタリング</span>を<wbr>担う、<wbr><span class="jt">クロスボーダー</span>の<wbr><span class="jt">プラットフォーム</span>。</h2>
       <div class="hi-intro">
         <p class="hi-lede"><span lang="en">Reiwa Capital</span>は、<wbr>日本の投資家および<wbr>資本パートナーとともに、<wbr><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>選定案件に<wbr>取り組みます。<wbr>規律ある<wbr>投資審査、<wbr>現地の専門性、<wbr>積極的な<wbr>資産管理を<wbr>組み合わせ、<wbr>取得から<wbr>出口まで、<wbr>明確な<wbr>保有戦略のもとで<wbr>進めます。</p>
-        <a class="enq-cta hi-link" href="approach.html#lf-title"><span>アプローチを見る</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <div class="hi-actions">
+          <a class="rc-btn rc-btn--fill" href="/ja/company.html#contact">お問い合わせ</a>
+          <a class="enq-cta hi-link" href="approach.html#lf-title"><span>アプローチを見る</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        </div>
       </div>
     </div>
     <ol class="hi-seq" aria-label="Reiwa Capitalの役割">
@@ -419,7 +423,7 @@
 
 <div data-shell="footer"></div>
 
-<script src="../shell.js?v=84"></script>
+<script src="../shell.js?v=85"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>

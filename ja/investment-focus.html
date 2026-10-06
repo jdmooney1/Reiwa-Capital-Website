@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=128">
+<link rel="stylesheet" href="../editorial.css?v=129">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -125,17 +125,17 @@
   .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
   .fx-eyebrow { margin: 0 0 12px; font-family: var(--jp); font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0; color: var(--ink-3); }
   .fx-param { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); }
-  .fx-param-i { min-width: 0; padding-right: clamp(24px, 4vw, 56px); }
+  .fx-param-i { --rc-sym: 60px; display: grid; grid-template-columns: var(--rc-sym) minmax(0, 1fr); column-gap: clamp(18px, 2vw, 28px); align-content: start; min-width: 0; padding-right: clamp(24px, 4vw, 56px); }
+  .fx-param-i .rc-sym { grid-row: 1 / span 2; }
+  .fx-param-hd, .fx-param-p { grid-column: 2; }
   .fx-param-i + .fx-param-i { padding: 0 0 0 clamp(24px, 4vw, 56px); border-left: 1px solid var(--rule); }
   .fx-param-hd { display: flex; align-items: center; gap: 14px; }
   .fx-param-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; color: var(--plum); }
-  .fx-param-sym { display: block; flex: none; width: 30px; height: 30px; fill: none; stroke: var(--plum); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
-  .fx-param-sym .dot { fill: var(--plum); stroke: none; }
   .fx-param-h { font-family: var(--jp); font-weight: 500; font-size: var(--type-body-l); line-height: 1.3; color: var(--ink); }
   .fx-param-p { margin: 14px 0 0; max-width: 30em; font-family: var(--jp); font-size: clamp(16px, 14.2px + 0.2vw, 16.5px); line-height: 1.85; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   @media (max-width: 900px) {
     .fx-param { grid-template-columns: minmax(0, 1fr); }
-    .fx-param-i { padding-right: 0; }
+    .fx-param-i { --rc-sym: 44px; padding-right: 0; column-gap: 18px; }
     .fx-param-i + .fx-param-i { margin-top: 20px; padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
     .fx-param-p { margin-top: 10px; max-width: none; }
   }
@@ -384,13 +384,16 @@
   <div class="shell fx-head">
     <p class="fx-eyebrow">投資対象の範囲</p>
     <h2 class="fx-h2" id="fx-title">確かな<span class="jt">基礎条件。</span><wbr>見極められる潜在力。</h2>
-    <div class="fx-param">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-fit" viewBox="4 4 40 40"><path d="M5 8H43" vector-effect="non-scaling-stroke"/><path d="M5 5V11" vector-effect="non-scaling-stroke"/><path d="M43 5V11" vector-effect="non-scaling-stroke"/><rect vector-effect="non-scaling-stroke" x="5" y="16" width="38" height="27"/><rect vector-effect="non-scaling-stroke" x="11" y="25" width="14" height="18"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="22.25" y="22.25" width="5.5" height="5.5"/></symbol><symbol id="rcs-facade" viewBox="4 4 40 40"><path d="M5 43H43" vector-effect="non-scaling-stroke"/><path d="M9 43V10H39V43" vector-effect="non-scaling-stroke"/><path d="M7 10H41" vector-effect="non-scaling-stroke"/><rect vector-effect="non-scaling-stroke" x="15" y="16" width="5.5" height="5.5"/><rect vector-effect="non-scaling-stroke" x="15" y="27" width="5.5" height="5.5"/><rect vector-effect="non-scaling-stroke" x="27" y="27" width="5.5" height="5.5"/><path d="M21 43V35H27V43" vector-effect="non-scaling-stroke"/><rect class="n" style="fill:var(--rc-node);stroke:none" x="27" y="16" width="5.5" height="5.5"/></symbol></defs></svg>
+<div class="fx-param">
       <div class="fx-param-i">
-        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">01</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect x="7" y="5" width="22" height="10"/><rect x="7" y="21" width="22" height="10"/><path d="M18 15V21"/><circle class="dot" cx="18" cy="18" r="1.5"/></svg><span class="fx-param-h"><span class="jt">マンデート</span>上の要件</span></div>
+        <svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-fit"/></svg>
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">01</span><span class="fx-param-h"><span class="jt">マンデート</span>上の要件</span></div>
         <p class="fx-param-p">個々の案件を、<wbr>投資家と合意した<span class="jt">マンデート</span>に<wbr>照らして<wbr>個別に評価し、<wbr>投資家の承認を<wbr>得たうえで<wbr>進めます。</p>
       </div>
       <div class="fx-param-i">
-        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">02</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 28H32"/><path d="M4 21.5H15.5L20.5 14H32"/><circle class="dot" cx="15.5" cy="21.5" r="1.7"/></svg><span class="fx-param-h">選定基準</span></div>
+        <svg class="rc-sym" aria-hidden="true" focusable="false"><use href="#rcs-facade"/></svg>
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">02</span><span class="fx-param-h">選定基準</span></div>
         <p class="fx-param-p">既存建物と、<wbr>裏付けのある<span class="jt">テナント</span>需要。<wbr>再生型では、<wbr>具体的で<wbr>管理可能な<wbr>改善に基づく<wbr>事業計画。</p>
       </div>
     </div>
@@ -686,7 +689,7 @@
   }
 })();
 </script>
-<script src="../shell.js?v=84"></script>
+<script src="../shell.js?v=85"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>

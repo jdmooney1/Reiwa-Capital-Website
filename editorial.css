@@ -1326,3 +1326,75 @@ html[lang="ja"] .jt { white-space: nowrap; font-family: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .h-arrow, .hf-cue-a, .fx-cue-a, .nn-arrow, .ret-arrow { transform: none !important; }
 }
+
+/* =====================================================================
+   CONTACT — the one place contact is styled. Scoped to .rc-btn and the
+   closing area; nothing here changes buttons, links or spacing elsewhere.
+   Contact is a filled or outlined button with no arrow. Exploring another
+   page stays a text link with an arrow (.enq-cta, .nn-link).
+   ===================================================================== */
+.rc-btn {
+  box-sizing: border-box;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 28px;
+  font-family: 'DM Sans', sans-serif; font-size: var(--type-body-s); font-weight: 400;
+  line-height: 1.2; letter-spacing: 0.01em; white-space: nowrap; text-decoration: none;
+  border: 1px solid transparent; border-radius: 0;
+  transition: background-color var(--dur-hover) var(--ease-out), color var(--dur-hover) var(--ease-out), border-color var(--dur-hover) var(--ease-out);
+}
+.rc-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+html[lang="ja"] .rc-btn { font-family: var(--font-jp); letter-spacing: 0.04em; }
+/* Filled: the page's action. Deep plum with cream type; hover warms to the node colour. */
+.rc-btn--fill { background: var(--plum); border-color: var(--plum); color: var(--paper-warm); }
+.rc-btn--fill:hover { background: var(--reiwa-node, #5E3D78); border-color: var(--reiwa-node, #5E3D78); }
+/* Outlined: the header's quiet form. Takes its colour from the bar, so it holds over the photograph. */
+.rc-btn--line { background: transparent; border-color: rgba(40, 19, 47, 0.62); color: var(--ink); }
+.rc-btn--line:hover { background: var(--plum); border-color: var(--plum); color: var(--paper-warm); }
+@media (prefers-reduced-motion: reduce) { .rc-btn { transition: none; } }
+
+/* Header (desktop): beside the language switch. Compact, with the usual 44px target
+   carried by an overlay. Below 1100px the same destination is the last row of the menu. */
+.nav-contact { position: relative; min-height: 38px; padding: 0 16px; font-size: var(--type-caption); margin-right: clamp(16px, 1.8vw, 28px); }
+.nav-contact::before { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; transform: translateY(-50%); height: 44px; }
+.nav-bar.nav-over-hero .nav-contact { color: #fff; border-color: rgba(255, 255, 255, 0.78); }
+.nav-bar.nav-over-hero .nav-contact:hover { background: #fff; border-color: #fff; color: var(--plum); }
+.nav-bar.nav-over-hero .nav-contact:focus-visible { outline-color: #fff; }
+@media (max-width: 1100px) { .nav-contact { display: none; } }
+
+/* Header (menu): last row of the disclosure panel, full width, outside the row rules. */
+.nav-drawer .drawer-contact { border-top: 0; padding: 14px var(--gutter) 10px; }
+.nav-drawer .drawer-contact .rc-btn { display: flex; width: 100%; min-height: 48px; padding: 0 20px; font-size: var(--type-body); color: var(--ink); }
+.nav-drawer .drawer-contact .rc-btn:hover { color: var(--paper-warm); }
+
+/* Closing area: the invitation, then the onward link, on one cream ground. The text is
+   ranged right like the onward band, so the button and the arrow close on the same edge. */
+.nextnav-closing { background: var(--paper-warm); border-top: 1px solid var(--rule); }
+.nextnav-closing .nextnav--band { background: transparent; border-top: 0; }
+.nn-contact { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.nn-contact-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; align-items: center; padding: var(--fluid-m) 0; border-bottom: 1px solid var(--rule); }
+.nn-contact-t { margin: 0; justify-self: end; text-align: right; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--ink); text-wrap: balance; }
+html[lang="ja"] .nn-contact-t { font-family: var(--font-jp); line-height: 1.5; letter-spacing: 0; }
+@media (max-width: 768px) {
+  .nn-contact-in { grid-template-columns: minmax(0, 1fr); row-gap: 16px; padding: 36px 0 32px; }
+  .nn-contact-t { justify-self: start; text-align: left; }
+  .nn-contact-in .rc-btn { width: 100%; }
+}
+
+/* Footer: Contact reads at caption size and full cream; Privacy stays the quiet micro link. */
+.footer-quiet .ff-link.ff-contact { color: var(--paper-warm); font-size: var(--type-caption); }
+html[lang="ja"] .footer-quiet .ff-link.ff-contact { font-size: var(--type-caption); }
+
+/* =====================================================================
+   SYMBOLS — one set of original architectural drawings, used by the About
+   criteria and the Investment Focus parameters. One stroke weight at every
+   size (non-scaling, set on each shape), square joins, ink-2 lines, and one
+   sumire node per drawing: the square node of the Reiwa identity, marking
+   the point the criterion turns on. The viewBox is cropped to the drawing,
+   so the line meets the text edge exactly. Size comes from --rc-sym.
+   ===================================================================== */
+.rc-sym {
+  --rc-node: var(--reiwa-node, #5E3D78);
+  display: block; flex: none; overflow: visible;
+  width: var(--rc-sym, 56px); height: var(--rc-sym, 56px);
+  fill: none; stroke: var(--ink-2); stroke-width: 1.3px; stroke-linejoin: miter; stroke-linecap: butt;
+}

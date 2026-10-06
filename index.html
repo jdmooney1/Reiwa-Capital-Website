@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=128">
+<link rel="stylesheet" href="editorial.css?v=129">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -95,7 +95,8 @@
   .hi-title { grid-column: 1 / span 7; max-width: 17ch; margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--hi-title); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
   .hi-intro { grid-column: 8 / span 5; padding-top: clamp(6px, 0.9vw, 12px); }
   .hi-lede { margin: 0; max-width: 34em; font-family: 'DM Sans', sans-serif; font-size: clamp(18px, 16.6px + 0.3vw, 20px); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
-  .hi-link { margin-top: 24px; font-size: clamp(15px, 14px + 0.25vw, 17px); }
+  .hi-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(20px, 2.4vw, 32px); margin-top: 24px; }
+  .hi-link { margin-top: 0; font-size: clamp(15px, 14px + 0.25vw, 17px); }
   .hi-seq { --hi-gap: clamp(28px, 3.4vw, 48px); list-style: none; margin: clamp(48px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--hi-gap); }
   .hi-stage { display: flex; flex-direction: column; min-width: 0; padding: 0; }
   .hi-stage-mk { display: flex; align-items: center; gap: 12px; height: 30px; }
@@ -124,7 +125,7 @@
   @media (max-width: 760px) {
     .hi { padding: 56px 0 56px; }
     .hi-title { max-width: 18ch; }
-    .hi-link { margin-top: 16px; }
+    .hi-actions { margin-top: 20px; }
     /* A connected vertical sequence: one rail, the marker on it, the stage beside it. */
     .hi-seq { display: block; margin-top: 40px; }
     .hi-stage { position: relative; display: block; padding: 0 0 32px 48px; }
@@ -281,7 +282,10 @@
       <h2 class="hi-title" id="hi-title">A cross-border platform for European real estate origination, structuring and oversight.</h2>
       <div class="hi-intro">
         <p class="hi-lede">Reiwa Capital works with Japanese investors and capital partners on selected opportunities in London and Amsterdam. Our approach combines disciplined underwriting, local expertise and active asset management, with a clear ownership strategy from acquisition through to exit.</p>
-        <a class="enq-cta hi-link" href="approach.html#lf-title">Explore our approach<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <div class="hi-actions">
+          <a class="rc-btn rc-btn--fill" href="/company.html#contact">Contact Reiwa Capital</a>
+          <a class="enq-cta hi-link" href="approach.html#lf-title">Explore our approach<span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        </div>
       </div>
     </div>
     <ol class="hi-seq" aria-label="What Reiwa Capital does">
@@ -399,7 +403,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="shell.js?v=84"></script>
+<script src="shell.js?v=85"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>
