@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=128">
+<link rel="stylesheet" href="../editorial.css?v=130">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param > stored choice > ja-locale default. */
@@ -106,7 +106,8 @@
   .hi-title { grid-column: 1 / span 7; max-width: 16em; margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--hi-title); line-height: 1.32; letter-spacing: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   .hi-intro { grid-column: 8 / span 5; padding-top: clamp(6px, 0.9vw, 12px); }
   .hi-lede { margin: 0; max-width: 28em; font-family: var(--jp); font-size: clamp(18px, 16.6px + 0.3vw, 20px); line-height: 1.85; color: var(--ink); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
-  .hi-link { margin-top: 24px; font-size: clamp(15px, 14px + 0.25vw, 17px); }
+  .hi-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(20px, 2.4vw, 32px); margin-top: 24px; }
+  .hi-link { margin-top: 0; font-size: clamp(15px, 14px + 0.25vw, 17px); }
   .hi-seq { --hi-gap: clamp(28px, 3.4vw, 48px); list-style: none; margin: clamp(48px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--hi-gap); }
   .hi-stage { display: flex; flex-direction: column; min-width: 0; padding: 0; }
   .hi-stage-mk { display: flex; align-items: center; gap: 12px; height: 30px; }
@@ -135,7 +136,7 @@
   @media (max-width: 760px) {
     .hi { padding: 56px 0 56px; }
     .hi-title { max-width: 18em; }
-    .hi-link { margin-top: 16px; }
+    .hi-actions { margin-top: 20px; }
     /* A connected vertical sequence: one rail, the marker on it, the stage beside it. */
     .hi-seq { display: block; margin-top: 40px; }
     .hi-stage { position: relative; display: block; padding: 0 0 32px 48px; }
@@ -204,7 +205,7 @@
   .hp-title::before { content: ""; position: absolute; left: 0; top: 0; width: 40px; height: 2px; background: var(--plum); }
   .hp-grid { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3.4vw, 56px); margin: clamp(32px, 3.6vw, 52px) 0 0; padding: 0; }
   .hp-item { position: relative; min-width: 0; padding: 20px 0 0; border-top: 1px solid var(--rule-violet); }
-  .hp-mk { position: absolute; left: 0; top: -4px; width: 7px; height: 7px; background: var(--reiwa-node, #5E3D78); }
+  .hp-item .rc-sym { --rc-sym: 56px; --rc-pull: -0.14; margin: 0 0 18px; }
   .hp-item h3 { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--hp-h3); line-height: 1.4; letter-spacing: 0; color: var(--plum); }
   .hp-item p { margin: 10px 0 0; max-width: 24em; font-size: var(--type-body); line-height: 1.8; color: var(--ink-2); text-wrap: pretty; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; }
   @media (max-width: 900px) {
@@ -212,7 +213,12 @@
     .hp-grid { grid-template-columns: minmax(0, 1fr); gap: 28px 0; }
     .hp-item p { max-width: none; }
   }
-  @media (max-width: 760px) { .hp { padding: 56px 0; } }
+  @media (max-width: 760px) {
+    .hp { padding: 56px 0; }
+    .hp-item { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; }
+    .hp-item .rc-sym { --rc-sym: 44px; --rc-pull: 0; grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+    .hp-item h3, .hp-item p { grid-column: 2; }
+  }
 
   /* --- 5 · 投資方針 ------------------------------------------ */
   /* Income and Repositioning are the two core strategies: two photographs at one proportion with their
@@ -300,7 +306,10 @@
       <h2 class="hi-title" id="hi-title">欧州不動産の<wbr>案件発掘・<wbr><span class="jt">スキーム</span>構築・<wbr><span class="jt">モニタリング</span>を<wbr>担う、<wbr><span class="jt">クロスボーダー</span>の<wbr><span class="jt">プラットフォーム</span>。</h2>
       <div class="hi-intro">
         <p class="hi-lede"><span lang="en">Reiwa Capital</span>は、<wbr>日本の投資家および<wbr>資本パートナーとともに、<wbr><span class="jt">ロンドン</span>と<span class="jt">アムステルダム</span>の<wbr>選定案件に<wbr>取り組みます。<wbr>規律ある<wbr>投資審査、<wbr>現地の専門性、<wbr>積極的な<wbr>資産管理を<wbr>組み合わせ、<wbr>取得から<wbr>出口まで、<wbr>明確な<wbr>保有戦略のもとで<wbr>進めます。</p>
-        <a class="enq-cta hi-link" href="approach.html#lf-title"><span>アプローチを見る</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        <div class="hi-actions">
+          <a class="rc-btn rc-btn--fill" href="/ja/company.html#contact">お問い合わせ</a>
+          <a class="enq-cta hi-link" href="approach.html#lf-title"><span>アプローチを見る</span><span class="h-arrow" aria-hidden="true">&#8594;</span></a>
+        </div>
       </div>
     </div>
     <ol class="hi-seq" aria-label="Reiwa Capitalの役割">
@@ -407,10 +416,11 @@
 <section class="hp" data-screen-label="05 ホーム — 投資家側" aria-labelledby="hp-title">
   <div class="shell">
     <h2 class="h-h2 hp-title" id="hp-title">投資家の判断を<wbr>起点に</h2>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-facade" viewBox="0 0 64 64"><path d="M10 10V54M32 10V54M54 10V54"/><path d="M10 24H54M10 42H54"/></symbol><symbol id="rcs-performance" viewBox="0 0 64 64"><path d="M10 17H54"/><path d="M10 32H23V25H41V32H54"/><path d="M10 47H23V54H41V47H54"/></symbol><symbol id="rcs-coordination" viewBox="0 0 64 64"><path d="M28 10H10V54H28M36 10H54V54H36"/><path d="M20 24H44M20 40H44"/></symbol></defs></svg>
     <ul class="hp-grid" role="list">
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、<wbr>税務や<span class="jt">スキーム</span>上の利点に<wbr>頼らず、<wbr>不動産そのものの価値で<wbr>成り立つ必要があります。</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>計画に対する実績</h3><p class="h-body">収益、<wbr>費用、<wbr>資本的支出、<wbr>重要な変更を<wbr>投資計画に照らして示し、<wbr>投資家が<wbr>状況を<wbr>明確に判断できるようにします。</p></li>
-      <li class="hp-item"><span class="hp-mk" aria-hidden="true"></span><h3>連携のとれた現地実行</h3><p class="h-body">各専門家の責任範囲を<wbr>明確にし、<wbr>進捗と判断を<wbr>全体として<wbr>調整します。<wbr>投資家が<wbr>全体像を<wbr>自ら組み立てる<wbr>必要はありません。</p></li>
+      <li class="hp-item"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-facade"/></svg><h3>不動産の基礎力を<br>最優先</h3><p class="h-body">投資の妥当性は、<wbr>税務や<span class="jt">スキーム</span>上の利点に<wbr>頼らず、<wbr>不動産そのものの価値で<wbr>成り立つ必要があります。</p></li>
+      <li class="hp-item"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-performance"/></svg><h3>計画に対する実績</h3><p class="h-body">収益、<wbr>費用、<wbr>資本的支出、<wbr>重要な変更を<wbr>投資計画に照らして示し、<wbr>投資家が<wbr>状況を<wbr>明確に判断できるようにします。</p></li>
+      <li class="hp-item"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-coordination"/></svg><h3>連携のとれた現地実行</h3><p class="h-body">各専門家の責任範囲を<wbr>明確にし、<wbr>進捗と判断を<wbr>全体として<wbr>調整します。<wbr>投資家が<wbr>全体像を<wbr>自ら組み立てる<wbr>必要はありません。</p></li>
     </ul>
   </div>
 </section>
@@ -419,7 +429,7 @@
 
 <div data-shell="footer"></div>
 
-<script src="../shell.js?v=84"></script>
+<script src="../shell.js?v=85"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>

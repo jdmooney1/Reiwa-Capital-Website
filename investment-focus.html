@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="assets/colors_and_type.css?v=29">
 <link rel="preload" href="assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="editorial.css?v=128">
+<link rel="stylesheet" href="editorial.css?v=130">
 <link rel="stylesheet" href="brand.css?v=7">
 <link rel="stylesheet" href="craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -111,17 +111,17 @@
   .if-sec.fx-sec > .shell.fx-head { padding-top: clamp(48px, 5vw, 72px); }
   .fx-eyebrow { margin: 0 0 12px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.02em; color: var(--ink-3); }
   .fx-param { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(28px, 3vw, 40px); padding-top: clamp(24px, 2.6vw, 34px); border-top: 1px solid var(--rule-strong); }
-  .fx-param-i { min-width: 0; padding-right: clamp(24px, 4vw, 56px); }
+  .fx-param-i { --rc-sym: 60px; display: grid; grid-template-columns: var(--rc-sym) minmax(0, 1fr); column-gap: clamp(18px, 2vw, 28px); align-content: start; min-width: 0; padding-right: clamp(24px, 4vw, 56px); }
+  .fx-param-i .rc-sym { grid-row: 1 / span 2; }
+  .fx-param-hd, .fx-param-p { grid-column: 2; }
   .fx-param-i + .fx-param-i { padding: 0 0 0 clamp(24px, 4vw, 56px); border-left: 1px solid var(--rule); }
   .fx-param-hd { display: flex; align-items: center; gap: 14px; }
   .fx-param-n { font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; color: var(--plum); }
-  .fx-param-sym { display: block; flex: none; width: 30px; height: 30px; fill: none; stroke: var(--plum); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
-  .fx-param-sym .dot { fill: var(--plum); stroke: none; }
   .fx-param-h { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: var(--type-body-l); line-height: 1.3; color: var(--ink); }
   .fx-param-p { margin: 14px 0 0; max-width: 46ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.2px + 0.2vw, 16.5px); line-height: 1.6; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 900px) {
     .fx-param { grid-template-columns: minmax(0, 1fr); }
-    .fx-param-i { padding-right: 0; }
+    .fx-param-i { --rc-sym: 44px; padding-right: 0; column-gap: 18px; }
     .fx-param-i + .fx-param-i { margin-top: 20px; padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
     .fx-param-p { margin-top: 10px; max-width: none; }
   }
@@ -297,6 +297,7 @@
   .hs-state { margin: 2px 0 0; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14px + 0.25vw, 16.5px); line-height: 1.55; color: var(--ink-2); max-width: 38ch; word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   .hs-tests { margin-top: var(--fluid-m); max-width: 104ch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--fluid-m); }
   .hs-test { display: block; padding: 13px 0 0; border-top: 1px solid var(--rule); }
+  .hs-test .rc-sym { --rc-sym: 48px; --rc-pull: -0.14; margin: 0 0 14px; }
   .hs-test-n { margin: 0; font-family: 'DM Sans', sans-serif; font-size: var(--type-body-l); font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); word-break: normal; line-break: auto; overflow-wrap: normal; text-wrap: pretty; }
   /* Body copy under each test, in the voice of the Home page's investor-side columns. */
   .hs-test-d { margin: 10px 0 0; max-width: 34ch; font-family: 'DM Sans', sans-serif; font-size: var(--type-body-s); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
@@ -314,7 +315,9 @@
     .hs-media img { object-position: 50% 52%; }
     .hs-panel { margin: 0; padding: 0; background: none; }
     .hs-tests { margin-top: 22px; display: flex; flex-direction: column; max-width: none; }
-    .hs-test { padding: 13px 0; }
+    .hs-test { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; padding: 13px 0; }
+    .hs-test .rc-sym { --rc-sym: 44px; --rc-pull: 0; grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+    .hs-test-n, .hs-test-d { grid-column: 2; }
   }
   @media (max-width: 390px) { .hs-media { height: 200px; } }
 
@@ -370,13 +373,16 @@
   <div class="shell fx-head">
     <p class="fx-eyebrow">Investment Parameters</p>
     <h2 class="fx-h2" id="fx-title">Durable fundamentals. Identifiable potential.</h2>
-    <div class="fx-param">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="rcs-fit" viewBox="0 0 64 64"><path d="M10 24V10H24M40 10H54V24M54 40V54H40M24 54H10V40"/><circle cx="32" cy="32" r="9"/></symbol><symbol id="rcs-facade" viewBox="0 0 64 64"><path d="M10 10V54M32 10V54M54 10V54"/><path d="M10 24H54M10 42H54"/></symbol><symbol id="rcs-site" viewBox="0 0 64 64"><path d="M32 10A22 22 0 1 0 54 32"/><circle cx="32" cy="32" r="11"/></symbol><symbol id="rcs-character" viewBox="0 0 64 64"><path d="M10 54V32A22 22 0 0 1 54 32V54"/><path d="M22 54V32A10 10 0 0 1 42 32V54"/><path d="M10 54H54"/></symbol></defs></svg>
+<div class="fx-param">
       <div class="fx-param-i">
-        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">01</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect x="7" y="5" width="22" height="10"/><rect x="7" y="21" width="22" height="10"/><path d="M18 15V21"/><circle class="dot" cx="18" cy="18" r="1.5"/></svg><span class="fx-param-h">Mandate requirements</span></div>
+        <svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-fit"/></svg>
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">01</span><span class="fx-param-h">Mandate requirements</span></div>
         <p class="fx-param-p">Each opportunity is assessed individually against the mandate agreed with the investor, and proceeds only on the investor’s approval.</p>
       </div>
       <div class="fx-param-i">
-        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">02</span><svg class="fx-param-sym" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><path d="M4 28H32"/><path d="M4 21.5H15.5L20.5 14H32"/><circle class="dot" cx="15.5" cy="21.5" r="1.7"/></svg><span class="fx-param-h">Selection parameters</span></div>
+        <svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-facade"/></svg>
+        <div class="fx-param-hd"><span class="fx-param-n" aria-hidden="true">02</span><span class="fx-param-h">Selection parameters</span></div>
         <p class="fx-param-p">Existing buildings and defensible occupational demand. For repositioning, business plans driven by specific, controllable improvements.</p>
       </div>
     </div>
@@ -515,9 +521,9 @@
       </div>
     </div>
     <div class="hs-tests">
-      <div class="hs-test"><h3 class="hs-test-n">Building Character</h3><p class="hs-test-d">Existing buildings with architectural or locational distinctiveness that an operator cannot replicate elsewhere.</p></div>
-      <div class="hs-test"><h3 class="hs-test-n">Demand Rooted in Place</h3><p class="hs-test-d">Guest or occupier demand tied to the location itself, not dependent on a single brand, event or channel.</p></div>
-      <div class="hs-test"><h3 class="hs-test-n">A Suitable Operating Model</h3><p class="hs-test-d">A lease, management agreement or operating structure that matches the investor’s appetite for operational exposure.</p></div>
+      <div class="hs-test"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-character"/></svg><h3 class="hs-test-n">Building Character</h3><p class="hs-test-d">Existing buildings with architectural or locational distinctiveness that an operator cannot replicate elsewhere.</p></div>
+      <div class="hs-test"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-site"/></svg><h3 class="hs-test-n">Demand Rooted in Place</h3><p class="hs-test-d">Guest or occupier demand tied to the location itself, not dependent on a single brand, event or channel.</p></div>
+      <div class="hs-test"><svg class="rc-sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#rcs-fit"/></svg><h3 class="hs-test-n">A Suitable Operating Model</h3><p class="hs-test-d">A lease, management agreement or operating structure that matches the investor’s appetite for operational exposure.</p></div>
     </div>
   </div>
 </section>
@@ -672,7 +678,7 @@
   }
 })();
 </script>
-<script src="shell.js?v=84"></script>
+<script src="shell.js?v=85"></script>
 <script src="craft.js?v=20"></script>
 </body>
 </html>

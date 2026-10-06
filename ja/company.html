@@ -31,7 +31,7 @@
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../editorial.css?v=128">
+<link rel="stylesheet" href="../editorial.css?v=130">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
 <script>/* Language routing — resolve before paint. Precedence: ?lang param › stored choice › ja-locale default. */
@@ -145,6 +145,7 @@
      same grid four times and ends on it. */
   .co-contact { scroll-margin-top: var(--anchor-h, 90px); }
   .co-contact-left { min-width: 0; }
+  .co-invite { margin: 0 0 var(--fluid-s); max-width: 38em; font-family: var(--jp); font-size: var(--type-body); line-height: 1.9; color: var(--ink-2); word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-aud { margin: 0 0 var(--fluid-xs); max-width: 38em; font-family: var(--jp); font-size: clamp(15px, 14px + 0.3vw, 16.5px); line-height: 1.9; color: var(--ink-2); word-break: normal; word-break: auto-phrase; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
   .co-general { margin: 0; }
   .co-gen-d { margin: 0 0 2px; font-size: var(--type-body); line-height: var(--type-body-lh); color: var(--ink-2); max-width: var(--measure-body); text-wrap: pretty; }
@@ -229,6 +230,7 @@
     <div class="co-row">
       <div class="co-contact-left">
         <h2 class="co-label" id="cc-label">お問い合わせ</h2>
+        <p class="co-invite"><span class="jt">ロンドン</span>・<span class="jt">アムステルダム</span>への<wbr>投資や<span lang="en">Reiwa&nbsp;Capital</span>との<wbr>協業に関するご相談は、<wbr>下記まで<wbr>お問い合わせください。</p>
         <dl class="co-general">
           <div class="co-gen-row">
             <dt>メール</dt>
@@ -247,7 +249,7 @@
 </main>
 
 <div data-shell="footer"></div>
-<script src="../shell.js?v=84"></script>
+<script src="../shell.js?v=85"></script>
 <script src="../craft.js?v=20"></script>
 </body>
 </html>

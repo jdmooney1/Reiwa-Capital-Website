@@ -8,8 +8,10 @@
    ========================================================================= */
 
 (function () {
-  /* Four visible destinations. The logo is the Home link; Contact is a
-     section inside Company (/company.html#contact), not a nav item. */
+  /* Four visible destinations. The logo is the Home link. Contact is a
+     section inside Company (/company.html#contact); it is offered beside the
+     language switch as one outlined control (see CONTACT below), not as a
+     fifth destination in the link row. */
   const NAV = [
     { href: 'about.html',            en: 'About',            ja: '会社概要',   key: 'about' },
     { href: 'approach.html',         en: 'Approach',         ja: 'アプローチ', key: 'approach' },
@@ -20,7 +22,8 @@
   /* Dedicated Japanese site (/ja/) — the same four destinations as English,
      in the same order, with the approved Japanese labels. The logo is the
      Japanese Home link; Contact is a section inside 事業概要
-     (/ja/company.html#contact), not a nav item. Only used when
+     (/ja/company.html#contact), offered beside the language switch like the
+     English site. Only used when
      <body data-locale="ja">. */
   const NAV_JA = [
     { href: '/ja/about.html',            label: '<span lang="en">Reiwa</span>について', key: 'about' },
@@ -56,6 +59,21 @@
        keep an onward path rather than ending in a dead stop. */
     contact:  { to: '/ja/company.html', t: '事業概要', lead: '事業の概要と、お問い合わせ先', aria: '次へ：事業概要' }
   };
+
+  /* CONTACT — one destination, one wording per language, used by the header,
+     the mobile menu, the Home introduction, the closing area and the footer.
+     Contact is the filled button (.rc-btn--fill) where it is the page's
+     action and the outlined one (.rc-btn--line) in the header; exploring
+     other pages stays a text link with an arrow. */
+  const CONTACT = {
+    en: { href: '/company.html#contact',    label: 'Contact',      full: 'Contact Reiwa Capital', invite: 'Discuss your investment plans' },
+    ja: { href: '/ja/company.html#contact', label: 'お問い合わせ', full: 'お問い合わせ',            invite: '投資に関するご相談' }
+  };
+  function contactText(locale, key) {
+    return locale === 'ja'
+      ? `<span>${CONTACT.ja[key]}</span>`
+      : `<span data-en="${CONTACT.en[key]}" data-ja="${CONTACT.ja[key]}">${CONTACT.en[key]}</span>`;
+  }
 
   function currentKey() {
     return document.body.dataset.page || 'home';
@@ -122,6 +140,7 @@
           </a>
           <ul class="nav-links">${links}</ul>
           <div class="nav-right">
+            <a class="rc-btn rc-btn--line nav-contact" href="${CONTACT.en.href}">${contactText('en', 'label')}</a>
             <div class="lang-switch" role="group" aria-label="Language" data-aria-en="Language" data-aria-ja="言語">
               ${langControls()}
             </div>
@@ -136,6 +155,7 @@
           <ul>
             <li><a href="/"${cur === 'home' ? ' aria-current="page"' : ''}><span data-en="Home" data-ja="ホーム">Home</span></a></li>
             ${links}
+            <li class="drawer-contact"><a class="rc-btn rc-btn--line" href="${CONTACT.en.href}">${contactText('en', 'label')}</a></li>
           </ul>
         </div>
       </nav>
@@ -177,6 +197,7 @@
           </a>
           <ul class="nav-links">${links}</ul>
           <div class="nav-right">
+            <a class="rc-btn rc-btn--line nav-contact" href="${CONTACT.ja.href}">${contactText('ja', 'label')}</a>
             <div class="lang-switch" role="group" aria-label="言語">
               ${langControls()}
             </div>
@@ -191,6 +212,7 @@
           <ul>
             <li><a href="/ja/"${cur === 'home' ? ' aria-current="page"' : ''}><span>ホーム</span></a></li>
             ${links}
+            <li class="drawer-contact"><a class="rc-btn rc-btn--line" href="${CONTACT.ja.href}">${contactText('ja', 'label')}</a></li>
           </ul>
         </div>
       </nav>
@@ -300,38 +322,56 @@
     const R = (typeof window !== 'undefined' && window.__resources) || {};
     const onPrivacy = document.body.dataset.page === 'privacy';
 
+    /* Closing area: the contact invitation first, the onward link second, on
+       the same cream ground and the same container. The invitation is the
+       action (a filled button); the next page stays the whole-band link it
+       always was. Company has no onward link and so no closing area: its
+       Contact section closes the page. */
     let nextNav = '';
+    const ck = locale === 'ja' ? 'ja' : 'en';
+    const closingContact = `
+        <section class="nn-contact" aria-labelledby="nn-contact-t">
+          <div class="nn-contact-in">
+            <h2 class="nn-contact-t" id="nn-contact-t">${contactText(ck, 'invite')}</h2>
+            <a class="rc-btn rc-btn--fill" href="${CONTACT[ck].href}">${contactText(ck, 'full')}</a>
+          </div>
+        </section>`;
+    const arrow = '<svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>';
     if (locale === 'ja') {
       /* Same cream band, same three-part text block, same arrow as English
          — the closing treatment is part of the approved system, not of the
          English language. */
       const fj = FLOW_JA[currentKey()];
       nextNav = fj ? `
-      <nav class="nextnav nextnav--band" aria-label="ページナビゲーション">
-        <a class="nn-link" href="${fj.to}" aria-label="${fj.aria}">
-          <span class="nn-inner">
-            <span class="nn-text">
-              <span class="nn-title">${fj.t}</span>
-              <span class="nn-lead">${fj.lead}</span>
+      <div class="nextnav-closing">${closingContact}
+        <nav class="nextnav nextnav--band" aria-label="ページナビゲーション">
+          <a class="nn-link" href="${fj.to}" aria-label="${fj.aria}">
+            <span class="nn-inner">
+              <span class="nn-text">
+                <span class="nn-title">${fj.t}</span>
+                <span class="nn-lead">${fj.lead}</span>
+              </span>
+              ${arrow}
             </span>
-            <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
-          </span>
-        </a>
-      </nav>` : '';
+          </a>
+        </nav>
+      </div>` : '';
     } else {
       const f = FLOW[currentKey()];
       nextNav = f ? `
-      <nav class="nextnav nextnav--band" aria-label="Page navigation">
-        <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}">
-          <span class="nn-inner">
-            <span class="nn-text">
-              <span class="nn-title">${f.tEn}</span>
-              <span class="nn-lead">${f.lead}</span>
+      <div class="nextnav-closing">${closingContact}
+        <nav class="nextnav nextnav--band" aria-label="Page navigation">
+          <a class="nn-link" href="${f.to}.html" aria-label="${f.ariaEn}">
+            <span class="nn-inner">
+              <span class="nn-text">
+                <span class="nn-title">${f.tEn}</span>
+                <span class="nn-lead">${f.lead}</span>
+              </span>
+              ${arrow}
             </span>
-            <svg class="nn-arrow" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M0 12H42M32 2l10 10-10 10"/></svg>
-          </span>
-        </a>
-      </nav>` : '';
+          </a>
+        </nav>
+      </div>` : '';
     }
 
     const privacyHref = locale === 'ja' ? '/ja/privacy.html' : '/privacy.html';
