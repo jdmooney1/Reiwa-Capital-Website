@@ -92,7 +92,7 @@
   @media (max-width: 760px) { .ab-sec { padding-bottom: 52px; } .ab-sec > .shell { padding-top: 40px; } }
 
   /* --- 2 · Why Reiwa exists: the continuity diagram --------------------------
-     One diagram, no controls. Three stages stand apart, each marked by a ring. The Reiwa emblem assembles
+     One diagram, no controls. Three stages stand apart, each marked by a small emblem. The Reiwa emblem assembles
      at the first stage and travels to the last as the reader scrolls, drawing one line behind it that
      joins Formation, Execution and Ownership; each stage lights as the emblem reaches it and reaches down
      to its specialists. The investor's mandate sits above, the specialists below, Reiwa between them.
@@ -111,10 +111,11 @@
   .aw-st-n { grid-column: 1; grid-row: 1; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-h3); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
   .aw-st-s { grid-column: 1; grid-row: 2; margin-top: 4px; font-family: 'DM Sans', sans-serif; font-size: var(--type-caption); line-height: 1.4; letter-spacing: 0.03em; color: var(--aw-2); }
   .aw-spec { position: relative; grid-column: 2; grid-row: 1 / span 2; align-self: start; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.45; color: rgba(247, 243, 234, .88); }
-  /* Stage markers: a ring per stage, filled as the emblem reaches it. On a phone they sit on a rail down
-     the left; the line is one stretch per stage, joining each ring to the next. */
-  .aw-node { position: absolute; left: -5px; top: 7px; width: 12px; height: 12px; box-sizing: border-box; border: 1.5px solid rgba(247, 243, 234, .5); border-radius: 50%; background: var(--aw-bg); z-index: 1; }
-  .aw-node::before { content: ""; position: absolute; inset: -1.5px; border-radius: 50%; background: var(--cream); transform: scale(var(--aw-r, 1)); }
+  /* Stage markers: a small Reiwa emblem per stage, faint until the travelling emblem reaches it. On a phone they sit on a rail down
+     the left; the line is one stretch per stage, joining each marker to the next. */
+  .aw-node { position: absolute; left: -4px; top: 7.5px; width: 10px; height: 11px; z-index: 1; opacity: calc(.38 + .62 * var(--aw-r, 1)); }
+  .aw-node svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .aw-node use { fill: var(--cream); }
   .aw-seg { position: absolute; left: 0; top: 13px; height: 100%; width: 2px; background: var(--cream); transform-origin: 50% 0; transform: scaleY(var(--aw-f, 1)); }
   .aw-mark { position: absolute; left: 1px; top: 13px; width: 26px; height: 28px; z-index: 2; transform: translate(calc(-50% + var(--aw-dx, 0px)), calc(-50% + var(--aw-dy, 0px))); }
   .aw-mark-t { display: none; }
@@ -123,7 +124,6 @@
   .aw-msgs { display: grid; margin-top: 32px; }
   .aw-msg-t { margin: 0; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--aw-msg); line-height: 1.2; letter-spacing: -0.014em; color: var(--cream); }
   .aw-msg-d { margin: 10px 0 0; max-width: 56ch; font-family: 'DM Sans', sans-serif; font-size: clamp(16px, 14.4px + 0.15vw, 16.5px); line-height: 1.55; color: var(--aw-2); text-wrap: pretty; }
-  .aw-close { margin: clamp(24px, 2.5vw, 36px) 0 0; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
   @media (max-width: 760px) {
     .aw-field { margin-top: 26px; padding: 18px 18px 26px; }
     .aw-panel { margin-top: 22px; }
@@ -135,7 +135,7 @@
     .aw-spec { grid-column: 1; grid-row: 3; margin-top: 8px; }
   }
   /* From 761px the stages sit side by side on shared rows (name, descriptor, track, specialists), so every
-     column lines up whatever its text does. The track row holds the rings, the line and the emblem. */
+     column lines up whatever its text does. The track row holds the markers, the line and the emblem. */
   @media (min-width: 761px) {
     @supports (grid-template-rows: subgrid) {
       .aw-field { --aw-axis: x; }
@@ -147,10 +147,10 @@
       .aw-rc { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
       .aw-st-n { grid-column: 1; grid-row: 1; }
       .aw-st-s { grid-column: 1; grid-row: 2; margin-bottom: 8px; }
-      .aw-node { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin-top: 46px; }
-      .aw-node::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 39px; margin-left: -.5px; background: rgba(247, 243, 234, .55); transform-origin: 50% 0; transform: scaleY(var(--aw-u, 1)); }
-      .aw-seg { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 51px 0 0 6px; width: calc(100% + var(--aw-gap)); height: 2px; transform-origin: 0 50%; transform: scaleX(var(--aw-f, 1)); }
-      .aw-mark { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 30px 0 12px -15px; width: 42px; height: 45px; transform: translate(var(--aw-dx, 0px), 0); }
+      .aw-node { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin-top: 46.5px; }
+      .aw-node::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 39.5px; margin-left: -.5px; background: rgba(247, 243, 234, .55); transform-origin: 50% 0; transform: scaleY(var(--aw-u, 1)); }
+      .aw-seg { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 51px 0 0 5px; width: calc(100% + var(--aw-gap)); height: 2px; transform-origin: 0 50%; transform: scaleX(var(--aw-f, 1)); }
+      .aw-mark { position: relative; left: auto; top: auto; grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin: 30px 0 12px -16px; width: 42px; height: 45px; transform: translate(var(--aw-dx, 0px), 0); }
       .aw-mark-t { display: block; position: absolute; left: 0; bottom: calc(100% + 6px); white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.2; color: var(--cream); opacity: var(--aw-a, 1); }
       .aw-spec { grid-column: 1; grid-row: 4; margin-top: 10px; }
       .aw-msgs { grid-column: 1 / -1; grid-row: 6; margin-top: 40px; }
@@ -342,6 +342,7 @@
 </section>
 
 <!-- ================================================================ 2 · WHY REIWA EXISTS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="awp0" d="M350.123 0V205.408C350.123 237.773 333.382 266.738 305.374 282.894C277.526 298.997 244.257 299.05 216.355 283.159C216.196 283.053 216.036 283 215.877 282.894L38.0519 180.163C53.6235 159.384 73.3405 142.005 95.9805 129.25C124.413 113.2 156.673 104.644 189.357 104.644H202.537L209.127 93.2173C225.496 64.9439 248.987 41.2409 277.101 24.7127C299.475 11.5326 324.4 3.13559 350.123 0Z"/><path id="awp1" d="M707.952 180.163L530.074 282.894C530.074 282.894 529.755 283.053 529.595 283.159C501.694 299.05 468.478 298.997 440.577 282.894C412.569 266.738 395.828 237.773 395.828 205.408V0C421.604 3.13559 446.476 11.5326 468.85 24.7127C496.964 41.2941 520.508 64.997 536.823 93.2173L543.413 104.644H556.593C589.225 104.644 621.537 113.2 649.97 129.25C672.557 142.058 692.274 159.437 707.899 180.163H707.952Z"/><path id="awp2" d="M350.123 799.999C324.347 796.863 299.475 788.467 277.101 775.286C248.987 758.705 225.443 735.002 209.127 706.782L202.537 695.355H189.357C156.726 695.355 124.413 686.799 95.9805 670.696C73.3937 657.941 53.6767 640.509 38.0519 619.783L215.93 517.052C215.93 517.052 216.036 516.999 216.089 516.946C244.044 500.896 277.419 500.896 305.374 517.052C333.382 533.208 350.123 562.173 350.123 594.538V799.999Z"/><path id="awp3" d="M707.952 619.835C692.38 640.615 672.663 657.994 650.023 670.749C621.591 686.799 589.331 695.355 556.647 695.355H543.467L536.876 706.782C520.508 735.055 497.017 758.758 468.903 775.339C446.529 788.519 421.604 796.916 395.881 800.052V594.644C395.881 562.279 412.622 533.368 440.63 517.158C454.66 509.08 470.019 505.041 485.378 505.041C500.738 505.041 515.99 509.08 529.968 517.052C530.021 517.052 530.074 517.105 530.127 517.158L708.005 619.889L707.952 619.835Z"/><path id="awp4" d="M720.654 411.452C736.97 439.726 745.739 471.932 746.004 504.616C746.217 530.604 741.062 556.327 730.858 580.242L552.98 477.512C552.98 477.512 552.873 477.459 552.82 477.406C524.919 461.25 508.231 432.285 508.231 400.026C508.231 367.766 524.813 339.015 552.555 322.805C552.714 322.699 552.82 322.646 552.98 322.54L730.858 219.809C741.062 243.725 746.217 269.447 746.004 295.435C745.685 328.067 736.916 360.326 720.654 388.6L714.064 400.026L720.654 411.452Z"/><path id="awp5" d="M237.773 399.973C237.773 432.232 221.139 461.196 193.184 477.353C193.184 477.353 193.078 477.406 193.025 477.459L15.1465 580.189C4.9425 556.274 -0.212613 530.551 -3.08547e-05 504.563C0.265697 471.932 9.03472 439.726 25.3504 411.399L31.9404 399.973L25.3504 388.546C9.08786 360.273 0.318842 328.067 -3.08547e-05 295.435C-0.212613 269.447 4.9425 243.725 15.1465 219.809L193.025 322.486C193.025 322.486 193.29 322.646 193.45 322.752C221.192 338.962 237.773 367.82 237.773 399.973Z"/></defs></svg>
 <section class="ab-sec aw" data-screen-label="02 About — why Reiwa exists" aria-labelledby="aw-title">
   <div class="shell">
     <div class="ab-head">
@@ -356,22 +357,22 @@
         <div class="aw-st">
           <span class="aw-st-n">Formation</span>
           <span class="aw-st-s">Mandate <span aria-hidden="true">&middot;</span> Assess</span>
-          <i class="aw-node" aria-hidden="true"></i>
+          <i class="aw-node" aria-hidden="true"><svg viewBox="0 0 747 800" focusable="false"><use href="#awp0"/><use href="#awp1"/><use href="#awp2"/><use href="#awp3"/><use href="#awp4"/><use href="#awp5"/></svg></i>
           <i class="aw-seg" aria-hidden="true"></i>
           <span class="aw-spec">Valuer <span aria-hidden="true">&middot;</span> Legal</span>
         </div>
         <div class="aw-st">
           <span class="aw-st-n">Execution</span>
           <span class="aw-st-s">Structure <span aria-hidden="true">&middot;</span> Acquire</span>
-          <i class="aw-node" aria-hidden="true"></i>
+          <i class="aw-node" aria-hidden="true"><svg viewBox="0 0 747 800" focusable="false"><use href="#awp0"/><use href="#awp1"/><use href="#awp2"/><use href="#awp3"/><use href="#awp4"/><use href="#awp5"/></svg></i>
           <i class="aw-seg" aria-hidden="true"></i>
           <span class="aw-spec">Legal <span aria-hidden="true">&middot;</span> Lender <span aria-hidden="true">&middot;</span> Technical</span>
         </div>
         <div class="aw-st">
           <span class="aw-st-n">Ownership</span>
           <span class="aw-st-s">Own <span aria-hidden="true">&middot;</span> Exit</span>
-          <i class="aw-node" aria-hidden="true"></i>
-          <span class="aw-mark" aria-hidden="true"><svg class="aw-emb" viewBox="0 0 747 800" focusable="false"><use href="#rp0" style="--pi:0;--dx:-125;--dy:-176"/><use href="#rp1" style="--pi:1;--dx:125;--dy:-176"/><use href="#rp2" style="--pi:2;--dx:-125;--dy:176"/><use href="#rp3" style="--pi:3;--dx:125;--dy:177"/><use href="#rp4" style="--pi:4;--dx:178;--dy:0"/><use href="#rp5" style="--pi:5;--dx:-178;--dy:0"/></svg><span class="aw-mark-t">Reiwa Capital</span></span>
+          <i class="aw-node" aria-hidden="true"><svg viewBox="0 0 747 800" focusable="false"><use href="#awp0"/><use href="#awp1"/><use href="#awp2"/><use href="#awp3"/><use href="#awp4"/><use href="#awp5"/></svg></i>
+          <span class="aw-mark" aria-hidden="true"><svg class="aw-emb" viewBox="0 0 747 800" focusable="false"><use href="#awp0" style="--pi:0;--dx:-125;--dy:-176"/><use href="#awp1" style="--pi:1;--dx:125;--dy:-176"/><use href="#awp2" style="--pi:2;--dx:-125;--dy:176"/><use href="#awp3" style="--pi:3;--dx:125;--dy:177"/><use href="#awp4" style="--pi:4;--dx:178;--dy:0"/><use href="#awp5" style="--pi:5;--dx:-178;--dy:0"/></svg><span class="aw-mark-t">Reiwa Capital</span></span>
           <span class="aw-spec">Property Manager <span aria-hidden="true">&middot;</span> Agent</span>
         </div>
         </div>
@@ -383,7 +384,6 @@
         </div>
       </div>
     </div>
-    <p class="h-body aw-close">The investor retains the mandate and material decisions. Reiwa maintains continuity across the workstreams.</p>
   </div>
 </section>
 
@@ -499,9 +499,9 @@
 <div data-shell="footer"></div>
 <script>
 /* About - the continuity diagram. The Reiwa emblem and the line behind it are placed by scroll position and
-   nothing else: one progress value (0 to 1) is read from where the first ring sits in the viewport, so the
+   nothing else: one progress value (0 to 1) is read from where the first marker sits in the viewport, so the
    emblem advances exactly as far as the page has moved, stops when scrolling stops and retraces on the way
-   back up. No timers, no easing in time, no pinned height. Wide layouts run left to right along the rings,
+   back up. No timers, no easing in time, no pinned height. Wide layouts run left to right along the markers,
    narrow ones top to bottom (the CSS says which, through --aw-axis). Reduced motion, or no script, leaves
    the diagram complete. */
 (function () {
@@ -518,7 +518,7 @@
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function centre(el) { var r = el.getBoundingClientRect(); return axis === 'y' ? r.top + r.height / 2 : r.left + r.width / 2; }
 
-  /* Distance of each ring from the first, along the drawing axis. Only differences matter, so it holds
+  /* Distance of each marker from the first, along the drawing axis. Only differences matter, so it holds
      at any scroll position. */
   function measure() {
     vh = window.innerHeight || document.documentElement.clientHeight;
@@ -530,7 +530,7 @@
     total = Math.max(stops[stops.length - 1], 1);
   }
 
-  /* Where the first ring is in the viewport -> how far along the emblem is. The range starts as the diagram
+  /* Where the first marker is in the viewport -> how far along the emblem is. The range starts as the diagram
      comes into the lower viewport (or, where the page opens with it already on screen, at the top of the
      page, so the draw is never found half done) and finishes with the last stage still well inside the
      viewport; the sticky header is kept clear of the finish. The narrow layout is drawn a little slower than
