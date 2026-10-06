@@ -1,16 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The ten core pages of the bilingual site: five English, five Japanese.
-     Privacy, the contact redirects, the 404 pages and the legacy Japanese
-     content are deliberately absent — all carry noindex. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://reiwa-capital.com/</loc></url>
-  <url><loc>https://reiwa-capital.com/about.html</loc></url>
-  <url><loc>https://reiwa-capital.com/approach.html</loc></url>
-  <url><loc>https://reiwa-capital.com/investment-focus.html</loc></url>
-  <url><loc>https://reiwa-capital.com/company.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/about.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/approach.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/investment-focus.html</loc></url>
-  <url><loc>https://reiwa-capital.com/ja/company.html</loc></url>
+<!-- The ten core pages of the bilingual site: five English, five Japanese, each pair cross-referenced with
+     hreflang. lastmod is the date the live page content last changed (stylesheet and script version bumps do not count). Privacy, the contact redirects, the 404 pages and
+     the legacy Japanese content are deliberately absent - all carry noindex. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://reiwa-capital.com/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/ja/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/about.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/ja/about.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/approach.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/approach.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/approach.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/approach.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/ja/approach.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/approach.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/approach.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/approach.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/investment-focus.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/investment-focus.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/investment-focus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/investment-focus.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/ja/investment-focus.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/investment-focus.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/investment-focus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/investment-focus.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/company.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/company.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/company.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/company.html"/>
+  </url>
+  <url>
+    <loc>https://reiwa-capital.com/ja/company.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reiwa-capital.com/company.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://reiwa-capital.com/ja/company.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reiwa-capital.com/company.html"/>
+  </url>
 </urlset>
