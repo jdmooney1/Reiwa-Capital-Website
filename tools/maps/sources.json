@@ -1,0 +1,232 @@
+{
+ "_note": "Source-file integrity pins (SHA-256) for tools/maps/build.py. A matching hash shows that the file is the one that was pinned; it does not show that its boundaries are correct or match any live official source. Market areas are defined by unit lists and street cuts in geometry.py and boundaries.py, not by ward lines; a new ward or boundary vintage must not change them silently. build.py refuses to run if an input differs from this list unless ACCEPT_NEW_SOURCES=1 is set, and the change must be reviewed (tools/maps/audit.py, docs/map-geography.md) before this file is updated. The six Overture entries are replacement inputs regenerated after the originals were lost; the original hashes are kept under original_overture_inputs.",
+ "files": {
+  "wards_E09000001.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "61a5f2e17810bba863ea6fe60dbbd132071f54f845e649bf2d2b6d7b18cee86a",
+   "bytes": 24741
+  },
+  "wards_E09000007.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "9b47e4bf82abbc667ae8a6d4d257897ad2072daba8f9840ccd92c9838766f1cf",
+   "bytes": 25380
+  },
+  "wards_E09000012.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "f5366cd77cc2e0110fee7ebcf7d1fe6c7d9b9fdc5b3fe6759f56ef4cba5db65f",
+   "bytes": 25550
+  },
+  "wards_E09000019.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "6d8c6e13b370e4a88fd00facbc3f95041438a88187669673c2149ece3f3c550e",
+   "bytes": 18783
+  },
+  "wards_E09000020.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "1a695f4bfb1348be175d0d488d3fc101cb74da020aa32bbd1ef97bf5edf766f2",
+   "bytes": 16225
+  },
+  "wards_E09000022.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "98b3ec69cb77938af63ee8fc5aeb75bbc003cd6b81b4b33f57e448d5809afe74",
+   "bytes": 27006
+  },
+  "wards_E09000028.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "0a31c2fee41fe62ab9ae6e3b8caa02ede59c68f58f44eb5f77736e511e07a7e0",
+   "bytes": 32084
+  },
+  "wards_E09000030.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "ef89e009b37a0db825aed29fcbf9f89470e3685293587a9eb10ce543ba94bbe1",
+   "bytes": 21519
+  },
+  "wards_E09000033.json": {
+   "vintage": "31 Dec 2013 (WD13)",
+   "source": "ONS Wards (December 2013), Open Geography Portal, via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "6756dd1d4f51228118a679c879246e01595e1d5a5096c12a480b4d0c44291673",
+   "bytes": 21485
+  },
+  "city_of_london_lad.json": {
+   "vintage": "same mirror set; LAD vintage not stated",
+   "source": "ONS Local Authority Districts via martinjc/UK-GeoJSON",
+   "licence": "OGL v3.0",
+   "redistribute": true,
+   "sha256": "1e0a2ffa41afc1d187576ad50cd9325c562e4b4566e0793b7a6227de9c9be933",
+   "bytes": 2523
+  },
+  "blackmad_amsterdam.geojson": {
+   "vintage": "legacy Gemeente Amsterdam buurtcombinaties; vintage not stated by the mirror",
+   "source": "Gemeente Amsterdam gebiedsindeling via blackmad/neighborhoods",
+   "licence": "CC0",
+   "redistribute": true,
+   "sha256": "df80a6ec460c052b0048501e0825dee612bc4d42673364455a081e7717c51b15",
+   "bytes": 584498
+  },
+  "ams-cbs.geojson": {
+   "vintage": "1 Jan 2022",
+   "source": "CBS Wijk- en buurtkaart 2022 (gegeneraliseerd), buurten, via PDOK",
+   "licence": "CC BY 4.0",
+   "redistribute": true,
+   "sha256": "346b82fca9cf0859d58b947a68dcced990e80445cb90551640e8ba7d4a0bd1bb",
+   "bytes": 202693
+  },
+  "london_segment.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, transportation, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "a96cda28cc876b45607733dba3dc2539518776109f362af3ccdb42e06d7c4736",
+   "bytes": 32955072,
+   "replacement": true,
+   "replaces": {
+    "sha256": "31fe20531dc00546a64691c2eca2b6b96ae4d735e4946b116bbbcb78f7473346",
+    "bytes": 38480002
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  },
+  "london_land_use.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, base/land_use, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "1ff636459ceab99a1739c5b993b4710c9f4fa83f38960d8336d8858473f0e9df",
+   "bytes": 20292902,
+   "replacement": true,
+   "replaces": {
+    "sha256": "3cdb004f6874a366b66c2067b5f2983d869bdffed451d0625ea3915e346f283e",
+    "bytes": 23303959
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  },
+  "london_water.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, base/water, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "525924e61a00a33a38cf69926f56ece30e9cc169fdab1eadf4bf45608732cc32",
+   "bytes": 1094352,
+   "replacement": true,
+   "replaces": {
+    "sha256": "4f147089538428b4c03e5ad8102b5de88dcc58503398ff287b60f8a94756f77b",
+    "bytes": 1279762
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  },
+  "amsterdam_segment.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, transportation, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "07fb20cfe1328e9cee1333d1cf04c196c6ac4f82c1803f5a85aaba2351ae9034",
+   "bytes": 40032651,
+   "replacement": true,
+   "replaces": {
+    "sha256": "52ccc7884f1004d027149ed3e06c678497b4a2dc817f79f89752e1eac4b2265a",
+    "bytes": 28691146
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  },
+  "amsterdam_land_use.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, base/land_use, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "4a187aa3e26ce6847c580676de2cb141ca05ce4c3a8d24e01b0e9cadf9062ad0",
+   "bytes": 51098385,
+   "replacement": true,
+   "replaces": {
+    "sha256": "38c5dc7b3f200e6b27d0a6fa364ef75901f6051d0135afc77375a1ff78c39671",
+    "bytes": 38510922
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  },
+  "amsterdam_water.geojson": {
+   "vintage": "Overture Maps release 2026-08-19.0",
+   "source": "Overture Maps Foundation, base/water, bounding-box extract",
+   "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+   "redistribute": true,
+   "sha256": "3e12b159b0af813bdcddc17b2bb27ea59de0fa00c34c78a056b64e58f7d57d82",
+   "bytes": 21959937,
+   "replacement": true,
+   "replaces": {
+    "sha256": "ebe44c6c60a5ac2c049227c5e4593d3e864a4a051479cc6c25fb9ea53dd0eabf",
+    "bytes": 11215436
+   },
+   "regenerated": "2026-10-06 with tools/maps/extract_overture.py from Overture release 2026-08-19.0 (not the original bytes; see docs/map-geography.md, \"Replacement Overture inputs\")"
+  }
+ },
+ "audit_files": {
+  "cbs2022_amsterdam_buurt.geojson": {
+   "vintage": "1 Jan 2022",
+   "source": "CBS Wijk- en buurtkaart 2022 (gegeneraliseerd), via PDOK; extract of gemeente Amsterdam (GM0363) only; used by audit.py, not by the build",
+   "licence": "CC BY 4.0",
+   "redistribute": true,
+   "sha256": "3cef5dde2dde15f43c35c04aab4836690014a44eed26b87661fbcb6adb6781b2",
+   "bytes": 185818
+  },
+  "cbs2022_amsterdam_wijk.geojson": {
+   "vintage": "1 Jan 2022",
+   "source": "CBS Wijk- en buurtkaart 2022 (gegeneraliseerd), via PDOK; extract of gemeente Amsterdam (GM0363) only; used by audit.py, not by the build",
+   "licence": "CC BY 4.0",
+   "redistribute": true,
+   "sha256": "257fa73b97ea3f6e75974348c74702f0160fcf28bf78f5cbad7765577dae3f80",
+   "bytes": 38686
+  }
+ },
+ "original_overture_inputs": {
+  "_note": "Hashes and sizes of the six Overture extracts used for the delivered maps. The files were lost in a sandbox reset and could not be recovered; they are NOT the files pinned in \"files\" below.",
+  "files": {
+   "london_segment.geojson": {
+    "sha256": "31fe20531dc00546a64691c2eca2b6b96ae4d735e4946b116bbbcb78f7473346",
+    "bytes": 38480002
+   },
+   "london_land_use.geojson": {
+    "sha256": "3cdb004f6874a366b66c2067b5f2983d869bdffed451d0625ea3915e346f283e",
+    "bytes": 23303959
+   },
+   "london_water.geojson": {
+    "sha256": "4f147089538428b4c03e5ad8102b5de88dcc58503398ff287b60f8a94756f77b",
+    "bytes": 1279762
+   },
+   "amsterdam_segment.geojson": {
+    "sha256": "52ccc7884f1004d027149ed3e06c678497b4a2dc817f79f89752e1eac4b2265a",
+    "bytes": 28691146
+   },
+   "amsterdam_land_use.geojson": {
+    "sha256": "38c5dc7b3f200e6b27d0a6fa364ef75901f6051d0135afc77375a1ff78c39671",
+    "bytes": 38510922
+   },
+   "amsterdam_water.geojson": {
+    "sha256": "ebe44c6c60a5ac2c049227c5e4593d3e864a4a051479cc6c25fb9ea53dd0eabf",
+    "bytes": 11215436
+   }
+  }
+ }
+}

@@ -1,0 +1,2474 @@
+{
+ "london": {
+  "areas": {
+   "Marylebone": {
+    "ha": 172.8,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 6945,
+    "pct_boundary_on_named_road": 100,
+    "top_roads": [
+     [
+      "Marylebone Road",
+      3238
+     ],
+     [
+      "Edgware Road",
+      3150
+     ],
+     [
+      "Outer Circle",
+      2056
+     ],
+     [
+      "Oxford Street",
+      1975
+     ],
+     [
+      "Rossmore Road",
+      1627
+     ],
+     [
+      "Park Road",
+      1557
+     ]
+    ]
+   },
+   "Fitzrovia": {
+    "ha": 63.6,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 4873,
+    "pct_boundary_on_named_road": 96,
+    "top_roads": [
+     [
+      "Oxford Street",
+      2763
+     ],
+     [
+      "Tottenham Court Road",
+      2523
+     ],
+     [
+      "Euston Road",
+      1908
+     ],
+     [
+      "New Cavendish Street",
+      1122
+     ],
+     [
+      "Cleveland Street",
+      966
+     ],
+     [
+      "Cavendish Square",
+      782
+     ]
+    ]
+   },
+   "Soho": {
+    "ha": 48.5,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 3812,
+    "pct_boundary_on_named_road": 97,
+    "top_roads": [
+     [
+      "Oxford Street",
+      3790
+     ],
+     [
+      "Regent Street",
+      2519
+     ],
+     [
+      "Shaftesbury Avenue",
+      1281
+     ],
+     [
+      "Charing Cross Road",
+      811
+     ],
+     [
+      "Piccadilly",
+      527
+     ],
+     [
+      "Cavendish Square",
+      491
+     ]
+    ]
+   },
+   "Mayfair": {
+    "ha": 116.6,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 5008,
+    "pct_boundary_on_named_road": 92,
+    "top_roads": [
+     [
+      "Piccadilly",
+      3296
+     ],
+     [
+      "Oxford Street",
+      2776
+     ],
+     [
+      "Regent Street",
+      2150
+     ],
+     [
+      "Park Lane",
+      1832
+     ],
+     [
+      "Piccadilly Underpass",
+      534
+     ],
+     [
+      "Victoria Subway",
+      514
+     ]
+    ]
+   },
+   "St James's": {
+    "ha": 37.0,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 2580,
+    "pct_boundary_on_named_road": 99,
+    "top_roads": [
+     [
+      "The Mall",
+      2578
+     ],
+     [
+      "Piccadilly",
+      1782
+     ],
+     [
+      "Queen's Walk",
+      668
+     ],
+     [
+      "Cockspur Street",
+      508
+     ],
+     [
+      "Pall Mall",
+      290
+     ],
+     [
+      "Haymarket",
+      276
+     ]
+    ]
+   },
+   "Westminster": {
+    "ha": 384.5,
+    "parts": 1,
+    "holes": 2,
+    "boundary_m": 17857,
+    "pct_boundary_on_named_road": 89,
+    "top_roads": [
+     [
+      "The Mall",
+      4222
+     ],
+     [
+      "Birdcage Walk",
+      2110
+     ],
+     [
+      "Constitution Hill",
+      2044
+     ],
+     [
+      "South Carriage Drive",
+      1858
+     ],
+     [
+      "Grosvenor Place",
+      1769
+     ],
+     [
+      "Queen's Gate",
+      1570
+     ]
+    ]
+   },
+   "Covent Garden": {
+    "ha": 81.9,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 4700,
+    "pct_boundary_on_named_road": 90,
+    "top_roads": [
+     [
+      "Victoria Embankment",
+      1823
+     ],
+     [
+      "Shaftesbury Avenue",
+      1294
+     ],
+     [
+      "Strand",
+      815
+     ],
+     [
+      "Kingsway",
+      701
+     ],
+     [
+      "Cockspur Street",
+      508
+     ],
+     [
+      "Shelton Street",
+      444
+     ]
+    ]
+   },
+   "Holborn / Midtown": {
+    "ha": 117.6,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 8338,
+    "pct_boundary_on_named_road": 92,
+    "top_roads": [
+     [
+      "Victoria Embankment",
+      1667
+     ],
+     [
+      "Gray's Inn Road",
+      1265
+     ],
+     [
+      "Guilford Street",
+      1127
+     ],
+     [
+      "Clerkenwell Road",
+      994
+     ],
+     [
+      "Strand",
+      853
+     ],
+     [
+      "Southampton Row",
+      818
+     ]
+    ]
+   },
+   "Bloomsbury": {
+    "ha": 77.8,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 4328,
+    "pct_boundary_on_named_road": 99,
+    "top_roads": [
+     [
+      "Tottenham Court Road",
+      2590
+     ],
+     [
+      "Euston Road",
+      2512
+     ],
+     [
+      "Tavistock Place",
+      1391
+     ],
+     [
+      "Southampton Row",
+      818
+     ],
+     [
+      "Great Russell Street",
+      785
+     ],
+     [
+      "Bury Place",
+      584
+     ]
+    ]
+   },
+   "City of London": {
+    "ha": 288.6,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 9105,
+    "pct_boundary_on_named_road": 97,
+    "top_roads": [
+     [
+      "Mansell Street",
+      2091
+     ],
+     [
+      "Charterhouse Street",
+      1316
+     ],
+     [
+      "Bishopsgate",
+      984
+     ],
+     [
+      "Victoria Embankment",
+      972
+     ],
+     [
+      "Middlesex Street",
+      855
+     ],
+     [
+      "Paul's Walk",
+      749
+     ]
+    ]
+   },
+   "Kensington & Chelsea": {
+    "ha": 765.9,
+    "parts": 1,
+    "holes": 0,
+    "boundary_m": 16122,
+    "pct_boundary_on_named_road": 79,
+    "top_roads": [
+     [
+      "Holland Park Avenue",
+      4837
+     ],
+     [
+      "Chelsea Embankment",
+      3767
+     ],
+     [
+      "Notting Hill Gate",
+      2742
+     ],
+     [
+      "West Cromwell Road",
+      1753
+     ],
+     [
+      "Bayswater Road",
+      1723
+     ],
+     [
+      "Queen's Gate",
+      1341
+     ]
+    ]
+   }
+  },
+  "aldwych": {
+   "midtown_ha": 117.6,
+   "midtown_east_of_lancaster_place_line_ha": 60.3,
+   "midtown_pct_south_of_strand_line": 23,
+   "covent_garden_ha": 81.9,
+   "covent_garden_pct_south_of_strand_line": 33,
+   "note": "south-of-Strand shares are grid samples against the Strand centreline: approximate"
+  },
+  "fragments": [
+   {
+    "id": "L01",
+    "ward": "St James's",
+    "ha": 11.3,
+    "lon": -0.1328,
+    "lat": 51.51069,
+    "assign": "Covent Garden",
+    "status": "supported",
+    "streets": "Shaftesbury Avenue, Charing Cross Road, Haymarket, Coventry Street, Cranbourn Street",
+    "basis": "Leicester Square and Chinatown, enclosed by Soho, St James's and Covent Garden. Inside the West End outline on every side; Soho is the alternative holder and would not change the outline.",
+    "in_focus_coverage_ha": 11.3,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L02",
+    "ward": "St James's",
+    "ha": 33.4,
+    "lon": -0.1162,
+    "lat": 51.51068,
+    "assign": "split: west Covent Garden, east Holborn / Midtown",
+    "status": "split",
+    "streets": "Strand, Victoria Embankment, Northumberland Avenue, Waterloo Bridge, Carey Street, Serle Street, Fleet Street",
+    "basis": "One fragment cut on the north-south line through the Strand / Aldwych / Lancaster Place junction (see L02w and L02e).",
+    "in_focus_coverage_ha": 33.4,
+    "adds_to_outline_ha": 33.3
+   },
+   {
+    "id": "L03",
+    "ward": "St James's",
+    "ha": 2.7,
+    "lon": -0.13347,
+    "lat": 51.50474,
+    "assign": "Westminster",
+    "status": "closure",
+    "streets": "The Mall, Spring Gardens, Queen's Walk, Horse Guards Road",
+    "basis": "The Mall carriageway and verges between St James's Park and Green Park; closes the gap between St James's and Westminster along a named road.",
+    "in_focus_coverage_ha": 2.7,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L04",
+    "ward": "St James's",
+    "ha": 0.0,
+    "lon": -0.1311,
+    "lat": 51.50777,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "Pall Mall, Haymarket, Cockspur Street",
+    "basis": "Sliver at the Pall Mall / Haymarket junction.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L05",
+    "ward": "St James's",
+    "ha": 0.1,
+    "lon": -0.13053,
+    "lat": 51.50781,
+    "assign": "Covent Garden",
+    "status": "closure",
+    "streets": "Cockspur Street, Pall Mall, Pall Mall East",
+    "basis": "Sliver along Cockspur Street; St James's and Covent Garden meet on that street.",
+    "in_focus_coverage_ha": 0.1,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L06",
+    "ward": "St James's",
+    "ha": 0.0,
+    "lon": -0.13935,
+    "lat": 51.50225,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "(none named)",
+    "basis": "Sliver of a few square metres beside St James's Park.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L07",
+    "ward": "St James's",
+    "ha": 0.0,
+    "lon": -0.13975,
+    "lat": 51.5023,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "(none named)",
+    "basis": "Sliver of a few square metres beside St James's Park.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L08",
+    "ward": "St James's",
+    "ha": 0.0,
+    "lon": -0.14047,
+    "lat": 51.50213,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "Constitution Hill",
+    "basis": "Sliver along Constitution Hill.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L09",
+    "ward": "St James's",
+    "ha": 0.1,
+    "lon": -0.14171,
+    "lat": 51.50727,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "Piccadilly, Berkeley Street, Dover Street",
+    "basis": "Verge strip along Piccadilly (Green Park side).",
+    "in_focus_coverage_ha": 0.1,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L10",
+    "ward": "St James's",
+    "ha": 0.0,
+    "lon": -0.14187,
+    "lat": 51.50224,
+    "assign": "St James's",
+    "status": "closure",
+    "streets": "Constitution Hill",
+    "basis": "Sliver along Constitution Hill.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L11",
+    "ward": "St James's",
+    "ha": 1.1,
+    "lon": -0.1489,
+    "lat": 51.5036,
+    "assign": "Westminster",
+    "status": "closure",
+    "streets": "Constitution Hill, Piccadilly, Duke of Wellington Place, Grosvenor Place",
+    "basis": "Hyde Park Corner carriageways between Green Park, Hyde Park and Belgravia; closes the gap between Westminster and the park edge.",
+    "in_focus_coverage_ha": 0.8,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L12",
+    "ward": "West End",
+    "ha": 0.2,
+    "lon": -0.15491,
+    "lat": 51.51377,
+    "assign": "Mayfair",
+    "status": "closure",
+    "streets": "Oxford Street, Orchard Street, Park Street",
+    "basis": "Oxford Street verge at the Marble Arch end.",
+    "in_focus_coverage_ha": 0.2,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L13",
+    "ward": "West End",
+    "ha": 9.7,
+    "lon": -0.14101,
+    "lat": 51.51351,
+    "assign": "Soho",
+    "status": "closure",
+    "streets": "Oxford Street, Regent Street, Glasshouse Street, Piccadilly, Cavendish Square, Holles Street, Welbeck Street",
+    "basis": "West End ward ground left along the Oxford Street and Regent Street carriageways, the Regent Street Quadrant at Piccadilly Circus and a block between Welbeck Street and Holles Street. Held by Soho only because Soho shares the longest edge; which of the six West End areas holds it is a sub-area question. tools/maps/audit.py reports how much of it lies outside the rest of the West End outline.",
+    "in_focus_coverage_ha": 9.7,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L14",
+    "ward": "Holborn and Covent Garden",
+    "ha": 1.2,
+    "lon": -0.11234,
+    "lat": 51.51997,
+    "assign": "Farringdon",
+    "status": "excluded",
+    "streets": "Clerkenwell Road, Gray's Inn Road, Hatton Garden, Farringdon Road",
+    "basis": "Hatton Garden (EC1N). Not held by Holborn / Midtown or any focus area; stays outside. EC1N is named in a secondary description of Midtown, so it could be a candidate for inclusion.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L15",
+    "ward": "Holborn and Covent Garden",
+    "ha": 0.8,
+    "lon": -0.12283,
+    "lat": 51.51962,
+    "assign": "Holborn / Midtown",
+    "status": "closure",
+    "streets": "Southampton Row, Great Russell Street, Bury Place, Bloomsbury Square",
+    "basis": "Verge strip at Bloomsbury Square on the Midtown and Bloomsbury boundary.",
+    "in_focus_coverage_ha": 0.8,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L16",
+    "ward": "Holborn and Covent Garden",
+    "ha": 0.7,
+    "lon": -0.11891,
+    "lat": 51.51474,
+    "assign": "Holborn / Midtown",
+    "status": "closure",
+    "streets": "Kingsway, Shelton Street, Great Queen Street",
+    "basis": "Strips along Kingsway; Covent Garden and Midtown meet on Kingsway.",
+    "in_focus_coverage_ha": 0.7,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L17",
+    "ward": "Bloomsbury",
+    "ha": 12.7,
+    "lon": -0.13781,
+    "lat": 51.52286,
+    "assign": "Fitzrovia",
+    "status": "supported",
+    "streets": "Tottenham Court Road, Cleveland Street, Euston Road, Fitzroy Square, Torrington Place",
+    "basis": "Bloomsbury ward west of Tottenham Court Road up to Euston Road: exactly the \"Bloomsbury ward west of Tottenham Court Road\" that the Fitzrovia definition names.",
+    "in_focus_coverage_ha": 12.7,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L18",
+    "ward": "Clerkenwell",
+    "ha": 0.1,
+    "lon": -0.10487,
+    "lat": 51.52244,
+    "assign": "Clerkenwell",
+    "status": "excluded",
+    "streets": "Clerkenwell Road",
+    "basis": "Sliver; Clerkenwell is not a focus area.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L19",
+    "ward": "Bunhill",
+    "ha": 0.0,
+    "lon": -0.10542,
+    "lat": 51.53174,
+    "assign": "Clerkenwell",
+    "status": "excluded",
+    "streets": "City Road",
+    "basis": "Sliver; Clerkenwell is not a focus area.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L20",
+    "ward": "Bunhill",
+    "ha": 0.2,
+    "lon": -0.09601,
+    "lat": 51.52931,
+    "assign": "Clerkenwell",
+    "status": "excluded",
+    "streets": "City Road",
+    "basis": "Sliver; Clerkenwell is not a focus area.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L21",
+    "ward": "Bunhill",
+    "ha": 2.3,
+    "lon": -0.0862,
+    "lat": 51.52558,
+    "assign": "Shoreditch & Aldgate",
+    "status": "excluded",
+    "streets": "City Road, Old Street, Old Street Roundabout",
+    "basis": "Old Street roundabout; outside the focus coverage.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L22",
+    "ward": "Bunhill",
+    "ha": 7.9,
+    "lon": -0.08607,
+    "lat": 51.52112,
+    "assign": "Clerkenwell",
+    "status": "excluded",
+    "streets": "City Road, Wilson Street, Finsbury Square, South Place, Finsbury Pavement",
+    "basis": "Finsbury Square (EC2), next to the City of London. The City of London area is the ONS local authority district and does not take it; stays outside.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L23",
+    "ward": "Haggerston",
+    "ha": 0.2,
+    "lon": -0.08473,
+    "lat": 51.52598,
+    "assign": "Shoreditch & Aldgate",
+    "status": "excluded",
+    "streets": "Great Eastern Street, Old Street",
+    "basis": "Sliver; outside the focus coverage.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L24",
+    "ward": "Haggerston",
+    "ha": 85.6,
+    "lon": -0.0728,
+    "lat": 51.53282,
+    "assign": null,
+    "status": "excluded",
+    "streets": "Hackney Road, Queensbridge Road, Hoxton Street, Kingsland Road",
+    "basis": "Hoxton and Haggerston ward remainder; unclaimed on purpose.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   },
+   {
+    "id": "L25",
+    "ward": "Weavers",
+    "ha": 63.9,
+    "lon": -0.07047,
+    "lat": 51.5265,
+    "assign": null,
+    "status": "excluded",
+    "streets": "Hackney Road, Brick Lane, Vallance Road, Buxton Street",
+    "basis": "Weavers ward remainder (Shoreditch and Bethnal Green); unclaimed on purpose.",
+    "in_focus_coverage_ha": 0.0,
+    "adds_to_outline_ha": 0.0
+   }
+  ],
+  "fragment_parts": [
+   {
+    "id": "L02w",
+    "ha": 14.6,
+    "assign": "Covent Garden",
+    "status": "supported",
+    "streets": "Strand, Northumberland Avenue, Victoria Embankment, Lancaster Place"
+   },
+   {
+    "id": "L02e",
+    "ha": 18.8,
+    "assign": "Holborn / Midtown",
+    "status": "unresolved",
+    "streets": "Aldwych, Strand east of Lancaster Place, Carey Street, Serle Street, Fleet Street, Waterloo Bridge, Victoria Embankment"
+   }
+  ],
+  "geometric_cleanup": {
+   "pieces": 289,
+   "total_ha": 18.2,
+   "largest_ha": 12.23,
+   "pieces_of_0_5_ha_or_more": [
+    {
+     "kind": "detached part of Westminster",
+     "ha": 12.23,
+     "given_to": "Mayfair",
+     "lon": -0.17038,
+     "lat": 51.51216,
+     "ha_inside_final_focus_coverage": 3.12
+    },
+    {
+     "kind": "notch or enclosed gap < 3 ha",
+     "ha": 0.99,
+     "given_to": "Holborn / Midtown",
+     "lon": -0.11894,
+     "lat": 51.51474,
+     "ha_inside_final_focus_coverage": 0.99
+    },
+    {
+     "kind": "notch or enclosed gap < 3 ha",
+     "ha": 0.66,
+     "given_to": "Marylebone",
+     "lon": -0.14477,
+     "lat": 51.52433,
+     "ha_inside_final_focus_coverage": 0.0
+    },
+    {
+     "kind": "notch or enclosed gap < 3 ha",
+     "ha": 0.65,
+     "given_to": "Farringdon",
+     "lon": -0.11233,
+     "lat": 51.51998,
+     "ha_inside_final_focus_coverage": 0.0
+    }
+   ]
+  },
+  "coverage_union": {
+   "explicit_coverage_ha": 2158.4,
+   "final_coverage_ha": 2154.8,
+   "seam_zone_ha": 53.6,
+   "added_ha": 4.65,
+   "added_by_rule": {
+    "S (seam within 13 m of two retained areas)": 3.63,
+    "G (recorded enclosed gap)": 1.02,
+    "other": 0.0
+   },
+   "added_pieces": 38,
+   "added": [
+    {
+     "ha": 2.146,
+     "held_by": "Fitzrovia",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Oxford Street",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.13885,
+      51.5157
+     ]
+    },
+    {
+     "ha": 0.251,
+     "held_by": "Marylebone",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Oxford Street",
+     "nearest_street_m": 5,
+     "lonlat": [
+      -0.15367,
+      51.51395
+     ]
+    },
+    {
+     "ha": 0.24,
+     "held_by": "Covent Garden",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Swiss Court",
+     "nearest_street_m": 2,
+     "lonlat": [
+      -0.13124,
+      51.51052
+     ]
+    },
+    {
+     "ha": 0.22,
+     "held_by": "Soho",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Regent Street",
+     "nearest_street_m": 2,
+     "lonlat": [
+      -0.14042,
+      51.51291
+     ]
+    },
+    {
+     "ha": 0.208,
+     "held_by": "St James's",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 2,
+     "lonlat": [
+      -0.13366,
+      51.50483
+     ]
+    },
+    {
+     "ha": 0.184,
+     "held_by": "Westminster",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.13514,
+      51.5039
+     ]
+    },
+    {
+     "ha": 0.176,
+     "held_by": "Covent Garden",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Strand",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.12482,
+      51.50903
+     ]
+    },
+    {
+     "ha": 0.165,
+     "held_by": "Fitzrovia",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Tottenham Court Road",
+     "nearest_street_m": 0,
+     "lonlat": [
+      -0.13599,
+      51.52245
+     ]
+    },
+    {
+     "ha": 0.144,
+     "held_by": "Mayfair",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Piccadilly",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.14715,
+      51.50457
+     ]
+    },
+    {
+     "ha": 0.12,
+     "held_by": "Holborn / Midtown",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Essex Court",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.11209,
+      51.51299
+     ]
+    },
+    {
+     "ha": 0.102,
+     "held_by": "Westminster",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Constitution Hill",
+     "nearest_street_m": 0,
+     "lonlat": [
+      -0.1447,
+      51.50231
+     ]
+    },
+    {
+     "ha": 0.095,
+     "held_by": "Fitzrovia",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Charlotte Street",
+     "nearest_street_m": 13,
+     "lonlat": [
+      -0.13569,
+      51.51971
+     ]
+    },
+    {
+     "ha": 0.091,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Whitehall Place",
+     "nearest_street_m": 23,
+     "lonlat": [
+      -0.12457,
+      51.50642
+     ]
+    },
+    {
+     "ha": 0.081,
+     "held_by": "Holborn / Midtown",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Serle Street",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.11432,
+      51.51545
+     ]
+    },
+    {
+     "ha": 0.069,
+     "held_by": "Soho",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Soho Square",
+     "nearest_street_m": 13,
+     "lonlat": [
+      -0.13164,
+      51.51565
+     ]
+    },
+    {
+     "ha": 0.065,
+     "held_by": "Mayfair",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Piccadilly",
+     "nearest_street_m": 0,
+     "lonlat": [
+      -0.14162,
+      51.50727
+     ]
+    },
+    {
+     "ha": 0.053,
+     "held_by": "Soho",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Glasshouse Street",
+     "nearest_street_m": 2,
+     "lonlat": [
+      -0.13615,
+      51.51046
+     ]
+    },
+    {
+     "ha": 0.03,
+     "held_by": "Marylebone",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Cleveland Street",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.1397,
+      51.52126
+     ]
+    },
+    {
+     "ha": 0.029,
+     "held_by": "Covent Garden",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Strand",
+     "nearest_street_m": 29,
+     "lonlat": [
+      -0.11767,
+      51.51155
+     ]
+    },
+    {
+     "ha": 0.027,
+     "held_by": "Fitzrovia",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Euston Road",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.14332,
+      51.52402
+     ]
+    },
+    {
+     "ha": 0.026,
+     "held_by": "St James's",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Pall Mall",
+     "nearest_street_m": 3,
+     "lonlat": [
+      -0.13096,
+      51.50773
+     ]
+    },
+    {
+     "ha": 0.023,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Constitution Hill",
+     "nearest_street_m": 10,
+     "lonlat": [
+      -0.14066,
+      51.50213
+     ]
+    },
+    {
+     "ha": 0.02,
+     "held_by": "Marylebone",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Edgware Road",
+     "nearest_street_m": 7,
+     "lonlat": [
+      -0.16044,
+      51.51327
+     ]
+    },
+    {
+     "ha": 0.02,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Queens Gardens",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.14163,
+      51.50224
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Graham Terrace",
+     "nearest_street_m": 6,
+     "lonlat": [
+      -0.15558,
+      51.49101
+     ]
+    },
+    {
+     "ha": 0.009,
+     "held_by": "Covent Garden",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Pall Mall East",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.1306,
+      51.50785
+     ]
+    },
+    {
+     "ha": 0.008,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 3,
+     "lonlat": [
+      -0.13932,
+      51.5024
+     ]
+    },
+    {
+     "ha": 0.005,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Duke of Wellington Place",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.15,
+      51.50238
+     ]
+    },
+    {
+     "ha": 0.005,
+     "held_by": "Mayfair",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Oxford Street",
+     "nearest_street_m": 0,
+     "lonlat": [
+      -0.15407,
+      51.5138
+     ]
+    },
+    {
+     "ha": 0.004,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.13939,
+      51.50228
+     ]
+    },
+    {
+     "ha": 0.004,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 9,
+     "lonlat": [
+      -0.1398,
+      51.50226
+     ]
+    },
+    {
+     "ha": 0.004,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Constitution Hill",
+     "nearest_street_m": 5,
+     "lonlat": [
+      -0.14233,
+      51.50225
+     ]
+    },
+    {
+     "ha": 0.003,
+     "held_by": "Holborn / Midtown",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Hatton Garden",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.10771,
+      51.51787
+     ]
+    },
+    {
+     "ha": 0.001,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "The Mall",
+     "nearest_street_m": 3,
+     "lonlat": [
+      -0.12768,
+      51.50709
+     ]
+    },
+    {
+     "ha": 0.001,
+     "held_by": "Covent Garden",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Waterloo Bridge",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.11797,
+      51.50967
+     ]
+    },
+    {
+     "ha": 0.001,
+     "held_by": "Covent Garden",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Strand",
+     "nearest_street_m": 4,
+     "lonlat": [
+      -0.11799,
+      51.51178
+     ]
+    },
+    {
+     "ha": 0.001,
+     "held_by": "Soho",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Oxford Street",
+     "nearest_street_m": 1,
+     "lonlat": [
+      -0.1417,
+      51.51529
+     ]
+    },
+    {
+     "ha": 0.0,
+     "held_by": "Westminster",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Constitution Hill",
+     "nearest_street_m": 2,
+     "lonlat": [
+      -0.14914,
+      51.50244
+     ]
+    }
+   ],
+   "other_ha": 0.0,
+   "recorded_gaps": [
+    {
+     "id": "GL01",
+     "ha": 0.24,
+     "lonlat": [
+      -0.13124,
+      51.51052
+     ]
+    },
+    {
+     "id": "GL02",
+     "ha": 0.184,
+     "lonlat": [
+      -0.13514,
+      51.5039
+     ]
+    },
+    {
+     "id": "GL03",
+     "ha": 0.176,
+     "lonlat": [
+      -0.12482,
+      51.50903
+     ]
+    },
+    {
+     "id": "GL04",
+     "ha": 0.102,
+     "lonlat": [
+      -0.1447,
+      51.50231
+     ]
+    },
+    {
+     "id": "GL05",
+     "ha": 0.095,
+     "lonlat": [
+      -0.13569,
+      51.51971
+     ]
+    },
+    {
+     "id": "GL06",
+     "ha": 0.081,
+     "lonlat": [
+      -0.11432,
+      51.51545
+     ]
+    },
+    {
+     "id": "GL07",
+     "ha": 0.069,
+     "lonlat": [
+      -0.13164,
+      51.51565
+     ]
+    },
+    {
+     "id": "GL08",
+     "ha": 0.053,
+     "lonlat": [
+      -0.13615,
+      51.51046
+     ]
+    },
+    {
+     "id": "GL09",
+     "ha": 0.009,
+     "lonlat": [
+      -0.1306,
+      51.50785
+     ]
+    },
+    {
+     "id": "GL10",
+     "ha": 0.005,
+     "lonlat": [
+      -0.15407,
+      51.5138
+     ]
+    },
+    {
+     "id": "GL11",
+     "ha": 0.001,
+     "lonlat": [
+      -0.11799,
+      51.51178
+     ]
+    },
+    {
+     "id": "GL12",
+     "ha": 0.001,
+     "lonlat": [
+      -0.1417,
+      51.51529
+     ]
+    }
+   ],
+   "recorded_gaps_ha": 1.016,
+   "cutback_ha": 4.57,
+   "cutback_pieces": 35,
+   "cutback": [
+    {
+     "ha": 1.316,
+     "lonlat": [
+      -0.14477,
+      51.52433
+     ],
+     "nearest_street": "Peto Place",
+     "nearest_street_m": 4,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.993,
+     "lonlat": [
+      -0.13115,
+      51.4865
+     ],
+     "nearest_street": "Grosvenor Road",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.425,
+     "lonlat": [
+      -0.16163,
+      51.48392
+     ],
+     "nearest_street": "Chelsea Embankment",
+     "nearest_street_m": 1,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.241,
+     "lonlat": [
+      -0.10674,
+      51.51071
+     ],
+     "nearest_street": "Victoria Embankment",
+     "nearest_street_m": 24,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.226,
+     "lonlat": [
+      -0.18929,
+      51.51016
+     ],
+     "nearest_street": "Bayswater Road",
+     "nearest_street_m": 3,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.202,
+     "lonlat": [
+      -0.12594,
+      51.49096
+     ],
+     "nearest_street": "Millbank",
+     "nearest_street_m": 8,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.195,
+     "lonlat": [
+      -0.12499,
+      51.4931
+     ],
+     "nearest_street": "Millbank",
+     "nearest_street_m": 8,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.183,
+     "lonlat": [
+      -0.11234,
+      51.51987
+     ],
+     "nearest_street": "Gray's Inn Road",
+     "nearest_street_m": 1,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.129,
+     "lonlat": [
+      -0.0911,
+      51.50925
+     ],
+     "nearest_street": "Hanseatic Walk",
+     "nearest_street_m": 10,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.078,
+     "lonlat": [
+      -0.13913,
+      51.52304
+     ],
+     "nearest_street": "Fitzroy Square",
+     "nearest_street_m": 13,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.066,
+     "lonlat": [
+      -0.14314,
+      51.52411
+     ],
+     "nearest_street": "Osnaburgh Street",
+     "nearest_street_m": 11,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.063,
+     "lonlat": [
+      -0.08409,
+      51.50849
+     ],
+     "nearest_street": "Custom House Walkway",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.061,
+     "lonlat": [
+      -0.07915,
+      51.50793
+     ],
+     "nearest_street": "Custom House Walkway",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.061,
+     "lonlat": [
+      -0.14988,
+      51.48556
+     ],
+     "nearest_street": "Chelsea Bridge",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.052,
+     "lonlat": [
+      -0.17945,
+      51.4779
+     ],
+     "nearest_street": "Waterfront Drive",
+     "nearest_street_m": 49,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.035,
+     "lonlat": [
+      -0.11432,
+      51.52556
+     ],
+     "nearest_street": "Pakenham Street",
+     "nearest_street_m": 0,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.029,
+     "lonlat": [
+      -0.0944,
+      51.50991
+     ],
+     "nearest_street": "Three Barrels Walk",
+     "nearest_street_m": 4,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.026,
+     "lonlat": [
+      -0.1511,
+      51.50151
+     ],
+     "nearest_street": "Halkin Street",
+     "nearest_street_m": 1,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.02,
+     "lonlat": [
+      -0.13837,
+      51.52508
+     ],
+     "nearest_street": "Euston Underpass",
+     "nearest_street_m": 1,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.019,
+     "lonlat": [
+      -0.07335,
+      51.51257
+     ],
+     "nearest_street": "Mansell Street",
+     "nearest_street_m": 5,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.018,
+     "lonlat": [
+      -0.08172,
+      51.50838
+     ],
+     "nearest_street": "Custom House Walkway",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      -0.13787,
+      51.52521
+     ],
+     "nearest_street": "Euston Underpass",
+     "nearest_street_m": 0,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      -0.15553,
+      51.4909
+     ],
+     "nearest_street": "Holbein Place",
+     "nearest_street_m": 8,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      -0.12188,
+      51.5231
+     ],
+     "nearest_street": "Grenville Street",
+     "nearest_street_m": 5,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.016,
+     "lonlat": [
+      -0.12377,
+      51.49996
+     ],
+     "nearest_street": "Public Stairs",
+     "nearest_street_m": 81,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.015,
+     "lonlat": [
+      -0.17099,
+      51.48257
+     ],
+     "nearest_street": "Chelsea Embankment",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.015,
+     "lonlat": [
+      -0.12359,
+      51.50099
+     ],
+     "nearest_street": "Westminster Bridge",
+     "nearest_street_m": 8,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.012,
+     "lonlat": [
+      -0.1202,
+      51.5085
+     ],
+     "nearest_street": "Victoria Embankment",
+     "nearest_street_m": 14,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.005,
+     "lonlat": [
+      -0.17768,
+      51.48017
+     ],
+     "nearest_street": "Old Ferry Wharf",
+     "nearest_street_m": 6,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.005,
+     "lonlat": [
+      -0.12142,
+      51.5073
+     ],
+     "nearest_street": "Victoria Embankment",
+     "nearest_street_m": 7,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.005,
+     "lonlat": [
+      -0.09576,
+      51.51035
+     ],
+     "nearest_street": "Globe View Walkway",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    }
+   ],
+   "removed_ha": 8.25,
+   "removed_largest": [
+    {
+     "ha": 6.6,
+     "nearest_street": "Park Lane",
+     "nearest_street_m": 3,
+     "x": 528109,
+     "y": 180484
+    },
+    {
+     "ha": 0.94,
+     "nearest_street": "Piccadilly",
+     "nearest_street_m": 4,
+     "x": 528735,
+     "y": 180052
+    },
+    {
+     "ha": 0.36,
+     "nearest_street": "Piccadilly",
+     "nearest_street_m": 6,
+     "x": 528661,
+     "y": 179996
+    },
+    {
+     "ha": 0.3,
+     "nearest_street": "Queens Gardens",
+     "nearest_street_m": 21,
+     "x": 529159,
+     "y": 179810
+    }
+   ],
+   "smoothing_ha": {
+    "Marylebone": {
+     "added": 0.0,
+     "removed": 0.09
+    },
+    "Fitzrovia": {
+     "added": 0.0,
+     "removed": 0.1
+    },
+    "Soho": {
+     "added": 0.04,
+     "removed": 0.04
+    },
+    "Mayfair": {
+     "added": 0.1,
+     "removed": 0.03
+    },
+    "St James's": {
+     "added": 0.09,
+     "removed": 0.07
+    },
+    "Westminster": {
+     "added": 0.8,
+     "removed": 0.08
+    },
+    "Covent Garden": {
+     "added": 0.97,
+     "removed": 0.06
+    },
+    "Holborn / Midtown": {
+     "added": 0.03,
+     "removed": 0.53
+    },
+    "Bloomsbury": {
+     "added": 0.05,
+     "removed": 0.03
+    },
+    "City of London": {
+     "added": 0.0,
+     "removed": 0.07
+    },
+    "Kensington & Chelsea": {
+     "added": 0.01,
+     "removed": 0.0
+    }
+   }
+  },
+  "unclaimed_fragments_ha": [
+   [
+    85.6,
+    "L24"
+   ],
+   [
+    63.9,
+    "L25"
+   ]
+  ],
+  "detached_parts": [
+   {
+    "id": "D1",
+    "area": "Westminster",
+    "ha": 12.2,
+    "to": "Mayfair",
+    "status": "closure",
+    "streets": "Bayswater Road, Park Lane, Edgware Road, Hyde Park Place",
+    "basis": "The road and verge corridor along the north and east edges of Hyde Park, ground of the Westminster area after the park mask is cut. About 3.1 ha of it is the Park Lane carriageway and verge, which Mayfair's western edge already runs along (Park Lane is Mayfair's stated western limit); the rest (the Bayswater Road strip) falls outside the final focus coverage. Tools/maps/audit.py reports the split.",
+    "ha_inside_final_focus_coverage": 3.12
+   }
+  ]
+ },
+ "amsterdam": {
+  "areas": {
+   "Jordaan": {
+    "ha": 96.0,
+    "parts": 1,
+    "holes": 0
+   },
+   "Oud-Zuid": {
+    "ha": 357.8,
+    "parts": 1,
+    "holes": 0
+   },
+   "Zuidas": {
+    "ha": 107.9,
+    "parts": 1,
+    "holes": 0
+   },
+   "Oud-West": {
+    "ha": 168.9,
+    "parts": 1,
+    "holes": 0
+   },
+   "Plantage": {
+    "ha": 85.2,
+    "parts": 1,
+    "holes": 0
+   },
+   "De Pijp": {
+    "ha": 155.2,
+    "parts": 1,
+    "holes": 0
+   },
+   "Oost": {
+    "ha": 259.4,
+    "parts": 1,
+    "holes": 0
+   },
+   "Rivierenbuurt": {
+    "ha": 263.2,
+    "parts": 1,
+    "holes": 0
+   },
+   "Canal Belt (Grachtengordel)": {
+    "ha": 116.0,
+    "parts": 1,
+    "holes": 0
+   }
+  },
+  "plantage": {
+   "drawn_ha": 85.2,
+   "legacy_weesperbuurt_plantage_ha": 85.7,
+   "legacy_oostelijke_eilanden_kadijken_ha": 135.4,
+   "drawn_inside_legacy_wp_ha": 85.1,
+   "drawn_inside_legacy_oe_ha": 0.1,
+   "cbs_buurten": {
+    "Weesperbuurt|BU03630800": {
+     "ha": 26.1,
+     "drawn_overlap_ha": 25.0
+    },
+    "Sarphatistrook|BU03630801": {
+     "ha": 21.2,
+     "drawn_overlap_ha": 20.6
+    },
+    "de Plantage|BU03630803": {
+     "ha": 40.2,
+     "drawn_overlap_ha": 30.8
+    },
+    "Alexanderplein e.o.|BU03630804": {
+     "ha": 4.2,
+     "drawn_overlap_ha": 4.0
+    },
+    "Marine-Etablissement|BU03630900": {
+     "ha": 29.2,
+     "drawn_overlap_ha": 0.0
+    },
+    "Kattenburg|BU03630901": {
+     "ha": 18.9,
+     "drawn_overlap_ha": 0.0
+    },
+    "Wittenburg|BU03630902": {
+     "ha": 17.4,
+     "drawn_overlap_ha": 0.0
+    },
+    "Oostenburg|BU03630903": {
+     "ha": 27.3,
+     "drawn_overlap_ha": 0.0
+    },
+    "Czaar Peterbuurt|BU03630904": {
+     "ha": 9.5,
+     "drawn_overlap_ha": 0.0
+    },
+    "Het Funen|BU03630905": {
+     "ha": 9.5,
+     "drawn_overlap_ha": 0.0
+    },
+    "Kazernebuurt|BU03630907": {
+     "ha": 7.2,
+     "drawn_overlap_ha": 0.1
+    },
+    "Kadijken|BU03630908": {
+     "ha": 17.8,
+     "drawn_overlap_ha": 0.0
+    }
+   },
+   "cbs_wijk_weesperbuurt_plantage_ha": 84.1
+  },
+  "zuidas": {
+   "drawn_ha": 107.9,
+   "cbs_buurten_of_wijk_zuidas": {
+    "Zuidas Noord|BU03632300": {
+     "ha": 96.7,
+     "drawn_overlap_ha": 87.4
+    },
+    "RAI|BU03632301": {
+     "ha": 34.9,
+     "drawn_overlap_ha": 0.0
+    },
+    "VU-kwartier|BU03632302": {
+     "ha": 39.4,
+     "drawn_overlap_ha": 0.0
+    },
+    "Zuidas Zuid|BU03632303": {
+     "ha": 20.5,
+     "drawn_overlap_ha": 20.5
+    },
+    "Vivaldi|BU03632304": {
+     "ha": 23.5,
+     "drawn_overlap_ha": 0.0
+    }
+   },
+   "cbs_kop_zuidas_ha": 23.5,
+   "legacy_station_zuid_wtc_ha": 125.1,
+   "drawn_inside_legacy_station_zuid_wtc_ha": 81.8
+  },
+  "canal_belt": {
+   "drawn_ha": 116.0,
+   "legacy_west_plus_zuid_ha": 115.9,
+   "drawn_outside_legacy_ha": 0.2,
+   "de_weteringschans_legacy_ha": 65.4,
+   "drawn_overlap_with_weteringschans_ha": 0.0
+  },
+  "geometric_cleanup": {
+   "pieces": 127,
+   "total_ha": 1.1,
+   "largest_ha": 0.62,
+   "pieces_of_0_5_ha_or_more": [
+    {
+     "kind": "notch or enclosed gap < 3 ha",
+     "ha": 0.62,
+     "given_to": "Oud-Zuid",
+     "lon": 4.85852,
+     "lat": 52.34221,
+     "ha_inside_final_focus_coverage": 0.01
+    }
+   ]
+  },
+  "coverage_union": {
+   "explicit_coverage_ha": 1609.9,
+   "final_coverage_ha": 1609.5,
+   "seam_zone_ha": 24.2,
+   "added_ha": 0.74,
+   "added_by_rule": {
+    "S (seam within 13 m of two retained areas)": 0.6,
+    "G (recorded enclosed gap)": 0.14,
+    "other": 0.0
+   },
+   "added_pieces": 24,
+   "added": [
+    {
+     "ha": 0.077,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Stadionkade",
+     "nearest_street_m": 43,
+     "lonlat": [
+      4.86423,
+      52.34295
+     ]
+    },
+    {
+     "ha": 0.076,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Stadionkade",
+     "nearest_street_m": 42,
+     "lonlat": [
+      4.86097,
+      52.34248
+     ]
+    },
+    {
+     "ha": 0.071,
+     "held_by": "Zuidas",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Locatellikade",
+     "nearest_street_m": 22,
+     "lonlat": [
+      4.865,
+      52.34305
+     ]
+    },
+    {
+     "ha": 0.054,
+     "held_by": "De Pijp",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Hobbemakade",
+     "nearest_street_m": 19,
+     "lonlat": [
+      4.88646,
+      52.35271
+     ]
+    },
+    {
+     "ha": 0.04,
+     "held_by": "Plantage",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Amstel",
+     "nearest_street_m": 46,
+     "lonlat": [
+      4.90198,
+      52.36425
+     ]
+    },
+    {
+     "ha": 0.035,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Stadhouderskade",
+     "nearest_street_m": 36,
+     "lonlat": [
+      4.88742,
+      52.36027
+     ]
+    },
+    {
+     "ha": 0.033,
+     "held_by": "Canal Belt (Grachtengordel)",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Leidsestraat",
+     "nearest_street_m": 1,
+     "lonlat": [
+      4.88443,
+      52.365
+     ]
+    },
+    {
+     "ha": 0.033,
+     "held_by": "Jordaan",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Papiermolensluis",
+     "nearest_street_m": 19,
+     "lonlat": [
+      4.88845,
+      52.38055
+     ]
+    },
+    {
+     "ha": 0.033,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Ruysdaelkade",
+     "nearest_street_m": 18,
+     "lonlat": [
+      4.88652,
+      52.35101
+     ]
+    },
+    {
+     "ha": 0.032,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Hein Donnerbrug",
+     "nearest_street_m": 7,
+     "lonlat": [
+      4.88213,
+      52.36209
+     ]
+    },
+    {
+     "ha": 0.028,
+     "held_by": "Zuidas",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "De Groene Zoom",
+     "nearest_street_m": 36,
+     "lonlat": [
+      4.88502,
+      52.34013
+     ]
+    },
+    {
+     "ha": 0.019,
+     "held_by": "Jordaan",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Nassaukade",
+     "nearest_street_m": 14,
+     "lonlat": [
+      4.87529,
+      52.37345
+     ]
+    },
+    {
+     "ha": 0.019,
+     "held_by": "Zuidas",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Ringweg-Zuid",
+     "nearest_street_m": 28,
+     "lonlat": [
+      4.8851,
+      52.33802
+     ]
+    },
+    {
+     "ha": 0.019,
+     "held_by": "Canal Belt (Grachtengordel)",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Koningsplein",
+     "nearest_street_m": 2,
+     "lonlat": [
+      4.88905,
+      52.36699
+     ]
+    },
+    {
+     "ha": 0.019,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Amstelveenseweg",
+     "nearest_street_m": 1,
+     "lonlat": [
+      4.85472,
+      52.35623
+     ]
+    },
+    {
+     "ha": 0.018,
+     "held_by": "Jordaan",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Nassaukade",
+     "nearest_street_m": 19,
+     "lonlat": [
+      4.87906,
+      52.36536
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Jordaan",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Prinsengracht",
+     "nearest_street_m": 9,
+     "lonlat": [
+      4.88271,
+      52.36608
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Plantage",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Mauritskade",
+     "nearest_street_m": 23,
+     "lonlat": [
+      4.92225,
+      52.3637
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Amstelveenseweg",
+     "nearest_street_m": 12,
+     "lonlat": [
+      4.857,
+      52.3388
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Albert Cuypstraat",
+     "nearest_street_m": 6,
+     "lonlat": [
+      4.88673,
+      52.35456
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Amstelveenseweg",
+     "nearest_street_m": 1,
+     "lonlat": [
+      4.85768,
+      52.34203
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Oud-Zuid",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Diepenbrockstraat",
+     "nearest_street_m": 6,
+     "lonlat": [
+      4.8856,
+      52.34436
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "Canal Belt (Grachtengordel)",
+     "rule": "S (seam within 13 m of two retained areas)",
+     "nearest_street": "Amstel",
+     "nearest_street_m": 47,
+     "lonlat": [
+      4.90127,
+      52.36581
+     ]
+    },
+    {
+     "ha": 0.017,
+     "held_by": "De Pijp",
+     "rule": "G (recorded enclosed gap)",
+     "nearest_street": "Albert Cuypstraat",
+     "nearest_street_m": 20,
+     "lonlat": [
+      4.88672,
+      52.35444
+     ]
+    }
+   ],
+   "other_ha": 0.0,
+   "recorded_gaps": [
+    {
+     "id": "GA01",
+     "ha": 0.071,
+     "lonlat": [
+      4.865,
+      52.34305
+     ]
+    },
+    {
+     "id": "GA02",
+     "ha": 0.054,
+     "lonlat": [
+      4.88646,
+      52.35271
+     ]
+    },
+    {
+     "id": "GA03",
+     "ha": 0.017,
+     "lonlat": [
+      4.88672,
+      52.35444
+     ]
+    }
+   ],
+   "recorded_gaps_ha": 0.142,
+   "cutback_ha": 3.36,
+   "cutback_pieces": 26,
+   "cutback": [
+    {
+     "ha": 1.133,
+     "lonlat": [
+      4.88531,
+      52.34207
+     ],
+     "nearest_street": "Boerenweteringpad",
+     "nearest_street_m": 55,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.697,
+     "lonlat": [
+      4.85852,
+      52.34221
+     ],
+     "nearest_street": "Stadionkade",
+     "nearest_street_m": 52,
+     "why": "enclosed but unrecorded or above the 0.25 ha cap"
+    },
+    {
+     "ha": 0.444,
+     "lonlat": [
+      4.89545,
+      52.33363
+     ],
+     "nearest_street": "Ringweg-Zuid",
+     "nearest_street_m": 26,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.239,
+     "lonlat": [
+      4.87971,
+      52.34521
+     ],
+     "nearest_street": "Bernard Zweerskade",
+     "nearest_street_m": 35,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.126,
+     "lonlat": [
+      4.89312,
+      52.3661
+     ],
+     "nearest_street": "Singel",
+     "nearest_street_m": 0,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.101,
+     "lonlat": [
+      4.88218,
+      52.34504
+     ],
+     "nearest_street": "Diepenbrockstraat",
+     "nearest_street_m": 28,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.099,
+     "lonlat": [
+      4.87812,
+      52.34214
+     ],
+     "nearest_street": "Prinses Irenestraat",
+     "nearest_street_m": 30,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.051,
+     "lonlat": [
+      4.91305,
+      52.34834
+     ],
+     "nearest_street": "Weesperzijde",
+     "nearest_street_m": 0,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.05,
+     "lonlat": [
+      4.90378,
+      52.35915
+     ],
+     "nearest_street": "Sarphatikade",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.048,
+     "lonlat": [
+      4.90388,
+      52.36034
+     ],
+     "nearest_street": "Sarphatistraat",
+     "nearest_street_m": 0,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.046,
+     "lonlat": [
+      4.88755,
+      52.36027
+     ],
+     "nearest_street": "Weteringschans",
+     "nearest_street_m": 38,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.042,
+     "lonlat": [
+      4.89574,
+      52.36601
+     ],
+     "nearest_street": "Rembrandtplein",
+     "nearest_street_m": 7,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.04,
+     "lonlat": [
+      4.88197,
+      52.36218
+     ],
+     "nearest_street": "Leidsebosje",
+     "nearest_street_m": 21,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.039,
+     "lonlat": [
+      4.85494,
+      52.35583
+     ],
+     "nearest_street": "Amstelveenseweg",
+     "nearest_street_m": 1,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.028,
+     "lonlat": [
+      4.88145,
+      52.34549
+     ],
+     "nearest_street": "Diepenbrockstraat",
+     "nearest_street_m": 35,
+     "why": "outside every recorded rule and beside a park or river edge"
+    },
+    {
+     "ha": 0.02,
+     "lonlat": [
+      4.8756,
+      52.37418
+     ],
+     "nearest_street": "Raampoort",
+     "nearest_street_m": 3,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.02,
+     "lonlat": [
+      4.90272,
+      52.36267
+     ],
+     "nearest_street": "Amstel",
+     "nearest_street_m": 43,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.019,
+     "lonlat": [
+      4.88529,
+      52.33796
+     ],
+     "nearest_street": "Ringweg-Zuid",
+     "nearest_street_m": 31,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.018,
+     "lonlat": [
+      4.87934,
+      52.36452
+     ],
+     "nearest_street": "Leidsekade",
+     "nearest_street_m": 17,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.018,
+     "lonlat": [
+      4.88867,
+      52.38048
+     ],
+     "nearest_street": "Papiermolensluis",
+     "nearest_street_m": 2,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      4.88324,
+      52.36582
+     ],
+     "nearest_street": "Prinsengracht",
+     "nearest_street_m": 16,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      4.85708,
+      52.33874
+     ],
+     "nearest_street": "Ringweg-Zuid",
+     "nearest_street_m": 6,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      4.88462,
+      52.36487
+     ],
+     "nearest_street": "Leidsestraat",
+     "nearest_street_m": 13,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      4.92375,
+      52.36462
+     ],
+     "nearest_street": "Oliphantsbrug",
+     "nearest_street_m": 7,
+     "why": "outside every recorded rule, on the outer edge"
+    },
+    {
+     "ha": 0.017,
+     "lonlat": [
+      4.90144,
+      52.36587
+     ],
+     "nearest_street": "Amstel",
+     "nearest_street_m": 34,
+     "why": "outside every recorded rule, on the outer edge"
+    }
+   ],
+   "removed_ha": 1.06,
+   "removed_largest": [
+    {
+     "ha": 1.0,
+     "nearest_street": "Vondelpark",
+     "nearest_street_m": 43,
+     "x": 119688,
+     "y": 485824
+    }
+   ],
+   "smoothing_ha": {
+    "Jordaan": {
+     "added": 0.07,
+     "removed": 0.04
+    },
+    "Canal Belt": {
+     "added": 0.06,
+     "removed": 0.0
+    },
+    "Grachtengordel": {
+     "added": 0.02,
+     "removed": 0.04
+    },
+    "Oud-Zuid": {
+     "added": 0.18,
+     "removed": 0.04
+    },
+    "Zuidas": {
+     "added": 0.0,
+     "removed": 0.0
+    },
+    "Oud-West": {
+     "added": 0.07,
+     "removed": 0.0
+    },
+    "Plantage": {
+     "added": 0.08,
+     "removed": 0.08
+    },
+    "De Pijp": {
+     "added": 0.09,
+     "removed": 0.22
+    },
+    "Oost": {
+     "added": 0.04,
+     "removed": 0.26
+    },
+    "Rivierenbuurt": {
+     "added": 0.18,
+     "removed": 0.04
+    }
+   }
+  },
+  "unclaimed_fragments_ha": []
+ }
+}
