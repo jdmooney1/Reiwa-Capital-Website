@@ -60,7 +60,7 @@ const ROLES = {
     selectors: [
       '.hi-role-n', '.hf-cap h3',
       '.am-city', '.aw-st-n',
-      '.lf-n', '.lf-pan-h',
+      '.ps-h',
       '.tw-item dt',
       '.fx-name', '.hs-title', '.dl-n',
       '.co-tier-n', '.hi-phase-n',
@@ -132,7 +132,7 @@ const ROLES = {
     selectors: [
       '.hi-span-k', '.hf-feature-k',
       '.am-k', '.aw-st-s',
-      '.lf-period', '.lf-pan-h b', '.lf-k', '.lf-own-n', '.lf-ap dt',
+      '.ps-ph', '.ps-i', '.ps-k',
       '.fx-param-k', '.fx-k', '.fx-lever-k', '.hs-kicker', '.dl-kicker',
     ],
   },
