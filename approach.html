@@ -100,30 +100,36 @@
 
   /* --- 2 · Investment lifecycle -----------------------------------------
      Open on the cream ground: three phases, each a pair of stages under its
-     own label and rule, a wider gap between phases than within a pair. Each
+     own label and rule, with twice the gap between phases as within a pair. Each
      stage reads name, description, output, investor approval; on desktop the
      rows align across all six (subgrid) so outputs and approvals read as two
      lines. 761-1239px: one phase per row, its pair side by side. 760px and
      below: one column, phase by phase. No panel, no script. */
-  .ps { --ps-gap: clamp(20px, 2vw, 28px); --ps-phase-gap: clamp(16px, 2vw, 32px);
+  .ps { --ps-gap: clamp(20px, 2vw, 28px); --ps-phase-gap: 0px;
     display: grid; grid-template-columns: 1fr 1fr var(--ps-phase-gap) 1fr 1fr var(--ps-phase-gap) 1fr 1fr; column-gap: var(--ps-gap);
     font-family: 'DM Sans', sans-serif; }
   .ps-ph { grid-row: 1; margin: 0 0 clamp(18px, 1.8vw, 24px); padding-bottom: 10px; max-width: none; border-bottom: 1px solid var(--rule-strong);
     font-size: var(--type-caption); line-height: var(--type-caption-lh); font-weight: 500; letter-spacing: 0.02em; color: var(--ink); }
+  .ps-ph { position: relative; }
+  .ps-ph::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 32px; height: 2px; background: var(--reiwa-node); }
   .ps-ph--1 { grid-column: 1 / 3; } .ps-ph--2 { grid-column: 4 / 6; } .ps-ph--3 { grid-column: 7 / 9; }
   .ps-st { grid-row: 2 / span 4; display: grid; grid-template-rows: subgrid; row-gap: 0; min-width: 0; }
   .ps-st--1 { grid-column: 1; } .ps-st--2 { grid-column: 2; } .ps-st--3 { grid-column: 4; }
   .ps-st--4 { grid-column: 5; } .ps-st--5 { grid-column: 7; } .ps-st--6 { grid-column: 8; }
   .ps-h { margin: 0; display: flex; flex-direction: column; gap: 6px; font-family: 'DM Sans', sans-serif; font-weight: 500; line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); font-size: var(--type-h3); color: var(--ink); }
-  .ps-i { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1; letter-spacing: 0; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .ps-i { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: var(--type-caption); line-height: 1; letter-spacing: 0; color: var(--reiwa-node); font-variant-numeric: tabular-nums; }
   .ps-p { margin: 12px 0 0; max-width: none; font-size: 15px; line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
   .ps-o, .ps-a { margin: 0; padding-top: 12px; border-top: 1px solid var(--rule); }
   .ps-o { margin-top: 22px; }
   .ps-a { margin-top: 16px; }
   .ps-k { margin: 0 0 4px; font-size: var(--type-caption); line-height: var(--type-caption-lh); font-weight: 400; color: var(--ink-3); }
-  .ps-k--a { font-weight: 500; color: var(--plum); }
+  .ps-k--a { font-weight: 500; color: var(--reiwa-node); }
   .ps-o dd, .ps-a dd { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); text-wrap: pretty; }
   .ps-o dd { font-weight: 500; }
+  /* Row labels are shown once, on the first stage of each row; elsewhere they keep their space (rows stay aligned)
+     and are still announced, but are not painted. Phones show every label, since each stage stands alone there. */
+  @media (min-width: 1240px) { .ps-st:not(.ps-st--1) .ps-k { color: transparent; } }
+  @media (min-width: 761px) and (max-width: 1239px) { .ps-st--2 .ps-k, .ps-st--4 .ps-k, .ps-st--6 .ps-k { color: transparent; } }
   @media (max-width: 1239px) {
     .ps { grid-template-columns: 1fr 1fr; column-gap: clamp(24px, 4vw, 40px); }
     .ps-ph { grid-row: auto; grid-column: 1 / -1 !important; }
@@ -248,39 +254,39 @@
         <h3 class="ps-h" id="ps-h-0"><span class="ps-i">1</span>Mandate</h3>
         <p class="ps-p">Turn the investor’s objectives into a clear mandate.</p>
         <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Investment Mandate</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Mandate and decision framework</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Mandate and decision framework</dd></dl>
       </article>
       <article class="ps-st ps-st--2" aria-labelledby="ps-h-1" aria-describedby="ps-ph-0">
         <h3 class="ps-h" id="ps-h-1"><span class="ps-i">2</span>Assess</h3>
         <p class="ps-p">Screen opportunities against the mandate.</p>
         <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Investment Memorandum</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Progression to detailed assessment</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Progression to detailed assessment</dd></dl>
       </article>
       <p class="ps-ph ps-ph--2" id="ps-ph-1">Execution</p>
       <article class="ps-st ps-st--3" aria-labelledby="ps-h-2" aria-describedby="ps-ph-1">
         <h3 class="ps-h" id="ps-h-2"><span class="ps-i">3</span>Structure</h3>
         <p class="ps-p">Coordinate structure, financing and tax before commitment.</p>
         <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Structure and Execution Plan</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Structure and agreed terms</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Structure and agreed terms</dd></dl>
       </article>
       <article class="ps-st ps-st--4" aria-labelledby="ps-h-3" aria-describedby="ps-ph-1">
         <h3 class="ps-h" id="ps-h-3"><span class="ps-i">4</span>Acquire</h3>
         <p class="ps-p">Complete diligence, financing and documentation to one plan.</p>
         <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Acquisition Decision Pack</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Final investment decision before commitment</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Final investment decision before commitment</dd></dl>
       </article>
       <p class="ps-ph ps-ph--3" id="ps-ph-2">Ownership</p>
       <article class="ps-st ps-st--5" aria-labelledby="ps-h-4" aria-describedby="ps-ph-2">
         <h3 class="ps-h" id="ps-h-4"><span class="ps-i">5</span>Own</h3>
         <p class="ps-p">Test the investment case against performance and conditions.</p>
-        <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Asset Monitoring, Reporting and Decision Support</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Refinancing, material capital expenditure and plan changes</dd></dl>
+        <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Investment Reporting</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Refinancing, material capital expenditure and plan changes</dd></dl>
       </article>
       <article class="ps-st ps-st--6" aria-labelledby="ps-h-5" aria-describedby="ps-ph-2">
         <h3 class="ps-h" id="ps-h-5"><span class="ps-i">6</span>Exit</h3>
         <p class="ps-p">Weigh refinancing, partial realisation or sale against the mandate.</p>
-        <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Exit Recommendation and Execution Plan</dd></dl>
-        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor approval</dt><dd>Timing, pricing and disposal terms</dd></dl>
+        <dl class="ps-o"><dt class="ps-k">Output</dt><dd>Exit Plan</dd></dl>
+        <dl class="ps-a"><dt class="ps-k ps-k--a">Investor Approval</dt><dd>Timing, pricing and disposal terms</dd></dl>
       </article>
     </div>
   </div>
