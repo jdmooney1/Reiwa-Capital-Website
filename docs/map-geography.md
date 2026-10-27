@@ -33,7 +33,9 @@ The areas are **Reiwa's market definitions, not the sources' boundaries.** A new
 
 ## Approved coverage and classification
 
-London core (6): Marylebone, Fitzrovia, Soho, Mayfair, St James's, Covent Garden (drawn as one "West End"). London selective (5): Holborn / Midtown, Bloomsbury, City of London, Westminster, Kensington & Chelsea.
+London core (7): Marylebone, Fitzrovia, Soho, Mayfair, St James's, Covent Garden (drawn as one "West End"), and City of London. London selective (4): Holborn / Midtown and Bloomsbury (drawn as one "Midtown"), Westminster, Kensington & Chelsea.
+
+Oct 2026 change: City of London reclassified from selective to core; Bloomsbury kept as its own area definition but grouped into Midtown on the page (one shape, one label). The published SVGs were edited directly (no source extracts available in this session); `render.py`, `pages.py` and `focus_js.py` carry the same grouping, so a full rebuild reproduces it, though the Midtown label position will be re-optimised by the layout search.
 Amsterdam core (4): Canal Belt (Grachtengordel), Jordaan, Oud-Zuid, Zuidas. Amsterdam selective (5): Oud-West, Weesperbuurt / Plantage, De Pijp, Oost, Rivierenbuurt.
 All 20 are present in `assets/maps/*-focus.js`, drawn and labelled (Amsterdam: nine labels; London: six, with the West End composition in the note under the map).
 

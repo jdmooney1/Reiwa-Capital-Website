@@ -5,7 +5,7 @@ from shapely.ops import transform
 def run(repo):
     REPO=repo.rstrip("/")+"/"
     NAMES={'london':{'Mayfair':('mayfair','メイフェア','west-end',True),"St James's":('st-jamess','セント・ジェームズ','west-end',True),'Marylebone':('marylebone','マリルボーン','west-end',True),'Fitzrovia':('fitzrovia','フィッツロヴィア','west-end',True),'Soho':('soho','ソーホー','west-end',True),'Covent Garden':('covent-garden','コヴェント・ガーデン','west-end',True),
-      'Holborn / Midtown':('holborn','ホルボーン','midtown',False),'Bloomsbury':('bloomsbury','ブルームズベリー','bloomsbury',False),'City of London':('city','シティ・オブ・ロンドン','city',False),'Westminster':('westminster','ウェストミンスター','westminster',False),'Kensington & Chelsea':('kensington-chelsea','ケンジントン・チェルシー','kc',False)},
+      'Holborn / Midtown':('holborn','ホルボーン','midtown',False),'Bloomsbury':('bloomsbury','ブルームズベリー','midtown',False),'City of London':('city','シティ・オブ・ロンドン','city',False),'Westminster':('westminster','ウェストミンスター','westminster',False),'Kensington & Chelsea':('kensington-chelsea','ケンジントン・チェルシー','kc',False)},
      'amsterdam':{'Canal Belt (Grachtengordel)':('canal-belt','カナルベルト（Grachtengordel）','canal',True),'Jordaan':('jordaan','ヨルダーン','jordaan',True),'Oud-Zuid':('oud-zuid','アウド・ザウト','oud-zuid',True),'Zuidas':('zuidas','ザイダス','zuidas',True),
       'Oud-West':('oud-west','アウド・ウェスト','oud-west',False),'Plantage':('plantage','ウェースペルブールト／プランタージュ','plantage',False),'De Pijp':('de-pijp','デ・パイプ','de-pijp',False),'Oost':('oost','オースト','oost',False),'Rivierenbuurt':('rivierenbuurt','リヴィエレンブールト','rivieren',False)}}
     for city in ['london','amsterdam']:
