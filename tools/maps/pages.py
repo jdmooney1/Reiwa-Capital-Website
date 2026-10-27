@@ -16,8 +16,8 @@ def span(city,m,lang):
     cls='core' if m['cls']=='core' else 'sel'
     return (f'          <span class="ab-grp ab-grp--{cls}" style="--x:{w["x"]}%;--y:{w["y"]}%;--xt:{t["x"]}%;--yt:{t["y"]}%;'
             f'--tx:{sw[0]};--ty:{sw[1]};--txt:{st[0]};--tyt:{st[1]}" aria-hidden="true">{txt}</span>')
-ALT={'london':{'en':"Map of central London, with the Thames, Hyde Park, Regent’s Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core: the West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden). Selective: Midtown (Holborn), Bloomsbury, the City of London, Westminster, and Kensington and Chelsea.",
-  'ja':"ロンドン中心部の地図。テムズ川、ハイドパーク、リージェンツパーク、グリーンパーク、セントジェームズパークを表示。投資対象として想定するエリアの目安であり、行政上の境界ではありません。中核：ウェストエンド（Marylebone、Fitzrovia、Soho、Mayfair、St James’s、Covent Garden）。選択的：ミッドタウン（ホルボーン）、ブルームズベリー、シティ・オブ・ロンドン、ウェストミンスター、ケンジントン・チェルシー。"},
+ALT={'london':{'en':"Map of central London, with the Thames, Hyde Park, Regent’s Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core: the West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden) and the City of London. Selective: Midtown (Holborn), Bloomsbury, Westminster, and Kensington and Chelsea.",
+  'ja':"ロンドン中心部の地図。テムズ川、ハイドパーク、リージェンツパーク、グリーンパーク、セントジェームズパークを表示。投資対象として想定するエリアの目安であり、行政上の境界ではありません。中核：ウェストエンド（Marylebone、Fitzrovia、Soho、Mayfair、St James’s、Covent Garden）、シティ・オブ・ロンドン。選択的：ミッドタウン（ホルボーン）、ブルームズベリー、ウェストミンスター、ケンジントン・チェルシー。"},
  'amsterdam':{'en':"Map of Amsterdam, with the canal ring around the historic centre, the IJ to the north, the Amstel and Vondelpark. Indicative investment focus areas, not administrative boundaries. Core: the Canal Belt (Grachtengordel), the Jordaan, Oud-Zuid and Zuidas, which lies on both sides of the A10. Selective: Oud-West, Weesperbuurt/Plantage, De Pijp, Oost and Rivierenbuurt.",
   'ja':"アムステルダムの地図。歴史的中心部を囲む運河環状地帯、北のIJ湾、アムステル川、フォンデルパークを表示。投資対象として想定するエリアの目安であり、行政上の境界ではありません。中核：カナルベルト（Grachtengordel）、ヨルダーン、アウド・ザウト、A10の両側にまたがるザイダス。選択的：アウド・ウェスト、ウェースペルブールト／プランタージュ、デ・パイプ、オースト、リヴィエレンブールト。"}}
 NOTE={'london':{'en':('Indicative focus areas, not administrative boundaries. West End: Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden.',
@@ -59,9 +59,9 @@ def patch(path,lang):
     if n==0: s,n=CSS_OLD.subn(lambda m:css(lang),s)
     assert n==1,('css',path,n)
     for city in ['london','amsterdam']:
-        s,n=re.subn(r'(src="%sassets/maps/%s-(?:wide|tall)\.svg)\?v=\d+"'%(re.escape(pre),city),r'\1?v=6"',s); assert n==2,(city,n)
-        s,n=re.subn(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg\?v=6" alt=")[^"]*(")'%(re.escape(pre),city),lambda m:m.group(1)+ALT[city][lang]+m.group(2),s); assert n==1
-        m=re.search(r'(<img class="am-img am-img--tall" src="%sassets/maps/%s-tall\.svg\?v=6"[^>]*>\n)((?:\s*<span class="ab-grp[^\n]*\n)+)'%(re.escape(pre),city),s); assert m,city
+        s,n=re.subn(r'(src="%sassets/maps/%s-(?:wide|tall)\.svg)\?v=\d+"'%(re.escape(pre),city),r'\1?v=7"',s); assert n==2,(city,n)
+        s,n=re.subn(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg\?v=7" alt=")[^"]*(")'%(re.escape(pre),city),lambda m:m.group(1)+ALT[city][lang]+m.group(2),s); assert n==1
+        m=re.search(r'(<img class="am-img am-img--tall" src="%sassets/maps/%s-tall\.svg\?v=7"[^>]*>\n)((?:\s*<span class="ab-grp[^\n]*\n)+)'%(re.escape(pre),city),s); assert m,city
         s=s[:m.start(2)]+'\n'.join(span(city,g,lang) for g in R.GROUPS[city])+'\n'+s[m.end(2):]
         # the note follows the legend list of this city's map
         m=re.search(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg.*?<ul class="am-legend">.*?</ul>\n)(\s*<p class="am-note">.*?</p>\n\s*<p class="am-note">.*?</p>\n)?'%(re.escape(pre),city),s,re.S); assert m,city

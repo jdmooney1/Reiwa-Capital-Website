@@ -14,7 +14,7 @@ GROUPS={
   dict(key='west-end',cls='core',members=['Marylebone','Fitzrovia','Soho','Mayfair',"St James's",'Covent Garden'],en='West End',ja='ウェストエンド'),
   dict(key='midtown',cls='sel',members=['Holborn / Midtown'],en='Midtown',ja='ミッドタウン'),
   dict(key='bloomsbury',cls='sel',members=['Bloomsbury'],en='Bloomsbury',ja='ブルームズベリー',avoid_core=True,rays=True,keep_clear='tall'),
-  dict(key='city',cls='sel',members=['City of London'],en='City of<br>London',ja='シティ・オブ・<br>ロンドン'),
+  dict(key='city',cls='core',members=['City of London'],en='City of<br>London',ja='シティ・オブ・<br>ロンドン'),
   dict(key='westminster',cls='sel',members=['Westminster'],en='Westminster',ja='ウェストミンスター'),
   dict(key='kc',cls='sel',members=['Kensington & Chelsea'],en='Kensington &amp;<br>Chelsea',ja='ケンジントン・<br>チェルシー')],
  'amsterdam':[
