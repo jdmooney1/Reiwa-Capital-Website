@@ -59,9 +59,9 @@ def patch(path,lang):
     if n==0: s,n=CSS_OLD.subn(lambda m:css(lang),s)
     assert n==1,('css',path,n)
     for city in ['london','amsterdam']:
-        s,n=re.subn(r'(src="%sassets/maps/%s-(?:wide|tall)\.svg)\?v=\d+"'%(re.escape(pre),city),r'\1?v=8"',s); assert n==2,(city,n)
-        s,n=re.subn(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg\?v=8" alt=")[^"]*(")'%(re.escape(pre),city),lambda m:m.group(1)+ALT[city][lang]+m.group(2),s); assert n==1
-        m=re.search(r'(<img class="am-img am-img--tall" src="%sassets/maps/%s-tall\.svg\?v=8"[^>]*>\n)((?:\s*<span class="ab-grp[^\n]*\n)+)'%(re.escape(pre),city),s); assert m,city
+        s,n=re.subn(r'(src="%sassets/maps/%s-(?:wide|tall)\.svg)\?v=\d+"'%(re.escape(pre),city),r'\1?v=9"',s); assert n==2,(city,n)
+        s,n=re.subn(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg\?v=9" alt=")[^"]*(")'%(re.escape(pre),city),lambda m:m.group(1)+ALT[city][lang]+m.group(2),s); assert n==1
+        m=re.search(r'(<img class="am-img am-img--tall" src="%sassets/maps/%s-tall\.svg\?v=9"[^>]*>\n)((?:\s*<span class="ab-grp[^\n]*\n)+)'%(re.escape(pre),city),s); assert m,city
         s=s[:m.start(2)]+'\n'.join(span(city,g,lang) for g in R.GROUPS[city])+'\n'+s[m.end(2):]
         # the note follows the legend list of this city's map
         m=re.search(r'(<img class="am-img am-img--wide" src="%sassets/maps/%s-wide\.svg.*?<ul class="am-legend">.*?</ul>\n)(\s*<p class="am-note">.*?</p>\n\s*<p class="am-note">.*?</p>\n)?'%(re.escape(pre),city),s,re.S); assert m,city
