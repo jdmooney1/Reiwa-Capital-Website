@@ -39,7 +39,7 @@
 <!-- The strategy photography is the page. The overview pair is preloaded on desktop; the detail photographs load
      when a strategy is opened (they stay loading="lazy"). -->
 <link rel="preload" as="image" imagesrcset="assets/imagery/focus-hero-blur.avif" type="image/avif">
-<link rel="preload" as="image" href="assets/imagery/focus-income-balanced.webp" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/imagery/focus-income-master-1100.webp" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/imagery/focus-repositioning-panorama-900.webp?v=2" imagesrcset="assets/imagery/focus-repositioning-panorama-900.webp?v=2 900w, assets/imagery/focus-repositioning-panorama.webp?v=2 1535w" imagesizes="45vw" media="(min-width: 761px)" fetchpriority="high">
 <style>
   /* =====================================================================
@@ -149,7 +149,7 @@
   .fx-shut { appearance: none; border: 0; margin: 0; padding: 0; cursor: pointer; position: absolute; inset: 0; z-index: 4; display: block; background: transparent; outline-offset: -4px; }
   .fx-photo { position: absolute; inset: 0; display: block; z-index: 0; }
   .fx-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .fx-panel--inc .fx-photo img { object-position: 68% 56%; }
+  .fx-panel--inc .fx-photo img { object-position: 42% 50%; }
   .fx-panel--rep .fx-photo img { object-position: 50% 56%; }
   .fx-scrim { position: absolute; left: 0; right: 0; bottom: 0; height: 58%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(28,14,35,.88) 0%, rgba(28,14,35,.66) 30%, rgba(28,14,35,.28) 64%, rgba(28,14,35,0) 100%); }
   .fx-panel--rep .fx-scrim { background: linear-gradient(to top, rgba(28,14,35,.90) 0%, rgba(28,14,35,.70) 30%, rgba(28,14,35,.30) 64%, rgba(28,14,35,0) 100%); }
@@ -397,7 +397,7 @@
           <div class="fx-panel fx-panel--inc">
             <button class="fx-shut" type="button" data-focus="0" aria-label="Explore Income"></button>
             <span class="fx-photo" aria-hidden="true">
-              <img src="assets/imagery/focus-income-balanced.webp" alt="" width="760" height="994" loading="lazy" decoding="async">
+              <img src="assets/imagery/focus-income-master-1100.webp" srcset="assets/imagery/focus-income-master-1100.webp 1100w, assets/imagery/focus-income-master.webp 1536w" sizes="(max-width: 760px) 100vw, 50vw" alt="" width="1100" height="733" loading="lazy" decoding="async">
             </span>
             <span class="fx-scrim" aria-hidden="true"></span>
             <span class="fx-edge" aria-hidden="true"></span>
