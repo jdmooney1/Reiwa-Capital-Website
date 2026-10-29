@@ -61,7 +61,7 @@ const ROLES = {
       '.hi-role-n', '.hf-cap h3',
       '.am-city', '.aw-st-n',
       '.ps-h',
-      '.tw-item dt',
+      '.tw-item dt', '.ah-n',
       '.fx-name', '.hs-title', '.dl-n',
       '.co-tier-n', '.hi-phase-n',
     ],

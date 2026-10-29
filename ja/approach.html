@@ -27,10 +27,10 @@
 <meta name="twitter:description" content="六段階の投資プロセス、投資判断を支える五つの検証、そして投資家に留保される判断。重要な投資判断は、投資家が行います。">
 <meta name="twitter:image" content="https://reiwa-capital.com/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://reiwa-capital.com/#organization","name":"Reiwa Capital","alternateName":["レイワキャピタル","レイワ・キャピタル"],"url":"https://reiwa-capital.com/","logo":"https://reiwa-capital.com/assets/logos/lockup-black.svg","description":"Reiwa Capitalは、日本の投資家側に立って、ロンドンとアムステルダムの選定不動産への投資を支援します。","email":"info@reiwa-capital.com","areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"Netherlands"}],"knowsLanguage":["en","ja"],"sameAs":["https://www.linkedin.com/company/reiwa-cap/"]}</script>
-<link rel="stylesheet" href="../assets/colors_and_type.css?v=29">
+<link rel="stylesheet" href="../assets/colors_and_type.css?v=30">
 <link rel="preload" href="../assets/fonts/DMSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ShipporiMincho-Medium.subset.woff2?v=3" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../editorial.css?v=130">
 <link rel="stylesheet" href="../brand.css?v=7">
 <link rel="stylesheet" href="../craft.css?v=28">
@@ -213,54 +213,32 @@
     .tw-item { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 14px 0 16px; }
   }
   @media (prefers-reduced-motion: reduce) { .tw-arc, .tw-tie, .tw-num, .tw-n, .tw-item dt { transition: none; } }
-  /* --- 4 · Architectural pause ------------------------------------------
-     A shallow band between the tests and the division of authority: the
-     threshold of a London townhouse. Decorative, so it carries no caption
-     and an empty alt. */
-  /* The frame sits on the same container every other section uses, rather
-     than stopping at an arbitrary 72vw. Its width is therefore constant at
-     1048px from 1240px up, which also caps the scaling: the source is 980px
-     wide, so it is drawn at 1.07x instead of the 1.41x the old 72vw reached
-     at 1920. The source is the full frame of the same photograph — same
-     980px width, but 1225px tall rather than a 524px slice, so the band is
-     chosen here by object-position instead of being baked into the file. */
-  .ap-pause { padding: var(--fluid-xs) 0; }
-  .ap-pause-frame { width: 100%; height: clamp(200px, 16vw, 250px); overflow: hidden; background: #EDE7DC; }
-  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
-  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(190px, 22vw, 230px); } }
-  /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
-  @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
-  @media (max-width: 760px) {
-    .ap-pause { padding: 8px 0; }
-    .ap-pause-frame { width: 100%; height: 220px; }
-    .ap-pause-frame img { object-position: 50% 84%; }
+  /* --- 4 · One asset, three objectives ----------------------------------
+     Replaces the decorative pause. Same structure as the English page:
+     photograph left, three objective rows right, stacking below 1024px.
+     Row titles in the serif, like the stage names; body in the JP sans. */
+  .ah-sec { padding: clamp(36px, 3.6vw, 54px) 0 clamp(40px, 4vw, 60px); }
+  .ah-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 4.5vw, 64px); align-items: center; }
+  .ah-frame { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #EDE7DC; }
+  .ah-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 100% 0%; display: block; }
+  .ah-copy { min-width: 0; }
+  .ah-rows { margin: var(--fluid-s) 0 0; display: grid; }
+  .ah-row { padding: clamp(14px, 1.4vw, 18px) 0; border-top: 1px solid var(--rule); }
+  .ah-row:last-child { border-bottom: 1px solid var(--rule); }
+  .ah-n { margin: 0; font-family: var(--font-jp-serif); font-weight: 500; font-size: var(--type-h3); line-height: 1.4; letter-spacing: 0; color: var(--ink); word-break: keep-all; }
+  .ah-p { margin: 6px 0 0; font-family: var(--jp); font-size: 15px; line-height: 1.85; color: var(--ink-2); max-width: 30em; word-break: keep-all; line-break: strict; overflow-wrap: anywhere; text-wrap: pretty; }
+  @media (max-width: 1024px) {
+    .ah-grid { grid-template-columns: minmax(0, 1fr); gap: var(--fluid-m); }
+    .ah-frame { aspect-ratio: 16 / 9; }
+    .ah-copy .ap-lede, .ah-p { max-width: 40em; }
   }
-  @media (max-width: 480px) { .ap-pause-frame { height: 200px; } }
+  @media (max-width: 760px) {
+    .ah-frame { aspect-ratio: 3 / 2; }
+    .ah-row { padding: 14px 0; }
+    .ah-p { font-size: var(--type-body-s); }
+  }
 
 
-  /* --- 4 · Architectural pause ------------------------------------------
-     A shallow band between the tests and the division of authority: the
-     threshold of a London townhouse. Decorative, so it carries no caption
-     and an empty alt. */
-  /* The frame sits on the same container every other section uses, rather
-     than stopping at an arbitrary 72vw. Its width is therefore constant at
-     1048px from 1240px up, which also caps the scaling: the source is 980px
-     wide, so it is drawn at 1.07x instead of the 1.41x the old 72vw reached
-     at 1920. The source is the full frame of the same photograph — same
-     980px width, but 1225px tall rather than a 524px slice, so the band is
-     chosen here by object-position instead of being baked into the file. */
-  .ap-pause { padding: var(--fluid-xs) 0; }
-  .ap-pause-frame { width: 100%; height: clamp(200px, 16vw, 250px); overflow: hidden; background: #EDE7DC; }
-  .ap-pause-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 86%; display: block; }
-  @media (max-width: 1024px) { .ap-pause-frame { height: clamp(190px, 22vw, 230px); } }
-  /* Full bleed on mobile is the existing, deliberate treatment — keep it. */
-  @media (max-width: 760px) { .ap-pause > .shell { max-width: none; padding: 0; } }
-  @media (max-width: 760px) {
-    .ap-pause { padding: 8px 0; }
-    .ap-pause-frame { width: 100%; height: 220px; }
-    .ap-pause-frame img { object-position: 50% 84%; }
-  }
-  @media (max-width: 480px) { .ap-pause-frame { height: 200px; } }
 
   /* Two routes close the page, matching About. */
 </style>
@@ -392,14 +370,34 @@
   </div>
 </section>
 
-<!-- Architectural pause -->
-<div class="ap-pause" data-screen-label="04 投資アプローチ — 建築のあいだ">
+<!-- One asset, three objectives -->
+<section class="ap-sec ah-sec" data-screen-label="04 投資アプローチ — 一つの資産、三つの目的" aria-labelledby="ah-title">
   <div class="shell">
-    <div class="ap-pause-frame">
-      <img src="../assets/imagery/approach-pause-townhouse-full.webp" alt="" width="980" height="1225" loading="lazy" decoding="async">
+    <div class="ah-grid">
+      <div class="ah-frame">
+        <img src="../assets/imagery/approach-hold-facade-1100.webp" srcset="../assets/imagery/approach-hold-facade-1100.webp 1100w, ../assets/imagery/approach-hold-facade-1600.webp 1600w" sizes="(max-width: 1024px) 100vw, 58vw" alt="青空を背にした、ロンドンのオフィスビルの石とガラスのファサード" width="1100" height="825" loading="lazy" decoding="async">
+      </div>
+      <div class="ah-copy">
+        <h2 class="ap-h2" id="ah-title">同じ建物、三つの保有の形</h2>
+        <p class="ap-lede">投資家の目的が、<span class="jt">ストラクチャー、</span>保有期間、事業計画を決めます。各資産は、取得の目的に照らして評価します。</p>
+        <div class="ah-rows">
+          <div class="ah-row">
+            <h3 class="ah-n"><span class="jt">インカム</span></h3>
+            <p class="ah-p">長期の賃貸借、低い<span class="jt">レバレッジ</span>、投資家の報告通貨に合わせた分配。</p>
+          </div>
+          <div class="ah-row">
+            <h3 class="ah-n">減価償却</h3>
+            <p class="ah-p">建物比率の高い物件を直接保有し、資産の税務上の基礎を日本の貸借対照表で活用できる形にします。</p>
+          </div>
+          <div class="ah-row">
+            <h3 class="ah-n"><span class="jt">キャピタルリターン</span></h3>
+            <p class="ah-p">再生と<span class="jt">リーシング</span>により、回収時に機関投資家の買い手を想定できる資産に位置づけます。</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 </main>
 
