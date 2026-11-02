@@ -19,7 +19,7 @@ NOTE = {'london': {'en': 'Indicative focus areas, not administrative boundaries.
 ZONES = {'london': {
     'en': ([('Prime West End', 'Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden',
              'Private wealth, advisory, retail and media', 'Mixed office and residential, smaller lot sizes, constrained supply', 'Aoyama, Ginza, Akasaka'),
-            ('Institutional core', 'City of London, Westminster',
+            ('Institutional Core', 'City of London, Westminster',
              'Banks, insurers, law firms and government', 'Large-floorplate offices, long income, deep investment market', 'Otemachi, Marunouchi, Nagatacho')],
            'Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch &amp; Aldgate, Southbank. Considered asset by asset.'),
     'ja': ([('プライム・ウェストエンド', 'Marylebone、Fitzrovia、Soho、Mayfair、St James’s、Covent Garden',
@@ -28,7 +28,7 @@ ZONES = {'london': {
              '銀行、保険会社、法律事務所、政府機関', '大型フロアプレートのオフィス、長期の賃料収入、厚い投資市場', '大手町、丸の内、永田町')],
            'ブルームズベリー、ミッドタウン、ファリンドン、クラーケンウェル、ショーディッチ・オールドゲート、サウスバンク。個別の物件ごとに検討します。')},
   'amsterdam': {
-    'en': ([('Canal district', 'Jordaan (with Haarlemmerbuurt, to the IJ), Canal Belt (Herengracht, Keizersgracht, Prinsengracht)',
+    'en': ([('Canal District', 'Jordaan (with Haarlemmerbuurt, to the IJ), Canal Belt (Herengracht, Keizersgracht, Prinsengracht)',
              'Boutique office, advisory, private wealth, residential', 'Listed canal houses in the UNESCO area, little redevelopment, smaller floorplates', 'Ginza, Omotesando'),
             ('Zuid', 'Zuidas, Oud-Zuid, Museumkwartier',
              'Multinational headquarters, law firms and financial institutions', 'Large-floorplate offices in the main international business district, CPI-linked leases', 'Otemachi, Roppongi Hills')],
