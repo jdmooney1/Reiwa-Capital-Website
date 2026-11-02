@@ -231,26 +231,18 @@
   .am-note { margin: 10px 0 0; max-width: 62ch; font-family: var(--jp); font-size: 12.5px; line-height: 1.55; color: var(--ink-3); }
   .am-note + .am-note { margin-top: 4px; font-size: 12px; }
   /* end of map styles */
-  /* v4 maps (tools/maps/deck_v4.py): the investor deck's colour system - core in Sumire purple, selective in Sakura pink, every
-     neighbourhood named. A core label that sits inside its dark area is set light; the wide and tall frames can place a label
-     differently, so the inside flag is per frame (-w from 901px, -t below). */
+  /* v4 maps (tools/maps/deck_v4.py): the deck's areas, every neighbourhood named, in the site's map colours (core 30% plum with a
+     solid outline, selective 12% plum dashed; legend swatches .sw-prim / .sw-broad as before). Labels are ink on a cream halo and
+     scale with the map; a label too large for its area in one frame is hidden in that frame (-w from 901px, -t below). */
   .am-map { container-type: inline-size; }
   .ab-grp--sm { font-size: clamp(9px, 1.71cqw, 11px); }
   @media (max-width: 900px) { .ab-grp--sm { font-size: clamp(9px, 2.78cqw, 11.5px); } }
-  .ab-grp--core.ab-grp--in-w { color: #FCFAF1; text-shadow: 0 0 2px rgba(39,20,48,.9), 0 0 4px rgba(39,20,48,.6); }
-  @media (max-width: 900px) {
-    .ab-grp--core.ab-grp--in-w { color: var(--ink); text-shadow: 0 0 2px var(--cream), 0 0 3px var(--cream), 0 0 6px rgba(247,243,234,.92); }
-    .ab-grp--core.ab-grp--in-t { color: #FCFAF1; text-shadow: 0 0 2px rgba(39,20,48,.9), 0 0 4px rgba(39,20,48,.6); }
-  }
   @media (min-width: 901px) { .ab-grp--hide-w { display: none; } }
   @media (max-width: 900px) { .ab-grp--hide-t { display: none; } }
-  .ab-grp--sel { text-shadow: 0 0 2px rgba(252,250,241,.9), 0 0 4px rgba(252,250,241,.7); }
-  .sw-prim  { background: rgba(39, 20, 48, .78); border: 1.5px solid #271430; }
-  .sw-broad { background: rgba(245, 202, 224, .45); border: 1px solid #271430; }
   /* The market column: a core zone or the selective areas per block, each marked with its legend colour. */
   .am-zone .am-k { display: flex; align-items: center; color: var(--ink); font-weight: 500; }
-  .am-zone .am-k::before { content: ""; width: 10px; height: 10px; flex: none; margin-right: 8px; box-sizing: border-box; background: rgba(39, 20, 48, .78); border: 1.5px solid #271430; }
-  .am-zone--sel .am-k::before { background: rgba(245, 202, 224, .45); border: 1px solid #271430; }
+  .am-zone .am-k::before { content: ""; width: 10px; height: 10px; flex: none; margin-right: 8px; box-sizing: border-box; background: rgba(94, 61, 120, .30); border: 1.5px solid #3D2350; }
+  .am-zone--sel .am-k::before { background: rgba(94, 61, 120, .12); border: 1.5px dashed #7A5C92; }
   .am-zone-d { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 12px 0 0; font-family: var(--jp); font-size: 13.5px; line-height: 1.5; }
   .am-zone-d dt { color: var(--ink-3); }
   .am-zone-d dd { margin: 0; color: var(--ink-2); }

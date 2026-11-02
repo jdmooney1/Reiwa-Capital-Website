@@ -242,19 +242,27 @@ def draw(city, v, fr, groups, meta, labels, old):
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W:.0f} {H:.1f}" preserveAspectRatio="xMidYMid slice" role="presentation">',
          R.HEADER[city].replace('Built by tools/maps/build.py.', 'Built by tools/maps/deck_v4.py (v4, areas as in the March 2026 investor deck).'),
          f'<rect width="{W:.0f}" height="{H:.1f}" fill="{R.COL["land"]}"/>'] + base
-    # Deck colour system: core in Sumire purple, selective in Sakura pink, each neighbourhood outlined. The street grid is re-drawn faintly
-    # over the core so the dark areas still read as places, and the canals stay on top.
+    # Colour scheme of the published v3 maps (render.FOCUS): core in a 30% plum fill with a solid ink outline, selective in a 12% plum fill
+    # with a dashed outline, each line over a pale halo so it stays crisp over the roads. The v4 neighbourhoods inside a core zone keep their
+    # own boundaries as fine ink lines; the zone's outer edge carries the full core outline, drawn last so a shared edge reads as core.
     core_u = fixed(unary_union([groups[k] for k, c, *_ in meta if c == 'core']))
-    o.append(f'<defs><clipPath id="core-clip"><path d="{R.d_path(T(core_u), 1)}"/></clipPath></defs>')
     for k, cls, *_ in meta:
-        f = DECK[cls]; o.append(f'<path d="{R.d_path(T(groups[k]), 1)}" fill="{f["fill"]}" fill-opacity="{f["op"]}"/>')
-    roads = [l for l in base if 'stroke-linecap="round"' in l]
-    o.append('<g clip-path="url(#core-clip)" opacity="0.2">' + ''.join(re.sub(r'stroke="#[0-9A-Fa-f]{6}"', 'stroke="#FCFAF1"', l, count=1) for l in roads) + '</g>')
+        f = R.FOCUS['core' if cls == 'core' else 'sel']; o.append(f'<path d="{R.d_path(T(groups[k]), 1)}" fill="{f["fill"]}" fill-opacity="{f["op"]}"/>')
     o += canals
-    for k, cls, *_ in meta:          # neighbourhood edges: pale inside the core, plum between selective areas
-        f = DECK[cls]; d = R.d_path(T(groups[k]), 1)
-        o.append(f'<path d="{d}" fill="none" stroke="{f["edge"]}" stroke-opacity="{f["edge_op"]}" stroke-width="{f["w"]}" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
-    o.append(f'<path d="{R.d_path(T(core_u), 1)}" fill="none" stroke="{DECK["core"]["fill"]}" stroke-width="1.6" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
+    def line(d, stroke, w, dash=None, op=None):
+        o.append(f'<path d="{d}" fill="none" stroke="{R.COL["land"]}" stroke-opacity="0.85" stroke-width="{w + 2.4}" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
+        o.append(f'<path d="{d}" fill="none" stroke="{stroke}" stroke-width="{w}" stroke-linejoin="round"' + (f' stroke-dasharray="{dash}"' if dash else '') + (f' stroke-opacity="{op}"' if op else '') + ' vector-effect="non-scaling-stroke"/>')
+    # outlines follow each area's edge across canals and harbour basins up to 90 m wide (the fills stay exact), so a canal through an
+    # area is not drawn as a boundary
+    def outline(g, r=45.0):
+        g = fixed(g.buffer(r, join_style=2).buffer(-r, join_style=2))
+        return fixed(unary_union([Polygon(p.exterior, [h for h in p.interiors if Polygon(h).area >= 40000]) for p in polys(g)]))
+    sel = R.FOCUS['sel']
+    for k, cls, *_ in meta:
+        if cls != 'core': line(R.d_path(T(outline(groups[k])), 1), sel['stroke'], sel['w'], sel['dash'])
+    for k, cls, *_ in meta:          # neighbourhood divisions inside the core zones
+        if cls == 'core': o.append(f'<path d="{R.d_path(T(outline(groups[k])), 1)}" fill="none" stroke="{R.INK}" stroke-opacity="0.45" stroke-width="0.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
+    line(R.d_path(T(outline(core_u)), 1), R.FOCUS['core']['stroke'], R.FOCUS['core']['w'])
     k_ = W / R.NOMINAL_W[v]
     for k, *_ in meta:
         L = labels[k]
