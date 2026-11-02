@@ -237,15 +237,13 @@
   .ab-grp--sel { text-shadow: 0 0 2px rgba(252,250,241,.9), 0 0 4px rgba(252,250,241,.7); }
   .sw-prim  { background: rgba(39, 20, 48, .86); border: 1.5px solid #271430; }
   .sw-broad { background: rgba(245, 202, 224, .72); border: 1px solid #271430; }
-  .am-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 18px var(--fluid-s); margin: 18px 0 2px; padding-top: 16px; border-top: 1px solid var(--rule); font-family: 'DM Sans', sans-serif; }
-  .am-zone-t { display: flex; align-items: center; margin: 0; font-size: 14px; font-weight: 500; line-height: 1.35; color: var(--ink); }
-  .am-zone-t::before { content: ""; width: 9px; height: 9px; flex: none; margin-right: 8px; background: #271430; }
-  .am-zone-a { margin: 5px 0 10px; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
-  .am-zone-d { display: grid; grid-template-columns: max-content 1fr; gap: 5px 12px; margin: 0; font-size: 12.5px; line-height: 1.5; }
+  /* The market column: a core zone or the selective areas per block, each marked with its legend colour. */
+  .am-zone .am-k { display: flex; align-items: center; color: var(--ink); font-weight: 500; }
+  .am-zone .am-k::before { content: ""; width: 10px; height: 10px; flex: none; margin-right: 8px; box-sizing: border-box; background: rgba(39, 20, 48, .86); border: 1.5px solid #271430; }
+  .am-zone--sel .am-k::before { background: rgba(245, 202, 224, .72); border: 1px solid #271430; }
+  .am-zone-d { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 12px 0 0; font-family: 'DM Sans', sans-serif; font-size: 13.5px; line-height: 1.5; }
   .am-zone-d dt { color: var(--ink-3); }
   .am-zone-d dd { margin: 0; color: var(--ink-2); }
-  .am-zone-sel { grid-column: 1 / -1; margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-3); }
-  @media (max-width: 560px) { .am-zones { grid-template-columns: 1fr; } }
   /* end of v4 map styles */
 
   .am-sum { margin: var(--fluid-xs) 0 0; max-width: 46ch; }
@@ -424,18 +422,18 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=11" alt="Map of central London, with the Thames, Regent’s Park, Hyde Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core, in dark purple: the Prime West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden) and the institutional core (the City of London, and Westminster from Whitehall and Victoria to Vauxhall Bridge). Selective, in pink: Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch and Aldgate, and Southbank." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=11" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=12" alt="Map of central London, with the Thames, Regent’s Park, Hyde Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core, in dark purple: the Prime West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden) and the institutional core (the City of London, and Westminster from Whitehall and Victoria to Vauxhall Bridge). Selective, in pink: Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch and Aldgate, and Southbank." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=12" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:19.68%;--y:35.02%;--xt:20.16%;--yt:36.07%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Marylebone</span>
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:33.77%;--y:35.43%;--xt:27.49%;--yt:40.51%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Fitzrovia</span>
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:37.39%;--y:43.64%;--xt:35.13%;--yt:45.1%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Soho</span>
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:26.5%;--y:49.78%;--xt:19.66%;--yt:47.75%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Mayfair</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:37.71%;--y:55.55%;--xt:35.09%;--yt:53.69%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">St James’s</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:46.35%;--y:48.73%;--xt:52.26%;--yt:46.55%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Covent<br>Garden</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:37.62%;--y:55.55%;--xt:35.01%;--yt:54.14%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">St James’s</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:46.35%;--y:48.73%;--xt:52.26%;--yt:46.99%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Covent<br>Garden</span>
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:39.65%;--y:75.53%;--xt:36.0%;--yt:64.9%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Westminster</span>
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:85.21%;--y:41.33%;--xt:79.19%;--yt:44.61%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">City of<br>London</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w" style="--x:43.37%;--y:24.3%;--xt:47.15%;--yt:33.2%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Bloomsbury</span>
-          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:54.34%;--y:28.33%;--xt:54.05%;--yt:37.25%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Midtown</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:54.69%;--y:28.74%;--xt:54.05%;--yt:37.25%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Midtown</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:61.34%;--y:15.72%;--xt:59.39%;--yt:28.27%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Farringdon</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:74.88%;--y:21.43%;--xt:72.87%;--yt:32.42%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Clerkenwell</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w" style="--x:91.43%;--y:19.97%;--xt:86.52%;--yt:27.55%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Shoreditch &amp;<br>Aldgate</span>
@@ -445,19 +443,15 @@
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective</li>
           </ul>
-          <div class="am-zones">
-            <div class="am-zone"><p class="am-zone-t">Prime West End</p><p class="am-zone-a">Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Private wealth, advisory, retail and media</dd><dt>Assets</dt><dd>Mixed office and residential, smaller lot sizes, constrained supply</dd><dt>Tokyo comparison</dt><dd>Aoyama, Ginza, Akasaka</dd></dl></div>
-            <div class="am-zone"><p class="am-zone-t">Institutional core</p><p class="am-zone-a">City of London, Westminster</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Banks, insurers, law firms and government</dd><dt>Assets</dt><dd>Large-floorplate offices, long income, deep investment market</dd><dt>Tokyo comparison</dt><dd>Otemachi, Marunouchi, Nagatacho</dd></dl></div>
-            <p class="am-zone-sel">Selective: Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch &amp; Aldgate, Southbank. Considered asset by asset.</p>
-          </div>
           <p class="am-note">Indicative focus areas, not administrative boundaries. Midtown: Holborn and King’s Cross south of Euston Road.</p>
           <p class="am-note">Map data: ONS and OS boundaries &copy; Crown copyright (OGL v3.0); &copy; OpenStreetMap contributors; Overture Maps Foundation.</p>
         </div>
         <div class="am-side">
           <figure class="am-photo"><img src="assets/imagery/market-london-800.webp" srcset="assets/imagery/market-london-800.webp 800w, assets/imagery/market-london-1537.webp 1537w" sizes="(max-width: 900px) 100vw, 44vw" width="1537" height="659" loading="lazy" decoding="async" alt="The City of London skyline along the River Thames at dusk"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Deep capital markets and mature financing and advisory networks. Central London comprises distinct submarkets, each assessed on its own merits.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Each opportunity is assessed at submarket and asset level, with the business plan tested against occupier demand, liquidity and exit conditions. This is done before an investor commits capital.</p></div>
+            <div class="am-block am-zone"><h3 class="am-k">Prime West End</h3><p class="h-body am-p">Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Private wealth, advisory, retail and media</dd><dt>Assets</dt><dd>Mixed office and residential, smaller lot sizes, constrained supply</dd><dt>Tokyo comparison</dt><dd>Aoyama, Ginza, Akasaka</dd></dl></div>
+            <div class="am-block am-zone"><h3 class="am-k">Institutional core</h3><p class="h-body am-p">City of London, Westminster</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Banks, insurers, law firms and government</dd><dt>Assets</dt><dd>Large-floorplate offices, long income, deep investment market</dd><dt>Tokyo comparison</dt><dd>Otemachi, Marunouchi, Nagatacho</dd></dl></div>
+            <div class="am-block am-zone am-zone--sel"><h3 class="am-k">Selective</h3><p class="h-body am-p">Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch &amp; Aldgate, Southbank. Considered asset by asset.</p></div>
           </div>
         </div>
       </div>
@@ -478,23 +472,22 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=11" alt="Map of Amsterdam, with the canal ring around the historic centre, the IJ to the north, the Amstel and Vondelpark. Indicative investment focus areas, not administrative boundaries. Core, in dark purple: the canal district (the Jordaan, with Haarlemmerbuurt, and the Canal Belt, west and south) and Zuid (Museumkwartier, Oud-Zuid and Zuidas, which lies on both sides of the A10). Selective, in pink: Centrum, Plantage, Oud-West, West, Sloterdijk, Noord, De Pijp, Oost, Rivierenbuurt, Overamstel and Buitenveldert." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=11" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=12" alt="Map of Amsterdam, with the canal ring around the historic centre, the IJ to the north, the Amstel and Vondelpark. Indicative investment focus areas, not administrative boundaries. Core, in dark purple: the canal district (the Jordaan, with Haarlemmerbuurt, and the Canal Belt) and Zuid (Museumkwartier, Oud-Zuid and Zuidas, which lies on both sides of the A10). Selective, in pink: Centrum, Plantage, Oud-West, West, Sloterdijk, Noord, De Pijp, Oost, Rivierenbuurt, Overamstel and Buitenveldert." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=12" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:42.81%;--y:9.85%;--xt:44.88%;--yt:21.98%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Jordaan</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:41.03%;--y:34.67%;--xt:42.87%;--yt:26.93%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w" style="--x:50.41%;--y:39.8%;--xt:46.84%;--yt:43.1%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Canal Belt<br>South</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:33.62%;--y:55.8%;--xt:33.31%;--yt:53.53%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Museum-<br>kwartier</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:30.81%;--y:68.27%;--xt:29.82%;--yt:62.74%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oud-Zuid</span>
-          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:31.12%;--y:83.13%;--xt:30.56%;--yt:72.93%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Zuidas</span>
-          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:50.71%;--y:25.16%;--xt:53.55%;--yt:31.8%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Centrum</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:49.61%;--y:43.32%;--xt:48.37%;--yt:43.84%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:37.72%;--y:53.47%;--xt:33.87%;--yt:53.94%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Museum-<br>kwartier</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:30.61%;--y:68.64%;--xt:29.8%;--yt:63.09%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oud-Zuid</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:31.71%;--y:81.59%;--xt:30.47%;--yt:72.59%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Zuidas</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:51.05%;--y:23.93%;--xt:53.55%;--yt:31.8%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Centrum</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:28.62%;--y:37.59%;--xt:27.39%;--yt:42.66%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oud-West</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:7.52%;--y:11.23%;--xt:28.89%;--yt:22.53%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">West</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-t" style="--x:13.75%;--y:2.46%;--xt:37.99%;--yt:9.33%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Sloterdijk</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:68.23%;--y:6.15%;--xt:62.39%;--yt:8.44%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Noord</span>
-          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:66.06%;--y:38.73%;--xt:68.61%;--yt:40.74%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Plantage</span>
-          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:51.51%;--y:59.52%;--xt:51.88%;--yt:56.61%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">De Pijp</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:66.06%;--y:38.73%;--xt:69.72%;--yt:41.19%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Plantage</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:51.51%;--y:59.52%;--xt:52.43%;--yt:56.61%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">De Pijp</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:70.31%;--y:53.52%;--xt:71.44%;--yt:52.54%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oost</span>
-          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:52.94%;--y:79.93%;--xt:53.85%;--yt:69.86%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Rivierenbuurt</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:52.94%;--y:79.93%;--xt:57.74%;--yt:69.86%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Rivierenbuurt</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:78.28%;--y:88.96%;--xt:62.97%;--yt:82.96%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Overamstel</span>
           <span class="ab-grp ab-grp--sel ab-grp--sm ab-grp--in-w ab-grp--in-t" style="--x:37.61%;--y:93.73%;--xt:30.0%;--yt:87.18%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Buitenveldert</span>
           </div>
@@ -502,11 +495,6 @@
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective</li>
           </ul>
-          <div class="am-zones">
-            <div class="am-zone"><p class="am-zone-t">Canal district</p><p class="am-zone-a">Jordaan (with Haarlemmerbuurt, to the IJ), Canal Belt (Herengracht, Keizersgracht, Prinsengracht)</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Boutique office, advisory, private wealth, residential</dd><dt>Assets</dt><dd>Listed canal houses in the UNESCO area, little redevelopment, smaller floorplates</dd><dt>Tokyo comparison</dt><dd>Ginza, Omotesando</dd></dl></div>
-            <div class="am-zone"><p class="am-zone-t">Zuid</p><p class="am-zone-a">Zuidas, Oud-Zuid, Museumkwartier</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Multinational headquarters, law firms and financial institutions</dd><dt>Assets</dt><dd>Large-floorplate offices in the main international business district, CPI-linked leases</dd><dt>Tokyo comparison</dt><dd>Otemachi, Roppongi Hills</dd></dl></div>
-            <p class="am-zone-sel">Selective: Centrum, Plantage, Oud-West, West, Sloterdijk, Noord, De Pijp, Oost, Rivierenbuurt, Overamstel, Buitenveldert. Considered asset by asset.</p>
-          </div>
           <p class="am-note">Indicative focus areas, not administrative boundaries. Plantage includes Nieuwmarkt and the Eastern Islands.</p>
           <p class="am-note">Map data: Gemeente Amsterdam; CBS (CC BY 4.0); &copy; OpenStreetMap contributors; Overture Maps Foundation.</p>
         </div>
@@ -514,8 +502,9 @@
         <div class="am-side">
           <figure class="am-photo"><img src="assets/imagery/market-amsterdam-800.webp" srcset="assets/imagery/market-amsterdam-800.webp 800w, assets/imagery/market-amsterdam-1562.webp 1562w" sizes="(max-width: 900px) 100vw, 44vw" width="1562" height="1007" loading="lazy" decoding="async" alt="Canal houses along an Amsterdam canal in evening light"></figure>
           <div class="am-blocks">
-            <div class="am-block"><h3 class="am-k">Market Characteristics</h3><p class="h-body am-p">Compact and supply-constrained, with strict planning and sustainability requirements. The market has established occupier demand and includes institutional buyers.</p></div>
-            <div class="am-block"><h3 class="am-k">Why We Focus Here</h3><p class="h-body am-p">Strict rules make permitted use and technical condition decisive. Appointed specialists review both before purchase; Reiwa then monitors both, and any capital required, through ownership.</p></div>
+            <div class="am-block am-zone"><h3 class="am-k">Canal district</h3><p class="h-body am-p">Jordaan (with Haarlemmerbuurt, to the IJ), Canal Belt (Herengracht, Keizersgracht, Prinsengracht)</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Boutique office, advisory, private wealth, residential</dd><dt>Assets</dt><dd>Listed canal houses in the UNESCO area, little redevelopment, smaller floorplates</dd><dt>Tokyo comparison</dt><dd>Ginza, Omotesando</dd></dl></div>
+            <div class="am-block am-zone"><h3 class="am-k">Zuid</h3><p class="h-body am-p">Zuidas, Oud-Zuid, Museumkwartier</p><dl class="am-zone-d"><dt>Occupiers</dt><dd>Multinational headquarters, law firms and financial institutions</dd><dt>Assets</dt><dd>Large-floorplate offices in the main international business district, CPI-linked leases</dd><dt>Tokyo comparison</dt><dd>Otemachi, Roppongi Hills</dd></dl></div>
+            <div class="am-block am-zone am-zone--sel"><h3 class="am-k">Selective</h3><p class="h-body am-p">Centrum, Plantage, Oud-West, West, Sloterdijk, Noord, De Pijp, Oost, Rivierenbuurt, Overamstel, Buitenveldert. Considered asset by asset.</p></div>
           </div>
         </div>
       </div>

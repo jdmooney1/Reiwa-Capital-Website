@@ -106,7 +106,7 @@ LONDON = [  # key, members (v3 ids or new), cls, en, ja
     ('clerkenwell', 'sel', 'Clerkenwell', 'クラーケンウェル'), ('shoreditch', 'sel', 'Shoreditch &amp;<br>Aldgate', 'ショーディッチ・<br>オールドゲート'), ('southbank', 'sel', 'Southbank', 'サウスバンク')]
 AMSTERDAM = [
     ('jordaan', 'core', 'Jordaan', 'ヨルダーン'),
-    ('canal-belt', 'core', 'Canal Belt', 'カナルベルト'), ('grachtengordel-zuid', 'core', 'Canal Belt<br>South', 'カナルベルト南'),
+    ('canal-belt', 'core', 'Canal Belt', 'カナルベルト'),
     ('museumkwartier', 'core', 'Museum-<br>kwartier', 'ミュージアム<br>地区'), ('oud-zuid', 'core', 'Oud-Zuid', 'アウド・<br>ザウト'), ('zuidas', 'core', 'Zuidas', 'ザイダス'),
     ('centrum', 'sel', 'Centrum', 'セントルム'), ('oud-west', 'sel', 'Oud-West', 'アウド・<br>ウェスト'), ('west', 'sel', 'West', 'ウェスト'), ('sloterdijk', 'sel', 'Sloterdijk', 'スローテルダイク'),
     ('noord', 'sel', 'Noord', 'ノールト'), ('plantage', 'sel', 'Plantage', 'プランタージュ'), ('de-pijp', 'sel', 'De Pijp', 'デ・パイプ'),
@@ -163,6 +163,7 @@ def london():
     south = side_of(ll((51.4862, -0.1240), (51.4895, -0.1100), (51.4945, -0.1003), (51.4975, -0.0905), (51.4990, -0.0800)), TR['london'](-0.1100, 51.5040))
     areas['southbank'] = add(areas, unary_union([wards('E09000022', ["Bishop's", "Prince's"]), wards('E09000028', ['Cathedrals', 'Chaucer'])]), mask, south)
     areas = fill_gaps(areas, ['farringdon', 'clerkenwell', 'shoreditch', 'southbank', 'holborn'], mask)
+    areas = no_pinholes(seal(areas, ['marylebone', 'fitzrovia', 'soho', 'mayfair', 'st-jamess', 'covent-garden', 'westminster', 'city', 'bloomsbury', 'holborn'], mask))
     # crop: the deck's extent, centred on the areas, inside each published v3 frame (its base map is reused)
     core = unary_union([areas[k] for k in areas if k != 'shoreditch']); bx = core.bounds
     frames = {}
@@ -178,18 +179,26 @@ def amsterdam():
     bc = {f['properties']['name']: fixed(transform(TR['amsterdam'], shape(f['geometry']))) for f in pinned('blackmad_amsterdam.geojson')}
     U = lambda *n: unary_union([bc[x] for x in n])
     others = lambda k: {kk: g for kk, g in areas.items() if kk != k}
-    # Core, split as the deck draws it: Jordaan, Haarlemmerbuurt (Jordaan to the IJ), the canal belt in its west and south arcs,
-    # Museumkwartier apart from the rest of Oud-Zuid, and Oud-Zuid west to the Schinkel (Hoofddorppleinbuurt, Schinkelbuurt)
+    # Core, as the deck draws it: the Jordaan to the IJ (with Haarlemmerbuurt); the canal belt as one shape, down to the Singelgracht
+    # (with De Weteringschans, the strip the v3 map left out); Museumkwartier apart from the rest of Oud-Zuid, with Duivelseiland, so it
+    # meets De Pijp; Oud-Zuid west to the Schinkel (Hoofddorppleinbuurt, Schinkelbuurt) and down to Zuidas
     areas['jordaan'] = fixed(unary_union([areas['jordaan'], add(areas, U('Haarlemmerbuurt'), mask)]).buffer(10, join_style=2).buffer(-10, join_style=2))     # to the IJ, as in the deck
-    cb = areas.pop('canal-belt')
-    areas['grachtengordel-zuid'] = fixed(cb.intersection(bc['Grachtengordel-Zuid'].buffer(20)).difference(bc['Grachtengordel-West']))
-    areas['canal-belt'] = fixed(cb.difference(areas['grachtengordel-zuid']))
+    areas['canal-belt'] = fixed(unary_union([areas['canal-belt'], add(others('canal-belt'), U('De Weteringschans'), mask)]).buffer(10, join_style=2).buffer(-10, join_style=2))
     oz = areas.pop('oud-zuid')
     west_oz = add({k: g for k, g in areas.items()}, U('Hoofddorppleinbuurt', 'Schinkelbuurt'), mask)
     oz = fixed(unary_union([oz, west_oz]).buffer(20, join_style=2).buffer(-20, join_style=2).difference(unary_union(list(areas.values()))).difference(mask))
     areas['museumkwartier'] = fixed(oz.intersection(bc['Museumkwartier'].buffer(25)).difference(unary_union([g for n, g in bc.items() if n != 'Museumkwartier'])))
     areas['oud-zuid'] = fixed(oz.difference(areas['museumkwartier']))
-    for k in ('grachtengordel-zuid', 'canal-belt', 'museumkwartier', 'oud-zuid'):
+    areas['museumkwartier'] = fixed(unary_union([areas['museumkwartier'], add(others('museumkwartier'), U('Duivelseiland'), mask)]))
+    # the band between Oud-Zuid and Zuidas (parts of Stadionbuurt, Apollobuurt and Station-Zuid): the deck draws the two touching
+    pair = fixed(unary_union([areas['oud-zuid'], areas['zuidas']]).buffer(150, join_style=2).buffer(-150, join_style=2))
+    band = fixed(pair.difference(unary_union(list(areas.values()))).difference(mask))
+    sz = bc['Station-Zuid WTC en omgeving']
+    for p in polys(band):
+        if p.area < 5000 or areas['oud-zuid'].distance(p) > 20 or areas['zuidas'].distance(p) > 20: continue
+        areas['zuidas'] = fixed(unary_union([areas['zuidas'], p.intersection(sz)]))
+        areas['oud-zuid'] = fixed(unary_union([areas['oud-zuid'], p.difference(sz)]))
+    for k in ('canal-belt', 'museumkwartier', 'oud-zuid', 'zuidas'):
         areas[k] = fixed(unary_union([p for p in polys(areas[k]) if p.area >= 15000]))
     # Plantage as the deck draws it: Nieuwmarkt/Lastage, Weesperbuurt/Plantage and the Eastern Islands, up to the IJ
     areas['plantage'] = fixed(unary_union([areas['plantage'], add({k: g for k, g in areas.items() if k != 'plantage'}, U('Nieuwmarkt/Lastage', 'Oostelijke Eilanden/Kadijken'), mask)]))
@@ -200,6 +209,17 @@ def amsterdam():
     areas['overamstel'] = add(areas, U('De Omval'), mask)
     areas['buitenveldert'] = add(areas, U('Buitenveldert-West', 'Buitenveldert-Oost'), mask)
     areas = fill_gaps(areas, ['centrum', 'plantage', 'west', 'sloterdijk', 'noord', 'overamstel', 'buitenveldert'], mask)
+    # built-up ground left between the core areas, given back to the area whose source unit it lies in: 2 ha of Museumkwartier along the
+    # Boerenwetering, and the Station-Zuid and Apollobuurt ground by Beatrixpark (the deck runs Zuidas east to Rivierenbuurt). The park stays open.
+    for k, unit in (('museumkwartier', 'Museumkwartier'), ('zuidas', 'Station-Zuid WTC en omgeving'), ('oud-zuid', 'Apollobuurt')):
+        free = fixed(bc[unit].difference(unary_union(list(areas.values()))).difference(mask))
+        near = [p for p in polys(free) if p.area >= 2000 and areas[k].distance(p) < 25]
+        if near:
+            joined = fixed(unary_union([areas[k]] + [p.buffer(12, join_style=2) for p in near]).buffer(-12, join_style=2))
+            areas[k] = fixed(unary_union([joined, areas[k]] + near).difference(unary_union([g for kk, g in areas.items() if kk != k])).difference(mask.difference(areas[k])))
+    areas = seal(areas, ['jordaan', 'canal-belt', 'museumkwartier', 'oud-zuid', 'zuidas', 'de-pijp', 'oud-west'], mask)
+    areas = seal(areas, ['plantage', 'oost', 'centrum'], mask, r=80)        # a 0.7 ha notch on the Plantage / Oost edge
+    areas = no_pinholes(areas)
     return areas, AMSTERDAM, fr, dict(fr)
 
 # ------------------------------------------------------------------ drawing
@@ -248,6 +268,25 @@ def draw(city, v, fr, groups, meta, labels, old):
     o.append('</svg>')
     open(REPO + f'assets/maps/{city}-{v}.svg', 'w', encoding='utf-8').write('\n'.join(o))
     return F
+
+def seal(areas, keys, mask, r=30.0):
+    """Close slits narrower than 2r between and inside the given areas, where pieces built from different boundary sets do not quite meet.
+    Each closed piece goes to the area it shares most edge with; parks and open water are never filled."""
+    u = unary_union([areas[k] for k in keys])
+    slits = fixed(u.buffer(r, join_style=2).buffer(-r, join_style=2).difference(unary_union(list(areas.values()))).difference(mask))
+    for p in polys(slits):
+        if p.area < 50: continue
+        k = max(keys, key=lambda k: areas[k].buffer(1).intersection(p.boundary).length)
+        areas[k] = fixed(unary_union([areas[k], p.buffer(0.3)]).difference(unary_union([g for kk, g in areas.items() if kk != k])))
+    return areas
+
+def no_pinholes(areas, min_m2=10000):
+    """Holes under 1 ha (slivers left between source boundaries, drawn as a stray mark) are filled; parks and water stay open."""
+    out = {}
+    for k, g in areas.items():
+        ps = [Polygon(p.exterior, [r for r in p.interiors if Polygon(r).area >= min_m2]) for p in polys(g)]
+        out[k] = fixed(unary_union(ps).difference(unary_union([h for kk, h in areas.items() if kk != k])))
+    return out
 
 def fill_gaps(areas, new, mask, max_ha=30):
     u = fixed(unary_union(list(areas.values())).buffer(40, join_style=2).buffer(-40, join_style=2))     # gaps open to the outside by a street width count as enclosed
