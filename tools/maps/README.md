@@ -29,3 +29,7 @@ Modules: `boundaries.py` (street cuts, masks), `clean.py` (dissolve, seam and ga
 Labels are laid out for the narrowest width each frame is shown at (wide 420 px, tall 320 px) and share positions between English and Japanese. A label can carry a `fixed` placement per frame in `render.py` (found by exhaustive search and checked on the rendered pages, see `docs/map-geography.md`, "Labels").
 
 Zuidas is Reiwa's selected Noord + Zuid footprint (CBS 2022 buurten Zuidas Noord and Zuid), not an official boundary; the official description states approximately 245 ha and no further CBS units are added to approach it.
+
+## v4 (November 2026): areas as in the investor deck
+
+`deck_v4.py` (with `pages_v4.py`) sets the area set and tiers to match the March 2026 investor deck, pages 9 and 11: London West End sub-areas drawn and labelled individually, Westminster core, Kensington & Chelsea dropped, Bloomsbury and Midtown apart, Farringdon, Clerkenwell, Shoreditch & Aldgate and Southbank added; Amsterdam Haarlemmerbuurt added to the Jordaan, Centrum, West, Sloterdijk, Noord, Overamstel and Buitenveldert added. It reuses the published v3 areas and base layers (read from git at `BASE`) and needs only the pinned ward and buurtcombinatie files in `MAP_DATA`. The London frame is re-cropped to the deck's extent; the Amsterdam frame is unchanged, so its outer areas stop at the frame edge. A full rebuild with a wider Amsterdam base map needs the Overture extracts (`extract_overture.py`).

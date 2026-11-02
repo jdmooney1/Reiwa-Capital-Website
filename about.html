@@ -209,6 +209,7 @@
      switches at 900px, where the tall image takes over. */
   .ab-grp { position: absolute; left: var(--x); top: var(--y); transform: translate(var(--tx, -50%), var(--ty, -50%)); padding: 1px 3px; box-sizing: border-box; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px; line-height: 1.3; letter-spacing: 0.01em; color: var(--ink); white-space: nowrap; text-align: center; pointer-events: none; z-index: 3; text-shadow: 0 0 2px var(--cream), 0 0 3px var(--cream), 0 0 6px rgba(247,243,234,.92); }
   .ab-grp--core { font-weight: 600; }
+  .ab-grp--sm { font-size: 10.5px; }
   @media (max-width: 900px) { .ab-grp { left: var(--xt); top: var(--yt); transform: translate(var(--txt, -50%), var(--tyt, -50%)); } }
   @media (max-width: 620px) { .am-map { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); border-left: 0; border-right: 0; } }
 
@@ -398,19 +399,28 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=9" alt="Map of central London, with the Thames, Hyde Park, Regent’s Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core: the West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden) and the City of London. Selective: Midtown (Holborn and Bloomsbury), Westminster, and Kensington and Chelsea." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=9" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:48.93%;--y:37.34%;--xt:38.84%;--yt:42.52%;--tx:-50%;--ty:-50%;--txt:-100%;--tyt:-50%" aria-hidden="true">West End</span>
-          <span class="ab-grp ab-grp--sel" style="--x:67.06%;--y:25.93%;--xt:71.77%;--yt:30.59%;--tx:-50%;--ty:-100%;--txt:0;--tyt:-50%" aria-hidden="true">Midtown</span>
-          <span class="ab-grp ab-grp--core" style="--x:82.82%;--y:35.95%;--xt:81.56%;--yt:44.82%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">City of<br>London</span>
-          <span class="ab-grp ab-grp--sel" style="--x:65.51%;--y:58.44%;--xt:60.74%;--yt:64.17%;--tx:0;--ty:-50%;--txt:0;--tyt:-50%" aria-hidden="true">Westminster</span>
-          <span class="ab-grp ab-grp--sel" style="--x:31.19%;--y:62.35%;--xt:32.94%;--yt:68.79%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">Kensington &amp;<br>Chelsea</span>
+            <img class="am-img am-img--wide" src="assets/maps/london-wide.svg?v=10" alt="Map of central London, with the Thames, Regent’s Park, Hyde Park, Green Park and St James’s Park shown. Indicative investment focus areas, not administrative boundaries. Core: the West End (Marylebone, Fitzrovia, Soho, Mayfair, St James’s and Covent Garden), the City of London and Westminster. Selective: Bloomsbury, Midtown, Farringdon, Clerkenwell, Shoreditch and Aldgate, and Southbank." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/london-tall.svg?v=10" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:17.22%;--y:37.71%;--xt:18.91%;--yt:32.1%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-100%" aria-hidden="true">Marylebone</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:31.25%;--y:25.27%;--xt:33.49%;--yt:27.63%;--tx:-100%;--ty:-50%;--txt:-50%;--tyt:-100%" aria-hidden="true">Fitzrovia</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:41.54%;--y:40.54%;--xt:19.23%;--yt:45.56%;--tx:-50%;--ty:0;--txt:-100%;--tyt:-50%" aria-hidden="true">Soho</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:26.72%;--y:48.37%;--xt:20.67%;--yt:54.58%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-100%" aria-hidden="true">Mayfair</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:31.25%;--y:56.77%;--xt:29.67%;--yt:58.95%;--tx:-100%;--ty:-50%;--txt:-100%;--tyt:-50%" aria-hidden="true">St James’s</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:56.09%;--y:46.22%;--xt:54.77%;--yt:47.48%;--tx:-50%;--ty:0;--txt:-50%;--tyt:0" aria-hidden="true">Covent<br>Garden</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:37.24%;--y:70.33%;--xt:34.64%;--yt:76.06%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">Westminster</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:85.13%;--y:41.72%;--xt:72.73%;--yt:41.0%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">City of<br>London</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:50.4%;--y:33.42%;--xt:32.09%;--yt:40.88%;--tx:-50%;--ty:0;--txt:-100%;--tyt:-50%" aria-hidden="true">Bloomsbury</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:51.65%;--y:23.29%;--xt:50.91%;--yt:33.97%;--tx:-100%;--ty:-50%;--txt:-50%;--tyt:-100%" aria-hidden="true">Midtown</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:60.46%;--y:15.18%;--xt:56.54%;--yt:21.18%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:-100%" aria-hidden="true">Farringdon</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:70.82%;--y:24.12%;--xt:78.19%;--yt:29.4%;--tx:-50%;--ty:0;--txt:-50%;--tyt:-100%" aria-hidden="true">Clerkenwell</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:87.41%;--y:19.07%;--xt:83.44%;--yt:24.12%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:-100%" aria-hidden="true">Shoreditch &amp;<br>Aldgate</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:64.07%;--y:60.35%;--xt:62.13%;--yt:58.58%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Southbank</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective</li>
           </ul>
-          <p class="am-note">Indicative focus areas, not administrative boundaries. West End: Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden. Midtown: Holborn, Bloomsbury.</p>
+          <p class="am-note">Indicative focus areas, not administrative boundaries. West End core: Marylebone, Fitzrovia, Soho, Mayfair, St James’s, Covent Garden. Midtown: Holborn.</p>
           <p class="am-note">Map data: ONS and OS boundaries &copy; Crown copyright (OGL v3.0); &copy; OpenStreetMap contributors; Overture Maps Foundation.</p>
         </div>
         <div class="am-side">
@@ -438,23 +448,29 @@
       <div class="am-grid">
         <div class="am-mapwrap">
           <div class="am-map">
-            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=6" alt="Map of Amsterdam, with the canal ring around the historic centre, the IJ to the north, the Amstel and Vondelpark. Indicative investment focus areas, not administrative boundaries. Core: the Canal Belt (Grachtengordel), the Jordaan, Oud-Zuid and Zuidas, which lies on both sides of the A10. Selective: Oud-West, Weesperbuurt/Plantage, De Pijp, Oost and Rivierenbuurt." loading="lazy" decoding="async">
-            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=6" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span class="ab-grp ab-grp--core" style="--x:31.83%;--y:22.02%;--xt:30.43%;--yt:30.15%;--tx:-100%;--ty:-50%;--txt:-100%;--tyt:-50%" aria-hidden="true">Jordaan</span>
-          <span class="ab-grp ab-grp--core" style="--x:54.61%;--y:31.96%;--xt:54.54%;--yt:36.9%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:-100%" aria-hidden="true">Canal Belt</span>
-          <span class="ab-grp ab-grp--core" style="--x:31.66%;--y:64.11%;--xt:28.28%;--yt:62.98%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oud-Zuid</span>
-          <span class="ab-grp ab-grp--core" style="--x:31.34%;--y:83.0%;--xt:29.8%;--yt:72.69%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Zuidas</span>
-          <span class="ab-grp ab-grp--sel" style="--x:28.46%;--y:43.32%;--xt:20.86%;--yt:41.88%;--tx:-100%;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">Oud-West</span>
-          <span class="ab-grp ab-grp--sel" style="--x:68.95%;--y:26.35%;--xt:71.92%;--yt:31.83%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:-100%" aria-hidden="true">Weesperbuurt /<br>Plantage</span>
-          <span class="ab-grp ab-grp--sel" style="--x:53.22%;--y:61.07%;--xt:55.01%;--yt:59.05%;--tx:-50%;--ty:-50%;--txt:0;--tyt:-50%" aria-hidden="true">De Pijp</span>
-          <span class="ab-grp ab-grp--sel" style="--x:70.44%;--y:53.61%;--xt:72.2%;--yt:52.13%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oost</span>
-          <span class="ab-grp ab-grp--sel" style="--x:63.36%;--y:86.83%;--xt:47.69%;--yt:80.96%;--tx:0;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">Rivierenbuurt</span>
+            <img class="am-img am-img--wide" src="assets/maps/amsterdam-wide.svg?v=10" alt="Map of Amsterdam, with the canal ring around the historic centre, the IJ to the north, the Amstel and Vondelpark. Indicative investment focus areas, not administrative boundaries. Core: the Canal Belt (Grachtengordel), the Jordaan, Oud-Zuid and Zuidas, which lies on both sides of the A10. Selective: Centrum, Oud-West, West, Sloterdijk, Noord, Weesperbuurt/Plantage, De Pijp, Oost, Rivierenbuurt, Overamstel and Buitenveldert." loading="lazy" decoding="async">
+            <img class="am-img am-img--tall" src="assets/maps/amsterdam-tall.svg?v=10" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:31.83%;--y:22.02%;--xt:30.43%;--yt:30.15%;--tx:-100%;--ty:-50%;--txt:-100%;--tyt:-50%" aria-hidden="true">Jordaan</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:54.61%;--y:31.96%;--xt:54.54%;--yt:36.9%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:-100%" aria-hidden="true">Canal Belt</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:31.71%;--y:63.89%;--xt:30.93%;--yt:59.79%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oud-Zuid</span>
+          <span class="ab-grp ab-grp--core ab-grp--sm" style="--x:31.39%;--y:82.85%;--xt:29.93%;--yt:72.99%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Zuidas</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:54.9%;--y:23.7%;--xt:62.21%;--yt:24.61%;--tx:-50%;--ty:-50%;--txt:0;--tyt:-50%" aria-hidden="true">Centrum</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:30.34%;--y:50.36%;--xt:20.86%;--yt:41.88%;--tx:-100%;--ty:-50%;--txt:-50%;--tyt:0" aria-hidden="true">Oud-West</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:12.38%;--y:16.65%;--xt:13.12%;--yt:25.3%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">West</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:12.33%;--y:5.32%;--xt:37.22%;--yt:10.0%;--tx:-50%;--ty:0;--txt:-50%;--tyt:-50%" aria-hidden="true">Sloterdijk</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:76.33%;--y:4.0%;--xt:67.39%;--yt:10.0%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Noord</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:66.05%;--y:29.42%;--xt:58.46%;--yt:49.98%;--tx:0;--ty:-50%;--txt:-100%;--tyt:-50%" aria-hidden="true">Weesperbuurt /<br>Plantage</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:53.22%;--y:61.07%;--xt:55.01%;--yt:59.05%;--tx:-50%;--ty:-50%;--txt:0;--tyt:-50%" aria-hidden="true">De Pijp</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:70.4%;--y:53.6%;--xt:72.14%;--yt:52.09%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Oost</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:68.83%;--y:71.82%;--xt:58.15%;--yt:83.23%;--tx:0;--ty:-50%;--txt:0;--tyt:-50%" aria-hidden="true">Rivierenbuurt</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:81.79%;--y:79.69%;--xt:72.88%;--yt:86.64%;--tx:-50%;--ty:-100%;--txt:-50%;--tyt:0" aria-hidden="true">Overamstel</span>
+          <span class="ab-grp ab-grp--sel ab-grp--sm" style="--x:27.14%;--y:95.24%;--xt:30.63%;--yt:87.24%;--tx:-50%;--ty:-50%;--txt:-50%;--tyt:-50%" aria-hidden="true">Buitenveldert</span>
           </div>
           <ul class="am-legend">
             <li><span class="sw sw-prim" aria-hidden="true"></span>Core</li>
             <li><span class="sw sw-broad" aria-hidden="true"></span>Selective</li>
           </ul>
-          <p class="am-note">Indicative focus areas, not administrative boundaries.</p>
+          <p class="am-note">Indicative focus areas, not administrative boundaries. Oud-Zuid includes the Museumkwartier.</p>
           <p class="am-note">Map data: Gemeente Amsterdam; CBS (CC BY 4.0); &copy; OpenStreetMap contributors; Overture Maps Foundation.</p>
         </div>
     

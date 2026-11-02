@@ -118,7 +118,8 @@ def place_labels(city,variant,fr,groups,meta):
                     cross=any(bx.buffer(1).intersects(ld) for ld in leaders) or any(LineString([(pole.x,pole.y),(lx,ly)]).intersects(o.buffer(1)) for o in boxes)   # a leader should not cross another label
                     ovc=bx.intersection(cores).area/bx.area                      # avoid_core labels must not sit on a core area
                     thr=LineString([(pole.x,pole.y),(lx,ly)]).intersection(others).length   # nor should their leader run through another area
-                    score=math.hypot(lx-pole.x,ly-pole.y)+260*ov+120*selfov+0.3*d+(400 if cross else 0)+700*sum(bx.intersects(c) for kk,c in keep_clear.items() if kk!=k)+(1500*ovc+2.5*thr if m.get('avoid_core') else 0)
+                    xl=sum(LineString([(pole.x,pole.y),(lx,ly)]).crosses(l2) for l2 in leaders)    # nor cross another leader (v4: many small areas)
+                    score=math.hypot(lx-pole.x,ly-pole.y)+900*xl+260*ov+120*selfov+0.3*d+(400 if cross else 0)+700*sum(bx.intersects(c) for kk,c in keep_clear.items() if kk!=k)+(1500*ovc+2.5*thr if m.get('avoid_core') else 0)
                     cand.append((score,lx,ly,side,bx))
             if m.get('rays'):   # a second family for areas hemmed in by their neighbours: straight rays from the pole
                 for ang in range(0,360,15):
@@ -133,7 +134,7 @@ def place_labels(city,variant,fr,groups,meta):
                         ld=LineString([(pole.x,pole.y),(lx,ly)])
                         cross=any(bx.buffer(1).intersects(l2) for l2 in leaders) or any(ld.intersects(o.buffer(1)) for o in boxes)
                         ovc=bx.intersection(cores).area/bx.area
-                        score=d+260*ov+120*selfov+(900 if cross else 0)+700*sum(bx.intersects(c) for kk,c in keep_clear.items() if kk!=k)+(1500*ovc+2.5*ld.intersection(others).length if m.get('avoid_core') else 0)+8
+                        score=d+900*sum(ld.crosses(l2) for l2 in leaders)+260*ov+120*selfov+(900 if cross else 0)+700*sum(bx.intersects(c) for kk,c in keep_clear.items() if kk!=k)+(1500*ovc+2.5*ld.intersection(others).length if m.get('avoid_core') else 0)+8
                         cand.append((score,lx,ly,side,bx))
             if not cand: print('  WARNING: no place for',k); best=dict(side='c',cx=pole.x,cy=pole.y,bx=box(pole.x-w/2,pole.y-h/2,pole.x+w/2,pole.y+h/2),ax=None,ay=None)
             else:
