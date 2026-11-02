@@ -31,7 +31,10 @@ SEAM = 25.0
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')) + '/'
 DATA = os.environ.get('MAP_DATA', '').rstrip('/') + '/'
 MAPV = 10
-LABEL_PX = 10.5      # labels on the v4 maps are set smaller (.ab-grp--sm): there are 14 and 15 of them, as in the deck
+# Labels scale with the map (container units, .ab-grp--sm): they are laid out for these widths, where they are set at LABEL_PX, and
+# keep the same proportion at other widths (clamped in the CSS).
+NOMINAL_W = {'wide': 585.0, 'tall': 360.0}
+LABEL_PX = 10.0      # labels on the v4 maps are set smaller (.ab-grp--sm): there are 14 and 15 of them, as in the deck
 
 def git(path): return subprocess.check_output(['git', '-C', REPO, 'show', f'{BASE}:{path}']).decode('utf-8')
 def fixed(g):
@@ -102,34 +105,68 @@ LONDON = [  # key, members (v3 ids or new), cls, en, ja
     ('bloomsbury', 'sel', 'Bloomsbury', 'ブルームズベリー'), ('holborn', 'sel', 'Midtown', 'ミッドタウン'), ('farringdon', 'sel', 'Farringdon', 'ファリンドン'),
     ('clerkenwell', 'sel', 'Clerkenwell', 'クラーケンウェル'), ('shoreditch', 'sel', 'Shoreditch &amp;<br>Aldgate', 'ショーディッチ・<br>オールドゲート'), ('southbank', 'sel', 'Southbank', 'サウスバンク')]
 AMSTERDAM = [
-    ('jordaan', 'core', 'Jordaan', 'ヨルダーン'), ('canal-belt', 'core', 'Canal Belt', 'カナルベルト'), ('oud-zuid', 'core', 'Oud-Zuid', 'アウド・ザウト'), ('zuidas', 'core', 'Zuidas', 'ザイダス'),
-    ('centrum', 'sel', 'Centrum', 'セントルム'), ('oud-west', 'sel', 'Oud-West', 'アウド・ウェスト'), ('west', 'sel', 'West', 'ウェスト'), ('sloterdijk', 'sel', 'Sloterdijk', 'スローテルダイク'),
-    ('noord', 'sel', 'Noord', 'ノールト'), ('plantage', 'sel', 'Weesperbuurt /<br>Plantage', 'ウェースペルブールト・<br>プランタージュ'), ('de-pijp', 'sel', 'De Pijp', 'デ・パイプ'),
+    ('jordaan', 'core', 'Jordaan', 'ヨルダーン'),
+    ('canal-belt', 'core', 'Canal Belt', 'カナルベルト'), ('grachtengordel-zuid', 'core', 'Canal Belt<br>South', 'カナルベルト南'),
+    ('museumkwartier', 'core', 'Museum-<br>kwartier', 'ミュージアム<br>地区'), ('oud-zuid', 'core', 'Oud-Zuid', 'アウド・<br>ザウト'), ('zuidas', 'core', 'Zuidas', 'ザイダス'),
+    ('centrum', 'sel', 'Centrum', 'セントルム'), ('oud-west', 'sel', 'Oud-West', 'アウド・<br>ウェスト'), ('west', 'sel', 'West', 'ウェスト'), ('sloterdijk', 'sel', 'Sloterdijk', 'スローテルダイク'),
+    ('noord', 'sel', 'Noord', 'ノールト'), ('plantage', 'sel', 'Plantage', 'プランタージュ'), ('de-pijp', 'sel', 'De Pijp', 'デ・パイプ'),
     ('oost', 'sel', 'Oost', 'オースト'), ('rivierenbuurt', 'sel', 'Rivierenbuurt', 'リヴィエレンブールト'), ('overamstel', 'sel', 'Overamstel', 'オーフェルアムステル'),
     ('buitenveldert', 'sel', 'Buitenveldert', 'バウテンフェルデルト')]
 
 # label placements kept from the published v3 Amsterdam map (same frame): the Jordaan and Canal Belt labels sit beside their
 # narrow areas rather than across Centrum, and the v3 fixed placements still apply
-FIXED = {'jordaan': {'wide': dict(x=31.83, y=22.02, side='l'), 'tall': dict(x=30.43, y=30.15, side='l')},
-         'canal-belt': {'wide': dict(x=54.61, y=31.96, side='t'), 'tall': dict(x=54.54, y=36.9, side='t')},
-         'oud-west': {'tall': dict(x=20.86, y=41.88, side='b')},
-         'de-pijp': {'tall': dict(x=55.01, y=59.05, side='r'), 'wide': dict(x=53.22, y=61.07, side='c')}}
+FIXED = {}
+DECK = {'core': dict(fill='#271430', op=0.86, edge='#F5CAE0', edge_op=0.55, w=0.8),
+        'sel': dict(fill='#F5CAE0', op=0.72, edge='#271430', edge_op=0.75, w=1.0)}
+ASPECT = {'london': {'wide': 1.2, 'tall': 0.80}, 'amsterdam': {'wide': 1.2, 'tall': 0.80}}   # London's wide frame now matches Amsterdam's (CSS: .am-market .am-map 1.2 from 901px)
+
+def ll(*pts):
+    """A line given as (lat, lon) points, in British National Grid metres."""
+    from shapely.geometry import LineString
+    return LineString([TR['london'](lon, lat) for lat, lon in pts])
+def side_of(line, keep_pt, far=20000):
+    """The half-plane-like region on keep_pt's side of an open line, closed far away from the frame."""
+    from shapely.geometry import Point
+    from shapely.ops import split
+    region = Point(keep_pt).buffer(far)
+    ext = line
+    (x0, y0), (x1, y1) = ext.coords[0], ext.coords[-1]
+    a = ext.coords[1]; b = ext.coords[-2]
+    def out(p, q):      # extend the end p away from q
+        dx, dy = p[0] - q[0], p[1] - q[1]; n = math.hypot(dx, dy) or 1
+        return (p[0] + dx / n * far * 2, p[1] + dy / n * far * 2)
+    from shapely.geometry import LineString
+    long = LineString([out((x0, y0), a)] + list(ext.coords) + [out((x1, y1), b)])
+    parts = split(region, long)
+    return [g for g in parts.geoms if g.contains(Point(keep_pt))][0]
 
 def london():
     arr, fr = v3_frames('london', None); W = fr['wide']
     areas = {a['id']: fixed(to_m(parse(a['wide']), W)) for a in arr if a['id'] != 'kensington-chelsea'}
     mask = masks('london', W)
     def wards(code, names): return unary_union([fixed(transform(TR['london'], shape(f['geometry']))) for f in pinned(f'wards_{code}.json') if f['properties']['WD13NM'] in names])
+    # Westminster as drawn in the deck: Victoria, Whitehall and east Pimlico down to Vauxhall Bridge. Belgravia and west Pimlico (west of
+    # Grosvenor Place, Buckingham Palace Road and a line to Vauxhall Bridge) are left out.
+    westline = ll((51.5026, -0.1512), (51.4975, -0.1467), (51.4935, -0.1468), (51.4893, -0.1372), (51.4866, -0.1290))
+    areas['westminster'] = fixed(areas['westminster'].intersection(side_of(westline, TR['london'](-0.1276, 51.4994))))
+    areas['westminster'] = fixed(unary_union([p for p in polys(areas['westminster']) if p.area >= 15000]))
+    # Midtown in the deck runs up to Euston Road between Bloomsbury and Farringdon: the King's Cross ward south of Euston Road joins it
+    kx = wards('E09000007', ["King's Cross"]).intersection(side_of(ll((51.5265, -0.1330), (51.5290, -0.1225), (51.5300, -0.1170)), TR['london'](-0.1180, 51.5240)))
+    hb = fixed(unary_union([areas['holborn'], add({k: g for k, g in areas.items() if k != 'holborn'}, kx, mask)]).buffer(12, join_style=2).buffer(-12, join_style=2))
+    hb = fixed(hb.difference(unary_union([g for k, g in areas.items() if k != 'holborn'])))
+    areas['holborn'] = fixed(unary_union([Polygon(p.exterior, [r for r in p.interiors if Polygon(r).area >= 10000]) for p in polys(hb) if p.area >= 15000]))
     north = box(0, 0, 10**7, 182800)        # the deck stops Shoreditch & Aldgate at Old Street / Bethnal Green Road
     areas['farringdon'] = add(areas, wards('E09000019', ['Clerkenwell']), mask)
     areas['clerkenwell'] = add(areas, wards('E09000019', ['Bunhill']), mask)
     areas['shoreditch'] = add(areas, unary_union([wards('E09000012', ['Hoxton', 'Haggerston']), wards('E09000030', ['Spitalfields and Banglatown', 'Weavers', 'Whitechapel', "St Katharine's and Wapping"])]), mask, north)
-    areas['southbank'] = add(areas, unary_union([wards('E09000022', ["Bishop's", "Prince's"]), wards('E09000028', ['Cathedrals', 'Chaucer'])]), mask)
-    areas = fill_gaps(areas, ['farringdon', 'clerkenwell', 'shoreditch', 'southbank'], mask)
+    # Southbank stops where the deck's does: Kennington Lane, Elephant & Castle and Great Dover Street
+    south = side_of(ll((51.4862, -0.1240), (51.4895, -0.1100), (51.4945, -0.1003), (51.4975, -0.0905), (51.4990, -0.0800)), TR['london'](-0.1100, 51.5040))
+    areas['southbank'] = add(areas, unary_union([wards('E09000022', ["Bishop's", "Prince's"]), wards('E09000028', ['Cathedrals', 'Chaucer'])]), mask, south)
+    areas = fill_gaps(areas, ['farringdon', 'clerkenwell', 'shoreditch', 'southbank', 'holborn'], mask)
     # crop: the deck's extent, centred on the areas, inside each published v3 frame (its base map is reused)
     core = unary_union([areas[k] for k in areas if k != 'shoreditch']); bx = core.bounds
     frames = {}
-    for v, asp in (('wide', 0.95), ('tall', 0.80)):
+    for v, asp in (('wide', ASPECT['london']['wide']), ('tall', 0.80)):
         x0, y0, x1, y1 = fr[v]; nx0 = bx[0] - 400; nx1 = x1 - 5; h = (nx1 - nx0) / asp; cy = (bx[1] + bx[3]) / 2
         ny0 = max(y0 + 5, min(cy - h / 2, y1 - 5 - h)); frames[v] = (nx0, ny0, nx1, ny0 + h)
     return areas, LONDON, fr, frames
@@ -141,14 +178,28 @@ def amsterdam():
     bc = {f['properties']['name']: fixed(transform(TR['amsterdam'], shape(f['geometry']))) for f in pinned('blackmad_amsterdam.geojson')}
     U = lambda *n: unary_union([bc[x] for x in n])
     others = lambda k: {kk: g for kk, g in areas.items() if kk != k}
-    areas['jordaan'] = fixed(unary_union([areas['jordaan'], add(others('jordaan'), U('Haarlemmerbuurt'), mask)]))
-    areas['centrum'] = add(areas, U('Burgwallen-Nieuwe Zijde', 'Burgwallen-Oude Zijde', 'Nieuwmarkt/Lastage'), mask)
+    # Core, split as the deck draws it: Jordaan, Haarlemmerbuurt (Jordaan to the IJ), the canal belt in its west and south arcs,
+    # Museumkwartier apart from the rest of Oud-Zuid, and Oud-Zuid west to the Schinkel (Hoofddorppleinbuurt, Schinkelbuurt)
+    areas['jordaan'] = fixed(unary_union([areas['jordaan'], add(areas, U('Haarlemmerbuurt'), mask)]).buffer(10, join_style=2).buffer(-10, join_style=2))     # to the IJ, as in the deck
+    cb = areas.pop('canal-belt')
+    areas['grachtengordel-zuid'] = fixed(cb.intersection(bc['Grachtengordel-Zuid'].buffer(20)).difference(bc['Grachtengordel-West']))
+    areas['canal-belt'] = fixed(cb.difference(areas['grachtengordel-zuid']))
+    oz = areas.pop('oud-zuid')
+    west_oz = add({k: g for k, g in areas.items()}, U('Hoofddorppleinbuurt', 'Schinkelbuurt'), mask)
+    oz = fixed(unary_union([oz, west_oz]).buffer(20, join_style=2).buffer(-20, join_style=2).difference(unary_union(list(areas.values()))).difference(mask))
+    areas['museumkwartier'] = fixed(oz.intersection(bc['Museumkwartier'].buffer(25)).difference(unary_union([g for n, g in bc.items() if n != 'Museumkwartier'])))
+    areas['oud-zuid'] = fixed(oz.difference(areas['museumkwartier']))
+    for k in ('grachtengordel-zuid', 'canal-belt', 'museumkwartier', 'oud-zuid'):
+        areas[k] = fixed(unary_union([p for p in polys(areas[k]) if p.area >= 15000]))
+    # Plantage as the deck draws it: Nieuwmarkt/Lastage, Weesperbuurt/Plantage and the Eastern Islands, up to the IJ
+    areas['plantage'] = fixed(unary_union([areas['plantage'], add({k: g for k, g in areas.items() if k != 'plantage'}, U('Nieuwmarkt/Lastage', 'Oostelijke Eilanden/Kadijken'), mask)]))
+    areas['centrum'] = add(areas, U('Burgwallen-Nieuwe Zijde', 'Burgwallen-Oude Zijde'), mask)
     areas['sloterdijk'] = add(areas, U('Sloterdijk', 'Houthavens', 'Spaarndammer- en Zeeheldenbuurt'), mask)
     areas['west'] = add(areas, U('Frederik Hendrikbuurt', 'Staatsliedenbuurt', 'Centrale Markt', 'Van Galenbuurt', 'Landlust', 'De Kolenkit', 'Erasmuspark', 'Hoofdweg en omgeving', 'Westindische buurt', 'De Krommert'), mask)
     areas['noord'] = add(areas, U('Volewijck', 'Ijplein/Vogelbuurt', 'Buiksloterham', 'Nieuwendammerham'), mask)
     areas['overamstel'] = add(areas, U('De Omval'), mask)
     areas['buitenveldert'] = add(areas, U('Buitenveldert-West', 'Buitenveldert-Oost'), mask)
-    areas = fill_gaps(areas, ['centrum', 'west', 'sloterdijk', 'noord', 'overamstel', 'buitenveldert'], mask)
+    areas = fill_gaps(areas, ['centrum', 'plantage', 'west', 'sloterdijk', 'noord', 'overamstel', 'buitenveldert'], mask)
     return areas, AMSTERDAM, fr, dict(fr)
 
 # ------------------------------------------------------------------ drawing
@@ -171,20 +222,28 @@ def draw(city, v, fr, groups, meta, labels, old):
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W:.0f} {H:.1f}" preserveAspectRatio="xMidYMid slice" role="presentation">',
          R.HEADER[city].replace('Built by tools/maps/build.py.', 'Built by tools/maps/deck_v4.py (v4, areas as in the March 2026 investor deck).'),
          f'<rect width="{W:.0f}" height="{H:.1f}" fill="{R.COL["land"]}"/>'] + base
+    # Deck colour system: core in Sumire purple, selective in Sakura pink, each neighbourhood outlined. The street grid is re-drawn faintly
+    # over the core so the dark areas still read as places, and the canals stay on top.
+    core_u = fixed(unary_union([groups[k] for k, c, *_ in meta if c == 'core']))
+    o.append(f'<defs><clipPath id="core-clip"><path d="{R.d_path(T(core_u), 1)}"/></clipPath></defs>')
     for k, cls, *_ in meta:
-        f = R.FOCUS[cls]; o.append(f'<path d="{R.d_path(T(groups[k]), 1)}" fill="{f["fill"]}" fill-opacity="{f["op"]}"/>')
+        f = DECK[cls]; o.append(f'<path d="{R.d_path(T(groups[k]), 1)}" fill="{f["fill"]}" fill-opacity="{f["op"]}"/>')
+    roads = [l for l in base if 'stroke-linecap="round"' in l]
+    o.append('<g clip-path="url(#core-clip)" opacity="0.2">' + ''.join(re.sub(r'stroke="#[0-9A-Fa-f]{6}"', 'stroke="#FCFAF1"', l, count=1) for l in roads) + '</g>')
     o += canals
-    for k, cls, *_ in sorted(meta, key=lambda m: m[1] == 'core'):     # core outlines last, so a shared edge reads as core
-        f = R.FOCUS[cls]; d = R.d_path(T(groups[k]), 1)
-        o.append(f'<path d="{d}" fill="none" stroke="{R.COL["land"]}" stroke-opacity="0.85" stroke-width="{f["w"] + 2.4}" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
-        o.append(f'<path d="{d}" fill="none" stroke="{f["stroke"]}" stroke-width="{f["w"]}" stroke-linejoin="round"' + (f' stroke-dasharray="{f["dash"]}"' if f['dash'] else '') + ' vector-effect="non-scaling-stroke"/>')
+    for k, cls, *_ in meta:          # neighbourhood edges: pale inside the core, plum between selective areas
+        f = DECK[cls]; d = R.d_path(T(groups[k]), 1)
+        o.append(f'<path d="{d}" fill="none" stroke="{f["edge"]}" stroke-opacity="{f["edge_op"]}" stroke-width="{f["w"]}" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
+    o.append(f'<path d="{R.d_path(T(core_u), 1)}" fill="none" stroke="{DECK["core"]["fill"]}" stroke-width="1.6" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>')
     k_ = W / R.NOMINAL_W[v]
     for k, *_ in meta:
         L = labels[k]
         if L['ax'] is None: continue
         ax, ay = L['ax'] / 100 * W, L['ay'] / 100 * H; lx, ly = L['x'] / 100 * W, L['y'] / 100 * H
         dx, dy = lx - ax, ly - ay; dist = math.hypot(dx, dy) or 1; ex, ey = lx - dx / dist * 2 * k_, ly - dy / dist * 2 * k_
+        o.append(f'<path d="M{ax:.1f} {ay:.1f}L{ex:.1f} {ey:.1f}" fill="none" stroke="#FCFAF1" stroke-opacity="0.9" stroke-width="3" vector-effect="non-scaling-stroke"/>')
         o.append(f'<path d="M{ax:.1f} {ay:.1f}L{ex:.1f} {ey:.1f}" fill="none" stroke="{R.INK}" stroke-width="1" vector-effect="non-scaling-stroke"/>')
+        o.append(f'<path d="M{ax:.1f} {ay:.1f}h0.01" fill="none" stroke="#FCFAF1" stroke-width="7" stroke-linecap="round" vector-effect="non-scaling-stroke"/>')
         o.append(f'<path d="M{ax:.1f} {ay:.1f}h0.01" fill="none" stroke="{R.INK}" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>')
     o.append('</svg>')
     open(REPO + f'assets/maps/{city}-{v}.svg', 'w', encoding='utf-8').write('\n'.join(o))
@@ -200,17 +259,71 @@ def fill_gaps(areas, new, mask, max_ha=30):
               if areas[best].buffer(1).intersection(h.boundary).length > 0: areas[best] = fixed(unary_union([areas[best], h.buffer(0.5)]).difference(unary_union([g for k, g in areas.items() if k != best])))
     return areas
 
+def place_inside(city, v, fr, vis, meta):
+    """Deck-style labels: each name sits on its own area, centred where it fits best, without leaders. A label may run past a narrow
+    area's edge; it may not touch another label or leave the frame, and a dark-on-light selective label keeps off the dark core
+    areas. Several placement orders are tried and the one with the lowest total cost is kept. An area with too little of itself in
+    the frame to carry its name (Sloterdijk in the wide Amsterdam frame) is left unlabelled in that frame."""
+    from shapely.geometry import Point
+    from shapely.ops import polylabel
+    Wpx = R.NOMINAL_W[v]; Hpx = Wpx / R.ASPECT[city][v]; sx = Wpx / (fr[2] - fr[0]); sy = Hpx / (fr[3] - fr[1])
+    PG = {k: fixed(transform(lambda x, y, z=None: ((x - fr[0]) * sx, (fr[3] - y) * sy), g)) for k, g in vis.items()}
+    core = {m[0] for m in meta if m[1] == 'core'}
+    frame_box = box(4, 4, Wpx - 4, Hpx - 4)
+    size = {k: [max(a, b) for a, b in zip(R.label_size(en, False), R.label_size(ja, True))] for k, c, en, ja in meta}
+    cand = {}
+    for k, cls, en, ja in meta:
+        P = PG[k]; w, h = size[k]; cand[k] = []
+        if P.is_empty or P.area < (0.15 if cls == 'core' else 0.5) * w * h: continue
+        big = max(polys(P), key=lambda p: p.area); pole = polylabel(big, tolerance=0.5)
+        dark_others = unary_union([PG[o] for o in core if o != k]) if core - {k} else Polygon()
+        light_others = unary_union([PG[o] for o, c, *_ in meta if c != 'core' and o != k])
+        minx, miny, maxx, maxy = big.bounds; x = minx
+        while x <= maxx:
+            y = miny
+            while y <= maxy:
+                if big.contains(Point(x, y)):
+                    b = box(x - w / 2, y - h / 2, x + w / 2, y + h / 2)
+                    if frame_box.contains(b):
+                        out = 1 - b.intersection(P).area / b.area
+                        clash = b.intersection(dark_others if cls != 'core' else light_others).area / b.area
+                        cost = 5 * out + (10 if cls != 'core' else 4) * clash + 0.5 * math.hypot(x - pole.x, y - pole.y) / (w + h)
+                        cand[k].append((cost, x, y, b, out))
+                y += 2
+            x += 2
+        cand[k].sort(key=lambda c: c[0]); cand[k] = cand[k][:400]
+    def attempt(order):
+        boxes = []; placed = {}; total = 0
+        for k in order:
+            if not cand[k]: placed[k] = None; continue
+            pick = next((c for c in cand[k] if not any(c[3].buffer(3).intersects(o) for o in boxes)), None)
+            if pick is None: pick = min(cand[k], key=lambda c: c[0] + 20 * sum(c[3].intersection(o).area for o in boxes) / c[3].area)
+            boxes.append(pick[3]); placed[k] = pick; total += pick[0]
+        return total, placed
+    keys = [m[0] for m in meta]
+    orders = [sorted(keys, key=lambda k: PG[k].area), sorted(keys, key=lambda k: -size[k][0] * size[k][1] / max(PG[k].area, 1)),
+              sorted(keys, key=lambda k: (k not in core, PG[k].area)), sorted(keys, key=lambda k: (k in core, PG[k].area))]
+    total, best = min((attempt(o) for o in orders), key=lambda t: t[0])
+    out = {}
+    for k in keys:
+        if best[k] is None: out[k] = dict(x=-100, y=-100, side='c', ax=None, ay=None, inside=False, hidden=True); continue
+        _, x, y, b, o = best[k]
+        out[k] = dict(x=round(x / Wpx * 100, 2), y=round(y / Hpx * 100, 2), side='c', ax=None, ay=None, inside=o < 0.4)
+    print(f'  {city} {v}: label cost {total:.2f}', [k for k in keys if best[k] is None] or '')
+    return out
+
 def run():
     res = {}
+    R.ASPECT.update(ASPECT); R.NOMINAL_W.update(NOMINAL_W)
     for city, fn in (('london', london), ('amsterdam', amsterdam)):
         areas, meta, old, new = fn(); res[city] = {'labels': {}, 'frames': {}, 'meta': meta}
         fx = {}
         for v in ('wide', 'tall'):
             fb = box(*new[v]); groups = {k: fixed(areas[k].intersection(fb.buffer(40))) for k, *_ in meta}
             vis = {k: fixed(areas[k].intersection(fb)) for k, *_ in meta}
-            m = [dict(key=k, cls=c, en=en, ja=ja, **({'fixed': FIXED[k]} if k in FIXED else {})) for k, c, en, ja in meta]
+            m = [dict(key=k, cls=c, en=en, ja=ja, avoid_core=True, **({'fixed': FIXED[k]} if k in FIXED else {})) for k, c, en, ja in meta]
             R.FONT = LABEL_PX
-            labels = R.place_labels(city, v, R.Frame(new[v]), vis, m)
+            labels = place_inside(city, v, new[v], vis, meta)
             draw(city, v, new[v], groups, meta, labels, old[v]); res[city]['labels'][v] = labels
             res[city]['frames'][v] = new[v]; fx[v] = new[v]
         # focus.js: every area as path data in both frames

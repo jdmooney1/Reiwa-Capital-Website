@@ -30,6 +30,13 @@ Labels are laid out for the narrowest width each frame is shown at (wide 420 px,
 
 Zuidas is Reiwa's selected Noord + Zuid footprint (CBS 2022 buurten Zuidas Noord and Zuid), not an official boundary; the official description states approximately 245 ha and no further CBS units are added to approach it.
 
-## v4 (November 2026): areas as in the investor deck
+## v4 (November 2026): areas and styling as in the investor deck
 
-`deck_v4.py` (with `pages_v4.py`) sets the area set and tiers to match the March 2026 investor deck, pages 9 and 11: London West End sub-areas drawn and labelled individually, Westminster core, Kensington & Chelsea dropped, Bloomsbury and Midtown apart, Farringdon, Clerkenwell, Shoreditch & Aldgate and Southbank added; Amsterdam Haarlemmerbuurt added to the Jordaan, Centrum, West, Sloterdijk, Noord, Overamstel and Buitenveldert added. It reuses the published v3 areas and base layers (read from git at `BASE`) and needs only the pinned ward and buurtcombinatie files in `MAP_DATA`. The London frame is re-cropped to the deck's extent; the Amsterdam frame is unchanged, so its outer areas stop at the frame edge. A full rebuild with a wider Amsterdam base map needs the Overture extracts (`extract_overture.py`).
+`deck_v4.py` (with `pages_v4.py`) sets the area set, tiers and look to match the March 2026 investor deck, pages 9 and 11. It reuses the published v3 areas and base layers (read from git at `BASE`) and needs only the pinned ward and buurtcombinatie files in `MAP_DATA`.
+
+- London: West End neighbourhoods drawn and labelled individually; City and Westminster core, with Westminster cut to Whitehall, Victoria and east Pimlico (Belgravia and west Pimlico out); Midtown takes King's Cross south of Euston Road; Bloomsbury, Farringdon, Clerkenwell, Shoreditch & Aldgate and Southbank (to Kennington Lane and Elephant & Castle) selective; Kensington & Chelsea dropped. Frame re-cropped to the deck's extent at the Amsterdam aspect (1.2).
+- Amsterdam: Jordaan to the IJ (with Haarlemmerbuurt); Canal Belt split into its west and south arcs; Museumkwartier drawn apart within Oud-Zuid, which now runs west to the Schinkel; Plantage takes Nieuwmarkt/Lastage and the Eastern Islands; Centrum, West, Sloterdijk, Noord, Overamstel and Buitenveldert added. Frame unchanged, so the outer areas stop at its edge.
+- Look: core in Sumire purple, selective in Sakura pink, every neighbourhood outlined; the street grid is redrawn faintly over the core. Labels sit on their own areas without leaders (`place_inside`), are laid out for 585 px (wide) and 360 px (tall) and scale with the map in container units; katakana names break only at the middle dot.
+- Page: a two-zone panel under each map (names, occupiers, assets, Tokyo comparison) taken from the deck.
+
+A full rebuild with a wider Amsterdam base map needs the Overture extracts (`extract_overture.py`).
