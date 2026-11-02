@@ -772,6 +772,8 @@ main { flex: 1 0 auto; }
   transition: color var(--dur-hover) var(--ease-out), text-decoration-color var(--dur-hover) var(--ease-out);
 }
 .link:hover { color: var(--plum); text-decoration-color: var(--plum); }
+/* A standalone link (not inside a sentence) gets a taller hit area for touch; the padding does not move the text. */
+.link--tap { display: inline-block; padding-block: 4px; margin-block: -4px; }
 
 /* =====================================================================
    PAGE HEAD (inner pages — restrained, paper, hairline only)
