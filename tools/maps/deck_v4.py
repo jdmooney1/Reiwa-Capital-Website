@@ -116,8 +116,8 @@ AMSTERDAM = [
 # label placements kept from the published v3 Amsterdam map (same frame): the Jordaan and Canal Belt labels sit beside their
 # narrow areas rather than across Centrum, and the v3 fixed placements still apply
 FIXED = {}
-DECK = {'core': dict(fill='#271430', op=0.86, edge='#F5CAE0', edge_op=0.55, w=0.8),
-        'sel': dict(fill='#F5CAE0', op=0.72, edge='#271430', edge_op=0.75, w=1.0)}
+DECK = {'core': dict(fill='#271430', op=0.78, edge='#F5CAE0', edge_op=0.55, w=0.8),
+        'sel': dict(fill='#F5CAE0', op=0.45, edge='#271430', edge_op=0.75, w=1.0)}
 ASPECT = {'london': {'wide': 1.2, 'tall': 0.80}, 'amsterdam': {'wide': 1.2, 'tall': 0.80}}   # London's wide frame now matches Amsterdam's (CSS: .am-market .am-map 1.2 from 901px)
 
 def ll(*pts):

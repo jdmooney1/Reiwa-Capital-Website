@@ -76,12 +76,12 @@ def css(lang):
   @media (min-width: 901px) {{ .ab-grp--hide-w {{ display: none; }} }}
   @media (max-width: 900px) {{ .ab-grp--hide-t {{ display: none; }} }}
   .ab-grp--sel {{ text-shadow: 0 0 2px rgba(252,250,241,.9), 0 0 4px rgba(252,250,241,.7); }}
-  .sw-prim  {{ background: rgba(39, 20, 48, .86); border: 1.5px solid #271430; }}
-  .sw-broad {{ background: rgba(245, 202, 224, .72); border: 1px solid #271430; }}
+  .sw-prim  {{ background: rgba(39, 20, 48, .78); border: 1.5px solid #271430; }}
+  .sw-broad {{ background: rgba(245, 202, 224, .45); border: 1px solid #271430; }}
   /* The market column: a core zone or the selective areas per block, each marked with its legend colour. */
   .am-zone .am-k {{ display: flex; align-items: center; color: var(--ink); font-weight: 500; }}
-  .am-zone .am-k::before {{ content: ""; width: 10px; height: 10px; flex: none; margin-right: 8px; box-sizing: border-box; background: rgba(39, 20, 48, .86); border: 1.5px solid #271430; }}
-  .am-zone--sel .am-k::before {{ background: rgba(245, 202, 224, .72); border: 1px solid #271430; }}
+  .am-zone .am-k::before {{ content: ""; width: 10px; height: 10px; flex: none; margin-right: 8px; box-sizing: border-box; background: rgba(39, 20, 48, .78); border: 1.5px solid #271430; }}
+  .am-zone--sel .am-k::before {{ background: rgba(245, 202, 224, .45); border: 1px solid #271430; }}
   .am-zone-d {{ display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 12px 0 0; font-family: {ff}; font-size: 13.5px; line-height: 1.5; }}
   .am-zone-d dt {{ color: var(--ink-3); }}
   .am-zone-d dd {{ margin: 0; color: var(--ink-2); }}
